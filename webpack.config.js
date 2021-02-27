@@ -1,5 +1,5 @@
 module.exports = {
-    webpack: (config, { buildId, dev }) => {
+    webpack: (config, _) => {
         config.resolve.symlinks = false
         return config
     }
