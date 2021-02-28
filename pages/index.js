@@ -11,5 +11,5 @@ export default function App() {
                 </Page>
             </StylesProvider>
         </>
-  )
+  );
 }
