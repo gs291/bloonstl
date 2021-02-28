@@ -22,7 +22,7 @@ export default function SiteLinks({ mobile, login }) {
             { siteLinks.map( link => {
                 if (link.loc === -1) {
                     return (
-                        <Left>
+                        <Left key={ link.key }>
                             <Link href={ link.path }>
                                 <a>{ link.text }</a>
                             </Link>
@@ -30,7 +30,7 @@ export default function SiteLinks({ mobile, login }) {
                     );
                 } else if (link.loc === 0) {
                     return (
-                        <Middle>
+                        <Middle key={ link.key }>
                             <Link href={ link.path }>
                                 <a>{ link.text }</a>
                             </Link>
@@ -39,7 +39,7 @@ export default function SiteLinks({ mobile, login }) {
                 }
                 if (login) {
                     return (
-                        <Right>
+                        <Right key={ link.key }>
                             <Link href={link.path}>
                                 <a>{link.text}</a>
                             </Link>
