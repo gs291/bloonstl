@@ -2,7 +2,7 @@ import { StylesProvider } from "@material-ui/core/styles";
 
 import Page from "../components/Page";
 
-export default function App() {
+export default function Home() {
     return (
         <>
             <StylesProvider injectFirst>
