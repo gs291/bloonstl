@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/",
+    "text": "Home",
+    "loc": -1
+  },
+  {
+    "path": "/tierlist",
+    "text": "Tier List",
+    "loc": 0
+  },
+  {
+    "path": "/monkeys",
+    "text": "Monkeys",
+    "loc": 0
+  },
+  {
+    "path": "/heroes",
+    "text": "Heroes",
+    "loc": 0
+  },
+  {
+    "path": "/login",
+    "text": "Login",
+    "loc": 1
+  }
+]
