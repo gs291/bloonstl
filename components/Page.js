@@ -10,8 +10,25 @@ const PageContainer = styled.div`
   flex-direction: column;
 `;
 
+const Nav = styled(Navbar)`
+  background-color: #1F1F1F;
+`;
+
 const Main = styled.main`
   flex: 1;
+  background-color: #121212;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+`;
+
+const Foot = styled(Footer)`
+  background-color: #1F1F1F;
+  justify-content: center;
+  align-items: center;
+  color: white;
 `;
 
 export default function Page(props) {
@@ -23,13 +40,13 @@ export default function Page(props) {
             </Head>
 
 
-            <Navbar />
+            <Nav />
 
             <Main>
                 { props.children }
             </Main>
 
-            <Footer />
+            <Foot />
 
         </PageContainer>
     );

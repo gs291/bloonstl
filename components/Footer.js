@@ -6,9 +6,9 @@ const FooterContainer = styled.footer`
   height: 50px;
 `;
 
-export default function Footer() {
+export default function Footer({ className }) {
     return (
-        <FooterContainer>
+        <FooterContainer className={className}>
             <div>Footer</div>
         </FooterContainer>
     );
