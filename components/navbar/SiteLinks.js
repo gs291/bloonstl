@@ -17,8 +17,6 @@ const MiddleNavSection = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  border-left: 2px solid #121212;
-  border-right: 2px solid #121212;
 `;
 
 const RightNavSection = styled.div`
