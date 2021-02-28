@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
 
-import siteLinks from "../../lib/sitelinks.json";
+import { left, middle, right } from "../../lib/sitelinks.json";
 
 const NavSection = styled.div`
   flex: 1;
@@ -54,35 +54,21 @@ const link = ({ key, path, text }) => (
 )
 
 export default function SiteLinks({ mobile, login }) {
-    let leftNav = [];
-    let middleNav = [];
-    let rightNav = [];
-
-    siteLinks.forEach(siteLink => {
-        if (siteLink.loc === -1) {
-            leftNav.push(link(siteLink));
-        } else if (siteLink.loc === 0) {
-            middleNav.push(link(siteLink));
-        } else {
-            rightNav.push(link(siteLink));
-        }
-    })
-
     return (
         <>
             <NavSection>
                 <LeftNavSection>
-                    { leftNav }
+                    { link(left.home) }
                 </LeftNavSection>
             </NavSection>
             <NavSection>
                 <MiddleNavSection>
-                    { middleNav }
+                    { middle.map(mid => { return link(mid)}) }
                 </MiddleNavSection>
             </NavSection>
             <NavSection>
                 <RightNavSection>
-                    { rightNav }
+                    { link(right.login) }
                 </RightNavSection>
             </NavSection>
         </>
