@@ -36,11 +36,12 @@ export default function SiteLinks({ mobile, login }) {
                             </Link>
                         </Middle>
                     );
-                } else {
+                }
+                if (login) {
                     return (
                         <Right>
-                            <Link href={ link.path }>
-                                <a>{ link.text }</a>
+                            <Link href={link.path}>
+                                <a>{link.text}</a>
                             </Link>
                         </Right>
                     );
