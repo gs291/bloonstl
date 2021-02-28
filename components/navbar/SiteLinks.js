@@ -17,6 +17,8 @@ const MiddleNavSection = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  border-left: 2px solid #121212;
+  border-right: 2px solid #121212;
 `;
 
 const RightNavSection = styled.div`
@@ -40,6 +42,9 @@ const HoverLink = styled.div`
 
 const A = styled.a`
   line-height: 50px;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 `;
 
 const link = ({ key, path, text }) => (
