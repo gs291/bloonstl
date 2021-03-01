@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS Heroes;
 CREATE TABLE `Monkeys` (
                            `id` INT(11) AUTO_INCREMENT NOT NULL,
                            `name` VARCHAR(31) NOT NULL,
+                           `type` VARCHAR(31) NOT NULL,
                            `description` VARCHAR(255) NOT NULL,
                            `cost_gold` INT(11) NOT NULL,
                            PRIMARY KEY (`id`),
@@ -50,6 +51,7 @@ CREATE TABLE `Abilities` (
 
 INSERT INTO `Monkeys` VALUES (1,
                               'Dart Monkey',
+                              'Primary',
                               'Throws a single dart at nearby bloons. Short range and low peirce but cheap.',
                               170 );
 
