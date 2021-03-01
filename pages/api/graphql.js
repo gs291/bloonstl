@@ -1,9 +1,9 @@
 import mysql from "serverless-mysql";
 import { ApolloServer } from 'apollo-server-micro';
 
-import MonkeysAPI from "../../lib/datasources/monkeys";
-import HeroesAPI from "../../lib/datasources/heroes";
-import AbilitiesAPI from "../../lib/datasources/abilities";
+import MonkeysAPI from "../../lib/graphql/datasources/monkeys";
+import HeroesAPI from "../../lib/graphql/datasources/heroes";
+import AbilitiesAPI from "../../lib/graphql/datasources/abilities";
 
 import typeDefs from "../../lib/graphql/schema";
 import resolvers from "../../lib/graphql/resolvers";
