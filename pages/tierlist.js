@@ -1,6 +1,10 @@
+import { dataSources } from "../lib/mysql/db";
+
 import Page from "../components/Page";
 
-export default function TierList() {
+export default function TierList({ monkeys } ) {
+    monkeys = JSON.parse(monkeys);
+
     return (
         <>
             <Page title="Tier List">
@@ -8,4 +12,12 @@ export default function TierList() {
             </Page>
         </>
     );
+}
+
+export async function getStaticProps(context) {
+    const monkeys = await dataSources().monkeysAPI.getAllMonkeys();
+
+    return {
+        props: { monkeys: JSON.stringify(monkeys) }
+    }
 }
