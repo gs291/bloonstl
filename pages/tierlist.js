@@ -1,6 +1,6 @@
 import { dataSources } from "../lib/mysql/db";
-
 import Page from "../components/Page";
+import FilterGrid from "../components/filter-grid/FilterGrid";
 
 export default function TierList({ monkeys } ) {
     monkeys = JSON.parse(monkeys);
@@ -8,7 +8,7 @@ export default function TierList({ monkeys } ) {
     return (
         <>
             <Page title="Tier List">
-                <div>Tier List</div>
+                <FilterGrid monkeys={monkeys}/>
             </Page>
         </>
     );
