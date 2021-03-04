@@ -1,4 +1,3 @@
-import { dataSources } from "../lib/mysql/db";
 import Page from "../components/Page";
 import FilterGrid from "../components/filter-grid/FilterGrid";
 
@@ -15,6 +14,8 @@ export default function TierList({ monkeys } ) {
 }
 
 export async function getStaticProps(context) {
+    import { dataSources } from "../lib/mysql/db";
+
     const monkeys = await dataSources().monkeysAPI.getAllMonkeys();
 
     return {
