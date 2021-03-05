@@ -2,8 +2,9 @@ import styled from "@emotion/styled";
 import {
     Card,
     CardContent,
-    Collapse,
-    CardMedia} from "@material-ui/core";
+    CardMedia, Typography
+} from "@material-ui/core";
+import { getImageUrl } from "../filter-grid/FilterGrid";
 
 const CardContainer = styled(Card)`
   margin: 5px;
@@ -20,17 +21,23 @@ const CardMediaContainer  = styled(CardMedia)`
   background-size: contain;
 `;
 
-export default function Icon({ className, monkey, expanded }) {
-    monkey.path = "/dartmonkey.jpeg";
+const BestPath = styled.div`
+  text-align: center;
+  align-items: center;
+`;
+
+export default function Icon({ className, monkey }) {
     return (
         <>
             <CardMediaContainer
-                image={ monkey.path }
+                image={ getImageUrl(monkey.filename) }
                 title={ monkey.name }
             />
-            <Collapse in={ expanded } timeout="auto">
-                0-2-5
-            </Collapse>
+            <BestPath>
+                <Typography variant="h5" component="h1">
+                    0-2-5
+                </Typography>
+            </BestPath>
         </>
     );
 }
