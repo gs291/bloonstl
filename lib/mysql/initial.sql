@@ -12,7 +12,7 @@ CREATE TABLE `Monkeys` (
                            `type` VARCHAR(31) NOT NULL,
                            `description` VARCHAR(255) NOT NULL,
                            `cost_gold` INT(11) NOT NULL,
-                           `image` VARCHAR(31) NOT NULL,
+                           `filename` VARCHAR(31) NOT NULL,
                            PRIMARY KEY (`id`),
                            UNIQUE KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -24,7 +24,7 @@ CREATE TABLE `Heroes` (
                           `description` VARCHAR(255) NOT NULL,
                           `cost_gold` INT(11) NOT NULL,
                           `cost_cash` INT(11) NOT NULL,
-                          `image` VARCHAR(31) NOT NULL,
+                          `filename` VARCHAR(31) NOT NULL,
                           PRIMARY KEY (`id`),
                           UNIQUE KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -42,13 +42,12 @@ CREATE TABLE `Abilities` (
                              `id` INT(11) AUTO_INCREMENT NOT NULL,
                              `tower_id` INT(11) NOT NULL,
                              `active` BOOLEAN NOT NULL,
-                             `path` TINYINT(1) NOT NULL,
-                             `tier` TINYINT(2) NOt NULL,
+                             `upgrade_path` TINYINT(1) NOT NULL,
+                             `upgrade_tier` TINYINT(2) NOt NULL,
                              `name` VARCHAR(31) NOT NULL,
                              `description` VARCHAR(255) NOT NULL,
                              `cost_gold` MEDIUMINT(6) NOT NULL,
                              `cost_xp` MEDIUMINT(6) NOT NULL,
-                             `image` VARCHAR(31) NOT NULL,
                              PRIMARY KEY (`id`),
                              CONSTRAINT `ab_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
