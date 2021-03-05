@@ -10,16 +10,17 @@ import {
 export default function Filters({ className, state, handleChange }) {
     return (
         <>
-            <FormControl className={className} component="fieldset">
+            <FormControl className={className}>
                 <FormLabel component="legend">Filters: </FormLabel>
                 <FormGroup>
                     <FormControlLabel
-                        control={<Switch checked={state.isExpanded} onChange={handleChange} name="isExpanded" />}
+                        control={<Switch checked={true} onChange={handleChange} name="isExpanded" />}
                         label="Show Best Path."
+                        disabled
                     />
                     <FormControlLabel
                         control={<Switch checked={state.isDetailed} onChange={handleChange} name="isDetailed" />}
-                        label="Show Details."
+                        label="Show All Details."
                     />
                 </FormGroup>
             </FormControl>
