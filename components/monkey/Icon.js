@@ -4,7 +4,7 @@ import {
     CardContent,
     CardMedia, Typography
 } from "@material-ui/core";
-import { getImageUrl } from "../filter-grid/FilterGrid";
+import { getImageUrl } from "../../lib/utils";
 
 const CardContainer = styled(Card)`
   margin: 5px;

@@ -7,19 +7,19 @@ import {
     Switch } from "@material-ui/core";
 
 
-export default function Filters({ className, state, handleChange }) {
+export default function Filters({ className, state, handleFilter }) {
     return (
         <>
             <FormControl className={className}>
                 <FormLabel component="legend">Filters: </FormLabel>
                 <FormGroup>
                     <FormControlLabel
-                        control={<Switch checked={true} onChange={handleChange} name="isExpanded" />}
+                        control={<Switch checked={true} onChange={handleFilter} name="isExpanded" />}
                         label="Show Best Path."
                         disabled
                     />
                     <FormControlLabel
-                        control={<Switch checked={state.isDetailed} onChange={handleChange} name="isDetailed" />}
+                        control={<Switch checked={state.isDetailed} onChange={handleFilter} name="isDetailed" />}
                         label="Show All Details."
                     />
                 </FormGroup>
