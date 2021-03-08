@@ -1,4 +1,12 @@
-import {Modal, Backdrop, Fade } from "@material-ui/core";
+import {Modal, Backdrop, Fade, Container} from "@material-ui/core";
+import styled from "@emotion/styled";
+
+const ModalContainer = styled(Container)`
+  position: relative;
+  top: 25%;
+  height: 50%;
+  background-color: white;
+`;
 
 export default function PageModal({ children, open, handleClose}) {
     return (
@@ -12,7 +20,9 @@ export default function PageModal({ children, open, handleClose}) {
             }}
         >
             <Fade in={open}>
-                { children }
+                <ModalContainer maxWidth="sm">
+                    { children }
+                </ModalContainer>
             </Fade>
         </Modal>
     );
