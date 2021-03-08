@@ -5,7 +5,8 @@ const ModalContainer = styled(Container)`
   position: relative;
   top: 25%;
   height: 50%;
-  background-color: white;
+  background-color: #1F1F1F;
+  color: white;
 `;
 
 export default function PageModal({ children, open, handleClose}) {

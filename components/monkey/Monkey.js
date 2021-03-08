@@ -20,6 +20,12 @@ const CardContentContainer = styled(CardContent)`
   background-size: contain;
   background-color: #1D1D1D;
   color: #CCC;
+  min-height: 300px;
+
+  &:hover{
+    cursor: pointer;
+    background-color: #151515;
+  }
 `;
 
 const IconContainer  = styled.div`
