@@ -1,9 +1,12 @@
 import Head from "next/head";
 import styled from "@emotion/styled";
+import { useDispatch } from 'react-redux';
+import { Container } from "@material-ui/core";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import Navbar from "./navbar/Navbar";
 import Footer from "./Footer";
-import {Container} from "@material-ui/core";
+import { toggleMobile } from "../lib/redux/actions";
 
 const PageContainer = styled.div`
   display: flex;
@@ -36,6 +39,10 @@ const Foot = styled(Footer)`
 `;
 
 export default function Page(props) {
+    const dispatch = useDispatch();
+    const mobile = useMediaQuery('(max-width: 960px)');
+    dispatch(toggleMobile(mobile));
+
     return (
         <PageContainer>
             <Head>
