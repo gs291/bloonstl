@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 import Navbar from "./navbar/Navbar";
 import Footer from "./Footer";
+import {Container} from "@material-ui/core";
 
 const PageContainer = styled.div`
   display: flex;
@@ -17,11 +18,14 @@ const Nav = styled(Navbar)`
 const Main = styled.main`
   flex: 1;
   background-color: #121212;
+  color: white;
+`;
+
+const MainContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
 `;
 
 const Foot = styled(Footer)`
@@ -43,7 +47,9 @@ export default function Page(props) {
             <Nav />
 
             <Main>
-                { props.children }
+                <MainContainer maxWidth="lg">
+                    { props.children }
+                </MainContainer>
             </Main>
 
             <Foot />
