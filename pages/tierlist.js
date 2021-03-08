@@ -1,11 +1,24 @@
-import Page from "../components/Page";
+import { dataSources } from "../lib/mysql/db";
 
-export default function TierList() {
+import Page from "../components/Page";
+import FilterGrid from "../components/filter-grid/FilterGrid";
+
+export default function TierList({ monkeys } ) {
+    monkeys = JSON.parse(monkeys);
+
     return (
         <>
             <Page title="Tier List">
-                <div>Tier List</div>
+                <FilterGrid monkeys={monkeys}/>
             </Page>
         </>
     );
+}
+
+export async function getStaticProps(context) {
+    const monkeys = await dataSources().monkeysAPI.getAllMonkeys();
+
+    return {
+        props: { monkeys: JSON.stringify(monkeys) }
+    }
 }
