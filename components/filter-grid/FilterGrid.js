@@ -1,41 +1,56 @@
-import styled from "@emotion/styled";
-import {} from "@material-ui/core";
 import { useState } from "react";
+import styled from "@emotion/styled";
+import { Grid } from "@material-ui/core";
+
 import Filters from "./Filters";
 import Monkey from "../monkey/Monkey";
+import PageModal from "../PageModal";
 
 
+const FilterContainer = styled.div`
+  margin: 10px 0;
+  background-color: #1D1D1D;
+  color: white;
+`;
+
+const GridItem = styled(Grid)`
+  max-width: 600px;
+`;
 
 
 export default function FilterGrid({ className, monkeys, heroes }) {
     const [state, setState] = useState({
-        isExpanded: false,
+        modalOpen: false,
+        Monkey: null,
         isDetailed: false
     });
 
-    const handleChange = (event) => {
-        const newState = {
-            isExpanded: (event.target.name === "isDetailed" && event.target.checked) ? false : state.isExpanded,
-            isDetailed: (event.target.name === "isExpanded" && event.target.checked) ? false : state.isDetailed,
-            [event.target.name]: event.target.checked
-        }
-        setState({ ...state, ...newState});
-    };
+    const updateMonkey = (Monkey) => {
+        setState({...state,
+            Monkey: Monkey,
+            modalOpen: !state.modalOpen
+        });
+    }
+    const handleModal = () => { setState({...state, modalOpen: !state.modalOpen }); };
+    const handleFilter = (event) => { setState({ ...state, [event.target.name]: event.target.checked }); };
 
-    const Tmp = styled.div`
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-    `;
     return (
         <>
-            <Filters state={state} handleChange={handleChange} />
-            <Tmp>
-                <Monkey monkey={ monkeys[0] } expanded={state.isExpanded} detailed={state.isDetailed}/>
-                <Monkey monkey={ monkeys[0] } expanded={state.isExpanded} detailed={state.isDetailed}/>
-                <Monkey monkey={ monkeys[0] } expanded={state.isExpanded} detailed={state.isDetailed}/>
-                <Monkey monkey={ monkeys[0] } expanded={state.isExpanded} detailed={state.isDetailed}/>
-            </Tmp>
+            <FilterContainer>
+                <Filters state={state} handleFilter={handleFilter} />
+            </FilterContainer>
+            <Grid container spacing={2}>
+                { monkeys.map(monkey => (
+                    <GridItem item key={ monkey.id }>
+                        <Monkey monkey={ monkey } detailed={state.isDetailed} updateMonkey={updateMonkey}/>
+                    </GridItem>
+                ))}
+            </Grid>
+            <PageModal open={state.modalOpen} handleClose={handleModal}>
+                <div>
+                    { state.Monkey }
+                </div>
+            </PageModal>
         </>
     );
 }

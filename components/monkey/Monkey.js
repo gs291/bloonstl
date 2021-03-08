@@ -76,6 +76,7 @@ const Modal = ( monkey ) => (
         <Gold gold={ monkey.cost_gold } />
     </>
 );
+
 export default function Monkey({ monkey, detailed , updateMonkey}) {
     return (
         <>
