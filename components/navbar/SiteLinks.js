@@ -1,12 +1,7 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
-import { useDispatch, useSelector } from 'react-redux';
 
 import { left, middle, right } from "../../lib/sitelinks.json";
-import MenuButton from "./MenuButton";
-import {Drawer, } from "@material-ui/core";
-import { getDrawer } from "../../lib/redux/selectors";
-import { toggleDrawer } from "../../lib/redux/actions";
 
 const NavSection = styled.div`
   flex: 1;
@@ -50,56 +45,30 @@ const A = styled.a`
   height: 100%;
 `;
 
-const link = ({ key, path, text }) => (
-    <HoverLink key={ key }>
-        <Link href={ path }>
+export const NavLink = ({ id_key, path, text, closeDrawer }) => (
+    <HoverLink key={ id_key } onClick={closeDrawer}>
+        <Link href={ path } >
             <A>{ text }</A>
         </Link>
     </HoverLink>
 )
 
-export function NavDrawer() {
-    const dispatch = useDispatch();
-    const drawer = useSelector(getDrawer);
-    return (
-        <>
-            <Drawer
-                open={ drawer }
-                onClose={ () => dispatch(toggleDrawer()) }
-            >
-                { middle.map(mid => { return link(mid)}) }
-            </Drawer>
-        </>
-    );
-}
-
-export function MobileSiteLinks() {
-  return (
-      <>
-          <LeftNavSection>
-              <MenuButton />
-              { link(left.home) }
-          </LeftNavSection>
-      </>
-  );
-}
-
-export function DesktopSiteLinks() {
+export default function DesktopSiteLinks() {
     return (
         <>
             <NavSection>
                 <LeftNavSection>
-                    { link(left.home) }
+                    { <NavLink {...left.home} /> }
                 </LeftNavSection>
             </NavSection>
             <NavSection>
                 <MiddleNavSection>
-                    { middle.map(mid => { return link(mid)}) }
+                    { middle.map(mid => { return <NavLink {...mid} /> }) }
                 </MiddleNavSection>
             </NavSection>
             <NavSection>
                 <RightNavSection>
-                    { link(right.login) }
+                    { <NavLink {...right.login} /> }
                 </RightNavSection>
             </NavSection>
         </>

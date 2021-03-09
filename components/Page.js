@@ -7,7 +7,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Navbar from "./navbar/Navbar";
 import Footer from "./Footer";
 import { updateMobile } from "../lib/redux/actions";
-import {NavDrawer} from "./navbar/SiteLinks";
+import NavDrawer from "./navbar/NavDrawer";
 import {getMobile} from "../lib/redux/selectors";
 import {useEffect} from "react";
 
