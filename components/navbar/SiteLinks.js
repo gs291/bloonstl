@@ -1,7 +1,12 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
+import { useDispatch, useSelector } from 'react-redux';
 
 import { left, middle, right } from "../../lib/sitelinks.json";
+import MenuButton from "./MenuButton";
+import {Drawer, } from "@material-ui/core";
+import { getDrawer } from "../../lib/redux/selectors";
+import { toggleDrawer } from "../../lib/redux/actions";
 
 const NavSection = styled.div`
   flex: 1;
@@ -53,7 +58,33 @@ const link = ({ key, path, text }) => (
     </HoverLink>
 )
 
-export default function SiteLinks({ mobile, login }) {
+export function NavDrawer() {
+    const dispatch = useDispatch();
+    const drawer = useSelector(getDrawer);
+    return (
+        <>
+            <Drawer
+                open={ drawer }
+                onClose={ () => dispatch(toggleDrawer()) }
+            >
+                { middle.map(mid => { return link(mid)}) }
+            </Drawer>
+        </>
+    );
+}
+
+export function MobileSiteLinks() {
+  return (
+      <>
+          <LeftNavSection>
+              <MenuButton />
+              { link(left.home) }
+          </LeftNavSection>
+      </>
+  );
+}
+
+export function DesktopSiteLinks() {
     return (
         <>
             <NavSection>

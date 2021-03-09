@@ -1,12 +1,15 @@
 import Head from "next/head";
 import styled from "@emotion/styled";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container } from "@material-ui/core";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import Navbar from "./navbar/Navbar";
 import Footer from "./Footer";
-import { toggleMobile } from "../lib/redux/actions";
+import { updateMobile } from "../lib/redux/actions";
+import {NavDrawer} from "./navbar/SiteLinks";
+import {getMobile} from "../lib/redux/selectors";
+import {useEffect} from "react";
 
 const PageContainer = styled.div`
   display: flex;
@@ -40,19 +43,21 @@ const Foot = styled(Footer)`
 
 export default function Page(props) {
     const dispatch = useDispatch();
-    const mobile = useMediaQuery('(max-width: 960px)');
-    dispatch(toggleMobile(mobile));
+    const screen = useMediaQuery('(max-width: 960px)');
+    useEffect(() => {
+        dispatch(updateMobile(screen));
+    }, [screen])
 
     return (
         <PageContainer>
             <Head>
-                <title>{ props.title }</title>
+                <title>BloonsTL{ props.title && ": " + props.title }</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
 
             <Nav />
-
+            <NavDrawer />
             <Main>
                 <MainContainer maxWidth="lg">
                     { props.children }

@@ -2,8 +2,7 @@ import styled from "@emotion/styled";
 import { AppBar } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
-import SiteLinks from "./SiteLinks";
-import MenuButton from "./MenuButton";
+import {DesktopSiteLinks, MobileSiteLinks} from "./SiteLinks";
 import { getMobile } from "../../lib/redux/selectors";
 
 const Nav = styled(AppBar)`
@@ -19,8 +18,8 @@ export default function Navbar({ className }) {
     return (
       <>
           <Nav position="static" className={ className }>
-              { mobile && <MenuButton /> }
-              { !mobile && <SiteLinks /> }
+              { mobile && <MobileSiteLinks /> }
+              { !mobile && <DesktopSiteLinks /> }
           </Nav>
       </>
     );
