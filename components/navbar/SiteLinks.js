@@ -68,7 +68,7 @@ export default function DesktopSiteLinks() {
             </NavSection>
             <NavSection>
                 <RightNavSection>
-                    { <NavLink {...right.login} /> }
+                    {/*{ <NavLink {...right.login} /> }*/}
                 </RightNavSection>
             </NavSection>
         </>
