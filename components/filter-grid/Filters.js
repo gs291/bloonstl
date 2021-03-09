@@ -6,24 +6,26 @@ import {
     FormGroup,
     Switch } from "@material-ui/core";
 
+const FilterContainer = styled(FormControl)`
+  padding: 20px;
+`;
+
+const Label = styled(FormLabel)`
+  color: white;
+`;
 
 export default function Filters({ className, state, handleFilter }) {
     return (
         <>
-            <FormControl className={className}>
-                <FormLabel component="legend">Filters: </FormLabel>
+            <FilterContainer className={className}>
+                <Label component="legend">Filters: </Label>
                 <FormGroup>
-                    <FormControlLabel
-                        control={<Switch checked={true} onChange={handleFilter} name="isExpanded" />}
-                        label="Show Best Path."
-                        disabled
-                    />
                     <FormControlLabel
                         control={<Switch checked={state.isDetailed} onChange={handleFilter} name="isDetailed" />}
                         label="Show All Details."
                     />
                 </FormGroup>
-            </FormControl>
+            </FilterContainer>
         </>
     );
 }
