@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "dark": "#1F1F1F"
+  },
+  "background": {
+    "hover": {
+      "dark": "#151515"
+    },
+    "main": {
+      "dark": "#121212"
+    }
+  },
+  "card": {
+    "dark": "#1D1D1D"
+  }
+}

@@ -7,6 +7,7 @@ import {
     Typography } from "@material-ui/core";
 
 import Icon from "./Icon";
+import { background, card } from "../../lib/site-colors.json";
 
 const CardContainer = styled(Card)`
   margin: 5px;
@@ -18,13 +19,13 @@ const CardContentContainer = styled(CardContent)`
   justify-content: center;
   align-items: center;
   background-size: contain;
-  background-color: #1D1D1D;
+  background-color: ${ card.dark };
   color: #CCC;
   min-height: 300px;
 
   &:hover{
     cursor: pointer;
-    background-color: #151515;
+    background-color: ${ background.hover.dark };
   }
 `;
 

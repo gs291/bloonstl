@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {navHeight} from "./Navbar";
 import {NavLink} from "./SiteLinks";
-import {middle} from "../../lib/sitelinks.json";
+import {middle} from "../../lib/site-links.json";
 import {getDrawer} from "../../lib/redux/selectors";
 import {toggleDrawer} from "../../lib/redux/actions";
 

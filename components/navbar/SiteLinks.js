@@ -1,7 +1,8 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
 
-import { left, middle, right } from "../../lib/sitelinks.json";
+import { background } from "../../lib/site-colors.json";
+import { left, middle, right } from "../../lib/site-links.json";
 
 const NavSection = styled.div`
   flex: 1;
@@ -34,7 +35,7 @@ const HoverLink = styled.div`
   &:focus,
   &:active {
     cursor: pointer;
-    background-color: #1C1C1C;
+    background-color: ${ background.hover.dark };
   }
 `;
 

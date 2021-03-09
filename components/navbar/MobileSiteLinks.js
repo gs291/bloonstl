@@ -1,5 +1,5 @@
 import MenuButton from "./MenuButton";
-import {left} from "../../lib/sitelinks.json";
+import {left} from "../../lib/site-links.json";
 import { NavLink } from "./SiteLinks"
 import styled from "@emotion/styled";
 

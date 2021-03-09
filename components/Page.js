@@ -1,6 +1,7 @@
 import Head from "next/head";
+import {useEffect} from "react";
 import styled from "@emotion/styled";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Container } from "@material-ui/core";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
@@ -8,8 +9,7 @@ import Navbar from "./navbar/Navbar";
 import Footer from "./Footer";
 import { updateMobile } from "../lib/redux/actions";
 import NavDrawer from "./navbar/NavDrawer";
-import {getMobile} from "../lib/redux/selectors";
-import {useEffect} from "react";
+import { nav, background } from "../lib/site-colors.json";
 
 const PageContainer = styled.div`
   display: flex;
@@ -18,12 +18,12 @@ const PageContainer = styled.div`
 `;
 
 const Nav = styled(Navbar)`
-  background-color: #1F1F1F;
+  background-color: ${ nav.dark }
 `;
 
 const Main = styled.main`
   flex: 1;
-  background-color: #121212;
+  background-color: ${ background.main.dark };
   color: white;
 `;
 
@@ -35,7 +35,7 @@ const MainContainer = styled(Container)`
 `;
 
 const Foot = styled(Footer)`
-  background-color: #1F1F1F;
+  background-color: ${ nav.dark };
   justify-content: center;
   align-items: center;
   color: white;
@@ -51,7 +51,7 @@ export default function Page(props) {
     return (
         <PageContainer>
             <Head>
-                <title>BloonsTL{ props.title && ": " + props.title }</title>
+                <title>{ props.title && props.title + " - " }BloonsTL</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
