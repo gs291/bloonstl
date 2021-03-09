@@ -23,15 +23,13 @@ const globals = css`
   }
 `;
 
-function App({ Component, pageProps }) {
-  return (
-      <Provider store={store}>
-          <Global styles={ globals } />
-          <StylesProvider injectFirst>
-              <Component {...pageProps} />
-          </StylesProvider>
-      </Provider>
-  );
+export default function App({ Component, pageProps }) {
+    return (
+        <Provider store={store}>
+            <Global styles={ globals } />
+            <StylesProvider injectFirst>
+                <Component {...pageProps} />
+            </StylesProvider>
+        </Provider>
+    );
 }
-
-export default App
