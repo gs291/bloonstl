@@ -2,14 +2,23 @@ import styled from "@emotion/styled";
 import {Drawer} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 
-import {navHeight} from "./Navbar";
-import {NavLink} from "./SiteLinks";
+import { nav as navSizes } from "../../lib/site-sizes.json";
 import {middle} from "../../lib/site-links.json";
+import { nav } from "../../lib/site-colors.json";
 import {getDrawer} from "../../lib/redux/selectors";
 import {toggleDrawer} from "../../lib/redux/actions";
+import NavLink from "./NavLink";
 
 const DrawerContainer = styled.div`
-  padding-top: ${navHeight};
+  width: 250px;
+  height: 100%;
+  padding-top: ${ navSizes.height };
+  background-color: ${ nav.dark };
+  color: white;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default function NavDrawer() {

@@ -1,7 +1,8 @@
 import MenuButton from "./MenuButton";
-import {left} from "../../lib/site-links.json";
-import { NavLink } from "./SiteLinks"
 import styled from "@emotion/styled";
+
+import NavLink from "./NavLink";
+import {left} from "../../lib/site-links.json";
 
 const LeftNavSection = styled.div`
   display: flex;

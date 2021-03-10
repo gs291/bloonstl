@@ -5,14 +5,13 @@ import {useSelector } from "react-redux";
 import DesktopSiteLinks from "./SiteLinks";
 import MobileSiteLinks from "./MobileSiteLinks";
 import { getMobile } from "../../lib/redux/selectors";
-
-export const navHeight = "50px";
+import { nav } from "../../lib/site-sizes.json";
 
 const Nav = styled(AppBar)`
   display: flex;
   flex-direction: row;
-  height: ${navHeight};
-  align-items: ${props => props.mobile ? 'flex-start' : 'center'};
+  height: ${ nav.height };
+  align-items: center;
   justify-content: ${props => props.mobile ? 'flex-start' : 'center'};
   z-index: 99999;
 `;

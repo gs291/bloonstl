@@ -1,8 +1,7 @@
-import Link from "next/link";
 import styled from "@emotion/styled";
 
-import { background } from "../../lib/site-colors.json";
 import { left, middle, right } from "../../lib/site-links.json";
+import NavLink from "./NavLink";
 
 const NavSection = styled.div`
   flex: 1;
@@ -25,34 +24,6 @@ const RightNavSection = styled.div`
   flex-direction: row;
   justify-content: left;
 `;
-
-const HoverLink = styled.div`
-  width: 100px;
-  transition: 0.3s;
-  text-align: center;
-  
-  &:hover,
-  &:focus,
-  &:active {
-    cursor: pointer;
-    background-color: ${ background.hover.dark };
-  }
-`;
-
-const A = styled.a`
-  line-height: 50px;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-`;
-
-export const NavLink = ({ id_key, path, text, closeDrawer }) => (
-    <HoverLink key={ id_key } onClick={closeDrawer}>
-        <Link href={ path } >
-            <A>{ text }</A>
-        </Link>
-    </HoverLink>
-)
 
 export default function DesktopSiteLinks() {
     return (
