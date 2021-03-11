@@ -55,7 +55,6 @@ export default function Page(props) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-
             <Nav />
             <NavDrawer />
             <Main>
@@ -65,7 +64,6 @@ export default function Page(props) {
             </Main>
 
             <Foot />
-
         </PageContainer>
     );
 }

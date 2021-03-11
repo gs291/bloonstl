@@ -1,10 +1,12 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
+import {useSelector} from "react-redux";
 
 import Filters from "./Filters";
 import Monkey from "../monkey/Monkey";
 import PageModal from "../PageModal";
+import {getMobile} from "../../lib/redux/selectors";
 
 
 const FilterContainer = styled.div`
@@ -19,6 +21,7 @@ const GridItem = styled(Grid)`
 
 
 export default function FilterGrid({ className, monkeys, heroes }) {
+    const mobile = useSelector(getMobile);
     const [state, setState] = useState({
         modalOpen: false,
         Monkey: null,
@@ -34,7 +37,13 @@ export default function FilterGrid({ className, monkeys, heroes }) {
     const handleModal = () => { setState({...state, modalOpen: !state.modalOpen }); };
     const handleFilter = (event) => { setState({ ...state, [event.target.name]: event.target.checked }); };
 
-    const gridSpacing = state.isDetailed ? 12 : 3;
+    let gridSpacing = 3;
+
+    if (state.isDetailed && !mobile) {
+        gridSpacing = 12;
+    } else if (mobile) {
+        gridSpacing = 6;
+    }
     return (
         <>
             <FilterContainer>
@@ -42,8 +51,8 @@ export default function FilterGrid({ className, monkeys, heroes }) {
             </FilterContainer>
             <Grid container spacing={2}>
                 { monkeys.map(monkey => (
-                    <GridItem item md={gridSpacing} key={ monkey.id }>
-                        <Monkey monkey={ monkey } detailed={state.isDetailed} updateMonkey={updateMonkey}/>
+                    <GridItem item xs={gridSpacing} key={ monkey.id }>
+                        <Monkey monkey={ monkey } detailed={state.isDetailed} updateMonkey={mobile && updateMonkey}/>
                     </GridItem>
                 ))}
             </Grid>

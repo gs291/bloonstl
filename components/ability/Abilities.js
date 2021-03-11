@@ -1,13 +1,12 @@
 import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
+
 import Ability from "./Ability";
 
 const GridContainer = styled(Grid)`
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: center;
-  align-items: center;
 `;
 
 const GridItem = styled(Grid)`
@@ -29,14 +28,14 @@ export default function Abilities({ className, abilities, monkeyFile, rank }) {
 
     return (
         <>
-            <GridContainer container spacing={3} className={ className }>
+            <GridContainer container spacing={2} className={ className }>
                 <GridItem item>
                     {pathTop.map(ability => <Ability ability={ability} monkeyFile={monkeyFile} key={ability.id} /> )}
                 </GridItem>
-                <GridItem item >
+                <GridItem item>
                     {pathMid.map(ability => <Ability ability={ability} monkeyFile={monkeyFile} key={ability.id}/>)}
                 </GridItem>
-                <GridItem item >
+                <GridItem item>
                     {pathBot.map(ability => <Ability ability={ability} monkeyFile={monkeyFile} key={ability.id}/>)}
                 </GridItem>
             </GridContainer>

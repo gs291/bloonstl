@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import {Divider, Grid, Typography} from "@material-ui/core";
+
 import Abilities from "../ability/Abilities";
 
 const TitleContainer = styled.div`
@@ -28,19 +29,11 @@ const MonkeyDetailedContainer = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 `;
 
 const ColorDivider = styled(Divider)`
   background-color: white;
 `;
-
-const AbilitiesContainer = styled(Abilities)`
-  flex: 0.5;
-`;
-
 
 const Title = ({ name, type }) => (
     <TitleContainer>
@@ -96,7 +89,7 @@ export default function MonkeyDetailed({ monkey }) {
     return (
         <MonkeyDetailedContainer>
             <VerticalRank />
-            <AbilitiesContainer abilities={ monkey.abilities } monkeyFile={ monkey.filename } />
+            <Abilities abilities={ monkey.abilities } monkeyFile={ monkey.filename } />
         </MonkeyDetailedContainer>
     );
 };

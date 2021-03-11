@@ -25,7 +25,6 @@ const A = styled.a`
 `;
 
 export default function NavLink({ id_key, path, text, closeDrawer }) {
-
     return (
         <HoverLink key={ id_key } onClick={closeDrawer}>
             <Link href={ path } >

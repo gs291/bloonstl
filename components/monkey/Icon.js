@@ -1,19 +1,9 @@
 import styled from "@emotion/styled";
 import {
-    Card,
-    CardContent,
-    CardMedia, Typography
+    CardMedia,
+    Typography
 } from "@material-ui/core";
 import { getImageUrl } from "../../lib/utils";
-
-const CardContainer = styled(Card)`
-  margin: 5px;
-`;
-
-const ContentContainer = styled(CardContent)`
-  background-color: #1D1D1D;
-  color: #CCC;
-`;
 
 const CardMediaContainer  = styled(CardMedia)`
   height: 165px;
