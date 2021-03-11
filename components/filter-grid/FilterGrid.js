@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
-import {Container, Grid} from "@material-ui/core";
+import {Grid} from "@material-ui/core";
 
 import Filters from "./Filters";
 import Monkey from "../monkey/Monkey";
@@ -48,9 +48,7 @@ export default function FilterGrid({ className, monkeys, heroes }) {
                 ))}
             </Grid>
             <PageModal open={state.modalOpen} handleClose={handleModal}>
-                <div>
                     { state.Monkey }
-                </div>
             </PageModal>
         </>
     );
