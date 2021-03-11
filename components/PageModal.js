@@ -21,7 +21,7 @@ export default function PageModal({ children, open, handleClose}) {
             }}
         >
             <Fade in={open}>
-                <ModalContainer maxWidth="sm">
+                <ModalContainer maxWidth="md">
                     { children }
                 </ModalContainer>
             </Fade>
