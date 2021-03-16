@@ -28,15 +28,7 @@ const CardContentContainer = styled(CardContent)`
   }
 `;
 
-const IconContainer  = styled.div`
-  margin-right: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  
-  width: ${props => props.detailed ? "" : "100%"};
-`;
+
 
 function handleClick(monkey, updateMonkey, mobile, expand, setExpand) {
     if (updateMonkey) {
@@ -47,27 +39,17 @@ function handleClick(monkey, updateMonkey, mobile, expand, setExpand) {
     }
 }
 
-export default function Monkey({ monkey, detailed , updateMonkey}) {
+export default function Monkey({ className, monkey, detailed , updateMonkey}) {
     const [expand, setExpand] = useState(false);
     const mobile = useSelector(getMobile);
     return (
         <>
-            <CardContainer variant="outlined" onClick={() => handleClick(monkey, updateMonkey, mobile, expand, setExpand)}>
+            <CardContainer variant="outlined" onClick={() => handleClick(monkey, updateMonkey, mobile, expand, setExpand)} className={className}>
                 <CardContentContainer mobile={mobile.toString()}>
-                    <IconContainer detailed={detailed}>
-                        <Icon monkey={ monkey }/>
-                    </IconContainer>
-                    {  mobile && (
-                            <Collapse in={ detailed }>
-                                <MonkeyDetailed monkey={ monkey } />
-                            </Collapse>
-                        )
-                    }
-                    { !mobile && (
-                        <Collapse in={ detailed || expand }>
-                            <MonkeyDetailed monkey={ monkey } />
-                        </Collapse>
-                    )}
+                    <Icon monkey={ monkey } detailed={detailed}/>
+                    <Collapse in={ detailed || (!mobile && expand)}>
+                        <MonkeyDetailed monkey={ monkey } />
+                    </Collapse>
                 </CardContentContainer>
             </CardContainer>
         </>

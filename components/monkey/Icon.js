@@ -16,18 +16,30 @@ const BestPath = styled.div`
   align-items: center;
 `;
 
-export default function Icon({ className, monkey }) {
+const IconContainer  = styled.div`
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  width: ${props => props.detailed ? "" : "100%"};
+`;
+
+export default function Icon({ className, monkey, detailed }) {
     return (
         <>
-            <CardMediaContainer
-                image={ getImageUrl(monkey.filename) }
-                title={ monkey.name }
-            />
-            <BestPath>
-                <Typography variant="h5" component="h1">
-                    0-2-5
-                </Typography>
-            </BestPath>
+            <IconContainer detailed={detailed} className={className}>
+                <CardMediaContainer
+                    image={ getImageUrl(monkey.filename) }
+                    title={ monkey.name }
+                />
+                <BestPath>
+                    <Typography variant="h5" component="h1">
+                        0-2-5
+                    </Typography>
+                </BestPath>
+            </IconContainer>
         </>
     );
 }

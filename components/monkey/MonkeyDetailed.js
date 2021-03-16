@@ -85,9 +85,9 @@ const VerticalRank = () => (
     </GridContainer>
 );
 
-export default function MonkeyDetailed({ monkey }) {
+export default function MonkeyDetailed({ className, monkey }) {
     return (
-        <MonkeyDetailedContainer>
+        <MonkeyDetailedContainer className={className}>
             <Abilities abilities={ monkey.abilities } monkeyFile={ monkey.filename } />
         </MonkeyDetailedContainer>
     );

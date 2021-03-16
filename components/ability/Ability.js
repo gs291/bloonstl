@@ -22,23 +22,27 @@ const CardContainer = styled(Card)`
 
 const CardContentContainer = styled(CardContent)`
   padding: 0;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
 `;
 
 const CardMediaContainer  = styled(CardMedia)`
-  min-width: 75px;
-  min-height: 75px;
+  min-width: 45px;
+  min-height: 45px;
 `;
 
 const UpgradeArrowContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 10px;
+  margin-right: 5px;
 `;
 
 export default function Ability({ className, ability, monkeyFile}) {
     return (
-        <AbilityContainer>
+        <AbilityContainer className={className}>
             <CardContainer selected={ability.selected}>
                 <CardContentContainer>
                     <CardMediaContainer

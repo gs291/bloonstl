@@ -44,7 +44,7 @@ export default function FilterGrid({ className, monkeys, heroes }) {
 
     return (
         <>
-            <FilterContainer>
+            <FilterContainer className={className}>
                 <Filters state={state} handleFilter={handleFilter} />
             </FilterContainer>
             <Grid container spacing={2}>

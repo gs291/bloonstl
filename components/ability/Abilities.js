@@ -6,7 +6,6 @@ import Ability from "./Ability";
 const GridContainer = styled(Grid)`
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: center;
   align-items: center;
 `;
