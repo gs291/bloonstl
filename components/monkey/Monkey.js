@@ -38,22 +38,6 @@ const IconContainer  = styled.div`
   width: ${props => props.detailed ? "" : "100%"};
 `;
 
-
-const HorizontalCollapse = styled(Collapse)`
-  &.MuiCollapse-container {
-    width: 0;
-    transition-property: width;
-  }
-
-  &.MuiCollapse-entered {
-    width: 100%
-  }
-
-  &.MuiCollapse-hidden {
-    width: 0;
-  }
-`;
-
 function handleClick(monkey, updateMonkey, mobile, expand, setExpand) {
     if (updateMonkey) {
         return updateMonkey(<MonkeyDetailed monkey={ monkey } />);
@@ -80,9 +64,9 @@ export default function Monkey({ monkey, detailed , updateMonkey}) {
                         )
                     }
                     { !mobile && (
-                        <HorizontalCollapse in={ detailed || expand }>
+                        <Collapse in={ detailed || expand }>
                             <MonkeyDetailed monkey={ monkey } />
-                        </HorizontalCollapse>
+                        </Collapse>
                     )}
                 </CardContentContainer>
             </CardContainer>

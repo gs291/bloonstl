@@ -88,7 +88,6 @@ const VerticalRank = () => (
 export default function MonkeyDetailed({ monkey }) {
     return (
         <MonkeyDetailedContainer>
-            <VerticalRank />
             <Abilities abilities={ monkey.abilities } monkeyFile={ monkey.filename } />
         </MonkeyDetailedContainer>
     );

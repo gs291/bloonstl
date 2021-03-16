@@ -55,7 +55,7 @@ export default function FilterGrid({ className, monkeys, heroes }) {
                 ))}
             </Grid>
             <PageModal open={state.modalOpen} handleClose={handleModal}>
-                    { state.Monkey }
+                { state.Monkey }
             </PageModal>
         </>
     );

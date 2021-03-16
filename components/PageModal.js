@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 const ModalContainer = styled(Container)`
   position: relative;
   top: 25%;
-  height: 50%;
+  height: 60%;
   background-color: #1F1F1F;
   color: white;
 `;
