@@ -3,6 +3,7 @@ import { Global, css } from "@emotion/react";
 import { StylesProvider } from "@material-ui/core/styles";
 
 import store from "../lib/redux/store";
+import Page from "../components/Page";
 
 const globals = css` 
   html, 
@@ -45,7 +46,9 @@ export default function App({ Component, pageProps }) {
         <Provider store={store}>
             <Global styles={ globals } />
             <StylesProvider injectFirst>
-                <Component {...pageProps} />
+                <Page>
+                    <Component {...pageProps} />
+                </Page>
             </StylesProvider>
         </Provider>
     );

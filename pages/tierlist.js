@@ -7,9 +7,7 @@ export default function TierList({ monkeys } ) {
     monkeys = JSON.parse(monkeys);
     return (
         <>
-            <Page title="Tier List">
-                <FilterGrid monkeys={monkeys}/>
-            </Page>
+            <FilterGrid monkeys={monkeys}/>
         </>
     );
 }
