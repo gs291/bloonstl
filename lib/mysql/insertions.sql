@@ -645,3 +645,15 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 2, 4, 'XXXL
 INSERT INTO `Heroes` VALUES (NULL, 'Quincy', 'Archer', 'Proud, strong and intelligent, Quincy uses his bow to perform feats of amazing skill.', 540, 0);
 INSERT INTO `Abilities` VALUES (4, 1, false, 0, 0, '', 'Quincy\'s arrows bounce up to 3 different targets.', 0, 0);
 INSERT INTO `Towers` VALUES (NULL, NULL, NULL); -- Add Quincy into Towers
+
+SELECT * FROM
+    (
+        SELECT T.id as mt_id, Monkeys.id as m_id FROM Monkeys
+        JOIN Towers T on Monkeys.id = T.monkey_id
+    ) AS `Tower`
+    JOIN (
+        SELECT T.id as at_id, Abilities.* FROM Abilities
+        JOIN Towers T on Abilities.tower_id = T.id
+    ) as `Abilities`
+WHERE Tower.mt_id = Abilities.at_id
+ORDER BY Tower.m_id ASC;

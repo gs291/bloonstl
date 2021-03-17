@@ -1,12 +1,15 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import {
     Card,
     CardContent,
-    CardMedia,
-    Collapse,
-    Typography } from "@material-ui/core";
+    Collapse } from "@material-ui/core";
 
 import Icon from "./Icon";
+import MonkeyDetailed from "./MonkeyDetailed";
+import {getMobile} from "../../lib/redux/selectors";
+import {background, card} from "../../lib/site-colors.json";
+import {useState} from "react";
 
 const CardContainer = styled(Card)`
   margin: 5px;
@@ -14,90 +17,39 @@ const CardContainer = styled(Card)`
 
 const CardContentContainer = styled(CardContent)`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-size: contain;
-  background-color: #1D1D1D;
+  flex-direction: ${props => props.mobile ? "column" : "row"};
+  
+  background-color: ${ card.dark };
   color: #CCC;
-  min-height: 300px;
 
   &:hover{
     cursor: pointer;
-    background-color: #151515;
-  }
-`;
-
-const IconContainer  = styled.div`
-  margin-right: 10px;
-`;
-
-const TitleContainer = styled.div`
-  margin-bottom: 15px;
-`;
-
-const HorizontalCollapse = styled(Collapse)`
-  &.MuiCollapse-container {
-    width: 0;
-    transition-property: width;
-  }
-
-  &.MuiCollapse-entered {
-    width: 100%
-  }
-
-  &.MuiCollapse-hidden {
-    width: 0;
+    background-color: ${ background.hover.dark };
   }
 `;
 
 
-const Title = ({ name, type }) => (
-    <TitleContainer>
-        <Typography variant={"h3"} component={"h1"}>
-            { name }
-        </Typography>
-        <Typography variant={"h4"} component={"h2"}>
-            { type }
-        </Typography>
-    </TitleContainer>
-);
 
-const Description = ({ description }) => (
-    <Typography variant={"body1"} gutterBottom>
-        { description }
-    </Typography>
-);
+function handleClick(monkey, updateMonkey, mobile, expand, setExpand) {
+    if (updateMonkey) {
+        return updateMonkey(<MonkeyDetailed monkey={ monkey } />);
+    }
+    if (!mobile) {
+        return setExpand(!expand);
+    }
+}
 
-const Gold = ({ gold }) => (
-    <Typography variant={"caption"} display="block" gutterBottom>
-        $ { gold }
-    </Typography>
-);
-
-const Modal = ( monkey ) => (
-    <>
-        <Title name={ monkey.name } type={ monkey.type } />
-        <Description description={ monkey.description } />
-        <Gold gold={ monkey.cost_gold } />
-    </>
-);
-
-export default function Monkey({ monkey, detailed , updateMonkey}) {
+export default function Monkey({ className, monkey, detailed , updateMonkey}) {
+    const [expand, setExpand] = useState(false);
+    const mobile = useSelector(getMobile);
     return (
         <>
-            <CardContainer variant="outlined" onClick={() => updateMonkey(Modal(monkey))}>
-                <CardContentContainer>
-                    <IconContainer>
-                        <Icon monkey={ monkey }/>
-                    </IconContainer>
-                    <div>
-                        <HorizontalCollapse in={ detailed }>
-                            <Title name={ monkey.name } type={ monkey.type } />
-                            <Description description={ monkey.description } />
-                            <Gold gold={ monkey.cost_gold } />
-                        </HorizontalCollapse>
-                    </div>
+            <CardContainer variant="outlined" onClick={() => handleClick(monkey, updateMonkey, mobile, expand, setExpand)} className={className}>
+                <CardContentContainer mobile={mobile.toString()}>
+                    <Icon monkey={ monkey } detailed={detailed}/>
+                    <Collapse in={ detailed || (!mobile && expand)}>
+                        <MonkeyDetailed monkey={ monkey } />
+                    </Collapse>
                 </CardContentContainer>
             </CardContainer>
         </>

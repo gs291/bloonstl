@@ -1,19 +1,9 @@
 import styled from "@emotion/styled";
 import {
-    Card,
-    CardContent,
-    CardMedia, Typography
+    CardMedia,
+    Typography
 } from "@material-ui/core";
 import { getImageUrl } from "../../lib/utils";
-
-const CardContainer = styled(Card)`
-  margin: 5px;
-`;
-
-const ContentContainer = styled(CardContent)`
-  background-color: #1D1D1D;
-  color: #CCC;
-`;
 
 const CardMediaContainer  = styled(CardMedia)`
   height: 165px;
@@ -26,18 +16,30 @@ const BestPath = styled.div`
   align-items: center;
 `;
 
-export default function Icon({ className, monkey }) {
+const IconContainer  = styled.div`
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  width: ${props => props.detailed ? "" : "100%"};
+`;
+
+export default function Icon({ className, monkey, detailed }) {
     return (
         <>
-            <CardMediaContainer
-                image={ getImageUrl(monkey.filename) }
-                title={ monkey.name }
-            />
-            <BestPath>
-                <Typography variant="h5" component="h1">
-                    0-2-5
-                </Typography>
-            </BestPath>
+            <IconContainer detailed={detailed} className={className}>
+                <CardMediaContainer
+                    image={ getImageUrl(monkey.filename) }
+                    title={ monkey.name }
+                />
+                <BestPath>
+                    <Typography variant="h5" component="h1">
+                        0-2-5
+                    </Typography>
+                </BestPath>
+            </IconContainer>
         </>
     );
 }
