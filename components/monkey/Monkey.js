@@ -7,7 +7,7 @@ import {
     Collapse
 } from "@material-ui/core";
 
-import Icon from "./Icon";
+import Icon from "../tower/Icon";
 import MonkeyDetailed from "./MonkeyDetailed";
 import {getMobile} from "../../lib/redux/selectors";
 import {background, card} from "../../lib/site-colors.json";
