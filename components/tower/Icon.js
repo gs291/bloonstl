@@ -21,13 +21,13 @@ const IconContainer  = styled.div`
   width: ${props => props.detailed ? "" : "100%"};
 `;
 
-export default function Icon({ className, monkey, detailed }) {
+export default function Icon({ className, tower, detailed }) {
     return (
         <>
             <IconContainer detailed={detailed} className={className}>
                 <CardMediaContainer
-                    image={ getImageUrl(monkey.filename) }
-                    title={ monkey.name }
+                    image={ getImageUrl(tower.filename) }
+                    title={ tower.name }
                 />
             </IconContainer>
         </>
