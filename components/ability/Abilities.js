@@ -39,14 +39,26 @@ export default class Abilities extends PureComponent {
 
         abilities.forEach(ability => {
             if (ability.upgrade_path === 0) {
-                pathTop.push(<AbilityContainer ability={ability} monkeyFile={monkeyFile}
-                                               selected={ability.upgrade_tier < rank.topPathRank} key={ability.id}/>);
+                pathTop.push(
+                    <AbilityContainer ability={ability}
+                                      monkeyFile={monkeyFile}
+                                      selected={ability.upgrade_tier < rank.topPathRank}
+                                      key={ability.id}
+                    />);
             } else if (ability.upgrade_path === 1) {
-                pathMid.push(<AbilityContainer ability={ability} monkeyFile={monkeyFile}
-                                               selected={ability.upgrade_tier < rank.midPathRank} key={ability.id}/>);
+                pathMid.push(
+                    <AbilityContainer ability={ability}
+                                      monkeyFile={monkeyFile}
+                                      selected={ability.upgrade_tier < rank.midPathRank}
+                                      key={ability.id}
+                    />);
             } else {
-                pathBot.push(<AbilityContainer ability={ability} monkeyFile={monkeyFile}
-                                               selected={ability.upgrade_tier < rank.botPathRank} key={ability.id}/>)
+                pathBot.push(
+                    <AbilityContainer ability={ability}
+                                      monkeyFile={monkeyFile}
+                                      selected={ability.upgrade_tier < rank.botPathRank}
+                                      key={ability.id}
+                    />)
             }
         });
 
