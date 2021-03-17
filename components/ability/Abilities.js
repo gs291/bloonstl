@@ -16,12 +16,12 @@ const GridItem = styled(Grid)`
   flex-direction: row;
 `;
 
-const AbilityContainer = ({ className, ability, monkeyFile}) => (
+const AbilityContainer = ({ className, ability, monkeyFile, selected}) => (
     <>
         { ability.upgrade_tier !== 0  && (
-            <UpgradeArrow selected={ability.selected} />
+            <UpgradeArrow selected={selected}/>
         )}
-        <Ability ability={ability} monkeyFile={monkeyFile} key={ability.id} />
+        <Ability ability={ability} monkeyFile={monkeyFile} selected={selected}/>
     </>
 )
 
@@ -31,23 +31,24 @@ export default function Abilities({ className, abilities, monkeyFile, rank }) {
     rank.topPathRank = 0;
     rank.midPathRank = 2;
     rank.botPathRank = 5;
+
     abilities.forEach(ability => {
-       if (ability.upgrade_path === 0)      { pathTop.push({ ...ability, selected: ability.upgrade_tier < rank.topPathRank }); }
-       else if (ability.upgrade_path === 1) { pathMid.push({ ...ability, selected: ability.upgrade_tier < rank.midPathRank }); }
-       else                                 { pathBot.push({ ...ability, selected: ability.upgrade_tier < rank.botPathRank }); }
+       if (ability.upgrade_path === 0)      { pathTop.push(<AbilityContainer ability={ability} monkeyFile={monkeyFile} selected={ability.upgrade_tier < rank.topPathRank} key={ability.id} />); }
+       else if (ability.upgrade_path === 1) { pathMid.push(<AbilityContainer ability={ability} monkeyFile={monkeyFile} selected={ability.upgrade_tier < rank.midPathRank} key={ability.id} />); }
+       else                                 { pathBot.push(<AbilityContainer ability={ability} monkeyFile={monkeyFile} selected={ability.upgrade_tier < rank.botPathRank} key={ability.id} />) }
     });
 
     return (
         <>
             <GridContainer container spacing={2} className={ className }>
                 <GridItem item>
-                    {pathTop.map(ability => <AbilityContainer ability={ability} monkeyFile={monkeyFile} key={ability.id} /> )}
+                    { pathTop }
                 </GridItem>
                 <GridItem item>
-                    {pathMid.map(ability => <AbilityContainer ability={ability} monkeyFile={monkeyFile} key={ability.id}/>)}
+                    { pathMid }
                 </GridItem>
                 <GridItem item>
-                    {pathBot.map(ability => <AbilityContainer ability={ability} monkeyFile={monkeyFile} key={ability.id}/>)}
+                    { pathBot }
                 </GridItem>
             </GridContainer>
         </>

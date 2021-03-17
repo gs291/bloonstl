@@ -31,11 +31,11 @@ const CardMediaContainer  = styled(CardMedia)`
   min-height: 45px;
 `;
 
-export default function Ability({ className, ability, monkeyFile}) {
+export default function Ability({ className, ability, monkeyFile, selected}) {
     return (
         <>
             <AbilityContainer className={className}>
-                <CardContainer selected={ability.selected}>
+                <CardContainer selected={selected}>
                     <CardContentContainer>
                         <CardMediaContainer
                             image={getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier)}
