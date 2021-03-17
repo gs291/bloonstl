@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import {DoubleArrow} from "@material-ui/icons";
 import {Card, CardContent, CardMedia} from "@material-ui/core";
 
 import {getImageUrl} from "../../lib/utils";
@@ -11,7 +10,6 @@ const AbilityContainer = styled.div`
 `;
 
 const CardContainer = styled(Card)`
-  margin-right: 10px;
   background-color: ${background.hover.dark};
   border: ${props => props.selected ? "2px solid gold" : "2px solid " + background.hover.dark};
 
@@ -33,29 +31,19 @@ const CardMediaContainer  = styled(CardMedia)`
   min-height: 45px;
 `;
 
-const UpgradeArrowContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-right: 5px;
-`;
-
 export default function Ability({ className, ability, monkeyFile}) {
     return (
-        <AbilityContainer className={className}>
-            <CardContainer selected={ability.selected}>
-                <CardContentContainer>
-                    <CardMediaContainer
-                        image={getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier)}
-                        title={ability.name}
-                    />
-                </CardContentContainer>
-            </CardContainer>
-            { ability.upgrade_tier !== 4 && (
-                <UpgradeArrowContainer>
-                    <DoubleArrow />
-                </UpgradeArrowContainer>
-            )}
-        </AbilityContainer>
+        <>
+            <AbilityContainer className={className}>
+                <CardContainer selected={ability.selected}>
+                    <CardContentContainer>
+                        <CardMediaContainer
+                            image={getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier)}
+                            title={ability.name}
+                        />
+                    </CardContentContainer>
+                </CardContainer>
+            </AbilityContainer>
+        </>
     );
 }

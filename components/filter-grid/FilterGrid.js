@@ -38,7 +38,7 @@ export default function FilterGrid({ className, monkeys, heroes }) {
     const handleFilter = (event) => { setState({ ...state, [event.target.name]: event.target.checked }); };
 
     let gridSpacing = 6;
-    if (state.isDetailed || mobile) {
+    if (mobile) {
         gridSpacing = 12;
     }
 
