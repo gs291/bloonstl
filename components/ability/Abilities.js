@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import {Grid} from "@material-ui/core";
 import { PureComponent } from "react";
+import {Grid} from "@material-ui/core";
 
 import Ability from "./Ability";
 import UpgradeArrow from "./UpgradeArrow";
@@ -26,7 +26,6 @@ const AbilityContainer = ({ className, ability, monkeyFile, selected}) => (
     </>
 )
 
-// export default function Abilities({ className, abilities, monkeyFile, rank }) {
 export default class Abilities extends PureComponent {
 
     render() {
