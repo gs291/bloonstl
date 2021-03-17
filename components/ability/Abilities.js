@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
+import { PureComponent } from "react";
 
 import Ability from "./Ability";
 import UpgradeArrow from "./UpgradeArrow";
@@ -25,32 +26,45 @@ const AbilityContainer = ({ className, ability, monkeyFile, selected}) => (
     </>
 )
 
-export default function Abilities({ className, abilities, monkeyFile, rank }) {
-    let pathTop = [], pathMid = [], pathBot = [];
-    rank = {};
-    rank.topPathRank = 0;
-    rank.midPathRank = 2;
-    rank.botPathRank = 5;
+// export default function Abilities({ className, abilities, monkeyFile, rank }) {
+export default class Abilities extends PureComponent {
 
-    abilities.forEach(ability => {
-       if (ability.upgrade_path === 0)      { pathTop.push(<AbilityContainer ability={ability} monkeyFile={monkeyFile} selected={ability.upgrade_tier < rank.topPathRank} key={ability.id} />); }
-       else if (ability.upgrade_path === 1) { pathMid.push(<AbilityContainer ability={ability} monkeyFile={monkeyFile} selected={ability.upgrade_tier < rank.midPathRank} key={ability.id} />); }
-       else                                 { pathBot.push(<AbilityContainer ability={ability} monkeyFile={monkeyFile} selected={ability.upgrade_tier < rank.botPathRank} key={ability.id} />) }
-    });
+    render() {
+        const { className, abilities, monkeyFile } = this.props;
+        let { rank } = this.props;
+        let pathTop = [], pathMid = [], pathBot = [];
+        rank = {};
+        rank.topPathRank = 0;
+        rank.midPathRank = 2;
+        rank.botPathRank = 5;
 
-    return (
-        <>
-            <GridContainer container spacing={2} className={ className }>
-                <GridItem item>
-                    { pathTop }
-                </GridItem>
-                <GridItem item>
-                    { pathMid }
-                </GridItem>
-                <GridItem item>
-                    { pathBot }
-                </GridItem>
-            </GridContainer>
-        </>
-    );
+        abilities.forEach(ability => {
+            if (ability.upgrade_path === 0) {
+                pathTop.push(<AbilityContainer ability={ability} monkeyFile={monkeyFile}
+                                               selected={ability.upgrade_tier < rank.topPathRank} key={ability.id}/>);
+            } else if (ability.upgrade_path === 1) {
+                pathMid.push(<AbilityContainer ability={ability} monkeyFile={monkeyFile}
+                                               selected={ability.upgrade_tier < rank.midPathRank} key={ability.id}/>);
+            } else {
+                pathBot.push(<AbilityContainer ability={ability} monkeyFile={monkeyFile}
+                                               selected={ability.upgrade_tier < rank.botPathRank} key={ability.id}/>)
+            }
+        });
+
+        return (
+            <>
+                <GridContainer container spacing={2} className={className}>
+                    <GridItem item>
+                        {pathTop}
+                    </GridItem>
+                    <GridItem item>
+                        {pathMid}
+                    </GridItem>
+                    <GridItem item>
+                        {pathBot}
+                    </GridItem>
+                </GridContainer>
+            </>
+        );
+    }
 }
