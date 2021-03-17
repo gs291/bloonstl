@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import {Divider, Grid, Typography} from "@material-ui/core";
 
 import Abilities from "../ability/Abilities";
+import {useState} from "react";
+import FilterRanks from "./FilterRanks";
 
 const TitleContainer = styled.div`
   margin-bottom: 15px;
@@ -27,8 +29,8 @@ const GridItem = styled(Grid)`
 
 const MonkeyDetailedContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  height: 100%;
+  flex-direction: column;
+  padding-top: 20px;
 `;
 
 const ColorDivider = styled(Divider)`
@@ -85,10 +87,11 @@ const VerticalRank = () => (
     </GridContainer>
 );
 
-export default function MonkeyDetailed({ className, monkey }) {
+export default function MonkeyDetailed({ className, monkey, rank }) {
+
     return (
         <MonkeyDetailedContainer className={className}>
-            <Abilities abilities={ monkey.abilities } monkeyFile={ monkey.filename } />
+            <Abilities abilities={ monkey.abilities } monkeyFile={ monkey.filename } rank={ rank } ranks={ monkey.rank[rank] }/>
         </MonkeyDetailedContainer>
     );
 };

@@ -17,49 +17,39 @@ const GridItem = styled(Grid)`
   flex-direction: row;
 `;
 
-const AbilityContainer = ({ className, ability, monkeyFile, selected}) => (
+
+const AbilityContainer = ({ability, monkeyFile, rank, selected}) => (
     <>
         { ability.upgrade_tier !== 0  && (
-            <UpgradeArrow selected={selected}/>
+            <UpgradeArrow rank={rank} selected={selected}/>
         )}
-        <Ability ability={ability} monkeyFile={monkeyFile} selected={selected}/>
+        <Ability ability={ability} monkeyFile={monkeyFile} rank={rank} selected={selected}/>
     </>
 )
 
 export default class Abilities extends PureComponent {
 
     render() {
-        const { className, abilities, monkeyFile } = this.props;
-        let { rank } = this.props;
+        const { className, abilities, monkeyFile, rank, ranks } = this.props;
+
         let pathTop = [], pathMid = [], pathBot = [];
-        rank = {};
-        rank.topPathRank = 0;
-        rank.midPathRank = 2;
-        rank.botPathRank = 5;
 
         abilities.forEach(ability => {
             if (ability.upgrade_path === 0) {
                 pathTop.push(
-                    <AbilityContainer ability={ability}
-                                      monkeyFile={monkeyFile}
-                                      selected={ability.upgrade_tier < rank.topPathRank}
-                                      key={ability.id}
+                    <AbilityContainer ability={ability} monkeyFile={monkeyFile} rank={rank} key={ability.id}
+                                      selected={ability.upgrade_tier < ranks.topPath}
                     />);
             } else if (ability.upgrade_path === 1) {
                 pathMid.push(
-                    <AbilityContainer ability={ability}
-                                      monkeyFile={monkeyFile}
-                                      selected={ability.upgrade_tier < rank.midPathRank}
-                                      key={ability.id}
+                    <AbilityContainer ability={ability} monkeyFile={monkeyFile} rank={rank} key={ability.id}
+                                      selected={ability.upgrade_tier < ranks.midPath}
                     />);
             } else {
                 pathBot.push(
-                    <AbilityContainer ability={ability}
-                                      monkeyFile={monkeyFile}
-                                      selected={ability.upgrade_tier < rank.botPathRank}
-                                      key={ability.id}
-                    />)
-            }
+                    <AbilityContainer ability={ability} monkeyFile={monkeyFile} rank={rank} key={ability.id}
+                                      selected={ability.upgrade_tier < ranks.botPath}
+                    />) }
         });
 
         return (

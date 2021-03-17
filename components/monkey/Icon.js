@@ -11,11 +11,6 @@ const CardMediaContainer  = styled(CardMedia)`
   background-size: contain;
 `;
 
-const BestPath = styled.div`
-  text-align: center;
-  align-items: center;
-`;
-
 const IconContainer  = styled.div`
   margin-right: 10px;
   display: flex;
@@ -34,11 +29,6 @@ export default function Icon({ className, monkey, detailed }) {
                     image={ getImageUrl(monkey.filename) }
                     title={ monkey.name }
                 />
-                <BestPath>
-                    <Typography variant="h5" component="h1">
-                        0-2-5
-                    </Typography>
-                </BestPath>
             </IconContainer>
         </>
     );

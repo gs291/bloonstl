@@ -17,7 +17,7 @@ export default function PageModal({ children, open, handleClose}) {
             closeAfterTransition
             BackdropComponent={Backdrop}
             BackdropProps={{
-                timeout: 500,
+                timeout: 100,
             }}
         >
             <Fade in={open}>
