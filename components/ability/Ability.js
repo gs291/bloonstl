@@ -1,9 +1,8 @@
 import styled from "@emotion/styled";
 import {Card, CardContent, CardMedia} from "@material-ui/core";
 
-import {getImageUrl} from "../../lib/utils";
-import {rankColors} from "../monkey/Monkey";
 import {background} from "../../lib/site-colors.json";
+import {getImageUrl, rankColors} from "../../lib/utils";
 
 const AbilityContainer = styled.div`
   display: flex;
