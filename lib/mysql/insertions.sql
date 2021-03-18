@@ -5,17 +5,17 @@
 
 -- MONKEYS --
 
---      Monkey - Dart Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Dart Monkey', 'Primary', 'Throws a single dart at nearby bloons. Short range and low peirce but cheap.', 170, 'dart-monkey.jpeg');
+--      MonkeyTierListCard - Dart MonkeyTierListCard
+INSERT INTO `Monkeys` VALUES (NULL, 'Dart MonkeyTierListCard', 'Primary', 'Throws a single dart at nearby bloons. Short range and low peirce but cheap.', 170, 'dart-monkey.jpeg');
 
-SELECT id INTO @dart_monkey FROM Monkeys WHERE name='Dart Monkey';
+SELECT id INTO @dart_monkey FROM Monkeys WHERE name='Dart MonkeyTierListCard';
 INSERT INTO `Towers` VALUES (NULL, NULL, @dart_monkey);
 SELECT id INTO @tower_dart_monkey FROM Towers WHERE monkey_id=@dart_monkey;
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 0, 0, 'Sharp Shots', 'Can pop 1 extra Bloon per shot.', 120, 100);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 0, 1, 'Razor Sharp Shots', 'Can pop 2 more Bloons per shot.', 185, 500);
-INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 0, 2, 'Spike-O-Pult', 'Converts the Dart Monkey into a Spike-o-pult that hurls a large spiked ball instead of darts. Good range, but slower attack speed. Each ball can pop lots of Bloons.', 225, 1900);
+INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 0, 2, 'Spike-O-Pult', 'Converts the Dart MonkeyTierListCard into a Spike-o-pult that hurls a large spiked ball instead of darts. Good range, but slower attack speed. Each ball can pop lots of Bloons.', 225, 1900);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 0, 3, 'Juggernaut', 'Hurls a giant spiked ball that pops lead and excels at crushing Ceramic Bloons.', 1530, 7500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 0, 4, 'Ultra-Juggernaut', 'Gigantic spiked ball splits twice into 6 Juggernaut balls for even more destructive power.', 12750, 22000);
 
@@ -23,19 +23,19 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 0, 4, 'Ultra-Ju
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 0, 'Quick Shots', 'Shoots 15% faster.', 85, 80);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 1, 'Very Quick Shots', 'Shoots 33% faster!', 160, 400);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 2, 'Triple Shot', 'Throws 3 darts at a time instead of 1.', 340, 2000);
-INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 3, 'Super Monkey Fan Club', 'Super Monkey Fan Club ability: Converts up to 10 nearby Dart Monkeys including himself into Super Monkeys for 10 seconds.', 6800, 9500);
-INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 4, 'Plasma Monkey Fan Club', 'Elite membership of this club grants the Dart Monkeys even more power!', 42500, 30000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 3, 'Super MonkeyTierListCard Fan Club', 'Super MonkeyTierListCard Fan Club ability: Converts up to 10 nearby Dart Monkeys including himself into Super Monkeys for 10 seconds.', 6800, 9500);
+INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 4, 'Plasma MonkeyTierListCard Fan Club', 'Elite membership of this club grants the Dart Monkeys even more power!', 42500, 30000);
 
 --          Bottom Path
-INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 0, 'Long Range Darts', 'Makes the Dart Monkey shoot further than normal.', 90, 100);
+INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 0, 'Long Range Darts', 'Makes the Dart MonkeyTierListCard shoot further than normal.', 90, 100);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 1, 'Enhanced Eyesight', 'Shoots even further and can detect Camo Bloons.', 170, 450);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 2, 'Crossbow', 'Uses a long range Crossbow that can pop 3 layers of Bloon for every hit.', 530, 2100);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 3, 'Sharp Shooter', 'Sharp Shooter does powerful Crit Shots every few seconds that do a lot more damage.', 1700, 12000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 4, 'Crossbow Master', 'Crossbow Master shoots really fast and devastates most Bloon types with ease.', 21250, 35000);
 
---      Monkey - Boomerang Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Boomerang Monkey', 'Primary', 'Hurls a boomerang that follows a curved path. Good range and pierce', 340, 'boomerang-monkey.jpeg');
-SELECT id INTO @boomerang_monkey FROM Monkeys WHERE name='Boomerang Monkey';
+--      MonkeyTierListCard - Boomerang MonkeyTierListCard
+INSERT INTO `Monkeys` VALUES (NULL, 'Boomerang MonkeyTierListCard', 'Primary', 'Hurls a boomerang that follows a curved path. Good range and pierce', 340, 'boomerang-monkey.jpeg');
+SELECT id INTO @boomerang_monkey FROM Monkeys WHERE name='Boomerang MonkeyTierListCard';
 INSERT INTO `Towers` VALUES (NULL, NULL, @boomerang_monkey);
 SELECT id INTO @tower_boomerang_monkey FROM Towers WHERE monkey_id=@boomerang_monkey;
 
@@ -43,14 +43,14 @@ SELECT id INTO @tower_boomerang_monkey FROM Towers WHERE monkey_id=@boomerang_mo
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 0, 0, 'Improved Rangs', 'Can pop up to 8 Bloons per throw.', 170, 100);
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 0, 1, 'Glaives', 'Throws sharper and faster glaives instead of boomerangs.', 240, 520);
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 0, 2, 'Glaive Ricochet', 'Glaives will bounce from Bloon to Bloon automatically and aggressively.', 1105, 2500);
-INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 0, 3, 'M.O.A.R Glaives', 'Mulitple Object Advanced Ricochet greatly enhances the already extraordinary powers of the Glaive Ricochet Monkey.', 2550, 8500);
+INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 0, 3, 'M.O.A.R Glaives', 'Mulitple Object Advanced Ricochet greatly enhances the already extraordinary powers of the Glaive Ricochet MonkeyTierListCard.', 2550, 8500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 0, 4, 'Glaive Lord', 'Glaive Lord surrounds itself in 3 special glaives that shred anything that comes near.', 34000, 37500);
 
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 1, 0, 'Faster Throwing', 'Throws 33% faster.', 150, 120);
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 1, 1, 'Faster Rangs', 'Boomerangs travel around faster & attacks an additional 25% faster', 210, 550);
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 1, 2, 'Bionic Boomerang', 'Replaces arm with a strong bionic arm that can throw boomerangs extremely fast and does extra damage to MOAB-class bloons', 1360, 2500);
-INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, true, 1, 3, 'Turbo Charge', 'Makes this Monkey attack incredibly fast for 10 seconds.', 3400, 9000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, true, 1, 3, 'Turbo Charge', 'Makes this MonkeyTierListCard attack incredibly fast for 10 seconds.', 3400, 9000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, true, 1, 4, 'Perma Charge', 'Perma Charge has a permanent super fast attack speed. Ability increases the lethality even more.', 29750, 32000);
 
 --          Bottom Path
@@ -62,7 +62,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 2, 4, 'MOA
 
 
 
---      Monkey - Bomb Shooter
+--      MonkeyTierListCard - Bomb Shooter
 INSERT INTO `Monkeys` VALUES (NULL, 'Bomb Tower', 'Primary', 'Launches a powerful bom that the Bloons. Slow rate of fire but afect a radius around the explosion', 555, 'bomb-shooter.jpeg');
 SELECT id INTO @bomb_tower FROM Monkeys WHERE name='Bomb Tower';
 INSERT INTO `Towers` VALUES (NULL, NULL, @bomb_tower);
@@ -91,7 +91,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 2, 4, 'Bomb Blit
 
 
 
---      Monkey - Tack Shooter
+--      MonkeyTierListCard - Tack Shooter
 INSERT INTO `Monkeys` VALUES (NULL, 'Tack Shooter', 'Primary', 'Shoots a short-range volley of sharp tacks in 8 directions.', 240, 'tack-shooter.jpeg');
 SELECT id INTO @tack_shooter FROM Monkeys WHERE name='Tack Shooter';
 INSERT INTO `Towers` VALUES (NULL, NULL, @tack_shooter);
@@ -120,9 +120,9 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 4, 'The Tac
 
 
 
---      Monkey - Ice Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Ice Monkey', 'Primary', 'Pops and freezes nearby Bloons for a short time. Frozen Bloons are immune to sharp damage. Can\'t freeze White, Zebra, or Lead Bloons.', 255, 'ice-monkey.jpeg');
-SELECT id INTO @ice_monkey FROM Monkeys WHERE name='Ice Monkey';
+--      MonkeyTierListCard - Ice MonkeyTierListCard
+INSERT INTO `Monkeys` VALUES (NULL, 'Ice MonkeyTierListCard', 'Primary', 'Pops and freezes nearby Bloons for a short time. Frozen Bloons are immune to sharp damage. Can\'t freeze White, Zebra, or Lead Bloons.', 255, 'ice-monkey.jpeg');
+SELECT id INTO @ice_monkey FROM Monkeys WHERE name='Ice MonkeyTierListCard';
 INSERT INTO `Towers` VALUES (NULL, NULL, @ice_monkey);
 SELECT id INTO @tower_ice_monkey FROM Towers WHERE monkey_id=@ice_monkey;
 
@@ -149,7 +149,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 4, 'Icicle Im
 
 
 
---      Monkey - Glue Gunner
+--      MonkeyTierListCard - Glue Gunner
 INSERT INTO `Monkeys` VALUES (NULL, 'Glue Gunner', 'Primary', 'Shoots a blob of sticky glue that slows Bloons down by 50%.', 230, 'glue-gunner.jpeg');
 SELECT id INTO @glue_gunner FROM Monkeys WHERE name='Glue Gunner';
 INSERT INTO `Towers` VALUES (NULL, NULL, @glue_gunner);
@@ -178,9 +178,9 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_glue_gunner, false, 2, 4, 'Super Gl
 
 
 
---      Monkey - Sniper Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Sniper Monkey', 'Military', 'Can shoot Bloons it can see anywher on the screen with long-range rifle, and pops 2 layers off Bloons hit by it.', 300, 'sniper-monkey.jpeg');
-SELECT id INTO @sniper_monkey FROM Monkeys WHERE name='Sniper Monkey';
+--      MonkeyTierListCard - Sniper MonkeyTierListCard
+INSERT INTO `Monkeys` VALUES (NULL, 'Sniper MonkeyTierListCard', 'Military', 'Can shoot Bloons it can see anywher on the screen with long-range rifle, and pops 2 layers off Bloons hit by it.', 300, 'sniper-monkey.jpeg');
+SELECT id INTO @sniper_monkey FROM Monkeys WHERE name='Sniper MonkeyTierListCard';
 INSERT INTO `Towers` VALUES (NULL, NULL, @sniper_monkey);
 SELECT id INTO @tower_sniper_monkey FROM Towers WHERE monkey_id=@sniper_monkey;
 
@@ -207,9 +207,9 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 2, 4, 'Elite 
 
 
 
---      Monkey - Monkey Sub
-INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Sub', 'Military', 'Shoots homing top-e-darts at nearby Bloons. Must be placed in water.', 300, 'monkey-sub.jpeg');
-SELECT id INTO @monkey_sub FROM Monkeys WHERE name='Monkey Sub';
+--      MonkeyTierListCard - MonkeyTierListCard Sub
+INSERT INTO `Monkeys` VALUES (NULL, 'MonkeyTierListCard Sub', 'Military', 'Shoots homing top-e-darts at nearby Bloons. Must be placed in water.', 300, 'monkey-sub.jpeg');
+SELECT id INTO @monkey_sub FROM Monkeys WHERE name='MonkeyTierListCard Sub';
 INSERT INTO `Towers` VALUES (NULL, NULL, @monkey_sub);
 SELECT id INTO @tower_monkey_sub FROM Towers WHERE monkey_id=@monkey_sub;
 
@@ -235,9 +235,9 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_sub, false, 2, 3, 'Armor Pie
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_sub, false, 2, 4, 'Sub Commander', 'Grants +4 pierce and +1 damage to all Subs in its radius.', 21250, 25000);
 
 
---      Monkey - Monkey Buccaneer
-INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Buccaneer', 'Military', 'Shoots a single, heavy dart from both sides of the ship. Must be placed in water.', 425, 'monkey-buccaneer.jpeg');
-SELECT id INTO @monkey_buccaneer FROM Monkeys WHERE name='Monkey Buccaneer';
+--      MonkeyTierListCard - MonkeyTierListCard Buccaneer
+INSERT INTO `Monkeys` VALUES (NULL, 'MonkeyTierListCard Buccaneer', 'Military', 'Shoots a single, heavy dart from both sides of the ship. Must be placed in water.', 425, 'monkey-buccaneer.jpeg');
+SELECT id INTO @monkey_buccaneer FROM Monkeys WHERE name='MonkeyTierListCard Buccaneer';
 INSERT INTO `Towers` VALUES (NULL, NULL, @monkey_buccaneer);
 SELECT id INTO @tower_monkey_buccaneer FROM Towers WHERE monkey_id=@monkey_buccaneer;
 
@@ -246,13 +246,13 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 0, 0, 'Fas
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 0, 1, 'Double Shot', '	Double ship weapons fired.', 425, 700);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 0, 2, 'Destroyer', 'Attacks super duper fast!', 2505, 3000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 0, 3, 'Aircraft Carrier', 'Launches waves of fighter planes that strafe the Bloons.', 6375, 12500);
-INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 0, 4, 'Carrier Flagship', 'Does extra damage. Can place other Monkeys on the upper decks of the ship and increases attack speed of all water based Monkeys and Monkey Aces.', 21250, 37000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 0, 4, 'Carrier Flagship', 'Does extra damage. Can place other Monkeys on the upper decks of the ship and increases attack speed of all water based Monkeys and MonkeyTierListCard Aces.', 21250, 37000);
 
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 1, 0, 'Grape Shot', 'Adds a spray of 5 sharpened grapes to the ship.', 465, 200);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 1, 1, 'Hot Shot', 'Burning hot grape shot can pop Lead Bloons and set Bloons on fire.', 425, 650);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 1, 2, 'Cannon Ship', 'Add a powerful cannon that shoots out powerful bombs.', 765, 2700);
-INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, true, 1, 3, 'Monkey Pirates', 'Adds 2 cannons to the ship and cannon attacks do more damage. MOAB Takedown Ability: harpoons a MOAB class Bloon and brings it down.', 3825, 13000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, true, 1, 3, 'MonkeyTierListCard Pirates', 'Adds 2 cannons to the ship and cannon attacks do more damage. MOAB Takedown Ability: harpoons a MOAB class Bloon and brings it down.', 3825, 13000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, true, 1, 4, 'Pirate Lord', 'Can shoot 3 grappling hooks at once, and plunder extra cash from each MOAB-Class Bloon brought down with them.', 17850, 35000);
 
 --          Bottom Path
@@ -264,9 +264,9 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 2, 4, 'Tra
 
 
 
---      Monkey - Monkey Ace
-INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Ace', 'Military', 'Flies above the ground shooting volleys of high-pierce darts.', 765, 'monkey-ace.jpeg');
-SELECT id INTO @monkey_ace FROM Monkeys WHERE name='Monkey Ace';
+--      MonkeyTierListCard - MonkeyTierListCard Ace
+INSERT INTO `Monkeys` VALUES (NULL, 'MonkeyTierListCard Ace', 'Military', 'Flies above the ground shooting volleys of high-pierce darts.', 765, 'monkey-ace.jpeg');
+SELECT id INTO @monkey_ace FROM Monkeys WHERE name='MonkeyTierListCard Ace';
 INSERT INTO `Towers` VALUES (NULL, NULL, @monkey_ace);
 SELECT id INTO @tower_monkey_ace FROM Towers WHERE monkey_id=@monkey_ace;
 
@@ -279,7 +279,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 0, 4, 'Sky Shred
 
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 1, 0, 'Exploding Pineapple', 'Drops an exploding pineapple every few seconds.', 170, 120);
-INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 1, 1, 'Spy Plane', 'Allows Monkey Ace to hit Camo Bloons.', 295, 600);
+INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 1, 1, 'Spy Plane', 'Allows MonkeyTierListCard Ace to hit Camo Bloons.', 295, 600);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 1, 2, 'Bomber Ace', 'Drops a huge bomb that destroys most things on screen.', 765, 2500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, true, 1, 3, 'Ground Zero', 'Drops a huge bomb that destroys most things on screen.', 11900, 15000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, true, 1, 4, 'Tsar Bomba', 'A very, very large bomb. Someone put a stop to this craziness!', 29750, 30000);
@@ -293,7 +293,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 2, 4, 'Flying Fo
 
 
 
---      Monkey - Heli Pilot
+--      MonkeyTierListCard - Heli Pilot
 INSERT INTO `Monkeys` VALUES (NULL, 'Heli Pilot', 'Military', 'Hovers wherever you direct it. Shoots from twin heavy dart guns.', 1360, 'heli-pilot.jpeg');
 SELECT id INTO @heli_pilot FROM Monkeys WHERE name='Heli Pilot';
 INSERT INTO `Towers` VALUES (NULL, NULL, @heli_pilot);
@@ -310,8 +310,8 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, false, 0, 4, 'Apache Pr
 INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, false, 1, 0, 'Bigger Jets', 'Powerful jets make Heli move much faster.', 255, 150);
 INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, false, 1, 1, 'IFR', 'Allows Heli Pilot to detect and shoot Camo Bloons.', 510, 650);
 INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, false, 1, 2, 'Downdraft', 'Blows Bloons away from the Heli, back toward the entrance.', 2550, 3300);
-INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, true, 1, 3, 'Support Chinook', 'Drops lives and cash crates, or can pick up and redeploy most Monkey types.', 10200, 15000);
-INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, true, 1, 4, 'Special Poperations', 'Deploys a powerful special Monkey Marine with machine gun.', 25500, 40000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, true, 1, 3, 'Support Chinook', 'Drops lives and cash crates, or can pick up and redeploy most MonkeyTierListCard types.', 10200, 15000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, true, 1, 4, 'Special Poperations', 'Deploys a powerful special MonkeyTierListCard Marine with machine gun.', 25500, 40000);
 
 --          Bottom Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, false, 2, 0, 'Faster Darts', 'Darts are propelled much faster through the air.', 210, 140);
@@ -322,9 +322,9 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, false, 2, 4, 'Comanche 
 
 
 
---      Monkey - Mortar Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Mortar Monkey', 'Military', 'Launches an exploding mortar shell to a fixed location anywhere on the screen.', 600, 'mortar-monkey.jpeg');
-SELECT id INTO @mortar_monkey FROM Monkeys WHERE name='Mortar Monkey';
+--      MonkeyTierListCard - Mortar MonkeyTierListCard
+INSERT INTO `Monkeys` VALUES (NULL, 'Mortar MonkeyTierListCard', 'Military', 'Launches an exploding mortar shell to a fixed location anywhere on the screen.', 600, 'mortar-monkey.jpeg');
+SELECT id INTO @mortar_monkey FROM Monkeys WHERE name='Mortar MonkeyTierListCard';
 INSERT INTO `Towers` VALUES (NULL, NULL, @mortar_monkey);
 SELECT id INTO @tower_mortar_monkey FROM Towers WHERE monkey_id=@mortar_monkey;
 
@@ -351,7 +351,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 2, 4, 'Bloonc
 
 
 
---      Monkey - Dartling Gunner
+--      MonkeyTierListCard - Dartling Gunner
 INSERT INTO `Monkeys` VALUES (NULL, 'Dartling Gunner', 'Military', 'Uses a dart-shooting machine-gun. Aims wherever you point on the screen.', 850, 'dartling-gunner.jpeg');
 SELECT id INTO @dartling_gunner FROM Monkeys WHERE name='Dartling Gunner';
 INSERT INTO `Towers` VALUES (NULL, NULL, @dartling_gunner);
@@ -380,9 +380,9 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_dartling_gunner, false, 2, 4, 'Bloo
 
 
 
---      Monkey - Wizard Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Wizard Monkey', 'Magic', 'Hurls magical bolts of energy at the Bloons. Can upgrade to a variety of powerful spells.', 470, 'wizard-monkey.jpeg');
-SELECT id INTO @wizard_monkey FROM Monkeys WHERE name='Wizard Monkey';
+--      MonkeyTierListCard - Wizard MonkeyTierListCard
+INSERT INTO `Monkeys` VALUES (NULL, 'Wizard MonkeyTierListCard', 'Magic', 'Hurls magical bolts of energy at the Bloons. Can upgrade to a variety of powerful spells.', 470, 'wizard-monkey.jpeg');
+SELECT id INTO @wizard_monkey FROM Monkeys WHERE name='Wizard MonkeyTierListCard';
 INSERT INTO `Towers` VALUES (NULL, NULL, @wizard_monkey);
 SELECT id INTO @tower_wizard_monkey FROM Towers WHERE monkey_id=@wizard_monkey;
 
@@ -402,15 +402,15 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, true, 1, 4, 'Wizard 
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 0, 'Intense magic', '	More powerful magic shots move faster and can pop more Bloons.', 255, 140);
-INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 1, 'Monkey Sense', 'Allows the Wizard to hit Camo Bloons.', 255, 500);
+INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 1, 'MonkeyTierListCard Sense', 'Allows the Wizard to hit Camo Bloons.', 255, 500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 2, 'Shimmer', 'Dark magic reveals location of all nearby Camo Bloons permanently.', 1530, 2200);
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 3, 'Necromancer: Unpopped Army', 'Reanimate recently popped enemies as servants to destroy the Bloons.', 2975, 10000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 4, 'Prince of Darkness', 'Reanimate even more powerful bloon servants to obliterate the enemy and buffs other Necromancers.', 20400, 30000);
 
 
---      Monkey - Super Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Super Monkey', 'Magic', 'Throws hundreds of darts and hypersonic speed with a huge attack range.', 2975, 'super-monkey.jpeg');
-SELECT id INTO @super_monkey FROM Monkeys WHERE name='Super Monkey';
+--      MonkeyTierListCard - Super MonkeyTierListCard
+INSERT INTO `Monkeys` VALUES (NULL, 'Super MonkeyTierListCard', 'Magic', 'Throws hundreds of darts and hypersonic speed with a huge attack range.', 2975, 'super-monkey.jpeg');
+SELECT id INTO @super_monkey FROM Monkeys WHERE name='Super MonkeyTierListCard';
 INSERT INTO `Towers` VALUES (NULL, NULL, @super_monkey);
 SELECT id INTO @tower_super_monkey FROM Towers WHERE monkey_id=@super_monkey;
 
@@ -424,21 +424,21 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, false, 0, 4, 'True Su
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, false, 1, 0, 'Super Range', 'Super Monkeys need Super Range.', 850, 300);
 INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, false, 1, 1, 'Epic Range', 'Why settle for super when you can have EPIC?', 1190, 1300);
-INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, false, 1, 2, 'Robo Monkey', 'Half Super Monkey, half killer robot of death. Shoots from 2 guns at once!', 7650, 6000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, false, 1, 2, 'Robo MonkeyTierListCard', 'Half Super MonkeyTierListCard, half killer robot of death. Shoots from 2 guns at once!', 7650, 6000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, true, 1, 3, 'Tech Terror', 'Destroys most Bloons completely and utterly within blast radius.', 18700, 35000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, true, 1, 4, 'The Anti-Bloon', 'Program Directive><Eradicate Bloons><INITIATE>', 76500, 85000);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, false, 2, 0, 'Knockback', 'Bloons get pushed backward or slowed after each hit.', 2550, 550);
-INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, false, 2, 1, 'Ultravision', 'Enables Super Monkey to shoot slightly further and to see Camo Bloons.', 1020, 2000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, false, 2, 1, 'Ultravision', 'Enables Super MonkeyTierListCard to shoot slightly further and to see Camo Bloons.', 1020, 2000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, true, 2, 2, 'Dark Knight', 'Dark blades deal extra damage to MOAB-Class Bloons. (+2 pierce) Gains short-range Darkshift Ability.', 4675, 6500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, true, 2, 3, 'Dark Champion', 'Champion dark blades excel at puncturing and ruining all Bloon types.Gains long-range Darkshift Ability', 51000, 47500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, true, 2, 4, 'Legend of the Night', 'We turn to him, when all hope is lost...', 204000, 100000);
 
 
---      Monkey - Ninja Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Ninja Monkey', 'Magic', 'Stealthy and fast Monkey that throws bladed shurikens to pop the Bloons. Can target Camo Bloons.', 425, 'ninja-monkey.jpeg');
-SELECT id INTO @ninja_monkey FROM Monkeys WHERE name='Ninja Monkey';
+--      MonkeyTierListCard - Ninja MonkeyTierListCard
+INSERT INTO `Monkeys` VALUES (NULL, 'Ninja MonkeyTierListCard', 'Magic', 'Stealthy and fast MonkeyTierListCard that throws bladed shurikens to pop the Bloons. Can target Camo Bloons.', 425, 'ninja-monkey.jpeg');
+SELECT id INTO @ninja_monkey FROM Monkeys WHERE name='Ninja MonkeyTierListCard';
 INSERT INTO `Towers` VALUES (NULL, NULL, @ninja_monkey);
 SELECT id INTO @tower_ninja_monkey FROM Towers WHERE monkey_id=@ninja_monkey;
 
@@ -461,11 +461,11 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 0, 'Seeking
 INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 1, 'Caltrops', 'Throws out spiked caltrops onto the track nearby.', 340, 500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 2, 'Flash Bomb', 'Throws a flash bomb that stuns multiple Bloons.', 2335, 2500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 3, 'Sticky Bomb', 'Throws powerful timed charges at MOAB-Class Bloons.', 3825, 15500);
-INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 4, 'Master Bomber', 'One Monkey MOAB demolition Machine.', 34000, 37500);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 4, 'Master Bomber', 'One MonkeyTierListCard MOAB demolition Machine.', 34000, 37500);
 
 
 
---      Monkey - Alchemist
+--      MonkeyTierListCard - Alchemist
 INSERT INTO `Monkeys` VALUES (NULL, 'Alchemist', 'Magic', 'Harnessing powers of science and magic, splashes Bloons with acid, also brows various potions with different effects.', 470, 'alchemist.jpeg');
 SELECT id INTO @alchemist FROM Monkeys WHERE name='Alchemist';
 INSERT INTO `Towers` VALUES (NULL, NULL, @alchemist);
@@ -494,7 +494,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_alchemist, false, 2, 4, 'Bloon Mast
 
 
 
---      Monkey - Druid
+--      MonkeyTierListCard - Druid
 INSERT INTO `Monkeys` VALUES (NULL, 'Druid', 'Magic', 'Creates a blast of thorns for each attack. Upgrades can call forth powers of the Jungle, Storm or Wrath.', 360, 'druid.jpeg');
 SELECT id INTO @druid FROM Monkeys WHERE name='Druid';
 INSERT INTO `Towers` VALUES (NULL, NULL, @druid);
@@ -523,7 +523,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 2, 4, 'Avatar of Wrat
 
 
 
---      Monkey - Banana Farm
+--      MonkeyTierListCard - Banana Farm
 INSERT INTO `Monkeys` VALUES (NULL, 'Banana Farm', 'Support', 'Generates Bananas each round that convert into game money to spend on more stuff.', 850, 'banana-farm.jpeg');
 SELECT id INTO @banana_farm FROM Monkeys WHERE name='Banana Farm';
 INSERT INTO `Towers` VALUES (NULL, NULL, @banana_farm);
@@ -539,19 +539,19 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 0, 4, 'Banana C
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 1, 0, 'Long Life Bananas', 'Bananas last 30 seconds before rotting instead of 15.', 255, 200);
 INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 1, 1, 'Valuable Bananas', 'Bananas are worth 25% more cash per bunch.', 680, 1000);
-INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 1, 2, 'Monkey Bank', 'Generates money each round and stores it in the bank. Earns 15% interest each round.', 2805, 3500);
+INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 1, 2, 'MonkeyTierListCard Bank', 'Generates money each round and stores it in the bank. Earns 15% interest each round.', 2805, 3500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, true, 1, 3, 'IMF Loan', 'IMF Loan ability: Gives you $10,000 but you have to pay it back over time.', 6375, 20000);
-INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, true, 1, 4, 'Monkey-Nomics', 'For when you''re too big to fail...', 85000, 50000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, true, 1, 4, 'MonkeyTierListCard-Nomics', 'For when you''re too big to fail...', 85000, 50000);
 
 --          Bottom Path
-INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 2, 0, 'EZ Collect', 'The collect radius of Bananas is larger. For Monkey Banks, glows when bank is full and ready to collect.', 210, 200);
+INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 2, 0, 'EZ Collect', 'The collect radius of Bananas is larger. For MonkeyTierListCard Banks, glows when bank is full and ready to collect.', 210, 200);
 INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 2, 1, 'Banana Salvage', 'Uncollected Bananas auto-collect for half the amount.', 170, 950);
 INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 2, 2, 'Marketplace', 'Generates 12 bananas each round and adds the money to your total. No fuss.', 2465, 3200);
 INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 2, 3, 'Central Market', 'Earns heaps of money each round and gives Merchantmen +10% income.', 12750, 20000);
-INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 2, 4, 'Monkey Wall Street', 'Hub of Monkey trades earns colossal income each round.', 51000, 50000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 2, 4, 'MonkeyTierListCard Wall Street', 'Hub of MonkeyTierListCard trades earns colossal income each round.', 51000, 50000);
 
 
---      Monkey - Spike Factory
+--      MonkeyTierListCard - Spike Factory
 INSERT INTO `Monkeys` VALUES (NULL, 'Spike Factory', 'Support', 'Automatically generates piles of Road Spikes on the nearby track. Excellent last line of defense.', 850, 'spike-factory.jpeg');
 SELECT id INTO @spike_factory FROM Monkeys WHERE name='Spike Factory';
 INSERT INTO `Towers` VALUES (NULL, NULL, @spike_factory);
@@ -580,9 +580,9 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_spike_factory, false, 2, 4, 'Perma-
 
 
 
---      Monkey - Monkey Village
-INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Village', 'Support', 'Hub of Monkey industry, has a number of different benefits to aid all of your Monkeys. Increases rawnge of all monkeys in its radius by 10%.', 1020, 'monkey-village.jpeg');
-SELECT id INTO @monkey_village FROM Monkeys WHERE name='Monkey Village';
+--      MonkeyTierListCard - MonkeyTierListCard Village
+INSERT INTO `Monkeys` VALUES (NULL, 'MonkeyTierListCard Village', 'Support', 'Hub of MonkeyTierListCard industry, has a number of different benefits to aid all of your Monkeys. Increases rawnge of all monkeys in its radius by 10%.', 1020, 'monkey-village.jpeg');
+SELECT id INTO @monkey_village FROM Monkeys WHERE name='MonkeyTierListCard Village';
 INSERT INTO `Towers` VALUES (NULL, NULL, @monkey_village);
 SELECT id INTO @tower_monkey_village FROM Towers WHERE monkey_id=@monkey_village;
 
@@ -596,22 +596,22 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 0, 4, 'Prima
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 1, 0, 'Grow Blocker', 'Prevents Regrow Bloons from working while in the radius of the Village.', 210, 150);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 1, 1, 'Radar Scanner', 'Allows all Monkeys in the radius to attack Camo Bloons.', 1700, 2500);
-INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 1, 2, 'Monkey Intelligence Bureau', 'The Bureau grants special Bloon popping knowledge, allowing nearby Monkeys to pop all Bloon types.', 6375, 3500);
+INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 1, 2, 'MonkeyTierListCard Intelligence Bureau', 'The Bureau grants special Bloon popping knowledge, allowing nearby Monkeys to pop all Bloon types.', 6375, 3500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, true, 1, 3, 'Call To Arms', 'Call To Arms Ability: Gives all nearby Monkeys +50% attack speed and pops for 10 seconds.', 17000, 20000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, true, 1, 4, 'Homeland Defense', 'Ability affects ALL Monkeys and for 20 seconds.', 34000, 30000);
 
 --          Bottom Path
-INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 0, 'Monkey Business', 'Provides 10% discount to all Monkeys and upgrades tier 3 or less purchased in the radius of the Village.', 425, 250);
-INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 1, 'Monkey Commerce', 'An additional 5% discount that can stack with up to 2 other Villages with this upgrade.', 425, 750);
-INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 2, 'Monkey Town', 'All Monkeys within the radius of the Monkey Town get extra cash per Bloon pop.', 8500, 3000);
-INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 3, 'Monkey City', 'Increases influence radius and gives you a free Dart Monkey every round.', 2550, 15500);
+INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 0, 'MonkeyTierListCard Business', 'Provides 10% discount to all Monkeys and upgrades tier 3 or less purchased in the radius of the Village.', 425, 250);
+INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 1, 'MonkeyTierListCard Commerce', 'An additional 5% discount that can stack with up to 2 other Villages with this upgrade.', 425, 750);
+INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 2, 'MonkeyTierListCard Town', 'All Monkeys within the radius of the MonkeyTierListCard Town get extra cash per Bloon pop.', 8500, 3000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 3, 'MonkeyTierListCard City', 'Increases influence radius and gives you a free Dart MonkeyTierListCard every round.', 2550, 15500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 4, 'Monkeyopolis', 'Absorbs all nearby Banana Farms and their income, freeing up space for new Monkeys.', 4250, 28000);
 
 
 
---      Monkey - Engineer Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Engineer Monkey', 'Support', 'Holds a trusty nail-gun to pop the Bloons. Can upgrade to creat its own nail-shooting sentry turrets.', 380, 'engineer-monkey.jpeg');
-SELECT id INTO @engineer_monkey FROM Monkeys WHERE name='Engineer Monkey';
+--      MonkeyTierListCard - Engineer MonkeyTierListCard
+INSERT INTO `Monkeys` VALUES (NULL, 'Engineer MonkeyTierListCard', 'Support', 'Holds a trusty nail-gun to pop the Bloons. Can upgrade to creat its own nail-shooting sentry turrets.', 380, 'engineer-monkey.jpeg');
+SELECT id INTO @engineer_monkey FROM Monkeys WHERE name='Engineer MonkeyTierListCard';
 INSERT INTO `Towers` VALUES (NULL, NULL, @engineer_monkey);
 SELECT id INTO @tower_engineer_monkey FROM Towers WHERE monkey_id=@engineer_monkey;
 
@@ -626,7 +626,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 0, 4, 'Sent
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 1, 0, 'Larger Service Area', 'Shoots further and deploys sentries in a much larger area.', 220, 170);
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 1, 1, 'Deconstruction', 'Nail gun shots do extra damage to MOAB-Class and Fortified Bloons.', 300, 500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 1, 2, 'Cleansing Foam', 'Sprays foam that removes Regrow and Camo and pops Lead Bloons.', 680, 2000);
-INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, true, 1, 3, 'Overclock', 'Target Monkey becomes super powered for a short time.', 11475, 14000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, true, 1, 3, 'Overclock', 'Target MonkeyTierListCard becomes super powered for a short time.', 11475, 14000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, true, 1, 4, 'Ultraboost', 'Overclocked Monkeys gain a small but permanent boost each time overclock wears off.', 102000, 35000);
 
 --          Bottom Path
@@ -642,18 +642,11 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 2, 4, 'XXXL
 
 
 --      Hero - Quincy
-INSERT INTO `Heroes` VALUES (NULL, 'Quincy', 'Archer', 'Proud, strong and intelligent, Quincy uses his bow to perform feats of amazing skill.', 540, 0);
-INSERT INTO `Abilities` VALUES (4, 1, false, 0, 0, '', 'Quincy\'s arrows bounce up to 3 different targets.', 0, 0);
-INSERT INTO `Towers` VALUES (NULL, NULL, NULL); -- Add Quincy into Towers
+INSERT INTO `Heroes` VALUES (NULL, 'Quincy', 'Archer', 'Proud, strong and intelligent, Quincy uses his bow to perform feats of amazing skill.', 540, 0, 'quincy.jpeg');
+SELECT id INTO @quincy FROM Heroes WHERE name='Quincy';
+INSERT INTO `Towers` VALUES (NULL, @quincy, NULL);
+SELECT id INTO @tower_quincy FROM Towers WHERE hero_id=@quincy;
 
-SELECT * FROM
-    (
-        SELECT T.id as mt_id, Monkeys.id as m_id FROM Monkeys
-        JOIN Towers T on Monkeys.id = T.monkey_id
-    ) AS `Tower`
-    JOIN (
-        SELECT T.id as at_id, Abilities.* FROM Abilities
-        JOIN Towers T on Abilities.tower_id = T.id
-    ) as `Abilities`
-WHERE Tower.mt_id = Abilities.at_id
-ORDER BY Tower.m_id ASC;
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 0, '', 'Quincy\'s arrows bounce up to 3 different targets.', 0, 0);
+
+
