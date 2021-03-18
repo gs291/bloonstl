@@ -78,7 +78,7 @@ export default function Monkey({ className, monkey, detailed , updateMonkey}) {
         <>
             <CardContainer variant="outlined" onClick={() => handleClick(monkey, updateMonkey, mobile, rank, expand, setExpand)} className={className}>
                 <CardContentContainer mobile={mobile.toString()}>
-                    <Icon monkey={ monkey } detailed={detailed}/>
+                    <Icon tower={ monkey } detailed={detailed}/>
                     <BestPath>
                         <RankTitle rank={ rank }  ranks={ monkey.rank[rank] }/>
                         <FilterRanks rank={ rank } handleRank={ handleRank } />
