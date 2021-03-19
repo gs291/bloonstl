@@ -28,7 +28,7 @@ const Filters = styled.div`
 export default function MonkeyPage({ monkey }) {
     const mobile = useSelector(getMobile);
     const [ rank, setRank ] = useState("s");
-    const [ difficulty, setDifficulty ] = useState("easy");
+    const [ difficulty, setDifficulty ] = useState("medium");
 
     const handleDifficulty = (event) => setDifficulty(event.target.value);
     const handleRank = (e, r) => setRank(r);
