@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
-import {Card, CardContent, Grid} from "@material-ui/core";
+import {Grid} from "@material-ui/core";
 
-import MonkeyIconCard from "./MonkeyIconCard";
+import MonkeysCard from "./MonkeysCard";
+import {getMonkeyTypeColor} from "../../lib/utils";
 
 const GridContainer = styled(Grid)`
   display: flex;
@@ -15,47 +16,43 @@ const GridItem = styled(Grid)`
 `;
 
 const MonkeyType = styled(Grid)`
-  background-color: ${props => {
-    if (props.name === "Primary") {
-        return "lightblue";
-    } else if (props.name === "Military") {
-        return "lightgreen";
-    } else if (props.name === "Magic") {
-        return "mediumpurple";
-    }
-    return "peru";
-}
+  padding-top: 5px;
+  padding-bottom: 5px;
+  
+  background-color: ${props => getMonkeyTypeColor(props.type)
 };
   color: #000;
 `;
+
+
 
 export default function MonkeysGrid({ primary, military, magic, support }) {
     return (
         <>
             <GridContainer container spacing={2}>
-                <MonkeyType name="Primary" item>
+                <MonkeyType type="Primary" item>
                     Primary
                 </MonkeyType>
-                <GridItem name="Primary" item>
-                    { primary.map(monkey => <MonkeyIconCard monkey={monkey} key={monkey.id}/>) }
+                <GridItem item>
+                    { primary.map(monkey => <MonkeysCard monkey={monkey} type="Primary" key={monkey.id}/>) }
                 </GridItem>
-                <MonkeyType name="Military" item>
+                <MonkeyType type="Military" item>
                     Military
                 </MonkeyType>
-                <GridItem name="Primary" item>
-                    { military.map(monkey => <MonkeyIconCard monkey={monkey} key={monkey.id}/>) }
+                <GridItem item>
+                    { military.map(monkey => <MonkeysCard monkey={monkey} type="Military" key={monkey.id}/>) }
                 </GridItem>
-                <MonkeyType name="Magic" item>
+                <MonkeyType type="Magic" item>
                     Magic
                 </MonkeyType>
                 <GridItem item>
-                    { magic.map(monkey => <MonkeyIconCard monkey={monkey} key={monkey.id}/>) }
+                    { magic.map(monkey => <MonkeysCard monkey={monkey} type="Magic" key={monkey.id}/>) }
                 </GridItem>
                 <MonkeyType name="Support" item>
                     Support
                 </MonkeyType>
                 <GridItem item>
-                    { support.map(monkey => <MonkeyIconCard monkey={monkey} key={monkey.id}/>) }
+                    { support.map(monkey => <MonkeysCard monkey={monkey} type="Support" key={monkey.id}/>) }
                 </GridItem>
             </GridContainer>
         </>

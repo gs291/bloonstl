@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import { ButtonGroup, Button } from "@material-ui/core";
 
-import { rankColors } from "./Monkey";
+import {rankColors} from "../../lib/utils";
 
 const BGroup = styled(ButtonGroup)`
   justify-content: center;
+  height: 45px;
 `;
 
 

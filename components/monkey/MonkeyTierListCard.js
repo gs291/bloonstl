@@ -37,27 +37,9 @@ const BestPath = styled.div`
   justify-content: space-evenly;
 `;
 
-export const rankColors = (name, hover) => {
-    if (name === "s") {
-        return hover ? "#FF667F" : "#FF7F7F";
-    } else if (name === "a") {
-        return hover ? "#FD997F" : "#FFBF7F";
-    } else if (name === "b") {
-        return hover ? "#FFFF7F" : "#FFDF7F";
-    }
-    return "#964B00";
-}
 
-function handleClick(monkey, updateMonkey, mobile, rank, expand, setExpand) {
-    if (updateMonkey) {
-        return updateMonkey(<MonkeyDetailed monkey={ monkey } rank={ rank } />);
-    }
-    if (!mobile) {
-        return setExpand(!expand);
-    }
-}
 
-export default function Monkey({ className, monkey, detailed , updateMonkey}) {
+export default function MonkeyTierListCard({ className, monkey, detailed }) {
     const [ rank, setRank ] = useState("s");
     const [expand, setExpand] = useState(false);
     const mobile = useSelector(getMobile);
@@ -67,23 +49,17 @@ export default function Monkey({ className, monkey, detailed , updateMonkey}) {
         setRank(r);
     }
 
-    monkey.rank = {
-        "s": { "topPath": 0, "midPath": 2, "botPath": 5 },
-        "a": { "topPath": 5, "midPath": 2, "botPath": 0 },
-        "b": { "topPath": 2, "midPath": 5, "botPath": 0 },
-        "c": { "topPath": 0, "midPath": 2, "botPath": 5 }
-    }
 
     return (
         <>
-            <CardContainer variant="outlined" onClick={() => handleClick(monkey, updateMonkey, mobile, rank, expand, setExpand)} className={className}>
+            <CardContainer variant="outlined" onClick={() => setExpand(!expand)} className={className}>
                 <CardContentContainer mobile={mobile.toString()}>
                     <Icon tower={ monkey } detailed={detailed}/>
                     <BestPath>
                         <RankTitle rank={ rank }  ranks={ monkey.rank[rank] }/>
                         <FilterRanks rank={ rank } handleRank={ handleRank } />
                     </BestPath>
-                    <Collapse in={ detailed || (!mobile && expand) }>
+                    <Collapse in={ detailed || expand }>
                         <MonkeyDetailed monkey={ monkey } rank={ rank }/>
                     </Collapse>
                 </CardContentContainer>
