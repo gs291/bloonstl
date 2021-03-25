@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
-import { left, middle, right } from "../../lib/site-links.json";
 import NavLink from "./NavLink";
+import {siteLinks} from "../../lib/utils";
 
 const NavSection = styled.div`
   flex: 1;
@@ -30,17 +30,17 @@ export default function DesktopSiteLinks() {
         <>
             <NavSection>
                 <LeftNavSection>
-                    { <NavLink {...left.home} /> }
+                    { <NavLink {...siteLinks.left.home} /> }
                 </LeftNavSection>
             </NavSection>
             <NavSection>
                 <MiddleNavSection>
-                    { middle.map(mid => { return <NavLink {...mid} /> }) }
+                    { siteLinks.middle.map(mid => { return <NavLink {...mid} /> }) }
                 </MiddleNavSection>
             </NavSection>
             <NavSection>
                 <RightNavSection>
-                    {/*{ <NavLink {...right.login} /> }*/}
+                    {/*{ <NavLink {...siteLinks.right.login} /> }*/}
                 </RightNavSection>
             </NavSection>
         </>

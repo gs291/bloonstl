@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 import {Card, CardContent, CardMedia} from "@material-ui/core";
 
-import {background} from "../../lib/site-colors.json";
-import {getImageUrl, rankColors} from "../../lib/utils";
+import {getImageUrl, rankColors, siteColors} from "../../lib/utils";
 
 const AbilityContainer = styled.div`
   display: flex;
@@ -10,8 +9,8 @@ const AbilityContainer = styled.div`
 `;
 
 const CardContainer = styled(Card)`
-  background-color: ${background.card.dark};
-  border: 2px solid ${props => props.selected ? rankColors(props.rank) : background.card.dark};
+  background-color: ${siteColors.background.card.dark};
+  border: 2px solid ${props => props.selected ? rankColors(props.rank) : siteColors.background.card.dark};
   
   &:hover {
     cursor: pointer;

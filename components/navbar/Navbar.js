@@ -2,15 +2,15 @@ import styled from "@emotion/styled";
 import { AppBar } from "@material-ui/core";
 import {useSelector } from "react-redux";
 
+import {siteSizes} from "../../lib/utils";
 import DesktopSiteLinks from "./SiteLinks";
 import MobileSiteLinks from "./MobileSiteLinks";
-import { getMobile } from "../../lib/redux/selectors";
-import { nav } from "../../lib/site-sizes.json";
+import {getMobile} from "../../lib/redux/selectors";
 
 const Nav = styled(AppBar)`
   display: flex;
   flex-direction: row;
-  height: ${ nav.height };
+  height: ${ siteSizes.nav.height };
   align-items: center;
   justify-content: ${props => props.mobile ? 'flex-start' : 'center'};
   z-index: 99999;

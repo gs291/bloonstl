@@ -1,5 +1,5 @@
-import {Modal, Backdrop, Fade, Container} from "@material-ui/core";
 import styled from "@emotion/styled";
+import {Modal, Backdrop, Fade, Container} from "@material-ui/core";
 
 const ModalContainer = styled(Container)`
   position: relative;

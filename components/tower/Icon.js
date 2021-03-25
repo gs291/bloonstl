@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import {
-    CardMedia,
-    Typography
+    CardMedia
 } from "@material-ui/core";
 import { getImageUrl } from "../../lib/utils";
 

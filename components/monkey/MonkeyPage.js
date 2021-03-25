@@ -2,13 +2,13 @@ import {useState} from "react";
 import {useSelector} from "react-redux";
 import {Divider} from "@material-ui/core";
 
-import MonkeyContainer from "../../components/monkey/MonkeyContainer";
-import RankTitle from "../../components/monkey/RankTitle";
-import {getMobile} from "../../lib/redux/selectors";
-import FilterRanks from "./FilterRanks";
 import styled from "@emotion/styled";
 import MonkeyDetailed from "./MonkeyDetailed";
-import FilterDifficulty from "./FilterDifficulty";
+import FilterRanks from "../filters/FilterRanks";
+import {getMobile} from "../../lib/redux/selectors";
+import RankTitle from "../../components/monkey/RankTitle";
+import FilterDifficulty from "../filters/FilterDifficulty";
+import MonkeyContainer from "../../components/monkey/MonkeyContainer";
 
 const MediumDivider = styled(Divider)`
   width: 80%;

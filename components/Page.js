@@ -5,11 +5,11 @@ import { useDispatch } from 'react-redux';
 import { Container } from "@material-ui/core";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-import Navbar from "./navbar/Navbar";
 import Footer from "./Footer";
-import { updateMobile } from "../lib/redux/actions";
+import Navbar from "./navbar/Navbar";
+import {siteColors} from "../lib/utils";
 import NavDrawer from "./navbar/NavDrawer";
-import { nav, background } from "../lib/site-colors.json";
+import { updateMobile } from "../lib/redux/actions";
 
 const PageContainer = styled.div`
   display: flex;
@@ -18,12 +18,12 @@ const PageContainer = styled.div`
 `;
 
 const Nav = styled(Navbar)`
-  background-color: ${ nav.dark }
+  background-color: ${ siteColors.nav.dark }
 `;
 
 const Main = styled.main`
   flex: 1;
-  background-color: ${ background.main.dark };
+  background-color: ${ siteColors.background.main.dark };
   color: white;
   padding-top: 15px;
   padding-bottom: 10px;
@@ -37,7 +37,7 @@ const MainContainer = styled(Container)`
 `;
 
 const Foot = styled(Footer)`
-  background-color: ${ nav.dark };
+  background-color: ${ siteColors.nav.dark };
   justify-content: center;
   align-items: center;
   color: white;

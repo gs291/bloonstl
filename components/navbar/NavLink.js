@@ -1,8 +1,7 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
 
-import {background} from "../../lib/site-colors.json";
-import { nav } from "../../lib/site-sizes.json";
+import { siteColors, siteSizes} from "../../lib/utils";
 
 const HoverLink = styled.div`
   width: 100px;
@@ -13,12 +12,12 @@ const HoverLink = styled.div`
   &:focus,
   &:active {
     cursor: pointer;
-    background-color: ${ background.hover.dark };
+    background-color: ${ siteColors.background.hover.dark };
   }
 `;
 
 const A = styled.a`
-  line-height: ${ nav.height };
+  line-height: ${ siteSizes.nav.height };
   display: inline-block;
   width: 100%;
   height: 100%;

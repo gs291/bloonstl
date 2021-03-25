@@ -1,7 +1,5 @@
-import {useState} from "react";
 import styled from "@emotion/styled";
 import {Button,
-    ButtonGroup,
     FormLabel,
     FormControl,
     FormControlLabel,
@@ -9,19 +7,6 @@ import {Button,
     RadioGroup} from "@material-ui/core";
 
 import {rankColors} from "../../lib/utils";
-
-
-const RankButton  = styled(Button)`
-  box-shadow: ${props => props["data-pressed"] === "true" ? "inset 0px 0px 5px #000" : "none" };
-  
-  background-color: ${props => rankColors(props.name)};
-  
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: ${props => rankColors(props.name, true)};
-  }
-`;
 
 const FormRow = styled.div`
   display: flex;
