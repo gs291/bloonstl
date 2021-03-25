@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled from "@emotion/styled";
 import {Card, CardContent, CardMedia} from "@material-ui/core";
 
@@ -18,6 +19,11 @@ const CardContainer = styled(Card)`
 `;
 
 const CardContentContainer = styled(CardContent)`
+  position: relative;
+  width: 45px;
+  max-width: 45px;
+  height: 45px;
+  max-height: 45px;
   padding: 0;
 
   &:last-child {
@@ -25,9 +31,8 @@ const CardContentContainer = styled(CardContent)`
   }
 `;
 
-const CardMediaContainer  = styled(CardMedia)`
-  min-width: 45px;
-  min-height: 45px;
+const AbilityImage  = styled(Image)`
+  object-fit: scale-down;
 `;
 
 export default function Ability({ className, ability, monkeyFile, rank, selected}) {
@@ -36,9 +41,11 @@ export default function Ability({ className, ability, monkeyFile, rank, selected
             <AbilityContainer className={className}>
                 <CardContainer selected={selected} rank={rank}>
                     <CardContentContainer>
-                        <CardMediaContainer
-                            image={getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier)}
-                            title={ability.name}
+                        <AbilityImage
+                            src={ getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier) }
+                            layout="fill"
+                            quality={100}
+                            alt={ ability.name }
                         />
                     </CardContentContainer>
                 </CardContainer>

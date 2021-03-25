@@ -1,12 +1,7 @@
+import Image from "next/image";
 import styled from "@emotion/styled";
-import {
-    CardMedia
-} from "@material-ui/core";
-import { getImageUrl } from "../../lib/utils";
 
-const CardMediaContainer  = styled(CardMedia)`
-  background-size: contain;
-`;
+import { getImageUrl } from "../../lib/utils";
 
 const IconContainer  = styled.div`
   margin-right: 10px;
@@ -18,12 +13,15 @@ const IconContainer  = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  height: 165px;
-  width: 128px;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  position: relative;
+  width: 120px;
+  max-width: 120px;
+  height: 150px;
+  max-height: 150px;
+`;
+
+const TowerImage  = styled(Image)`
+  object-fit: scale-down;
 `;
 
 export default function Icon({ className, tower, detailed }) {
@@ -31,10 +29,11 @@ export default function Icon({ className, tower, detailed }) {
         <>
             <IconContainer detailed={detailed} className={className}>
                 <ImgContainer>
-                    <CardMediaContainer
-                        image={ getImageUrl(tower.filename) }
-                        title={ tower.name }
-                        component="img"
+                    <TowerImage
+                        src={ getImageUrl(tower.filename) }
+                        layout="fill"
+                        quality={100}
+                        alt={ tower.name }
                         priority="true"
                     />
                 </ImgContainer>
