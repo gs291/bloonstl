@@ -6,13 +6,11 @@ import {createMuiTheme, StylesProvider, ThemeProvider} from "@material-ui/core/s
 
 import store from "../lib/redux/store";
 import Page from "../components/page/Page";
+import {font_family} from "../lib/utils";
 
 const theme = createMuiTheme({
     typography: {
-        fontFamily: [
-            "'Luckiest Guy'", '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
-            'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'
-        ].join(', '),
+        fontFamily: font_family,
     }
 });
 
@@ -24,8 +22,7 @@ const globals = css`
     padding: 0;
     margin: 0;
     overflow: overlay;
-    font-family: 'Luckiest Guy', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: ${font_family};
   }
   
   a {
