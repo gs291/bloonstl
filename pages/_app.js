@@ -3,7 +3,7 @@ import { Global, css } from "@emotion/react";
 import { StylesProvider } from "@material-ui/core/styles";
 
 import store from "../lib/redux/store";
-import Page from "../components/Page";
+import Page from "../components/page/Page";
 
 const globals = css` 
   html, 

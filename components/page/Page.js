@@ -5,11 +5,11 @@ import { useDispatch } from 'react-redux';
 import { Container } from "@material-ui/core";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-import Footer from "./Footer";
-import Navbar from "./navbar/Navbar";
-import {siteColors} from "../lib/utils";
-import NavDrawer from "./navbar/NavDrawer";
-import { updateMobile } from "../lib/redux/actions";
+import Footer from "../footer/Footer";
+import Navbar from "../navbar/Navbar";
+import {siteColors} from "../../lib/utils";
+import NavDrawer from "../navbar/NavDrawer";
+import { updateMobile } from "../../lib/redux/actions";
 
 const PageContainer = styled.div`
   display: flex;
