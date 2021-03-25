@@ -19,13 +19,11 @@ export default function MonkeysCard({monkey, type}) {
     return (
         <>
             <Link href={`/monkey/${getMonkeyLink(monkey)}`}>
-                <a>
                     <CardContainer type={type}>
                         <CardContent>
                             <Icon tower={ monkey } />
                         </CardContent>
                     </CardContainer>
-                </a>
             </Link>
         </>
     );
