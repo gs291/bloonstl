@@ -1,8 +1,7 @@
-import Image from "next/image";
 import styled from "@emotion/styled";
 
-import { getImageUrl } from "../../lib/utils";
 import ImageFill from "../image/ImageFill";
+import { getImageUrl } from "../../lib/utils";
 
 const IconContainer  = styled.div`
   margin-right: 10px;
