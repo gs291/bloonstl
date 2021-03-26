@@ -44,7 +44,6 @@ export default function Ability({ className, ability, monkeyFile, rank, selected
                         <AbilityImage
                             src={ getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier) }
                             layout="fill"
-                            quality={100}
                             alt={ ability.name }
                         />
                     </CardContentContainer>
