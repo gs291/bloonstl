@@ -5,8 +5,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import {createMuiTheme, StylesProvider, ThemeProvider} from "@material-ui/core/styles";
 
 import store from "../lib/redux/store";
-import Page from "../components/page/Page";
 import {font_family} from "../lib/utils";
+import Page from "../components/page/Page";
 
 const theme = createMuiTheme({
     typography: {
