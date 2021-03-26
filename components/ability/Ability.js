@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import {Card, CardContent, CardMedia} from "@material-ui/core";
 
 import {getImageUrl, rankColors, siteColors} from "../../lib/utils";
+import ImageFill from "../image/ImageFill";
 
 const AbilityContainer = styled.div`
   display: flex;
@@ -31,19 +32,14 @@ const CardContentContainer = styled(CardContent)`
   }
 `;
 
-const AbilityImage  = styled(Image)`
-  object-fit: scale-down;
-`;
-
 export default function Ability({ className, ability, monkeyFile, rank, selected}) {
     return (
         <>
             <AbilityContainer className={className}>
                 <CardContainer selected={selected} rank={rank}>
                     <CardContentContainer>
-                        <AbilityImage
+                        <ImageFill
                             src={ getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier) }
-                            layout="fill"
                             alt={ ability.name }
                         />
                     </CardContentContainer>

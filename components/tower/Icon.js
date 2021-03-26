@@ -2,6 +2,7 @@ import Image from "next/image";
 import styled from "@emotion/styled";
 
 import { getImageUrl } from "../../lib/utils";
+import ImageFill from "../image/ImageFill";
 
 const IconContainer  = styled.div`
   margin-right: 10px;
@@ -20,18 +21,13 @@ const ImgContainer = styled.div`
   max-height: 150px;
 `;
 
-const TowerImage  = styled(Image)`
-  object-fit: scale-down;
-`;
-
 export default function Icon({ className, tower, detailed }) {
     return (
         <>
             <IconContainer detailed={detailed} className={className}>
                 <ImgContainer>
-                    <TowerImage
+                    <ImageFill
                         src={ getImageUrl(tower.filename) }
-                        layout="fill"
                         quality={100}
                         alt={ tower.name }
                         priority="true"
