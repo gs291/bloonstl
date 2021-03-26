@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
-import Filters from "./Filters";
 import {getMobile} from "../../lib/redux/selectors";
+import FiltersTierList from "../filters/FiltersTierList";
 import MonkeyTierListCard from "../monkey/MonkeyTierListCard";
 
 
@@ -35,7 +35,7 @@ export default function TierListGrid({ className, monkeys, heroes }) {
     return (
         <>
             <FilterContainer className={className}>
-                <Filters state={state} handleFilter={handleFilter} />
+                <FiltersTierList state={state} handleFilter={handleFilter} />
             </FilterContainer>
             <Grid container spacing={2}>
                 { monkeys.map(monkey => (
