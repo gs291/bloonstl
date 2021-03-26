@@ -1,11 +1,9 @@
 import styled from "@emotion/styled";
-import {
-    FormLabel,
+import {FormLabel,
     FormControl,
     FormControlLabel,
     Radio,
     RadioGroup} from "@material-ui/core";
-
 
 const FormRow = styled.div`
   display: flex;
@@ -21,7 +19,7 @@ export default function FilterDifficulty({ className, difficulty, handleDifficul
     return (
         <>
             <FormControl component="fieldset">
-                <FilterLabel component="legend" focused={false}>Difficulty Prices:</FilterLabel>
+                <FilterLabel focused={false}>Difficulty Prices:</FilterLabel>
                 <RadioGroup value={difficulty} onChange={handleDifficulty}>
                     <FormRow>
                         <FormControlLabel value="easy" control={<Radio size="small"/>} label="Easy" />
