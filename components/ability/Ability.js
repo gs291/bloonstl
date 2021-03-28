@@ -12,6 +12,7 @@ const AbilityContainer = styled.div`
 const CardContainer = styled(Card)`
   background-color: ${siteColors.background.card.dark};
   border: 2px solid ${props => props.selected ? rankColors(props.rank) : siteColors.background.card.dark};
+  border-radius: 50%;
   
   &:hover {
     cursor: pointer;
@@ -37,10 +38,17 @@ export default function Ability({ className, ability, monkeyFile, rank, selected
             <AbilityContainer className={className}>
                 <CardContainer selected={selected} rank={rank}>
                     <CardContentContainer>
-                        <ImageFill
-                            src={ getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier) }
-                            alt={ ability.name }
-                        />
+                        { monkeyFile && (
+                            <ImageFill
+                                src={ getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier) }
+                                alt={ ability.name }
+                            />
+                        )}
+                        { !monkeyFile && (
+                            <>
+                                Hero
+                            </>
+                        )}
                     </CardContentContainer>
                 </CardContainer>
             </AbilityContainer>
