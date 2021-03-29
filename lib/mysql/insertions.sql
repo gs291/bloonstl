@@ -6,7 +6,7 @@
 -- MONKEYS --
 
 --      Monkey - Dart Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Dart Monkey', 'Primary', 'Throws a single dart at nearby bloons. Short range and low peirce but cheap.', 200, 'dart-monkey.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Dart Monkey', 'Primary', 'Throws a single dart at nearby bloons. Short range and low peirce but cheap.', 200, 'dart-monkey.png');
 
 SELECT id INTO @dart_monkey FROM Monkeys WHERE name='Dart Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @dart_monkey);
@@ -34,7 +34,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 3, 'Sharp Sh
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 4, 'Crossbow Master', 'Crossbow Master shoots really fast and devastates most Bloon types with ease.', 25000, 35000);
 
 --      Monkey - Boomerang Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Boomerang Monkey', 'Primary', 'Hurls a boomerang that follows a curved path. Good range and pierce', 325, 'boomerang-monkey.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Boomerang Monkey', 'Primary', 'Hurls a boomerang that follows a curved path. Good range and pierce', 325, 'boomerang-monkey.png');
 SELECT id INTO @boomerang_monkey FROM Monkeys WHERE name='Boomerang Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @boomerang_monkey);
 SELECT id INTO @tower_boomerang_monkey FROM Towers WHERE monkey_id=@boomerang_monkey;
@@ -63,7 +63,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 2, 4, 'MOA
 
 
 --      Monkey - Bomb Shooter
-INSERT INTO `Monkeys` VALUES (NULL, 'Bomb Tower', 'Primary', 'Launches a powerful bom that the Bloons. Slow rate of fire but afect a radius around the explosion', 600, 'bomb-shooter.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Bomb Tower', 'Primary', 'Launches a powerful bom that the Bloons. Slow rate of fire but afect a radius around the explosion', 600, 'bomb-shooter.png');
 SELECT id INTO @bomb_tower FROM Monkeys WHERE name='Bomb Tower';
 INSERT INTO `Towers` VALUES (NULL, NULL, @bomb_tower);
 SELECT id INTO @tower_bomb_tower FROM Towers WHERE monkey_id=@bomb_tower;
@@ -92,7 +92,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 2, 4, 'Bomb Blit
 
 
 --      Monkey - Tack Shooter
-INSERT INTO `Monkeys` VALUES (NULL, 'Tack Shooter', 'Primary', 'Shoots a short-range volley of sharp tacks in 8 directions.', 280, 'tack-shooter.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Tack Shooter', 'Primary', 'Shoots a short-range volley of sharp tacks in 8 directions.', 280, 'tack-shooter.png');
 SELECT id INTO @tack_shooter FROM Monkeys WHERE name='Tack Shooter';
 INSERT INTO `Towers` VALUES (NULL, NULL, @tack_shooter);
 SELECT id INTO @tower_tack_shooter FROM Towers WHERE monkey_id=@tack_shooter;
@@ -121,7 +121,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 4, 'The Tac
 
 
 --      Monkey - Ice Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Ice Monkey', 'Primary', 'Pops and freezes nearby Bloons for a short time. Frozen Bloons are immune to sharp damage. Can\'t freeze White, Zebra, or Lead Bloons.', 500, 'ice-monkey.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Ice Monkey', 'Primary', 'Pops and freezes nearby Bloons for a short time. Frozen Bloons are immune to sharp damage. Can\'t freeze White, Zebra, or Lead Bloons.', 500, 'ice-monkey.png');
 SELECT id INTO @ice_monkey FROM Monkeys WHERE name='Ice Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @ice_monkey);
 SELECT id INTO @tower_ice_monkey FROM Towers WHERE monkey_id=@ice_monkey;
@@ -150,7 +150,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 4, 'Icicle Im
 
 
 --      Monkey - Glue Gunner
-INSERT INTO `Monkeys` VALUES (NULL, 'Glue Gunner', 'Primary', 'Shoots a blob of sticky glue that slows Bloons down by 50%.', 275, 'glue-gunner.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Glue Gunner', 'Primary', 'Shoots a blob of sticky glue that slows Bloons down by 50%.', 275, 'glue-gunner.png');
 SELECT id INTO @glue_gunner FROM Monkeys WHERE name='Glue Gunner';
 INSERT INTO `Towers` VALUES (NULL, NULL, @glue_gunner);
 SELECT id INTO @tower_glue_gunner FROM Towers WHERE monkey_id=@glue_gunner;
@@ -179,7 +179,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_glue_gunner, false, 2, 4, 'Super Gl
 
 
 --      Monkey - Sniper Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Sniper Monkey', 'Military', 'Can shoot Bloons it can see anywhere on the screen with long-range rifle, and pops 2 layers off Bloons hit by it.', 350, 'sniper-monkey.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Sniper Monkey', 'Military', 'Can shoot Bloons it can see anywhere on the screen with long-range rifle, and pops 2 layers off Bloons hit by it.', 350, 'sniper-monkey.png');
 SELECT id INTO @sniper_monkey FROM Monkeys WHERE name='Sniper Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @sniper_monkey);
 SELECT id INTO @tower_sniper_monkey FROM Towers WHERE monkey_id=@sniper_monkey;
@@ -208,7 +208,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 2, 4, 'Elite 
 
 
 --      Monkey - Monkey Sub
-INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Sub', 'Military', 'Shoots homing top-e-darts at nearby Bloons. Must be placed in water.', 325, 'monkey-sub.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Sub', 'Military', 'Shoots homing top-e-darts at nearby Bloons. Must be placed in water.', 325, 'monkey-sub.png');
 SELECT id INTO @monkey_sub FROM Monkeys WHERE name='Monkey Sub';
 INSERT INTO `Towers` VALUES (NULL, NULL, @monkey_sub);
 SELECT id INTO @tower_monkey_sub FROM Towers WHERE monkey_id=@monkey_sub;
@@ -236,7 +236,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_sub, false, 2, 4, 'Sub Comma
 
 
 --      Monkey - Monkey Buccaneer
-INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Buccaneer', 'Military', 'Shoots a single, heavy dart from both sides of the ship. Must be placed in water.', 500, 'monkey-buccaneer.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Buccaneer', 'Military', 'Shoots a single, heavy dart from both sides of the ship. Must be placed in water.', 500, 'monkey-buccaneer.png');
 SELECT id INTO @monkey_buccaneer FROM Monkeys WHERE name='Monkey Buccaneer';
 INSERT INTO `Towers` VALUES (NULL, NULL, @monkey_buccaneer);
 SELECT id INTO @tower_monkey_buccaneer FROM Towers WHERE monkey_id=@monkey_buccaneer;
@@ -265,7 +265,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 2, 4, 'Tra
 
 
 --      Monkey - Monkey Ace
-INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Ace', 'Military', 'Flies above the ground shooting volleys of high-pierce darts.', 800, 'monkey-ace.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Ace', 'Military', 'Flies above the ground shooting volleys of high-pierce darts.', 800, 'monkey-ace.png');
 SELECT id INTO @monkey_ace FROM Monkeys WHERE name='Monkey Ace';
 INSERT INTO `Towers` VALUES (NULL, NULL, @monkey_ace);
 SELECT id INTO @tower_monkey_ace FROM Towers WHERE monkey_id=@monkey_ace;
@@ -294,7 +294,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 2, 4, 'Flying Fo
 
 
 --      Monkey - Heli Pilot
-INSERT INTO `Monkeys` VALUES (NULL, 'Heli Pilot', 'Military', 'Hovers wherever you direct it. Shoots from twin heavy dart guns.', 1600, 'heli-pilot.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Heli Pilot', 'Military', 'Hovers wherever you direct it. Shoots from twin heavy dart guns.', 1600, 'heli-pilot.png');
 SELECT id INTO @heli_pilot FROM Monkeys WHERE name='Heli Pilot';
 INSERT INTO `Towers` VALUES (NULL, NULL, @heli_pilot);
 SELECT id INTO @tower_heli_pilot FROM Towers WHERE monkey_id=@heli_pilot;
@@ -323,7 +323,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, false, 2, 4, 'Comanche 
 
 
 --      Monkey - Mortar Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Mortar Monkey', 'Military', 'Launches an exploding mortar shell to a fixed location anywhere on the screen.', 750, 'mortar-monkey.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Mortar Monkey', 'Military', 'Launches an exploding mortar shell to a fixed location anywhere on the screen.', 750, 'mortar-monkey.png');
 SELECT id INTO @mortar_monkey FROM Monkeys WHERE name='Mortar Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @mortar_monkey);
 SELECT id INTO @tower_mortar_monkey FROM Towers WHERE monkey_id=@mortar_monkey;
@@ -352,7 +352,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 2, 4, 'Bloonc
 
 
 --      Monkey - Dartling Gunner
-INSERT INTO `Monkeys` VALUES (NULL, 'Dartling Gunner', 'Military', 'Uses a dart-shooting machine-gun. Aims wherever you point on the screen.', 850, 'dartling-gunner.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Dartling Gunner', 'Military', 'Uses a dart-shooting machine-gun. Aims wherever you point on the screen.', 850, 'dartling-gunner.png');
 SELECT id INTO @dartling_gunner FROM Monkeys WHERE name='Dartling Gunner';
 INSERT INTO `Towers` VALUES (NULL, NULL, @dartling_gunner);
 SELECT id INTO @tower_dartling_gunner FROM Towers WHERE monkey_id=@dartling_gunner;
@@ -381,7 +381,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_dartling_gunner, false, 2, 4, 'Bloo
 
 
 --      Monkey - Wizard Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Wizard Monkey', 'Magic', 'Hurls magical bolts of energy at the Bloons. Can upgrade to a variety of powerful spells.', 450, 'wizard-monkey.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Wizard Monkey', 'Magic', 'Hurls magical bolts of energy at the Bloons. Can upgrade to a variety of powerful spells.', 450, 'wizard-monkey.png');
 SELECT id INTO @wizard_monkey FROM Monkeys WHERE name='Wizard Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @wizard_monkey);
 SELECT id INTO @tower_wizard_monkey FROM Towers WHERE monkey_id=@wizard_monkey;
@@ -409,7 +409,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 4, 'Prince
 
 
 --      Monkey - Super Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Super Monkey', 'Magic', 'Throws hundreds of darts and hypersonic speed with a huge attack range.', 2500, 'super-monkey.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Super Monkey', 'Magic', 'Throws hundreds of darts and hypersonic speed with a huge attack range.', 2500, 'super-monkey.png');
 SELECT id INTO @super_monkey FROM Monkeys WHERE name='Super Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @super_monkey);
 SELECT id INTO @tower_super_monkey FROM Towers WHERE monkey_id=@super_monkey;
@@ -437,7 +437,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, true, 2, 4, 'Legend o
 
 
 --      Monkey - Ninja Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Ninja Monkey', 'Magic', 'Stealthy and fast Monkey that throws bladed shurikens to pop the Bloons. Can target Camo Bloons.', 500, 'ninja-monkey.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Ninja Monkey', 'Magic', 'Stealthy and fast Monkey that throws bladed shurikens to pop the Bloons. Can target Camo Bloons.', 500, 'ninja-monkey.png');
 SELECT id INTO @ninja_monkey FROM Monkeys WHERE name='Ninja Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @ninja_monkey);
 SELECT id INTO @tower_ninja_monkey FROM Towers WHERE monkey_id=@ninja_monkey;
@@ -466,7 +466,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 4, 'Master 
 
 
 --      Monkey - Alchemist
-INSERT INTO `Monkeys` VALUES (NULL, 'Alchemist', 'Magic', 'Harnessing powers of science and magic, splashes Bloons with acid, also brows various potions with different effects.', 550, 'alchemist.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Alchemist', 'Magic', 'Harnessing powers of science and magic, splashes Bloons with acid, also brows various potions with different effects.', 550, 'alchemist.png');
 SELECT id INTO @alchemist FROM Monkeys WHERE name='Alchemist';
 INSERT INTO `Towers` VALUES (NULL, NULL, @alchemist);
 SELECT id INTO @tower_alchemist FROM Towers WHERE monkey_id=@alchemist;
@@ -495,7 +495,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_alchemist, false, 2, 4, 'Bloon Mast
 
 
 --      Monkey - Druid
-INSERT INTO `Monkeys` VALUES (NULL, 'Druid', 'Magic', 'Creates a blast of thorns for each attack. Upgrades can call forth powers of the Jungle, Storm or Wrath.', 425, 'druid.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Druid', 'Magic', 'Creates a blast of thorns for each attack. Upgrades can call forth powers of the Jungle, Storm or Wrath.', 425, 'druid.png');
 SELECT id INTO @druid FROM Monkeys WHERE name='Druid';
 INSERT INTO `Towers` VALUES (NULL, NULL, @druid);
 SELECT id INTO @tower_druid FROM Towers WHERE monkey_id=@druid;
@@ -524,7 +524,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 2, 4, 'Avatar of Wrat
 
 
 --      Monkey - Banana Farm
-INSERT INTO `Monkeys` VALUES (NULL, 'Banana Farm', 'Support', 'Generates Bananas each round that convert into game money to spend on more stuff.', 1250, 'banana-farm.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Banana Farm', 'Support', 'Generates Bananas each round that convert into game money to spend on more stuff.', 1250, 'banana-farm.png');
 SELECT id INTO @banana_farm FROM Monkeys WHERE name='Banana Farm';
 INSERT INTO `Towers` VALUES (NULL, NULL, @banana_farm);
 SELECT id INTO @tower_banana_farm FROM Towers WHERE monkey_id=@banana_farm;
@@ -552,7 +552,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 2, 4, 'Monkey W
 
 
 --      Monkey - Spike Factory
-INSERT INTO `Monkeys` VALUES (NULL, 'Spike Factory', 'Support', 'Automatically generates piles of Road Spikes on the nearby track. Excellent last line of defense.', 1000, 'spike-factory.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Spike Factory', 'Support', 'Automatically generates piles of Road Spikes on the nearby track. Excellent last line of defense.', 1000, 'spike-factory.png');
 SELECT id INTO @spike_factory FROM Monkeys WHERE name='Spike Factory';
 INSERT INTO `Towers` VALUES (NULL, NULL, @spike_factory);
 SELECT id INTO @tower_spike_factory FROM Towers WHERE monkey_id=@spike_factory;
@@ -581,7 +581,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_spike_factory, false, 2, 4, 'Perma-
 
 
 --      Monkey - Monkey Village
-INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Village', 'Support', 'Hub of Monkey industry, has a number of different benefits to aid all of your Monkeys. Increases rawnge of all monkeys in its radius by 10%.', 1200, 'monkey-village.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Village', 'Support', 'Hub of Monkey industry, has a number of different benefits to aid all of your Monkeys. Increases rawnge of all monkeys in its radius by 10%.', 1200, 'monkey-village.png');
 SELECT id INTO @monkey_village FROM Monkeys WHERE name='Monkey Village';
 INSERT INTO `Towers` VALUES (NULL, NULL, @monkey_village);
 SELECT id INTO @tower_monkey_village FROM Towers WHERE monkey_id=@monkey_village;
@@ -610,7 +610,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 4, 'Monke
 
 
 --      Monkey - Engineer Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Engineer Monkey', 'Support', 'Holds a trusty nail-gun to pop the Bloons. Can upgrade to creat its own nail-shooting sentry turrets.', 450, 'engineer-monkey.jpg');
+INSERT INTO `Monkeys` VALUES (NULL, 'Engineer Monkey', 'Support', 'Holds a trusty nail-gun to pop the Bloons. Can upgrade to creat its own nail-shooting sentry turrets.', 450, 'engineer-monkey.png');
 SELECT id INTO @engineer_monkey FROM Monkeys WHERE name='Engineer Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @engineer_monkey);
 SELECT id INTO @tower_engineer_monkey FROM Towers WHERE monkey_id=@engineer_monkey;
@@ -642,7 +642,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 2, 4, 'XXXL
 
 
 --      Hero - Quincy
-INSERT INTO `Heroes` VALUES (NULL, 'Quincy', 'Archer', 'Proud, strong and intelligent, Quincy uses his bow to perform feats of amazing skill.', 540, 0, 'quincy.jpg');
+INSERT INTO `Heroes` VALUES (NULL, 'Quincy', 'Archer', 'Proud, strong and intelligent, Quincy uses his bow to perform feats of amazing skill.', 540, 0, 'quincy.png');
 SELECT id INTO @quincy FROM Heroes WHERE name='Quincy';
 INSERT INTO `Towers` VALUES (NULL, @quincy, NULL);
 SELECT id INTO @tower_quincy FROM Towers WHERE hero_id=@quincy;
@@ -670,7 +670,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 19, '', 'Storm of
 
 
 --      Hero - Gwendolin
-INSERT INTO `Heroes` VALUES (NULL, 'Gwendolin', 'Pyromaniac', 'Gwendolin believes there hasn\'t been a Bloon problem that can\'t be solved with fire. Lots of fire.', 900, 0, 'gwendolin.jpg');
+INSERT INTO `Heroes` VALUES (NULL, 'Gwendolin', 'Pyromaniac', 'Gwendolin believes there hasn\'t been a Bloon problem that can\'t be solved with fire. Lots of fire.', 900, 0, 'gwendolin.png');
 SELECT id INTO @gwendolin FROM Heroes WHERE name='Gwendolin';
 INSERT INTO `Towers` VALUES (NULL, @gwendolin, NULL);
 SELECT id INTO @tower_gwendolin FROM Towers WHERE hero_id=@gwendolin;
@@ -698,7 +698,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 19, '', 'Fires
 
 
 --      Hero - Striker Jones
-INSERT INTO `Heroes` VALUES (NULL, 'Striker Jones', 'Artillery Commander', 'Striker Jones is a string Commander who uses his knowledge of long range combat to greatly boost the power of explosives.', 750, 0, 'striker-jones.jpg');
+INSERT INTO `Heroes` VALUES (NULL, 'Striker Jones', 'Artillery Commander', 'Striker Jones is a string Commander who uses his knowledge of long range combat to greatly boost the power of explosives.', 750, 0, 'striker-jones.png');
 SELECT id INTO @striker_jones FROM Heroes WHERE name='Striker Jones';
 INSERT INTO `Towers` VALUES (NULL, @striker_jones, NULL);
 SELECT id INTO @tower_striker_jones FROM Towers WHERE hero_id=@striker_jones;
@@ -726,7 +726,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 19, '', 'A
 
 
 --      Hero - Obyn Greenfoot
-INSERT INTO `Heroes` VALUES (NULL, 'Obyn Greenfoot', 'Forest Guardian', 'Commanding powers of nature, Obyn can shoot through solid obstacles with his spirit wolf attack.', 650, 0, 'obyn-greenfoot.jpg');
+INSERT INTO `Heroes` VALUES (NULL, 'Obyn Greenfoot', 'Forest Guardian', 'Commanding powers of nature, Obyn can shoot through solid obstacles with his spirit wolf attack.', 650, 0, 'obyn-greenfoot.png');
 SELECT id INTO @obyn_greenfoot FROM Heroes WHERE name='Obyn Greenfoot';
 INSERT INTO `Towers` VALUES (NULL, @obyn_greenfoot, NULL);
 SELECT id INTO @tower_obyn_greenfoot FROM Towers WHERE hero_id=@obyn_greenfoot;
@@ -754,7 +754,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 19, '', '
 
 
 --      Hero - Sauda
-INSERT INTO `Heroes` VALUES (NULL, 'Sauda', 'Swordmaster', 'With a calm fury, Sauda can carve Bloons up with her twin razor-sharp swords.', 600, 5000, 'sauda.jpg');
+INSERT INTO `Heroes` VALUES (NULL, 'Sauda', 'Swordmaster', 'With a calm fury, Sauda can carve Bloons up with her twin razor-sharp swords.', 600, 5000, 'sauda.png');
 SELECT id INTO @sauda FROM Heroes WHERE name='Sauda';
 INSERT INTO `Towers` VALUES (NULL, @sauda, NULL);
 SELECT id INTO @tower_sauda FROM Towers WHERE hero_id=@sauda;
@@ -781,7 +781,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 18, '', 'Enchanted
 INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 19, '', 'Sword Charge sweeps all track paths three times!', 0, 0);
 
 --      Hero - Captain Churchill
-INSERT INTO `Heroes` VALUES (NULL, 'Captain Churchill', 'Tank', 'In his armored battle tank, the captain is a no-nonsense powerhouse on the battlefield.', 2000, 2500, 'captain-churchill.jpg');
+INSERT INTO `Heroes` VALUES (NULL, 'Captain Churchill', 'Tank', 'In his armored battle tank, the captain is a no-nonsense powerhouse on the battlefield.', 2000, 2500, 'captain-churchill.png');
 SELECT id INTO @captain_churchill FROM Heroes WHERE name='Captain Churchill';
 INSERT INTO `Towers` VALUES (NULL, @captain_churchill, NULL);
 SELECT id INTO @tower_captain_churchill FROM Towers WHERE hero_id=@captain_churchill;
@@ -808,7 +808,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 18, ''
 INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 19, '', 'MOAB Barrage and Main Gun do massively increased damage per hit.', 0, 0);
 
 --      Hero - Benjamin
-INSERT INTO `Heroes` VALUES (NULL, 'Benjamin', 'Code Monkey', 'Using his elite hacking skills, Benjamin can generate extra money for the cause.', 1200, 3000, 'benjamin.jpg');
+INSERT INTO `Heroes` VALUES (NULL, 'Benjamin', 'Code Monkey', 'Using his elite hacking skills, Benjamin can generate extra money for the cause.', 1200, 3000, 'benjamin.png');
 SELECT id INTO @benjamin FROM Heroes WHERE name='Benjamin';
 INSERT INTO `Towers` VALUES (NULL, @benjamin, NULL);
 SELECT id INTO @tower_benjamin FROM Towers WHERE hero_id=@benjamin;
@@ -835,7 +835,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 18, '', 'Biohac
 INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 19, '', 'Syphon Funding lasts 20 seconds and cash per pop is tripled for affected Bloons.', 0, 0);
 
 --      Hero - Ezili
-INSERT INTO `Heroes` VALUES (NULL, 'Ezili', 'Voodoo Monkey', 'Ezili is a wielder of dark arts and manipulator of Bloons. Beware.', 600, 3000, 'ezili.jpg');
+INSERT INTO `Heroes` VALUES (NULL, 'Ezili', 'Voodoo Monkey', 'Ezili is a wielder of dark arts and manipulator of Bloons. Beware.', 600, 3000, 'ezili.png');
 SELECT id INTO @ezili FROM Heroes WHERE name='Ezili';
 INSERT INTO `Towers` VALUES (NULL, @ezili, NULL);
 SELECT id INTO @tower_ezili FROM Towers WHERE hero_id=@ezili;
@@ -862,7 +862,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 18, '', 'Each dama
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 19, '', 'MOAB Hex works faster and can destroy BAD Bloons.', 0, 0);
 
 --      Hero - Pat Fusty
-INSERT INTO `Heroes` VALUES (NULL, 'Pat Fusty', 'Giant Monkey', 'Pat is a huge Monkey of enormous strength. His unique size and power is a great asset in the war on bloons.', 800, 3000, 'pat-fusty.jpg');
+INSERT INTO `Heroes` VALUES (NULL, 'Pat Fusty', 'Giant Monkey', 'Pat is a huge Monkey of enormous strength. His unique size and power is a great asset in the war on bloons.', 800, 3000, 'pat-fusty.png');
 SELECT id INTO @pat_fusty FROM Heroes WHERE name='Pat Fusty';
 INSERT INTO `Towers` VALUES (NULL, @pat_fusty, NULL);
 SELECT id INTO @tower_pat_fusty FROM Towers WHERE hero_id=@pat_fusty;
@@ -890,7 +890,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 19, '', 'Big S
 
 
 --      Hero - Adora
-INSERT INTO `Heroes` VALUES (NULL, 'Adora', 'High Priestess', 'Adora\'s devotion compels her to strike Bloons down with furious vengeance.', 1000, 5000, 'adora.jpg');
+INSERT INTO `Heroes` VALUES (NULL, 'Adora', 'High Priestess', 'Adora\'s devotion compels her to strike Bloons down with furious vengeance.', 1000, 5000, 'adora.png');
 SELECT id INTO @adora FROM Heroes WHERE name='Adora';
 INSERT INTO `Towers` VALUES (NULL, @adora, NULL);
 SELECT id INTO @tower_adora FROM Towers WHERE hero_id=@adora;
@@ -918,7 +918,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 19, '', 'Ball of L
 
 
 --      Hero - Admiral Brickell
-INSERT INTO `Heroes` VALUES (NULL, 'Admiral Brickell', 'Naval Commander', 'Command all your water-based Monkeys to decisive victory. Requires water to place.', 750, 5000, 'admiral-brickell.jpg');
+INSERT INTO `Heroes` VALUES (NULL, 'Admiral Brickell', 'Naval Commander', 'Command all your water-based Monkeys to decisive victory. Requires water to place.', 750, 5000, 'admiral-brickell.png');
 SELECT id INTO @admiral_brickell FROM Heroes WHERE name='Admiral Brickell';
 INSERT INTO `Towers` VALUES (NULL, @admiral_brickell, NULL);
 SELECT id INTO @tower_admiral_brickell FROM Towers WHERE hero_id=@admiral_brickell;
@@ -946,7 +946,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 19, '',
 
 
 --      Hero - Etienne
-INSERT INTO `Heroes` VALUES (NULL, 'Etienne', 'Drone Operator', 'This high-tech hero can pursue the Bloons wherever they go with his remote controlled drone.', 850, 5000, 'etienne.jpg');
+INSERT INTO `Heroes` VALUES (NULL, 'Etienne', 'Drone Operator', 'This high-tech hero can pursue the Bloons wherever they go with his remote controlled drone.', 850, 5000, 'etienne.png');
 SELECT id INTO @etienne FROM Heroes WHERE name='Etienne';
 INSERT INTO `Towers` VALUES (NULL, @etienne, NULL);
 SELECT id INTO @tower_etienne FROM Towers WHERE hero_id=@etienne;
