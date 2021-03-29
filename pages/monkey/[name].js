@@ -1,5 +1,5 @@
 import {dataSources} from "../../lib/mysql/db";
-import {getMonkeyLink, parseMonkeyLink} from "../../lib/utils";
+import {getTowerLink, parseTowerLink} from "../../lib/utils";
 import MonkeyPage from "../../components/monkey/MonkeyPage";
 
 
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
     const paths = monkeys.map(monkey => {
         return {
             params: {
-                name: getMonkeyLink(monkey)
+                name: getTowerLink(monkey)
             }
         }
     });
@@ -30,7 +30,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-    const name = parseMonkeyLink(params.name)
+    const name = parseTowerLink(params.name)
 
     const monkey = await dataSources().monkeysAPI.getMonkeyByName({ name });
 
