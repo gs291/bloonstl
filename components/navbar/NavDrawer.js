@@ -2,18 +2,16 @@ import styled from "@emotion/styled";
 import {Drawer} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 
-import { nav as navSizes } from "../../lib/site-sizes.json";
-import {middle} from "../../lib/site-links.json";
-import { nav } from "../../lib/site-colors.json";
+import NavLink from "./NavLink";
 import {getDrawer} from "../../lib/redux/selectors";
 import {toggleDrawer} from "../../lib/redux/actions";
-import NavLink from "./NavLink";
+import {siteColors, siteLinks, siteSizes} from "../../lib/utils";
 
 const DrawerContainer = styled.div`
   width: 250px;
   height: 100%;
-  padding-top: ${ navSizes.height };
-  background-color: ${ nav.dark };
+  padding-top: ${ siteSizes.nav.height };
+  background-color: ${ siteColors.nav.dark };
   color: white;
   
   display: flex;
@@ -36,7 +34,7 @@ export default function NavDrawer() {
                 onClose={ () => dispatch(toggleDrawer()) }
             >
                 <DrawerContainer>
-                    { middle.map(mid => <NavLink {...mid} closeDrawer={closeDrawer}/>) }
+                    { siteLinks.middle.map(mid => <NavLink {...mid} closeDrawer={closeDrawer}/>) }
                 </DrawerContainer>
             </Drawer>
         </>

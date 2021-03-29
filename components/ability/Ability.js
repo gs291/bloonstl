@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import {Card, CardContent, CardMedia} from "@material-ui/core";
+import {Card, CardContent} from "@material-ui/core";
 
-import {background} from "../../lib/site-colors.json";
-import {getImageUrl, rankColors} from "../../lib/utils";
+import ImageFill from "../image/ImageFill";
+import {getImageUrl, rankColors, siteColors} from "../../lib/utils";
 
 const AbilityContainer = styled.div`
   display: flex;
@@ -10,8 +10,9 @@ const AbilityContainer = styled.div`
 `;
 
 const CardContainer = styled(Card)`
-  background-color: ${background.card.dark};
-  border: 2px solid ${props => props.selected ? rankColors(props.rank) : background.card.dark};
+  background-color: ${siteColors.background.card.dark};
+  border: 2px solid ${props => props.selected ? rankColors(props.rank) : siteColors.background.card.dark};
+  border-radius: 50%;
   
   &:hover {
     cursor: pointer;
@@ -19,16 +20,25 @@ const CardContainer = styled(Card)`
 `;
 
 const CardContentContainer = styled(CardContent)`
+  position: relative;
+  width: 45px;
+  max-width: 45px;
+  height: 45px;
+  max-height: 45px;
   padding: 0;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:last-child {
     padding-bottom: 0;
   }
 `;
 
-const CardMediaContainer  = styled(CardMedia)`
-  min-width: 45px;
-  min-height: 45px;
+const AbilityLevel = styled.div`
+  text-align: center;
+  color: white;
 `;
 
 export default function Ability({ className, ability, monkeyFile, rank, selected}) {
@@ -37,10 +47,17 @@ export default function Ability({ className, ability, monkeyFile, rank, selected
             <AbilityContainer className={className}>
                 <CardContainer selected={selected} rank={rank}>
                     <CardContentContainer>
-                        <CardMediaContainer
-                            image={getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier)}
-                            title={ability.name}
-                        />
+                        { monkeyFile && (
+                            <ImageFill
+                                src={ getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier) }
+                                alt={ ability.name }
+                            />
+                        )}
+                        { !monkeyFile && (
+                            <AbilityLevel>
+                                {ability.upgrade_tier + 1}
+                            </AbilityLevel>
+                        )}
                     </CardContentContainer>
                 </CardContainer>
             </AbilityContainer>

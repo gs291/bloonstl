@@ -2,7 +2,7 @@ import MenuButton from "./MenuButton";
 import styled from "@emotion/styled";
 
 import NavLink from "./NavLink";
-import {left} from "../../lib/site-links.json";
+import {siteLinks} from "../../lib/utils";
 
 const LeftNavSection = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ export default function MobileSiteLinks() {
         <>
             <LeftNavSection>
                 <MenuButton />
-                { <NavLink {...left.home} />}
+                { <NavLink {...siteLinks.left.home} />}
             </LeftNavSection>
         </>
     );

@@ -2,8 +2,7 @@ import styled from "@emotion/styled";
 import { PureComponent } from "react";
 import {Grid} from "@material-ui/core";
 
-import Ability from "./Ability";
-import UpgradeArrow from "./UpgradeArrow";
+import AbilityContainer from "./AbilityContainer";
 
 const GridContainer = styled(Grid)`
   display: flex;
@@ -17,17 +16,7 @@ const GridItem = styled(Grid)`
   flex-direction: row;
 `;
 
-
-const AbilityContainer = ({ability, monkeyFile, rank, selected}) => (
-    <>
-        { ability.upgrade_tier !== 0  && (
-            <UpgradeArrow rank={rank} selected={selected}/>
-        )}
-        <Ability ability={ability} monkeyFile={monkeyFile} rank={rank} selected={selected}/>
-    </>
-)
-
-export default class Abilities extends PureComponent {
+export default class MonkeyAbilities extends PureComponent {
 
     render() {
         const { className, abilities, monkeyFile, rank, ranks } = this.props;

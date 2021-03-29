@@ -1,18 +1,28 @@
+import { useEffect } from "react";
 import { Provider } from "react-redux";
 import { Global, css } from "@emotion/react";
-import { StylesProvider } from "@material-ui/core/styles";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import {createMuiTheme, StylesProvider, ThemeProvider} from "@material-ui/core/styles";
 
 import store from "../lib/redux/store";
-import Page from "../components/Page";
+import {font_family} from "../lib/utils";
+import Page from "../components/page/Page";
 
-const globals = css` 
+const theme = createMuiTheme({
+    typography: {
+        fontFamily: font_family,
+    }
+});
+
+const globals = css`
+  @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+  
   html, 
   body {
     padding: 0;
     margin: 0;
     overflow: overlay;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: ${font_family};
   }
   
   a {
@@ -42,14 +52,26 @@ const globals = css`
 `;
 
 export default function App({ Component, pageProps }) {
+
+    useEffect(() => {
+        // Remove the server-side injected CSS.
+        const jssStyles = document.querySelector('#jss-server-side');
+        if (jssStyles) {
+            jssStyles.parentElement.removeChild(jssStyles);
+        }
+    }, []);
+
     return (
         <Provider store={store}>
             <Global styles={ globals } />
-            <StylesProvider injectFirst>
-                <Page>
-                    <Component {...pageProps} />
-                </Page>
-            </StylesProvider>
+                <StylesProvider injectFirst>
+                        <Page>
+                            <ThemeProvider theme={theme}>
+                                <CssBaseline />
+                                <Component {...pageProps} />
+                            </ThemeProvider>
+                        </Page>
+                </StylesProvider>
         </Provider>
     );
 }

@@ -8,11 +8,11 @@ import {
 } from "@material-ui/core";
 
 import Icon from "../tower/Icon";
-import MonkeyDetailed from "./MonkeyDetailed";
-import {getMobile} from "../../lib/redux/selectors";
-import {background, card} from "../../lib/site-colors.json";
-import FilterRanks from "./FilterRanks";
 import RankTitle from "./RankTitle";
+import {siteColors} from "../../lib/utils";
+import MonkeyDetailed from "./MonkeyDetailed";
+import FilterRanks from "../filters/FilterRanks";
+import {getMobile} from "../../lib/redux/selectors";
 
 const CardContainer = styled(Card)`
   margin: 5px;
@@ -22,12 +22,12 @@ const CardContentContainer = styled(CardContent)`
   display: flex;
   flex-direction: ${props => props.mobile ? "column" : "row"};
   
-  background-color: ${ card.dark };
+  background-color: ${ siteColors.card.dark };
   color: #CCC;
 
   &:hover{
     cursor: pointer;
-    background-color: ${ background.hover.dark };
+    background-color: ${ siteColors.background.hover.dark };
   }
 `;
 

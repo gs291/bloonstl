@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import MonkeyAbilities from "../ability/MonkeyAbilities";
+import HeroAbilities from "../ability/HeroAbilities";
 
 const MonkeyDetailedContainer = styled.div`
   display: flex;
@@ -8,11 +8,11 @@ const MonkeyDetailedContainer = styled.div`
   padding-top: 20px;
 `;
 
-export default function MonkeyDetailed({ className, monkey, rank }) {
+export default function HeroDetailed({ className, hero }) {
 
     return (
         <MonkeyDetailedContainer className={className}>
-            <MonkeyAbilities abilities={ monkey.abilities } monkeyFile={ monkey.filename } rank={ rank } ranks={ monkey.rank[rank] }/>
+            <HeroAbilities abilities={ hero.abilities }/>
         </MonkeyDetailedContainer>
     );
 };

@@ -1,31 +1,17 @@
-import {useState} from "react";
 import styled from "@emotion/styled";
-import {Button,
-    ButtonGroup,
-    FormLabel,
+import {FormLabel,
     FormControl,
     FormControlLabel,
     Radio,
     RadioGroup} from "@material-ui/core";
 
-import {rankColors} from "../../lib/utils";
-
-
-const RankButton  = styled(Button)`
-  box-shadow: ${props => props["data-pressed"] === "true" ? "inset 0px 0px 5px #000" : "none" };
-  
-  background-color: ${props => rankColors(props.name)};
-  
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: ${props => rankColors(props.name, true)};
-  }
-`;
-
 const FormRow = styled.div`
   display: flex;
   flex-direction: row;
+`;
+
+const FilterLabel = styled(FormLabel)`
+  color: white;
 `;
 
 export default function FilterDifficulty({ className, difficulty, handleDifficulty }) {
@@ -33,7 +19,7 @@ export default function FilterDifficulty({ className, difficulty, handleDifficul
     return (
         <>
             <FormControl component="fieldset">
-                <FormLabel component="legend">Difficulty</FormLabel>
+                <FilterLabel focused={false}>Difficulty Prices:</FilterLabel>
                 <RadioGroup value={difficulty} onChange={handleDifficulty}>
                     <FormRow>
                         <FormControlLabel value="easy" control={<Radio size="small"/>} label="Easy" />

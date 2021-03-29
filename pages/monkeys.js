@@ -1,5 +1,5 @@
 import {dataSources} from "../lib/mysql/db";
-import MonkeysGrid from "../components/monkey/MonkeysGrid";
+import MonkeysGrid from "../components/monkeys/MonkeysGrid";
 
 
 export default function Monkeys({ monkeys }) {

@@ -14,11 +14,11 @@ const Label = styled(FormLabel)`
   color: white;
 `;
 
-export default function Filters({ className, state, handleFilter }) {
+export default function FiltersTierList({ className, state, handleFilter }) {
     return (
         <>
             <FilterContainer className={className}>
-                <Label component="legend">Filters: </Label>
+                <Label focused={false}>Filters:</Label>
                 <FormGroup>
                     <FormControlLabel
                         control={<Switch checked={state.isDetailed} onChange={handleFilter} name="isDetailed" />}
