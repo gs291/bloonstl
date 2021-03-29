@@ -1,5 +1,0 @@
-[[redirects]]
-    from = "/_next/image*"
-    query = { url = ":url", w = ":width", q = ":quality" }
-    to = "https://res.cloudinary.com/bloons/image/upload/w_:width,q_auto,f_auto/https://bloonstl.netlify.app/:url"
-    status = 200
