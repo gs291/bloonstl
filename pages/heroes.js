@@ -1,5 +1,5 @@
 import {dataSources} from "../lib/mysql/db";
-import HeroesGrid from "../components/hero/HerosGrid";
+import HeroesGrid from "../components/heroes/HeroesGrid";
 
 
 export default function Heroes({ heroes }) {
