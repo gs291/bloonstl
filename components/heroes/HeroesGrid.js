@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
 
-import Hero from "./Hero";
+import HeroesCard from "./HeroesCard";
 
 const GridContainer = styled(Grid)`
   display: flex;
@@ -19,7 +19,7 @@ export default function HeroesGrid({ heroes }) {
         <>
             <GridContainer container spacing={2}>
                 <GridItem item>
-                    { heroes.map(hero => <Hero hero={hero} key={hero.id}/>) }
+                    { heroes.map(hero => <HeroesCard hero={hero} key={hero.id}/>) }
                 </GridItem>
             </GridContainer>
         </>
