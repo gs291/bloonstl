@@ -26,10 +26,19 @@ const CardContentContainer = styled(CardContent)`
   height: 45px;
   max-height: 45px;
   padding: 0;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:last-child {
     padding-bottom: 0;
   }
+`;
+
+const AbilityLevel = styled.div`
+  text-align: center;
+  color: white;
 `;
 
 export default function Ability({ className, ability, monkeyFile, rank, selected}) {
@@ -45,9 +54,9 @@ export default function Ability({ className, ability, monkeyFile, rank, selected
                             />
                         )}
                         { !monkeyFile && (
-                            <>
-                                Hero
-                            </>
+                            <AbilityLevel>
+                                {ability.upgrade_tier + 1}
+                            </AbilityLevel>
                         )}
                     </CardContentContainer>
                 </CardContainer>
