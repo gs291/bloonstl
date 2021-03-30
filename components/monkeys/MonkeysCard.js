@@ -1,5 +1,6 @@
+import Link from "next/link";
 import styled from "@emotion/styled";
-import {Card, CardContent, Link} from "@material-ui/core";
+import {Card, CardContent, Link as MUILink} from "@material-ui/core";
 
 import Icon from "../tower/Icon";
 import {getTowerLink, getMonkeyTypeColor} from "../../lib/utils";
@@ -18,12 +19,14 @@ const CardContainer = styled(Card)`
 export default function MonkeysCard({monkey, type}) {
     return (
         <>
-            <Link href={`/monkey/${getTowerLink(monkey)}`}>
+            <Link href={`/monkey/${getTowerLink(monkey)}`} passHref>
+                <MUILink >
                     <CardContainer type={type}>
                         <CardContent>
                             <Icon tower={ monkey } />
                         </CardContent>
                     </CardContainer>
+                </MUILink>
             </Link>
         </>
     );

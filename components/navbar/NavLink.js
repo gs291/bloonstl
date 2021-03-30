@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
 
+import { Link as MUILink } from "@material-ui/core";
 import { siteColors, siteSizes} from "../../lib/utils";
 
 const HoverLink = styled.div`
@@ -16,19 +17,25 @@ const HoverLink = styled.div`
   }
 `;
 
-const A = styled.a`
+const MLink = styled(MUILink)`
+  color: white;
+`;
+
+const A = styled.div`
   line-height: ${ siteSizes.nav.height };
   display: inline-block;
   width: 100%;
   height: 100%;
 `;
 
-export default function NavLink({ id_key, path, text, closeDrawer }) {
+export default function NavLink({ path, text, closeDrawer }) {
     return (
-        <HoverLink key={ id_key } onClick={closeDrawer}>
-            <Link href={ path } >
-                <A>{ text }</A>
+            <Link href={ path } passHref>
+                <MLink>
+                    <HoverLink onClick={closeDrawer}>
+                        <A>{ text }</A>
+                    </HoverLink>
+                </MLink>
             </Link>
-        </HoverLink>
     );
 }
