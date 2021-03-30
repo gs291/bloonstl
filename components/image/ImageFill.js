@@ -5,7 +5,7 @@ const StyledImage  = styled(Image)`
   object-fit: scale-down;
 `;
 
-export default function ImageFill({ className, src, quality, priority, alt }) {
+export default function ImageFill({ className, src, quality, alt }) {
     return (
         <>
             <StyledImage
@@ -14,7 +14,6 @@ export default function ImageFill({ className, src, quality, priority, alt }) {
                 layout="fill"
                 quality={ quality || 75}
                 alt={ alt }
-                priority={ priority || "false" }
             />
         </>
     );

@@ -29,7 +29,6 @@ export default function Icon({ className, tower, detailed }) {
                         src={ getImageUrl(tower.filename) }
                         quality={100}
                         alt={ tower.name }
-                        priority="true"
                     />
                 </ImgContainer>
             </IconContainer>
