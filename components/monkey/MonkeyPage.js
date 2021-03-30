@@ -29,14 +29,14 @@ export default function MonkeyPage({ monkey }) {
     return (
         <>
             <MonkeyContainer monkey={monkey} difficulty={difficulty}/>
-            <FixedDivider width={80}/>
+            <FixedDivider width={ mobile ? 100 : 80 }/>
             <Filters>
                 <FilterRanks rank={ rank } handleRank={ handleRank } />
                 <FilterDifficulty difficulty={difficulty} handleDifficulty={ handleDifficulty }/>
             </Filters>
-            <FixedDivider width={80}/>
+            <FixedDivider width={ mobile ? 100 : 80 }/>
             <RankTitle rank={ rank }  ranks={ monkey.rank[rank] }/>
-            <FixedDivider width={50}/>
+            <FixedDivider width={ mobile ? 100 : 40 }/>
             <MonkeyDetailed monkey={ monkey } rank={ rank }/>
         </>
     );

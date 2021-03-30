@@ -17,9 +17,9 @@ export default function HeroPage({ hero }) {
     return (
         <>
             <HeroContainer hero={hero} difficulty={difficulty} />
-            <FixedDivider width={80}/>
+            <FixedDivider width={ mobile ? 100 : 80 }/>
             <FilterDifficulty difficulty={difficulty} handleDifficulty={ handleDifficulty }/>
-            <FixedDivider width={80}/>
+            <FixedDivider width={ mobile ? 100 : 80 }/>
             <HeroDetailed hero={hero} />
         </>
     );
