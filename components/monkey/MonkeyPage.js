@@ -1,21 +1,14 @@
 import {useState} from "react";
 import {useSelector} from "react-redux";
-import {Divider} from "@material-ui/core";
 
 import styled from "@emotion/styled";
 import MonkeyDetailed from "./MonkeyDetailed";
 import FilterRanks from "../filters/FilterRanks";
+import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
 import RankTitle from "../../components/monkey/RankTitle";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyContainer from "../../components/monkey/MonkeyContainer";
-
-const MediumDivider = styled(Divider)`
-  width: 80%;
-  background-color: #ccc;
-  margin-top: 10px;
-  margin-bottom: 10px;
-`;
 
 const Filters = styled.div`
   display: flex;
@@ -36,14 +29,14 @@ export default function MonkeyPage({ monkey }) {
     return (
         <>
             <MonkeyContainer monkey={monkey} difficulty={difficulty}/>
-            <MediumDivider/>
+            <FixedDivider width={80}/>
             <Filters>
                 <FilterRanks rank={ rank } handleRank={ handleRank } />
                 <FilterDifficulty difficulty={difficulty} handleDifficulty={ handleDifficulty }/>
             </Filters>
-            <MediumDivider/>
+            <FixedDivider width={80}/>
             <RankTitle rank={ rank }  ranks={ monkey.rank[rank] }/>
-            <MediumDivider/>
+            <FixedDivider width={50}/>
             <MonkeyDetailed monkey={ monkey } rank={ rank }/>
         </>
     );
