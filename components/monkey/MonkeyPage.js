@@ -37,12 +37,12 @@ export default function MonkeyPage({ monkey }) {
         <>
             <MonkeyContainer monkey={monkey} difficulty={difficulty}/>
             <MediumDivider/>
-            <RankTitle rank={ rank }  ranks={ monkey.rank[rank] }/>
-            <MediumDivider/>
             <Filters>
                 <FilterRanks rank={ rank } handleRank={ handleRank } />
                 <FilterDifficulty difficulty={difficulty} handleDifficulty={ handleDifficulty }/>
             </Filters>
+            <MediumDivider/>
+            <RankTitle rank={ rank }  ranks={ monkey.rank[rank] }/>
             <MediumDivider/>
             <MonkeyDetailed monkey={ monkey } rank={ rank }/>
         </>
