@@ -3,12 +3,13 @@ import styled from "@emotion/styled";
 import {Card, CardContent, Link as MUILink} from "@material-ui/core";
 
 import Icon from "../tower/Icon";
-import {getTowerLink, getMonkeyTypeColor} from "../../lib/utils";
+import {getTowerLink, getMonkeyTypeColor, siteColors} from "../../lib/utils";
 
 const CardContainer = styled(Card)`
   margin: 5px;
 
-  background-color: ${props => getMonkeyTypeColor(props.type)};
+  background-color: ${ siteColors.card.dark };
+  border: 2px solid ${props => getMonkeyTypeColor(props.type)};
 
   &:hover{
     cursor: pointer;
