@@ -1,15 +1,15 @@
 import {useState} from "react";
-import {useSelector} from "react-redux";
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 
 import MonkeyDetailed from "./MonkeyDetailed";
 import FilterRanks from "../filters/FilterRanks";
 import FixedDivider from "../divider/FixedDivider";
+import {getMonkeyTypeColor} from "../../lib/utils";
 import {getMobile} from "../../lib/redux/selectors";
+import TowerContainer from "../tower/TowerContainer";
 import RankTitle from "../../components/monkey/RankTitle";
 import FilterDifficulty from "../filters/FilterDifficulty";
-import MonkeyContainer from "../../components/monkey/MonkeyContainer";
-import {getMonkeyTypeColor} from "../../lib/utils";
 
 const Filters = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ export default function MonkeyPage({ monkey }) {
 
     return (
         <>
-            <MonkeyContainer monkey={monkey}/>
+            <TowerContainer tower={monkey} towerType="monkey"/>
             <FixedDivider width={ mobile ? 100 : 80 } backgroundColor={dividerBackgroundColor}/>
             <Filters mobile={mobile}>
                 <FilterRanks rank={ rank } handleRank={ handleRank } />
