@@ -4,9 +4,10 @@ import {FormLabel,
     FormControlLabel,
     Radio,
     RadioGroup} from "@material-ui/core";
+import {useDispatch, useSelector} from "react-redux";
 
-import {useSelector} from "react-redux";
-import {getMobile} from "../../lib/redux/selectors";
+import {updateDifficulty} from "../../lib/redux/actions";
+import {getDifficulty, getMobile} from "../../lib/redux/selectors";
 
 const FormRow = styled.div`
   display: flex;
@@ -18,8 +19,14 @@ const FilterLabel = styled(FormLabel)`
   text-align: center;
 `;
 
-export default function FilterDifficulty({ className, difficulty, handleDifficulty }) {
+export default function FilterDifficulty({ className }) {
     const mobile = useSelector(getMobile);
+    const difficulty = useSelector(getDifficulty);
+    const dispatch = useDispatch();
+
+    const handleDifficulty = (e) => {
+        dispatch(updateDifficulty(e.target.value));
+    }
 
     const easyMed = (
         <>

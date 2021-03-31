@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import {Divider, Typography} from "@material-ui/core";
 
 import Icon from "../tower/Icon";
 import {goldCost} from "../../lib/utils";
+import {getDifficulty} from "../../lib/redux/selectors";
 
 const ContentContainer = styled.div`
   display: flex;
@@ -19,7 +21,8 @@ const VerticalDivider = styled(Divider)`
   margin-right: 10px;
 `;
 
-export default function MonkeyContainer({monkey, difficulty}) {
+export default function MonkeyContainer({monkey}) {
+    const difficulty = useSelector(getDifficulty);
 
     return (
         <>

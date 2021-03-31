@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useSelector} from "react-redux";
-
 import styled from "@emotion/styled";
+
 import MonkeyDetailed from "./MonkeyDetailed";
 import FilterRanks from "../filters/FilterRanks";
 import FixedDivider from "../divider/FixedDivider";
@@ -25,18 +25,16 @@ const FilterDiff = styled(FilterDifficulty)`
 export default function MonkeyPage({ monkey }) {
     const mobile = useSelector(getMobile);
     const [ rank, setRank ] = useState("s");
-    const [ difficulty, setDifficulty ] = useState("medium");
 
-    const handleDifficulty = (event) => setDifficulty(event.target.value);
     const handleRank = (e, r) => setRank(r);
 
     return (
         <>
-            <MonkeyContainer monkey={monkey} difficulty={difficulty}/>
+            <MonkeyContainer monkey={monkey}/>
             <FixedDivider width={ mobile ? 100 : 80 }/>
             <Filters mobile={mobile}>
                 <FilterRanks rank={ rank } handleRank={ handleRank } />
-                <FilterDiff difficulty={difficulty} handleDifficulty={ handleDifficulty } mobile={mobile}/>
+                <FilterDiff  mobile={mobile}/>
             </Filters>
             <FixedDivider width={ mobile ? 100 : 80 }/>
             <RankTitle rank={ rank }  ranks={ monkey.rank[rank] }/>
