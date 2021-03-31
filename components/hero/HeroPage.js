@@ -1,19 +1,11 @@
 import {useState} from "react";
 import {useSelector} from "react-redux";
-import {Divider} from "@material-ui/core";
 
-import styled from "@emotion/styled";
 import HeroDetailed from "./HeroDetailed";
 import HeroContainer from "./HeroContainer";
 import {getMobile} from "../../lib/redux/selectors";
 import FilterDifficulty from "../filters/FilterDifficulty";
-
-const MediumDivider = styled(Divider)`
-  width: 80%;
-  background-color: #ccc;
-  margin-top: 10px;
-  margin-bottom: 10px;
-`;
+import FixedDivider from "../divider/FixedDivider";
 
 export default function HeroPage({ hero }) {
     const mobile = useSelector(getMobile);
@@ -25,9 +17,9 @@ export default function HeroPage({ hero }) {
     return (
         <>
             <HeroContainer hero={hero} difficulty={difficulty} />
-            <MediumDivider/>
+            <FixedDivider width={ mobile ? 100 : 80 }/>
             <FilterDifficulty difficulty={difficulty} handleDifficulty={ handleDifficulty }/>
-            <MediumDivider/>
+            <FixedDivider width={ mobile ? 100 : 80 }/>
             <HeroDetailed hero={hero} />
         </>
     );

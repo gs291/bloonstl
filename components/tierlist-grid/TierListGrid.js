@@ -3,9 +3,10 @@ import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
+import {rankColors} from "../../lib/utils";
+import TowerCard from "../tower/TowerCard";
 import {getMobile} from "../../lib/redux/selectors";
 import FiltersTierList from "../filters/FiltersTierList";
-import MonkeyTierListCard from "../monkey/MonkeyTierListCard";
 
 
 const FilterContainer = styled.div`
@@ -14,10 +15,20 @@ const FilterContainer = styled.div`
   color: white;
 `;
 
-const GridItem = styled(Grid)`
-  min-height: 260px;
+const RankTitle = styled(Grid)`
+  padding-top: 5px;
+  padding-bottom: 5px;
+  
+  background-color: ${props => rankColors(props.rank)};
+
+  color: #000;
 `;
 
+const GridItem = styled(Grid)`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
 
 export default function TierListGrid({ className, monkeys, heroes }) {
     const mobile = useSelector(getMobile);
@@ -27,9 +38,9 @@ export default function TierListGrid({ className, monkeys, heroes }) {
 
     const handleFilter = (event) => { setState({ ...state, [event.target.name]: event.target.checked }); };
 
-    let gridSpacing = 6;
+    let gridSpacing = 3;
     if (mobile) {
-        gridSpacing = 12;
+        gridSpacing = 6;
     }
 
     return (
@@ -37,12 +48,27 @@ export default function TierListGrid({ className, monkeys, heroes }) {
             <FilterContainer className={className}>
                 <FiltersTierList state={state} handleFilter={handleFilter} />
             </FilterContainer>
-            <Grid container spacing={2}>
-                { monkeys.map(monkey => (
-                    <GridItem item xs={gridSpacing} key={ monkey.id }>
-                        <MonkeyTierListCard monkey={ monkey } detailed={state.isDetailed}/>
-                    </GridItem>
-                ))}
+            <Grid container spacing={2} direction="column">
+                <RankTitle rank="s" item>
+                    S Tier
+                </RankTitle>
+                <GridItem item>
+                    { monkeys.map(monkey => (
+                        <TowerCard tower={monkey} towerType="monkey" key={monkey.id}/>
+                    ))}
+                </GridItem>
+                <RankTitle rank="a" item>
+                    A Tier
+                </RankTitle>
+                <GridItem item>
+
+                </GridItem>
+                <RankTitle rank="b" item>
+                    B Tier
+                </RankTitle>
+                <GridItem item>
+
+                </GridItem>
             </Grid>
         </>
     );

@@ -1,7 +1,10 @@
 import styled from "@emotion/styled";
 
 import NavLink from "./NavLink";
+import {useSelector} from "react-redux";
 import {siteLinks} from "../../lib/utils";
+import {getMobile} from "../../lib/redux/selectors";
+import MenuButton from "./MenuButton";
 
 const NavSection = styled.div`
   flex: 1;
@@ -22,25 +25,36 @@ const MiddleNavSection = styled.div`
 const RightNavSection = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: left;
+  justify-content: flex-end;
+  margin-right: 25px;
 `;
 
-export default function DesktopSiteLinks() {
+export default function SiteLinks() {
+    const mobile = useSelector(getMobile);
+
     return (
         <>
             <NavSection>
                 <LeftNavSection>
-                    { <NavLink {...siteLinks.left.home} /> }
+                    { !mobile && (
+                        <NavLink {...siteLinks.left.home} />
+                    )}
                 </LeftNavSection>
             </NavSection>
             <NavSection>
                 <MiddleNavSection>
-                    { siteLinks.middle.map(mid => { return <NavLink {...mid} /> }) }
+                    { !mobile && siteLinks.middle.map(mid => { return <NavLink key={mid.key} {...mid} /> }) }
+
+                    { mobile && (
+                        <NavLink {...siteLinks.left.home} />
+                    )}
                 </MiddleNavSection>
             </NavSection>
             <NavSection>
                 <RightNavSection>
-                    {/*{ <NavLink {...siteLinks.right.login} /> }*/}
+                    { mobile && (
+                        <MenuButton />
+                    )}
                 </RightNavSection>
             </NavSection>
         </>

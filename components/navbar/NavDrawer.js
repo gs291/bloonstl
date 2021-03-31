@@ -32,6 +32,7 @@ export default function NavDrawer() {
             <Drawer
                 open={ drawer }
                 onClose={ () => dispatch(toggleDrawer()) }
+                anchor="right"
             >
                 <DrawerContainer>
                     { siteLinks.middle.map(mid => <NavLink {...mid} closeDrawer={closeDrawer}/>) }

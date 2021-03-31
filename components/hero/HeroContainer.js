@@ -27,7 +27,7 @@ export default function HeroContainer({hero, difficulty}) {
                 <Icon tower={ hero } />
                 <VerticalDivider flexItem orientation="vertical" />
                 <MonkeyText>
-                    <Typography variant="h2">
+                    <Typography variant="h3">
                         {hero.name}
                     </Typography>
                     <Typography variant="body1">

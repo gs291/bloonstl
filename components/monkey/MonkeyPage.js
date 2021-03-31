@@ -1,28 +1,25 @@
 import {useState} from "react";
 import {useSelector} from "react-redux";
-import {Divider} from "@material-ui/core";
 
 import styled from "@emotion/styled";
 import MonkeyDetailed from "./MonkeyDetailed";
 import FilterRanks from "../filters/FilterRanks";
+import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
 import RankTitle from "../../components/monkey/RankTitle";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyContainer from "../../components/monkey/MonkeyContainer";
 
-const MediumDivider = styled(Divider)`
-  width: 80%;
-  background-color: #ccc;
-  margin-top: 10px;
-  margin-bottom: 10px;
-`;
-
 const Filters = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: ${props => props.mobile ? "column" : "row"};
   width: 80%;
   justify-content: space-evenly;
+  ${props => props.mobile ? "align-items: center;" : ""};
+`;
+
+const FilterDiff = styled(FilterDifficulty)`
+  ${props => props.mobile ? "margin-top: 20px;" : ""};
 `;
 
 export default function MonkeyPage({ monkey }) {
@@ -36,14 +33,14 @@ export default function MonkeyPage({ monkey }) {
     return (
         <>
             <MonkeyContainer monkey={monkey} difficulty={difficulty}/>
-            <MediumDivider/>
-            <RankTitle rank={ rank }  ranks={ monkey.rank[rank] }/>
-            <MediumDivider/>
-            <Filters>
+            <FixedDivider width={ mobile ? 100 : 80 }/>
+            <Filters mobile={mobile}>
                 <FilterRanks rank={ rank } handleRank={ handleRank } />
-                <FilterDifficulty difficulty={difficulty} handleDifficulty={ handleDifficulty }/>
+                <FilterDiff difficulty={difficulty} handleDifficulty={ handleDifficulty } mobile={mobile}/>
             </Filters>
-            <MediumDivider/>
+            <FixedDivider width={ mobile ? 100 : 80 }/>
+            <RankTitle rank={ rank }  ranks={ monkey.rank[rank] }/>
+            <FixedDivider width={ mobile ? 100 : 40 }/>
             <MonkeyDetailed monkey={ monkey } rank={ rank }/>
         </>
     );

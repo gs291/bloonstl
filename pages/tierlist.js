@@ -12,20 +12,10 @@ export default function TierList({ monkeys } ) {
 
 export async function getStaticProps(context) {
     let monkeys = await dataSources().monkeysAPI.getAllMonkeys();
-    let abilities = await dataSources().abilitiesAPI.getAllAbilities();
 
-    let abilitiesByMonkeys = [];
-
-    if (abilities) {
-        while (abilities.length > 0) {
-            abilitiesByMonkeys.push(abilities.splice(0, 15));
-        }
-    }
-
-    if (monkeys && abilitiesByMonkeys) {
-        monkeys = monkeys.map((monkey, idx) => ({
+    if (monkeys) {
+        monkeys = monkeys.map(monkey => ({
             ...monkey,
-            abilities: abilitiesByMonkeys[idx],
             rank: {
                 "s": { "topPath": 0, "midPath": 2, "botPath": 5 },
                 "a": { "topPath": 5, "midPath": 2, "botPath": 0 },

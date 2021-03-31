@@ -3,6 +3,8 @@ import {Card, CardContent} from "@material-ui/core";
 
 import ImageFill from "../image/ImageFill";
 import {getImageUrl, rankColors, siteColors} from "../../lib/utils";
+import Tooltip from "../tooltip/Tooltip";
+import AbilityTooltip from "../tooltip/AbilityTooltip";
 
 const AbilityContainer = styled.div`
   display: flex;
@@ -45,21 +47,23 @@ export default function Ability({ className, ability, monkeyFile, rank, selected
     return (
         <>
             <AbilityContainer className={className}>
-                <CardContainer selected={selected} rank={rank}>
-                    <CardContentContainer>
-                        { monkeyFile && (
-                            <ImageFill
-                                src={ getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier) }
-                                alt={ ability.name }
-                            />
-                        )}
-                        { !monkeyFile && (
-                            <AbilityLevel>
-                                {ability.upgrade_tier + 1}
-                            </AbilityLevel>
-                        )}
-                    </CardContentContainer>
-                </CardContainer>
+                <Tooltip title={<AbilityTooltip ability={ability} />} >
+                    <CardContainer selected={selected} rank={rank}>
+                        <CardContentContainer>
+                            { monkeyFile && (
+                                <ImageFill
+                                    src={ getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier) }
+                                    alt={ ability.name }
+                                />
+                            )}
+                            { !monkeyFile && (
+                                <AbilityLevel>
+                                    {ability.upgrade_tier + 1}
+                                </AbilityLevel>
+                            )}
+                        </CardContentContainer>
+                    </CardContainer>
+                </Tooltip>
             </AbilityContainer>
         </>
     );
