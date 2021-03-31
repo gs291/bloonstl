@@ -19,7 +19,11 @@ const FilterLabel = styled(FormLabel)`
   text-align: center;
 `;
 
-const Difficulty = styled(FormControlLabel)`
+const DifficultyLabel = styled(FormControlLabel)`
+  color: white;
+`;
+
+const Difficulty = styled(Radio)`
   color: white;
 `;
 
@@ -34,15 +38,15 @@ export default function FilterDifficulty({ className }) {
 
     const easyMed = (
         <>
-            <Difficulty value="easy" control={<Radio size="small"/>} label="Easy" />
-            <Difficulty value="medium" control={<Radio size="small" />} label="Medium" />
+            <DifficultyLabel value="easy" control={<Difficulty size="small"/>} label="Easy" />
+            <DifficultyLabel value="medium" control={<Difficulty size="small" />} label="Medium" />
         </>
     );
 
     const hardImp = (
         <>
-            <Difficulty value="hard" control={<Radio size="small"/>} label="Hard" />
-            <Difficulty value="impoppable" control={<Radio size="small"/>} label="Impoppable" />
+            <DifficultyLabel value="hard" control={<Difficulty size="small"/>} label="Hard" />
+            <DifficultyLabel value="impoppable" control={<Difficulty size="small"/>} label="Impoppable" />
         </>
     )
 
