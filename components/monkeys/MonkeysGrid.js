@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
 
-import MonkeysCard from "./MonkeysCard";
+import TowerCard from "../tower/TowerCard";
 import {getMonkeyTypeColor} from "../../lib/utils";
 
 const GridContainer = styled(Grid)`
@@ -34,25 +34,25 @@ export default function MonkeysGrid({ primary, military, magic, support }) {
                     Primary
                 </MonkeyType>
                 <GridItem item>
-                    { primary.map(monkey => <MonkeysCard monkey={monkey} type="Primary" key={monkey.id}/>) }
+                    { primary.map(monkey => <TowerCard tower={monkey} towerType="monkey" key={monkey.id}/>) }
                 </GridItem>
                 <MonkeyType type="Military" item>
                     Military
                 </MonkeyType>
                 <GridItem item>
-                    { military.map(monkey => <MonkeysCard monkey={monkey} type="Military" key={monkey.id}/>) }
+                    { military.map(monkey => <TowerCard tower={monkey} towerType="monkey" key={monkey.id}/>) }
                 </GridItem>
                 <MonkeyType type="Magic" item>
                     Magic
                 </MonkeyType>
                 <GridItem item>
-                    { magic.map(monkey => <MonkeysCard monkey={monkey} type="Magic" key={monkey.id}/>) }
+                    { magic.map(monkey => <TowerCard tower={monkey} towerType="monkey" key={monkey.id}/>) }
                 </GridItem>
                 <MonkeyType name="Support" item>
                     Support
                 </MonkeyType>
                 <GridItem item>
-                    { support.map(monkey => <MonkeysCard monkey={monkey} type="Support" key={monkey.id}/>) }
+                    { support.map(monkey => <TowerCard tower={monkey} towerType="monkey" key={monkey.id}/>) }
                 </GridItem>
             </GridContainer>
         </>

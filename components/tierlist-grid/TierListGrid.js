@@ -4,7 +4,7 @@ import {Grid} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
 import {rankColors} from "../../lib/utils";
-import MonkeysCard from "../monkeys/MonkeysCard";
+import TowerCard from "../tower/TowerCard";
 import {getMobile} from "../../lib/redux/selectors";
 import FiltersTierList from "../filters/FiltersTierList";
 
@@ -54,7 +54,7 @@ export default function TierListGrid({ className, monkeys, heroes }) {
                 </RankTitle>
                 <GridItem item>
                     { monkeys.map(monkey => (
-                        <MonkeysCard monkey={monkey} type={monkey.type} key={monkey.id}/>
+                        <TowerCard tower={monkey} towerType="monkey" key={monkey.id}/>
                     ))}
                 </GridItem>
                 <RankTitle rank="a" item>
