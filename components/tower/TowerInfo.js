@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import {Typography} from "@material-ui/core";
 
-import {goldCost} from "../../lib/utils";
-import {useSelector} from "react-redux";
+import {goldCost, siteColors} from "../../lib/utils";
 import {getDifficulty, getMobile} from "../../lib/redux/selectors";
 
 const TowerText = styled.div`
@@ -11,7 +11,7 @@ const TowerText = styled.div`
 `;
 
 const TowerDetail = styled(Typography)`
-  color: white;
+  color: ${props => props.color ? props.color : "white"};
 `;
 
 export default function TowerInfo({tower}) {
@@ -24,12 +24,17 @@ export default function TowerInfo({tower}) {
                 <TowerDetail variant={mobile ? "h4" : "h2"}>
                     {tower.name}
                 </TowerDetail>
-                <TowerDetail variant="body1">
+                <TowerDetail variant="body1" color={siteColors.tower.description}>
                     {tower.description}
                 </TowerDetail>
-                <TowerDetail variant="caption">
-                    ${goldCost(tower.cost_gold, difficulty)}
+                <TowerDetail variant="caption" color={siteColors.tower.gold}>
+                    In-game cost: ${goldCost(tower.cost_gold, difficulty)}
                 </TowerDetail>
+                { typeof tower.cost_cash === "number" && (
+                    <TowerDetail variant="caption" color={siteColors.tower.cash}>
+                        Cash cost: ${tower.cost_cash > 0 ? tower.cost_cash : "FREE"}
+                    </TowerDetail>
+                )}
             </TowerText>
         </>
     );

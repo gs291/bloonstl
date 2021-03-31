@@ -12,7 +12,16 @@ export default function AbilityTooltip({ className, ability}) {
     return (
         <>
             <Typography variant="caption">
-                { ability.name } ${goldCost(ability.cost_gold, difficulty)}
+                { ability.name && (
+                    <>
+                        { ability.name } ${goldCost(ability.cost_gold, difficulty)}
+                    </>
+                )}
+                { !ability.name && (
+                    <>
+                        { ability.description }
+                    </>
+                )}
             </Typography>
         </>
     );

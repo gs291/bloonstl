@@ -13,14 +13,14 @@ import FilterDifficulty from "../filters/FilterDifficulty";
 
 const Filters = styled.div`
   display: flex;
-  flex-direction: ${props => props.mobile ? "column" : "row"};
-  width: 80%;
+  flex-direction: ${props => props.mobile ? "column-reverse" : "row"};
+  width: ${props => props.mobile ? 100 : 80}%;
   justify-content: space-evenly;
-  ${props => props.mobile ? "align-items: center;" : ""};
+  align-items: center;
 `;
 
 const FilterDiff = styled(FilterDifficulty)`
-  ${props => props.mobile ? "margin-top: 20px;" : ""};
+  ${props => props.mobile ? "margin-bottom: 10px;" : ""};
 `;
 
 export default function MonkeyPage({ monkey }) {
