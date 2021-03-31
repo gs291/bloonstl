@@ -15,6 +15,7 @@ const FormRow = styled.div`
 
 const FilterLabel = styled(FormLabel)`
   color: white;
+  text-align: center;
 `;
 
 export default function FilterDifficulty({ className, difficulty, handleDifficulty }) {
