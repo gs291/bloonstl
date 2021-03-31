@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {Tooltip as MUITooltip, ClickAwayListener} from "@material-ui/core";
 
-import {getMobile} from "../../lib/redux/selectors";
 import {siteColors} from "../../lib/utils";
+import {getMobile} from "../../lib/redux/selectors";
 
 //https://stackoverflow.com/questions/59934683/style-material-ui-tooltip-using-emotion-styled
 const StyledTooltip = styled(({ className, ...other }) => (
@@ -13,7 +13,8 @@ const StyledTooltip = styled(({ className, ...other }) => (
   background-color: ${siteColors.background.tooltip.dark};
 `;
 
-export default function Tooltip({ className, children, title}) {
+export default function Tooltip({ className, children, title, upgradeTier}) {
+    let placement = "top";
     const mobile = useSelector(getMobile);
     const [open, setOpen] = useState(false);
 
@@ -25,6 +26,9 @@ export default function Tooltip({ className, children, title}) {
         setOpen(true);
     };
 
+    if      (upgradeTier === 0) { placement = "top-start"; }
+    else if (upgradeTier === 4) { placement = "top-end"; }
+
     return (
         <>
             { !mobile && (
@@ -34,7 +38,7 @@ export default function Tooltip({ className, children, title}) {
                         arrow
                         interactive
                         leaveDelay={100}
-                        placement="top"
+                        placement={placement}
                     >
                         <div>
                             { children }
@@ -54,7 +58,7 @@ export default function Tooltip({ className, children, title}) {
                                 disableHoverListener
                                 disableTouchListener
                                 title={title}
-                                placement="top"
+                                placement={placement}
                                 arrow
                             >
                                 <div onClick={handleTooltipOpen}>
