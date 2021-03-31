@@ -27,7 +27,7 @@ export default function MonkeyContainer({monkey, difficulty}) {
                 <Icon tower={ monkey } />
                 <VerticalDivider flexItem orientation="vertical" />
                 <MonkeyText>
-                    <Typography variant="h2">
+                    <Typography variant="h3">
                         {monkey.name}
                     </Typography>
                     <Typography variant="body1">
