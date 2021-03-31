@@ -9,6 +9,7 @@ import {getMobile} from "../../lib/redux/selectors";
 import RankTitle from "../../components/monkey/RankTitle";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyContainer from "../../components/monkey/MonkeyContainer";
+import {getMonkeyTypeColor} from "../../lib/utils";
 
 const Filters = styled.div`
   display: flex;
@@ -28,17 +29,19 @@ export default function MonkeyPage({ monkey }) {
 
     const handleRank = (e, r) => setRank(r);
 
+    const dividerBackgroundColor = getMonkeyTypeColor(monkey.type);
+
     return (
         <>
             <MonkeyContainer monkey={monkey}/>
-            <FixedDivider width={ mobile ? 100 : 80 }/>
+            <FixedDivider width={ mobile ? 100 : 80 } backgroundColor={dividerBackgroundColor}/>
             <Filters mobile={mobile}>
                 <FilterRanks rank={ rank } handleRank={ handleRank } />
                 <FilterDiff  mobile={mobile}/>
             </Filters>
-            <FixedDivider width={ mobile ? 100 : 80 }/>
+            <FixedDivider width={ mobile ? 100 : 80 } backgroundColor={dividerBackgroundColor}/>
             <RankTitle rank={ rank }  ranks={ monkey.rank[rank] }/>
-            <FixedDivider width={ mobile ? 100 : 40 }/>
+            <FixedDivider width={ mobile ? 100 : 40 } backgroundColor={dividerBackgroundColor}/>
             <MonkeyDetailed monkey={ monkey } rank={ rank }/>
         </>
     );
