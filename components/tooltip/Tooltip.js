@@ -26,8 +26,8 @@ export default function Tooltip({ className, children, title, upgradeTier}) {
         setOpen(true);
     };
 
-    if      (upgradeTier === 0) { placement = "top-start"; }
-    else if (upgradeTier === 4) { placement = "top-end"; }
+    if      (upgradeTier % 5 === 0) { placement = "top-start"; }
+    else if ((upgradeTier + 1) % 5 === 0) { placement = "top-end"; }
 
     return (
         <>
