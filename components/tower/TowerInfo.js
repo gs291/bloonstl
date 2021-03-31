@@ -11,7 +11,7 @@ const TowerText = styled.div`
 `;
 
 const TowerDetail = styled(Typography)`
-  color: ${props => props.color ? props.color : "white"};
+  color: ${props => props.textcolor ? props.textcolor : "white"};
 `;
 
 export default function TowerInfo({tower}) {
@@ -24,14 +24,14 @@ export default function TowerInfo({tower}) {
                 <TowerDetail variant={mobile ? "h4" : "h2"}>
                     {tower.name}
                 </TowerDetail>
-                <TowerDetail variant="body1" color={siteColors.tower.description}>
+                <TowerDetail variant="body1" textcolor={siteColors.tower.description}>
                     {tower.description}
                 </TowerDetail>
-                <TowerDetail variant="caption" color={siteColors.tower.gold}>
+                <TowerDetail variant="caption" textcolor={siteColors.tower.gold}>
                     In-game cost: ${goldCost(tower.cost_gold, difficulty)}
                 </TowerDetail>
                 { typeof tower.cost_cash === "number" && (
-                    <TowerDetail variant="caption" color={siteColors.tower.cash}>
+                    <TowerDetail variant="caption" textcolor={siteColors.tower.cash}>
                         Cash cost: ${tower.cost_cash > 0 ? tower.cost_cash : "FREE"}
                     </TowerDetail>
                 )}
