@@ -19,6 +19,10 @@ const FilterLabel = styled(FormLabel)`
   text-align: center;
 `;
 
+const Difficulty = styled(FormControlLabel)`
+  color: white;
+`;
+
 export default function FilterDifficulty({ className }) {
     const mobile = useSelector(getMobile);
     const difficulty = useSelector(getDifficulty);
@@ -30,15 +34,15 @@ export default function FilterDifficulty({ className }) {
 
     const easyMed = (
         <>
-            <FormControlLabel value="easy" control={<Radio size="small"/>} label="Easy" />
-            <FormControlLabel value="medium" control={<Radio size="small" />} label="Medium" />
+            <Difficulty value="easy" control={<Radio size="small"/>} label="Easy" />
+            <Difficulty value="medium" control={<Radio size="small" />} label="Medium" />
         </>
     );
 
     const hardImp = (
         <>
-            <FormControlLabel value="hard" control={<Radio size="small"/>} label="Hard" />
-            <FormControlLabel value="impoppable" control={<Radio size="small"/>} label="Impoppable" />
+            <Difficulty value="hard" control={<Radio size="small"/>} label="Hard" />
+            <Difficulty value="impoppable" control={<Radio size="small"/>} label="Impoppable" />
         </>
     )
 

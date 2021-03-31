@@ -24,7 +24,6 @@ const Nav = styled(Navbar)`
 const Main = styled.main`
   flex: 1;
   background-color: ${ siteColors.background.main.dark };
-  color: white;
   padding-top: 15px;
   padding-bottom: 10px;
 `;
