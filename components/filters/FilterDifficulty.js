@@ -20,28 +20,39 @@ const FilterLabel = styled(FormLabel)`
 
 export default function FilterDifficulty({ className, difficulty, handleDifficulty }) {
     const mobile = useSelector(getMobile);
+
+    const easyMed = (
+        <>
+            <FormControlLabel value="easy" control={<Radio size="small"/>} label="Easy" />
+            <FormControlLabel value="medium" control={<Radio size="small" />} label="Medium" />
+        </>
+    );
+
+    const hardImp = (
+        <>
+            <FormControlLabel value="hard" control={<Radio size="small"/>} label="Hard" />
+            <FormControlLabel value="impoppable" control={<Radio size="small"/>} label="Impoppable" />
+        </>
+    )
+
     return (
         <>
-            <FormControl component="fieldset">
+            <FormControl component="fieldset" className={className}>
                 <FilterLabel focused={false}>Difficulty Prices:</FilterLabel>
                 <RadioGroup value={difficulty} onChange={handleDifficulty}>
                     { !mobile && (
                         <FormRow>
-                            <FormControlLabel value="easy" control={<Radio size="small"/>} label="Easy" />
-                            <FormControlLabel value="medium" control={<Radio size="small" />} label="Medium" />
-                            <FormControlLabel value="hard" control={<Radio size="small"/>} label="Hard" />
-                            <FormControlLabel value="impoppable" control={<Radio size="small"/>} label="Impoppable" />
+                            { easyMed }
+                            { hardImp }
                         </FormRow>
                     )}
                     { mobile && (
                         <>
                             <FormRow>
-                                <FormControlLabel value="easy" control={<Radio size="small"/>} label="Easy" />
-                                <FormControlLabel value="medium" control={<Radio size="small" />} label="Medium" />
+                                { easyMed }
                             </FormRow>
                             <FormRow>
-                                <FormControlLabel value="hard" control={<Radio size="small"/>} label="Hard" />
-                                <FormControlLabel value="impoppable" control={<Radio size="small"/>} label="Impoppable" />
+                                { hardImp }
                             </FormRow>
                         </>
                     )}
