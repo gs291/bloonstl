@@ -1,9 +1,8 @@
 import Head from "next/head";
 import {useEffect} from "react";
 import styled from "@emotion/styled";
-import { useDispatch } from 'react-redux';
-import { Container } from "@material-ui/core";
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useDispatch } from "react-redux";
+import { Container, useMediaQuery } from "@material-ui/core";
 
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";

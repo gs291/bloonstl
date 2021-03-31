@@ -1,12 +1,11 @@
-import {useState} from "react";
 import {useSelector} from "react-redux";
 
 import HeroDetailed from "./HeroDetailed";
-import {getMobile} from "../../lib/redux/selectors";
-import FilterDifficulty from "../filters/FilterDifficulty";
-import FixedDivider from "../divider/FixedDivider";
 import {getHeroColor} from "../../lib/utils";
+import FixedDivider from "../divider/FixedDivider";
+import {getMobile} from "../../lib/redux/selectors";
 import TowerContainer from "../tower/TowerContainer";
+import FilterDifficulty from "../filters/FilterDifficulty";
 
 export default function HeroPage({ hero }) {
     const mobile = useSelector(getMobile);

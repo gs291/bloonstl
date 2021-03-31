@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 
 import NavLink from "./NavLink";
-import {useSelector} from "react-redux";
+import MenuButton from "./MenuButton";
 import {siteLinks} from "../../lib/utils";
 import {getMobile} from "../../lib/redux/selectors";
-import MenuButton from "./MenuButton";
 
 const NavSection = styled.div`
   flex: 1;
