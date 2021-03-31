@@ -12,10 +12,10 @@ import MonkeyContainer from "../../components/monkey/MonkeyContainer";
 
 const Filters = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: ${props => props.mobile ? "column" : "row"};
   width: 80%;
   justify-content: space-evenly;
+  ${props => props.mobile ? "align-items: center;" : ""};
 `;
 
 export default function MonkeyPage({ monkey }) {
@@ -30,7 +30,7 @@ export default function MonkeyPage({ monkey }) {
         <>
             <MonkeyContainer monkey={monkey} difficulty={difficulty}/>
             <FixedDivider width={ mobile ? 100 : 80 }/>
-            <Filters>
+            <Filters mobile={mobile}>
                 <FilterRanks rank={ rank } handleRank={ handleRank } />
                 <FilterDifficulty difficulty={difficulty} handleDifficulty={ handleDifficulty }/>
             </Filters>
