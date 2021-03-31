@@ -6,6 +6,7 @@ import {Tooltip as MUITooltip, ClickAwayListener} from "@material-ui/core";
 import {getMobile} from "../../lib/redux/selectors";
 import {siteColors} from "../../lib/utils";
 
+//https://stackoverflow.com/questions/59934683/style-material-ui-tooltip-using-emotion-styled
 const StyledTooltip = styled(({ className, ...other }) => (
     <MUITooltip classes={{ tooltip: className }} {...other} />
 ))`
@@ -54,6 +55,7 @@ export default function Tooltip({ className, children, title}) {
                                 disableTouchListener
                                 title={title}
                                 placement="top"
+                                arrow
                             >
                                 <div onClick={handleTooltipOpen}>
                                     { children }
