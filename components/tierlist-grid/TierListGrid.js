@@ -16,6 +16,7 @@ const FilterContainer = styled.div`
 `;
 
 const RankTitle = styled(Grid)`
+  margin-top: 20px;
   padding-top: 5px;
   padding-bottom: 5px;
   
@@ -28,6 +29,8 @@ const GridItem = styled(Grid)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  border: 2px solid ${props => rankColors(props.rank)};
 `;
 
 export default function TierListGrid({ className, tiers }) {
@@ -52,7 +55,7 @@ export default function TierListGrid({ className, tiers }) {
                 <RankTitle rank="s" item>
                     S Tier
                 </RankTitle>
-                <GridItem item>
+                <GridItem rank="s" item>
                     <Grid container spacing={2}>
                         { tiers.s.map(tower => (
                             <Grid xs={gridSpacing} item key={tower.t_id}>
@@ -64,7 +67,7 @@ export default function TierListGrid({ className, tiers }) {
                 <RankTitle rank="a" item>
                     A Tier
                 </RankTitle>
-                <GridItem item>
+                <GridItem rank="a" item>
                     <Grid container spacing={2}>
                         { tiers.a.map(tower => (
                             <Grid xs={gridSpacing} item key={tower.t_id}>
@@ -76,7 +79,7 @@ export default function TierListGrid({ className, tiers }) {
                 <RankTitle rank="b" item>
                     B Tier
                 </RankTitle>
-                <GridItem item>
+                <GridItem rank="b" item>
                     <Grid container spacing={2}>
                         { tiers.b.map(tower => (
                             <Grid xs={gridSpacing} item key={tower.t_id}>
