@@ -1,13 +1,14 @@
 import Head from "next/head";
 import {useEffect} from "react";
 import styled from "@emotion/styled";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { Container, useMediaQuery } from "@material-ui/core";
 
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
 import {siteColors} from "../../lib/utils";
 import NavDrawer from "../navbar/NavDrawer";
+import {getMobile} from "../../lib/redux/selectors";
 import { updateMobile } from "../../lib/redux/actions";
 
 const PageContainer = styled.div`
@@ -24,7 +25,7 @@ const Main = styled.main`
   flex: 1;
   background-color: ${ siteColors.background.main.dark };
   padding-top: 15px;
-  padding-right: 10px;
+  ${props => !props.mobile ? "padding-right: 10px;" : ""}
   padding-bottom: 30px;
 `;
 
@@ -44,6 +45,7 @@ const Foot = styled(Footer)`
 
 export default function Page(props) {
     const dispatch = useDispatch();
+    const mobile = useSelector(getMobile);
     const screen = useMediaQuery('(max-width: 960px)');
     useEffect(() => {
         dispatch(updateMobile(screen));
@@ -58,7 +60,7 @@ export default function Page(props) {
 
             <Nav />
             <NavDrawer />
-            <Main>
+            <Main mobile={mobile}>
                 <MainContainer maxWidth="lg">
                     { props.children }
                 </MainContainer>
