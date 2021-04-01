@@ -66,7 +66,11 @@ export default function TierListGrid({ className, monkeys, heroes }) {
                 </RankTitle>
                 <GridItem item>
                     <Grid container spacing={2}>
-
+                        { heroes.map(hero => (
+                            <Grid xs={gridSpacing} item>
+                                <TowerCard tower={hero} towerType="hero" key={hero.id}/>
+                            </Grid>
+                        ))}
                     </Grid>
                 </GridItem>
                 <RankTitle rank="b" item>

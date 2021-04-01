@@ -1,17 +1,19 @@
 import {dataSources} from "../lib/mysql/db";
 import TierListGrid from "../components/tierlist-grid/TierListGrid";
 
-export default function TierList({ monkeys } ) {
+export default function TierList({ monkeys, heroes } ) {
     monkeys = JSON.parse(monkeys);
+    heroes = JSON.parse(heroes);
     return (
         <>
-            <TierListGrid monkeys={monkeys}/>
+            <TierListGrid monkeys={monkeys} heroes={heroes}/>
         </>
     );
 }
 
 export async function getStaticProps(context) {
     let monkeys = await dataSources().monkeysAPI.getAllMonkeys();
+    let heroes = await dataSources().heroesAPI.getAllHeroes();
 
     if (monkeys) {
         monkeys = monkeys.map(monkey => ({
@@ -26,6 +28,7 @@ export async function getStaticProps(context) {
 
     return {
         props: {
+            heroes: JSON.stringify(heroes),
             monkeys: JSON.stringify(monkeys)
         }
     }
