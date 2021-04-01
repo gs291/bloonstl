@@ -69,25 +69,25 @@ INSERT INTO `Towers` VALUES (NULL, NULL, @bomb_shooter);
 SELECT id INTO @tower_bomb_shooter FROM Towers WHERE monkey_id=@bomb_shooter;
 
 --          Top Path
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 0, 0, 'Bigger Bombs', 'Shoots larger bombs, they have a larger blast area and more popping power.', 350, 200);
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 0, 1, 'Heavy Bombs', 'Heavy duty bombs can smash through 2 layers of Bloon at once.', 650, 1000);
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 0, 2, 'Really Big Bombs', 'Huge bombs deal greater damage in a large area and allow Frags to pop more Bloons.', 1200, 3000);
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 0, 3, 'Bloon Impact', 'Explosions become so violent Bloons are stunned for a short time when they are hit.', 3600, 10000);
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 0, 4, 'Bloon Crush', 'Bloon shattering explosions do massive damage and can stun MOAB-Class Bloons.', 55000, 37500);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 0, 0, 'Bigger Bombs', 'Shoots larger bombs, they have a larger blast area and more popping power.', 350, 200);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 0, 1, 'Heavy Bombs', 'Heavy duty bombs can smash through 2 layers of Bloon at once.', 650, 1000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 0, 2, 'Really Big Bombs', 'Huge bombs deal greater damage in a large area and allow Frags to pop more Bloons.', 1200, 3000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 0, 3, 'Bloon Impact', 'Explosions become so violent Bloons are stunned for a short time when they are hit.', 3600, 10000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 0, 4, 'Bloon Crush', 'Bloon shattering explosions do massive damage and can stun MOAB-Class Bloons.', 55000, 37500);
 
 --          Middle Path
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 1, 0, 'Faster Reload', 'Reloads 20% faster.', 250, 180);
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 1, 1, 'Missile Launcher', 'Shoots missiles instead of bombs, missiles fly faster with longer range', 400, 640);
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 1, 2, 'MOAB Mauler', 'MOAB Maulers do much more damage to MOAB-Class Bloons.', 900, 2700);
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, true, 1, 3, 'MOAB Assassin', 'Assassinate MOAB ability: Special missile flies out and does massive damage to MOAB-Class Bloons. Regular attack range and MOAB-class damage also increased.', 3200, 10000);
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, true, 1, 4, 'MOAB Eliminator', 'Assassinate ability does 6x damage with a shorter cooldown.', 25000, 35000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 1, 0, 'Faster Reload', 'Reloads 20% faster.', 250, 180);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 1, 1, 'Missile Launcher', 'Shoots missiles instead of bombs, missiles fly faster with longer range', 400, 640);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 1, 2, 'MOAB Mauler', 'MOAB Maulers do much more damage to MOAB-Class Bloons.', 900, 2700);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, true, 1, 3, 'MOAB Assassin', 'Assassinate MOAB ability: Special missile flies out and does massive damage to MOAB-Class Bloons. Regular attack range and MOAB-class damage also increased.', 3200, 10000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, true, 1, 4, 'MOAB Eliminator', 'Assassinate ability does 6x damage with a shorter cooldown.', 25000, 35000);
 
 --          Bottom Path
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 2, 0, 'Extra Range', 'Increases attack range', 200, 150);
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 2, 1, 'Frag Bombs', 'Explosions throw out sharp fragments that can pop more Bloons including Black Bloons.', 300, 600);
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 2, 2, 'Cluster Bombs', 'Throws out secondary bombs instead of sharp fragments every shot.', 800, 2500);
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 2, 3, 'Recursive Cluster', 'Every second shot the cluster bombs send out more cluster bombs for even more destruction.', 2800, 10000);
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 2, 4, 'Bomb Blitz', 'Deals much more damage and gains the passive Bomb Storm Ability - when lives are lost, the Bomb Storm automatically triggers which destroys all but the biggest of Bloons.', 35000, 25000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 2, 0, 'Extra Range', 'Increases attack range', 200, 150);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 2, 1, 'Frag Bombs', 'Explosions throw out sharp fragments that can pop more Bloons including Black Bloons.', 300, 600);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 2, 2, 'Cluster Bombs', 'Throws out secondary bombs instead of sharp fragments every shot.', 800, 2500);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 2, 3, 'Recursive Cluster', 'Every second shot the cluster bombs send out more cluster bombs for even more destruction.', 2800, 10000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 2, 4, 'Bomb Blitz', 'Deals much more damage and gains the passive Bomb Storm Ability - when lives are lost, the Bomb Storm automatically triggers which destroys all but the biggest of Bloons.', 35000, 25000);
 
 
 

@@ -1,12 +1,12 @@
 -- MySQL bloonstl initial.sql
 -- Gregory Sanchez
 
+DROP TABLE IF EXISTS TowerRanks;
+DROP TABLE IF EXISTS AbilityRanks;
 DROP TABLE IF EXISTS Abilities;
 DROP TABLE IF EXISTS Towers;
 DROP TABLE IF EXISTS Monkeys;
 DROP TABLE IF EXISTS Heroes;
-DROP TABLE IF EXISTS TowerRanks;
-DROP TABLE IF EXISTS AbilityRanks;
 
 CREATE TABLE `Monkeys` (
                            `id` INT(11) AUTO_INCREMENT NOT NULL,
