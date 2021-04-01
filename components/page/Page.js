@@ -24,7 +24,8 @@ const Main = styled.main`
   flex: 1;
   background-color: ${ siteColors.background.main.dark };
   padding-top: 15px;
-  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-bottom: 30px;
 `;
 
 const MainContainer = styled(Container)`
