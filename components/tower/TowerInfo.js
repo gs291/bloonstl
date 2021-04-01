@@ -32,7 +32,7 @@ export default function TowerInfo({tower}) {
                 </TowerDetail>
                 { typeof tower.cost_cash === "number" && (
                     <TowerDetail variant="caption" textcolor={siteColors.tower.cash}>
-                        Cash cost: ${tower.cost_cash > 0 ? tower.cost_cash : "FREE"}
+                        Cash cost: {tower.cost_cash > 0 ? `\$${tower.cost_cash}` : "FREE"}
                     </TowerDetail>
                 )}
             </TowerText>
