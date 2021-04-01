@@ -30,7 +30,7 @@ const GridItem = styled(Grid)`
   flex-direction: row;
   flex-wrap: wrap;
 
-  border: 2px solid ${props => rankColors(props.rank)};
+  border: 4px solid ${props => rankColors(props.rank)};
 `;
 
 export default function TierListGrid({ className, tiers }) {
