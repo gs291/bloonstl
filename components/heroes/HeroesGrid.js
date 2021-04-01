@@ -1,10 +1,9 @@
 import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
+import {useSelector} from "react-redux";
 
 import TowerCard from "../tower/TowerCard";
-import {useSelector} from "react-redux";
 import {getMobile} from "../../lib/redux/selectors";
-import {getMonkeyTypeColor} from "../../lib/utils";
 
 const HeroTitle = styled(Grid)`
   padding-top: 5px;
