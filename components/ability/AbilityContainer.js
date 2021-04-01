@@ -1,5 +1,5 @@
-import UpgradeArrow from "./UpgradeArrow";
 import Ability from "./Ability";
+import UpgradeArrow from "./UpgradeArrow";
 
 export default function AbilityContainer ({ability, monkeyFile, rank, selected}) {
 

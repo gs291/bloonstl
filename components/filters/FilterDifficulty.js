@@ -4,9 +4,10 @@ import {FormLabel,
     FormControlLabel,
     Radio,
     RadioGroup} from "@material-ui/core";
+import {useDispatch, useSelector} from "react-redux";
 
-import {useSelector} from "react-redux";
-import {getMobile} from "../../lib/redux/selectors";
+import {updateDifficulty} from "../../lib/redux/actions";
+import {getDifficulty, getMobile} from "../../lib/redux/selectors";
 
 const FormRow = styled.div`
   display: flex;
@@ -18,20 +19,34 @@ const FilterLabel = styled(FormLabel)`
   text-align: center;
 `;
 
-export default function FilterDifficulty({ className, difficulty, handleDifficulty }) {
+const DifficultyLabel = styled(FormControlLabel)`
+  color: white;
+`;
+
+const Difficulty = styled(Radio)`
+  color: white;
+`;
+
+export default function FilterDifficulty({ className }) {
     const mobile = useSelector(getMobile);
+    const difficulty = useSelector(getDifficulty);
+    const dispatch = useDispatch();
+
+    const handleDifficulty = (e) => {
+        dispatch(updateDifficulty(e.target.value));
+    }
 
     const easyMed = (
         <>
-            <FormControlLabel value="easy" control={<Radio size="small"/>} label="Easy" />
-            <FormControlLabel value="medium" control={<Radio size="small" />} label="Medium" />
+            <DifficultyLabel value="easy" control={<Difficulty size="small"/>} label="Easy" />
+            <DifficultyLabel value="medium" control={<Difficulty size="small" />} label="Medium" />
         </>
     );
 
     const hardImp = (
         <>
-            <FormControlLabel value="hard" control={<Radio size="small"/>} label="Hard" />
-            <FormControlLabel value="impoppable" control={<Radio size="small"/>} label="Impoppable" />
+            <DifficultyLabel value="hard" control={<Difficulty size="small"/>} label="Hard" />
+            <DifficultyLabel value="impoppable" control={<Difficulty size="small"/>} label="Impoppable" />
         </>
     )
 

@@ -2,26 +2,28 @@ import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
 
 import TowerCard from "../tower/TowerCard";
+import {useSelector} from "react-redux";
+import {getMobile} from "../../lib/redux/selectors";
 
-const GridContainer = styled(Grid)`
-  display: flex;
-  flex-direction: column;
-`;
-
-const GridItem = styled(Grid)`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
 
 export default function HeroesGrid({ heroes }) {
+    const mobile = useSelector(getMobile);
+
+    let gridSpacing = 3;
+    if (mobile) {
+        gridSpacing = 6;
+    }
+
     return (
         <>
-            <GridContainer container spacing={2}>
-                <GridItem item>
-                    { heroes.map(hero => <TowerCard tower={hero} towerType="hero" key={hero.id}/>) }
-                </GridItem>
-            </GridContainer>
+            <Grid container spacing={2}>
+                { heroes.map(hero => (
+                        <Grid xs={gridSpacing} item>
+                            <TowerCard tower={hero} towerType="hero" key={hero.id}/>
+                        </Grid>
+                    )
+                )}
+            </Grid>
         </>
     );
 }

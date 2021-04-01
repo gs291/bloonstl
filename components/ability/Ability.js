@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import {Card, CardContent} from "@material-ui/core";
 
-import ImageFill from "../image/ImageFill";
-import {getImageUrl, rankColors, siteColors} from "../../lib/utils";
 import Tooltip from "../tooltip/Tooltip";
+import ImageFill from "../image/ImageFill";
 import AbilityTooltip from "../tooltip/AbilityTooltip";
+import {getImageUrl, rankColors, siteColors} from "../../lib/utils";
 
 const AbilityContainer = styled.div`
   display: flex;
@@ -47,7 +47,7 @@ export default function Ability({ className, ability, monkeyFile, rank, selected
     return (
         <>
             <AbilityContainer className={className}>
-                <Tooltip title={<AbilityTooltip ability={ability} />} >
+                <Tooltip title={<AbilityTooltip ability={ability} />} upgradeTier={ability.upgrade_tier}>
                     <CardContainer selected={selected} rank={rank}>
                         <CardContentContainer>
                             { monkeyFile && (
