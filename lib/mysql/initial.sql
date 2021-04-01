@@ -5,6 +5,8 @@ DROP TABLE IF EXISTS Abilities;
 DROP TABLE IF EXISTS Towers;
 DROP TABLE IF EXISTS Monkeys;
 DROP TABLE IF EXISTS Heroes;
+DROP TABLE IF EXISTS TowerRanks;
+DROP TABLE IF EXISTS AbilityRanks;
 
 CREATE TABLE `Monkeys` (
                            `id` INT(11) AUTO_INCREMENT NOT NULL,
@@ -50,4 +52,25 @@ CREATE TABLE `Abilities` (
                              `cost_xp` MEDIUMINT(6) NOT NULL,
                              PRIMARY KEY (`id`),
                              CONSTRAINT `ab_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `TowerRanks` (
+                             `id` INT(11) AUTO_INCREMENT NOT NULL,
+                             `tower_id` INT(11) NOT NULL,
+                             `tier` VARCHAR(1) NOT NULL,
+                             `votes` INT(11) NOT NULL,
+                             PRIMARY KEY (`id`),
+                             CONSTRAINT `twr_rnk_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `AbilityRanks` (
+                         `id` INT(11) AUTO_INCREMENT NOT NULL,
+                         `tower_id` INT(11) NOT NULL,
+                         `tier` VARCHAR(1) NOT NULL,
+                         `top_path` TINYINT(1) NOT NULL,
+                         `middle_path` TINYINT(1) NOT NULL,
+                         `bottom_path` TINYINT(1) NOT NULL,
+                         `votes` INT(11) NOT NULL,
+                         PRIMARY KEY (`id`),
+                         CONSTRAINT `ab_rnk_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

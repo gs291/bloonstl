@@ -63,10 +63,10 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 2, 4, 'MOA
 
 
 --      Monkey - Bomb Shooter
-INSERT INTO `Monkeys` VALUES (NULL, 'Bomb Tower', 'Primary', 'Launches a powerful bom that the Bloons. Slow rate of fire but afect a radius around the explosion', 600, 'bomb-shooter.png');
-SELECT id INTO @bomb_tower FROM Monkeys WHERE name='Bomb Tower';
-INSERT INTO `Towers` VALUES (NULL, NULL, @bomb_tower);
-SELECT id INTO @tower_bomb_tower FROM Towers WHERE monkey_id=@bomb_tower;
+INSERT INTO `Monkeys` VALUES (NULL, 'Bomb Shooter', 'Primary', 'Launches a powerful bom that the Bloons. Slow rate of fire but afect a radius around the explosion', 600, 'bomb-shooter.png');
+SELECT id INTO @bomb_shooter FROM Monkeys WHERE name='Bomb Shooter';
+INSERT INTO `Towers` VALUES (NULL, NULL, @bomb_shooter);
+SELECT id INTO @tower_bomb_shooter FROM Towers WHERE monkey_id=@bomb_shooter;
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_tower, false, 0, 0, 'Bigger Bombs', 'Shoots larger bombs, they have a larger blast area and more popping power.', 350, 200);
@@ -971,3 +971,43 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 16, '', 'UCAV da
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 17, '', 'Drone damage increased.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 18, '', 'Etienne now controls four drones all the time!', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 19, '', 'Perma-UCAV: Surveillance drone becomes permanent UCAV. When activated becomes more powerful for a short time and can pop all Bloon types.', 0, 0);
+
+
+-- Tower Ranks - Monkeys
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_dart_monkey, 'b', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_boomerang_monkey, 'b', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_bomb_shooter, 'b', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_tack_shooter, 'a', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_ice_monkey, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_glue_gunner, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_sniper_monkey, 'b', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_monkey_sub, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_monkey_buccaneer, 'a', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_monkey_ace, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_heli_pilot, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_mortar_monkey, 'b', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_dartling_gunner, 'a', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_wizard_monkey, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_super_monkey, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_ninja_monkey, 'a', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_alchemist, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_druid, 'a', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_banana_farm, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_spike_factory, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_monkey_village, 'a', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_engineer_monkey, 'b', 0);
+
+
+-- Tower Ranks - Heroes
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_quincy, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_gwendolin, 'b', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_striker_jones, 'b', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_obyn_greenfoot, 'a', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_sauda, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_captain_churchill, 'a', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_benjamin, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_ezili, 'a', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_pat_fusty, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_adora, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_admiral_brickell, 'b', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_etienne, 'a', 0);
