@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 import {Card, CardContent} from "@material-ui/core";
-import OfflineBoltOutlinedIcon from '@material-ui/icons/OfflineBoltOutlined';
 import OfflineBoltIcon from '@material-ui/icons/OfflineBolt';
-import OfflineBoltTwoToneIcon from '@material-ui/icons/OfflineBoltTwoTone';
 
 import Tooltip from "../tooltip/Tooltip";
 import ImageFill from "../image/ImageFill";
