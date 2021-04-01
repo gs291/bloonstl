@@ -30,7 +30,7 @@ const GridItem = styled(Grid)`
   flex-wrap: wrap;
 `;
 
-export default function TierListGrid({ className, monkeys, heroes }) {
+export default function TierListGrid({ className, tiers }) {
     const mobile = useSelector(getMobile);
     const [state, setState] = useState({
         isDetailed: false
@@ -54,9 +54,9 @@ export default function TierListGrid({ className, monkeys, heroes }) {
                 </RankTitle>
                 <GridItem item>
                     <Grid container spacing={2}>
-                        { monkeys.map(monkey => (
-                            <Grid xs={gridSpacing} item>
-                                <TowerCard tower={monkey} towerType="monkey" key={monkey.id}/>
+                        { tiers.s.map(tower => (
+                            <Grid xs={gridSpacing} item key={tower.t_id}>
+                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}/>
                             </Grid>
                         ))}
                     </Grid>
@@ -66,9 +66,9 @@ export default function TierListGrid({ className, monkeys, heroes }) {
                 </RankTitle>
                 <GridItem item>
                     <Grid container spacing={2}>
-                        { heroes.map(hero => (
-                            <Grid xs={gridSpacing} item>
-                                <TowerCard tower={hero} towerType="hero" key={hero.id}/>
+                        { tiers.a.map(tower => (
+                            <Grid xs={gridSpacing} item key={tower.t_id}>
+                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}/>
                             </Grid>
                         ))}
                     </Grid>
@@ -78,7 +78,11 @@ export default function TierListGrid({ className, monkeys, heroes }) {
                 </RankTitle>
                 <GridItem item>
                     <Grid container spacing={2}>
-
+                        { tiers.b.map(tower => (
+                            <Grid xs={gridSpacing} item key={tower.t_id}>
+                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}/>
+                            </Grid>
+                        ))}
                     </Grid>
                 </GridItem>
             </Grid>
