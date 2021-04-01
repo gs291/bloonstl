@@ -20,8 +20,8 @@ export default function TierList({s, a, b}) {
 }
 
 export async function getStaticProps(context) {
-    let heroes = await dataSources().heroesAPI.getAllHeroesWithRanks();
-    let monkeys = await dataSources().monkeysAPI.getAllMonkeysWithRanks();
+    let heroes = await dataSources().heroesAPI.getAllHeroesWithTiers();
+    let monkeys = await dataSources().monkeysAPI.getAllMonkeysWithTiers();
 
     let sTier = [], aTier = [], bTier = [];
 
