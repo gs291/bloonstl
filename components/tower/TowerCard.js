@@ -26,7 +26,6 @@ const MLink = styled(MUILink)`
 const TowerName = styled(Typography)`
   color: white;
   text-align: center;
-  text-decoration: none;
 `;
 
 export default function TowerCard({tower, towerType, showCardBorder}) {
