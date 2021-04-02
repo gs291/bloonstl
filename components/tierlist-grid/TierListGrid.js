@@ -5,15 +5,15 @@ import {useSelector} from "react-redux";
 
 import GridTitle from "../grid/GridTitle";
 import GridItems from "../grid/GridItems";
-import {rankColors} from "../../lib/utils";
 import TowerCard from "../tower/TowerCard";
 import {getMobile} from "../../lib/redux/selectors";
+import {rankColors, siteColors} from "../../lib/utils";
 import FiltersTierList from "../filters/FiltersTierList";
 
 
 const FilterContainer = styled.div`
   margin: 10px 0;
-  background-color: #1D1D1D;
+  background-color: ${ siteColors.background.filters.dark };
   color: white;
 `;
 
