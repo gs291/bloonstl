@@ -53,13 +53,9 @@ export default function Page(props) {
 
     return (
         <PageContainer>
-            <Head>
-                <title>{ props.title && props.title + " - " }BloonsTL</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
             <Nav />
             <NavDrawer />
+
             <Main mobile={mobile}>
                 <MainContainer maxWidth="lg">
                     { props.children }

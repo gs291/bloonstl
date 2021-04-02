@@ -1,4 +1,5 @@
 import {dataSources} from "../lib/mysql/db";
+import Header from "../components/page/Header";
 import TierListGrid from "../components/tierlist-grid/TierListGrid";
 
 export default function TierList({s, a, b}) {
@@ -14,6 +15,7 @@ export default function TierList({s, a, b}) {
 
     return (
         <>
+            <Header title="Tier List" />
             <TierListGrid tiers={tiers}/>
         </>
     );
