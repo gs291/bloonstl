@@ -1,6 +1,7 @@
 import {dataSources} from "../../lib/mysql/db";
-import {getTowerLink, parseTowerLink} from "../../lib/utils";
+import Header from "../../components/page/Header";
 import MonkeyPage from "../../components/monkey/MonkeyPage";
+import {getTowerLink, parseTowerLink} from "../../lib/utils";
 
 
 export default function Monkey({ monkey }) {
@@ -8,6 +9,7 @@ export default function Monkey({ monkey }) {
 
     return (
         <>
+            <Header title={monkey.name} />
             <MonkeyPage monkey={monkey}/>
         </>
     );

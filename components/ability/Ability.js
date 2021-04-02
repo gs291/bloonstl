@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import {Card, CardContent} from "@material-ui/core";
+import OfflineBoltIcon from '@material-ui/icons/OfflineBolt';
 
 import Tooltip from "../tooltip/Tooltip";
 import ImageFill from "../image/ImageFill";
@@ -9,6 +10,7 @@ import {getImageUrl, rankColors, siteColors} from "../../lib/utils";
 const AbilityContainer = styled.div`
   display: flex;
   flex-direction: row;
+  position: relative;
 `;
 
 const CardContainer = styled(Card)`
@@ -43,6 +45,16 @@ const AbilityLevel = styled.div`
   color: white;
 `;
 
+const ActivatedAbility = styled(OfflineBoltIcon)`
+  position: absolute;
+  top: -5px;
+  left: 30px;
+
+  color: yellow;
+  border-radius: 50%;
+  background-color: ${siteColors.background.card.dark};
+`;
+
 export default function Ability({ className, ability, monkeyFile, rank, selected}) {
     return (
         <>
@@ -63,6 +75,7 @@ export default function Ability({ className, ability, monkeyFile, rank, selected
                             )}
                         </CardContentContainer>
                     </CardContainer>
+                    { ability.active === 1 && (<ActivatedAbility />) }
                 </Tooltip>
             </AbilityContainer>
         </>

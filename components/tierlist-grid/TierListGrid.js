@@ -3,37 +3,24 @@ import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
-import {rankColors} from "../../lib/utils";
+import GridTitle from "../grid/GridTitle";
+import GridItems from "../grid/GridItems";
 import TowerCard from "../tower/TowerCard";
 import {getMobile} from "../../lib/redux/selectors";
+import {rankColors, siteColors} from "../../lib/utils";
 import FiltersTierList from "../filters/FiltersTierList";
 
 
 const FilterContainer = styled.div`
   margin: 10px 0;
-  background-color: #1D1D1D;
+  background-color: ${ siteColors.background.filters.dark };
   color: white;
 `;
 
-const RankTitle = styled(Grid)`
-  padding-top: 5px;
-  padding-bottom: 5px;
-  
-  background-color: ${props => rankColors(props.rank)};
-
-  color: #000;
-`;
-
-const GridItem = styled(Grid)`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
-
-export default function TierListGrid({ className, monkeys, heroes }) {
+export default function TierListGrid({ className, tiers }) {
     const mobile = useSelector(getMobile);
     const [state, setState] = useState({
-        isDetailed: false
+        showCardBorder: true
     });
 
     const handleFilter = (event) => { setState({ ...state, [event.target.name]: event.target.checked }); };
@@ -43,40 +30,52 @@ export default function TierListGrid({ className, monkeys, heroes }) {
         gridSpacing = 6;
     }
 
+    const sColor = rankColors("s");
+    const aColor = rankColors("a");
+    const bColor = rankColors("b");
+
     return (
         <>
             <FilterContainer className={className}>
                 <FiltersTierList state={state} handleFilter={handleFilter} />
             </FilterContainer>
             <Grid container spacing={2} direction="column">
-                <RankTitle rank="s" item>
+                <GridTitle backgroundColor={sColor}>
                     S Tier
-                </RankTitle>
-                <GridItem item>
+                </GridTitle>
+                <GridItems borderColor={sColor}>
                     <Grid container spacing={2}>
-                        { monkeys.map(monkey => (
-                            <Grid xs={gridSpacing} item>
-                                <TowerCard tower={monkey} towerType="monkey" key={monkey.id}/>
+                        { tiers.s.map(tower => (
+                            <Grid xs={gridSpacing} item key={tower.t_id}>
+                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"} showCardBorder={state.showCardBorder}/>
                             </Grid>
                         ))}
                     </Grid>
-                </GridItem>
-                <RankTitle rank="a" item>
+                </GridItems>
+                <GridTitle backgroundColor={aColor}>
                     A Tier
-                </RankTitle>
-                <GridItem item>
+                </GridTitle>
+                <GridItems borderColor={aColor}>
                     <Grid container spacing={2}>
-
+                        { tiers.a.map(tower => (
+                            <Grid xs={gridSpacing} item key={tower.t_id}>
+                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"} showCardBorder={state.showCardBorder}/>
+                            </Grid>
+                        ))}
                     </Grid>
-                </GridItem>
-                <RankTitle rank="b" item>
+                </GridItems>
+                <GridTitle backgroundColor={bColor}>
                     B Tier
-                </RankTitle>
-                <GridItem item>
+                </GridTitle>
+                <GridItems borderColor={bColor}>
                     <Grid container spacing={2}>
-
+                        { tiers.b.map(tower => (
+                            <Grid xs={gridSpacing} item key={tower.t_id}>
+                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"} showCardBorder={state.showCardBorder}/>
+                            </Grid>
+                        ))}
                     </Grid>
-                </GridItem>
+                </GridItems>
             </Grid>
         </>
     );

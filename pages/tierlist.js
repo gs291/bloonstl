@@ -1,17 +1,31 @@
 import {dataSources} from "../lib/mysql/db";
+import Header from "../components/page/Header";
 import TierListGrid from "../components/tierlist-grid/TierListGrid";
 
-export default function TierList({ monkeys } ) {
-    monkeys = JSON.parse(monkeys);
+export default function TierList({s, a, b}) {
+    s = JSON.parse(s);
+    a = JSON.parse(a);
+    b = JSON.parse(b);
+
+    const tiers = {
+        "s": s,
+        "a": a,
+        "b": b
+    }
+
     return (
         <>
-            <TierListGrid monkeys={monkeys}/>
+            <Header title="Tier List" />
+            <TierListGrid tiers={tiers}/>
         </>
     );
 }
 
 export async function getStaticProps(context) {
-    let monkeys = await dataSources().monkeysAPI.getAllMonkeys();
+    let heroes = await dataSources().heroesAPI.getAllHeroesWithTiers();
+    let monkeys = await dataSources().monkeysAPI.getAllMonkeysWithTiers();
+
+    let sTier = [], aTier = [], bTier = [];
 
     if (monkeys) {
         monkeys = monkeys.map(monkey => ({
@@ -24,9 +38,39 @@ export async function getStaticProps(context) {
             } }));
     }
 
+    monkeys.forEach(monkey => {
+        if (monkey.tier === "s") {
+            sTier.push(monkey);
+        } else if (monkey.tier === "a") {
+            aTier.push(monkey);
+        } else {
+            bTier.push(monkey)
+        }
+    })
+
+    heroes.forEach(hero => {
+        if (hero.tier === "s") {
+            sTier.push(hero);
+        } else if (hero.tier === "a") {
+            aTier.push(hero);
+        } else {
+            bTier.push(hero)
+        }
+    });
+
+    const sortByName = (a, b) => {
+        return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
+    }
+
+    sTier.sort( sortByName );
+    aTier.sort( sortByName );
+    bTier.sort( sortByName );
+
     return {
         props: {
-            monkeys: JSON.stringify(monkeys)
+            s: JSON.stringify(sTier),
+            a: JSON.stringify(aTier),
+            b: JSON.stringify(bTier)
         }
     }
 }

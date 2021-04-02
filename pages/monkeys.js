@@ -1,4 +1,5 @@
 import {dataSources} from "../lib/mysql/db";
+import Header from "../components/page/Header";
 import MonkeysGrid from "../components/monkeys/MonkeysGrid";
 
 
@@ -10,6 +11,7 @@ export default function Monkeys({ monkeys }) {
 
     return (
         <>
+            <Header title="Monkeys" />
             <MonkeysGrid primary={primary} military={military} magic={magic} support={support} />
         </>
     );
