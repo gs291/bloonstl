@@ -58,6 +58,14 @@ export async function getStaticProps(context) {
         }
     });
 
+    const sortByName = (a, b) => {
+        return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
+    }
+
+    sTier.sort( sortByName );
+    aTier.sort( sortByName );
+    bTier.sort( sortByName );
+
     return {
         props: {
             s: JSON.stringify(sTier),
