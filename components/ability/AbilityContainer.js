@@ -1,7 +1,6 @@
 import Ability from "./Ability";
 import UpgradeArrow from "./UpgradeArrow";
 
-//TODO: ADD ACTIVATED ABILITY ICON
 export default function AbilityContainer ({ability, monkeyFile, rank, selected}) {
 
     return (
