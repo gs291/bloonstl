@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import {Grid} from "@material-ui/core";
+import {Grid, Typography} from "@material-ui/core";
 
 const Title = styled(Grid)`
   padding-top: 5px;
@@ -13,7 +13,9 @@ export default function GridTitle({ className, children, backgroundColor}) {
     return (
         <>
             <Title backgroundcolor={backgroundColor} className={className} item>
-                { children }
+                <Typography variant="h4">
+                    { children }
+                </Typography>
             </Title>
         </>
     );
