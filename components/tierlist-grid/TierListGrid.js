@@ -12,7 +12,7 @@ import FiltersTierList from "../filters/FiltersTierList";
 
 
 const FilterContainer = styled.div`
-  margin: 10px 0;
+  margin-bottom: 20px;
   background-color: ${ siteColors.background.filters.dark };
   color: white;
 `;

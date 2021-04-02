@@ -18,7 +18,8 @@ const PageContainer = styled.div`
 `;
 
 const Nav = styled(Navbar)`
-  background-color: ${ siteColors.nav.dark }
+  background-image: linear-gradient(${ siteColors.nav.dark }, ${ siteColors.background.main.dark });
+  box-shadow: none;
 `;
 
 const Main = styled.main`
@@ -37,7 +38,7 @@ const MainContainer = styled(Container)`
 `;
 
 const Foot = styled(Footer)`
-  background-color: ${ siteColors.nav.dark };
+  background-image: linear-gradient(${ siteColors.background.main.dark }, ${ siteColors.nav.dark });
   justify-content: center;
   align-items: center;
   color: white;
