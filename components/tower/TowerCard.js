@@ -17,7 +17,7 @@ const CardContainer = styled(Card)`
   }
 `;
 
-export default function TowerCard({tower, towerType}) {
+export default function TowerCard({tower, towerType, showCardBorder}) {
     let href, borderColor, backgroundColor;
 
     if (towerType === "monkey") {
@@ -28,6 +28,10 @@ export default function TowerCard({tower, towerType}) {
         href =  `/hero/${getTowerLink(tower)}`;
         borderColor = getHeroColor(tower.name);
         backgroundColor = getHeroColor(tower.name, true);
+    }
+
+    if (showCardBorder === false) {
+        borderColor = siteColors.card.dark;
     }
 
     return (

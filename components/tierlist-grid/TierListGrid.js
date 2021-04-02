@@ -20,7 +20,7 @@ const FilterContainer = styled.div`
 export default function TierListGrid({ className, tiers }) {
     const mobile = useSelector(getMobile);
     const [state, setState] = useState({
-        isDetailed: false
+        showCardBorder: true
     });
 
     const handleFilter = (event) => { setState({ ...state, [event.target.name]: event.target.checked }); };
@@ -47,7 +47,7 @@ export default function TierListGrid({ className, tiers }) {
                     <Grid container spacing={2}>
                         { tiers.s.map(tower => (
                             <Grid xs={gridSpacing} item key={tower.t_id}>
-                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}/>
+                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"} showCardBorder={state.showCardBorder}/>
                             </Grid>
                         ))}
                     </Grid>
@@ -59,7 +59,7 @@ export default function TierListGrid({ className, tiers }) {
                     <Grid container spacing={2}>
                         { tiers.a.map(tower => (
                             <Grid xs={gridSpacing} item key={tower.t_id}>
-                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}/>
+                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"} showCardBorder={state.showCardBorder}/>
                             </Grid>
                         ))}
                     </Grid>
@@ -71,7 +71,7 @@ export default function TierListGrid({ className, tiers }) {
                     <Grid container spacing={2}>
                         { tiers.b.map(tower => (
                             <Grid xs={gridSpacing} item key={tower.t_id}>
-                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}/>
+                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"} showCardBorder={state.showCardBorder}/>
                             </Grid>
                         ))}
                     </Grid>
