@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import {Typography} from "@material-ui/core";
 
 const FooterContainer = styled.footer`
   display: flex;
@@ -6,10 +7,26 @@ const FooterContainer = styled.footer`
   height: 50px;
 `;
 
+const FooterLink = styled.a`
+  color: #ccc;
+`;
+
 export default function Footer({ className }) {
     return (
         <FooterContainer className={className}>
-            <div>Footer</div>
+            <Typography variant="body2">
+                Written and maintained by
+                &nbsp;
+                <FooterLink href="http://gregsanchez.herokuapp.com/">
+                    Gregory Sanchez
+                </FooterLink>
+                &nbsp;
+                (
+                <FooterLink href="https://twitter.com/GS_291">
+                    @GS_291
+                </FooterLink>
+                )
+            </Typography>
         </FooterContainer>
     );
 }
