@@ -3,11 +3,15 @@ import styled from "@emotion/styled";
 
 import { Link as MUILink } from "@material-ui/core";
 import { siteColors, siteSizes} from "../../lib/utils";
+import {useSelector} from "react-redux";
+import {getMobile} from "../../lib/redux/selectors";
 
 const HoverLink = styled.div`
-  width: 100px;
+  width: ${props => props.mobile ? "100%" : "100px" };
   transition: 0.3s;
   text-align: center;
+  border-radius: ${props => props.mobile ? 0 : 10}%;
+  height: ${ props => props.mobile ? siteSizes.nav.height : siteSizes.nav.link.height };
   
   &:hover,
   &:focus,
@@ -19,21 +23,23 @@ const HoverLink = styled.div`
 
 const MLink = styled(MUILink)`
   color: white;
+  ${ props => props.mobile ? "width: 100%" : "" };
 `;
 
 const A = styled.div`
-  line-height: ${ siteSizes.nav.height };
   display: inline-block;
   width: 100%;
   height: 100%;
+  line-height: ${ props => props.mobile ? siteSizes.nav.height : siteSizes.nav.link.height };
 `;
 
 export default function NavLink({ path, text, closeDrawer }) {
+    const mobile = useSelector(getMobile);
     return (
             <Link href={ path } passHref>
-                <MLink>
-                    <HoverLink onClick={closeDrawer}>
-                        <A>{ text }</A>
+                <MLink mobile={mobile}>
+                    <HoverLink onClick={closeDrawer} mobile={mobile}>
+                        <A mobile={mobile}>{ text }</A>
                     </HoverLink>
                 </MLink>
             </Link>

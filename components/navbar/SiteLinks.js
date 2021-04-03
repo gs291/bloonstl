@@ -20,7 +20,7 @@ const LeftNavSection = styled.div`
 const MiddleNavSection = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
 `;
 
 const RightNavSection = styled.div`
