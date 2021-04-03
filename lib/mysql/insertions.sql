@@ -53,7 +53,7 @@ INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dart_monkey_b, 'atks
 --      Monkey - Boomerang Monkey
 INSERT INTO `Monkeys` VALUES (NULL, 'Boomerang Monkey', 'Primary', 'Hurls a boomerang that follows a curved path. Good range and pierce', 325, 'boomerang-monkey.png');
 SELECT id INTO @boomerang_monkey FROM Monkeys WHERE name='Boomerang Monkey';
-INSERT INTO `Towers` VALUES (NULL, NULL, @bomb_shooter);
+INSERT INTO `Towers` VALUES (NULL, NULL, @boomerang_monkey);
 SELECT id INTO @tower_boomerang_monkey FROM Towers WHERE monkey_id=@boomerang_monkey;
 
 INSERT INTO `TowerRanks` VALUES (NULL, @tower_boomerang_monkey, 'b', 0);
