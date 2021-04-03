@@ -23,7 +23,7 @@ const HoverLink = styled.div`
 
 const MLink = styled(MUILink)`
   color: white;
-  ${ props => props.mobile ? "width: 100%" : "" };
+  ${ props => props.mobile ? "width: 100%;" : "" }
 `;
 
 const A = styled.div`
@@ -37,7 +37,7 @@ export default function NavLink({ path, text, closeDrawer }) {
     const mobile = useSelector(getMobile);
     return (
             <Link href={ path } passHref>
-                <MLink mobile={mobile}>
+                <MLink mobile={mobile ? 1 : 0}>
                     <HoverLink onClick={closeDrawer} mobile={mobile}>
                         <A mobile={mobile}>{ text }</A>
                     </HoverLink>

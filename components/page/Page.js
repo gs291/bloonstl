@@ -55,7 +55,9 @@ export default function Page(props) {
     return (
         <PageContainer>
             <Nav />
-            <NavDrawer />
+            { mobile && (
+                <NavDrawer />
+            )}
 
             <Main mobile={mobile}>
                 <MainContainer maxWidth="lg">
