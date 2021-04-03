@@ -28,10 +28,8 @@ export default function TowerInfo({tower}) {
                 <TowerDetail variant="body1" textcolor={siteColors.tower.description} text="true">
                     {tower.description}
                 </TowerDetail>
-                <TowerDetail variant="caption" textcolor={siteColors.tower.gold} text="true">
-                    <TowerDetail variant="caption" textcolor={siteColors.tower.gold}>
-                        In-game cost:&nbsp;
-                    </TowerDetail>
+                <TowerDetail variant="caption" textcolor={siteColors.tower.gold}>
+                    In-game cost:&nbsp;
                     ${goldCost(tower.cost_gold, difficulty)}
                 </TowerDetail>
                 { typeof tower.cost_cash === "number" && (
