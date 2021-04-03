@@ -38,7 +38,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 4, 'Crossbow
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dart_monkey, 's', 0, 2, 3, 0);
 SELECT id INTO @ability_ranks_dart_monkey_s FROM AbilityRanks WHERE tower_id=@tower_dart_monkey AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dart_monkey_s, 'cc', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dart_monkey_s, 'cc', 'lg');
 
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dart_monkey, 'a', 0, 3, 2, 0);
 SELECT id INTO @ability_ranks_dart_monkey_a FROM AbilityRanks WHERE tower_id=@tower_dart_monkey AND tier='a';
