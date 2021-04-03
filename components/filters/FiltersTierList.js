@@ -18,11 +18,10 @@ export default function FiltersTierList({ className, state, handleFilter }) {
     return (
         <>
             <FilterContainer className={className}>
-                <Label focused={false}>Filters:</Label>
                 <FormGroup>
                     <FormControlLabel
                         control={<Switch checked={state.showCardBorder} onChange={handleFilter} name="showCardBorder" />}
-                        label="Show Card Border Colors."
+                        label={`${state.showCardBorder ? "Hide" : "Show"} Border`}
                     />
                 </FormGroup>
             </FilterContainer>
