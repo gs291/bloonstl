@@ -76,6 +76,22 @@ CREATE TABLE `AbilityRanks` (
     CONSTRAINT `ab_rnk_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- DOCS:
+--   - cc: Crowd Control
+--   - lg: Late Game
+--   - atksp: Attack Speed
+--   - moab: M.O.A.B (Massive Ornary Air Blimp)
+--   - bfb: B.F.B (Brutal Floating Behemoth)
+--   - zomg: Z.O.M.G (Zeppelin of Mighty Gargantuaness
+--   - dot: D.O.T (Dark Dirigible Titan)
+--   - bad: B.A.D (Big Airship of Doom)
+--   - bpb: Bloons per Bolt
+--   - fcm: Fortified Ceramics
+--   - kb: Knockback
+--   - blnc: Balanced
+--   - camo: Camo Bloons
+--   - trkp: Track Placement
+--   - exps: Expensive
 CREATE TABLE `AbilityRanksInfo` (
     `id` INT(11) AUTO_INCREMENT NOT NULL,
     `rank_id` INT(11) NOT NULL,
