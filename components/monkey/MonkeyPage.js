@@ -34,14 +34,14 @@ export default function MonkeyPage({ monkey }) {
     return (
         <>
             <TowerContainer tower={monkey} towerType="monkey"/>
-            <FixedDivider width={ mobile ? 100 : 80 } backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={ 80 } backgroundColor={dividerBackgroundColor}/>
             <Filters mobile={mobile}>
                 <FilterRanks rank={ rank } handleRank={ handleRank } />
                 <FilterDiff  mobile={mobile}/>
             </Filters>
-            <FixedDivider width={ mobile ? 100 : 80 } backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={ 80 } backgroundColor={dividerBackgroundColor}/>
             <RankTitle rank={ rank }  ranks={ monkey.rank[rank] }/>
-            <FixedDivider width={ mobile ? 100 : 40 } backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={ mobile ? 80 : 40 } backgroundColor={dividerBackgroundColor}/>
             <MonkeyDetailed monkey={ monkey } rank={ rank }/>
         </>
     );
