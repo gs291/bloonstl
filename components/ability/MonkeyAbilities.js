@@ -26,18 +26,18 @@ export default class MonkeyAbilities extends PureComponent {
         abilities.forEach(ability => {
             if (ability.upgrade_path === 0) {
                 pathTop.push(
-                    <AbilityContainer ability={ability} monkeyFile={monkeyFile} rank={rank} key={ability.id}
-                                      selected={ability.upgrade_tier < ranks.topPath}
+                    <AbilityContainer ability={ability} fileName={monkeyFile} rank={rank}
+                                      towerType="monkey" selected={ability.upgrade_tier < ranks.topPath} key={ability.id}
                     />);
             } else if (ability.upgrade_path === 1) {
                 pathMid.push(
-                    <AbilityContainer ability={ability} monkeyFile={monkeyFile} rank={rank} key={ability.id}
-                                      selected={ability.upgrade_tier < ranks.midPath}
+                    <AbilityContainer ability={ability} fileName={monkeyFile} rank={rank}
+                                      towerType="monkey" selected={ability.upgrade_tier < ranks.midPath} key={ability.id}
                     />);
             } else {
                 pathBot.push(
-                    <AbilityContainer ability={ability} monkeyFile={monkeyFile} rank={rank} key={ability.id}
-                                      selected={ability.upgrade_tier < ranks.botPath}
+                    <AbilityContainer ability={ability} fileName={monkeyFile} rank={rank}
+                                      towerType="monkey" selected={ability.upgrade_tier < ranks.botPath} key={ability.id}
                     />) }
         });
 

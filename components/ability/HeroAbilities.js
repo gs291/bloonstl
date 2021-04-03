@@ -19,14 +19,15 @@ const GridItem = styled(Grid)`
 export default class HeroAbilities extends PureComponent {
 
     render() {
-        const {className, abilities} = this.props;
+        const {className, abilities, heroFile} = this.props;
 
         let dividedAbilities = [ [], [], [], [], [] ];
 
         abilities.forEach(ability => {
-            dividedAbilities[Math.floor(ability.upgrade_tier / 5)].push((
-                <AbilityContainer ability={ability} key={ability.id} />
-            ))
+            dividedAbilities[Math.floor(ability.upgrade_tier / 5)]
+                .push((
+                    <AbilityContainer ability={ability} fileName={heroFile} towerType="hero" key={ability.id} />
+                ))
         })
 
         return (

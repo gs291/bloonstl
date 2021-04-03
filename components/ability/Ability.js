@@ -55,24 +55,30 @@ const ActivatedAbility = styled(OfflineBoltIcon)`
   background-color: ${siteColors.background.card.dark};
 `;
 
-export default function Ability({ className, ability, monkeyFile, rank, selected}) {
+export default function Ability({ className, ability, fileName, rank, towerType, selected}) {
     return (
         <>
             <AbilityContainer className={className}>
                 <Tooltip title={<AbilityTooltip ability={ability} />} upgradeTier={ability.upgrade_tier}>
                     <CardContainer selected={selected} rank={rank}>
                         <CardContentContainer>
-                            { monkeyFile && (
+                            { towerType === "monkey" && (
                                 <ImageFill
-                                    src={ getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier) }
+                                    src={ getImageUrl(fileName, ability.upgrade_path, ability.upgrade_tier) }
                                     alt={ ability.name }
                                 />
                             )}
-                            { !monkeyFile && (
-                                <AbilityLevel>
-                                    {ability.upgrade_tier + 1}
-                                </AbilityLevel>
-                            )}
+                            { towerType === "hero" &&
+                                ability.active === 1 ? (
+                                    <ImageFill
+                                        src={ getImageUrl(fileName, ability.upgrade_path, ability.upgrade_tier) }
+                                        alt={ ability.name }
+                                    />
+                                ) : (
+                                    <AbilityLevel>
+                                        {ability.upgrade_tier + 1}
+                                    </AbilityLevel>
+                                ) }
                         </CardContentContainer>
                     </CardContainer>
                     { ability.active === 1 && (<ActivatedAbility />) }
