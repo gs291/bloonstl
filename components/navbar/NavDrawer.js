@@ -16,7 +16,7 @@ const TopDrawer = styled(Drawer)`
 const DrawerContainer = styled.div`
   height: 100%;
   padding-top: ${ siteSizes.nav.height };
-  background-color: ${ siteColors.nav.dark };
+  background-color: ${ siteColors.background.main.dark };
   color: white;
   
   display: flex;
@@ -38,6 +38,7 @@ export default function NavDrawer() {
                 open={ drawer }
                 onClose={ () => dispatch(toggleDrawer()) }
                 anchor="top"
+                transitionDuration={350}
             >
                 <DrawerContainer>
                     { siteLinks.middle.map(mid => <NavLink {...mid} closeDrawer={closeDrawer}/>) }
