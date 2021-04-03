@@ -1239,7 +1239,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, true, 0, 2, '', 'Heartstoppe
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 3, '', 'Ezili\'s main attack now curses multiple bloons.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 4, '', 'Increases attack speed.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 5, '', 'Damage over time lasts longer and damages faster.', 0, 0);
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 6, '', 'Sacrificial Totem: A totem that gives Camo detection, extra pierce, attack range, attack speed, and projectile speed to nearby Monkeys. Drains 10 lives.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, true, 0, 6, '', 'Sacrificial Totem: A totem that gives Camo detection, extra pierce, attack range, attack speed, and projectile speed to nearby Monkeys. Drains 10 lives.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 7, '', 'Ezili\'s attack does far more damage to MOAB-Class Bloons.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 8, '', 'Ezili\'s attack strips off Camo, Regrow and Fortified properties from non-MOAB Class Bloons.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, true, 0, 9, '', 'MOAB Hex: places a curse on a MOAB-Class Bloon, it takes damage every second until annihilated.', 0, 0);
