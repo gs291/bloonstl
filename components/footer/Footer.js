@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import {Typography} from "@material-ui/core";
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import {font_family} from "../../lib/utils";
 
 const FooterContainer = styled.footer`
   display: flex;
@@ -8,7 +9,12 @@ const FooterContainer = styled.footer`
   height: 50px;
 `;
 
+const FooterText = styled(Typography)`
+  font-family: sans-serif;
+`;
+
 const FooterLink = styled.a`
+  font-family: ${font_family};
   color: #ccc;
 `;
 
@@ -20,7 +26,7 @@ const FooterIcon = styled.div`
 export default function Footer({ className }) {
     return (
         <FooterContainer className={className}>
-            <Typography component="span" variant="body2">
+            <FooterText component="span" variant="body2">
                 Written and maintained by
                 &nbsp;
                 <FooterLink href="http://gregsanchez.herokuapp.com/">
@@ -34,7 +40,7 @@ export default function Footer({ className }) {
                     </FooterIcon>
                 </FooterLink>
                 )
-            </Typography>
+            </FooterText>
         </FooterContainer>
     );
 }
