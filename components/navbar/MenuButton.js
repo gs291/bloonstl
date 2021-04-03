@@ -6,9 +6,11 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {getDrawer} from "../../lib/redux/selectors";
 import { toggleDrawer } from "../../lib/redux/actions";
+import {siteSizes} from "../../lib/utils";
 
 const Menu = styled(Button)`
   color: white;
+  height: ${ siteSizes.nav.height };
 `;
 
 export default function MenuButton() {
