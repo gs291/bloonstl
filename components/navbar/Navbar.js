@@ -19,7 +19,7 @@ export default function Navbar({ className }) {
     const mobile = useSelector(getMobile);
     return (
       <>
-          <Nav position="static" className={ className } mobile={mobile.toString()}>
+          <Nav position="static" className={ className } mobile={mobile ? 1 : 0}>
               <SiteLinks />
           </Nav>
       </>

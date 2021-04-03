@@ -53,7 +53,7 @@ export default function MonkeyTierListCard({ className, monkey, detailed }) {
     return (
         <>
             <CardContainer variant="outlined" onClick={() => setExpand(!expand)} className={className}>
-                <CardContentContainer mobile={mobile.toString()}>
+                <CardContentContainer mobile={mobile ? 1 : 0}>
                     <Icon tower={ monkey } detailed={detailed}/>
                     <BestPath>
                         <RankTitle rank={ rank }  ranks={ monkey.rank[rank] }/>
