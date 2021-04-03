@@ -20,7 +20,7 @@ const FooterIcon = styled.div`
 export default function Footer({ className }) {
     return (
         <FooterContainer className={className}>
-            <Typography variant="body2">
+            <Typography component="span" variant="body2">
                 Written and maintained by
                 &nbsp;
                 <FooterLink href="http://gregsanchez.herokuapp.com/">
