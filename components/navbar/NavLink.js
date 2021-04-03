@@ -30,6 +30,7 @@ const A = styled.div`
   display: inline-block;
   width: 100%;
   height: 100%;
+  font-size: 1.25em;
   line-height: ${ props => props.mobile ? siteSizes.nav.height : siteSizes.nav.link.height };
 `;
 
