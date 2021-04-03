@@ -1,4 +1,3 @@
-import Head from "next/head";
 import {useEffect} from "react";
 import styled from "@emotion/styled";
 import {useDispatch, useSelector} from "react-redux";
@@ -22,14 +21,6 @@ const Nav = styled(Navbar)`
   box-shadow: none;
 `;
 
-const Main = styled.main`
-  flex: 1;
-  background-color: ${ siteColors.background.main.dark };
-  padding-top: 15px;
-  ${props => !props.mobile ? "padding-right: 10px;" : ""}
-  padding-bottom: 30px;
-`;
-
 const MainContainer = styled(Container)`
   display: flex;
   flex-direction: column;
@@ -50,7 +41,15 @@ export default function Page(props) {
     const screen = useMediaQuery('(max-width: 960px)');
     useEffect(() => {
         dispatch(updateMobile(screen));
-    }, [screen])
+    }, [screen]);
+
+    const Main = styled.main`
+      flex: 1;
+      background-color: ${ siteColors.background.main.dark };
+      padding-top: 15px;
+      ${!mobile ? "padding-right: 10px;" : ""}
+      padding-bottom: 30px;
+    `;
 
     return (
         <PageContainer>
@@ -59,7 +58,7 @@ export default function Page(props) {
                 <NavDrawer />
             )}
 
-            <Main mobile={mobile}>
+            <Main >
                 <MainContainer maxWidth="lg">
                     { props.children }
                 </MainContainer>

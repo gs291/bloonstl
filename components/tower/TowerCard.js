@@ -5,32 +5,6 @@ import {Card, CardContent, Link as MUILink, Typography} from "@material-ui/core"
 import Icon from "../tower/Icon";
 import {getTowerLink, getMonkeyTypeColor, siteColors, getHeroColor} from "../../lib/utils";
 
-const CardContainer = styled(Card)`
-  margin: 5px;
-
-  background-color: ${ siteColors.card.dark };
-  border: 2px solid ${props => props.bordercolor};
-
-  &:hover{
-    cursor: pointer;
-    background-color: ${ props => props.backgroundcolor };
-  }
-`;
-
-const MLink = styled(MUILink)`
-  &:hover {
-    text-decoration: none;
-  }
-`;
-
-const TowerName = styled(Typography)`
-  color: white;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
-
 export default function TowerCard({tower, towerType, showCardBorder}) {
     let href, borderColor, backgroundColor;
 
@@ -48,11 +22,37 @@ export default function TowerCard({tower, towerType, showCardBorder}) {
         borderColor = siteColors.card.dark;
     }
 
+    const CardContainer = styled(Card)`
+      margin: 5px;
+    
+      background-color: ${ siteColors.card.dark };
+      border: 2px solid ${borderColor};
+    
+      &:hover{
+        cursor: pointer;
+        background-color: ${ backgroundColor };
+      }
+    `;
+
+    const MLink = styled(MUILink)`
+      &:hover {
+        text-decoration: none;
+      }
+    `;
+
+    const TowerName = styled(Typography)`
+      color: white;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    `;
+
     return (
         <>
             <Link href={ href } passHref>
                 <MLink >
-                    <CardContainer bordercolor={borderColor} backgroundcolor={backgroundColor}>
+                    <CardContainer >
                         <CardContent>
                             <Icon tower={ tower } />
                             <TowerName varient="body1">
