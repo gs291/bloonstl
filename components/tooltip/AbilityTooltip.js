@@ -14,7 +14,7 @@ export default function AbilityTooltip({ className, ability}) {
 
     return (
         <>
-            <AbilityText variant="caption" text="true">
+            <AbilityText variant="caption" text={1}>
                 { ability.name && (
                     <>
                         <AbilityText variant="caption">

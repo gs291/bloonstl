@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
 import {useSelector} from "react-redux";
@@ -10,7 +9,6 @@ import {getMobile} from "../../lib/redux/selectors";
 import {rankColors, siteColors} from "../../lib/utils";
 import FiltersTierList from "../filters/FiltersTierList";
 
-
 const FilterContainer = styled.div`
   margin-bottom: 20px;
   background-color: ${ siteColors.background.filters.dark };
@@ -19,11 +17,6 @@ const FilterContainer = styled.div`
 
 export default function TierListGrid({ className, tiers }) {
     const mobile = useSelector(getMobile);
-    const [state, setState] = useState({
-        showCardBorder: true
-    });
-
-    const handleFilter = (event) => { setState({ ...state, [event.target.name]: event.target.checked }); };
 
     let gridSpacing = 3;
     if (mobile) {
@@ -37,7 +30,7 @@ export default function TierListGrid({ className, tiers }) {
     return (
         <>
             <FilterContainer className={className}>
-                <FiltersTierList state={state} handleFilter={handleFilter} />
+                <FiltersTierList />
             </FilterContainer>
             <Grid container spacing={2} direction="column">
                 <GridTitle backgroundColor={sColor}>
@@ -45,9 +38,12 @@ export default function TierListGrid({ className, tiers }) {
                 </GridTitle>
                 <GridItems borderColor={sColor}>
                     <Grid container spacing={2}>
-                        { tiers.s.map(tower => (
+                        {tiers.s.map(tower => (
                             <Grid xs={gridSpacing} item key={tower.t_id}>
-                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"} showCardBorder={state.showCardBorder}/>
+                                <TowerCard tower={tower}
+                                           towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}
+                                           keepBorder={0}
+                                />
                             </Grid>
                         ))}
                     </Grid>
@@ -57,9 +53,12 @@ export default function TierListGrid({ className, tiers }) {
                 </GridTitle>
                 <GridItems borderColor={aColor}>
                     <Grid container spacing={2}>
-                        { tiers.a.map(tower => (
+                        {tiers.a.map(tower => (
                             <Grid xs={gridSpacing} item key={tower.t_id}>
-                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"} showCardBorder={state.showCardBorder}/>
+                                <TowerCard tower={tower}
+                                           towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}
+                                           keepBorder={0}
+                                />
                             </Grid>
                         ))}
                     </Grid>
@@ -69,9 +68,12 @@ export default function TierListGrid({ className, tiers }) {
                 </GridTitle>
                 <GridItems borderColor={bColor}>
                     <Grid container spacing={2}>
-                        { tiers.b.map(tower => (
+                        {tiers.b.map(tower => (
                             <Grid xs={gridSpacing} item key={tower.t_id}>
-                                <TowerCard tower={tower} towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"} showCardBorder={state.showCardBorder}/>
+                                <TowerCard tower={tower}
+                                           towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}
+                                           keepBorder={0}
+                                />
                             </Grid>
                         ))}
                     </Grid>

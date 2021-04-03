@@ -28,7 +28,7 @@ export default function HeroesGrid({ heroes }) {
                     <Grid container spacing={2}>
                         { heroes.map(hero => (
                                 <Grid xs={gridSpacing} item key={hero.id}>
-                                    <TowerCard tower={hero} towerType="hero"/>
+                                    <TowerCard tower={hero} towerType="hero" keepBorder={1}/>
                                 </Grid>
                             )
                         )}
