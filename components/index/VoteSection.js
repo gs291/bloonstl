@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
 import {Grid, Typography} from "@material-ui/core";
 
+import {siteColors} from "../../lib/utils";
+
 const TitleContainer = styled(Grid)`
   height: 300px;
-  color: white;
+  color: ${siteColors.text.dark};
   text-align: center;
 `;
 

@@ -12,7 +12,7 @@ import FiltersTierList from "../filters/FiltersTierList";
 const FilterContainer = styled.div`
   margin-bottom: 20px;
   background-color: ${ siteColors.background.filters.dark };
-  color: white;
+  color: ${siteColors.text.dark};
 `;
 
 export default function TierListGrid({ className, tiers }) {

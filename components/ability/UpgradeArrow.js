@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {DoubleArrow} from "@material-ui/icons";
 
-import {rankColors} from "../../lib/utils";
+import {rankColors, siteColors} from "../../lib/utils";
 
 const UpgradeArrowContainer = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const UpgradeArrowContainer = styled.div`
 `;
 
 const Arrow = styled(DoubleArrow)`
-  color: ${props => props.selected ? rankColors(props.rank) : "white"};
+  color: ${props => props.selected ? rankColors(props.rank) : siteColors.text.dark};
 `;
 
 export default function UpgradeArrow({ className, rank, selected }) {

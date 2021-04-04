@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
-import {siteSizes} from "../../lib/utils";
 import {Grid, Typography} from "@material-ui/core";
+
+import {siteColors, siteSizes} from "../../lib/utils";
 
 const TitleContainer = styled(Grid)`
   height: calc(100vh - ${ siteSizes.nav.height });
-  color: white;
+  color: ${siteColors.text.dark};
   text-align: center;
 `;
 

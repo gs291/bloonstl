@@ -42,7 +42,7 @@ const CardContentContainer = styled(CardContent)`
 
 const AbilityLevel = styled.div`
   text-align: center;
-  color: white;
+  color: ${siteColors.text.dark};
 `;
 
 const ActivatedAbility = styled(OfflineBoltIcon)`
@@ -64,7 +64,7 @@ export default function Ability({ className, ability, fileName, rank, towerType,
         <>
             <AbilityContainer className={className}>
                 <Tooltip
-                    title={<AbilityTooltip ability={ability} towerType={towerType} />}
+                    title={<AbilityTooltip ability={ability} rank={rank} towerType={towerType} selected={selected}/>}
                     upgradeTier={ability.upgrade_tier}
                     active={ability.active}
                 >

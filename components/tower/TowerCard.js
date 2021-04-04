@@ -24,7 +24,7 @@ const MLink = styled(MUILink)`
 `;
 
 const TowerName = styled(Typography)`
-  color: white;
+  color: ${siteColors.text.dark};
   text-align: center;
   white-space: nowrap;
   overflow: hidden;

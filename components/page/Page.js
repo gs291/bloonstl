@@ -32,7 +32,7 @@ const Foot = styled(Footer)`
   background-image: linear-gradient(${ siteColors.background.main.dark }, ${ siteColors.nav.dark });
   justify-content: center;
   align-items: center;
-  color: white;
+  color: ${siteColors.text.dark};
 `;
 
 export default function Page(props) {

@@ -17,7 +17,7 @@ const DrawerContainer = styled.div`
   height: 100%;
   padding-top: ${ siteSizes.nav.height };
   background-color: ${ siteColors.background.main.dark };
-  color: white;
+  color: ${siteColors.text.dark};
   
   display: flex;
   flex-direction: column;

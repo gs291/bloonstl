@@ -25,7 +25,7 @@ export default function NavLink({ path, text, closeDrawer }) {
     `;
 
     const MLink = styled(MUILink)`
-      color: white;
+      color: ${siteColors.text.dark};
       ${ mobile ? "width: 100%;" : "" }
     `;
 

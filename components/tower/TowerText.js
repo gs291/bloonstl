@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
 import {Typography} from "@material-ui/core";
 
+import {siteColors} from "../../lib/utils";
+
 const TowerDetail = styled(Typography)`
-  color: ${props => props.textcolor ? props.textcolor : "white"};
+  color: ${props => props.textcolor ? props.textcolor : siteColors.text.dark};
   ${props => props.font ? `font-family: sans-serif;` : "" }
 `;
 
