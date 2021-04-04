@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import GridTitle from "../grid/GridTitle";
 import GridItems from "../grid/GridItems";
 import TowerCard from "../tower/TowerCard";
+import {siteColors} from "../../lib/utils";
 import {getMobile} from "../../lib/redux/selectors";
 
 
@@ -16,15 +17,13 @@ export default function HeroesGrid({ heroes }) {
         gridSpacing = 6;
     }
 
-    const heroesColor = "#004A7D";
-
     return (
         <>
             <Grid direction="column" container spacing={2}>
-                <GridTitle backgroundColor={heroesColor}>
+                <GridTitle backgroundColor={siteColors.heroes}>
                     Heroes
                 </GridTitle>
-                <GridItems borderColor={heroesColor}>
+                <GridItems borderColor={siteColors.heroes}>
                     <Grid container spacing={2}>
                         { heroes.map(hero => (
                                 <Grid xs={gridSpacing} item key={hero.id}>

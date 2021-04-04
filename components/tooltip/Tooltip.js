@@ -12,13 +12,19 @@ const StyledTooltip = styled(({ className, ...other }) => (
 ))`
   background-color: ${siteColors.background.tooltip.dark};
   width: 265px;
+  
+  border: 1px solid ${props => props.active ? siteColors.ability.activated : siteColors.background.tooltip.dark};
 
   .MuiTooltip-arrow {
     color: ${siteColors.background.tooltip.dark};
   }
+  
+  .MuiTooltip-arrow::before {
+    border: 1px solid ${props => props.active ? siteColors.ability.activated : siteColors.background.tooltip.dark};
+  }
 `;
 
-export default function Tooltip({ className, children, title, upgradeTier}) {
+export default function Tooltip({ className, children, title, upgradeTier, active}) {
     let placement = "top";
     const mobile = useSelector(getMobile);
     const [open, setOpen] = useState(false);
@@ -43,6 +49,7 @@ export default function Tooltip({ className, children, title, upgradeTier}) {
                         arrow
                         leaveDelay={100}
                         placement={placement}
+                        active={active}
                     >
                         <div>
                             { children }
@@ -63,6 +70,7 @@ export default function Tooltip({ className, children, title, upgradeTier}) {
                                 disableTouchListener
                                 title={title}
                                 placement={placement}
+                                active={active}
                                 arrow
                             >
                                 <div onClick={handleTooltipOpen}>

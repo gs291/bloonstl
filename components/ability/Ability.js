@@ -50,16 +50,24 @@ const ActivatedAbility = styled(OfflineBoltIcon)`
   top: -5px;
   left: 30px;
 
-  color: yellow;
+  color: ${siteColors.ability.activated};
   border-radius: 50%;
   background-color: ${siteColors.background.card.dark};
+  
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default function Ability({ className, ability, fileName, rank, towerType, selected}) {
     return (
         <>
             <AbilityContainer className={className}>
-                <Tooltip title={<AbilityTooltip ability={ability} towerType={towerType} />} upgradeTier={ability.upgrade_tier}>
+                <Tooltip
+                    title={<AbilityTooltip ability={ability} towerType={towerType} />}
+                    upgradeTier={ability.upgrade_tier}
+                    active={ability.active}
+                >
                     <CardContainer selected={selected} rank={rank}>
                         <CardContentContainer>
                             { towerType === "monkey" && (

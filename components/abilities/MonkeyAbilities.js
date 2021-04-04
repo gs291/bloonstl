@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import { PureComponent } from "react";
+import {PureComponent} from "react";
 import {Grid} from "@material-ui/core";
 
-import AbilityContainer from "./AbilityContainer";
+import AbilityContainer from "../ability/AbilityContainer";
 
 const GridContainer = styled(Grid)`
   display: flex;
