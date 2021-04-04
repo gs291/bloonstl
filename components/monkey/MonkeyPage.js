@@ -27,7 +27,7 @@ export default function MonkeyPage({ monkey }) {
       ${mobile ? "margin-bottom: 10px;" : ""};
     `;
 
-    const handleRank = (e, r) => setRank(r);
+    const handleRank = (r) => setRank(r);
 
     const dividerBackgroundColor = getMonkeyTypeColor(monkey.type);
 

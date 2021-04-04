@@ -12,6 +12,10 @@ const StyledTooltip = styled(({ className, ...other }) => (
 ))`
   background-color: ${siteColors.background.tooltip.dark};
   width: 265px;
+
+  .MuiTooltip-arrow {
+    color: ${siteColors.background.tooltip.dark};
+  }
 `;
 
 export default function Tooltip({ className, children, title, upgradeTier}) {
