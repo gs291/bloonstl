@@ -8,6 +8,10 @@ const TitleContainer = styled(Grid)`
   text-align: center;
 `;
 
+const AboveCenter = styled.div`
+  margin-bottom: 25%;
+`;
+
 const SansSerifText = styled(Typography)`
   font-family: sans-serif;
 `;
@@ -21,28 +25,27 @@ export default function TopSection({ }) {
                 alignItems="center"
                 justify="center"
             >
-                <Typography variant="h4">
-                    Welcome to Bloons.GG
-                </Typography>
-                <SansSerifText variant="body1">
-                    the Bloons Tower Defense 6 community driven tier list
-                </SansSerifText>
-                <SansSerifText variant="body1">
-                    for Monkeys And Heroes,
-                </SansSerifText>
-                <SansSerifText variant="body1">
-                    and the Abilities for each Monkey.
-                </SansSerifText>
-                <br />
-                <SansSerifText variant="h8">
-                    Each Tower containing valuable information
-                </SansSerifText>
-                <SansSerifText variant="h8">
-                    On comparable ability trees
-                </SansSerifText>
-                <SansSerifText variant="h8">
-                    and its pros on cons for each one.
-                </SansSerifText>
+                <AboveCenter>
+                    <Typography variant="h4">
+                        Welcome to Bloons.GG
+                    </Typography>
+                    <SansSerifText variant="h6">
+                        the Bloons Tower Defense 6 community driven tier list
+                    </SansSerifText>
+                    <SansSerifText variant="h6">
+                        for Monkeys And Heroes.
+                    </SansSerifText>
+                    <br />
+                    <SansSerifText variant="h6">
+                        Each Tower containing valuable information
+                    </SansSerifText>
+                    <SansSerifText variant="h6">
+                        On comparable ability trees
+                    </SansSerifText>
+                    <SansSerifText variant="h6">
+                        and its pros on cons for each one.
+                    </SansSerifText>
+                </AboveCenter>
             </TitleContainer>
         </>
     )

@@ -28,7 +28,7 @@ export default function TierSection({ }) {
                     Between Monkeys and Heroes.
                 </SansSerifText>
                 <SansSerifText variant="body1">
-                    And Between Abilities for each Monkey.
+                    And Between Ability Builds for each Monkey.
                 </SansSerifText>
                 <SansSerifText variant="body1">
                     Voted by you.
