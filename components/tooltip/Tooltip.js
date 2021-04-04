@@ -11,6 +11,7 @@ const StyledTooltip = styled(({ className, ...other }) => (
     <MUITooltip classes={{ tooltip: className }} {...other} />
 ))`
   background-color: ${siteColors.background.tooltip.dark};
+  width: 265px;
 `;
 
 export default function Tooltip({ className, children, title, upgradeTier}) {
@@ -26,8 +27,8 @@ export default function Tooltip({ className, children, title, upgradeTier}) {
         setOpen(true);
     };
 
-    if      (upgradeTier % 5 === 0) { placement = "top-start"; }
-    else if ((upgradeTier + 1) % 5 === 0) { placement = "top-end"; }
+    if      (upgradeTier % 5 === 0 || (upgradeTier -1) % 5 === 0) { placement = "top-start"; }
+    else if ((upgradeTier + 1) % 5 === 0 || (upgradeTier + 2) % 5 === 0) { placement = "top-end"; }
 
     return (
         <>
