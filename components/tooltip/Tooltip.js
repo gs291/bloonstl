@@ -51,9 +51,9 @@ export default function Tooltip({ className, children, title, upgradeTier}) {
                     <ClickAwayListener onClickAway={handleTooltipClose}>
                         <div>
                             <StyledTooltip
-                                PopperProps={{ disablePortal: true }}
                                 onClose={handleTooltipClose}
                                 open={open}
+                                disableInteractive
                                 disableFocusListener
                                 disableHoverListener
                                 disableTouchListener
