@@ -59,7 +59,7 @@ export default function Ability({ className, ability, fileName, rank, towerType,
     return (
         <>
             <AbilityContainer className={className}>
-                <Tooltip title={<AbilityTooltip ability={ability} />} upgradeTier={ability.upgrade_tier}>
+                <Tooltip title={<AbilityTooltip ability={ability} towerType={towerType} />} upgradeTier={ability.upgrade_tier}>
                     <CardContainer selected={selected} rank={rank}>
                         <CardContentContainer>
                             { towerType === "monkey" && (

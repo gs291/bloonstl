@@ -1,26 +1,20 @@
-import styled from "@emotion/styled";
-
 import TowerText from "../tower/TowerText";
-import {getHeroActivatedAbilityText} from "../../lib/utils";
 
 export default function HeroAbilityTooltip({ ability }) {
-    let name, description;
-    if (ability.active) {
-        [name, description] = getHeroActivatedAbilityText( ability.description );
-    }
+
     return (
         <>
-            { name && description && (
+            { ability.active === 1 && (
                 <>
                     <TowerText variant="h5">
-                        { name }
+                        { ability.name }
                     </TowerText>
                     <TowerText variant="body1" font={1}>
-                        { description }
+                        { ability.description }
                     </TowerText>
                 </>
             )}
-            { !name && !description && (
+            { ability.active === 0 && (
                 <>
                     <TowerText variant="body1" font={1}>
                         { ability.description }
