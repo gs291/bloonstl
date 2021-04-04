@@ -9,7 +9,7 @@ const GridContainer = styled(Grid)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 15px;
 `;
 
 const GridItem = styled(Grid)`

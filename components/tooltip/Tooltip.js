@@ -13,6 +13,8 @@ const StyledTooltip = styled(({ className, ...other }) => (
   background-color: ${siteColors.background.tooltip.dark};
   width: 265px;
   
+  ${props => props.mobile ? "margin-bottom: 7px;" : ""}
+  
   border: 1px solid ${props => props.active ? siteColors.ability.activated : siteColors.background.tooltip.dark};
 
   .MuiTooltip-arrow {
@@ -46,10 +48,11 @@ export default function Tooltip({ className, children, title, upgradeTier, activ
                 <>
                     <StyledTooltip
                         title={title}
-                        arrow
                         leaveDelay={100}
                         placement={placement}
                         active={active}
+                        mobile={mobile ? 1 : 0}
+                        arrow
                     >
                         <div>
                             { children }
@@ -64,13 +67,13 @@ export default function Tooltip({ className, children, title, upgradeTier, activ
                             <StyledTooltip
                                 onClose={handleTooltipClose}
                                 open={open}
-                                disableInteractive
                                 disableFocusListener
                                 disableHoverListener
                                 disableTouchListener
                                 title={title}
                                 placement={placement}
                                 active={active}
+                                mobile={mobile ? 1 : 0}
                                 arrow
                             >
                                 <div onClick={handleTooltipOpen}>
