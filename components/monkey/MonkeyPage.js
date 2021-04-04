@@ -41,7 +41,7 @@ export default function MonkeyPage({ monkey }) {
             </Filters>
             <FixedDivider width={ 80 } backgroundColor={dividerBackgroundColor}/>
             <RankTitle rank={ rank }  ranks={ monkey.rank[rank] }/>
-            <FixedDivider width={ mobile ? 80 : 40 } backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={ 80 } backgroundColor={dividerBackgroundColor}/>
             <MonkeyDetailed monkey={ monkey } rank={ rank }/>
         </>
     );
