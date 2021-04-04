@@ -5,7 +5,7 @@ import OfflineBoltIcon from '@material-ui/icons/OfflineBolt';
 import Tooltip from "../tooltip/Tooltip";
 import ImageFill from "../image/ImageFill";
 import AbilityTooltip from "../tooltip/AbilityTooltip";
-import {getImageUrl, rankColors, siteColors} from "../../lib/utils";
+import {getImageUrl, rankColors, siteColors, siteSizes} from "../../lib/utils";
 
 const AbilityContainer = styled.div`
   display: flex;
@@ -25,10 +25,10 @@ const CardContainer = styled(Card)`
 
 const CardContentContainer = styled(CardContent)`
   position: relative;
-  width: 45px;
-  max-width: 45px;
-  height: 45px;
-  max-height: 45px;
+  width: ${siteSizes.ability.width};
+  max-width: ${siteSizes.ability.width};
+  height: ${siteSizes.ability.height};
+  max-height: ${siteSizes.ability.height};
   padding: 0;
   
   display: flex;

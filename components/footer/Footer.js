@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 import {Typography} from "@material-ui/core";
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import {font_family} from "../../lib/utils";
+
+import {font_family, siteSizes} from "../../lib/utils";
 
 const FooterContainer = styled.footer`
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: ${siteSizes.footer.height};
 `;
 
 const FooterText = styled(Typography)`

@@ -23,7 +23,7 @@ export default function TierSection({className}) {
                 className={className}
             >
                 <Typography variant="h4">
-                    Compare Tiers
+                    Compare Tier Ranks
                 </Typography>
                 <br />
                 <SansSerifText variant="body1">
