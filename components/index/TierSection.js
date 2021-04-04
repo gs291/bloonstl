@@ -27,13 +27,13 @@ export default function TierSection({className}) {
                 </Typography>
                 <br />
                 <SansSerifText variant="body1">
+                    Voted by you.
+                </SansSerifText>
+                <SansSerifText variant="body1">
                     Between Monkeys and Heroes.
                 </SansSerifText>
                 <SansSerifText variant="body1">
-                    And Between Ability Builds for each Monkey.
-                </SansSerifText>
-                <SansSerifText variant="body1">
-                    Voted by you.
+                    And between Ability trees for each Monkey.
                 </SansSerifText>
             </TitleContainer>
         </>

@@ -32,20 +32,20 @@ export default function TopSection({ className }) {
                     </Typography>
                     <br />
                     <SansSerifText variant="h6">
-                        The Bloons TD 6 community driven
+                        The Bloons TD 6 community
                     </SansSerifText>
                     <SansSerifText variant="h6">
-                        tier list for Monkeys And Heroes.
+                        driven tier list for Monkeys And Heroes.
                     </SansSerifText>
                     <br />
                     <SansSerifText variant="h6">
                         Each Tower containing valuable
                     </SansSerifText>
                     <SansSerifText variant="h6">
-                        information on comparable ability trees
+                        information on comparable ability
                     </SansSerifText>
                     <SansSerifText variant="h6">
-                        and its pros on cons for each one.
+                        trees and its pros on cons for each one.
                     </SansSerifText>
                 </AboveCenter>
             </TitleContainer>
