@@ -37,7 +37,6 @@ export default function Tooltip({ className, children, title, upgradeTier}) {
                     <StyledTooltip
                         title={title}
                         arrow
-                        interactive
                         leaveDelay={100}
                         placement={placement}
                     >
