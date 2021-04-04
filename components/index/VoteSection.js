@@ -11,7 +11,7 @@ const SansSerifText = styled(Typography)`
   font-family: sans-serif;
 `;
 
-export default function VoteSection({ }) {
+export default function VoteSection({ className }) {
 
     return (
         <>
@@ -20,10 +20,12 @@ export default function VoteSection({ }) {
                 direction="column"
                 alignItems="center"
                 justify="center"
+                className={className}
             >
                 <Typography variant="h4">
                     Lastly, Vote
                 </Typography>
+                <br />
                 <SansSerifText variant="body1">
                     On what you think is the best.
                 </SansSerifText>

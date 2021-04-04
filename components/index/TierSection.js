@@ -11,7 +11,7 @@ const SansSerifText = styled(Typography)`
   font-family: sans-serif;
 `;
 
-export default function TierSection({ }) {
+export default function TierSection({className}) {
 
     return (
         <>
@@ -20,10 +20,12 @@ export default function TierSection({ }) {
                 direction="column"
                 alignItems="center"
                 justify="center"
+                className={className}
             >
                 <Typography variant="h4">
                     Compare Tiers
                 </Typography>
+                <br />
                 <SansSerifText variant="body1">
                     Between Monkeys and Heroes.
                 </SansSerifText>

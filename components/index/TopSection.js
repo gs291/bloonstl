@@ -16,7 +16,7 @@ const SansSerifText = styled(Typography)`
   font-family: sans-serif;
 `;
 
-export default function TopSection({ }) {
+export default function TopSection({ className }) {
     return (
         <>
             <TitleContainer
@@ -24,23 +24,25 @@ export default function TopSection({ }) {
                 direction="column"
                 alignItems="center"
                 justify="center"
+                className={className}
             >
                 <AboveCenter>
                     <Typography variant="h4">
                         Welcome to Bloons.GG
                     </Typography>
+                    <br />
                     <SansSerifText variant="h6">
-                        the Bloons Tower Defense 6 community driven tier list
+                        The Bloons TD 6 community driven
                     </SansSerifText>
                     <SansSerifText variant="h6">
-                        for Monkeys And Heroes.
+                        tier list for Monkeys And Heroes.
                     </SansSerifText>
                     <br />
                     <SansSerifText variant="h6">
-                        Each Tower containing valuable information
+                        Each Tower containing valuable
                     </SansSerifText>
                     <SansSerifText variant="h6">
-                        On comparable ability trees
+                        information on comparable ability trees
                     </SansSerifText>
                     <SansSerifText variant="h6">
                         and its pros on cons for each one.

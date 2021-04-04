@@ -11,7 +11,7 @@ const SansSerifText = styled(Typography)`
   font-family: sans-serif;
 `;
 
-export default function TowerSection({ }) {
+export default function TowerSection({ className }) {
 
     return (
         <>
@@ -20,10 +20,12 @@ export default function TowerSection({ }) {
                 direction="column"
                 alignItems="center"
                 justify="center"
+                className={className}
             >
                 <Typography variant="h4">
-                   View Detailed Tower Descriptions.
+                   View Detailed Towers
                 </Typography>
+                <br />
                 <SansSerifText variant="body1">
                     Toggle between different difficulty prices.
                 </SansSerifText>
