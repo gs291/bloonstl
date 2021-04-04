@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import TowerText from "./TowerText";
-import {goldCost, siteColors} from "../../lib/utils";
 import {getDifficulty, getMobile} from "../../lib/redux/selectors";
+import {getThousandsNumber, goldCost, siteColors} from "../../lib/utils";
 
 const TowerTextContainer = styled.div`
   display: flex;
@@ -30,7 +30,7 @@ export default function TowerInfo({tower}) {
                 </TowerText>
                 { typeof tower.cost_cash === "number" && (
                     <TowerText variant="body2" textColor={siteColors.tower.cash}>
-                        Cash cost: {tower.cost_cash > 0 ? `\$${tower.cost_cash}` : "FREE"}
+                        Cash cost: {tower.cost_cash > 0 ? `\$${getThousandsNumber(tower.cost_cash)}` : "FREE"}
                     </TowerText>
                 )}
             </TowerTextContainer>
