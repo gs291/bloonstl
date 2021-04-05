@@ -79,17 +79,19 @@ export default function Ability({ className, ability, fileName, rank, towerType,
                                     alt={ ability.name }
                                 />
                             )}
-                            { towerType === "hero" &&
-                                ability.active === 1 ? (
+                            { towerType === "hero" && (ability.active === 1 ?
+                                (
                                     <ImageFill
                                         src={ getImageUrl(fileName, ability.upgrade_path, ability.upgrade_tier) }
                                         alt={ ability.name }
                                     />
-                                ) : (
+                                )
+                                :
+                                (
                                     <AbilityLevel>
                                         {ability.upgrade_tier + 1}
                                     </AbilityLevel>
-                                ) }
+                                ))}
                         </CardContentContainer>
                     </CardContainer>
                     { ability.active === 1 && (<ActivatedAbility />) }

@@ -336,7 +336,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 2, 4, 'Elite 
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_sniper_monkey, 's', 4, 2, 0, 0);
 SELECT id INTO @ability_ranks_sniper_monkey_s FROM AbilityRanks WHERE tower_id=@tower_sniper_monkey AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_s, 'camo,moab,supp', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_s, 'camo,moab,supp,cc', '');
 
 --          Ability Ranks - A
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_sniper_monkey, 'a', 0, 2, 5, 0);
@@ -634,13 +634,13 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_dartling_gunner, false, 2, 4, 'Bloo
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dartling_gunner, 's', 0, 5, 2, 0);
 SELECT id INTO @ability_ranks_dartling_gunner_s FROM AbilityRanks WHERE tower_id=@tower_dartling_gunner AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dartling_gunner_s, 'solo,bln,bad', 'cm');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dartling_gunner_s, 'solo,bln,bad', 'cm,chep');
 
 --          Ability Ranks - A
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dartling_gunner, 'a', 0, 4, 2, 0);
 SELECT id INTO @ability_ranks_dartling_gunner_a FROM AbilityRanks WHERE tower_id=@tower_dartling_gunner AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dartling_gunner_a, 'mg,bln,moab', 'purp');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dartling_gunner_a, 'mg,bln,moab,chep', 'purp');
 
 --          Ability Ranks - B
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dartling_gunner, 'b', 0, 2, 5, 0);
@@ -884,7 +884,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 2, 4, 'Avatar of Wrat
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_druid, 's', 0, 1, 5, 0);
 SELECT id INTO @ability_ranks_druid_s_0 FROM AbilityRanks WHERE tower_id=@tower_druid AND tier='s' AND bottom_path=5;
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_druid_s_0, 'dps,chmp', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_druid_s_0, 'dps,chmp,tbf', '');
 
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_druid, 's', 2, 0, 4, 0);
 SELECT id INTO @ability_ranks_druid_s_1 FROM AbilityRanks WHERE tower_id=@tower_druid AND tier='s' AND bottom_path=4;
@@ -1036,7 +1036,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 4, 'Monke
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_village, 's', 2, 3, 0, 0);
 SELECT id INTO @ability_ranks_monkey_village_s FROM AbilityRanks WHERE tower_id=@tower_monkey_village AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_village_s, 'supp,camo,bln,moab,buff,chep', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_village_s, 'supp,camo,bln,moab,tbf,chep', '');
 
 --          Ability Ranks - A
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_village, 'a', 0, 2, 0, 0);

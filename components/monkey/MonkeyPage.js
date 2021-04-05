@@ -2,6 +2,7 @@ import {useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
+import ProsCons from "../tower/ProsCons";
 import RankTitle from "../tower/RankTitle";
 import FilterRanks from "../filters/FilterRanks";
 import FixedDivider from "../divider/FixedDivider";
@@ -33,11 +34,12 @@ export default function MonkeyPage({ monkey }) {
       ${mobile ? "margin-bottom: 10px;" : ""};
     `;
 
-    const handleRank = (_, r) => {setRank(r); setPage(1)};
+    const handleRank = (_, r) => {setPage(1); setRank(r);};
     const handlePage = (_, p) => setPage(p);
 
     const dividerBackgroundColor = getMonkeyTypeColor(monkey.type);
 
+    const ranks = monkey.ranks[rank][page-1];
     return (
         <>
             <TowerContainer tower={monkey} towerType="monkey"/>
@@ -47,9 +49,11 @@ export default function MonkeyPage({ monkey }) {
                 <FilterDiff />
             </Filters>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <RankTitle rank={rank} ranks={monkey.ranks[rank][page-1]}/>
+            <RankTitle rank={rank} ranks={ranks}/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <MonkeyAbilities abilities={monkey.abilities} monkeyFile={monkey.filename} rank={rank} ranks={monkey.ranks[rank][page-1]}/>
+            <ProsCons pros={ranks.pros} cons={ranks.cons} />
+            <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
+            <MonkeyAbilities abilities={monkey.abilities} monkeyFile={monkey.filename} rank={rank} ranks={ranks}/>
             <PagePagination pageCount={monkey.ranks[rank].length} page={page} handlePage={handlePage} />
         </>
     );
