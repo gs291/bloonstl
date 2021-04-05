@@ -13,6 +13,13 @@ import {UPDATE_DIFFICULTY, updateFilter} from "../../lib/redux/actions";
 const FormRow = styled.div`
   display: flex;
   flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+
+  & :last-child {
+    margin-right: 0;
+  }
 `;
 
 const FilterLabel = styled(FormLabel)`
