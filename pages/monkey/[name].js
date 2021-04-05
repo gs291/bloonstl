@@ -43,9 +43,9 @@ export async function getStaticProps({ params }) {
         const name = monkey.name;
         const abilityRanks = await dataSources().abilitiesAPI.getMonkeyByNameAbilityRanksWithInfo({name});
         if (abilityRanks) {
-            let abilityRankObj = { "s": {}, "a": {}, "b": {} };
+            let abilityRankObj = { "s": [], "a": [], "b": [] };
 
-            abilityRanks.forEach(ar => abilityRankObj[ar.tier] = ar);
+            abilityRanks.forEach(ar => abilityRankObj[ar.tier].push(ar));
             monkey.ranks = abilityRankObj;
         }
     }

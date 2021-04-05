@@ -20,13 +20,13 @@ const RankButton  = styled(Button)`
   }
 `;
 
-export default function FilterRanks({ className, rank, handleRank }) {
+export default function FilterRanks({ className, handleRank }) {
     return (
         <>
             <BGroup variant="contained" disableElevation>
-                <RankButton onClick={() => handleRank("s")} name="s">S&nbsp;&nbsp;Tier</RankButton>
-                <RankButton onClick={() => handleRank("a")} name="a">A&nbsp;&nbsp;Tier</RankButton>
-                <RankButton onClick={() => handleRank("b")} name="b">B&nbsp;&nbsp;Tier</RankButton>
+                <RankButton onClick={(e) => handleRank(e, "s")} name="s">S&nbsp;&nbsp;Tier</RankButton>
+                <RankButton onClick={(e) => handleRank(e, "a")} name="a">A&nbsp;&nbsp;Tier</RankButton>
+                <RankButton onClick={(e) => handleRank(e, "b")} name="b">B&nbsp;&nbsp;Tier</RankButton>
             </BGroup>
         </>
     );

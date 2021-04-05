@@ -2,18 +2,24 @@ import {useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
-import MonkeyDetailed from "./MonkeyDetailed";
+import RankTitle from "../tower/RankTitle";
 import FilterRanks from "../filters/FilterRanks";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
 import TowerContainer from "../tower/TowerContainer";
 import {getMonkeyTypeColor} from "../../lib/utils/utils";
-import RankTitle from "../../components/monkey/RankTitle";
 import FilterDifficulty from "../filters/FilterDifficulty";
+import MonkeyAbilities from "../abilities/MonkeyAbilities";
+import FilterPagination from "../filters/FilterPagination";
+
+const PagePagination = styled(FilterPagination)`
+  margin-top: 20px;
+`;
 
 export default function MonkeyPage({ monkey }) {
     const mobile = useSelector(getMobile);
     const [ rank, setRank ] = useState("s");
+    const [ page, setPage ] = useState(1);
 
     const Filters = styled.div`
       display: flex;
@@ -27,22 +33,24 @@ export default function MonkeyPage({ monkey }) {
       ${mobile ? "margin-bottom: 10px;" : ""};
     `;
 
-    const handleRank = (r) => setRank(r);
+    const handleRank = (_, r) => {setRank(r); setPage(1)};
+    const handlePage = (_, p) => setPage(p);
 
     const dividerBackgroundColor = getMonkeyTypeColor(monkey.type);
 
     return (
         <>
             <TowerContainer tower={monkey} towerType="monkey"/>
-            <FixedDivider width={ 80 } backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <Filters >
-                <FilterRanks rank={ rank } handleRank={ handleRank } />
+                <FilterRanks handleRank={handleRank} />
                 <FilterDiff />
             </Filters>
-            <FixedDivider width={ 80 } backgroundColor={dividerBackgroundColor}/>
-            <RankTitle rank={ rank }  ranks={ monkey.ranks[rank] }/>
-            <FixedDivider width={ 80 } backgroundColor={dividerBackgroundColor}/>
-            <MonkeyDetailed monkey={ monkey } rank={ rank }/>
+            <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
+            <RankTitle rank={rank} ranks={monkey.ranks[rank][page-1]}/>
+            <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
+            <MonkeyAbilities abilities={monkey.abilities} monkeyFile={monkey.filename} rank={rank} ranks={monkey.ranks[rank][page-1]}/>
+            <PagePagination pageCount={monkey.ranks[rank].length} page={page} handlePage={handlePage} />
         </>
     );
 }
