@@ -130,7 +130,7 @@ SELECT id INTO @ability_ranks_bomb_shooter_s FROM AbilityRanks WHERE tower_id=@t
 
 INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_bomb_shooter_s, '', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_, 'a', 0, 0, 0, 0);
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_bomb_shooter, 'a', 0, 0, 0, 0);
 SELECT id INTO @ability_ranks_bomb_shooter_a FROM AbilityRanks WHERE tower_id=@tower_bomb_shooter AND tier='a';
 
 INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_bomb_shooter_a, '', '');
@@ -171,17 +171,17 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 2, 'Tack Sp
 INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 3, 'Overdrive', 'Shoots incredibly fast.', 3200, 8750);
 INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 4, 'The Tack Zone', 'Many, many tacks.', 24000, 26500);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_, 's', 0, 0, 0, 0);
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_tack_shooter, 's', 0, 0, 0, 0);
 SELECT id INTO @ability_ranks_tack_shooter_s FROM AbilityRanks WHERE tower_id=@tower_tack_shooter AND tier='s';
 
 INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_tack_shooter_s, '', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_, 'a', 0, 0, 0, 0);
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_tack_shooter, 'a', 0, 0, 0, 0);
 SELECT id INTO @ability_ranks_tack_shooter_a FROM AbilityRanks WHERE tower_id=@tower_tack_shooter AND tier='a';
 
 INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_tack_shooter_a, '', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_, 'b', 0, 0, 0, 0);
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_tack_shooter, 'b', 0, 0, 0, 0);
 SELECT id INTO @ability_ranks_tack_shooter_b FROM AbilityRanks WHERE tower_id=@tower_tack_shooter AND tier='b';
 
 INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_tack_shooter_b, '', '');
@@ -541,7 +541,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 2, 4, 'Bloonc
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_mortar_monkey, 's', 0, 0, 0, 0);
 SELECT id INTO @ability_ranks_mortar_monkey_s FROM AbilityRanks WHERE tower_id=@tower_mortar_monkey AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_mortar_monkey, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_mortar_monkey_s, '', '');
 
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_mortar_monkey, 'a', 0, 0, 0, 0);
 SELECT id INTO @ability_ranks_mortar_monkey_a FROM AbilityRanks WHERE tower_id=@tower_mortar_monkey AND tier='a';
@@ -587,7 +587,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_dartling_gunner, false, 2, 4, 'Bloo
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dartling_gunner, 's', 0, 0, 0, 0);
 SELECT id INTO @ability_ranks_dartling_gunner_s FROM AbilityRanks WHERE tower_id=@tower_dartling_gunner AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dartling_gunner, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dartling_gunner_s, '', '');
 
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dartling_gunner, 'a', 0, 0, 0, 0);
 SELECT id INTO @ability_ranks_dartling_gunner_a FROM AbilityRanks WHERE tower_id=@tower_dartling_gunner AND tier='a';
@@ -1204,6 +1204,7 @@ SELECT id INTO @tower_benjamin FROM Towers WHERE hero_id=@benjamin;
 
 INSERT INTO `TowerRanks` VALUES (NULL, @tower_benjamin, 's', 0);
 
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 0, '', 'Hacks in income of $100 every round.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 0, '', 'Hacks in income of $100 every round.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 1, '', 'Generates $150 per round instead of $100', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, true, 0, 2, 'Biohack', '4 closest Monkeys pop an extra layer per attack for 6 seconds. Affected Monkeys can\'t attack for 2 seconds after effect ends.', 0, 0);
