@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import {Typography} from "@material-ui/core";
+import {Grid, Typography} from "@material-ui/core";
 
 import {rankColors} from "../../lib/utils";
 
@@ -10,13 +10,27 @@ const Rank = styled(Typography)`
 export default function RankTitle ({ className, rank, ranks }) {
     return (
         <>
-            <Rank variant="h4" component="h1" name={rank} className={className}>
-                { ranks.top_path }
-                &nbsp;-&nbsp;
-                { ranks.middle_path }
-                &nbsp;-&nbsp;
-                { ranks.bottom_path }
-            </Rank>
+            <Grid container
+                  spacing={6}
+                  direciton="row"
+                  alignItems="center"
+                  justify="center"
+                  className={className}>
+                <Grid item>
+                    <Rank variant="h1" name={rank}>
+                        { rank }
+                    </Rank>
+                </Grid>
+                <Grid item>
+                    <Rank variant="h4" component="h2" name={rank}>
+                        { ranks.top_path }
+                        &nbsp;-&nbsp;
+                        { ranks.middle_path }
+                        &nbsp;-&nbsp;
+                        { ranks.bottom_path }
+                    </Rank>
+                </Grid>
+            </Grid>
         </>
     );
 }
