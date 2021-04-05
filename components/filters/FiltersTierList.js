@@ -1,28 +1,31 @@
 import styled from "@emotion/styled";
 import {
     FormControl,
-    FormLabel,
     FormControlLabel,
     FormGroup,
     Switch } from "@material-ui/core";
+import {useDispatch, useSelector} from "react-redux";
+
+import {getBorder} from "../../lib/redux/selectors";
+import {UPDATE_BORDER, updateFilter} from "../../lib/redux/actions";
 
 const FilterContainer = styled(FormControl)`
   padding: 20px;
 `;
 
-const Label = styled(FormLabel)`
-  color: white;
-`;
+export default function FiltersTierList({ className }) {
+    const dispatch = useDispatch();
+    const border = useSelector(getBorder);
 
-export default function FiltersTierList({ className, state, handleFilter }) {
+    const handleBorder = (e) => dispatch(updateFilter(UPDATE_BORDER, e.target.checked))
+
     return (
         <>
             <FilterContainer className={className}>
-                <Label focused={false}>Filters:</Label>
                 <FormGroup>
                     <FormControlLabel
-                        control={<Switch checked={state.showCardBorder} onChange={handleFilter} name="showCardBorder" />}
-                        label="Show Card Border Colors."
+                        control={<Switch checked={border} onChange={handleBorder} />}
+                        label={`${border ? "Hide" : "Show"} Border`}
                     />
                 </FormGroup>
             </FilterContainer>

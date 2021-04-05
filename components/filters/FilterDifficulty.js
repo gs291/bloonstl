@@ -6,8 +6,9 @@ import {FormLabel,
     RadioGroup} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 
-import {updateDifficulty} from "../../lib/redux/actions";
+import {siteColors} from "../../lib/utils";
 import {getDifficulty, getMobile} from "../../lib/redux/selectors";
+import {UPDATE_DIFFICULTY, updateFilter} from "../../lib/redux/actions";
 
 const FormRow = styled.div`
   display: flex;
@@ -15,16 +16,16 @@ const FormRow = styled.div`
 `;
 
 const FilterLabel = styled(FormLabel)`
-  color: white;
+  color: ${siteColors.text.dark};
   text-align: center;
 `;
 
 const DifficultyLabel = styled(FormControlLabel)`
-  color: white;
+  color: ${siteColors.text.dark};
 `;
 
 const Difficulty = styled(Radio)`
-  color: white;
+  color: ${siteColors.text.dark};
 `;
 
 export default function FilterDifficulty({ className }) {
@@ -33,7 +34,7 @@ export default function FilterDifficulty({ className }) {
     const dispatch = useDispatch();
 
     const handleDifficulty = (e) => {
-        dispatch(updateDifficulty(e.target.value));
+        dispatch(updateFilter(UPDATE_DIFFICULTY, e.target.value));
     }
 
     const easyMed = (

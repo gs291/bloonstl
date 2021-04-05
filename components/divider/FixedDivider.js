@@ -1,18 +1,20 @@
 import styled from "@emotion/styled";
 import {Divider} from "@material-ui/core";
 
-const FDivider = styled(Divider)`
-  width: ${props => props.width}%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-
-  background-color: ${props => props.backgroundcolor ? props.backgroundcolor : "white"};
-`;
+import {siteColors} from "../../lib/utils";
 
 export default function FixedDivider({ width, backgroundColor }) {
+    const FDivider = styled(Divider)`
+      width: ${width}%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    
+      background-color: ${backgroundColor ? backgroundColor : siteColors.text.dark};
+    `;
+
     return (
       <>
-          <FDivider width={width} backgroundcolor={backgroundColor} />
+          <FDivider />
       </>
     );
 }

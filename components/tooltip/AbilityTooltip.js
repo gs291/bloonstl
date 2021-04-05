@@ -1,28 +1,12 @@
-import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
-import {Typography} from "@material-ui/core";
-
-import {goldCost} from "../../lib/utils";
-import {getDifficulty} from "../../lib/redux/selectors";
+import HeroAbilityTooltip from "./HeroAbilityTooltip";
+import MonkeyAbilityTooltip from "./MonkeyAbilityTooltip";
 
 
-export default function AbilityTooltip({ className, ability}) {
-    const difficulty = useSelector(getDifficulty);
-
+export default function AbilityTooltip({ className, ability, rank, towerType, selected}) {
     return (
         <>
-            <Typography variant="caption">
-                { ability.name && (
-                    <>
-                        { ability.name } ${goldCost(ability.cost_gold, difficulty)}
-                    </>
-                )}
-                { !ability.name && (
-                    <>
-                        { ability.description }
-                    </>
-                )}
-            </Typography>
+            { towerType === "monkey" && <MonkeyAbilityTooltip ability={ability} rank={rank} selected={selected}/> }
+            { towerType === "hero" && <HeroAbilityTooltip ability={ability} /> }
         </>
     );
 }

@@ -8,8 +8,8 @@ const IconContainer  = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  width: ${props => props.detailed ? "" : "100%"};
+
+  ${props => props.detailed ? "" : "width: 100%;"}
 `;
 
 const ImgContainer = styled.div`

@@ -1,14 +1,15 @@
 import styled from "@emotion/styled";
-import { PureComponent } from "react";
+import {PureComponent} from "react";
 import {Grid} from "@material-ui/core";
 
-import AbilityContainer from "./AbilityContainer";
+import AbilityContainer from "../ability/AbilityContainer";
 
 const GridContainer = styled(Grid)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 15px;
 `;
 
 const GridItem = styled(Grid)`
@@ -26,18 +27,18 @@ export default class MonkeyAbilities extends PureComponent {
         abilities.forEach(ability => {
             if (ability.upgrade_path === 0) {
                 pathTop.push(
-                    <AbilityContainer ability={ability} monkeyFile={monkeyFile} rank={rank} key={ability.id}
-                                      selected={ability.upgrade_tier < ranks.topPath}
+                    <AbilityContainer ability={ability} fileName={monkeyFile} rank={rank}
+                                      towerType="monkey" selected={ability.upgrade_tier < ranks.topPath} key={ability.id}
                     />);
             } else if (ability.upgrade_path === 1) {
                 pathMid.push(
-                    <AbilityContainer ability={ability} monkeyFile={monkeyFile} rank={rank} key={ability.id}
-                                      selected={ability.upgrade_tier < ranks.midPath}
+                    <AbilityContainer ability={ability} fileName={monkeyFile} rank={rank}
+                                      towerType="monkey" selected={ability.upgrade_tier < ranks.midPath} key={ability.id}
                     />);
             } else {
                 pathBot.push(
-                    <AbilityContainer ability={ability} monkeyFile={monkeyFile} rank={rank} key={ability.id}
-                                      selected={ability.upgrade_tier < ranks.botPath}
+                    <AbilityContainer ability={ability} fileName={monkeyFile} rank={rank}
+                                      towerType="monkey" selected={ability.upgrade_tier < ranks.botPath} key={ability.id}
                     />) }
         });
 

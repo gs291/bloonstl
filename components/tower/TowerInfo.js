@@ -1,17 +1,14 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Typography} from "@material-ui/core";
 
-import {goldCost, siteColors} from "../../lib/utils";
+import TowerText from "./TowerText";
 import {getDifficulty, getMobile} from "../../lib/redux/selectors";
+import {getThousandsNumber, goldCost, siteColors} from "../../lib/utils";
 
-const TowerText = styled.div`
+const TowerTextContainer = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const TowerDetail = styled(Typography)`
-  color: ${props => props.textcolor ? props.textcolor : "white"};
+  text-align: center;
 `;
 
 export default function TowerInfo({tower}) {
@@ -20,22 +17,24 @@ export default function TowerInfo({tower}) {
 
     return (
         <>
-            <TowerText>
-                <TowerDetail variant={mobile ? "h4" : "h2"}>
+            <TowerTextContainer>
+                <TowerText variant={mobile ? "h4" : "h2"}>
                     {tower.name}
-                </TowerDetail>
-                <TowerDetail variant="body1" textcolor={siteColors.tower.description}>
+                </TowerText>
+                <TowerText variant="body1" textColor={siteColors.tower.description} font={1}>
                     {tower.description}
-                </TowerDetail>
-                <TowerDetail variant="caption" textcolor={siteColors.tower.gold}>
-                    In-game cost: ${goldCost(tower.cost_gold, difficulty)}
-                </TowerDetail>
+                </TowerText>
+                <br />
+                <TowerText variant="body2" textColor={siteColors.tower.gold}>
+                    In-game cost:&nbsp;
+                    ${goldCost(tower.cost_gold, difficulty)}
+                </TowerText>
                 { typeof tower.cost_cash === "number" && (
-                    <TowerDetail variant="caption" textcolor={siteColors.tower.cash}>
-                        Cash cost: {tower.cost_cash > 0 ? `\$${tower.cost_cash}` : "FREE"}
-                    </TowerDetail>
+                    <TowerText variant="body2" textColor={siteColors.tower.cash}>
+                        Cash cost: {tower.cost_cash > 0 ? `\$${getThousandsNumber(tower.cost_cash)}` : "FREE"}
+                    </TowerText>
                 )}
-            </TowerText>
+            </TowerTextContainer>
         </>
     );
 }

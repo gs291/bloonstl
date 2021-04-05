@@ -1,4 +1,3 @@
-import Head from "next/head";
 import {useEffect} from "react";
 import styled from "@emotion/styled";
 import {useDispatch, useSelector} from "react-redux";
@@ -18,15 +17,8 @@ const PageContainer = styled.div`
 `;
 
 const Nav = styled(Navbar)`
-  background-color: ${ siteColors.nav.dark }
-`;
-
-const Main = styled.main`
-  flex: 1;
-  background-color: ${ siteColors.background.main.dark };
-  padding-top: 15px;
-  ${props => !props.mobile ? "padding-right: 10px;" : ""}
-  padding-bottom: 30px;
+  background-image: linear-gradient(${ siteColors.nav.dark }, ${ siteColors.background.main.dark });
+  box-shadow: none;
 `;
 
 const MainContainer = styled(Container)`
@@ -37,10 +29,10 @@ const MainContainer = styled(Container)`
 `;
 
 const Foot = styled(Footer)`
-  background-color: ${ siteColors.nav.dark };
+  background-image: linear-gradient(${ siteColors.background.main.dark }, ${ siteColors.nav.dark });
   justify-content: center;
   align-items: center;
-  color: white;
+  color: ${siteColors.text.dark};
 `;
 
 export default function Page(props) {
@@ -49,14 +41,24 @@ export default function Page(props) {
     const screen = useMediaQuery('(max-width: 960px)');
     useEffect(() => {
         dispatch(updateMobile(screen));
-    }, [screen])
+    }, [screen]);
+
+    const Main = styled.main`
+      flex: 1;
+      background-color: ${ siteColors.background.main.dark };
+      padding-top: 15px;
+      ${!mobile ? "padding-right: 10px;" : ""}
+      padding-bottom: 30px;
+    `;
 
     return (
         <PageContainer>
             <Nav />
-            <NavDrawer />
+            { mobile && (
+                <NavDrawer />
+            )}
 
-            <Main mobile={mobile}>
+            <Main >
                 <MainContainer maxWidth="lg">
                     { props.children }
                 </MainContainer>

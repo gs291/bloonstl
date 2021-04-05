@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Provider } from "react-redux";
+import {Provider, useSelector} from "react-redux";
 import { Global, css } from "@emotion/react";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {createMuiTheme, StylesProvider, ThemeProvider} from "@material-ui/core/styles";
@@ -7,6 +7,7 @@ import {createMuiTheme, StylesProvider, ThemeProvider} from "@material-ui/core/s
 import store from "../lib/redux/store";
 import {font_family} from "../lib/utils";
 import Page from "../components/page/Page";
+import {getDrawer} from "../lib/redux/selectors";
 
 const theme = createMuiTheme({
     typography: {
@@ -21,7 +22,6 @@ const globals = css`
   body {
     padding: 0;
     margin: 0;
-    overflow: overlay;
     font-family: ${font_family};
   }
   

@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import NavLink from "./NavLink";
 import MenuButton from "./MenuButton";
 import {siteLinks} from "../../lib/utils";
 import {getMobile} from "../../lib/redux/selectors";
+import {closeDrawer} from "../../lib/redux/actions";
 
 const NavSection = styled.div`
   flex: 1;
@@ -19,7 +20,7 @@ const LeftNavSection = styled.div`
 const MiddleNavSection = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
 `;
 
 const RightNavSection = styled.div`
@@ -31,6 +32,11 @@ const RightNavSection = styled.div`
 
 export default function SiteLinks() {
     const mobile = useSelector(getMobile);
+    const dispatch = useDispatch();
+
+    const shutDrawer = () => {
+        dispatch(closeDrawer());
+    };
 
     return (
         <>
@@ -46,7 +52,7 @@ export default function SiteLinks() {
                     { !mobile && siteLinks.middle.map(mid => { return <NavLink key={mid.key} {...mid} /> }) }
 
                     { mobile && (
-                        <NavLink {...siteLinks.left.home} />
+                        <NavLink {...siteLinks.left.home} closeDrawer={shutDrawer}/>
                     )}
                 </MiddleNavSection>
             </NavSection>

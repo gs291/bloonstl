@@ -5,10 +5,12 @@ import ClearIcon from "@material-ui/icons/Clear";
 import {useDispatch, useSelector} from "react-redux";
 
 import {getDrawer} from "../../lib/redux/selectors";
+import {siteColors, siteSizes} from "../../lib/utils";
 import { toggleDrawer } from "../../lib/redux/actions";
 
 const Menu = styled(Button)`
-  color: white;
+  color: ${siteColors.text.dark};
+  height: ${ siteSizes.nav.height };
 `;
 
 export default function MenuButton() {

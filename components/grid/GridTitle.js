@@ -1,18 +1,20 @@
 import styled from "@emotion/styled";
 import {Grid, Typography} from "@material-ui/core";
 
-const Title = styled(Grid)`
-  padding-top: 5px;
-  padding-bottom: 5px;
-  
-  background-color: ${props => props.backgroundcolor};
-  color: #000;
-`;
+import {siteColors} from "../../lib/utils";
 
 export default function GridTitle({ className, children, backgroundColor}) {
+    const Title = styled(Grid)`
+      padding-top: 5px;
+      padding-bottom: 5px;
+      
+      background-color: ${backgroundColor};
+      color: ${siteColors.text.gridTitle.dark};
+    `;
+
     return (
         <>
-            <Title backgroundcolor={backgroundColor} className={className} item>
+            <Title className={className} item>
                 <Typography variant="h4">
                     { children }
                 </Typography>

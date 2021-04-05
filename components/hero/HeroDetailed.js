@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import HeroAbilities from "../ability/HeroAbilities";
+import HeroAbilities from "../abilities/HeroAbilities";
 
 const MonkeyDetailedContainer = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export default function HeroDetailed({ className, hero }) {
 
     return (
         <MonkeyDetailedContainer className={className}>
-            <HeroAbilities abilities={ hero.abilities }/>
+            <HeroAbilities abilities={ hero.abilities } heroFile={ hero.filename }/>
         </MonkeyDetailedContainer>
     );
 };

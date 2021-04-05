@@ -11,9 +11,22 @@ const StyledTooltip = styled(({ className, ...other }) => (
     <MUITooltip classes={{ tooltip: className }} {...other} />
 ))`
   background-color: ${siteColors.background.tooltip.dark};
+  width: 265px;
+  
+  ${props => props.mobile ? "margin-bottom: 7px;" : ""}
+  
+  border: 1px solid ${props => props.active ? siteColors.ability.activated : siteColors.background.tooltip.dark};
+
+  .MuiTooltip-arrow {
+    color: ${siteColors.background.tooltip.dark};
+  }
+  
+  .MuiTooltip-arrow::before {
+    border: 1px solid ${props => props.active ? siteColors.ability.activated : siteColors.background.tooltip.dark};
+  }
 `;
 
-export default function Tooltip({ className, children, title, upgradeTier}) {
+export default function Tooltip({ className, children, title, upgradeTier, active}) {
     let placement = "top";
     const mobile = useSelector(getMobile);
     const [open, setOpen] = useState(false);
@@ -26,8 +39,8 @@ export default function Tooltip({ className, children, title, upgradeTier}) {
         setOpen(true);
     };
 
-    if      (upgradeTier % 5 === 0) { placement = "top-start"; }
-    else if ((upgradeTier + 1) % 5 === 0) { placement = "top-end"; }
+    if      (upgradeTier % 5 === 0 || (upgradeTier -1) % 5 === 0) { placement = "top-start"; }
+    else if ((upgradeTier + 1) % 5 === 0 || (upgradeTier + 2) % 5 === 0) { placement = "top-end"; }
 
     return (
         <>
@@ -35,10 +48,11 @@ export default function Tooltip({ className, children, title, upgradeTier}) {
                 <>
                     <StyledTooltip
                         title={title}
-                        arrow
-                        interactive
                         leaveDelay={100}
                         placement={placement}
+                        active={active}
+                        mobile={mobile ? 1 : 0}
+                        arrow
                     >
                         <div>
                             { children }
@@ -51,7 +65,6 @@ export default function Tooltip({ className, children, title, upgradeTier}) {
                     <ClickAwayListener onClickAway={handleTooltipClose}>
                         <div>
                             <StyledTooltip
-                                PopperProps={{ disablePortal: true }}
                                 onClose={handleTooltipClose}
                                 open={open}
                                 disableFocusListener
@@ -59,6 +72,8 @@ export default function Tooltip({ className, children, title, upgradeTier}) {
                                 disableTouchListener
                                 title={title}
                                 placement={placement}
+                                active={active}
+                                mobile={mobile ? 1 : 0}
                                 arrow
                             >
                                 <div onClick={handleTooltipOpen}>

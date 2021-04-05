@@ -2,13 +2,14 @@ import styled from "@emotion/styled";
 import { PureComponent } from "react";
 import {Grid} from "@material-ui/core";
 
-import AbilityContainer from "./AbilityContainer";
+import AbilityContainer from "../ability/AbilityContainer";
 
 const GridContainer = styled(Grid)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 15px;
 `;
 
 const GridItem = styled(Grid)`
@@ -19,14 +20,15 @@ const GridItem = styled(Grid)`
 export default class HeroAbilities extends PureComponent {
 
     render() {
-        const {className, abilities} = this.props;
+        const {className, abilities, heroFile} = this.props;
 
         let dividedAbilities = [ [], [], [], [], [] ];
 
         abilities.forEach(ability => {
-            dividedAbilities[Math.floor(ability.upgrade_tier / 5)].push((
-                <AbilityContainer ability={ability} key={ability.id} />
-            ))
+            dividedAbilities[Math.floor(ability.upgrade_tier / 5)]
+                .push((
+                    <AbilityContainer ability={ability} fileName={heroFile} towerType="hero" key={ability.id} />
+                ))
         })
 
         return (

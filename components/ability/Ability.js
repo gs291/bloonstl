@@ -5,7 +5,7 @@ import OfflineBoltIcon from '@material-ui/icons/OfflineBolt';
 import Tooltip from "../tooltip/Tooltip";
 import ImageFill from "../image/ImageFill";
 import AbilityTooltip from "../tooltip/AbilityTooltip";
-import {getImageUrl, rankColors, siteColors} from "../../lib/utils";
+import {getImageUrl, rankColors, siteColors, siteSizes} from "../../lib/utils";
 
 const AbilityContainer = styled.div`
   display: flex;
@@ -25,10 +25,10 @@ const CardContainer = styled(Card)`
 
 const CardContentContainer = styled(CardContent)`
   position: relative;
-  width: 45px;
-  max-width: 45px;
-  height: 45px;
-  max-height: 45px;
+  width: ${siteSizes.ability.width};
+  max-width: ${siteSizes.ability.width};
+  height: ${siteSizes.ability.height};
+  max-height: ${siteSizes.ability.height};
   padding: 0;
   
   display: flex;
@@ -42,7 +42,7 @@ const CardContentContainer = styled(CardContent)`
 
 const AbilityLevel = styled.div`
   text-align: center;
-  color: white;
+  color: ${siteColors.text.dark};
 `;
 
 const ActivatedAbility = styled(OfflineBoltIcon)`
@@ -50,29 +50,43 @@ const ActivatedAbility = styled(OfflineBoltIcon)`
   top: -5px;
   left: 30px;
 
-  color: yellow;
+  color: ${siteColors.ability.activated};
   border-radius: 50%;
   background-color: ${siteColors.background.card.dark};
+  
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
-export default function Ability({ className, ability, monkeyFile, rank, selected}) {
+export default function Ability({ className, ability, fileName, rank, towerType, selected}) {
     return (
         <>
             <AbilityContainer className={className}>
-                <Tooltip title={<AbilityTooltip ability={ability} />} upgradeTier={ability.upgrade_tier}>
+                <Tooltip
+                    title={<AbilityTooltip ability={ability} rank={rank} towerType={towerType} selected={selected}/>}
+                    upgradeTier={ability.upgrade_tier}
+                    active={ability.active}
+                >
                     <CardContainer selected={selected} rank={rank}>
                         <CardContentContainer>
-                            { monkeyFile && (
+                            { towerType === "monkey" && (
                                 <ImageFill
-                                    src={ getImageUrl(monkeyFile, ability.upgrade_path, ability.upgrade_tier) }
+                                    src={ getImageUrl(fileName, ability.upgrade_path, ability.upgrade_tier) }
                                     alt={ ability.name }
                                 />
                             )}
-                            { !monkeyFile && (
-                                <AbilityLevel>
-                                    {ability.upgrade_tier + 1}
-                                </AbilityLevel>
-                            )}
+                            { towerType === "hero" &&
+                                ability.active === 1 ? (
+                                    <ImageFill
+                                        src={ getImageUrl(fileName, ability.upgrade_path, ability.upgrade_tier) }
+                                        alt={ ability.name }
+                                    />
+                                ) : (
+                                    <AbilityLevel>
+                                        {ability.upgrade_tier + 1}
+                                    </AbilityLevel>
+                                ) }
                         </CardContentContainer>
                     </CardContainer>
                     { ability.active === 1 && (<ActivatedAbility />) }

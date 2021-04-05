@@ -7,12 +7,17 @@ import {getDrawer} from "../../lib/redux/selectors";
 import {toggleDrawer} from "../../lib/redux/actions";
 import {siteColors, siteLinks, siteSizes} from "../../lib/utils";
 
+const TopDrawer = styled(Drawer)`
+  .MuiDrawer-paper {
+    height: 100%;
+  }
+`;
+
 const DrawerContainer = styled.div`
-  width: 250px;
   height: 100%;
   padding-top: ${ siteSizes.nav.height };
-  background-color: ${ siteColors.nav.dark };
-  color: white;
+  background-color: ${ siteColors.background.main.dark };
+  color: ${siteColors.text.dark};
   
   display: flex;
   flex-direction: column;
@@ -29,15 +34,16 @@ export default function NavDrawer() {
 
     return (
         <>
-            <Drawer
+            <TopDrawer
                 open={ drawer }
                 onClose={ () => dispatch(toggleDrawer()) }
-                anchor="right"
+                anchor="top"
+                transitionDuration={350}
             >
                 <DrawerContainer>
                     { siteLinks.middle.map(mid => <NavLink {...mid} closeDrawer={closeDrawer}/>) }
                 </DrawerContainer>
-            </Drawer>
+            </TopDrawer>
         </>
     );
 }

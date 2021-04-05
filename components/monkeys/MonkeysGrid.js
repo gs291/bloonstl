@@ -32,7 +32,7 @@ export default function MonkeysGrid({ primary, military, magic, support }) {
                     <Grid container spacing={2}>
                         { primary.map(monkey => (
                             <Grid xs={gridSpacing} item key={monkey.id}>
-                                <TowerCard tower={monkey} towerType="monkey"/>
+                                <TowerCard tower={monkey} towerType="monkey" keepBorder={1}/>
                             </Grid>
                             )
                         )}
@@ -45,7 +45,7 @@ export default function MonkeysGrid({ primary, military, magic, support }) {
                     <Grid container spacing={2}>
                         { military.map(monkey => (
                                 <Grid xs={gridSpacing} item key={monkey.id}>
-                                    <TowerCard tower={monkey} towerType="monkey"/>
+                                    <TowerCard tower={monkey} towerType="monkey" keepBorder={1}/>
                                 </Grid>
                             )
                         )}
@@ -58,7 +58,7 @@ export default function MonkeysGrid({ primary, military, magic, support }) {
                     <Grid container spacing={2}>
                         { magic.map(monkey => (
                                 <Grid xs={gridSpacing} item key={monkey.id}>
-                                    <TowerCard tower={monkey} towerType="monkey"/>
+                                    <TowerCard tower={monkey} towerType="monkey" keepBorder={1}/>
                                 </Grid>
                             )
                         )}
@@ -71,7 +71,7 @@ export default function MonkeysGrid({ primary, military, magic, support }) {
                     <Grid container spacing={2}>
                         { support.map(monkey => (
                                 <Grid xs={gridSpacing} item key={monkey.id}>
-                                    <TowerCard tower={monkey} towerType="monkey"/>
+                                    <TowerCard tower={monkey} towerType="monkey" keepBorder={1}/>
                                 </Grid>
                             )
                         )}

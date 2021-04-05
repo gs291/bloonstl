@@ -14,9 +14,9 @@ export default function HeroPage({ hero }) {
     return (
         <>
             <TowerContainer tower={hero} towerType="hero" />
-            <FixedDivider width={ mobile ? 100 : 80 } backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={ 80 } backgroundColor={dividerBackgroundColor}/>
             <FilterDifficulty />
-            <FixedDivider width={ mobile ? 100 : 80 } backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={ 80 } backgroundColor={dividerBackgroundColor}/>
             <HeroDetailed hero={hero} />
         </>
     );

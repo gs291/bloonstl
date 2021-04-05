@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import MonkeyAbilities from "../ability/MonkeyAbilities";
+import MonkeyAbilities from "../abilities/MonkeyAbilities";
 
 const MonkeyDetailedContainer = styled.div`
   display: flex;
