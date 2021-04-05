@@ -18,9 +18,9 @@ export default function Monkeys({ monkeys }) {
 }
 
 export async function getStaticProps(context) {
+    let primary = [], military = [], magic = [], support = [];
     let monkeys = await dataSources().monkeysAPI.getAllMonkeys();
 
-    let primary = [], military = [], magic = [], support = [];
     monkeys.forEach(monkey => {
         if (monkey.type === "Primary") {
             primary.push(monkey);

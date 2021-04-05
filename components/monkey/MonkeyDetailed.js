@@ -12,7 +12,7 @@ export default function MonkeyDetailed({ className, monkey, rank }) {
 
     return (
         <MonkeyDetailedContainer className={className}>
-            <MonkeyAbilities abilities={ monkey.abilities } monkeyFile={ monkey.filename } rank={ rank } ranks={ monkey.rank[rank] }/>
+            <MonkeyAbilities abilities={ monkey.abilities } monkeyFile={ monkey.filename } rank={ rank } ranks={ monkey.ranks[rank] }/>
         </MonkeyDetailedContainer>
     );
 };

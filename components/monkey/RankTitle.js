@@ -11,11 +11,11 @@ export default function RankTitle ({ className, rank, ranks }) {
     return (
         <>
             <Rank variant="h4" component="h1" name={rank} className={className}>
-                { ranks.topPath }
+                { ranks.top_path }
                 &nbsp;-&nbsp;
-                { ranks.midPath }
+                { ranks.middle_path }
                 &nbsp;-&nbsp;
-                { ranks.botPath }
+                { ranks.bottom_path }
             </Rank>
         </>
     );
