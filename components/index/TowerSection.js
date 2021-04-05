@@ -32,10 +32,10 @@ export default function TowerSection({ className }) {
                     View information on each Ability.
                 </SansSerifText>
                 <SansSerifText variant="body1">
-                    View pros and cons for each tree path.
+                    Toggle between different difficulty prices.
                 </SansSerifText>
                 <SansSerifText variant="body1">
-                    Toggle between different difficulty prices.
+                    View pros and cons for each Ability tree path.
                 </SansSerifText>
             </TitleContainer>
         </>

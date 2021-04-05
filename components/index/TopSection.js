@@ -41,7 +41,7 @@ export default function TopSection({ className }) {
                     </SansSerifText>
                     <br />
                     <SansSerifText variant="h6">
-                        Each Tower containing valuable
+                        With each Tower containing valuable
                     </SansSerifText>
                     <SansSerifText variant="h6">
                         information on comparable ability
