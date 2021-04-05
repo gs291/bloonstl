@@ -4,8 +4,11 @@ import OfflineBoltIcon from '@material-ui/icons/OfflineBolt';
 
 import Tooltip from "../tooltip/Tooltip";
 import ImageFill from "../image/ImageFill";
+import siteSizes from "../../lib/utils/siteSizes";
+import siteColors from "../../lib/utils/siteColors";
 import AbilityTooltip from "../tooltip/AbilityTooltip";
-import {getImageUrl, rankColors, siteColors, siteSizes} from "../../lib/utils";
+import {getImageUrl, rankColors} from "../../lib/utils/utils";
+
 
 const AbilityContainer = styled.div`
   display: flex;

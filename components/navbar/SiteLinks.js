@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import NavLink from "./NavLink";
 import MenuButton from "./MenuButton";
-import {siteLinks} from "../../lib/utils";
+import siteLinks from "../../lib/utils/siteLinks";
 import {getMobile} from "../../lib/redux/selectors";
 import {closeDrawer} from "../../lib/redux/actions";
 

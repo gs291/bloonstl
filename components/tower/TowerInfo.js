@@ -2,8 +2,9 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import TowerText from "./TowerText";
+import siteColors from "../../lib/utils/siteColors";
 import {getDifficulty, getMobile} from "../../lib/redux/selectors";
-import {getThousandsNumber, goldCost, siteColors} from "../../lib/utils";
+import {getThousandsNumber, goldCost} from "../../lib/utils/utils";
 
 const TowerTextContainer = styled.div`
   display: flex;

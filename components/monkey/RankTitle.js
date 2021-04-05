@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {Typography} from "@material-ui/core";
 
-import {rankColors} from "../../lib/utils";
+import {rankColors} from "../../lib/utils/utils";
 
 const Rank = styled(Typography)`
   color: ${props => rankColors(props.name)};

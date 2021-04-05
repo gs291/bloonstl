@@ -4,8 +4,9 @@ import {useSelector} from "react-redux";
 import {Card, CardContent, Link as MUILink, Typography} from "@material-ui/core";
 
 import Icon from "../tower/Icon";
+import siteColors from "../../lib/utils/siteColors";
 import {getBorder} from "../../lib/redux/selectors";
-import {getTowerLink, getMonkeyTypeColor, siteColors, getHeroColor} from "../../lib/utils";
+import {getTowerLink, getMonkeyTypeColor, getHeroColor} from "../../lib/utils/utils";
 
 const CardContainer = styled(Card)`
   margin: 5px;

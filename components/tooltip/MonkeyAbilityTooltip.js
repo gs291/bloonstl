@@ -2,8 +2,9 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import TowerText from "../tower/TowerText";
+import siteColors from "../../lib/utils/siteColors";
 import {getDifficulty} from "../../lib/redux/selectors";
-import {goldCost, rankColors, siteColors} from "../../lib/utils";
+import {goldCost, rankColors} from "../../lib/utils/utils";
 
 
 export default function MonkeyAbilityTooltip({ ability, rank, selected }) {

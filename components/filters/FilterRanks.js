@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { ButtonGroup, Button } from "@material-ui/core";
 
-import {font_family, rankColors} from "../../lib/utils";
+import {font_family, rankColors} from "../../lib/utils/utils";
 
 const BGroup = styled(ButtonGroup)`
   justify-content: center;

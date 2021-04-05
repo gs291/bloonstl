@@ -5,9 +5,9 @@ import {useSelector} from "react-redux";
 import MonkeyDetailed from "./MonkeyDetailed";
 import FilterRanks from "../filters/FilterRanks";
 import FixedDivider from "../divider/FixedDivider";
-import {getMonkeyTypeColor} from "../../lib/utils";
 import {getMobile} from "../../lib/redux/selectors";
 import TowerContainer from "../tower/TowerContainer";
+import {getMonkeyTypeColor} from "../../lib/utils/utils";
 import RankTitle from "../../components/monkey/RankTitle";
 import FilterDifficulty from "../filters/FilterDifficulty";
 

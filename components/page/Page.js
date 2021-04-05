@@ -5,8 +5,8 @@ import { Container, useMediaQuery } from "@material-ui/core";
 
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
-import {siteColors} from "../../lib/utils";
 import NavDrawer from "../navbar/NavDrawer";
+import siteColors from "../../lib/utils/siteColors";
 import {getMobile} from "../../lib/redux/selectors";
 import { updateMobile } from "../../lib/redux/actions";
 

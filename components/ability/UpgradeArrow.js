@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import {DoubleArrow} from "@material-ui/icons";
 
-import {rankColors, siteColors} from "../../lib/utils";
+import {rankColors} from "../../lib/utils/utils";
+import siteColors from "../../lib/utils/siteColors";
 
 const UpgradeArrowContainer = styled.div`
   display: flex;

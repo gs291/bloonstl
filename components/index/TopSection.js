@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import {Grid, Typography} from "@material-ui/core";
 
-import {siteColors, siteSizes} from "../../lib/utils";
+import siteSizes from "../../lib/utils/siteSizes";
+import siteColors from "../../lib/utils/siteColors";
 
 const TitleContainer = styled(Grid)`
   height: calc(100vh - ${ siteSizes.nav.height });

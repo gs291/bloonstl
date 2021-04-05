@@ -1,7 +1,7 @@
 import {dataSources} from "../../lib/mysql/db";
 import Header from "../../components/page/Header";
 import MonkeyPage from "../../components/monkey/MonkeyPage";
-import {getTowerLink, parseTowerLink} from "../../lib/utils";
+import {getTowerLink, parseTowerLink} from "../../lib/utils/utils";
 
 
 export default function Monkey({ monkey }) {

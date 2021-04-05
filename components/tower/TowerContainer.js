@@ -5,7 +5,7 @@ import Icon from "../tower/Icon";
 import TowerInfo from "./TowerInfo";
 import {getMobile} from "../../lib/redux/selectors";
 import VerticalDivider from "../divider/VerticalDivider";
-import {getHeroColor, getMonkeyTypeColor} from "../../lib/utils";
+import {getHeroColor, getMonkeyTypeColor} from "../../lib/utils/utils";
 
 const ContentContainer = styled.div`
   display: flex;

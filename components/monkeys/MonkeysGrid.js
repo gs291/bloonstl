@@ -5,8 +5,8 @@ import {useSelector} from "react-redux";
 import GridItems from "../grid/GridItems";
 import GridTitle from "../grid/GridTitle";
 import TowerCard from "../tower/TowerCard";
-import {getMonkeyTypeColor} from "../../lib/utils";
 import {getMobile} from "../../lib/redux/selectors";
+import {getMonkeyTypeColor} from "../../lib/utils/utils";
 
 
 export default function MonkeysGrid({ primary, military, magic, support }) {

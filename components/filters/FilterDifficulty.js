@@ -6,7 +6,8 @@ import {FormLabel,
     RadioGroup} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 
-import {siteColors} from "../../lib/utils";
+
+import siteColors from "../../lib/utils/siteColors";
 import {getDifficulty, getMobile} from "../../lib/redux/selectors";
 import {UPDATE_DIFFICULTY, updateFilter} from "../../lib/redux/actions";
 

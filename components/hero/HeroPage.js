@@ -1,7 +1,7 @@
 import {useSelector} from "react-redux";
 
 import HeroDetailed from "./HeroDetailed";
-import {getHeroColor} from "../../lib/utils";
+import {getHeroColor} from "../../lib/utils/utils";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
 import TowerContainer from "../tower/TowerContainer";
