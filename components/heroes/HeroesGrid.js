@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 import GridTitle from "../grid/GridTitle";
 import GridItems from "../grid/GridItems";
 import TowerCard from "../tower/TowerCard";
-import {siteColors} from "../../lib/utils";
+import siteColors from "../../lib/utils/siteColors";
 import {getMobile} from "../../lib/redux/selectors";
 
 

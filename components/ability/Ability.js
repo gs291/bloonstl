@@ -4,8 +4,11 @@ import OfflineBoltIcon from '@material-ui/icons/OfflineBolt';
 
 import Tooltip from "../tooltip/Tooltip";
 import ImageFill from "../image/ImageFill";
+import siteSizes from "../../lib/utils/siteSizes";
+import siteColors from "../../lib/utils/siteColors";
 import AbilityTooltip from "../tooltip/AbilityTooltip";
-import {getImageUrl, rankColors, siteColors, siteSizes} from "../../lib/utils";
+import {getImageUrl, rankColors} from "../../lib/utils/utils";
+
 
 const AbilityContainer = styled.div`
   display: flex;
@@ -76,17 +79,19 @@ export default function Ability({ className, ability, fileName, rank, towerType,
                                     alt={ ability.name }
                                 />
                             )}
-                            { towerType === "hero" &&
-                                ability.active === 1 ? (
+                            { towerType === "hero" && (ability.active === 1 ?
+                                (
                                     <ImageFill
                                         src={ getImageUrl(fileName, ability.upgrade_path, ability.upgrade_tier) }
                                         alt={ ability.name }
                                     />
-                                ) : (
+                                )
+                                :
+                                (
                                     <AbilityLevel>
                                         {ability.upgrade_tier + 1}
                                     </AbilityLevel>
-                                ) }
+                                ))}
                         </CardContentContainer>
                     </CardContainer>
                     { ability.active === 1 && (<ActivatedAbility />) }

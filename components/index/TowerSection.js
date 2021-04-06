@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {Grid, Typography} from "@material-ui/core";
 
-import {siteColors} from "../../lib/utils";
+import siteColors from "../../lib/utils/siteColors";
 
 const TitleContainer = styled(Grid)`
   height: 300px;
@@ -32,10 +32,10 @@ export default function TowerSection({ className }) {
                     View information on each Ability.
                 </SansSerifText>
                 <SansSerifText variant="body1">
-                    View pros and cons for each tree path.
+                    Toggle between different difficulty prices.
                 </SansSerifText>
                 <SansSerifText variant="body1">
-                    Toggle between different difficulty prices.
+                    View pros and cons for each Ability tree path.
                 </SansSerifText>
             </TitleContainer>
         </>

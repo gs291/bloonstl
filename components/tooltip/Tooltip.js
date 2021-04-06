@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {Tooltip as MUITooltip, ClickAwayListener} from "@material-ui/core";
 
-import {siteColors} from "../../lib/utils";
+import siteColors from "../../lib/utils/siteColors";
 import {getMobile} from "../../lib/redux/selectors";
 
 //https://stackoverflow.com/questions/59934683/style-material-ui-tooltip-using-emotion-styled

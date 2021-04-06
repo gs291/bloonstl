@@ -3,9 +3,11 @@ import {Drawer} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 
 import NavLink from "./NavLink";
+import siteLinks from "../../lib/utils/siteLinks";
+import siteSizes from "../../lib/utils/siteSizes";
+import siteColors from "../../lib/utils/siteColors";
 import {getDrawer} from "../../lib/redux/selectors";
 import {toggleDrawer} from "../../lib/redux/actions";
-import {siteColors, siteLinks, siteSizes} from "../../lib/utils";
 
 const TopDrawer = styled(Drawer)`
   .MuiDrawer-paper {

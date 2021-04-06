@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import {Grid, Typography} from "@material-ui/core";
 
-import {siteColors, siteSizes} from "../../lib/utils";
+import siteSizes from "../../lib/utils/siteSizes";
+import siteColors from "../../lib/utils/siteColors";
 
 const TitleContainer = styled(Grid)`
   height: calc(100vh - ${ siteSizes.nav.height });
@@ -40,7 +41,7 @@ export default function TopSection({ className }) {
                     </SansSerifText>
                     <br />
                     <SansSerifText variant="h6">
-                        Each Tower containing valuable
+                        With each Tower containing valuable
                     </SansSerifText>
                     <SansSerifText variant="h6">
                         information on comparable ability

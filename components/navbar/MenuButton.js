@@ -4,8 +4,9 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ClearIcon from "@material-ui/icons/Clear";
 import {useDispatch, useSelector} from "react-redux";
 
+import siteSizes from "../../lib/utils/siteSizes";
+import siteColors from "../../lib/utils/siteColors";
 import {getDrawer} from "../../lib/redux/selectors";
-import {siteColors, siteSizes} from "../../lib/utils";
 import { toggleDrawer } from "../../lib/redux/actions";
 
 const Menu = styled(Button)`

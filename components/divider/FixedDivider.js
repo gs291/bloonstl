@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {Divider} from "@material-ui/core";
 
-import {siteColors} from "../../lib/utils";
+import siteColors from "../../lib/utils/siteColors";
 
 export default function FixedDivider({ width, backgroundColor }) {
     const FDivider = styled(Divider)`

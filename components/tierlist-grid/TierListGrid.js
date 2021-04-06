@@ -5,8 +5,9 @@ import {useSelector} from "react-redux";
 import GridTitle from "../grid/GridTitle";
 import GridItems from "../grid/GridItems";
 import TowerCard from "../tower/TowerCard";
+import {rankColors} from "../../lib/utils/utils";
 import {getMobile} from "../../lib/redux/selectors";
-import {rankColors, siteColors} from "../../lib/utils";
+import siteColors from "../../lib/utils/siteColors";
 import FiltersTierList from "../filters/FiltersTierList";
 
 const FilterContainer = styled.div`

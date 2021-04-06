@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import {createMuiTheme, StylesProvider, ThemeProvider} from "@material-ui/core/styles";
 
 import store from "../lib/redux/store";
-import {font_family} from "../lib/utils";
+import {font_family} from "../lib/utils/utils";
 import Page from "../components/page/Page";
 import {getDrawer} from "../lib/redux/selectors";
 

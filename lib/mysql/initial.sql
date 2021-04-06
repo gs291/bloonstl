@@ -77,21 +77,44 @@ CREATE TABLE `AbilityRanks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- DOCS:
---   - cc: Crowd Control
---   - lg: Late Game
+--   - abil: Ability
 --   - atksp: Attack Speed
---   - moab: M.O.A.B (Massive Ornary Air Blimp)
---   - bfb: B.F.B (Brutal Floating Behemoth)
---   - zomg: Z.O.M.G (Zeppelin of Mighty Gargantuaness
---   - dot: D.O.T (Dark Dirigible Titan)
 --   - bad: B.A.D (Big Airship of Doom)
---   - bpb: Bloons per Bolt
---   - fcm: Fortified Ceramics
---   - kb: Knockback
+--   - bfb: B.F.B (Brutal Floating Behemoth)
+--   - bln: Bloons
 --   - blnc: Balanced
+--   - buff: Buffs Towers
 --   - camo: Camo Bloons
+--   - cc: Crowd Control
+--   - cd: Ability Cool down
+--   - chep: Cheap
+--   - chmp: Chimps Mode
+--   - cm: Ceramics
+--   - dps: Damage Per Second
+--   - ddt: D.D.T (Dark Dirigible Titan)
+--   - eg: Early Game
+--   - fbl: Fortified Bloons
+--   - fcm: Fortified Ceramics
+--   - gbl: Global
+--   - grpb: Grouped Bloons
+--   - kb: Knockback
+--   - lead: Lead Bloons
+--   - lg: Late Game
+--   - map: Map Specific Tower
+--   - mg: Mid Game
+--   - micr: Micromanage
+--   - moab: M.O.A.B (Massive Ornary Air Blimp)
+--   - purp: Purple Blooons
+--   - rang: Range
+--   - scm: Super Ceramics
+--   - spam: Spam Towers required
+--   - stnb: Stuns Bloons
+--   - sub: Submerged
+--   - supp: Support
+--   - time: Ability Timing
 --   - trkp: Track Placement
---   - exps: Expensive
+--   - vis: Visibility
+--   - zomg: Z.O.M.G (Zeppelin of Mighty Gargantuaness)
 CREATE TABLE `AbilityRanksInfo` (
     `id` INT(11) AUTO_INCREMENT NOT NULL,
     `rank_id` INT(11) NOT NULL,

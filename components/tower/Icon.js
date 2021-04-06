@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 import ImageFill from "../image/ImageFill";
-import { getImageUrl } from "../../lib/utils";
+import { getImageUrl } from "../../lib/utils/utils";
 
 const IconContainer  = styled.div`
   margin-right: 10px;

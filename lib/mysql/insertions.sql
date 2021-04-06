@@ -25,8 +25,8 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 0, 4, 'Ultra-Ju
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 0, 'Quick Shots', 'Shoots 15% faster.', 100, 80);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 1, 'Very Quick Shots', 'Shoots 33% faster!', 190, 400);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 2, 'Triple Shot', 'Throws 3 darts at a time instead of 1.', 400, 2000);
-INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 3, 'Super Monkey Fan Club', 'Super Monkey Fan Club ability: Converts up to 10 nearby Dart Monkeys including himself into Super Monkeys for 15 seconds. Regular attack speed also increased.', 8000, 9500);
-INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 4, 'Plasma Monkey Fan Club', 'Elite membership of this club grants the Dart Monkeys even more power!', 50000, 30000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, true, 1, 3, 'Super Monkey Fan Club', 'Super Monkey Fan Club ability: Converts up to 10 nearby Dart Monkeys including himself into Super Monkeys for 15 seconds. Regular attack speed also increased.', 8000, 9500);
+INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, true, 1, 4, 'Plasma Monkey Fan Club', 'Elite membership of this club grants the Dart Monkeys even more power!', 50000, 30000);
 
 --          Bottom Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 0, 'Long Range Darts', 'Makes the Dart Monkey shoot further than normal.', 90, 100);
@@ -35,20 +35,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 2, 'Crossbow
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 3, 'Sharp Shooter', 'Sharp Shooter does powerful Crit Shots every few seconds that do a lot more damage.', 2000, 12000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 4, 'Crossbow Master', 'Crossbow Master shoots really fast and devastates most Bloon types with ease.', 25000, 35000);
 
+--          Ability Ranks - S
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dart_monkey, 's', 0, 2, 3, 0);
 SELECT id INTO @ability_ranks_dart_monkey_s FROM AbilityRanks WHERE tower_id=@tower_dart_monkey AND tier='s';
 
 INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dart_monkey_s, 'cc', 'lg');
 
+--          Ability Ranks - A
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dart_monkey, 'a', 0, 3, 2, 0);
 SELECT id INTO @ability_ranks_dart_monkey_a FROM AbilityRanks WHERE tower_id=@tower_dart_monkey AND tier='a';
 
 INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dart_monkey_a, '', 'lg');
 
+--          Ability Ranks - B
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dart_monkey, 'b', 0, 2, 5, 0);
 SELECT id INTO @ability_ranks_dart_monkey_b FROM AbilityRanks WHERE tower_id=@tower_dart_monkey AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dart_monkey_b, 'atksp, bpb-20', 'moab');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dart_monkey_b, 'atksp', 'moab');
 
 --      Monkey - Boomerang Monkey
 INSERT INTO `Monkeys` VALUES (NULL, 'Boomerang Monkey', 'Primary', 'Hurls a boomerang that follows a curved path. Good range and pierce', 325, 'boomerang-monkey.png');
@@ -79,20 +82,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 2, 2, 'Kyl
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 2, 3, 'MOAB Press', 'Heavy Kylie boomerang hits MOAB-Class Bloons multiple times per throw and sometimes knocks them back a short way along the path.', 2200, 9500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 2, 4, 'MOAB Domination', 'Special knockback kylies trigger more often and do lots of extra damage.', 60000, 28000);
 
+--          Ability Ranks - S
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_boomerang_monkey, 's', 2, 5, 0, 0);
 SELECT id INTO @ability_ranks_boomerang_monkey_s FROM AbilityRanks WHERE tower_id=@tower_boomerang_monkey AND tier='s';
 
 INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_boomerang_monkey_s, 'blnc', 'trkp');
 
+--          Ability Ranks - A
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_boomerang_monkey, 'a', 5, 0, 2, 0);
 SELECT id INTO @ability_ranks_boomerang_monkey_a FROM AbilityRanks WHERE tower_id=@tower_boomerang_monkey AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_boomerang_monkey_a, 'dot', 'moab, fcm');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_boomerang_monkey_a, 'ddt', 'moab,fcm');
 
+--          Ability Ranks - B
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_boomerang_monkey, 'b', 0, 2, 5, 0);
 SELECT id INTO @ability_ranks_boomerang_monkey_b FROM AbilityRanks WHERE tower_id=@tower_boomerang_monkey AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_boomerang_monkey_b, 'camo, moab, kb', 'exps, ddt');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_boomerang_monkey_b, 'camo,moab,kb', 'chep,ddt');
 
 
 
@@ -102,7 +108,7 @@ SELECT id INTO @bomb_shooter FROM Monkeys WHERE name='Bomb Shooter';
 INSERT INTO `Towers` VALUES (NULL, NULL, @bomb_shooter);
 SELECT id INTO @tower_bomb_shooter FROM Towers WHERE monkey_id=@bomb_shooter;
 
-INSERT INTO `TowerRanks` VALUES (NULL, @tower_bomb_shooter, 'b', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_bomb_shooter, 's', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 0, 0, 'Bigger Bombs', 'Shoots larger bombs, they have a larger blast area and more popping power.', 350, 200);
@@ -125,20 +131,28 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 2, 2, 'Cluster
 INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 2, 3, 'Recursive Cluster', 'Every second shot the cluster bombs send out more cluster bombs for even more destruction.', 2800, 10000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 2, 4, 'Bomb Blitz', 'Deals much more damage and gains the passive Bomb Storm Ability - when lives are lost, the Bomb Storm automatically triggers which destroys all but the biggest of Bloons.', 35000, 25000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_bomb_shooter, 's', 0, 0, 0, 0);
-SELECT id INTO @ability_ranks_bomb_shooter_s FROM AbilityRanks WHERE tower_id=@tower_bomb_shooter AND tier='s';
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_bomb_shooter, 's', 2, 3, 0, 0);
+SELECT id INTO @ability_ranks_bomb_shooter_s_0 FROM AbilityRanks WHERE tower_id=@tower_bomb_shooter AND tier='s' AND middle_path=3;
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_bomb_shooter_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_bomb_shooter_s_0, 'moab,bfb,zomg,chmp', 'spam');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_, 'a', 0, 0, 0, 0);
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_bomb_shooter, 's', 2, 5, 0, 0);
+SELECT id INTO @ability_ranks_bomb_shooter_s_1 FROM AbilityRanks WHERE tower_id=@tower_bomb_shooter AND tier='s' AND middle_path=5;
+
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_bomb_shooter_s_1, 'zomg,ddt,bad,cm', '');
+
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_bomb_shooter, 'a', 2, 0, 5, 0);
 SELECT id INTO @ability_ranks_bomb_shooter_a FROM AbilityRanks WHERE tower_id=@tower_bomb_shooter AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_bomb_shooter_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_bomb_shooter_a, 'grpb,mg', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_bomb_shooter, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_bomb_shooter, 'b', 4, 2, 0, 0);
 SELECT id INTO @ability_ranks_bomb_shooter_b FROM AbilityRanks WHERE tower_id=@tower_bomb_shooter AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_bomb_shooter_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_bomb_shooter_b, 'scm', '');
 
 
 
@@ -171,20 +185,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 2, 'Tack Sp
 INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 3, 'Overdrive', 'Shoots incredibly fast.', 3200, 8750);
 INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 4, 'The Tack Zone', 'Many, many tacks.', 24000, 26500);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_tack_shooter, 's', 2, 0, 5, 0);
 SELECT id INTO @ability_ranks_tack_shooter_s FROM AbilityRanks WHERE tower_id=@tower_tack_shooter AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_tack_shooter_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_tack_shooter_s, 'dps,chep', 'camo');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_tack_shooter, 'a', 0, 4, 0, 0);
 SELECT id INTO @ability_ranks_tack_shooter_a FROM AbilityRanks WHERE tower_id=@tower_tack_shooter AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_tack_shooter_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_tack_shooter_a, 'mg', 'camo,lead');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_tack_shooter, 'b', 5, 0, 2, 0);
 SELECT id INTO @ability_ranks_tack_shooter_b FROM AbilityRanks WHERE tower_id=@tower_tack_shooter AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_tack_shooter_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_tack_shooter_b, 'map', 'camo,purp');
 
 
 
@@ -217,20 +234,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 2, 'Cryo Cann
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 3, 'Icicles', 'Frozen Bloons grow sharp icicles that can pop Bloons that touch them.', 2000, 9000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 4, 'Icicle Impale', 'Shoots huge icicle spikes that do huge damage to MOAB-Class Bloons and freezes them.', 30000, 30000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_ice_monkey, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_ice_monkey, 's', 2, 0, 5, 0);
 SELECT id INTO @ability_ranks_ice_monkey_s FROM AbilityRanks WHERE tower_id=@tower_ice_monkey AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_ice_monkey_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_ice_monkey_s, 'moab,solo', 'camo');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_ice_monkey, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_ice_monkey, 'a', 5, 0, 2, 0);
 SELECT id INTO @ability_ranks_ice_monkey_a FROM AbilityRanks WHERE tower_id=@tower_ice_monkey AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_ice_monkey_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_ice_monkey_a, 'supp', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_ice_monkey, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_ice_monkey, 'b', 0, 5, 2, 0);
 SELECT id INTO @ability_ranks_ice_monkey_b FROM AbilityRanks WHERE tower_id=@tower_ice_monkey AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_ice_monkey_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_ice_monkey_b, 'rang,abil', '');
 
 
 
@@ -240,7 +260,7 @@ SELECT id INTO @glue_gunner FROM Monkeys WHERE name='Glue Gunner';
 INSERT INTO `Towers` VALUES (NULL, NULL, @glue_gunner);
 SELECT id INTO @tower_glue_gunner FROM Towers WHERE monkey_id=@glue_gunner;
 
-INSERT INTO `TowerRanks` VALUES (NULL, @tower_glue_gunner, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_glue_gunner, 'a', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_glue_gunner, false, 0, 0, 'Glue Soak', 'Glue soaks through all layers of Bloon.', 200, 150);
@@ -263,20 +283,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_glue_gunner, false, 2, 2, 'MOAB Glu
 INSERT INTO `Abilities` VALUES (NULL, @tower_glue_gunner, false, 2, 3, 'Relentless Glue', 'Popped Bloons that were glued, leave a blob of glue on the track.', 3000, 8000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_glue_gunner, false, 2, 4, 'Super Glue', 'Glue so strong it temporarily immobilizes all affected Bloons!', 35000, 30000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_glue_gunner, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_glue_gunner, 's', 0, 2, 3, 0);
 SELECT id INTO @ability_ranks_glue_gunner_s FROM AbilityRanks WHERE tower_id=@tower_glue_gunner AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_glue_gunner_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_glue_gunner_s, 'moab,chep', 'camo');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_glue_gunner, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_glue_gunner, 'a', 2, 5, 0, 0);
 SELECT id INTO @ability_ranks_glue_gunner_a FROM AbilityRanks WHERE tower_id=@tower_glue_gunner AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_glue_gunner_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_glue_gunner_a, 'abil', 'moab');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_glue_gunner, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_glue_gunner, 'b', 5, 0, 2, 0);
 SELECT id INTO @ability_ranks_glue_gunner_b FROM AbilityRanks WHERE tower_id=@tower_glue_gunner AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_glue_gunner_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_glue_gunner_b, 'scm,fbl', 'moab');
 
 
 
@@ -297,7 +320,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 0, 4, 'Crippl
 
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 1, 0, 'Night Vision Goggles', 'Allows the sniper to detect and do an additional 2 damage to Camo Bloons.', 300, 200);
-INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 1, 1, 'Shrapnel Shot', '	Damaged bloons spray out a cone of sharp shrapnel.', 450, 600);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 1, 1, 'Shrapnel Shot', 'Damaged bloons spray out a cone of sharp shrapnel.', 450, 600);
 INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 1, 2, 'Bouncing Bullet', 'Shots bounce to new targets up to 3 times.', 3200, 2500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, true, 1, 3, 'Supply Drop', 'Supply Drop Ability: drops a crate full of cash. Regular attack also damages Lead Bloons and increases Shrapnel popping power.', 7200, 11000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, true, 1, 4, 'Elite Sniper', 'Supply Drop gives much more cash. Grants Elite targeting prio to all snipers.', 13000, 35000);
@@ -309,20 +332,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 2, 2, 'Semi-A
 INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 2, 3, 'Full Auto Rifle', 'Fully automatic weapon with incredible popping power, including damage to Lead Bloons.', 4750, 10000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 2, 4, 'Elite Defender', 'A lost life gives this Sniper 4x attack speed for a short time in retaliation. Also attacks faster the further the Bloons are along the track.', 14000, 30000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_sniper_monkey, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_sniper_monkey, 's', 4, 2, 0, 0);
 SELECT id INTO @ability_ranks_sniper_monkey_s FROM AbilityRanks WHERE tower_id=@tower_sniper_monkey AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_s, 'camo,moab,supp,cc', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_sniper_monkey, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_sniper_monkey, 'a', 0, 2, 5, 0);
 SELECT id INTO @ability_ranks_sniper_monkey_a FROM AbilityRanks WHERE tower_id=@tower_sniper_monkey AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_a, 'camo,dps,lead', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_sniper_monkey, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_sniper_monkey, 'b', 2, 5, 0, 0);
 SELECT id INTO @ability_ranks_sniper_monkey_b FROM AbilityRanks WHERE tower_id=@tower_sniper_monkey AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_b, 'supp', 'camo,moab');
 
 
 
@@ -355,20 +381,28 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_sub, false, 2, 2, 'Triple Gu
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_sub, false, 2, 3, 'Armor Piercing Darts', 'Special AP darts inflict more damage to MOAB-Class Bloons.', 3000, 10000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_sub, false, 2, 4, 'Sub Commander', 'Grants +4 pierce and +1 damage to all Subs in its radius.', 25000, 25000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_sub, 's', 0, 0, 0, 0);
-SELECT id INTO @ability_ranks_monkey_sub_s FROM AbilityRanks WHERE tower_id=@tower_monkey_sub AND tier='s';
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_sub, 's', 2, 0, 5, 0);
+SELECT id INTO @ability_ranks_monkey_sub_s_0 FROM AbilityRanks WHERE tower_id=@tower_monkey_sub AND tier='s' AND bottom_path=5;
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_sub_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_sub_s_0, 'blnc,buff', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_sub, 'a', 0, 0, 0, 0);
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_sub, 's', 2, 0, 3, 0);
+SELECT id INTO @ability_ranks_monkey_sub_s_1 FROM AbilityRanks WHERE tower_id=@tower_monkey_sub AND tier='s' AND bottom_path=3;
+
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_sub_s_1, '', 'spam,buff');
+
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_sub, 'a', 4, 0, 2, 0);
 SELECT id INTO @ability_ranks_monkey_sub_a FROM AbilityRanks WHERE tower_id=@tower_monkey_sub AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_sub_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_sub_a, 'camo,eg,mg', 'sub');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_sub, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_sub, 'b', 0, 4, 0, 0);
 SELECT id INTO @ability_ranks_monkey_sub_b FROM AbilityRanks WHERE tower_id=@tower_monkey_sub AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_sub_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_sub_b, 'abil,chep,bad', 'time');
 
 
 --      Monkey - Monkey Buccaneer
@@ -400,20 +434,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 2, 2, 'Mer
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 2, 3, 'Favored Trades', 'Attacks faster and generates lots of money per round. Monkeys in radius have increased sell value and can stack up to 3 Favored Trades for 95% max sell value.', 5500, 10000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 2, 4, 'Trade Empire', 'Generates more cash per round, increases cash earned by up to 20 other Merchantmen by the number of Merchantmen, and boosts all Merchantmen damage.', 23000, 4000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_buccaneer, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_buccaneer, 's', 5, 2, 0, 0);
 SELECT id INTO @ability_ranks_monkey_buccaneer_s FROM AbilityRanks WHERE tower_id=@tower_monkey_buccaneer AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_buccaneer_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_buccaneer_s, 'lead,solo,scm', 'camo,chep');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_buccaneer, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_buccaneer, 'a', 3, 2, 0, 0);
 SELECT id INTO @ability_ranks_monkey_buccaneer_a FROM AbilityRanks WHERE tower_id=@tower_monkey_buccaneer AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_buccaneer_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_buccaneer_a, 'lead,chep', 'camo');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_buccaneer, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_buccaneer, 'b', 2, 5, 0, 0);
 SELECT id INTO @ability_ranks_monkey_buccaneer_b FROM AbilityRanks WHERE tower_id=@tower_monkey_buccaneer AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_buccaneer_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_buccaneer_b, 'moab', 'cd,solo');
 
 
 
@@ -423,7 +460,7 @@ SELECT id INTO @monkey_ace FROM Monkeys WHERE name='Monkey Ace';
 INSERT INTO `Towers` VALUES (NULL, NULL, @monkey_ace);
 SELECT id INTO @tower_monkey_ace FROM Towers WHERE monkey_id=@monkey_ace;
 
-INSERT INTO `TowerRanks` VALUES (NULL, @tower_monkey_ace, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_monkey_ace, 'a', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 0, 0, 'Rapid Fire', 'Shoots faster than normal.', 650, 160);
@@ -435,8 +472,8 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 0, 4, 'Sky Shred
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 1, 0, 'Exploding Pineapple', 'Drops pineapples to the ground that explode violently after a few seconds.', 200, 120);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 1, 1, 'Spy Plane', 'Allows Monkey Ace to hit Camo Bloons.', 350, 600);
-INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 1, 2, 'Bomber Ace', 'Drops a huge bomb that destroys most things on screen.', 900, 2500);
-INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, true, 1, 3, 'Ground Zero', 'Drops a huge bomb that destroys most things on screen.', 14000, 15000);
+INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 1, 2, 'Bomber Ace', 'Drops a line of bombs when crossing the Bloon track.', 900, 2500);
+INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, true, 1, 3, 'Ground Zero', 'Bomb damage increased significantly. Ability drops a huge bomb that destroys most things on screen.', 14000, 15000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, true, 1, 4, 'Tsar Bomba', 'A very, very large bomb. Someone put a stop to this craziness!', 35000, 30000);
 
 --          Botttom Path
@@ -446,20 +483,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 2, 2, 'Neva-Miss
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 2, 3, 'Spectre', 'Rapidly fires darts and bombs, dominating most Bloon types easily.', 24000, 19000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 2, 4, 'Flying Fortress', 'This is a BIG plane', 100000, 45000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_ace, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_ace, 's', 2, 4, 0, 0);
 SELECT id INTO @ability_ranks_monkey_ace_s FROM AbilityRanks WHERE tower_id=@tower_monkey_ace AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_ace_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_ace_s, 'abil,scm,ddt', 'time');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_ace, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_ace, 'a', 4, 0, 2, 0);
 SELECT id INTO @ability_ranks_monkey_ace_a FROM AbilityRanks WHERE tower_id=@tower_monkey_ace AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_ace_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_ace_a, 'dps,moab,chep', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_ace, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_ace, 'b', 2, 0, 4, 0);
 SELECT id INTO @ability_ranks_monkey_ace_b FROM AbilityRanks WHERE tower_id=@tower_monkey_ace AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_ace_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_ace_b, '', 'camo,ddt');
 
 
 
@@ -469,7 +509,7 @@ SELECT id INTO @heli_pilot FROM Monkeys WHERE name='Heli Pilot';
 INSERT INTO `Towers` VALUES (NULL, NULL, @heli_pilot);
 SELECT id INTO @tower_heli_pilot FROM Towers WHERE monkey_id=@heli_pilot;
 
-INSERT INTO `TowerRanks` VALUES (NULL, @tower_heli_pilot, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_heli_pilot, 'a', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, false, 0, 0, 'Quad Darts', 'Shoots 4 darts per volley instead of 2.', 800, 200);
@@ -492,20 +532,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, false, 2, 2, 'MOAB Shov
 INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, false, 2, 3, 'Comanche Defense', 'Automatically calls in 3 more Comanches when they\'re most needed.', 8500, 12500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, false, 2, 4, 'Comanche Commander', 'Upgraded weapons. Also automatically calls in 3 more Comanches. Permanently.', 35000, 50000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_heli_pilot, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_heli_pilot, 's', 5, 0, 2, 0);
 SELECT id INTO @ability_ranks_heli_pilot_s FROM AbilityRanks WHERE tower_id=@tower_heli_pilot AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_heli_pilot_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_heli_pilot_s, 'dps,blnc,gbl', 'camo');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_heli_pilot, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_heli_pilot, 'a', 0, 3, 2, 0);
 SELECT id INTO @ability_ranks_heli_pilot_a FROM AbilityRanks WHERE tower_id=@tower_heli_pilot AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_heli_pilot_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_heli_pilot_a, 'supp,bln', 'micr,moab,lead');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_heli_pilot, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_heli_pilot, 'b', 2, 0, 3, 0);
 SELECT id INTO @ability_ranks_heli_pilot_b FROM AbilityRanks WHERE tower_id=@tower_heli_pilot AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_heli_pilot_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_heli_pilot_b, 'moab,chep', 'camo');
 
 
 
@@ -515,7 +558,7 @@ SELECT id INTO @mortar_monkey FROM Monkeys WHERE name='Mortar Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @mortar_monkey);
 SELECT id INTO @tower_mortar_monkey FROM Towers WHERE monkey_id=@mortar_monkey;
 
-INSERT INTO `TowerRanks` VALUES (NULL, @tower_mortar_monkey, 'b', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_mortar_monkey, 'a', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 0, 0, 'Bigger Blast', 'Bigger shells deliver a bigger blast radius.', 500, 180);
@@ -538,20 +581,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 2, 2, 'Signal
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 2, 3, 'Shattering Shells', 'Shattering shells strip all bloon properties off all but the biggest bloons.', 11000, 12000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 2, 4, 'Blooncineration', 'Superhot burny stuff melts through 5 layers of bloon each shot, burns MOAB class bloons for extra damage, and strips DDT camo.', 40000, 35000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_mortar_monkey, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_mortar_monkey, 's', 5, 2, 0, 0);
 SELECT id INTO @ability_ranks_mortar_monkey_s FROM AbilityRanks WHERE tower_id=@tower_mortar_monkey AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_mortar_monkey, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_mortar_monkey_s, 'dps,stnb', 'camo');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_mortar_monkey, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_mortar_monkey, 'a', 0, 2, 4, 0);
 SELECT id INTO @ability_ranks_mortar_monkey_a FROM AbilityRanks WHERE tower_id=@tower_mortar_monkey AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_mortar_monkey_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_mortar_monkey_a, 'supp,moab,cheap', 'camo');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_mortar_monkey, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_mortar_monkey, 'b', 2, 4, 0, 0);
 SELECT id INTO @ability_ranks_mortar_monkey_b FROM AbilityRanks WHERE tower_id=@tower_mortar_monkey AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_mortar_monkey_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_mortar_monkey_b, 'dps,chep,cm,lead,fbl', 'camo');
 
 
 
@@ -584,20 +630,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_dartling_gunner, false, 2, 2, 'Buck
 INSERT INTO `Abilities` VALUES (NULL, @tower_dartling_gunner, false, 2, 3, 'Bloon Area Denial System', '4-barreled auto-cannon that can be set to attack automatically.', 12000, 15000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dartling_gunner, false, 2, 4, 'Bloon Exclusion Zone', 'Upgraded to 6 barrels and massively increased damage. Bloons are excluded from existence', 58000, 55000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dartling_gunner, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dartling_gunner, 's', 0, 5, 2, 0);
 SELECT id INTO @ability_ranks_dartling_gunner_s FROM AbilityRanks WHERE tower_id=@tower_dartling_gunner AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dartling_gunner, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dartling_gunner_s, 'solo,bln,bad', 'cm,chep');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dartling_gunner, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dartling_gunner, 'a', 0, 4, 2, 0);
 SELECT id INTO @ability_ranks_dartling_gunner_a FROM AbilityRanks WHERE tower_id=@tower_dartling_gunner AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dartling_gunner_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dartling_gunner_a, 'mg,bln,moab,chep', 'purp');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dartling_gunner, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_dartling_gunner, 'b', 0, 2, 5, 0);
 SELECT id INTO @ability_ranks_dartling_gunner_b FROM AbilityRanks WHERE tower_id=@tower_dartling_gunner AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dartling_gunner_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_dartling_gunner_b, 'dps', 'chep,lead,buff');
 
 
 
@@ -630,20 +679,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 2, 'Shimme
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 3, 'Necromancer: Unpopped Army', 'Reanimate recently popped enemies as servants to destroy the Bloons.', 2800, 10000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 4, 'Prince of Darkness', 'Reanimate even more powerful bloon servants to obliterate the enemy and buffs other Necromancers.', 24000, 30000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_wizard_monkey, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_wizard_monkey, 's', 0, 2, 5, 0);
 SELECT id INTO @ability_ranks_wizard_monkey_s FROM AbilityRanks WHERE tower_id=@tower_wizard_monkey AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_wizard_monkey_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_wizard_monkey_s, 'dps,camo,chep,eg,mg,lg', 'trkp');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_wizard_monkey, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_wizard_monkey, 'a', 4, 2, 0, 0);
 SELECT id INTO @ability_ranks_wizard_monkey_a FROM AbilityRanks WHERE tower_id=@tower_wizard_monkey AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_wizard_monkey_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_wizard_monkey_a, 'vis,moab', 'buff,camo,purp');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_wizard_monkey, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_wizard_monkey, 'b', 2, 0, 5, 0);
 SELECT id INTO @ability_ranks_wizard_monkey_b FROM AbilityRanks WHERE tower_id=@tower_wizard_monkey AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_wizard_monkey_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_wizard_monkey_b, 'map', '');
 
 
 
@@ -676,20 +728,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, true, 2, 2, 'Dark Kni
 INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, true, 2, 3, 'Dark Champion', 'Champion dark blades excel at puncturing and ruining all Bloon types.Gains long-range Darkshift Ability', 60000, 47500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, true, 2, 4, 'Legend of the Night', 'We turn to him, when all hope is lost...', 240000, 100000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_super_monkey, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_super_monkey, 's', 3, 0, 2, 0);
 SELECT id INTO @ability_ranks_super_monkey_s FROM AbilityRanks WHERE tower_id=@tower_super_monkey AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_super_monkey_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_super_monkey_s, 'kb,camo,dps,buff', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_super_monkey, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_super_monkey, 'a', 3, 2, 0, 0);
 SELECT id INTO @ability_ranks_super_monkey_a FROM AbilityRanks WHERE tower_id=@tower_super_monkey AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_super_monkey_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_super_monkey_a, 'rng,dps,buff', 'camo');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_super_monkey, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_super_monkey, 'b', 2, 0, 3, 0);
 SELECT id INTO @ability_ranks_super_monkey_b FROM AbilityRanks WHERE tower_id=@tower_super_monkey AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_super_monkey_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_super_monkey_b, 'kb,camo,moab', 'micr');
 
 
 
@@ -722,20 +777,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 2, 'Flash B
 INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 3, 'Sticky Bomb', 'Throws powerful timed charges at MOAB-Class Bloons.', 4500, 15500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 4, 'Master Bomber', 'One Monkey MOAB demolition Machine.', 40000, 37500);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_ninja_monkey, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_ninja_monkey, 's', 5, 0, 2, 0);
 SELECT id INTO @ability_ranks_ninja_monkey_s FROM AbilityRanks WHERE tower_id=@tower_ninja_monkey AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_ninja_monkey_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_ninja_monkey_s, 'blnc', 'chep,buff');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_ninja_monkey, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_ninja_monkey, 'a', 0, 5, 2, 0);
 SELECT id INTO @ability_ranks_ninja_monkey_a FROM AbilityRanks WHERE tower_id=@tower_ninja_monkey AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_ninja_monkey_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_ninja_monkey_a, 'abil,supp,moab', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_ninja_monkey, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_ninja_monkey, 'b', 2, 3, 0, 0);
 SELECT id INTO @ability_ranks_ninja_monkey_b FROM AbilityRanks WHERE tower_id=@tower_ninja_monkey AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_ninja_monkey_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_ninja_monkey_b, 'chep,eg,mg', 'spam');
 
 
 
@@ -768,20 +826,28 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_alchemist, false, 2, 2, 'Lead To Go
 INSERT INTO `Abilities` VALUES (NULL, @tower_alchemist, false, 2, 3, 'Rubber to Gold', 'Converts all Bloons partially into gold, getting more cash per pop from affected Bloons.', 2750, 8500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_alchemist, false, 2, 4, 'Bloon Master Alchemist', 'Secret shrink potion converts all affected Bloons into Red Bloons', 40000, 24000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_alchemist, 's', 0, 0, 0, 0);
-SELECT id INTO @ability_ranks_alchemist_s FROM AbilityRanks WHERE tower_id=@tower_alchemist AND tier='s';
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_alchemist, 's', 4, 2, 0, 0);
+SELECT id INTO @ability_ranks_alchemist_s_0 FROM AbilityRanks WHERE tower_id=@tower_alchemist AND tier='s' AND middle_path=2;
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_alchemist_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_alchemist_s_0, 'chep,fcm,moab', 'tbf');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_alchemist, 'a', 0, 0, 0, 0);
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_alchemist, 's', 4, 0, 1, 0);
+SELECT id INTO @ability_ranks_alchemist_s_1 FROM AbilityRanks WHERE tower_id=@tower_alchemist AND tier='s' AND bottom_path=1;
+
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_alchemist_s_1, 'tbf,chep', '');
+
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_alchemist, 'a', 5, 2, 0, 0);
 SELECT id INTO @ability_ranks_alchemist_a FROM AbilityRanks WHERE tower_id=@tower_alchemist AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_alchemist_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_alchemist_a, 'tbf', 'chep');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_alchemist, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_alchemist, 'b', 3, 0, 1, 0);
 SELECT id INTO @ability_ranks_alchemist_b FROM AbilityRanks WHERE tower_id=@tower_alchemist AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_alchemist_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_alchemist_b, 'tbf,chep,eg', '');
 
 
 
@@ -814,20 +880,28 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 2, 2, 'Druid of Wrath
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 2, 3, 'Poplust', 'Boosts attack speed for all Druids in the radius. Can stack up to 5 times on a single Druid.', 2500, 14000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 2, 4, 'Avatar of Wrath', 'The more bloons there are, the more damage it does', 45000, 33000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_druid, 's', 0, 0, 0, 0);
-SELECT id INTO @ability_ranks_druid_s FROM AbilityRanks WHERE tower_id=@tower_druid AND tier='s';
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_druid, 's', 0, 1, 5, 0);
+SELECT id INTO @ability_ranks_druid_s_0 FROM AbilityRanks WHERE tower_id=@tower_druid AND tier='s' AND bottom_path=5;
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_druid_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_druid_s_0, 'dps,chmp,tbf', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_druid, 'a', 0, 0, 0, 0);
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_druid, 's', 2, 0, 4, 0);
+SELECT id INTO @ability_ranks_druid_s_1 FROM AbilityRanks WHERE tower_id=@tower_druid AND tier='s' AND bottom_path=4;
+
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_druid_s_1, 'dps', 'spam,buff');
+
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_druid, 'a', 4, 0, 2, 0);
 SELECT id INTO @ability_ranks_druid_a FROM AbilityRanks WHERE tower_id=@tower_druid AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_druid_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_druid_a, 'supp,chep', 'spam');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_druid, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_druid, 'b', 0, 4, 1, 0);
 SELECT id INTO @ability_ranks_druid_b FROM AbilityRanks WHERE tower_id=@tower_druid AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_druid_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_druid_b, 'supp,mny', '');
 
 
 
@@ -837,7 +911,7 @@ SELECT id INTO @banana_farm FROM Monkeys WHERE name='Banana Farm';
 INSERT INTO `Towers` VALUES (NULL, NULL, @banana_farm);
 SELECT id INTO @tower_banana_farm FROM Towers WHERE monkey_id=@banana_farm;
 
-INSERT INTO `TowerRanks` VALUES (NULL, @tower_banana_farm, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_banana_farm, 'a', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 0, 0, 'Increased Production', 'Grows 2 extra Banana bunches per round.', 500, 200);
@@ -860,20 +934,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 2, 2, 'Marketpl
 INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 2, 3, 'Central Market', 'Earns heaps of money each round and gives Merchantmen +10% income.', 15000, 20000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 2, 4, 'Monkey Wall Street', 'Hub of Monkey trades earns colossal income each round.', 60000, 50000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_banana_farm, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_banana_farm, 's', 2, 3, 0, 0);
 SELECT id INTO @ability_ranks_banana_farm_s FROM AbilityRanks WHERE tower_id=@tower_banana_farm AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_banana_farm_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_banana_farm_s, 'mny,chep,buff', 'spam,micr');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_banana_farm, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_banana_farm, 'a', 0, 2, 3, 0);
 SELECT id INTO @ability_ranks_banana_farm_a FROM AbilityRanks WHERE tower_id=@tower_banana_farm AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_banana_farm_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_banana_farm_a, 'mny,chep', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_banana_farm, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_banana_farm, 'b', 5, 2, 0, 0);
 SELECT id INTO @ability_ranks_banana_farm_b FROM AbilityRanks WHERE tower_id=@tower_banana_farm AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_banana_farm_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_banana_farm_b, 'mny', 'micr,chep');
 
 
 
@@ -906,20 +983,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_spike_factory, false, 2, 2, 'Long L
 INSERT INTO `Abilities` VALUES (NULL, @tower_spike_factory, false, 2, 3, 'Deadly Spikes', 'Extra deadly spikes can pop through 2 layers per spike.', 3500, 9000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_spike_factory, false, 2, 4, 'Perma-Spike', 'Spikes become almost permanent.', 30000, 29500);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_spike_factory, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_spike_factory, 's', 0, 2, 5, 0);
 SELECT id INTO @ability_ranks_spike_factory_s FROM AbilityRanks WHERE tower_id=@tower_spike_factory AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_spike_factory_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_spike_factory_s, 'chep,mg,buff', 'lead');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_spike_factory, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_spike_factory, 'a', 2, 4, 0, 0);
 SELECT id INTO @ability_ranks_spike_factory_a FROM AbilityRanks WHERE tower_id=@tower_spike_factory AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_spike_factory_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_spike_factory_a, 'moab,chep,bad,ddt', 'solo');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_spike_factory, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_spike_factory, 'b', 3, 2, 0, 0);
 SELECT id INTO @ability_ranks_spike_factory_b FROM AbilityRanks WHERE tower_id=@tower_spike_factory AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_spike_factory_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_spike_factory_b, 'chep,mg,scm', 'spam');
 
 
 
@@ -952,20 +1032,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 2, 'Monke
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 3, 'Monkey City', 'Increases influence radius and gives you a free Dart Monkey every round.', 3000, 15500);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 2, 4, 'Monkeyopolis', 'Absorbs all nearby Banana Farms and their income, freeing up space for new Monkeys.', 5000, 28000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_village, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_village, 's', 2, 3, 0, 0);
 SELECT id INTO @ability_ranks_monkey_village_s FROM AbilityRanks WHERE tower_id=@tower_monkey_village AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_village_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_village_s, 'supp,camo,bln,moab,tbf,chep', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_village, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_village, 'a', 0, 2, 0, 0);
 SELECT id INTO @ability_ranks_monkey_village_a FROM AbilityRanks WHERE tower_id=@tower_monkey_village AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_village_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_village_a, 'supp,camo,buff,chep', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_village, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_village, 'b', 0, 2, 3, 0);
 SELECT id INTO @ability_ranks_monkey_village_b FROM AbilityRanks WHERE tower_id=@tower_monkey_village AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_village_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_village_b, 'supp,camo,mny,buff,chep', 'eg');
 
 
 
@@ -998,20 +1081,23 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 2, 2, 'Doub
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 2, 3, 'Bloon Trap', 'Bloon Trap captures Bloons until full. Select to empty full trap for cash.', 3500, 11000);
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 2, 4, 'XXXL Trap', 'Huge Bloon Traps can trap some of the largest Bloons in them...', 60000, 40000);
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_engineer_monkey, 's', 0, 0, 0, 0);
+--          Ability Ranks - S
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_engineer_monkey, 's', 0, 4, 0, 0);
 SELECT id INTO @ability_ranks_engineer_monkey_s FROM AbilityRanks WHERE tower_id=@tower_engineer_monkey AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_engineer_monkey_s, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_engineer_monkey_s, 'lead,moab,fbl,abil,supp,buff,chep', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_engineer_monkey, 'a', 0, 0, 0, 0);
+--          Ability Ranks - A
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_engineer_monkey, 'a', 0, 0, 4, 0);
 SELECT id INTO @ability_ranks_engineer_monkey_a FROM AbilityRanks WHERE tower_id=@tower_engineer_monkey AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_engineer_monkey_a, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_engineer_monkey_a, 'supp,mny,eg,chep', '');
 
-INSERT INTO `AbilityRanks` VALUES (NULL, @tower_engineer_monkey, 'b', 0, 0, 0, 0);
+--          Ability Ranks - B
+INSERT INTO `AbilityRanks` VALUES (NULL, @tower_engineer_monkey, 'b', 0, 2, 3, 0);
 SELECT id INTO @ability_ranks_engineer_monkey_b FROM AbilityRanks WHERE tower_id=@tower_engineer_monkey AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_engineer_monkey_b, '', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_engineer_monkey_b, 'lead,moab,fbl,supp,eg,chep', '');
 
 
 

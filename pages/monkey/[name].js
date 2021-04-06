@@ -1,7 +1,7 @@
 import {dataSources} from "../../lib/mysql/db";
 import Header from "../../components/page/Header";
 import MonkeyPage from "../../components/monkey/MonkeyPage";
-import {getTowerLink, parseTowerLink} from "../../lib/utils";
+import {getTowerLink, parseTowerLink} from "../../lib/utils/utils";
 
 
 export default function Monkey({ monkey }) {
@@ -39,11 +39,14 @@ export async function getStaticProps({ params }) {
     if (monkey) {
         const mid = monkey.id;
         monkey.abilities = await dataSources().abilitiesAPI.getAbilitiesByMonkeyId({ mid });
-        monkey.rank = {
-            "s": { "topPath": 0, "midPath": 2, "botPath": 5 },
-            "a": { "topPath": 5, "midPath": 2, "botPath": 0 },
-            "b": { "topPath": 2, "midPath": 5, "botPath": 0 },
-            "c": { "topPath": 0, "midPath": 2, "botPath": 5 }
+
+        const name = monkey.name;
+        const abilityRanks = await dataSources().abilitiesAPI.getMonkeyByNameAbilityRanksWithInfo({name});
+        if (abilityRanks) {
+            let abilityRankObj = { "s": [], "a": [], "b": [] };
+
+            abilityRanks.forEach(ar => abilityRankObj[ar.tier].push(ar));
+            monkey.ranks = abilityRankObj;
         }
     }
 

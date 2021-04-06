@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { ButtonGroup, Button } from "@material-ui/core";
 
-import {rankColors} from "../../lib/utils";
+import {font_family, rankColors} from "../../lib/utils/utils";
 
 const BGroup = styled(ButtonGroup)`
   justify-content: center;
@@ -10,9 +10,8 @@ const BGroup = styled(ButtonGroup)`
 
 
 const RankButton  = styled(Button)`
-  box-shadow: ${props => props.pressed ? "inset 0px 0px 15px #000" : "none" };
-  
   background-color: ${props => rankColors(props.name)};
+  font-family: ${font_family};
   
   &:hover,
   &:active,
@@ -21,13 +20,13 @@ const RankButton  = styled(Button)`
   }
 `;
 
-export default function FilterRanks({ className, rank, handleRank }) {
+export default function FilterRanks({ className, handleRank }) {
     return (
         <>
-            <BGroup variant="contained" disableElevation >
-                <RankButton onClick={() => handleRank("s")} pressed={(rank === "s") ? 1 : 0} name="s">S</RankButton>
-                <RankButton onClick={() => handleRank("a")} pressed={(rank === "a") ? 1 : 0} name="a">A</RankButton>
-                <RankButton onClick={() => handleRank("b")} pressed={(rank === "b") ? 1 : 0} name="b">B</RankButton>
+            <BGroup variant="contained" disableElevation>
+                <RankButton onClick={(e) => handleRank(e, "s")} name="s">S&nbsp;&nbsp;Tier</RankButton>
+                <RankButton onClick={(e) => handleRank(e, "a")} name="a">A&nbsp;&nbsp;Tier</RankButton>
+                <RankButton onClick={(e) => handleRank(e, "b")} name="b">B&nbsp;&nbsp;Tier</RankButton>
             </BGroup>
         </>
     );

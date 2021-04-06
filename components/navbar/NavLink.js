@@ -1,9 +1,10 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
-
-import { Link as MUILink } from "@material-ui/core";
-import { siteColors, siteSizes} from "../../lib/utils";
 import {useSelector} from "react-redux";
+import { Link as MUILink } from "@material-ui/core";
+
+import siteSizes from "../../lib/utils/siteSizes";
+import siteColors from "../../lib/utils/siteColors";
 import {getMobile} from "../../lib/redux/selectors";
 
 export default function NavLink({ path, text, closeDrawer }) {
