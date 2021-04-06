@@ -1110,7 +1110,7 @@ SELECT id INTO @quincy FROM Heroes WHERE name='Quincy';
 INSERT INTO `Towers` VALUES (NULL, @quincy, NULL);
 SELECT id INTO @tower_quincy FROM Towers WHERE hero_id=@quincy;
 
-INSERT INTO `TowerRanks` VALUES (NULL, @tower_quincy, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_quincy, 'a', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 0, '', 'Quincy\'s arrows bounce to 3 different targets.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 1, '', 'Base attack bounces up to 4 targets.', 0, 0);
@@ -1288,7 +1288,7 @@ SELECT id INTO @benjamin FROM Heroes WHERE name='Benjamin';
 INSERT INTO `Towers` VALUES (NULL, @benjamin, NULL);
 SELECT id INTO @tower_benjamin FROM Towers WHERE hero_id=@benjamin;
 
-INSERT INTO `TowerRanks` VALUES (NULL, @tower_benjamin, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_benjamin, 'a', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 0, '', 'Hacks in income of $100 every round.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 1, '', 'Generates $150 per round instead of $100', 0, 0);
@@ -1317,7 +1317,7 @@ SELECT id INTO @ezili FROM Heroes WHERE name='Ezili';
 INSERT INTO `Towers` VALUES (NULL, @ezili, NULL);
 SELECT id INTO @tower_ezili FROM Towers WHERE hero_id=@ezili;
 
-INSERT INTO `TowerRanks` VALUES (NULL, @tower_ezili, 'a', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_ezili, 'b', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 0, '', 'Ezili curses Bloons with dark voodoo power.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 1, '', 'Increased attack range.', 0, 0);
@@ -1346,7 +1346,7 @@ SELECT id INTO @pat_fusty FROM Heroes WHERE name='Pat Fusty';
 INSERT INTO `Towers` VALUES (NULL, @pat_fusty, NULL);
 SELECT id INTO @tower_pat_fusty FROM Towers WHERE hero_id=@pat_fusty;
 
-INSERT INTO `TowerRanks` VALUES (NULL, @tower_pat_fusty, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_pat_fusty, 'a', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 0, '', 'Pat slams Bloons into the ground.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 1, '', 'Increased radius of Pat''s slam attack.', 0, 0);
@@ -1376,7 +1376,7 @@ SELECT id INTO @adora FROM Heroes WHERE name='Adora';
 INSERT INTO `Towers` VALUES (NULL, @adora, NULL);
 SELECT id INTO @tower_adora FROM Towers WHERE hero_id=@adora;
 
-INSERT INTO `TowerRanks` VALUES (NULL, @tower_adora, 's', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_adora, 'b', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 0, '', 'Divine Bolt seeks out and destroys Bloons.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 1, '', 'Increased attack range.', 0, 0);
@@ -1436,7 +1436,7 @@ SELECT id INTO @etienne FROM Heroes WHERE name='Etienne';
 INSERT INTO `Towers` VALUES (NULL, @etienne, NULL);
 SELECT id INTO @tower_etienne FROM Towers WHERE hero_id=@etienne;
 
-INSERT INTO `TowerRanks` VALUES (NULL, @tower_etienne, 'a', 0);
+INSERT INTO `TowerRanks` VALUES (NULL, @tower_etienne, 's', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 0, '', 'Flies a deadly little drone around to shoot at the Bloons.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 1, '', 'Etienne''s range increased.', 0, 0);
