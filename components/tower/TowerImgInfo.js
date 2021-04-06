@@ -8,36 +8,37 @@ import {getMobile} from "../../lib/redux/selectors";
 import VerticalDivider from "../divider/VerticalDivider";
 import {getHeroColor, getMonkeyTypeColor} from "../../lib/utils/utils";
 
-const ContentContainer = styled.div`
-  display: flex;
-  flex-direction: row;
+const TowerContainer = styled(Grid)`
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 
-export default function TowerContainer({tower, towerType}) {
+export default function TowerImgInfo({tower, towerType}) {
     const mobile = useSelector(getMobile);
     let backgroundColor;
 
     if (towerType === "monkey") {
-        backgroundColor = getMonkeyTypeColor(tower.type, true);
+        backgroundColor = getMonkeyTypeColor(tower.type);
     } else if (towerType === "hero") {
-        backgroundColor = getHeroColor(tower.name, true);
+        backgroundColor = getHeroColor(tower.name);
     }
 
     return (
         <>
-            <Grid container
-                  spacing={2}
-                  justify="center"
-                  direction="row"
+            <TowerContainer container
+                            spacing={2}
+                            justify="center"
+                            direction={mobile ? "column" : "row"}
+                            alignItems="center"
             >
-                <Grid item xs={4}>
+                <Grid item xs={mobile ? 6 : 4}>
                     <Icon tower={ tower } />
                 </Grid>
-                <VerticalDivider backgroundColor={ backgroundColor } />
-                <Grid item xs={4}>
+                { !mobile && (<VerticalDivider backgroundColor={ backgroundColor } />)}
+                <Grid item xs={mobile ? 6 : 4}>
                     <TowerInfo tower={ tower }/>
                 </Grid>
-            </Grid>
+            </TowerContainer>
         </>
     );
 }

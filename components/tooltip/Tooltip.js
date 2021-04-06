@@ -13,7 +13,7 @@ const StyledTooltip = styled(({ className, ...other }) => (
   background-color: ${siteColors.background.tooltip.dark};
   width: 265px;
   
-  ${props => props.mobile ? "margin-bottom: 7px;" : ""}
+  ${props => props.mobile ? "margin-bottom: 10px;" : ""}
   
   border: 1px solid ${props => props.active ? siteColors.ability.activated : siteColors.background.tooltip.dark};
 

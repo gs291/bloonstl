@@ -8,7 +8,7 @@ import RankTitle from "../tower/RankTitle";
 import TowerText from "../tower/TowerText";
 import FilterRanks from "../filters/FilterRanks";
 import FixedDivider from "../divider/FixedDivider";
-import TowerContainer from "../tower/TowerContainer";
+import TowerImgInfo from "../tower/TowerImgInfo";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
@@ -32,6 +32,8 @@ export default function MonkeyPage({ monkey }) {
       width: ${mobile ? 100 : 80}%;
       justify-content: space-evenly;
       align-items: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
     `;
 
     const FilterDiff = styled(FilterDifficulty)`
@@ -54,7 +56,7 @@ export default function MonkeyPage({ monkey }) {
     const ranks = monkey.ranks[rank][page-1];
     return (
         <>
-            <TowerContainer tower={monkey} towerType="monkey"/>
+            <TowerImgInfo tower={monkey} towerType="monkey"/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <Filters >
                 <FilterRanks handleRank={handleRank} />

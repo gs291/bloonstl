@@ -3,23 +3,24 @@ import {useSelector} from "react-redux";
 
 import TowerText from "./TowerText";
 import siteColors from "../../lib/utils/siteColors";
-import {getDifficulty, getMobile} from "../../lib/redux/selectors";
+import {getDifficulty} from "../../lib/redux/selectors";
 import {getThousandsNumber, goldCost} from "../../lib/utils/utils";
 
 const TowerTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default function TowerInfo({tower}) {
-    const mobile = useSelector(getMobile);
     const difficulty = useSelector(getDifficulty);
 
     return (
         <>
             <TowerTextContainer>
-                <TowerText variant={mobile ? "h4" : "h2"}>
+                <TowerText variant={"h2"}>
                     {tower.name}
                 </TowerText>
                 <TowerText variant="body1" textColor={siteColors.tower.description} font={1}>

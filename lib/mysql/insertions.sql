@@ -385,7 +385,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_sub, false, 2, 4, 'Sub Comma
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_sub, 's', 2, 0, 5, 0);
 SELECT id INTO @ability_ranks_monkey_sub_s_0 FROM AbilityRanks WHERE tower_id=@tower_monkey_sub AND tier='s' AND bottom_path=5;
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_sub_s_0, 'blnc,buff', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_monkey_sub_s_0, 'blnc,tbf', '');
 
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_monkey_sub, 's', 2, 0, 3, 0);
 SELECT id INTO @ability_ranks_monkey_sub_s_1 FROM AbilityRanks WHERE tower_id=@tower_monkey_sub AND tier='s' AND bottom_path=3;
