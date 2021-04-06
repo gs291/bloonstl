@@ -67,8 +67,12 @@ export default function Ability({ className, ability, fileName, rank, towerType,
         <>
             <AbilityContainer className={className}>
                 <Tooltip
-                    title={<AbilityTooltip ability={ability} rank={rank} towerType={towerType} selected={selected}/>}
-                    upgradeTier={ability.upgrade_tier}
+                    title={
+                        <AbilityTooltip ability={ability}
+                                        rank={rank}
+                                        towerType={towerType}
+                                        selected={selected}
+                        />}
                     active={ability.active}
                 >
                     <CardContainer selected={selected} rank={rank}>

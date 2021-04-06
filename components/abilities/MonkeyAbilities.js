@@ -9,7 +9,7 @@ const GridContainer = styled(Grid)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 5px;
 `;
 
 const GridItem = styled(Grid)`
@@ -20,27 +20,43 @@ const GridItem = styled(Grid)`
 export default class MonkeyAbilities extends PureComponent {
 
     render() {
-        const { className, abilities, monkeyFile, rank, ranks } = this.props;
+        const { className, abilities, monkeyFile, rank, ranks, updateCost } = this.props;
 
-        let pathTop = [], pathMid = [], pathBot = [];
+        let pathTop = [], pathMid = [], pathBot = [], cost = 0;
 
         abilities.forEach(ability => {
             if (ability.upgrade_path === 0) {
+                const selected = ability.upgrade_tier < ranks.top_path;
                 pathTop.push(
                     <AbilityContainer ability={ability} fileName={monkeyFile} rank={rank}
-                                      towerType="monkey" selected={ability.upgrade_tier < ranks.top_path} key={ability.id}
+                                      towerType="monkey" selected={selected} key={ability.id}
+
                     />);
+                if (selected) {
+                    cost += ability.cost_gold;
+                }
+
             } else if (ability.upgrade_path === 1) {
+                const selected = ability.upgrade_tier < ranks.middle_path;
                 pathMid.push(
                     <AbilityContainer ability={ability} fileName={monkeyFile} rank={rank}
-                                      towerType="monkey" selected={ability.upgrade_tier < ranks.middle_path} key={ability.id}
+                                      towerType="monkey" selected={selected} key={ability.id}
                     />);
+                if (selected) {
+                    cost += ability.cost_gold;
+                }
             } else {
+                const selected = ability.upgrade_tier < ranks.bottom_path;
                 pathBot.push(
                     <AbilityContainer ability={ability} fileName={monkeyFile} rank={rank}
-                                      towerType="monkey" selected={ability.upgrade_tier < ranks.bottom_path} key={ability.id}
-                    />) }
+                                      towerType="monkey" selected={selected} key={ability.id}
+                    />)
+                if (selected) {
+                    cost += ability.cost_gold;
+                }
+            }
         });
+        updateCost(cost);
 
         return (
             <>
