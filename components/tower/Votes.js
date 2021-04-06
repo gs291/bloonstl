@@ -4,7 +4,7 @@ import TowerText from "./TowerText";
 import styled from "@emotion/styled";
 
 const VotesContainer = styled(Grid)`
-  width: 350px;
+  width: 325px;
   margin-top: 10px;
 `;
 

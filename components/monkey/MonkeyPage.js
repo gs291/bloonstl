@@ -49,7 +49,7 @@ export default function MonkeyPage({ monkey }) {
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <RankTitle rank={rank} ranks={ranks}/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <ProsCons pros={ranks.pros} cons={ranks.cons} />
+            <ProsCons pros={ranks.pros} cons={ranks.cons} backgroundColor={dividerBackgroundColor}/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <MonkeyAbilities abilities={monkey.abilities} monkeyFile={monkey.filename} rank={rank} ranks={ranks}/>
             <Votes votes={ranks.votes} />
