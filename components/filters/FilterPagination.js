@@ -28,6 +28,7 @@ export default function FilterPagination({ className, pageCount, page, handlePag
                 page={page}
                 onChange={handlePage}
                 className={className}
+                size="large"
             />
         </>
     );

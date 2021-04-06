@@ -8,6 +8,8 @@ import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import AbilityTooltip from "../tooltip/AbilityTooltip";
 import {getImageUrl, rankColors} from "../../lib/utils/utils";
+import {useSelector} from "react-redux";
+import {getMobile} from "../../lib/redux/selectors";
 
 
 const AbilityContainer = styled.div`
@@ -28,10 +30,10 @@ const CardContainer = styled(Card)`
 
 const CardContentContainer = styled(CardContent)`
   position: relative;
-  width: ${siteSizes.ability.width};
-  max-width: ${siteSizes.ability.width};
-  height: ${siteSizes.ability.height};
-  max-height: ${siteSizes.ability.height};
+  width: ${props => props.mobile === 1 ? siteSizes.ability.mobile.width : siteSizes.ability.width};
+  max-width: ${props => props.mobile === 1 ? siteSizes.ability.mobile.width : siteSizes.ability.width};
+  height: ${props => props.mobile === 1 ? siteSizes.ability.mobile.height : siteSizes.ability.height};
+  max-height: ${props => props.mobile === 1 ? siteSizes.ability.mobile.height :siteSizes.ability.height};
   padding: 0;
   
   display: flex;
@@ -62,17 +64,22 @@ const ActivatedAbility = styled(OfflineBoltIcon)`
   }
 `;
 
-export default function Ability({ className, ability, fileName, rank, towerType, selected}) {
+export default function Ability({className, ability, fileName, rank, towerType, selected}) {
+    const mobile = useSelector(getMobile);
     return (
         <>
             <AbilityContainer className={className}>
                 <Tooltip
-                    title={<AbilityTooltip ability={ability} rank={rank} towerType={towerType} selected={selected}/>}
-                    upgradeTier={ability.upgrade_tier}
+                    title={
+                        <AbilityTooltip ability={ability}
+                                        rank={rank}
+                                        towerType={towerType}
+                                        selected={selected}
+                        />}
                     active={ability.active}
                 >
                     <CardContainer selected={selected} rank={rank}>
-                        <CardContentContainer>
+                        <CardContentContainer mobile={mobile ? 1 : 0}>
                             { towerType === "monkey" && (
                                 <ImageFill
                                     src={ getImageUrl(fileName, ability.upgrade_path, ability.upgrade_tier) }

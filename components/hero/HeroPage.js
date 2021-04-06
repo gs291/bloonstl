@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import {getHeroColor} from "../../lib/utils/utils";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
-import TowerContainer from "../tower/TowerContainer";
+import TowerImgInfo from "../tower/TowerImgInfo";
 import HeroAbilities from "../abilities/HeroAbilities";
 import FilterDifficulty from "../filters/FilterDifficulty";
 
@@ -13,7 +13,7 @@ export default function HeroPage({ hero }) {
 
     return (
         <>
-            <TowerContainer tower={hero} towerType="hero" />
+            <TowerImgInfo tower={hero} towerType="hero" />
             <FixedDivider width={ 80 } backgroundColor={dividerBackgroundColor}/>
             <FilterDifficulty />
             <FixedDivider width={ 80 } backgroundColor={dividerBackgroundColor}/>

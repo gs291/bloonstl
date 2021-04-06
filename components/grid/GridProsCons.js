@@ -7,10 +7,12 @@ import TowerText from "../tower/TowerText";
 import ChipTooltip from "../tooltip/ChipTooltip";
 import siteColors from "../../lib/utils/siteColors";
 import {getMobile} from "../../lib/redux/selectors";
+import {rankColors} from "../../lib/utils/utils";
 
 const ChipContainer = styled(Grid)`
   margin: 0;
   width: 350px;
+  min-height: 50px;
 `;
 
 const Title = styled(TowerText)`
@@ -18,17 +20,17 @@ const Title = styled(TowerText)`
   margin-bottom: 5px;
 `;
 
+const StyledChip = styled(Chip)`
+  width: 100px;
+  background-color: ${props => props.pros === 1 ? siteColors.chip.pros: siteColors.chip.cons};
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 export default function GridProsCons({ className, isPro, proCons}) {
     const mobile = useSelector(getMobile);
-
-    const StyledChip = styled(Chip)`
-      width: ${mobile ? "75px" : "100px"};
-      background-color: ${props => props.pros === 1 ? siteColors.chip.pros: siteColors.chip.cons};
-    
-      &:hover {
-        cursor: pointer;
-      }
-    `;
 
     return (
         <>
@@ -48,8 +50,11 @@ export default function GridProsCons({ className, isPro, proCons}) {
                                 (
                                     <Grid item xs={4} key={pc.title}>
                                         <Tooltip
-                                            title={<ChipTooltip isPro={isPro} title={pc.title} text={isPro === 1 ? pc.pro : pc.con} />}
-                                            upgradeTier={2}
+                                            title={
+                                                <ChipTooltip isPro={isPro}
+                                                             title={pc.title}
+                                                             text={isPro === 1 ? pc.pro : pc.con}
+                                                />}
                                         >
                                             <StyledChip label={pc.title} pros={isPro} />
                                         </Tooltip>

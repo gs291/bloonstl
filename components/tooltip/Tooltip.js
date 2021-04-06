@@ -13,7 +13,7 @@ const StyledTooltip = styled(({ className, ...other }) => (
   background-color: ${siteColors.background.tooltip.dark};
   width: 265px;
   
-  ${props => props.mobile ? "margin-bottom: 7px;" : ""}
+  ${props => props.mobile ? "margin-bottom: 10px;" : ""}
   
   border: 1px solid ${props => props.active ? siteColors.ability.activated : siteColors.background.tooltip.dark};
 
@@ -26,8 +26,7 @@ const StyledTooltip = styled(({ className, ...other }) => (
   }
 `;
 
-export default function Tooltip({ className, children, title, upgradeTier, active}) {
-    let placement = "top";
+export default function Tooltip({ className, children, title, active}) {
     const mobile = useSelector(getMobile);
     const [open, setOpen] = useState(false);
 
@@ -39,9 +38,6 @@ export default function Tooltip({ className, children, title, upgradeTier, activ
         setOpen(true);
     };
 
-    if      (upgradeTier % 5 === 0 || (upgradeTier -1) % 5 === 0) { placement = "top-start"; }
-    else if ((upgradeTier + 1) % 5 === 0 || (upgradeTier + 2) % 5 === 0) { placement = "top-end"; }
-
     return (
         <>
             { !mobile && (
@@ -49,7 +45,7 @@ export default function Tooltip({ className, children, title, upgradeTier, activ
                     <StyledTooltip
                         title={title}
                         leaveDelay={100}
-                        placement={placement}
+                        placement="top"
                         active={active}
                         mobile={mobile ? 1 : 0}
                         arrow
@@ -71,7 +67,7 @@ export default function Tooltip({ className, children, title, upgradeTier, activ
                                 disableHoverListener
                                 disableTouchListener
                                 title={title}
-                                placement={placement}
+                                placement="top"
                                 active={active}
                                 mobile={mobile ? 1 : 0}
                                 arrow
