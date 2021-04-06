@@ -2,6 +2,7 @@ import {useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
+import Votes from "../tower/Votes";
 import ProsCons from "../tower/ProsCons";
 import RankTitle from "../tower/RankTitle";
 import FilterRanks from "../filters/FilterRanks";
@@ -54,6 +55,7 @@ export default function MonkeyPage({ monkey }) {
             <ProsCons pros={ranks.pros} cons={ranks.cons} />
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <MonkeyAbilities abilities={monkey.abilities} monkeyFile={monkey.filename} rank={rank} ranks={ranks}/>
+            <Votes votes={ranks.votes} />
             <PagePagination pageCount={monkey.ranks[rank].length} page={page} handlePage={handlePage} />
         </>
     );
