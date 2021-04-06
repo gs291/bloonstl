@@ -336,19 +336,19 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 2, 4, 'Elite 
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_sniper_monkey, 's', 4, 2, 0, 0);
 SELECT id INTO @ability_ranks_sniper_monkey_s FROM AbilityRanks WHERE tower_id=@tower_sniper_monkey AND tier='s';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_s, 'camo,lead,frzn,cm,moab,supp,cc,rang', 'lg');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_s, 'camo,lead,frzn,cm,moab,supp,cc,gbl', 'lg');
 
 --          Ability Ranks - A
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_sniper_monkey, 'a', 0, 2, 5, 0);
 SELECT id INTO @ability_ranks_sniper_monkey_a FROM AbilityRanks WHERE tower_id=@tower_sniper_monkey AND tier='a';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_a, 'camo,dps,lead,abil,rang', '');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_a, 'camo,dps,lead,abil,gbl', '');
 
 --          Ability Ranks - B
 INSERT INTO `AbilityRanks` VALUES (NULL, @tower_sniper_monkey, 'b', 2, 5, 0, 0);
 SELECT id INTO @ability_ranks_sniper_monkey_b FROM AbilityRanks WHERE tower_id=@tower_sniper_monkey AND tier='b';
 
-INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_b, 'supp,lead,frzn,camo,abil,rang', 'moab,chep');
+INSERT INTO `AbilityRanksInfo` VALUES (NULL, @ability_ranks_sniper_monkey_b, 'supp,lead,frzn,camo,abil,gbl', 'moab,chep');
 
 
 
