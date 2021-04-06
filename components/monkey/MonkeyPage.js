@@ -39,12 +39,12 @@ export default function MonkeyPage({ monkey }) {
     `;
 
     const handleRank = (_, r) => {
-        setTotalCost(0);
+        setTotalCost("");
         setPage(1);
         setRank(r);
     };
     const handlePage = (_, p) => {
-        setTotalCost(0);
+        setTotalCost("");
         setPage(p);
     }
     const updateTotalCost = (cost) => setTotalCost(goldCost(cost, difficulty));
