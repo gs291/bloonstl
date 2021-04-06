@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import {Grid} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
 import Icon from "../tower/Icon";
@@ -24,11 +25,19 @@ export default function TowerContainer({tower, towerType}) {
 
     return (
         <>
-            <ContentContainer>
-                <Icon tower={ tower } />
+            <Grid container
+                  spacing={2}
+                  justify="center"
+                  direction="row"
+            >
+                <Grid item xs={4}>
+                    <Icon tower={ tower } />
+                </Grid>
                 <VerticalDivider backgroundColor={ backgroundColor } />
-                <TowerInfo tower={ tower }/>
-            </ContentContainer>
+                <Grid item xs={4}>
+                    <TowerInfo tower={ tower }/>
+                </Grid>
+            </Grid>
         </>
     );
 }
