@@ -59,7 +59,7 @@ export default function Page(props) {
             )}
 
             <Main >
-                <MainContainer maxWidth="lg">
+                <MainContainer maxWidth="md">
                     { props.children }
                 </MainContainer>
             </Main>

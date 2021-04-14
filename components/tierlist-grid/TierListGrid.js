@@ -16,10 +16,26 @@ const FilterContainer = styled.div`
   color: ${siteColors.text.dark};
 `;
 
+const TierGrid = styled(Grid)`
+  padding: 2em 1em;
+`;
+
+const SGrid = styled(TierGrid)`
+  background-color: ${siteColors.rank.s.card};
+`;
+
+const AGrid = styled(TierGrid)`
+  background-color: ${siteColors.rank.a.card};
+`;
+
+const BGrid = styled(TierGrid)`
+  background-color: ${siteColors.rank.b.card};
+`;
+
 export default function TierListGrid({ className, tiers }) {
     const mobile = useSelector(getMobile);
 
-    let gridSpacing = 3;
+    let gridSpacing = 4;
     if (mobile) {
         gridSpacing = 6;
     }
@@ -38,7 +54,7 @@ export default function TierListGrid({ className, tiers }) {
                     S Tier
                 </GridTitle>
                 <GridItems borderColor={sColor}>
-                    <Grid container spacing={2}>
+                    <SGrid container spacing={2}>
                         {tiers.s.map(tower => (
                             <Grid xs={gridSpacing} item key={tower.t_id}>
                                 <TowerCard tower={tower}
@@ -47,13 +63,13 @@ export default function TierListGrid({ className, tiers }) {
                                 />
                             </Grid>
                         ))}
-                    </Grid>
+                    </SGrid>
                 </GridItems>
                 <GridTitle backgroundColor={aColor}>
                     A Tier
                 </GridTitle>
                 <GridItems borderColor={aColor}>
-                    <Grid container spacing={2}>
+                    <AGrid container spacing={2}>
                         {tiers.a.map(tower => (
                             <Grid xs={gridSpacing} item key={tower.t_id}>
                                 <TowerCard tower={tower}
@@ -62,13 +78,13 @@ export default function TierListGrid({ className, tiers }) {
                                 />
                             </Grid>
                         ))}
-                    </Grid>
+                    </AGrid>
                 </GridItems>
                 <GridTitle backgroundColor={bColor}>
                     B Tier
                 </GridTitle>
                 <GridItems borderColor={bColor}>
-                    <Grid container spacing={2}>
+                    <BGrid container spacing={2}>
                         {tiers.b.map(tower => (
                             <Grid xs={gridSpacing} item key={tower.t_id}>
                                 <TowerCard tower={tower}
@@ -77,7 +93,7 @@ export default function TierListGrid({ className, tiers }) {
                                 />
                             </Grid>
                         ))}
-                    </Grid>
+                    </BGrid>
                 </GridItems>
             </Grid>
         </>
