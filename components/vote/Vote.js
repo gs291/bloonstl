@@ -1,11 +1,10 @@
+import {useState} from "react";
 import styled from "@emotion/styled";
 import {Button, Collapse, Typography} from "@material-ui/core";
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
-import VoteAbilities from "./VoteAbilities";
-import {useState} from "react";
-import FilterRanks from "../filters/FilterRanks";
 import VoteTower from "./VoteTower";
+import VoteAbilities from "./VoteAbilities";
 import siteColors from "../../lib/utils/siteColors";
 
 const VoteForm = styled.form`
@@ -55,7 +54,7 @@ export default function Vote({towers, tower}) {
 
     return (
         <>
-            <form onSubmit={submitVote}>
+            <VoteForm onSubmit={submitVote}>
                 <VoteTower towers={towers} tower={tower} />
 
                 <VoteText variant="body1" display="inline" component="div">
@@ -74,7 +73,7 @@ export default function Vote({towers, tower}) {
                 </Collapse>
 
                 <Button type="submit">Vote!</Button>
-            </form>
+            </VoteForm>
         </>
     );
 }
