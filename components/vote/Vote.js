@@ -1,6 +1,7 @@
 import {useState} from "react";
 import styled from "@emotion/styled";
 import {Button, Collapse, Typography} from "@material-ui/core";
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 import VoteTower from "./VoteTower";
@@ -10,6 +11,8 @@ import siteColors from "../../lib/utils/siteColors";
 const VoteForm = styled.form`
   width: 100%;
   height: 100%;
+  margin-top: 2em;
+  margin-bottom: 2em;
   
   display: flex;
   flex-direction: column;
@@ -25,6 +28,10 @@ const Expander = styled(Button)`
 `;
 
 const VoteText = styled(Typography)`
+  color: ${siteColors.text.dark};
+`;
+
+const SubmitVote = styled(Button)`
   color: ${siteColors.text.dark};
 `;
 
@@ -56,23 +63,7 @@ export default function Vote({towers, tower}) {
         <>
             <VoteForm onSubmit={submitVote}>
                 <VoteTower towers={towers} tower={tower} />
-
-                <VoteText variant="body1" display="inline" component="div">
-                    Abilities Tier
-                    &nbsp;
-                    <Expander onClick={handleCollapse}>
-                        <AddCircleOutlineIcon />
-                    </Expander>
-                    &nbsp;
-                    <Typography variant="body1" color="secondary" display="inline">
-                        optional *
-                    </Typography>
-                </VoteText>
-                <Collapse in={collapse}>
-                    <VoteAbilities />
-                </Collapse>
-
-                <Button type="submit">Vote!</Button>
+                <SubmitVote type="submit">Vote!</SubmitVote>
             </VoteForm>
         </>
     );
