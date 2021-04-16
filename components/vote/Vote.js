@@ -27,7 +27,10 @@ const VoteContainer = styled.div`
   padding: 3em 2em;
 `;
 
-
+const VoteButtonContainer = styled.div`
+  background-color: #444;
+  border-radius: 20px;
+`;
 
 export default function Vote({towers, tower}) {
     const [collapsePaths, setCollapsePaths] = useState(false);
@@ -93,9 +96,9 @@ export default function Vote({towers, tower}) {
                     </Grid>
 
                     <Grid item>
-                        <VoteContainer>
+                        <VoteButtonContainer>
                             <VoteSubmit progress={progress}/>
-                        </VoteContainer>
+                        </VoteButtonContainer>
                     </Grid>
                 </Grid>
             </VoteForm>

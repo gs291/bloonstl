@@ -7,10 +7,14 @@ import siteColors from "../../lib/utils/siteColors";
 
 const SubmitVote = styled(Button)`
   color: ${siteColors.text.dark};
+  width: 100%;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  border-radius: 20px;
 `;
 
 const Loading = styled(CircularProgress)`
-  
+    
 `;
 
 const Success = styled(CheckCircleIcon)`
@@ -23,6 +27,11 @@ const Error = styled(ErrorIcon)`
   color: #DC3545;
   height: 2.5em;
   width: 2.5em;
+`;
+
+const ProgressContainer = styled.div`
+  padding-top: 3em;
+  padding-bottom: 3em;
 `;
 
 const SubmitContainer = styled.div`
@@ -39,13 +48,17 @@ export default function VoteSubmit ({className, progress}) {
             <SubmitContainer className={className}>
                 {progress.isLoading ? (
                     <>
-                        <Loading color="inherit" size={50}/>
+                        <ProgressContainer>
+                            <Loading color="inherit" size={50}/>
+                        </ProgressContainer>
                     </>
                 ) : (
                     <>
                         {progress.isSuccess ?
                             (
-                                <Success />
+                                <ProgressContainer>
+                                    <Success />
+                                </ProgressContainer>
                             ) : (
                                 <SubmitVote type="submit">
                                     Vote!
@@ -53,7 +66,9 @@ export default function VoteSubmit ({className, progress}) {
                             )
                         }
                         {progress.isError && (
-                            <Error />
+                            <ProgressContainer>
+                                <Error />
+                            </ProgressContainer>
                         )}
                     </>
                 )}

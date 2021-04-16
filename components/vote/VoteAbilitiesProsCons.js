@@ -50,12 +50,37 @@ const ControlCheckBox = styled(Checkbox)`
   }
 `;
 
+const ProConLabelContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ProConDescription = styled.div`
+  margin-left: 5px;
+  color: rgba(255, 255, 255, 0.5);
+`;
+
+const ProsConsLabel = ({proCon, type}) => (
+    <>
+        <ProConLabelContainer>
+            <Typography variant="body1" color="inherit">
+                {proCon.title}
+            </Typography>
+            <ProConDescription>
+                <Typography variant="caption" color="inherit">
+                    {type === "pro" ? proCon.pro : proCon.con}
+                </Typography>
+            </ProConDescription>
+        </ProConLabelContainer>
+    </>
+);
+
 const prosConsKeys = Object.keys(siteProsCons);
 
 export default function VoteAbilitiesProsCons({className}) {
     const mobile = useSelector(getMobile);
 
-    let gridSpacing = 3;
+    let gridSpacing = 6;
     if (mobile) {
         gridSpacing = 12;
     }
@@ -78,8 +103,8 @@ export default function VoteAbilitiesProsCons({className}) {
                     {prosConsKeys.map(key => (
                         <Grid item xs={gridSpacing} key={key}>
                             <ProsConsControl
-                                control={<ControlCheckBox data-type="pro" name={`pro-${key}`} disableRipple/>}
-                                label={siteProsCons[key].title}
+                                control={<ControlCheckBox data-type="pro" name={`pro-${key}`} disableRipple />}
+                                label={<ProsConsLabel proCon={siteProsCons[key]} type="pro"/>}
                             />
                         </Grid>
                     ))}
@@ -103,7 +128,7 @@ export default function VoteAbilitiesProsCons({className}) {
                         <Grid item xs={gridSpacing} key={key}>
                             <ProsConsControl
                                 control={<ControlCheckBox data-type="con" name={`con-${key}`} disableRipple/>}
-                                label={siteProsCons[key].title}
+                                label={<ProsConsLabel proCon={siteProsCons[key]} type="con"/>}
                             />
                         </Grid>
                     ))}
