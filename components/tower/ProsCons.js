@@ -8,17 +8,16 @@ import {parseProsCons} from "../../lib/utils/utils";
 import {getMobile} from "../../lib/redux/selectors";
 import VerticalDivider from "../divider/VerticalDivider";
 
+const ProsConsContainer = styled(Grid)`
+  min-height: ${props => props["data-m"] ? "250px" : "125px"};
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
 
 export default function ProsCons({ className, pros, cons, backgroundColor }) {
     const mobile = useSelector(getMobile);
     pros = parseProsCons(pros);
     cons = parseProsCons(cons);
-
-    const ProsConsContainer = styled(Grid)`
-      min-height: ${mobile ? "250px" : "125px"};
-      margin-top: 10px;
-      margin-bottom: 10px;
-    `;
 
     return (
         <>
@@ -27,9 +26,10 @@ export default function ProsCons({ className, pros, cons, backgroundColor }) {
                                justify="center"
                                direction={mobile ? "column" : "row"}
                                alignItems={mobile ? "center" : "stretch"}
+                               data-m={mobile}
             >
                 <Grid item>
-                    <GridProsCons isPro={1} proCons={pros}/>
+                    <GridProsCons isPro={true} proCons={pros}/>
                 </Grid>
                 { mobile ? (
                     <FixedDivider width={80} backgroundColor={backgroundColor}/>
@@ -37,7 +37,7 @@ export default function ProsCons({ className, pros, cons, backgroundColor }) {
                     <VerticalDivider backgroundColor={backgroundColor} />
                 )}
                 <Grid item>
-                    <GridProsCons isPro={0} proCons={cons}/>
+                    <GridProsCons isPro={false} proCons={cons}/>
                 </Grid>
             </ProsConsContainer>
         </>

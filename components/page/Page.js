@@ -17,8 +17,16 @@ const PageContainer = styled.div`
 `;
 
 const Nav = styled(Navbar)`
-  background-image: linear-gradient(${ siteColors.nav.dark }, ${ siteColors.background.main.dark });
+  background-color: ${siteColors.nav.dark};
   box-shadow: none;
+`;
+
+const Main = styled.main`
+  flex: 1;
+  background-color: ${siteColors.main.dark};
+  padding-top: 15px;
+  ${props => !props["data-m"] ? "padding-right: 10px;" : ""}
+  padding-bottom: 30px;
 `;
 
 const MainContainer = styled(Container)`
@@ -29,7 +37,7 @@ const MainContainer = styled(Container)`
 `;
 
 const Foot = styled(Footer)`
-  background-image: linear-gradient(${ siteColors.background.main.dark }, ${ siteColors.nav.dark });
+  background-color: ${siteColors.nav.dark};
   justify-content: center;
   align-items: center;
   color: ${siteColors.text.dark};
@@ -43,14 +51,6 @@ export default function Page(props) {
         dispatch(updateMobile(screen));
     }, [screen]);
 
-    const Main = styled.main`
-      flex: 1;
-      background-color: ${ siteColors.background.main.dark };
-      padding-top: 15px;
-      ${!mobile ? "padding-right: 10px;" : ""}
-      padding-bottom: 30px;
-    `;
-
     return (
         <PageContainer>
             <Nav />
@@ -58,7 +58,7 @@ export default function Page(props) {
                 <NavDrawer />
             )}
 
-            <Main >
+            <Main data-m={mobile}>
                 <MainContainer maxWidth="md">
                     { props.children }
                 </MainContainer>

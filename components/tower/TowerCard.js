@@ -10,11 +10,11 @@ import {getTowerLink, getMonkeyTypeColor, getHeroColor} from "../../lib/utils/ut
 
 const CardContainer = styled(Card)`
   margin: 5px;
-  background-color: ${ siteColors.card.dark };
+  background-color: ${siteColors.card.dark};
   border: 2px solid ${props => props.bordercolor};
   &:hover{
     cursor: pointer;
-    background-color: ${ props => props.backgroundcolor };
+    background-color: ${props => props.backgroundcolor};
   }
 `;
 

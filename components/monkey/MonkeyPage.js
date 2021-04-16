@@ -19,26 +19,26 @@ const TotalCost = styled(TowerText)`
   margin-top: 10px;
 `;
 
+const Filters = styled.div`
+  display: flex;
+  flex-direction: ${props => props["data-m"] ? "column-reverse" : "row"};
+  width: ${props => props["data-m"] ? 100 : 80}%;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
+const FilterDiff = styled(FilterDifficulty)`
+  ${props => props["data-m"] ? "margin-bottom: 10px;" : ""};
+`;
+
 export default function MonkeyPage({ monkey }) {
     const mobile = useSelector(getMobile);
     const difficulty = useSelector(getDifficulty);
     const [ rank, setRank ] = useState("s");
     const [ page, setPage ] = useState(1);
     const [ totalCost, setTotalCost ] = useState("");
-
-    const Filters = styled.div`
-      display: flex;
-      flex-direction: ${mobile ? "column-reverse" : "row"};
-      width: ${mobile ? 100 : 80}%;
-      justify-content: space-evenly;
-      align-items: center;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    `;
-
-    const FilterDiff = styled(FilterDifficulty)`
-      ${mobile ? "margin-bottom: 10px;" : ""};
-    `;
 
     const handleRank = (_, r) => {
         setTotalCost("");
@@ -58,9 +58,9 @@ export default function MonkeyPage({ monkey }) {
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <Filters >
+            <Filters data-m={mobile}>
                 <FilterRanks handleRank={handleRank} />
-                <FilterDiff />
+                <FilterDiff data-m={mobile}/>
             </Filters>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <RankTitle rank={rank} ranks={ranks} totalCost={totalCost} backgroundColor={dividerBackgroundColor}/>

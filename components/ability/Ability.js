@@ -19,8 +19,8 @@ const AbilityContainer = styled.div`
 `;
 
 const CardContainer = styled(Card)`
-  background-color: ${siteColors.background.card.dark};
-  border: 2px solid ${props => props.selected ? rankColors(props.rank) : siteColors.background.card.dark};
+  background-color: ${siteColors.card.dark};
+  border: 2px solid ${props => props["data-s"] ? rankColors(props.rank) : siteColors.card.dark};
   border-radius: 50%;
   
   &:hover {
@@ -30,10 +30,10 @@ const CardContainer = styled(Card)`
 
 const CardContentContainer = styled(CardContent)`
   position: relative;
-  width: ${props => props.mobile === 1 ? siteSizes.ability.mobile.width : siteSizes.ability.width};
-  max-width: ${props => props.mobile === 1 ? siteSizes.ability.mobile.width : siteSizes.ability.width};
-  height: ${props => props.mobile === 1 ? siteSizes.ability.mobile.height : siteSizes.ability.height};
-  max-height: ${props => props.mobile === 1 ? siteSizes.ability.mobile.height :siteSizes.ability.height};
+  width: ${props => props["data-m"] ? siteSizes.ability.mobile.width : siteSizes.ability.width};
+  max-width: ${props => props["data-m"] ? siteSizes.ability.mobile.width : siteSizes.ability.width};
+  height: ${props => props["data-m"] ? siteSizes.ability.mobile.height : siteSizes.ability.height};
+  max-height: ${props => props["data-m"] ? siteSizes.ability.mobile.height :siteSizes.ability.height};
   padding: 0;
   
   display: flex;
@@ -57,7 +57,7 @@ const ActivatedAbility = styled(OfflineBoltIcon)`
 
   color: ${siteColors.ability.activated};
   border-radius: 50%;
-  background-color: ${siteColors.background.card.dark};
+  background-color: ${siteColors.card.dark};
   
   &:hover {
     cursor: pointer;
@@ -74,12 +74,12 @@ export default function Ability({className, ability, fileName, rank, towerType, 
                         <AbilityTooltip ability={ability}
                                         rank={rank}
                                         towerType={towerType}
-                                        selected={selected}
+                                        data-s={selected}
                         />}
                     active={ability.active}
                 >
                     <CardContainer selected={selected} rank={rank}>
-                        <CardContentContainer mobile={mobile ? 1 : 0}>
+                        <CardContentContainer data-m={mobile}>
                             { towerType === "monkey" && (
                                 <ImageFill
                                     src={ getImageUrl(fileName, ability.upgrade_path, ability.upgrade_tier) }

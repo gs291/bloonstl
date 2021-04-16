@@ -13,7 +13,7 @@ const FilterContainer = styled(FormControl)`
   padding: 20px;
 `;
 
-export default function FiltersTierList({ className }) {
+export default function FiltersTierList({className}) {
     const dispatch = useDispatch();
     const border = useSelector(getBorder);
 

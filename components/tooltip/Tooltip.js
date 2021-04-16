@@ -10,19 +10,19 @@ import {getMobile} from "../../lib/redux/selectors";
 const StyledTooltip = styled(({ className, ...other }) => (
     <MUITooltip classes={{ tooltip: className }} {...other} />
 ))`
-  background-color: ${siteColors.background.tooltip.dark};
+  background-color: ${siteColors.tooltip.dark};
   width: 265px;
   
   ${props => props.mobile ? "margin-bottom: 10px;" : ""}
   
-  border: 1px solid ${props => props.active ? siteColors.ability.activated : siteColors.background.tooltip.dark};
+  border: 1px solid ${props => props.active ? siteColors.ability.activated : siteColors.tooltip.dark};
 
   .MuiTooltip-arrow {
-    color: ${siteColors.background.tooltip.dark};
+    color: ${siteColors.tooltip.dark};
   }
   
   .MuiTooltip-arrow::before {
-    border: 1px solid ${props => props.active ? siteColors.ability.activated : siteColors.background.tooltip.dark};
+    border: 1px solid ${props => props.active ? siteColors.ability.activated : siteColors.tooltip.dark};
   }
 `;
 

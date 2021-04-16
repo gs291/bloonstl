@@ -15,7 +15,11 @@ const TowerContainer = styled(Grid)`
 
 export default function TowerImgInfo({tower, towerType}) {
     const mobile = useSelector(getMobile);
-    let backgroundColor;
+    let backgroundColor, gridSpacing = 4;
+
+    if (mobile) {
+        gridSpacing = 6
+    }
 
     if (towerType === "monkey") {
         backgroundColor = getMonkeyTypeColor(tower.type);
@@ -31,11 +35,11 @@ export default function TowerImgInfo({tower, towerType}) {
                             direction={mobile ? "column" : "row"}
                             alignItems="center"
             >
-                <Grid item xs={mobile ? 6 : 4}>
+                <Grid item xs={gridSpacing}>
                     <Icon tower={ tower } />
                 </Grid>
                 { !mobile && (<VerticalDivider backgroundColor={ backgroundColor } />)}
-                <Grid item xs={mobile ? 6 : 4}>
+                <Grid item xs={gridSpacing}>
                     <TowerInfo tower={ tower }/>
                 </Grid>
             </TowerContainer>

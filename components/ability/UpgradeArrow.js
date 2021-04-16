@@ -12,14 +12,14 @@ const UpgradeArrowContainer = styled.div`
 `;
 
 const Arrow = styled(DoubleArrow)`
-  color: ${props => props.selected ? rankColors(props.rank) : siteColors.text.dark};
+  color: ${props => props["data-s"] ? rankColors(props.rank) : siteColors.text.dark};
 `;
 
 export default function UpgradeArrow({ className, rank, selected }) {
     return (
         <>
             <UpgradeArrowContainer className={className}>
-                <Arrow selected={selected} rank={rank}/>
+                <Arrow data-s={selected} rank={rank}/>
             </UpgradeArrowContainer>
         </>
     );

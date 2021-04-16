@@ -8,11 +8,11 @@ import siteColors from "../../lib/utils/siteColors";
 
 
 const OddTierSection = styled(TierSection)`
-  background-color: ${siteColors.background.odd.dark};
+  background-color: ${siteColors.odd.dark};
 `;
 
 const OddVoteSection = styled(VoteSection)`
-  background-color: ${siteColors.background.odd.dark};
+  background-color: ${siteColors.odd.dark};
 `;
 
 export default function HomePage({ }) {

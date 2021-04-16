@@ -17,8 +17,8 @@ const TopDrawer = styled(Drawer)`
 
 const DrawerContainer = styled.div`
   height: 100%;
-  padding-top: ${ siteSizes.nav.height };
-  background-color: ${ siteColors.background.main.dark };
+  padding-top: ${siteSizes.nav.height};
+  background-color: ${siteColors.main.dark};
   color: ${siteColors.text.dark};
   
   display: flex;

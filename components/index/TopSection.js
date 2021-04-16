@@ -5,7 +5,7 @@ import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 
 const TitleContainer = styled(Grid)`
-  height: calc(100vh - ${ siteSizes.nav.height });
+  height: calc(100vh - ${siteSizes.nav.height});
   color: ${siteColors.text.dark};
   text-align: center;
 `;

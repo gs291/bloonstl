@@ -9,13 +9,13 @@ const Pages = styled(Pagination)`
   }
 
   & .MuiPaginationItem-root.Mui-selected {
-    background-color: ${siteColors.background.pagination.selected.dark};
+    background-color: ${siteColors.pagination.selected.dark};
   }
 
   & .MuiPaginationItem-root:hover,
   & .MuiPaginationItem-root:active,
   & .MuiPaginationItem-root:focus {
-    background-color: ${siteColors.background.pagination.dark};
+    background-color: ${siteColors.pagination.dark};
   }
 `;
 
