@@ -1,21 +1,19 @@
 import {
-    Collapse,
     FormControlLabel,
     InputLabel,
     ListSubheader,
     MenuItem,
     Radio,
     RadioGroup,
-    Select,
+    Select, TextField,
     Typography
 } from "@material-ui/core";
 import {useState} from "react";
 import styled from "@emotion/styled";
 
-import VoteOptional from "./VoteOptional";
-import VoteAbilities from "./VoteAbilities";
-import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
+import {useSelector} from "react-redux";
+import {getMobile} from "../../lib/redux/selectors";
 
 const VoteTowerContainer = styled.div`
   color: ${siteColors.text.dark};
@@ -38,7 +36,7 @@ const TowerSelect = styled(Select)`
   overflow: visible;
 
   & .MuiPopover-paper {
-    margin-top: ${siteSizes.nav.height};
+    
   }
   
   & ul {
@@ -63,14 +61,15 @@ const TowerTier = styled(RadioGroup)`
 
 const SelectContainer = styled.div`
   text-align: center;
+  margin-left: ${props => props["data-m"] ? "0" : "20px"};
 `;
 
 const TowerSelectContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${props => props["data-m"] ? "column" : "row"};
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 `;
 
 const StyledRadio = styled(Radio)`
@@ -78,21 +77,42 @@ const StyledRadio = styled(Radio)`
 `;
 
 export default function VoteTower({towers, tower}) {
-    const [ collapse, setCollapse ] = useState(false);
-    const handleCollapse = (_) => setCollapse(!collapse);
+    const mobile = useSelector(getMobile);
+
+    const [towerSelect, setTowerSelect] = useState("");
+    const handleSelect = (e) => setTowerSelect(e.target.value);
 
     return (
         <>
             <VoteTowerContainer>
-                <TowerSelectContainer>
-                    <VoteText variant="h3">
-                        Tower:
-                    </VoteText>
-                    <SelectContainer>
+                <TowerSelectContainer data-m={mobile}>
+                    <SelectContainer data-m={mobile}>
                         {towers && (
                             <>
-                                <TowerLabel id="tower-label">Select a tower</TowerLabel>
-                                <TowerSelect name="tower" labelId="tower-label" MenuProps={{disablePortal: true}}>
+                                <TowerLabel id="tower-label">
+                                    <VoteText variant="h3">
+                                        Select a Tower:
+                                    </VoteText>
+                                </TowerLabel>
+                                <TowerSelect
+                                    name="tower"
+                                    labelId="tower-label"
+                                    MenuProps={{
+                                        getContentAnchorEl: null,
+                                        disablePortal: true,
+                                        anchorOrigin: {
+                                            vertical: 'bottom',
+                                            horizontal: 'center',
+                                        },
+                                        transformOrigin: {
+                                            vertical: 'top',
+                                            horizontal: 'center',
+                                        }
+                                    }}
+                                    value={towerSelect}
+                                     onChange={handleSelect}
+                                    required
+                                >
                                     <ListSubheader disableSticky>Monkeys</ListSubheader>
                                     {towers.monkeys.map(monkey => (
                                         <MenuItem value={monkey.id} key={monkey.id}>{monkey.name}</MenuItem>
@@ -106,7 +126,11 @@ export default function VoteTower({towers, tower}) {
                         )}
                         {tower && (
                             <>
-                                {tower.name}
+                                <TextField
+                                    disabled
+                                    name="tower"
+                                    defaultValue={tower.name}
+                                />
                             </>
                         )}
                     </SelectContainer>
@@ -114,16 +138,10 @@ export default function VoteTower({towers, tower}) {
 
                 <VoteText variant="h5">What tier is this tower?</VoteText>
                 <TowerTier name="tower-tier">
-                    <FormControlLabel value="s" control={<StyledRadio />} label="S" labelPlacement="top"/>
-                    <FormControlLabel value="a" control={<StyledRadio />} label="A" labelPlacement="top"/>
-                    <FormControlLabel value="b" control={<StyledRadio />} label="B" labelPlacement="top"/>
+                    <FormControlLabel value="s" control={<StyledRadio required/>} label="S" labelPlacement="top"/>
+                    <FormControlLabel value="a" control={<StyledRadio required/>} label="A" labelPlacement="top"/>
+                    <FormControlLabel value="b" control={<StyledRadio required/>} label="B" labelPlacement="top"/>
                 </TowerTier>
-
-
-                <VoteOptional collapse={collapse} handleCollapse={handleCollapse} />
-                <Collapse in={collapse}>
-                    <VoteAbilities />
-                </Collapse>
             </VoteTowerContainer>
         </>
     );

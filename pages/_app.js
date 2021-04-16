@@ -40,10 +40,12 @@ const globals = css`
   
   ::-webkit-scrollbar-track {
     background: #f1f1f1;
+    border-radius: 20px;
   }
   
   ::-webkit-scrollbar-thumb {
     background: #888;
+    border-radius: 20px;
   }
   
   ::-webkit-scrollbar-thumb:hover {

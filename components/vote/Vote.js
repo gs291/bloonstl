@@ -1,12 +1,13 @@
-import {useState} from "react";
 import styled from "@emotion/styled";
-import {Button, Collapse, Typography} from "@material-ui/core";
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import {useEffect, useState} from "react";
+import {Button, Collapse, Grid, Modal} from "@material-ui/core";
 
 import VoteTower from "./VoteTower";
+import VoteSubmit from "./VoteSubmit";
+import VoteOptional from "./VoteOptional";
 import VoteAbilities from "./VoteAbilities";
-import siteColors from "../../lib/utils/siteColors";
+import {parseForm, sendVote} from "../../lib/utils/utils";
+import VoteModal from "./VoteModal";
 
 const VoteForm = styled.form`
   width: 100%;
@@ -20,51 +21,89 @@ const VoteForm = styled.form`
   align-items: center;
 `;
 
-const Expander = styled(Button)`
-  color: ${siteColors.text.dark};
-  &:hover {
-    cursor: pointer;
-  }
+const VoteContainer = styled.div`
+  background-color: #444;
+  border-radius: 20px;
+  padding: 3em 2em;
 `;
 
-const VoteText = styled(Typography)`
-  color: ${siteColors.text.dark};
-`;
 
-const SubmitVote = styled(Button)`
-  color: ${siteColors.text.dark};
-`;
 
 export default function Vote({towers, tower}) {
-    const [ collapse, setCollapse ] = useState(false);
+    const [collapsePaths, setCollapsePaths] = useState(false);
+    const handleCollapsePaths = (_) => setCollapsePaths(!collapsePaths);
 
-    const handleCollapse = (_) => setCollapse(!collapse);
-    const submitVote = async e => {
+    const [formInfo, setFormInfo] = useState({});
+    const [progress, setProgress] = useState({
+        isLoading: false,
+        isSuccess: false,
+        isError: false,
+        modalStatus: false,
+    })
+
+    const checkSubmit = async (e) => {
         e.preventDefault()
-
-        // const res = await fetch(
-        //     'https://hooks.zapier.com/hooks/catch/123456/abcde',
-        //     {
-        //         body: JSON.stringify({
-        //             name: e.target.name.value
-        //         }),
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         method: 'POST'
-        //     }
-        // )
-        //
-        // const result = await res.json()
-        // result.user => 'Ada Lovelace'
+        setProgress(prg => ({...prg, modalStatus: true}));
+        setFormInfo(parseForm(e.target));
     }
+
+    const handleModalSubmit = async () => {
+        setProgress(prg => ({...prg, modalStatus: false}))
+
+        let ignore = false;
+        const controller = new AbortController();
+        await sendVote(formInfo, controller, ignore, setProgress)
+        return () => {
+            controller.abort();
+            ignore = true;
+        };
+    }
+
+    const handleModalClose = () => setProgress(prg => ({...prg, modalStatus: false}));
+
+    useEffect(() => {
+        if (progress.isSuccess) {
+            setTimeout(() => {
+                setProgress(prg => ({...prg, isSuccess: false}));
+            }, 5000)
+        }
+    }, [progress.isSuccess])
 
     return (
         <>
-            <VoteForm onSubmit={submitVote}>
-                <VoteTower towers={towers} tower={tower} />
-                <SubmitVote type="submit">Vote!</SubmitVote>
+            <VoteForm onSubmit={checkSubmit}>
+                <Grid container
+                      spacing={6}
+                      direction="column"
+                      justify="center"
+                >
+                    <Grid item>
+                        <VoteContainer>
+                            <VoteTower towers={towers} tower={tower} />
+                        </VoteContainer>
+                    </Grid>
+
+                    <Grid item>
+                        <VoteContainer>
+                            <VoteOptional title="Want to vote on Ability Paths?" collapse={collapsePaths} handleCollapse={handleCollapsePaths} />
+                            <Collapse in={collapsePaths}>
+                                <VoteAbilities />
+                            </Collapse>
+                        </VoteContainer>
+                    </Grid>
+
+                    <Grid item>
+                        <VoteContainer>
+                            <VoteSubmit progress={progress}/>
+                        </VoteContainer>
+                    </Grid>
+                </Grid>
             </VoteForm>
+            <VoteModal
+                modalStatus={progress.modalStatus}
+                handleClose={handleModalClose}
+                handleSubmit={handleModalSubmit}
+            />
         </>
     );
 }
