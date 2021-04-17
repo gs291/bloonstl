@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import {Typography} from "@material-ui/core";
 
-import {rankColors} from "../../lib/utils/utils";
+import {getTierColor} from "../../lib/utils/utils";
 
 const Rank = styled(Typography)`
-  color: ${props => rankColors(props.name)};
+  color: ${props => getTierColor(props.name)};
 `;
 
 const RankContainer = styled.div`

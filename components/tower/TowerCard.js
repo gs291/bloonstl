@@ -10,11 +10,14 @@ import {getTowerLink, getMonkeyTypeColor, getHeroColor} from "../../lib/utils/ut
 
 const CardContainer = styled(Card)`
   margin: 5px;
-  background-color: ${siteColors.card.dark};
-  border: 2px solid ${props => props.bordercolor};
+  background-color: ${props => props["data-bc"]};
+  border: 4px solid ${props => props["data-brc"]};
+  border-radius: 10px;
+  transition: 0.3s;
+  
   &:hover{
     cursor: pointer;
-    background-color: ${props => props.backgroundcolor};
+    background-color: ${props => props["data-hbc"]};
   }
 `;
 
@@ -32,29 +35,31 @@ const TowerName = styled(Typography)`
   text-overflow: ellipsis;
 `;
 
-export default function TowerCard({tower, towerType, keepBorder}) {
+export default function TowerCard({tower, towerType, rank, keepBorder}) {
     const border = useSelector(getBorder);
-    let href, borderColor, backgroundColor;
+    let href, borderColor, backgroundColor, hoverBackgroundColor;
 
     if (towerType === "monkey") {
         href = `/monkey/${getTowerLink(tower)}`;
         borderColor = getMonkeyTypeColor(tower.type);
-        backgroundColor = getMonkeyTypeColor(tower.type, true);
+        backgroundColor = getMonkeyTypeColor(tower.type, rank);
+        hoverBackgroundColor = getMonkeyTypeColor(tower.type, rank, true);
     } else if (towerType === "hero") {
         href = `/hero/${getTowerLink(tower)}`;
         borderColor = getHeroColor(tower.name);
-        backgroundColor = getHeroColor(tower.name, true);
+        backgroundColor = getHeroColor(tower.name, rank, false, true);
+        hoverBackgroundColor = getHeroColor(tower.name, rank, true, true);
     }
 
     if (!border && keepBorder === 0) {
-        borderColor = siteColors.card.dark;
+        borderColor = backgroundColor;
     }
 
     return (
         <>
             <Link href={href} passHref>
                 <MLink>
-                    <CardContainer bordercolor={borderColor} backgroundcolor={backgroundColor}>
+                    <CardContainer data-brc={borderColor} data-bc={backgroundColor} data-hbc={hoverBackgroundColor}>
                         <CardContent>
                             <Icon tower={tower}/>
                             <TowerName varient="body1">

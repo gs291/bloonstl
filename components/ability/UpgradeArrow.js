@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {DoubleArrow} from "@material-ui/icons";
 
-import {rankColors} from "../../lib/utils/utils";
+import {getTierColor} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 
 const UpgradeArrowContainer = styled.div`
@@ -12,7 +12,7 @@ const UpgradeArrowContainer = styled.div`
 `;
 
 const Arrow = styled(DoubleArrow)`
-  color: ${props => props["data-s"] ? rankColors(props.rank) : siteColors.text.dark};
+  color: ${props => props["data-s"] ? getTierColor(props.rank) : siteColors.text.dark};
 `;
 
 export default function UpgradeArrow({ className, rank, selected }) {

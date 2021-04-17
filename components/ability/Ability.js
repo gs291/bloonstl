@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import {Card, CardContent} from "@material-ui/core";
 import OfflineBoltIcon from '@material-ui/icons/OfflineBolt';
 
@@ -6,11 +7,9 @@ import Tooltip from "../tooltip/Tooltip";
 import ImageFill from "../image/ImageFill";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
-import AbilityTooltip from "../tooltip/AbilityTooltip";
-import {getImageUrl, rankColors} from "../../lib/utils/utils";
-import {useSelector} from "react-redux";
 import {getMobile} from "../../lib/redux/selectors";
-
+import AbilityTooltip from "../tooltip/AbilityTooltip";
+import {getImageUrl, getTierColor} from "../../lib/utils/utils";
 
 const AbilityContainer = styled.div`
   display: flex;
@@ -20,7 +19,7 @@ const AbilityContainer = styled.div`
 
 const CardContainer = styled(Card)`
   background-color: ${siteColors.card.dark};
-  border: 2px solid ${props => props["data-s"] ? rankColors(props.rank) : siteColors.card.dark};
+  border: 2px solid ${props => props["data-s"] ? getTierColor(props.rank) : siteColors.card.dark};
   border-radius: 50%;
   
   &:hover {

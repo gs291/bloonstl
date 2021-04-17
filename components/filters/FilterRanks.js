@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { ButtonGroup, Button } from "@material-ui/core";
 
-import {font_family, rankColors} from "../../lib/utils/utils";
+import {font_family, getTierColor} from "../../lib/utils/utils";
 
 const BGroup = styled(ButtonGroup)`
   justify-content: center;
@@ -10,13 +10,13 @@ const BGroup = styled(ButtonGroup)`
 
 
 const RankButton  = styled(Button)`
-  background-color: ${props => rankColors(props.value)};
+  background-color: ${props => getTierColor(props.value)};
   font-family: ${font_family};
   
   &:hover,
   &:active,
   &:focus {
-    background-color: ${props => rankColors(props.value, true)};
+    background-color: ${props => getTierColor(props.value, true)};
   }
 `;
 

@@ -17,13 +17,13 @@ const PageContainer = styled.div`
 `;
 
 const Nav = styled(Navbar)`
-  background-color: ${siteColors.nav.dark};
+  background-color: ${siteColors.page.dark};
   box-shadow: none;
 `;
 
 const Main = styled.main`
   flex: 1;
-  background-color: ${siteColors.main.dark};
+  background-color: ${siteColors.page.dark};
   padding-top: 15px;
   ${props => !props["data-m"] ? "padding-right: 10px;" : ""}
   padding-bottom: 30px;
@@ -37,7 +37,7 @@ const MainContainer = styled(Container)`
 `;
 
 const Foot = styled(Footer)`
-  background-color: ${siteColors.nav.dark};
+  background-color: ${siteColors.page.dark};
   justify-content: center;
   align-items: center;
   color: ${siteColors.text.dark};
