@@ -7,8 +7,8 @@ import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
 import NavDrawer from "../navbar/NavDrawer";
 import siteColors from "../../lib/utils/siteColors";
-import {getMobile} from "../../lib/redux/selectors";
 import { updateMobile } from "../../lib/redux/actions";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const PageContainer = styled.div`
   display: flex;
@@ -17,13 +17,15 @@ const PageContainer = styled.div`
 `;
 
 const Nav = styled(Navbar)`
-  background-color: ${siteColors.page.dark};
+  transition: 0.3s;
+  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   box-shadow: none;
 `;
 
 const Main = styled.main`
   flex: 1;
-  background-color: ${siteColors.page.dark};
+  transition: 0.3s;
+  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   padding-top: 15px;
   ${props => !props["data-m"] ? "padding-right: 10px;" : ""}
   padding-bottom: 30px;
@@ -37,15 +39,18 @@ const MainContainer = styled(Container)`
 `;
 
 const Foot = styled(Footer)`
-  background-color: ${siteColors.page.dark};
+  transition: 0.3s;
+  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   justify-content: center;
   align-items: center;
-  color: ${siteColors.text.dark};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
 export default function Page(props) {
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);
+    const darkMode = useSelector(getDarkMode);
+
     const screen = useMediaQuery('(max-width: 960px)');
     useEffect(() => {
         dispatch(updateMobile(screen));
@@ -53,18 +58,18 @@ export default function Page(props) {
 
     return (
         <PageContainer>
-            <Nav />
+            <Nav data-dm={darkMode}/>
             { mobile && (
                 <NavDrawer />
             )}
 
-            <Main data-m={mobile}>
+            <Main data-m={mobile} data-dm={darkMode}>
                 <MainContainer maxWidth="md">
                     { props.children }
                 </MainContainer>
             </Main>
 
-            <Foot />
+            <Foot data-dm={darkMode}/>
         </PageContainer>
     );
 }

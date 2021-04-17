@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import {useSelector } from "react-redux";
-import { AppBar } from "@material-ui/core";
+import {useSelector} from "react-redux";
+import {AppBar} from "@material-ui/core";
 
 import SiteLinks from "./SiteLinks";
 import siteSizes from "../../lib/utils/siteSizes";

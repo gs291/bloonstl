@@ -3,17 +3,18 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import Votes from "../tower/Votes";
+import Counter from "../tower/Counter";
 import ProsCons from "../tower/ProsCons";
 import RankTitle from "../tower/RankTitle";
 import TowerText from "../tower/TowerText";
 import FilterRanks from "../filters/FilterRanks";
-import FixedDivider from "../divider/FixedDivider";
 import TowerImgInfo from "../tower/TowerImgInfo";
+import FixedDivider from "../divider/FixedDivider";
+import {getMobile} from "../../lib/redux/selectors";
+import {getMonkeyTypeColor} from "../../lib/utils/utils";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
-import {getDifficulty, getMobile} from "../../lib/redux/selectors";
-import {getMonkeyTypeColor, goldCost} from "../../lib/utils/utils";
 
 const TotalCost = styled(TowerText)`
   margin-top: 10px;
@@ -35,21 +36,18 @@ const FilterDiff = styled(FilterDifficulty)`
 
 export default function MonkeyPage({ monkey }) {
     const mobile = useSelector(getMobile);
-    const difficulty = useSelector(getDifficulty);
     const [ rank, setRank ] = useState("s");
     const [ page, setPage ] = useState(1);
-    const [ totalCost, setTotalCost ] = useState("");
+    const [ totalCost, setTotalCost ] = useState(0);
 
     const handleRank = (_, r) => {
-        setTotalCost("");
         setPage(1);
         setRank(r);
     };
     const handlePage = (_, p) => {
-        setTotalCost("");
         setPage(p);
     }
-    const updateTotalCost = (cost) => setTotalCost(goldCost(cost, difficulty));
+    const updateTotalCost = (cost) => setTotalCost(cost);
 
     const dividerBackgroundColor = getMonkeyTypeColor(monkey.type);
 
@@ -68,7 +66,7 @@ export default function MonkeyPage({ monkey }) {
             <ProsCons pros={ranks.pros} cons={ranks.cons} backgroundColor={dividerBackgroundColor}/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <TotalCost variant="h4">
-                ${totalCost}
+                Path Cost: $<Counter cost={totalCost} />
             </TotalCost>
             <MonkeyAbilities abilities={monkey.abilities} monkeyFile={monkey.filename} rank={rank} ranks={ranks} updateCost={updateTotalCost}/>
             <Votes votes={ranks.votes} />

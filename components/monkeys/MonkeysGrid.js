@@ -1,19 +1,27 @@
 import {Grid} from "@material-ui/core";
+import {useSelector} from "react-redux";
 
 import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {getMonkeyTypeColor} from "../../lib/utils/utils";
 import GridTowerContainer from "../grid/GridTowerContainer";
 
 
 export default function MonkeysGrid({ primary, military, magic, support }) {
+    const mobile = useSelector(getMobile);
     const primaryColor = getMonkeyTypeColor("Primary");
     const militaryColor = getMonkeyTypeColor("Military");
     const magicColor = getMonkeyTypeColor("Magic");
     const supportColor = getMonkeyTypeColor("Support");
 
+    let gridSpacing = 6;
+    if (mobile) {
+        gridSpacing = 4;
+    }
+
     return (
         <>
-            <Grid direction="column" container spacing={6}>
+            <Grid direction="column" container spacing={gridSpacing}>
                 <Grid item>
                     <GridTowerContainer
                         towers={primary}

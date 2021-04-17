@@ -1,12 +1,15 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import {Grid, Typography} from "@material-ui/core";
 
 import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
 
 const TitleContainer = styled(Grid)`
   height: 300px;
-  color: ${siteColors.text.dark};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   text-align: center;
+  transition: 0.3s;
 `;
 
 const SansSerifText = styled(Typography)`
@@ -14,6 +17,7 @@ const SansSerifText = styled(Typography)`
 `;
 
 export default function TierSection({className}) {
+    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -23,6 +27,7 @@ export default function TierSection({className}) {
                 alignItems="center"
                 justify="center"
                 className={className}
+                data-dm={darkMode}
             >
                 <Typography variant="h4">
                     Compare Tier Ranks

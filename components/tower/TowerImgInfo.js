@@ -36,11 +36,11 @@ export default function TowerImgInfo({tower, towerType}) {
                             alignItems="center"
             >
                 <Grid item xs={gridSpacing}>
-                    <Icon tower={ tower } />
+                    <Icon tower={tower} />
                 </Grid>
-                { !mobile && (<VerticalDivider backgroundColor={ backgroundColor } />)}
+                { !mobile && (<VerticalDivider backgroundColor={backgroundColor} />)}
                 <Grid item xs={gridSpacing}>
-                    <TowerInfo tower={ tower }/>
+                    <TowerInfo tower={tower}/>
                 </Grid>
             </TowerContainer>
         </>

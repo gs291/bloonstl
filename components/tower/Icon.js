@@ -9,7 +9,7 @@ const IconContainer  = styled.div`
   justify-content: center;
   align-items: center;
 
-  ${props => props.detailed ? "" : "width: 100%;"}
+  ${props => props["data-d"] ? "" : "width: 100%;"}
 `;
 
 const ImgContainer = styled.div`
@@ -23,12 +23,12 @@ const ImgContainer = styled.div`
 export default function Icon({ className, tower, detailed }) {
     return (
         <>
-            <IconContainer detailed={detailed} className={className}>
+            <IconContainer data-d={detailed} className={className}>
                 <ImgContainer>
                     <ImageFill
-                        src={ getImageUrl(tower.filename) }
+                        src={getImageUrl(tower.filename)}
                         quality={100}
-                        alt={ tower.name }
+                        alt={tower.name}
                     />
                 </ImgContainer>
             </IconContainer>

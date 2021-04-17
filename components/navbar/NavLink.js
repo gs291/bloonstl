@@ -5,7 +5,7 @@ import { Link as MUILink } from "@material-ui/core";
 
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
-import {getMobile} from "../../lib/redux/selectors";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const HoverLink = styled.div`
   width: ${props => props["data-m"] ? "100%" : "100px"};
@@ -18,12 +18,13 @@ const HoverLink = styled.div`
   &:focus,
   &:active {
     cursor: pointer;
-    background-color: ${siteColors.hover.dark};
+    background-color: ${props => props["data-dm"] ? siteColors.hover.dark : siteColors.hover.light};
   }
 `;
 
 const MLink = styled(MUILink)`
-  color: ${siteColors.text.dark};
+  transition: 0.3s;
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   ${props => props["data-m"] ? "width: 100%;" : ""}
 `;
 
@@ -37,11 +38,12 @@ const A = styled.div`
 
 export default function NavLink({ path, text, closeDrawer }) {
     const mobile = useSelector(getMobile);
+    const darkMode = useSelector(getDarkMode);
 
     return (
             <Link href={ path } passHref>
-                <MLink data-m={mobile}>
-                    <HoverLink onClick={closeDrawer} data-m={mobile}>
+                <MLink data-m={mobile} data-dm={darkMode}>
+                    <HoverLink onClick={closeDrawer} data-m={mobile} data-dm={darkMode}>
                         <A data-m={mobile}>{ text }</A>
                     </HoverLink>
                 </MLink>

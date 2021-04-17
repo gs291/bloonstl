@@ -5,6 +5,7 @@ import {getTierColor} from "../../lib/utils/utils";
 
 const Rank = styled(Typography)`
   color: ${props => getTierColor(props.name)};
+  transition: 0.3s;
 `;
 
 const RankContainer = styled.div`

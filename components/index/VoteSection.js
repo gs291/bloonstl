@@ -1,11 +1,14 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import {Grid, Typography} from "@material-ui/core";
 
 import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
 
 const TitleContainer = styled(Grid)`
   height: 300px;
-  color: ${siteColors.text.dark};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  transition: 0.3s;
   text-align: center;
 `;
 
@@ -14,6 +17,7 @@ const SansSerifText = styled(Typography)`
 `;
 
 export default function VoteSection({ className }) {
+    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -22,6 +26,7 @@ export default function VoteSection({ className }) {
                 direction="column"
                 alignItems="center"
                 justify="center"
+                data-dm={darkMode}
                 className={className}
             >
                 <Typography variant="h4">

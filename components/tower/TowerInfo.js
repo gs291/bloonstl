@@ -1,10 +1,9 @@
 import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
 
+import Counter from "./Counter";
 import TowerText from "./TowerText";
 import siteColors from "../../lib/utils/siteColors";
-import {getDifficulty} from "../../lib/redux/selectors";
-import {getThousandsNumber, goldCost} from "../../lib/utils/utils";
+import {getThousandsNumber} from "../../lib/utils/utils";
 
 const TowerTextContainer = styled.div`
   display: flex;
@@ -15,7 +14,6 @@ const TowerTextContainer = styled.div`
 `;
 
 export default function TowerInfo({tower}) {
-    const difficulty = useSelector(getDifficulty);
 
     return (
         <>
@@ -28,8 +26,7 @@ export default function TowerInfo({tower}) {
                 </TowerText>
                 <br />
                 <TowerText variant="body2" textColor={siteColors.tower.gold}>
-                    In-game cost:&nbsp;
-                    ${goldCost(tower.cost_gold, difficulty)}
+                    In-game cost:&nbsp;$<Counter cost={tower.cost_gold} />
                 </TowerText>
                 { typeof tower.cost_cash === "number" && (
                     <TowerText variant="body2" textColor={siteColors.tower.cash}>

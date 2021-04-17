@@ -1,13 +1,16 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import {Grid, Typography} from "@material-ui/core";
 
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
 
 const TitleContainer = styled(Grid)`
   height: calc(100vh - ${siteSizes.nav.height});
-  color: ${siteColors.text.dark};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   text-align: center;
+  transition: 0.3s;
 `;
 
 const AboveCenter = styled.div`
@@ -19,6 +22,8 @@ const SansSerifText = styled(Typography)`
 `;
 
 export default function TopSection({ className }) {
+    const darkMode = useSelector(getDarkMode);
+
     return (
         <>
             <TitleContainer
@@ -26,6 +31,7 @@ export default function TopSection({ className }) {
                 direction="column"
                 alignItems="center"
                 justify="center"
+                data-dm={darkMode}
                 className={className}
             >
                 <AboveCenter>

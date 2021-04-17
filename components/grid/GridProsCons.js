@@ -20,6 +20,21 @@ const Title = styled(TowerText)`
 `;
 
 const StyledChip = styled(Chip)`
+  @keyframes popup {
+    0% {
+      opacity: 0;
+      width: 0;
+    }
+    100% {
+      opacity: 1;
+      width: 100px;
+    }
+  }
+  
+  animation-name: popup;
+  animation-duration: 200ms;
+  animation-timing-function: linear;
+  
   width: 100px;
   background-color: ${props => props["data-pro"] ? siteColors.chip.pros: siteColors.chip.cons};
 

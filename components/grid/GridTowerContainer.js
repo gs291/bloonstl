@@ -10,14 +10,8 @@ import {getMobile} from "../../lib/redux/selectors";
 
 const TowerGrid = styled(Grid)`
   border-radius: 20px;
-  background-color: ${props => props["data-tc"]};
   border: 6px solid ${props => props["data-tc"]};
-  filter: drop-shadow(5px 5px 5px ${props => props["data-bc"]});
-  transition: 0.3s;
   
-  &:hover {
-    filter: drop-shadow(10px 10px 5px ${props => props["data-bc"]});
-  }
 `;
 
 

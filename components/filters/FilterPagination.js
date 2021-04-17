@@ -1,25 +1,29 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import {Pagination} from '@material-ui/lab';
 
 import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
 
 const Pages = styled(Pagination)`
+  transition: 0.3s;
   & .MuiPaginationItem-root {
-    color: ${siteColors.text.dark};
+    color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   }
 
   & .MuiPaginationItem-root.Mui-selected {
-    background-color: ${siteColors.pagination.selected.dark};
+    background-color: ${props => props["data-dm"] ? siteColors.pagination.selected.dark : siteColors.pagination.selected.light};
   }
 
   & .MuiPaginationItem-root:hover,
   & .MuiPaginationItem-root:active,
   & .MuiPaginationItem-root:focus {
-    background-color: ${siteColors.pagination.dark};
+    background-color: ${props => props["data-dm"] ? siteColors.pagination.dark : siteColors.pagination.light};
   }
 `;
 
 export default function FilterPagination({ className, pageCount, page, handlePage }) {
+    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -29,6 +33,7 @@ export default function FilterPagination({ className, pageCount, page, handlePag
                 onChange={handlePage}
                 className={className}
                 size="large"
+                data-dm={darkMode}
             />
         </>
     );

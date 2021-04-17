@@ -5,7 +5,7 @@ import {Card, CardContent, Link as MUILink, Typography} from "@material-ui/core"
 
 import Icon from "../tower/Icon";
 import siteColors from "../../lib/utils/siteColors";
-import {getBorder} from "../../lib/redux/selectors";
+import {getBorder, getDarkMode} from "../../lib/redux/selectors";
 import {getTowerLink, getMonkeyTypeColor, getHeroColor} from "../../lib/utils/utils";
 
 const CardContainer = styled(Card)`
@@ -28,7 +28,8 @@ const MLink = styled(MUILink)`
 `;
 
 const TowerName = styled(Typography)`
-  color: ${siteColors.text.dark};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  transition: 0.3s;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -37,17 +38,18 @@ const TowerName = styled(Typography)`
 
 export default function TowerCard({tower, towerType, rank, keepBorder}) {
     const border = useSelector(getBorder);
+    const darkMode = useSelector(getDarkMode);
     let href, borderColor, backgroundColor, hoverBackgroundColor;
 
     if (towerType === "monkey") {
         href = `/monkey/${getTowerLink(tower)}`;
         borderColor = getMonkeyTypeColor(tower.type);
-        backgroundColor = getMonkeyTypeColor(tower.type, rank);
-        hoverBackgroundColor = getMonkeyTypeColor(tower.type, rank, true);
+        backgroundColor = getMonkeyTypeColor(tower.type, rank, true);
+        hoverBackgroundColor = getMonkeyTypeColor(tower.type, rank, true, true);
     } else if (towerType === "hero") {
         href = `/hero/${getTowerLink(tower)}`;
         borderColor = getHeroColor(tower.name);
-        backgroundColor = getHeroColor(tower.name, rank, false, true);
+        backgroundColor = getHeroColor(tower.name, rank, true, false);
         hoverBackgroundColor = getHeroColor(tower.name, rank, true, true);
     }
 
@@ -62,7 +64,7 @@ export default function TowerCard({tower, towerType, rank, keepBorder}) {
                     <CardContainer data-brc={borderColor} data-bc={backgroundColor} data-hbc={hoverBackgroundColor}>
                         <CardContent>
                             <Icon tower={tower}/>
-                            <TowerName varient="body1">
+                            <TowerName varient="body1" data-dm={darkMode}>
                                 {tower.name}
                             </TowerName>
                         </CardContent>

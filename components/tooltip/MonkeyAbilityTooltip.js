@@ -2,16 +2,22 @@ import {useSelector} from "react-redux";
 
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
-import {getDifficulty} from "../../lib/redux/selectors";
 import {getTierColor, goldCost} from "../../lib/utils/utils";
+import {getDarkMode, getDifficulty} from "../../lib/redux/selectors";
 
 
 export default function MonkeyAbilityTooltip({ ability, rank, selected }) {
+    const darkMode = useSelector(getDarkMode);
     const difficulty = useSelector(getDifficulty);
 
     return (
         <>
-            <TowerText variant="h5" textColor={selected ? getTierColor(rank) : siteColors.text.dark}>
+            <TowerText
+                variant="h5"
+                textColor={selected
+                    ? getTierColor(rank)
+                    : darkMode ? siteColors.text.dark : siteColors.text.light}
+            >
                 {ability.name}
             </TowerText>
             <TowerText variant="body1" textColor={siteColors.tower.gold}>
