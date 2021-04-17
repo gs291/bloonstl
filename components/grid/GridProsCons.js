@@ -22,18 +22,26 @@ const Title = styled(TowerText)`
 const StyledChip = styled(Chip)`
   @keyframes popup {
     0% {
-      opacity: 0;
-      width: 0;
+      transform: scale(0);
+      opacity: 0.0;
+    }
+    60% {
+      transform: scale(1.1);
+    }
+    80% {
+      transform: scale(0.9);
+      opacity: 1;
     }
     100% {
+      transform: scale(1);
       opacity: 1;
-      width: 100px;
     }
   }
-  
+
+  opacity: 1;
   animation-name: popup;
   animation-duration: 200ms;
-  animation-timing-function: linear;
+  animation-timing-function: ease-in-out;
   
   width: 100px;
   background-color: ${props => props["data-pro"] ? siteColors.chip.pros: siteColors.chip.cons};
