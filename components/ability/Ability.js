@@ -78,7 +78,7 @@ export default function Ability({className, ability, fileName, rank, towerType, 
                         <AbilityTooltip ability={ability}
                                         rank={rank}
                                         towerType={towerType}
-                                        data-s={selected}
+                                        selected={selected}
                         />}
                     active={ability.active}
                 >

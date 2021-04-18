@@ -11,7 +11,7 @@ const TowerDetail = styled(Typography)`
   color: ${props => 
           props["data-tc"] 
                   ? props["data-tc"] 
-                  : props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+                  : (props["data-dm"] ? siteColors.text.dark : siteColors.text.light)};
 `;
 
 export default function TowerText({ className, children, variant, textColor, font }) {

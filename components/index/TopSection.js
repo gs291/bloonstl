@@ -5,6 +5,7 @@ import {Grid, Typography} from "@material-ui/core";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import ScrollIndicator from "../scroll-indicator/ScrollIndicator";
 
 const TitleContainer = styled(Grid)`
   height: calc(100vh - ${siteSizes.nav.height});
@@ -13,15 +14,19 @@ const TitleContainer = styled(Grid)`
   transition: 0.3s;
 `;
 
-const AboveCenter = styled.div`
-  margin-bottom: 25%;
+const AboveCenter = styled(Grid)`
+  margin-top: 20%;
+`;
+
+const WideGrid = styled(Grid)`
+  width: 100%;
 `;
 
 const SansSerifText = styled(Typography)`
   font-family: sans-serif;
 `;
 
-export default function TopSection({ className }) {
+export default function TopSection({className, scrollTo}) {
     const darkMode = useSelector(getDarkMode);
 
     return (
@@ -30,11 +35,11 @@ export default function TopSection({ className }) {
                 container
                 direction="column"
                 alignItems="center"
-                justify="center"
+                justify="space-between"
                 data-dm={darkMode}
                 className={className}
             >
-                <AboveCenter>
+                <AboveCenter item>
                     <Typography variant="h4">
                         Welcome to Bloons.GG
                     </Typography>
@@ -56,6 +61,9 @@ export default function TopSection({ className }) {
                         trees and its pros on cons for each one.
                     </SansSerifText>
                 </AboveCenter>
+                <WideGrid item>
+                    <ScrollIndicator scrollTo={scrollTo}/>
+                </WideGrid>
             </TitleContainer>
         </>
     )

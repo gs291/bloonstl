@@ -63,14 +63,14 @@ export default function MonkeyPage({ monkey }) {
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <RankTitle rank={rank} ranks={ranks} totalCost={totalCost} backgroundColor={dividerBackgroundColor}/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <ProsCons pros={ranks.pros} cons={ranks.cons} backgroundColor={dividerBackgroundColor}/>
-            <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <TotalCost variant="h4">
                 Path Cost: $<Counter cost={totalCost} />
             </TotalCost>
             <MonkeyAbilities abilities={monkey.abilities} monkeyFile={monkey.filename} rank={rank} ranks={ranks} updateCost={updateTotalCost}/>
             <Votes votes={ranks.votes} />
             <FilterPagination pageCount={monkey.ranks[rank].length} page={page} handlePage={handlePage} />
+            <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
+            <ProsCons pros={ranks.pros} cons={ranks.cons} backgroundColor={dividerBackgroundColor}/>
         </>
     );
 }

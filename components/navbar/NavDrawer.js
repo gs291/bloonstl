@@ -18,7 +18,7 @@ const TopDrawer = styled(Drawer)`
 const DrawerContainer = styled.div`
   height: 100%;
   padding-top: ${siteSizes.nav.height};
-  background-color: ${props => props["data-dm"] ? siteColors.main.dark : siteColors.main.light};
+  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   color: ${props => props["data-dm"] ?  siteColors.text.dark : siteColors.text.light};
   transition: 0.3s;
   

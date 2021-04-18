@@ -26,7 +26,6 @@ const Main = styled.main`
   flex: 1;
   transition: 0.3s;
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
-  padding-top: 15px;
   ${props => !props["data-m"] ? "padding-right: 10px;" : ""}
   padding-bottom: 30px;
 `;

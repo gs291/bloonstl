@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
-import { ButtonGroup, Button } from "@material-ui/core";
+import {useSelector} from "react-redux";
+import {ButtonGroup, Button, Typography} from "@material-ui/core";
 
+import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
 import {font_family, getTierColor} from "../../lib/utils/utils";
 
 const BGroup = styled(ButtonGroup)`
@@ -8,6 +11,17 @@ const BGroup = styled(ButtonGroup)`
   height: 45px;
 `;
 
+const FilterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+`;
+
+const Label = styled(Typography)`
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+`;
 
 const RankButton  = styled(Button)`
   background-color: ${props => getTierColor(props.value)};
@@ -21,14 +35,21 @@ const RankButton  = styled(Button)`
 `;
 
 export default function FilterRanks({ className, handleRank }) {
+    const darkMode = useSelector(getDarkMode);
+
     if (!handleRank){ handleRank = (_, __) => <></>; }
     return (
         <>
-            <BGroup variant="contained" disableElevation>
-                <RankButton onClick={(e) => handleRank(e, "s")} name="rank" value="s">S&nbsp;&nbsp;Tier</RankButton>
-                <RankButton onClick={(e) => handleRank(e, "a")} name="rank" value="a">A&nbsp;&nbsp;Tier</RankButton>
-                <RankButton onClick={(e) => handleRank(e, "b")} name="rank" value="b">B&nbsp;&nbsp;Tier</RankButton>
-            </BGroup>
+            <FilterContainer>
+                <Label variant="body1" data-dm={darkMode}>
+                    Ability Path Tiers:
+                </Label>
+                <BGroup variant="contained" disableElevation>
+                    <RankButton onClick={(e) => handleRank(e, "s")} name="rank" value="s">S&nbsp;&nbsp;Tier</RankButton>
+                    <RankButton onClick={(e) => handleRank(e, "a")} name="rank" value="a">A&nbsp;&nbsp;Tier</RankButton>
+                    <RankButton onClick={(e) => handleRank(e, "b")} name="rank" value="b">B&nbsp;&nbsp;Tier</RankButton>
+                </BGroup>
+            </FilterContainer>
         </>
     );
 }
