@@ -4,7 +4,7 @@ import {ButtonGroup, Button, Typography} from "@material-ui/core";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
-import {font_family, getTierColor} from "../../lib/utils/utils";
+import {font_family, getTierCardColor, getTierColor} from "../../lib/utils/utils";
 
 const BGroup = styled(ButtonGroup)`
   justify-content: center;
@@ -30,7 +30,7 @@ const RankButton  = styled(Button)`
   &:hover,
   &:active,
   &:focus {
-    background-color: ${props => getTierColor(props.value, true)};
+    background-color: ${props => getTierCardColor(props.value, props["data-dm"], true)};
   }
 `;
 
@@ -45,9 +45,30 @@ export default function FilterRanks({ className, handleRank }) {
                     Ability Path Tiers:
                 </Label>
                 <BGroup variant="contained" disableElevation>
-                    <RankButton onClick={(e) => handleRank(e, "s")} name="rank" value="s">S&nbsp;&nbsp;Tier</RankButton>
-                    <RankButton onClick={(e) => handleRank(e, "a")} name="rank" value="a">A&nbsp;&nbsp;Tier</RankButton>
-                    <RankButton onClick={(e) => handleRank(e, "b")} name="rank" value="b">B&nbsp;&nbsp;Tier</RankButton>
+                    <RankButton
+                        onClick={(e) => handleRank(e, "s")}
+                        name="rank"
+                        value="s"
+                        data-dm={darkMode}
+                    >
+                        S&nbsp;&nbsp;Tier
+                    </RankButton>
+                    <RankButton
+                        onClick={(e) => handleRank(e, "a")}
+                        name="rank"
+                        value="a"
+                        data-dm={darkMode}
+                    >
+                        A&nbsp;&nbsp;Tier
+                    </RankButton>
+                    <RankButton
+                        onClick={(e) => handleRank(e, "b")}
+                        name="rank"
+                        value="b"
+                        data-dm={darkMode}
+                    >
+                        B&nbsp;&nbsp;Tier
+                    </RankButton>
                 </BGroup>
             </FilterContainer>
         </>

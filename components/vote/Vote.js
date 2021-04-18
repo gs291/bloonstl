@@ -1,13 +1,16 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {Button, Collapse, Grid, Modal} from "@material-ui/core";
+import {Collapse, Grid} from "@material-ui/core";
 
+import VoteModal from "./VoteModal";
 import VoteTower from "./VoteTower";
 import VoteSubmit from "./VoteSubmit";
 import VoteOptional from "./VoteOptional";
 import VoteAbilities from "./VoteAbilities";
+import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
 import {parseForm, sendVote} from "../../lib/utils/utils";
-import VoteModal from "./VoteModal";
 
 const VoteForm = styled.form`
   width: 100%;
@@ -22,17 +25,17 @@ const VoteForm = styled.form`
 `;
 
 const VoteContainer = styled.div`
-  background-color: #444;
+  background-color: ${props => props["data-dm"] ? siteColors.vote.card.dark : siteColors.vote.card.light};
   border-radius: 20px;
+`;
+
+const PaddedVoteContainer = styled(VoteContainer)`
   padding: 3em 2em;
 `;
 
-const VoteButtonContainer = styled.div`
-  background-color: #444;
-  border-radius: 20px;
-`;
-
 export default function Vote({towers, tower}) {
+    const darkMode = useSelector(getDarkMode);
+
     const [collapsePaths, setCollapsePaths] = useState(false);
     const handleCollapsePaths = (_) => setCollapsePaths(!collapsePaths);
 
@@ -76,29 +79,29 @@ export default function Vote({towers, tower}) {
         <>
             <VoteForm onSubmit={checkSubmit}>
                 <Grid container
-                      spacing={6}
+                      spacing={4}
                       direction="column"
                       justify="center"
                 >
                     <Grid item>
-                        <VoteContainer>
+                        <PaddedVoteContainer data-dm={darkMode}>
                             <VoteTower towers={towers} tower={tower} />
-                        </VoteContainer>
+                        </PaddedVoteContainer>
                     </Grid>
 
                     <Grid item>
-                        <VoteContainer>
+                        <PaddedVoteContainer data-dm={darkMode}>
                             <VoteOptional title="Want to vote on Ability Paths?" collapse={collapsePaths} handleCollapse={handleCollapsePaths} />
                             <Collapse in={collapsePaths}>
                                 <VoteAbilities />
                             </Collapse>
-                        </VoteContainer>
+                        </PaddedVoteContainer>
                     </Grid>
 
                     <Grid item>
-                        <VoteButtonContainer>
+                        <VoteContainer data-dm={darkMode}>
                             <VoteSubmit progress={progress}/>
-                        </VoteButtonContainer>
+                        </VoteContainer>
                     </Grid>
                 </Grid>
             </VoteForm>

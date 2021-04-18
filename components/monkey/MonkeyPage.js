@@ -11,7 +11,7 @@ import FilterRanks from "../filters/FilterRanks";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
-import {getMonkeyTypeColor} from "../../lib/utils/utils";
+import {getMonkeyColor} from "../../lib/utils/utils";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
@@ -49,7 +49,7 @@ export default function MonkeyPage({ monkey }) {
     }
     const updateTotalCost = (cost) => setTotalCost(cost);
 
-    const dividerBackgroundColor = getMonkeyTypeColor(monkey.type);
+    const dividerBackgroundColor = getMonkeyColor(monkey.type);
 
     const ranks = monkey.ranks[rank][page-1];
     return (

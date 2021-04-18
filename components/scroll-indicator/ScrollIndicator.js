@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 
 import Chevron from "./Cheveron";
+import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
+import {hexToRgb} from "../../lib/utils/utils";
 
 const IndicatorContainer = styled.div`
   margin: auto;
@@ -17,12 +21,13 @@ const ClickContainer = styled.div`
   transition: 0.3s;
   border-radius: 20px;
   &:hover {
-    background-color: #143244;
+    background-color: rgba(${props => props["data-dm"] ? hexToRgb(siteColors.accent.dark) : hexToRgb(siteColors.accent.light)}, 0.25);
     cursor: pointer;
   }
 `;
 
 export default function ScrollIndicator({scrollTo}) {
+    const darkMode = useSelector(getDarkMode);
 
     const handleScroll = () => {
         scrollTo.current.scrollIntoView();
@@ -30,7 +35,7 @@ export default function ScrollIndicator({scrollTo}) {
 
     return (
         <>
-            <ClickContainer onClick={handleScroll}>
+            <ClickContainer onClick={handleScroll} data-dm={darkMode}>
                 <IndicatorContainer >
                     <Chevron delay={0}/>
                     <Chevron delay={4}/>

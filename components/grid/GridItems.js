@@ -15,8 +15,8 @@ const GridItem = styled(Grid)`
   transition: 0.3s;
   background-color: ${props => props["data-bc"]};
   color: ${props => props["data-dm"] ? siteColors.text.gridTitle.dark : siteColors.text.gridTitle.light};
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
 `;
 
 export default function GridItems({ className, children, backgroundColor}) {

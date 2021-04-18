@@ -11,12 +11,12 @@ const StyledTooltip = styled(({ className, ...other }) => (
     <MUITooltip classes={{ tooltip: className }} {...other} />
 ))`
   background-color: ${siteColors.tooltip.dark};
-  width: 265px;
+  width: 300px;
   transition: 0.3s;
   
   ${props => props["data-m"] ? "margin-bottom: 10px;" : ""}
   
-  border: 1px solid ${props =>
+  border: 2px solid ${props =>
           props["data-a"] 
                   ? siteColors.ability.activated 
                   : props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
@@ -26,14 +26,14 @@ const StyledTooltip = styled(({ className, ...other }) => (
   }
   
   .MuiTooltip-arrow::before {
-    border: 1px solid ${props => 
+    border: 2px solid ${props => 
             props["data-a"] 
                     ? siteColors.ability.activated 
                     : props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
   }
 `;
 
-export default function Tooltip({ className, children, title, active}) {
+export default function Tooltip({className, children, title, active}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
     const [open, setOpen] = useState(false);

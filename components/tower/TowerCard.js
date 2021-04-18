@@ -6,7 +6,7 @@ import {Card, CardContent, Link as MUILink, Typography} from "@material-ui/core"
 import Icon from "../tower/Icon";
 import siteColors from "../../lib/utils/siteColors";
 import {getBorder, getDarkMode} from "../../lib/redux/selectors";
-import {getTowerLink, getMonkeyTypeColor, getHeroColor} from "../../lib/utils/utils";
+import {getTowerLink, getMonkeyColor, getHeroColor} from "../../lib/utils/utils";
 
 const CardContainer = styled(Card)`
   margin: 5px;
@@ -43,14 +43,14 @@ export default function TowerCard({tower, towerType, rank, keepBorder}) {
 
     if (towerType === "monkey") {
         href = `/monkey/${getTowerLink(tower)}`;
-        borderColor = getMonkeyTypeColor(tower.type);
-        backgroundColor = getMonkeyTypeColor(tower.type, rank, true);
-        hoverBackgroundColor = getMonkeyTypeColor(tower.type, rank, true, true);
+        borderColor = getMonkeyColor(tower.type, darkMode);
+        backgroundColor = getMonkeyColor(tower.type, darkMode,  rank, true);
+        hoverBackgroundColor = getMonkeyColor(tower.type, darkMode, rank, true, true);
     } else if (towerType === "hero") {
         href = `/hero/${getTowerLink(tower)}`;
-        borderColor = getHeroColor(tower.name);
-        backgroundColor = getHeroColor(tower.name, rank, true, false);
-        hoverBackgroundColor = getHeroColor(tower.name, rank, true, true);
+        borderColor = getHeroColor(tower.name, darkMode);
+        backgroundColor = getHeroColor(tower.name, darkMode, rank, true, false);
+        hoverBackgroundColor = getHeroColor(tower.name, darkMode, rank, true, true);
     }
 
     if (!border && keepBorder === 0) {

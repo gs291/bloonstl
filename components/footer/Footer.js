@@ -31,17 +31,9 @@ export default function Footer({ className }) {
             <FooterText component="span" variant="body2">
                 Written and maintained by
                 &nbsp;
-                <FooterLink href="http://gregsanchez.herokuapp.com/">
+                <FooterLink href="https://gregsanchez.netlify.app/">
                     Gregory Sanchez
                 </FooterLink>
-                &nbsp;
-                (
-                <FooterLink href="https://www.linkedin.com/in/gregory-sanchez-05b211159">
-                    <FooterIcon>
-                        <LinkedInIcon fontSize="small"/>
-                    </FooterIcon>
-                </FooterLink>
-                )
             </FooterText>
         </FooterContainer>
     );

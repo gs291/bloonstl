@@ -15,7 +15,7 @@ const TitleContainer = styled(Grid)`
 `;
 
 const AboveCenter = styled(Grid)`
-  margin-top: 20%;
+  margin-top: 25%;
 `;
 
 const WideGrid = styled(Grid)`

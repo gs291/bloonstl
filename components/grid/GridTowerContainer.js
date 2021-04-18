@@ -5,18 +5,19 @@ import {useSelector} from "react-redux";
 import GridTitle from "./GridTitle";
 import GridItems from "./GridItems";
 import TowerCard from "../tower/TowerCard";
-import {getMobile} from "../../lib/redux/selectors";
+import {hexToRgb} from "../../lib/utils/utils";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const TowerGrid = styled(Grid)`
   border-radius: 20px;
-  border: 6px solid ${props => props["data-tc"]};
-  
+  border: 6px solid rgba(${props => hexToRgb(props["data-tc"])}, ${props => props["data-dm"] ? 0.75 : 1});
 `;
 
 
 export default function GridTowerContainer({towers, title, rank, backgroundColor, titleColor, keepBorder}) {
     const mobile = useSelector(getMobile);
+    const darkMode = useSelector(getDarkMode);
 
     let gridSpacing = 4;
     if (mobile) {
@@ -25,7 +26,7 @@ export default function GridTowerContainer({towers, title, rank, backgroundColor
 
     return (
         <>
-            <TowerGrid container direction="column" data-tc={titleColor} data-bc={backgroundColor}>
+            <TowerGrid container direction="column" data-tc={titleColor} data-bc={backgroundColor} data-dm={darkMode}>
                 <GridTitle backgroundColor={titleColor}>
                     {title}
                 </GridTitle>

@@ -37,20 +37,21 @@ const globals = css`
 
   ::-webkit-scrollbar {
     width: 10px;
+    background-color: #327FB2;
   }
   
   ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background-color: #327FB2;
     border-radius: 20px;
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #888;
+    background-color: #225675;
     border-radius: 20px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background-color: #1A415A;
   }
 `;
 

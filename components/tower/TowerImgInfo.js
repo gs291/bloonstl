@@ -6,7 +6,7 @@ import Icon from "../tower/Icon";
 import TowerInfo from "./TowerInfo";
 import {getMobile} from "../../lib/redux/selectors";
 import VerticalDivider from "../divider/VerticalDivider";
-import {getHeroColor, getMonkeyTypeColor} from "../../lib/utils/utils";
+import {getHeroColor, getMonkeyColor} from "../../lib/utils/utils";
 
 const TowerContainer = styled(Grid)`
   margin-top: 10px;
@@ -22,7 +22,7 @@ export default function TowerImgInfo({tower, towerType}) {
     }
 
     if (towerType === "monkey") {
-        backgroundColor = getMonkeyTypeColor(tower.type);
+        backgroundColor = getMonkeyColor(tower.type);
     } else if (towerType === "hero") {
         backgroundColor = getHeroColor(tower.name);
     }

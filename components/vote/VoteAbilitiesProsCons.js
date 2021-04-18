@@ -60,6 +60,10 @@ const ProConDescription = styled.div`
   color: rgba(255, 255, 255, 0.5);
 `;
 
+const ProConText = styled(Typography)`
+  font-family: sans-serif;
+`;
+
 const ProsConsLabel = ({proCon, type}) => (
     <>
         <ProConLabelContainer>
@@ -67,9 +71,9 @@ const ProsConsLabel = ({proCon, type}) => (
                 {proCon.title}
             </Typography>
             <ProConDescription>
-                <Typography variant="caption" color="inherit">
+                <ProConText variant="body2" color="inherit">
                     {type === "pro" ? proCon.pro : proCon.con}
-                </Typography>
+                </ProConText>
             </ProConDescription>
         </ProConLabelContainer>
     </>

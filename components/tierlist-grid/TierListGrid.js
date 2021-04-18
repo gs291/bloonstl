@@ -10,7 +10,8 @@ import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const FilterContainer = styled.div`
   margin-bottom: 20px;
-  background-color: ${props => props["data-dm"] ? siteColors.filters.dark : siteColors.filters.light};
+  border-radius: 20px;
+  background-color: ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   transition: 0.3s;
 `;
@@ -41,7 +42,7 @@ export default function TierListGrid({ className, tiers }) {
                         towers={tiers["s"]}
                         title="S Tier"
                         rank="s"
-                        backgroundColor={siteColors.tier.s.grid.dark}
+                        backgroundColor={darkMode ? siteColors.tier.s.grid.dark : siteColors.tier.s.grid.light}
                         titleColor={colors.s}
                         keepBorder={0}
                     />
@@ -51,7 +52,7 @@ export default function TierListGrid({ className, tiers }) {
                         towers={tiers["a"]}
                         title="A Tier"
                         rank="a"
-                        backgroundColor={siteColors.tier.a.grid.dark}
+                        backgroundColor={darkMode ? siteColors.tier.a.grid.dark : siteColors.tier.a.grid.light}
                         titleColor={colors.a}
                         keepBorder={0}
                     />
@@ -61,7 +62,7 @@ export default function TierListGrid({ className, tiers }) {
                         towers={tiers["b"]}
                         title="B Tier"
                         rank="b"
-                        backgroundColor={siteColors.tier.b.grid.dark}
+                        backgroundColor={darkMode ? siteColors.tier.b.grid.dark : siteColors.tier.b.grid.light}
                         titleColor={colors.b}
                         keepBorder={0}
                     />

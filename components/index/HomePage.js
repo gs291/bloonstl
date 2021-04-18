@@ -12,13 +12,13 @@ import {getDarkMode} from "../../lib/redux/selectors";
 
 const OddTierSection = styled(TierSection)`
   transition: 0.3s;
-  background-color: ${props => props["data-dm"] ? siteColors.odd.dark : siteColors.odd.light};
+  background-color: ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
   border-radius: 20px;
 `;
 
 const OddVoteSection = styled(VoteSection)`
   transition: 0.3s;
-  background-color: ${props => props["data-dm"] ? siteColors.odd.dark : siteColors.odd.light};
+  background-color: ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
   border-radius: 20px;
 `;
 

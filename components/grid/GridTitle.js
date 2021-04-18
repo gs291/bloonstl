@@ -12,8 +12,9 @@ const Title = styled(Grid)`
   text-align: center;
   transition: 0.3s;
   background-color: ${props => props["data-bc"]};
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+  opacity: ${props => props["data-dm"] ? 0.75 : 1};
   color: ${props => props["data-dm"] ? siteColors.text.gridTitle.dark : siteColors.text.gridTitle.light};
 `;
 

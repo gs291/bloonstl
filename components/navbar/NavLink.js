@@ -6,6 +6,7 @@ import { Link as MUILink } from "@material-ui/core";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {hexToRgb} from "../../lib/utils/utils";
 
 const HoverLink = styled.div`
   width: ${props => props["data-m"] ? "100%" : "100px"};
@@ -18,7 +19,7 @@ const HoverLink = styled.div`
   &:focus,
   &:active {
     cursor: pointer;
-    background-color: ${props => props["data-dm"] ? siteColors.hover.dark : siteColors.hover.light};
+    background-color: rgba(${props => props["data-dm"] ? hexToRgb(siteColors.accent.dark) : hexToRgb(siteColors.accent.light)}, 0.25);
   }
 `;
 

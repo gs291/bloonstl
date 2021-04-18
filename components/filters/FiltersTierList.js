@@ -25,7 +25,7 @@ export default function FiltersTierList({className}) {
                 <FormGroup>
                     <FormControlLabel
                         control={<Switch checked={border} onChange={handleBorder} />}
-                        label={`${border ? "Hide" : "Show"} Border`}
+                        label={`Borders`}
                     />
                 </FormGroup>
             </FilterContainer>
