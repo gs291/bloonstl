@@ -33,8 +33,6 @@ const Main = styled.main`
 const Foot = styled(Footer)`
   transition: 0.3s;
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
-  justify-content: center;
-  align-items: center;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
