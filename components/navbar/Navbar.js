@@ -12,7 +12,7 @@ const Nav = styled(AppBar)`
   align-items: center;
   z-index: 99999;
   height: ${siteSizes.nav.height};
-  justify-content: ${props => props["data-m"] ? 'flex-start' : 'center'};
+  justify-content: ${props => props["data-m"] ? "flex-start" : "center"};
 `;
 
 export default function Navbar({ className }) {

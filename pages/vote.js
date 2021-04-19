@@ -1,6 +1,8 @@
 import Vote from "../components/vote/Vote";
 import {dataSources} from "../lib/mysql/db";
 import Header from "../components/page/Header";
+import MainContainer from "../components/page/MainContainer";
+import PageTitle from "../components/page/PageTitle";
 
 
 export default function Votes({monkeys, heroes}) {
@@ -11,7 +13,10 @@ export default function Votes({monkeys, heroes}) {
     return (
         <>
             <Header title="Votes" />
-            <Vote towers={towers}/>
+            <MainContainer>
+                <PageTitle title="Vote" />
+                <Vote towers={towers}/>
+            </MainContainer>
         </>
     );
 }

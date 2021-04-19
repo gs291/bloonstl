@@ -1,12 +1,14 @@
 import styled from "@emotion/styled";
-import ErrorIcon from '@material-ui/icons/Error';
+import {useSelector} from "react-redux";
+import ErrorIcon from "@material-ui/icons/Error";
 import {Button, CircularProgress} from "@material-ui/core";
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
 
 const SubmitVote = styled(Button)`
-  color: ${siteColors.text.dark};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   width: 100%;
   padding-top: 3em;
   padding-bottom: 3em;
@@ -41,7 +43,7 @@ const SubmitContainer = styled.div`
 `;
 
 export default function VoteSubmit ({className, progress}) {
-
+    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -60,7 +62,7 @@ export default function VoteSubmit ({className, progress}) {
                                     <Success />
                                 </ProgressContainer>
                             ) : (
-                                <SubmitVote type="submit">
+                                <SubmitVote type="submit" data-dm={darkMode}>
                                     Vote!
                                 </SubmitVote>
                             )

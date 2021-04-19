@@ -8,6 +8,7 @@ import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {toggleDrawer} from "../../lib/redux/actions";
 import {getDarkMode, getDrawer} from "../../lib/redux/selectors";
+import DarkMode from "../dark-mode/DarkMode";
 
 const TopDrawer = styled(Drawer)`
   .MuiDrawer-paper {
@@ -46,6 +47,7 @@ export default function NavDrawer() {
             >
                 <DrawerContainer data-dm={darkMode}>
                     { siteLinks.middle.map(mid => <NavLink {...mid} closeDrawer={closeDrawer}/>) }
+                    <DarkMode />
                 </DrawerContainer>
             </TopDrawer>
         </>

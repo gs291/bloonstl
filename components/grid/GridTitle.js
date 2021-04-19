@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {Grid, Typography} from "@material-ui/core";
 
+import {hexToRgb} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 
@@ -11,11 +12,10 @@ const Title = styled(Grid)`
   
   text-align: center;
   transition: 0.3s;
-  background-color: ${props => props["data-bc"]};
+  background-color:  rgba(${props => hexToRgb(props["data-bc"])}, ${props => props["data-dm"] ? 0.75 : 1});;
   border-top-left-radius: 13px;
   border-top-right-radius: 13px;
-  opacity: ${props => props["data-dm"] ? 0.75 : 1};
-  color: ${props => props["data-dm"] ? siteColors.text.gridTitle.dark : siteColors.text.gridTitle.light};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
 export default function GridTitle({ className, children, backgroundColor}) {

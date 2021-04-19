@@ -22,14 +22,13 @@ const OddVoteSection = styled(VoteSection)`
   border-radius: 20px;
 `;
 
-export default function HomePage({ }) {
+export default function HomePage({scrollTo}) {
     const darkMode = useSelector(getDarkMode);
-    const tierSection = useRef(null);
+
 
     return (
         <>
-            <TopSection scrollTo={tierSection}/>
-            <OddTierSection scrollTo={tierSection} data-dm={darkMode}/>
+            <OddTierSection scrollTo={scrollTo} data-dm={darkMode}/>
             <TowerSection />
             <OddVoteSection data-dm={darkMode}/>
         </>

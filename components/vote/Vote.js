@@ -15,8 +15,6 @@ import {parseForm, sendVote} from "../../lib/utils/utils";
 const VoteForm = styled.form`
   width: 100%;
   height: 100%;
-  margin-top: 2em;
-  margin-bottom: 2em;
   
   display: flex;
   flex-direction: column;

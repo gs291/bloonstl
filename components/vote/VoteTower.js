@@ -10,13 +10,13 @@ import {
 } from "@material-ui/core";
 import {useState} from "react";
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 
 import siteColors from "../../lib/utils/siteColors";
-import {useSelector} from "react-redux";
-import {getMobile} from "../../lib/redux/selectors";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const VoteTowerContainer = styled.div`
-  color: ${siteColors.text.dark};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
 const VoteText = styled(Typography)`
@@ -30,7 +30,7 @@ const TowerLabel = styled(InputLabel)`
 `;
 
 const TowerSelect = styled(Select)`
-  color: ${siteColors.text.dark};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   margin-left: 10px;
   min-width: 180px;
   overflow: visible;
@@ -49,7 +49,7 @@ const TowerSelect = styled(Select)`
   }
   
   &:before {
-    border-bottom: 1px solid ${siteColors.text.dark};
+    border-bottom: 1px solid ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   }
 `;
 
@@ -78,13 +78,14 @@ const StyledRadio = styled(Radio)`
 
 export default function VoteTower({towers, tower}) {
     const mobile = useSelector(getMobile);
+    const darkMode = useSelector(getDarkMode);
 
     const [towerSelect, setTowerSelect] = useState("");
     const handleSelect = (e) => setTowerSelect(e.target.value);
 
     return (
         <>
-            <VoteTowerContainer>
+            <VoteTowerContainer data-dm={darkMode}>
                 <TowerSelectContainer data-m={mobile}>
                     <SelectContainer data-m={mobile}>
                         {towers && (
@@ -110,7 +111,8 @@ export default function VoteTower({towers, tower}) {
                                         }
                                     }}
                                     value={towerSelect}
-                                     onChange={handleSelect}
+                                    onChange={handleSelect}
+                                    data-dm={darkMode}
                                     required
                                 >
                                     <ListSubheader disableSticky>Monkeys</ListSubheader>

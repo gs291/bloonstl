@@ -8,17 +8,20 @@ import {
 } from "@material-ui/core";
 import {useState} from "react";
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 
 import VoteOptional from "./VoteOptional";
 import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
 import VoteAbilitiesProsCons from "./VoteAbilitiesProsCons";
+
 
 const AbilitiesContainers = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   
-  color: ${siteColors.text.dark};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
 const PathSlider = styled(Slider)`
@@ -37,7 +40,7 @@ const PathSlider = styled(Slider)`
   }
   
   & .MuiSlider-valueLabel span span {
-    color: ${siteColors.text.dark};
+    color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   }
 `;
 
@@ -68,12 +71,14 @@ const marks = [
 ]
 
 export default function VoteAbilities() {
+    const darkMode = useSelector(getDarkMode);
+
     const [collapseProCon, setCollapseProCon] = useState(false);
     const handleCollapseProCon = (_) => setCollapseProCon(!collapseProCon);
 
     return (
         <>
-            <AbilitiesContainers>
+            <AbilitiesContainers data-dm={darkMode}>
                 <Typography variant="body1" color="inherit" id="slider-top">
                     Top Path
                 </Typography>
@@ -85,6 +90,7 @@ export default function VoteAbilities() {
                     step={1} min={0} max={5}
                     marks={marks}
                     name="slider-top"
+                    data-dm={darkMode}
                 />
 
                 <Typography variant="body1" color="inherit" id="slider-middle">
@@ -98,6 +104,7 @@ export default function VoteAbilities() {
                     step={1} min={0} max={5}
                     marks={marks}
                     name="slider-middle"
+                    data-dm={darkMode}
                 />
 
                 <Typography variant="body1" color="inherit" id="slider-bottom">
@@ -111,6 +118,7 @@ export default function VoteAbilities() {
                     step={1} min={0} max={5}
                     marks={marks}
                     name="slider-bottom"
+                    data-dm={darkMode}
                 />
 
                 <Typography variant="body1" color="inherit">What tier is this ability path?</Typography>

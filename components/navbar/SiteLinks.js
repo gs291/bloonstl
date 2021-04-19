@@ -6,28 +6,21 @@ import MenuButton from "./MenuButton";
 import siteLinks from "../../lib/utils/siteLinks";
 import {getMobile} from "../../lib/redux/selectors";
 import {closeDrawer} from "../../lib/redux/actions";
+import DarkMode from "../dark-mode/DarkMode";
 
 const NavSection = styled.div`
-  flex: 1;
+  flex: 0.5;
 `;
 
-const LeftNavSection = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+const SmallNavSection = styled.div`
+  flex: 0.25;
 `;
 
-const MiddleNavSection = styled.div`
+const NavContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-`;
-
-const RightNavSection = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-right: 25px;
+  align-items: center;
 `;
 
 export default function SiteLinks() {
@@ -40,29 +33,32 @@ export default function SiteLinks() {
 
     return (
         <>
-            <NavSection>
-                <LeftNavSection>
+            <SmallNavSection>
+                <NavContainer>
                     { !mobile && (
                         <NavLink {...siteLinks.left.home} />
                     )}
-                </LeftNavSection>
-            </NavSection>
+                </NavContainer>
+            </SmallNavSection>
             <NavSection>
-                <MiddleNavSection>
+                <NavContainer>
                     { !mobile && siteLinks.middle.map(mid => { return <NavLink key={mid.key} {...mid} /> }) }
 
                     { mobile && (
                         <NavLink {...siteLinks.left.home} closeDrawer={shutDrawer}/>
                     )}
-                </MiddleNavSection>
+                </NavContainer>
             </NavSection>
-            <NavSection>
-                <RightNavSection>
+            <SmallNavSection>
+                <NavContainer>
+                    {!mobile && (
+                        <DarkMode />
+                    )}
                     { mobile && (
                         <MenuButton />
                     )}
-                </RightNavSection>
-            </NavSection>
+                </NavContainer>
+            </SmallNavSection>
         </>
     );
 }

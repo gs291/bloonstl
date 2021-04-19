@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Button, Typography} from "@material-ui/core";
+import {Typography} from "@material-ui/core";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 
@@ -16,7 +16,7 @@ const OptionalDiv = styled.div`
 
   margin-top: 20px;
   margin-bottom: 20px;
-  color: ${siteColors.text.dark};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 
   &:hover {
     cursor: pointer;
@@ -46,7 +46,7 @@ export default function VoteOptional({className, title, collapse, handleCollapse
 
     return (
         <>
-            <OptionalDiv onClick={handleCollapse}>
+            <OptionalDiv onClick={handleCollapse} data-dm={darkMode}>
                 <OptionalContainer data-dm={darkMode} className={className}>
                     <div>
                         <Typography variant="body1" color="inherit">

@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import {Typography} from "@material-ui/core";
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 import siteSizes from "../../lib/utils/siteSizes";
 import {font_family} from "../../lib/utils/utils";

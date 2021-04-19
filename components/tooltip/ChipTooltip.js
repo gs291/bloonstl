@@ -15,7 +15,7 @@ export default function ChipTooltip({className, isPro, title, text}) {
                 <TowerText variant="h5" textColor={isPro ? siteColors.chip.pros : siteColors.chip.cons}>
                     { title }
                 </TowerText>
-                <TowerText variant="body1" font={1}>
+                <TowerText variant="body1" textColor={siteColors.text.dark}  font={1}>
                     { text }
                 </TowerText>
             </TooltipContainer>

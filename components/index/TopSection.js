@@ -15,7 +15,12 @@ const TitleContainer = styled(Grid)`
 `;
 
 const AboveCenter = styled(Grid)`
-  margin-top: 25%;
+  flex: 1;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const WideGrid = styled(Grid)`

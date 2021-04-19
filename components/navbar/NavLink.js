@@ -9,15 +9,14 @@ import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {hexToRgb} from "../../lib/utils/utils";
 
 const HoverLink = styled.div`
-  width: ${props => props["data-m"] ? "100%" : "100px"};
+  width: ${props => props["data-m"] ? "100%" : "100%"};
   transition: 0.3s;
   text-align: center;
+  padding: 0 2em;
   border-radius: ${props => props["data-m"] ? 0 : 10}%;
   height: ${props => props["data-m"] ? siteSizes.nav.height : siteSizes.nav.link.height};
 
-  &:hover,
-  &:focus,
-  &:active {
+  &:hover {
     cursor: pointer;
     background-color: rgba(${props => props["data-dm"] ? hexToRgb(siteColors.accent.dark) : hexToRgb(siteColors.accent.light)}, 0.25);
   }
@@ -31,9 +30,9 @@ const MLink = styled(MUILink)`
 
 const A = styled.div`
   display: inline-block;
-  width: 100%;
+  min-width: 85px;
   height: 100%;
-  font-size: 1.25em;
+  font-size: ${props => props["data-m"] ? 2 : 1.5 }em;
   line-height: ${props => props["data-m"] ? siteSizes.nav.height : siteSizes.nav.link.height};
 `;
 

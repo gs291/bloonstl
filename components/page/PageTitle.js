@@ -8,7 +8,6 @@ import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 const Title = styled(Typography)`
   width: 100%;
   text-align: center;
-  margin-top: 50px;
   margin-bottom: 100px;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   border-bottom: 6px solid ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};

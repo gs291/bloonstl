@@ -4,8 +4,9 @@ import {Checkbox, FormControlLabel, Grid, Typography} from "@material-ui/core";
 
 import FixedDivider from "../divider/FixedDivider";
 import siteColors from "../../lib/utils/siteColors";
-import {getMobile} from "../../lib/redux/selectors";
 import siteProsCons from "../../lib/utils/siteProsCons";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {hexToRgb} from "../../lib/utils/utils";
 
 
 const GridContainer = styled.div`
@@ -18,7 +19,8 @@ const GridContainer = styled.div`
   align-items: center;
   
   border-radius: 20px;
-  border: 2px solid ${siteColors.text.dark};
+  background-color: ${props => props["data-dm"] ? siteColors.vote.proCon.dark : siteColors.vote.proCon.light};
+  border: 2px solid ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
 const ProsConsGrid = styled(Grid)`
@@ -34,19 +36,19 @@ const LabelContainer = styled.div`
 `;
 
 const Label = styled(Typography)`
-  color: ${props => props["data-type"] === "pro" ? siteColors.chip.pros : siteColors.chip.cons};
+  color: ${props => props["data-t"] === "pro" ? siteColors.chip.pros : siteColors.chip.cons};
 `;
 
 const ProsConsControl = styled(FormControlLabel)`
-  color: ${siteColors.text.dark};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   word-break: break-word;
 `;
 
 const ControlCheckBox = styled(Checkbox)`
-  color: ${siteColors.text.dark};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   
   &.Mui-checked {
-    color: ${props => props["data-type"] === "pro" ? siteColors.chip.pros : siteColors.chip.cons};
+    color: ${props => props["data-t"] === "pro" ? siteColors.chip.pros : siteColors.chip.cons};
   }
 `;
 
@@ -62,16 +64,17 @@ const ProConDescription = styled.div`
 
 const ProConText = styled(Typography)`
   font-family: sans-serif;
+  color: rgba(${props => hexToRgb(props["data-dm"] ? siteColors.text.light : siteColors.text.dark)}, 0.5);
 `;
 
-const ProsConsLabel = ({proCon, type}) => (
+const ProsConsLabel = ({proCon, type, darkMode}) => (
     <>
         <ProConLabelContainer>
             <Typography variant="body1" color="inherit">
                 {proCon.title}
             </Typography>
             <ProConDescription>
-                <ProConText variant="body2" color="inherit">
+                <ProConText variant="body2" data-dm={darkMode}>
                     {type === "pro" ? proCon.pro : proCon.con}
                 </ProConText>
             </ProConDescription>
@@ -83,6 +86,7 @@ const prosConsKeys = Object.keys(siteProsCons);
 
 export default function VoteAbilitiesProsCons({className}) {
     const mobile = useSelector(getMobile);
+    const darkMode = useSelector(getDarkMode);
 
     let gridSpacing = 6;
     if (mobile) {
@@ -91,9 +95,9 @@ export default function VoteAbilitiesProsCons({className}) {
 
     return (
         <>
-            <GridContainer>
+            <GridContainer data-dm={darkMode}>
                 <LabelContainer>
-                    <Label variant="h4" data-type="pro">
+                    <Label variant="h4" data-t="pro">
                         Pros
                     </Label>
                     <FixedDivider width={100} backgroundColor="#fff"/>
@@ -107,17 +111,18 @@ export default function VoteAbilitiesProsCons({className}) {
                     {prosConsKeys.map(key => (
                         <Grid item xs={gridSpacing} key={key}>
                             <ProsConsControl
-                                control={<ControlCheckBox data-type="pro" name={`pro-${key}`} disableRipple />}
-                                label={<ProsConsLabel proCon={siteProsCons[key]} type="pro"/>}
+                                control={<ControlCheckBox data-t="pro" data-dm={darkMode} name={`pro-${key}`} disableRipple />}
+                                label={<ProsConsLabel proCon={siteProsCons[key]} type="pro" data-dm={darkMode}/>}
+                                data-dm={darkMode}
                             />
                         </Grid>
                     ))}
                 </ProsConsGrid>
             </GridContainer>
 
-            <GridContainer>
+            <GridContainer data-dm={darkMode}>
                 <LabelContainer>
-                    <Label variant="h4" data-type="con">
+                    <Label variant="h4" data-t="con">
                         Cons
                     </Label>
                     <FixedDivider width={100} backgroundColor="#fff"/>
@@ -131,8 +136,9 @@ export default function VoteAbilitiesProsCons({className}) {
                     {prosConsKeys.map(key => (
                         <Grid item xs={gridSpacing} key={key}>
                             <ProsConsControl
-                                control={<ControlCheckBox data-type="con" name={`con-${key}`} disableRipple/>}
-                                label={<ProsConsLabel proCon={siteProsCons[key]} type="con"/>}
+                                control={<ControlCheckBox data-t="con" data-dm={darkMode} name={`con-${key}`} disableRipple/>}
+                                label={<ProsConsLabel proCon={siteProsCons[key]} type="con" data-dm={darkMode}/>}
+                                data-dm={darkMode}
                             />
                         </Grid>
                     ))}

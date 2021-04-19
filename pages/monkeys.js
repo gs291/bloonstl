@@ -2,6 +2,7 @@ import {dataSources} from "../lib/mysql/db";
 import Header from "../components/page/Header";
 import PageTitle from "../components/page/PageTitle";
 import MonkeysGrid from "../components/monkeys/MonkeysGrid";
+import MainContainer from "../components/page/MainContainer";
 
 
 export default function Monkeys({ monkeys }) {
@@ -13,8 +14,10 @@ export default function Monkeys({ monkeys }) {
     return (
         <>
             <Header title="Monkeys" />
-            <PageTitle title="Monkeys" />
-            <MonkeysGrid primary={primary} military={military} magic={magic} support={support} />
+            <MainContainer>
+                <PageTitle title="Monkeys" />
+                <MonkeysGrid primary={primary} military={military} magic={magic} support={support} />
+            </MainContainer>
         </>
     );
 }

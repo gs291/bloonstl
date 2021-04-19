@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 
 import Counter from "./Counter";
 import TowerText from "./TowerText";
 import siteColors from "../../lib/utils/siteColors";
-import {getThousandsNumber} from "../../lib/utils/utils";
+import {getDarkMode} from "../../lib/redux/selectors";
+import {getThousandsNumber, hexToRgb} from "../../lib/utils/utils";
 
 const TowerTextContainer = styled.div`
   display: flex;
@@ -14,6 +16,7 @@ const TowerTextContainer = styled.div`
 `;
 
 export default function TowerInfo({tower}) {
+    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -21,7 +24,7 @@ export default function TowerInfo({tower}) {
                 <TowerText variant={"h2"}>
                     {tower.name}
                 </TowerText>
-                <TowerText variant="body1" textColor={siteColors.tower.description} font={1}>
+                <TowerText variant="body1" textColor={`rgba(${darkMode ? hexToRgb(siteColors.text.dark) : hexToRgb(siteColors.text.light)}, 0.5)`} font={1}>
                     {tower.description}
                 </TowerText>
                 <br />

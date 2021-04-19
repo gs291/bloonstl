@@ -13,6 +13,7 @@ const Menu = styled(Button)`
   transition: 0.3s;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   height: ${siteSizes.nav.height};
+  width: 100px;
 `;
 
 export default function MenuButton() {
@@ -24,10 +25,10 @@ export default function MenuButton() {
         <>
             <Menu onClick={() => dispatch(toggleDrawer())} data-dm={darkMode}>
                 { drawer && (
-                    <ClearIcon />
+                    <ClearIcon fontSize="large"/>
                 )}
                 { !drawer && (
-                    <MenuIcon />
+                    <MenuIcon fontSize="large"/>
                 )}
             </Menu>
         </>
