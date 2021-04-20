@@ -5,16 +5,19 @@ import {Card, CardContent, Link as MUILink, Typography} from "@material-ui/core"
 
 import Icon from "../tower/Icon";
 import siteColors from "../../lib/utils/siteColors";
-import {getBorder} from "../../lib/redux/selectors";
-import {getTowerLink, getMonkeyTypeColor, getHeroColor} from "../../lib/utils/utils";
+import {getBorder, getDarkMode} from "../../lib/redux/selectors";
+import {getTowerLink, getMonkeyColor, getHeroColor} from "../../lib/utils/utils";
 
 const CardContainer = styled(Card)`
   margin: 5px;
-  background-color: ${ siteColors.card.dark };
-  border: 2px solid ${props => props.bordercolor};
+  background-color: ${props => props["data-bc"]};
+  border: 4px solid ${props => props["data-brc"]};
+  border-radius: 10px;
+  transition: 0.3s;
+  
   &:hover{
     cursor: pointer;
-    background-color: ${ props => props.backgroundcolor };
+    background-color: ${props => props["data-hbc"]};
   }
 `;
 
@@ -25,39 +28,43 @@ const MLink = styled(MUILink)`
 `;
 
 const TowerName = styled(Typography)`
-  color: ${siteColors.text.dark};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  transition: 0.3s;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 
-export default function TowerCard({tower, towerType, keepBorder}) {
+export default function TowerCard({tower, towerType, rank, keepBorder}) {
     const border = useSelector(getBorder);
-    let href, borderColor, backgroundColor;
+    const darkMode = useSelector(getDarkMode);
+    let href, borderColor, backgroundColor, hoverBackgroundColor;
 
     if (towerType === "monkey") {
         href = `/monkey/${getTowerLink(tower)}`;
-        borderColor = getMonkeyTypeColor(tower.type);
-        backgroundColor = getMonkeyTypeColor(tower.type, true);
+        borderColor = getMonkeyColor(tower.type, darkMode);
+        backgroundColor = getMonkeyColor(tower.type, darkMode,  rank, true);
+        hoverBackgroundColor = getMonkeyColor(tower.type, darkMode, rank, true, true);
     } else if (towerType === "hero") {
         href = `/hero/${getTowerLink(tower)}`;
-        borderColor = getHeroColor(tower.name);
-        backgroundColor = getHeroColor(tower.name, true);
+        borderColor = getHeroColor(tower.name, darkMode);
+        backgroundColor = getHeroColor(tower.name, darkMode, rank, true, false);
+        hoverBackgroundColor = getHeroColor(tower.name, darkMode, rank, true, true);
     }
 
     if (!border && keepBorder === 0) {
-        borderColor = siteColors.card.dark;
+        borderColor = backgroundColor;
     }
 
     return (
         <>
             <Link href={href} passHref>
                 <MLink>
-                    <CardContainer bordercolor={borderColor} backgroundcolor={backgroundColor}>
+                    <CardContainer data-brc={borderColor} data-bc={backgroundColor} data-hbc={hoverBackgroundColor}>
                         <CardContent>
                             <Icon tower={tower}/>
-                            <TowerName varient="body1">
+                            <TowerName varient="body1" data-dm={darkMode}>
                                 {tower.name}
                             </TowerName>
                         </CardContent>

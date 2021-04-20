@@ -1,10 +1,15 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import {Typography} from "@material-ui/core";
 
-import {rankColors} from "../../lib/utils/utils";
+import {getTierColor, hexToRgb} from "../../lib/utils/utils";
+import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
 
 const Rank = styled(Typography)`
-  color: ${props => rankColors(props.name)};
+  color: ${props => getTierColor(props.name)};
+  ${props => !props["data-dm"] && `text-shadow: 5px 5px 10px ${siteColors.text.light}`};
+  transition: 0.3s;
 `;
 
 const RankContainer = styled.div`
@@ -16,26 +21,45 @@ const RankContainer = styled.div`
 
 const RankItem = styled.div`
   padding: 15px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-export default function RankTitle ({ className, rank, ranks }) {
+const Tier = styled(Rank)`
+  margin-left: 10px;
+`;
+
+export default function RankTitle ({ className, rank, ranks, showText }) {
+    const darkMode = useSelector(getDarkMode);
+
     return (
         <>
-            <RankContainer>
-                <RankItem>
-                    <Rank variant="h1" name={rank}>
-                        { rank }
-                    </Rank>
-                </RankItem>
-                <RankItem>
-                    <Rank variant="h4" component="h2" name={rank}>
-                        { ranks.top_path }
-                        &nbsp;-&nbsp;
-                        { ranks.middle_path }
-                        &nbsp;-&nbsp;
-                        { ranks.bottom_path }
-                    </Rank>
-                </RankItem>
+            <RankContainer className={className}>
+                {rank && (
+                    <RankItem>
+                        <Rank variant="h1" name={rank} data-dm={darkMode}>
+                            { rank }
+                        </Rank>
+                        {showText && (
+                            <Tier variant="h3" component="div" name={rank} data-dm={darkMode}>
+                                Tier
+                            </Tier>
+                        )}
+                    </RankItem>
+                )}
+                {ranks && (
+                    <RankItem>
+                        <Rank variant="h4" component="h2" name={rank} data-dm={darkMode}>
+                            { ranks.top_path }
+                            &nbsp;-&nbsp;
+                            { ranks.middle_path }
+                            &nbsp;-&nbsp;
+                            { ranks.bottom_path }
+                        </Rank>
+                    </RankItem>
+                )}
             </RankContainer>
         </>
     );

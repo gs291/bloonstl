@@ -1,6 +1,7 @@
 import {dataSources} from "../../lib/mysql/db";
 import Header from "../../components/page/Header";
 import HeroPage from "../../components/hero/HeroPage";
+import MainContainer from "../../components/page/MainContainer";
 import {getTowerLink, parseTowerLink} from "../../lib/utils/utils";
 
 
@@ -9,7 +10,9 @@ export default function Monkey({ hero }) {
     return (
         <>
             <Header title={hero.name} />
-            <HeroPage hero={hero}/>
+            <MainContainer>
+                <HeroPage hero={hero}/>
+            </MainContainer>
         </>
     );
 }

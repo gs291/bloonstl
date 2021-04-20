@@ -1,5 +1,6 @@
 import {useEffect} from "react";
 import styled from "@emotion/styled";
+import {Global, css} from "@emotion/react";
 import {useDispatch, useSelector} from "react-redux";
 import { Container, useMediaQuery } from "@material-ui/core";
 
@@ -7,64 +8,80 @@ import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
 import NavDrawer from "../navbar/NavDrawer";
 import siteColors from "../../lib/utils/siteColors";
-import {getMobile} from "../../lib/redux/selectors";
 import { updateMobile } from "../../lib/redux/actions";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const PageContainer = styled.div`
   display: flex;
   min-height: 100vh;
-  flex-direction: column;
+  flex-direction: column;  
 `;
 
 const Nav = styled(Navbar)`
-  background-image: linear-gradient(${ siteColors.nav.dark }, ${ siteColors.background.main.dark });
+  transition: 0.3s;
+  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   box-shadow: none;
 `;
 
-const MainContainer = styled(Container)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+const Main = styled.main`
+  flex: 1;
+  transition: 0.3s;
+  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+  padding-bottom: 30px;
 `;
 
 const Foot = styled(Footer)`
-  background-image: linear-gradient(${ siteColors.background.main.dark }, ${ siteColors.nav.dark });
-  justify-content: center;
-  align-items: center;
-  color: ${siteColors.text.dark};
+  transition: 0.3s;
+  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
 export default function Page(props) {
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);
-    const screen = useMediaQuery('(max-width: 960px)');
+    const darkMode = useSelector(getDarkMode);
+
+    const screen = useMediaQuery("(max-width: 960px)");
     useEffect(() => {
         dispatch(updateMobile(screen));
     }, [screen]);
 
-    const Main = styled.main`
-      flex: 1;
-      background-color: ${ siteColors.background.main.dark };
-      padding-top: 15px;
-      ${!mobile ? "padding-right: 10px;" : ""}
-      padding-bottom: 30px;
+    const globals = css`
+      ::-webkit-scrollbar {
+        width: 10px;
+        background-color: ${darkMode ? siteColors.scroll.dark : siteColors.scroll.light};
+      }
+    
+      ::-webkit-scrollbar-track {
+        background-color: ${darkMode ? siteColors.scroll.dark : siteColors.scroll.light};
+        border-radius: 20px;
+      }
+    
+      ::-webkit-scrollbar-thumb {
+        background-color: ${darkMode ? siteColors.scroll.thumb.dark : siteColors.scroll.thumb.light};
+        border-radius: 20px;
+      }
+    
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: ${darkMode ? siteColors.scroll.hover.dark : siteColors.scroll.hover.light};
+      }
     `;
 
     return (
-        <PageContainer>
-            <Nav />
-            { mobile && (
-                <NavDrawer />
-            )}
+        <>
+            <Global styles={globals} />
+            <PageContainer>
+                <Nav data-dm={darkMode}/>
+                { mobile && (
+                    <NavDrawer />
+                )}
 
-            <Main >
-                <MainContainer maxWidth="lg">
+                <Main data-m={mobile} data-dm={darkMode}>
                     { props.children }
-                </MainContainer>
-            </Main>
+                </Main>
 
-            <Foot />
-        </PageContainer>
+                <Foot data-dm={darkMode}/>
+            </PageContainer>
+        </>
     );
 }

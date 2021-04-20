@@ -2,83 +2,71 @@ import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
-import GridTitle from "../grid/GridTitle";
-import GridItems from "../grid/GridItems";
-import TowerCard from "../tower/TowerCard";
-import {rankColors} from "../../lib/utils/utils";
-import {getMobile} from "../../lib/redux/selectors";
+import {getTierColor} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import FiltersTierList from "../filters/FiltersTierList";
+import GridTowerContainer from "../grid/GridTowerContainer";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const FilterContainer = styled.div`
   margin-bottom: 20px;
-  background-color: ${ siteColors.background.filters.dark };
-  color: ${siteColors.text.dark};
+  border-radius: 20px;
+  background-color: ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  transition: 0.3s;
 `;
 
 export default function TierListGrid({ className, tiers }) {
     const mobile = useSelector(getMobile);
+    const darkMode = useSelector(getDarkMode);
 
-    let gridSpacing = 3;
-    if (mobile) {
-        gridSpacing = 6;
+    const colors = {
+        "s": getTierColor("s"),
+        "a": getTierColor("a"),
+        "b": getTierColor("b"),
     }
 
-    const sColor = rankColors("s");
-    const aColor = rankColors("a");
-    const bColor = rankColors("b");
+    let gridSpacing = 6;
+    if (mobile) {
+        gridSpacing = 4;
+    }
 
     return (
         <>
-            <FilterContainer className={className}>
+            <FilterContainer data-dm={darkMode} className={className}>
                 <FiltersTierList />
             </FilterContainer>
-            <Grid container spacing={2} direction="column">
-                <GridTitle backgroundColor={sColor}>
-                    S Tier
-                </GridTitle>
-                <GridItems borderColor={sColor}>
-                    <Grid container spacing={2}>
-                        {tiers.s.map(tower => (
-                            <Grid xs={gridSpacing} item key={tower.t_id}>
-                                <TowerCard tower={tower}
-                                           towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}
-                                           keepBorder={0}
-                                />
-                            </Grid>
-                        ))}
-                    </Grid>
-                </GridItems>
-                <GridTitle backgroundColor={aColor}>
-                    A Tier
-                </GridTitle>
-                <GridItems borderColor={aColor}>
-                    <Grid container spacing={2}>
-                        {tiers.a.map(tower => (
-                            <Grid xs={gridSpacing} item key={tower.t_id}>
-                                <TowerCard tower={tower}
-                                           towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}
-                                           keepBorder={0}
-                                />
-                            </Grid>
-                        ))}
-                    </Grid>
-                </GridItems>
-                <GridTitle backgroundColor={bColor}>
-                    B Tier
-                </GridTitle>
-                <GridItems borderColor={bColor}>
-                    <Grid container spacing={2}>
-                        {tiers.b.map(tower => (
-                            <Grid xs={gridSpacing} item key={tower.t_id}>
-                                <TowerCard tower={tower}
-                                           towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}
-                                           keepBorder={0}
-                                />
-                            </Grid>
-                        ))}
-                    </Grid>
-                </GridItems>
+            <Grid container spacing={gridSpacing} direction="column">
+                <Grid item>
+                    <GridTowerContainer
+                        towers={tiers["s"]}
+                        title="S Tier"
+                        rank="s"
+                        backgroundColor={darkMode ? siteColors.tier.s.grid.dark : siteColors.tier.s.grid.light}
+                        titleColor={colors.s}
+                        keepBorder={0}
+                    />
+                </Grid>
+                <Grid item>
+                    <GridTowerContainer
+                        towers={tiers["a"]}
+                        title="A Tier"
+                        rank="a"
+                        backgroundColor={darkMode ? siteColors.tier.a.grid.dark : siteColors.tier.a.grid.light}
+                        titleColor={colors.a}
+                        keepBorder={0}
+                    />
+                </Grid>
+                <Grid item>
+                    <GridTowerContainer
+                        towers={tiers["b"]}
+                        title="B Tier"
+                        rank="b"
+                        backgroundColor={darkMode ? siteColors.tier.b.grid.dark : siteColors.tier.b.grid.light}
+                        titleColor={colors.b}
+                        keepBorder={0}
+                    />
+                </Grid>
             </Grid>
         </>
     );

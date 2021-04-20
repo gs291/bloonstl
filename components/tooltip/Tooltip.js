@@ -4,30 +4,38 @@ import {useSelector} from "react-redux";
 import {Tooltip as MUITooltip, ClickAwayListener} from "@material-ui/core";
 
 import siteColors from "../../lib/utils/siteColors";
-import {getMobile} from "../../lib/redux/selectors";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 //https://stackoverflow.com/questions/59934683/style-material-ui-tooltip-using-emotion-styled
 const StyledTooltip = styled(({ className, ...other }) => (
     <MUITooltip classes={{ tooltip: className }} {...other} />
 ))`
-  background-color: ${siteColors.background.tooltip.dark};
-  width: 265px;
+  background-color: ${siteColors.tooltip.dark};
+  width: 300px;
+  transition: 0.3s;
   
-  ${props => props.mobile ? "margin-bottom: 10px;" : ""}
+  ${props => props["data-m"] ? "margin-bottom: 10px;" : ""}
   
-  border: 1px solid ${props => props.active ? siteColors.ability.activated : siteColors.background.tooltip.dark};
+  border: 2px solid ${props =>
+          props["data-a"] 
+                  ? siteColors.ability.activated 
+                  : props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
 
   .MuiTooltip-arrow {
-    color: ${siteColors.background.tooltip.dark};
+    color: ${siteColors.tooltip.dark};
   }
   
   .MuiTooltip-arrow::before {
-    border: 1px solid ${props => props.active ? siteColors.ability.activated : siteColors.background.tooltip.dark};
+    border: 2px solid ${props => 
+            props["data-a"] 
+                    ? siteColors.ability.activated 
+                    : props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
   }
 `;
 
-export default function Tooltip({ className, children, title, active}) {
+export default function Tooltip({className, children, title, active}) {
     const mobile = useSelector(getMobile);
+    const darkMode = useSelector(getDarkMode);
     const [open, setOpen] = useState(false);
 
     const handleTooltipClose = () => {
@@ -46,8 +54,9 @@ export default function Tooltip({ className, children, title, active}) {
                         title={title}
                         leaveDelay={100}
                         placement="top"
-                        active={active}
-                        mobile={mobile ? 1 : 0}
+                        data-a={active}
+                        data-m={mobile}
+                        data-dm={darkMode}
                         arrow
                     >
                         <div>
@@ -68,8 +77,9 @@ export default function Tooltip({ className, children, title, active}) {
                                 disableTouchListener
                                 title={title}
                                 placement="top"
-                                active={active}
-                                mobile={mobile ? 1 : 0}
+                                data-a={active}
+                                data-m={mobile}
+                                data-dm={darkMode}
                                 arrow
                             >
                                 <div onClick={handleTooltipOpen}>

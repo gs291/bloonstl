@@ -6,7 +6,7 @@ import Icon from "../tower/Icon";
 import TowerInfo from "./TowerInfo";
 import {getMobile} from "../../lib/redux/selectors";
 import VerticalDivider from "../divider/VerticalDivider";
-import {getHeroColor, getMonkeyTypeColor} from "../../lib/utils/utils";
+import {getHeroColor, getMonkeyColor} from "../../lib/utils/utils";
 
 const TowerContainer = styled(Grid)`
   margin-top: 10px;
@@ -15,10 +15,14 @@ const TowerContainer = styled(Grid)`
 
 export default function TowerImgInfo({tower, towerType}) {
     const mobile = useSelector(getMobile);
-    let backgroundColor;
+    let backgroundColor, gridSpacing = 4;
+
+    if (mobile) {
+        gridSpacing = 6
+    }
 
     if (towerType === "monkey") {
-        backgroundColor = getMonkeyTypeColor(tower.type);
+        backgroundColor = getMonkeyColor(tower.type);
     } else if (towerType === "hero") {
         backgroundColor = getHeroColor(tower.name);
     }
@@ -31,12 +35,12 @@ export default function TowerImgInfo({tower, towerType}) {
                             direction={mobile ? "column" : "row"}
                             alignItems="center"
             >
-                <Grid item xs={mobile ? 6 : 4}>
-                    <Icon tower={ tower } />
+                <Grid item xs={gridSpacing}>
+                    <Icon tower={tower} />
                 </Grid>
-                { !mobile && (<VerticalDivider backgroundColor={ backgroundColor } />)}
-                <Grid item xs={mobile ? 6 : 4}>
-                    <TowerInfo tower={ tower }/>
+                { !mobile && (<VerticalDivider backgroundColor={backgroundColor} />)}
+                <Grid item xs={gridSpacing}>
+                    <TowerInfo tower={tower}/>
                 </Grid>
             </TowerContainer>
         </>

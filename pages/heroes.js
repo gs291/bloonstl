@@ -1,6 +1,8 @@
 import {dataSources} from "../lib/mysql/db";
-import HeroesGrid from "../components/heroes/HeroesGrid";
 import Header from "../components/page/Header";
+import PageTitle from "../components/page/PageTitle";
+import HeroesGrid from "../components/heroes/HeroesGrid";
+import MainContainer from "../components/page/MainContainer";
 
 
 export default function Heroes({ heroes }) {
@@ -9,7 +11,10 @@ export default function Heroes({ heroes }) {
     return (
         <>
             <Header title="Heroes" />
-            <HeroesGrid heroes={heroes} />
+            <MainContainer>
+                <PageTitle title="Heroes" />
+                <HeroesGrid heroes={heroes} />
+            </MainContainer>
         </>
     );
 }

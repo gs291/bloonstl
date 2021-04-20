@@ -13,7 +13,7 @@ const FilterContainer = styled(FormControl)`
   padding: 20px;
 `;
 
-export default function FiltersTierList({ className }) {
+export default function FiltersTierList({className}) {
     const dispatch = useDispatch();
     const border = useSelector(getBorder);
 
@@ -25,7 +25,7 @@ export default function FiltersTierList({ className }) {
                 <FormGroup>
                     <FormControlLabel
                         control={<Switch checked={border} onChange={handleBorder} />}
-                        label={`${border ? "Hide" : "Show"} Border`}
+                        label={`Borders`}
                     />
                 </FormGroup>
             </FilterContainer>

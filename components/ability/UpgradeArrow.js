@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import {DoubleArrow} from "@material-ui/icons";
 
-import {rankColors} from "../../lib/utils/utils";
+import {getTierColor} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
 
 const UpgradeArrowContainer = styled.div`
   display: flex;
@@ -12,14 +14,19 @@ const UpgradeArrowContainer = styled.div`
 `;
 
 const Arrow = styled(DoubleArrow)`
-  color: ${props => props.selected ? rankColors(props.rank) : siteColors.text.dark};
+  color: ${props => 
+          props["data-s"] 
+                  ? getTierColor(props.rank) 
+                  : props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  transition: 0.3s;
 `;
 
 export default function UpgradeArrow({ className, rank, selected }) {
+    const darkMode = useSelector(getDarkMode);
     return (
         <>
             <UpgradeArrowContainer className={className}>
-                <Arrow selected={selected} rank={rank}/>
+                <Arrow data-s={selected} rank={rank} data-dm={darkMode}/>
             </UpgradeArrowContainer>
         </>
     );

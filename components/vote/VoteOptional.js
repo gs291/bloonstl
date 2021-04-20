@@ -1,0 +1,71 @@
+import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
+import {Typography} from "@material-ui/core";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+
+import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
+
+const OptionalDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const OptionalContainer = styled.div`
+  display: flex;
+  
+  padding: 1em;
+  background-color: ${props => props["data-dm"] ? siteColors.vote.optional.dark : siteColors.vote.optional.light};
+  border-radius: 10px;
+`;
+
+const Expander = styled.div`
+  color: inherit;
+  min-width: 64px;
+  padding: 6px 8px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export default function VoteOptional({className, title, collapse, handleCollapse}) {
+    const darkMode = useSelector(getDarkMode);
+
+    return (
+        <>
+            <OptionalDiv onClick={handleCollapse} data-dm={darkMode}>
+                <OptionalContainer data-dm={darkMode} className={className}>
+                    <div>
+                        <Typography variant="body1" color="inherit">
+                            {title}
+                        </Typography>
+                        <Typography variant="body1" color="secondary">
+                            optional *
+                        </Typography>
+                    </div>
+                    <Expander>
+                        { collapse ? (
+                                <HighlightOffIcon />
+                            ) :
+                            (
+                                <AddCircleOutlineIcon />
+                            )}
+                    </Expander>
+                </OptionalContainer>
+            </OptionalDiv>
+        </>
+    );
+}

@@ -5,44 +5,46 @@ import { Link as MUILink } from "@material-ui/core";
 
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
-import {getMobile} from "../../lib/redux/selectors";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {hexToRgb} from "../../lib/utils/utils";
+
+const HoverLink = styled.div`
+  width: ${props => props["data-m"] ? "100%" : "100%"};
+  transition: 0.3s;
+  text-align: center;
+  padding: 0 2em;
+  border-radius: ${props => props["data-m"] ? 0 : 20}px;
+  height: ${props => props["data-m"] ? siteSizes.nav.height : siteSizes.nav.link.height};
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(${props => props["data-dm"] ? hexToRgb(siteColors.accent.dark) : hexToRgb(siteColors.accent.light)}, 0.25);
+  }
+`;
+
+const MLink = styled(MUILink)`
+  transition: 0.3s;
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  ${props => props["data-m"] ? "width: 100%;" : ""}
+`;
+
+const A = styled.div`
+  display: inline-block;
+  min-width: 85px;
+  height: 100%;
+  font-size: ${props => props["data-m"] ? 2 : 1.5 }em;
+  line-height: ${props => props["data-m"] ? siteSizes.nav.height : siteSizes.nav.link.height};
+`;
 
 export default function NavLink({ path, text, closeDrawer }) {
     const mobile = useSelector(getMobile);
-
-    const HoverLink = styled.div`
-      width: ${mobile ? "100%" : "100px" };
-      transition: 0.3s;
-      text-align: center;
-      border-radius: ${mobile ? 0 : 10}%;
-      height: ${mobile ? siteSizes.nav.height : siteSizes.nav.link.height };
-  
-      &:hover,
-      &:focus,
-      &:active {
-        cursor: pointer;
-        background-color: ${ siteColors.background.hover.dark };
-      }
-    `;
-
-    const MLink = styled(MUILink)`
-      color: ${siteColors.text.dark};
-      ${ mobile ? "width: 100%;" : "" }
-    `;
-
-    const A = styled.div`
-      display: inline-block;
-      width: 100%;
-      height: 100%;
-      font-size: 1.25em;
-      line-height: ${ mobile ? siteSizes.nav.height : siteSizes.nav.link.height };
-    `;
+    const darkMode = useSelector(getDarkMode);
 
     return (
             <Link href={ path } passHref>
-                <MLink >
-                    <HoverLink onClick={closeDrawer} >
-                        <A >{ text }</A>
+                <MLink data-m={mobile} data-dm={darkMode}>
+                    <HoverLink onClick={closeDrawer} data-m={mobile} data-dm={darkMode}>
+                        <A data-m={mobile}>{ text }</A>
                     </HoverLink>
                 </MLink>
             </Link>

@@ -6,8 +6,9 @@ import NavLink from "./NavLink";
 import siteLinks from "../../lib/utils/siteLinks";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
-import {getDrawer} from "../../lib/redux/selectors";
 import {toggleDrawer} from "../../lib/redux/actions";
+import {getDarkMode, getDrawer} from "../../lib/redux/selectors";
+import DarkMode from "../dark-mode/DarkMode";
 
 const TopDrawer = styled(Drawer)`
   .MuiDrawer-paper {
@@ -17,9 +18,10 @@ const TopDrawer = styled(Drawer)`
 
 const DrawerContainer = styled.div`
   height: 100%;
-  padding-top: ${ siteSizes.nav.height };
-  background-color: ${ siteColors.background.main.dark };
-  color: ${siteColors.text.dark};
+  padding-top: ${siteSizes.nav.height};
+  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+  color: ${props => props["data-dm"] ?  siteColors.text.dark : siteColors.text.light};
+  transition: 0.3s;
   
   display: flex;
   flex-direction: column;
@@ -29,6 +31,7 @@ const DrawerContainer = styled.div`
 export default function NavDrawer() {
     const dispatch = useDispatch();
     const drawer = useSelector(getDrawer);
+    const darkMode = useSelector(getDarkMode);
 
     const closeDrawer = () => {
         dispatch(toggleDrawer());
@@ -42,8 +45,9 @@ export default function NavDrawer() {
                 anchor="top"
                 transitionDuration={350}
             >
-                <DrawerContainer>
+                <DrawerContainer data-dm={darkMode}>
                     { siteLinks.middle.map(mid => <NavLink {...mid} closeDrawer={closeDrawer}/>) }
+                    <DarkMode />
                 </DrawerContainer>
             </TopDrawer>
         </>

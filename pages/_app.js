@@ -1,13 +1,12 @@
 import { useEffect } from "react";
-import {Provider, useSelector} from "react-redux";
+import {Provider} from "react-redux";
 import { Global, css } from "@emotion/react";
-import CssBaseline from '@material-ui/core/CssBaseline';
+import CssBaseline from "@material-ui/core/CssBaseline";
 import {createMuiTheme, StylesProvider, ThemeProvider} from "@material-ui/core/styles";
 
 import store from "../lib/redux/store";
-import {font_family} from "../lib/utils/utils";
 import Page from "../components/page/Page";
-import {getDrawer} from "../lib/redux/selectors";
+import {font_family} from "../lib/utils/utils";
 
 const theme = createMuiTheme({
     typography: {
@@ -23,6 +22,7 @@ const globals = css`
     padding: 0;
     margin: 0;
     font-family: ${font_family};
+    scroll-behavior: smooth;
   }
   
   a {
@@ -33,29 +33,13 @@ const globals = css`
   * {
     box-sizing: border-box;
   }
-
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
 `;
 
 export default function App({ Component, pageProps }) {
 
     useEffect(() => {
         // Remove the server-side injected CSS.
-        const jssStyles = document.querySelector('#jss-server-side');
+        const jssStyles = document.querySelector("#jss-server-side");
         if (jssStyles) {
             jssStyles.parentElement.removeChild(jssStyles);
         }
@@ -63,14 +47,14 @@ export default function App({ Component, pageProps }) {
 
     return (
         <Provider store={store}>
-            <Global styles={ globals } />
+            <Global styles={globals} />
                 <StylesProvider injectFirst>
+                    <ThemeProvider theme={theme}>
+                        <CssBaseline />
                         <Page>
-                            <ThemeProvider theme={theme}>
-                                <CssBaseline />
                                 <Component {...pageProps} />
-                            </ThemeProvider>
                         </Page>
+                    </ThemeProvider>
                 </StylesProvider>
         </Provider>
     );

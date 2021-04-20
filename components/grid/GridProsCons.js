@@ -7,7 +7,6 @@ import TowerText from "../tower/TowerText";
 import ChipTooltip from "../tooltip/ChipTooltip";
 import siteColors from "../../lib/utils/siteColors";
 import {getMobile} from "../../lib/redux/selectors";
-import {rankColors} from "../../lib/utils/utils";
 
 const ChipContainer = styled(Grid)`
   margin: 0;
@@ -21,8 +20,31 @@ const Title = styled(TowerText)`
 `;
 
 const StyledChip = styled(Chip)`
+  @keyframes popup {
+    0% {
+      transform: scale(0);
+      opacity: 0.0;
+    }
+    60% {
+      transform: scale(1.1);
+    }
+    80% {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  opacity: 1;
+  animation-name: popup;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  
   width: 100px;
-  background-color: ${props => props.pros === 1 ? siteColors.chip.pros: siteColors.chip.cons};
+  background-color: ${props => props["data-pro"] ? siteColors.chip.pros: siteColors.chip.cons};
 
   &:hover {
     cursor: pointer;
@@ -40,7 +62,7 @@ export default function GridProsCons({ className, isPro, proCons}) {
             >
                 <Grid item>
                     <Title variant="h5">
-                        { isPro === 1 ? "Pros" : "Cons"}
+                        {isPro ? "Pros" : "Cons"}
                     </Title>
                 </Grid>
                 <Grid item>
@@ -53,10 +75,10 @@ export default function GridProsCons({ className, isPro, proCons}) {
                                             title={
                                                 <ChipTooltip isPro={isPro}
                                                              title={pc.title}
-                                                             text={isPro === 1 ? pc.pro : pc.con}
+                                                             text={isPro ? pc.pro : pc.con}
                                                 />}
                                         >
-                                            <StyledChip label={pc.title} pros={isPro} />
+                                            <StyledChip label={pc.title} data-pro={isPro} />
                                         </Tooltip>
                                     </Grid>
                                 )

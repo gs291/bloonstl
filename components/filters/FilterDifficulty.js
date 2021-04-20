@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import {FormLabel,
+import {
+    FormLabel,
     FormControl,
     FormControlLabel,
     Radio,
@@ -8,8 +9,13 @@ import {useDispatch, useSelector} from "react-redux";
 
 
 import siteColors from "../../lib/utils/siteColors";
-import {getDifficulty, getMobile} from "../../lib/redux/selectors";
 import {UPDATE_DIFFICULTY, updateFilter} from "../../lib/redux/actions";
+import {getDarkMode, getDifficulty, getMobile} from "../../lib/redux/selectors";
+
+const DifficultyContainer = styled(FormControl)`
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  transition: 0.3s;
+`;
 
 const FormRow = styled.div`
   display: flex;
@@ -24,20 +30,21 @@ const FormRow = styled.div`
 `;
 
 const FilterLabel = styled(FormLabel)`
-  color: ${siteColors.text.dark};
+  color: inherit;
   text-align: center;
 `;
 
 const DifficultyLabel = styled(FormControlLabel)`
-  color: ${siteColors.text.dark};
+  color: inherit;
 `;
 
 const Difficulty = styled(Radio)`
-  color: ${siteColors.text.dark};
+  color: inherit;
 `;
 
 export default function FilterDifficulty({ className }) {
     const mobile = useSelector(getMobile);
+    const darkMode = useSelector(getDarkMode);
     const difficulty = useSelector(getDifficulty);
     const dispatch = useDispatch();
 
@@ -61,7 +68,7 @@ export default function FilterDifficulty({ className }) {
 
     return (
         <>
-            <FormControl component="fieldset" className={className}>
+            <DifficultyContainer component="fieldset" className={className} data-dm={darkMode}>
                 <FilterLabel focused={false}>Difficulty Prices:</FilterLabel>
                 <RadioGroup value={difficulty} onChange={handleDifficulty}>
                     { !mobile && (
@@ -81,7 +88,7 @@ export default function FilterDifficulty({ className }) {
                         </>
                     )}
                 </RadioGroup>
-            </FormControl>
+            </DifficultyContainer>
         </>
     );
 }
