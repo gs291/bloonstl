@@ -45,25 +45,15 @@ export default function TopSection({className, scrollTo}) {
                 className={className}
             >
                 <AboveCenter item>
-                    <Typography variant="h4">
-                        Welcome to Bloons.GG
+                    <Typography variant="h2">
+                        Bloons.GG
                     </Typography>
                     <br />
-                    <SansSerifText variant="h6">
-                        The Bloons TD 6 community
+                    <SansSerifText variant="h4">
+                        The Community Driven
                     </SansSerifText>
-                    <SansSerifText variant="h6">
-                        driven tier list for Monkeys And Heroes.
-                    </SansSerifText>
-                    <br />
-                    <SansSerifText variant="h6">
-                        With each Tower containing valuable
-                    </SansSerifText>
-                    <SansSerifText variant="h6">
-                        information on comparable ability
-                    </SansSerifText>
-                    <SansSerifText variant="h6">
-                        trees and its pros on cons for each one.
+                    <SansSerifText variant="h4">
+                        Tier List for Bloons TD 6
                     </SansSerifText>
                 </AboveCenter>
                 <WideGrid item>
