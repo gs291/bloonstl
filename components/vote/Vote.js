@@ -54,8 +54,8 @@ export default function Vote({towers, tower}) {
 
     const checkSubmit = async (e) => {
         e.preventDefault()
-        setProgress(prg => ({...prg, modalStatus: true}));
         setFormInfo(parseForm(e.target));
+        setProgress(prg => ({...prg, modalStatus: true}));
     }
 
     const handleModalSubmit = async () => {
@@ -114,6 +114,7 @@ export default function Vote({towers, tower}) {
                 </Grid>
             </VoteForm>
             <VoteModal
+                form={formInfo}
                 modalStatus={progress.modalStatus}
                 handleClose={handleModalClose}
                 handleSubmit={handleModalSubmit}

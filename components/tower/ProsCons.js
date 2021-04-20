@@ -16,6 +16,8 @@ const ProsConsContainer = styled(Grid)`
 
 export default function ProsCons({ className, pros, cons, backgroundColor }) {
     const mobile = useSelector(getMobile);
+    if (!pros) { pros = ""; }
+    if (!cons) { cons = ""; }
     pros = parseProsCons(pros);
     cons = parseProsCons(cons);
 

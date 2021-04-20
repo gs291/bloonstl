@@ -113,11 +113,12 @@ export default function VoteTower({towers, tower}) {
                                     value={towerSelect}
                                     onChange={handleSelect}
                                     data-dm={darkMode}
+                                    defaultValue={tower ? tower : ""}
                                     required
                                 >
                                     <ListSubheader disableSticky value="">Monkeys</ListSubheader>
                                     {towers.monkeys.map(monkey => (
-                                        <MenuItem value={monkey.id} key={monkey.id}>{monkey.name}</MenuItem>
+                                        <MenuItem value={monkey.name} key={monkey.id}>{monkey.name}</MenuItem>
                                     ))}
                                     <ListSubheader disableSticky value="">Heroes</ListSubheader>
                                     {towers.heroes.map(hero => (

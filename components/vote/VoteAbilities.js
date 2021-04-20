@@ -122,7 +122,7 @@ export default function VoteAbilities() {
                 />
 
                 <Typography variant="body1" color="inherit">What tier is this ability path?</Typography>
-                <AbilityTier defaultValue="" name="ability-path">
+                <AbilityTier defaultValue="" name="ability-tier">
                     <TierLabel value="" control={<TierRadio />} label="none" labelPlacement="top"/>
                     <TierLabel value="s" control={<TierRadio />} label="S" labelPlacement="top"/>
                     <TierLabel value="a" control={<TierRadio />} label="A" labelPlacement="top"/>

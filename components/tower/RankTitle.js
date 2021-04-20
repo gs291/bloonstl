@@ -21,28 +21,45 @@ const RankContainer = styled.div`
 
 const RankItem = styled.div`
   padding: 15px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-export default function RankTitle ({ className, rank, ranks }) {
+const Tier = styled(Rank)`
+  margin-left: 10px;
+`;
+
+export default function RankTitle ({ className, rank, ranks, showText }) {
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <RankContainer>
-                <RankItem>
-                    <Rank variant="h1" name={rank} data-dm={darkMode}>
-                        { rank }
-                    </Rank>
-                </RankItem>
-                <RankItem>
-                    <Rank variant="h4" component="h2" name={rank} data-dm={darkMode}>
-                        { ranks.top_path }
-                        &nbsp;-&nbsp;
-                        { ranks.middle_path }
-                        &nbsp;-&nbsp;
-                        { ranks.bottom_path }
-                    </Rank>
-                </RankItem>
+            <RankContainer className={className}>
+                {rank && (
+                    <RankItem>
+                        <Rank variant="h1" name={rank} data-dm={darkMode}>
+                            { rank }
+                        </Rank>
+                        {showText && (
+                            <Tier variant="h3" component="div" name={rank} data-dm={darkMode}>
+                                Tier
+                            </Tier>
+                        )}
+                    </RankItem>
+                )}
+                {ranks && (
+                    <RankItem>
+                        <Rank variant="h4" component="h2" name={rank} data-dm={darkMode}>
+                            { ranks.top_path }
+                            &nbsp;-&nbsp;
+                            { ranks.middle_path }
+                            &nbsp;-&nbsp;
+                            { ranks.bottom_path }
+                        </Rank>
+                    </RankItem>
+                )}
             </RankContainer>
         </>
     );
