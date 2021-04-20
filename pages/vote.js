@@ -1,8 +1,9 @@
 import Vote from "../components/vote/Vote";
 import {dataSources} from "../lib/mysql/db";
 import Header from "../components/page/Header";
-import MainContainer from "../components/page/MainContainer";
 import PageTitle from "../components/page/PageTitle";
+import MainContainer from "../components/page/MainContainer";
+
 
 
 export default function Votes({monkeys, heroes}) {

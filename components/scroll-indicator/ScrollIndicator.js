@@ -18,6 +18,7 @@ const ClickContainer = styled.div`
   height: 75px;
   justify-content: space-evenly;
   transition: 0.3s;
+  padding-top: 50px;
   padding-bottom: 100px;
   &:hover {
     background-color: rgba(${props => props["data-dm"] ? hexToRgb(siteColors.accent.dark) : hexToRgb(siteColors.accent.light)}, 0.25);

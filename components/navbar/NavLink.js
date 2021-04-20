@@ -13,7 +13,7 @@ const HoverLink = styled.div`
   transition: 0.3s;
   text-align: center;
   padding: 0 2em;
-  border-radius: ${props => props["data-m"] ? 0 : 10}%;
+  border-radius: ${props => props["data-m"] ? 0 : 20}px;
   height: ${props => props["data-m"] ? siteSizes.nav.height : siteSizes.nav.link.height};
 
   &:hover {

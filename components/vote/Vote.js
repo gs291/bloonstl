@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {Collapse, Grid} from "@material-ui/core";
+import {Collapse, Grid, Typography} from "@material-ui/core";
 
 import VoteModal from "./VoteModal";
 import VoteTower from "./VoteTower";
@@ -30,6 +30,13 @@ const VoteContainer = styled.div`
 const PaddedVoteContainer = styled(VoteContainer)`
   padding: 3em 2em;
 `;
+
+const Description = styled(Typography)`
+  text-align: center;
+  margin-bottom: 50px;
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+`;
+
 
 export default function Vote({towers, tower}) {
     const darkMode = useSelector(getDarkMode);
@@ -75,6 +82,9 @@ export default function Vote({towers, tower}) {
 
     return (
         <>
+            <Description variant="h3" data-dm={darkMode}>
+                With your monkey knowledge
+            </Description>
             <VoteForm onSubmit={checkSubmit}>
                 <Grid container
                       spacing={4}
