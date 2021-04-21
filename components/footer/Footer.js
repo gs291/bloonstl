@@ -3,9 +3,9 @@ import {useSelector} from "react-redux";
 import {Typography} from "@material-ui/core";
 
 import siteSizes from "../../lib/utils/siteSizes";
-import {font_family, hexToRgb} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {font_family, rgbaHex} from "../../lib/utils/utils";
 
 const FooterContainer = styled.footer`
   display: flex;
@@ -34,7 +34,7 @@ const FooterLink = styled.a`
   margin-left: 5px;
   
   &:hover{
-    text-shadow: 5px 5px 5px rgba(${props => hexToRgb(props["data-dm"] ? siteColors.text.dark : siteColors.text.light)}, 0.25);
+    text-shadow: 5px 5px 5px ${props => rgbaHex(props["data-dm"] ? siteColors.text.dark : siteColors.text.light, 0.25)};
   }
 `;
 

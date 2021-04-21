@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {useDispatch, useSelector} from "react-redux";
 
-import {hexToRgb} from "../../lib/utils/utils";
+import {rgbaHex} from "../../lib/utils/utils";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {toggleDarkMode} from "../../lib/redux/actions";
@@ -54,7 +54,7 @@ const DarkModeContainer = styled.div`
   
   &:hover {
     cursor: pointer;
-    background-color: rgba(${props => hexToRgb(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light)}, 0.5);
+    background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.5)};
   }
 `;
 

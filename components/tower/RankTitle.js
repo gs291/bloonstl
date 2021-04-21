@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {Typography} from "@material-ui/core";
 
-import {getTierColor, hexToRgb} from "../../lib/utils/utils";
+import {getTierColor} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 

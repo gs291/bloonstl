@@ -5,13 +5,13 @@ import {useSelector} from "react-redux";
 import GridTitle from "./GridTitle";
 import GridItems from "./GridItems";
 import TowerCard from "../tower/TowerCard";
-import {hexToRgb} from "../../lib/utils/utils";
+import {rgbaHex} from "../../lib/utils/utils";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const TowerGrid = styled(Grid)`
   border-radius: 20px;
-  border: 6px solid rgba(${props => hexToRgb(props["data-tc"])}, ${props => props["data-dm"] ? 0.75 : 1});
+  border: 6px solid ${props => rgbaHex(props["data-tc"], props["data-dm"] ? 0.75 : 1)};
 `;
 
 

@@ -3,10 +3,10 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import { Link as MUILink } from "@material-ui/core";
 
+import {rgbaHex} from "../../lib/utils/utils";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
-import {hexToRgb} from "../../lib/utils/utils";
 
 const HoverLink = styled.div`
   width: ${props => props["data-m"] ? "100%" : "100%"};
@@ -18,7 +18,7 @@ const HoverLink = styled.div`
 
   &:hover {
     cursor: pointer;
-    background-color: rgba(${props => hexToRgb(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light)}, 0.5);
+    background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.5)};
   }
 `;
 

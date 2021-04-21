@@ -7,7 +7,7 @@ import BorderOuterIcon from '@material-ui/icons/BorderOuter';
 import HeroIcon from "../icon/HeroIcon";
 import TowerText from "../tower/TowerText";
 import MonkeyIcon from "../icon/MonkeyIcon";
-import {hexToRgb} from "../../lib/utils/utils";
+import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {TOGGLE_BORDER, TOGGLE_HEROES, TOGGLE_MONKEYS, updateFilter} from "../../lib/redux/actions";
 import {getBorder, getDarkMode, getHeroState, getMonkeyState, getMobile} from "../../lib/redux/selectors";
@@ -71,7 +71,7 @@ const FilterIcon = styled.div`
   
   &:hover {
     cursor: pointer;
-    background-color: rgba(${props => hexToRgb(props["data-dm"] ? siteColors.accent.light : siteColors.accent.dark)}, 0.5);
+    background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.light : siteColors.accent.dark, 0.5)};
   }
 `;
 

@@ -5,7 +5,7 @@ import Counter from "./Counter";
 import TowerText from "./TowerText";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
-import {getThousandsNumber, hexToRgb} from "../../lib/utils/utils";
+import {getThousandsNumber, rgbaHex} from "../../lib/utils/utils";
 
 const TowerTextContainer = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ export default function TowerInfo({tower}) {
                 <TowerText variant={"h2"}>
                     {tower.name}
                 </TowerText>
-                <TowerText variant="body1" textColor={`rgba(${hexToRgb(darkMode ? siteColors.text.dark: siteColors.text.light)}, 0.5)`} font={1}>
+                <TowerText variant="body1" textColor={rgbaHex(darkMode ? siteColors.text.dark: siteColors.text.light, 0.5)} font={1}>
                     {tower.description}
                 </TowerText>
                 <br />

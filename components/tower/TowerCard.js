@@ -6,7 +6,7 @@ import {Card, CardContent, Link as MUILink, Typography} from "@material-ui/core"
 import Icon from "../tower/Icon";
 import siteColors from "../../lib/utils/siteColors";
 import {getBorder, getDarkMode, getMobile} from "../../lib/redux/selectors";
-import {getTowerLink, getMonkeyColor, getHeroColor} from "../../lib/utils/utils";
+import {getTowerLink, getMonkeyColor, getHeroColor, rgbaHex} from "../../lib/utils/utils";
 
 const CardContainer = styled(Card)`
   @keyframes popup {
@@ -42,7 +42,9 @@ const CardContainer = styled(Card)`
   
   &:hover{
     cursor: pointer;
+    transform: translateY(-10px);
     background-color: ${props => props["data-hbc"]};
+    box-shadow: 0 10px 10px ${props => rgbaHex(props["data-bc"], 0.75)};
   }
 `;
 

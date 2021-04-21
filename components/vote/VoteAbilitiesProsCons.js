@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {Checkbox, FormControlLabel, Grid, Typography} from "@material-ui/core";
 
-import {hexToRgb} from "../../lib/utils/utils";
+import {rgbaHex} from "../../lib/utils/utils";
 import FixedDivider from "../divider/FixedDivider";
 import siteColors from "../../lib/utils/siteColors";
 import siteProsCons from "../../lib/utils/siteProsCons";
@@ -59,12 +59,12 @@ const ProConLabelContainer = styled.div`
 
 const ProConDescription = styled.div`
   margin-left: 5px;
-  color: rgba(${props => hexToRgb(props["data-dm"] ? siteColors.text.light : siteColors.text.dark)}, 0.5);
+  color: ${props => rgbaHex(props["data-dm"] ? siteColors.text.light : siteColors.text.dark, 0.5)};
 `;
 
 const ProConText = styled(Typography)`
   font-family: sans-serif;
-  color: rgba(${props => hexToRgb(props["data-dm"] ? siteColors.text.light : siteColors.text.dark)}, 0.5);
+  color: ${props => rgbaHex(props["data-dm"] ? siteColors.text.light : siteColors.text.dark, 0.5)};
 `;
 
 const ProsConsLabel = ({proCon, type, darkMode}) => (
