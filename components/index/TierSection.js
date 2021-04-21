@@ -16,7 +16,7 @@ const SansSerifText = styled(Typography)`
   font-family: sans-serif;
 `;
 
-export default function TierSection({className, scrollTo}) {
+export default function TierSection({className}) {
     const darkMode = useSelector(getDarkMode);
 
     return (
@@ -28,7 +28,6 @@ export default function TierSection({className, scrollTo}) {
                 justify="center"
                 className={className}
                 data-dm={darkMode}
-                ref={scrollTo}
             >
                 <Typography variant="h4">
                     Compare Tier Ranks

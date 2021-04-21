@@ -12,6 +12,7 @@ import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 const TowerGrid = styled(Grid)`
   border-radius: 20px;
   border: 6px solid ${props => rgbaHex(props["data-tc"], props["data-dm"] ? 0.75 : 1)};
+  box-shadow: 10px 10px 10px ${props => props["data-bc"]};
 `;
 
 
