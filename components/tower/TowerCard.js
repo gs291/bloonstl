@@ -5,7 +5,7 @@ import {Card, CardContent, Link as MUILink, Typography} from "@material-ui/core"
 
 import Icon from "../tower/Icon";
 import siteColors from "../../lib/utils/siteColors";
-import {getBorder, getDarkMode} from "../../lib/redux/selectors";
+import {getBorder, getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getTowerLink, getMonkeyColor, getHeroColor} from "../../lib/utils/utils";
 
 const CardContainer = styled(Card)`
@@ -62,6 +62,7 @@ const TowerName = styled(Typography)`
 `;
 
 export default function TowerCard({tower, towerType, rank, ignoreFilter}) {
+    const mobile = useSelector(getMobile);
     const border = useSelector(getBorder);
     const darkMode = useSelector(getDarkMode);
 
@@ -90,7 +91,7 @@ export default function TowerCard({tower, towerType, rank, ignoreFilter}) {
                     <CardContainer data-brc={borderColor} data-bc={backgroundColor} data-hbc={hoverBackgroundColor}>
                         <CardContent>
                             <Icon tower={tower}/>
-                            <TowerName varient="body1" data-dm={darkMode}>
+                            <TowerName variant={mobile ? "body1" : "h5"} data-dm={darkMode}>
                                 {tower.name}
                             </TowerName>
                         </CardContent>
