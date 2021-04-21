@@ -2,15 +2,16 @@ import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
-import {getTierColor} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import FiltersTierList from "../filters/FiltersTierList";
 import GridTowerContainer from "../grid/GridTowerContainer";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getTierColor, getTowerType} from "../../lib/utils/utils";
+import {getDarkMode, getHeroState, getMobile, getMonkeyState} from "../../lib/redux/selectors";
 
 const FilterContainer = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   border-radius: 20px;
+  width: 100%;
   background-color: ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   transition: 0.3s;
@@ -18,7 +19,9 @@ const FilterContainer = styled.div`
 
 export default function TierListGrid({ className, tiers }) {
     const mobile = useSelector(getMobile);
+    const heroes = useSelector(getHeroState);
     const darkMode = useSelector(getDarkMode);
+    const monkeys = useSelector(getMonkeyState);
 
     const colors = {
         "s": getTierColor("s"),
@@ -31,6 +34,28 @@ export default function TierListGrid({ className, tiers }) {
         gridSpacing = 4;
     }
 
+    const sortByName = (a, b) =>  (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
+    const filterTowers = (towers) => {
+        let filteredTowers = towers.filter(tower => {
+            const towerType = getTowerType(tower.type);
+            if (towerType === "monkey" && !monkeys) {
+                return false;
+            } else if (towerType === "hero" && !heroes) {
+                return false;
+            }
+            return true;
+        });
+
+        filteredTowers.sort(sortByName);
+        return filteredTowers;
+    }
+
+    const filteredTiers = {
+        "s": filterTowers(tiers["s"]),
+        "a": filterTowers(tiers["a"]),
+        "b": filterTowers(tiers["b"]),
+    }
+
     return (
         <>
             <FilterContainer data-dm={darkMode} className={className}>
@@ -39,32 +64,32 @@ export default function TierListGrid({ className, tiers }) {
             <Grid container spacing={gridSpacing} direction="column">
                 <Grid item>
                     <GridTowerContainer
-                        towers={tiers["s"]}
+                        towers={filteredTiers["s"]}
                         title="S Tier"
                         rank="s"
                         backgroundColor={darkMode ? siteColors.tier.s.grid.dark : siteColors.tier.s.grid.light}
                         titleColor={colors.s}
-                        keepBorder={0}
+                        ignoreFilter={0}
                     />
                 </Grid>
                 <Grid item>
                     <GridTowerContainer
-                        towers={tiers["a"]}
+                        towers={filteredTiers["a"]}
                         title="A Tier"
                         rank="a"
                         backgroundColor={darkMode ? siteColors.tier.a.grid.dark : siteColors.tier.a.grid.light}
                         titleColor={colors.a}
-                        keepBorder={0}
+                        ignoreFilter={0}
                     />
                 </Grid>
                 <Grid item>
                     <GridTowerContainer
-                        towers={tiers["b"]}
+                        towers={filteredTiers["b"]}
                         title="B Tier"
                         rank="b"
                         backgroundColor={darkMode ? siteColors.tier.b.grid.dark : siteColors.tier.b.grid.light}
                         titleColor={colors.b}
-                        keepBorder={0}
+                        ignoreFilter={0}
                     />
                 </Grid>
             </Grid>

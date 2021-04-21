@@ -15,7 +15,7 @@ const TowerGrid = styled(Grid)`
 `;
 
 
-export default function GridTowerContainer({towers, title, rank, backgroundColor, titleColor, keepBorder}) {
+export default function GridTowerContainer({towers, title, rank, backgroundColor, titleColor, ignoreFilter, }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
@@ -36,7 +36,7 @@ export default function GridTowerContainer({towers, title, rank, backgroundColor
                             <Grid xs={gridSpacing} item key={tower.id}>
                                 <TowerCard tower={tower}
                                            towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}
-                                           rank={rank} keepBorder={keepBorder}
+                                           rank={rank} ignoreFilter={ignoreFilter}
                                 />
                             </Grid>
                         ))}

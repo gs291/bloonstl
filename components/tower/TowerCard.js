@@ -9,6 +9,31 @@ import {getBorder, getDarkMode} from "../../lib/redux/selectors";
 import {getTowerLink, getMonkeyColor, getHeroColor} from "../../lib/utils/utils";
 
 const CardContainer = styled(Card)`
+  @keyframes popup {
+    0% {
+      transform: scale(0);
+      opacity: 0.0;
+    }
+    60% {
+      transform: scale(1.1);
+    }
+    80% {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  animation-name: popup;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  
+  
+  
   margin: 5px;
   background-color: ${props => props["data-bc"]};
   border: 4px solid ${props => props["data-brc"]};
@@ -36,9 +61,10 @@ const TowerName = styled(Typography)`
   text-overflow: ellipsis;
 `;
 
-export default function TowerCard({tower, towerType, rank, keepBorder}) {
+export default function TowerCard({tower, towerType, rank, ignoreFilter}) {
     const border = useSelector(getBorder);
     const darkMode = useSelector(getDarkMode);
+
     let href, borderColor, backgroundColor, hoverBackgroundColor;
 
     if (towerType === "monkey") {
@@ -53,7 +79,7 @@ export default function TowerCard({tower, towerType, rank, keepBorder}) {
         hoverBackgroundColor = getHeroColor(tower.name, darkMode, rank, true, true);
     }
 
-    if (!border && keepBorder === 0) {
+    if (!border && ignoreFilter === 0) {
         borderColor = backgroundColor;
     }
 
