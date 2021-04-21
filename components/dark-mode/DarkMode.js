@@ -46,7 +46,7 @@ const Switch = styled.input`
 const DarkModeContainer = styled.div`
   height: ${props => props["data-m"] ? siteSizes.nav.height : siteSizes.nav.link.height};
   width: ${props => props["data-m"] ? "100%" : "75px"};
-  border-radius: ${props => props["data-m"] ? 0 : 10}%;
+  border-radius: ${props => props["data-m"] ? 0 : 50}%;
   display: flex;
   justify-content: center;
   align-items: center;
