@@ -2,11 +2,11 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {Checkbox, FormControlLabel, Grid, Typography} from "@material-ui/core";
 
+import {hexToRgb} from "../../lib/utils/utils";
 import FixedDivider from "../divider/FixedDivider";
 import siteColors from "../../lib/utils/siteColors";
 import siteProsCons from "../../lib/utils/siteProsCons";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
-import {hexToRgb} from "../../lib/utils/utils";
 
 
 const GridContainer = styled.div`
@@ -59,7 +59,7 @@ const ProConLabelContainer = styled.div`
 
 const ProConDescription = styled.div`
   margin-left: 5px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(${props => hexToRgb(props["data-dm"] ? siteColors.text.light : siteColors.text.dark)}, 0.5);
 `;
 
 const ProConText = styled(Typography)`
@@ -73,8 +73,8 @@ const ProsConsLabel = ({proCon, type, darkMode}) => (
             <Typography variant="body1" color="inherit">
                 {proCon.title}
             </Typography>
-            <ProConDescription>
-                <ProConText variant="body2" data-dm={darkMode}>
+            <ProConDescription data-dm={darkMode}>
+                <ProConText variant="body2" data-dm={darkMode} color="inherit">
                     {type === "pro" ? proCon.pro : proCon.con}
                 </ProConText>
             </ProConDescription>
@@ -112,7 +112,7 @@ export default function VoteAbilitiesProsCons({className}) {
                         <Grid item xs={gridSpacing} key={key}>
                             <ProsConsControl
                                 control={<ControlCheckBox data-t="pro" data-dm={darkMode} name={`pro-${key}`} disableRipple />}
-                                label={<ProsConsLabel proCon={siteProsCons[key]} type="pro" data-dm={darkMode}/>}
+                                label={<ProsConsLabel proCon={siteProsCons[key]} type="pro" darkMode={darkMode}/>}
                                 data-dm={darkMode}
                             />
                         </Grid>
@@ -137,7 +137,7 @@ export default function VoteAbilitiesProsCons({className}) {
                         <Grid item xs={gridSpacing} key={key}>
                             <ProsConsControl
                                 control={<ControlCheckBox data-t="con" data-dm={darkMode} name={`con-${key}`} disableRipple/>}
-                                label={<ProsConsLabel proCon={siteProsCons[key]} type="con" data-dm={darkMode}/>}
+                                label={<ProsConsLabel proCon={siteProsCons[key]} type="con" darkMode={darkMode}/>}
                                 data-dm={darkMode}
                             />
                         </Grid>

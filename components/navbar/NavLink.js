@@ -18,7 +18,7 @@ const HoverLink = styled.div`
 
   &:hover {
     cursor: pointer;
-    background-color: rgba(${props => props["data-dm"] ? hexToRgb(siteColors.accent.dark) : hexToRgb(siteColors.accent.light)}, 0.25);
+    background-color: rgba(${props => hexToRgb(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light)}, 0.5);
   }
 `;
 
