@@ -44,8 +44,8 @@ const Switch = styled.input`
 `;
 
 const DarkModeContainer = styled.div`
-  height: ${props => props["data-m"] ? siteSizes.nav.height : siteSizes.nav.link.height};
-  width: ${props => props["data-m"] ? "100%" : "75px"};
+  height: ${props => props["data-m"] ? "100%" : siteSizes.icon.darkMode.height};
+  width: ${props => props["data-m"] ? "100%" : siteSizes.icon.darkMode.height};
   border-radius: ${props => props["data-m"] ? 0 : 50}%;
   display: flex;
   justify-content: center;
@@ -58,7 +58,7 @@ const DarkModeContainer = styled.div`
   }
 `;
 
-export default function DarkMode({}){
+export default function DarkMode({className}){
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
@@ -71,6 +71,7 @@ export default function DarkMode({}){
                 onClick={changeDarkMode}
                 data-dm={darkMode}
                 data-m={mobile}
+                className={className}
             >
                 <Switch
                     checked={!darkMode}

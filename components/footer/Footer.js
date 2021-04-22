@@ -30,11 +30,10 @@ const FooterLink = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 5px;
   margin-left: 5px;
   
   &:hover{
-    text-shadow: 5px 5px 5px ${props => rgbaHex(props["data-dm"] ? siteColors.text.dark : siteColors.text.light, 0.25)};
+    text-shadow: 5px 5px 5px ${props => rgbaHex(props["data-dm"] ? siteColors.text.navLink.dark : siteColors.text.navLink.light, 0.75)};
   }
 `;
 
@@ -44,13 +43,14 @@ export default function Footer({ className }) {
     return (
         <>
             <FooterContainer className={className}>
-                <FooterText component="span" variant="body2">
+                <FooterText component="span" variant="body1">
                     Written and maintained by
                     <FooterLink href="https://gregsanchez.netlify.app/" data-dm={darkMode}>
-                        Gregory Sanchez.
+                        Gregory Sanchez
                     </FooterLink>
+                    .
                 </FooterText>
-                <FooterText component="span" variant="body2">
+                <FooterText component="span" variant="body1">
                     © 2021 Gregory Sanchez. All rights reserved.
                 </FooterText>
             </FooterContainer>

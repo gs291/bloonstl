@@ -8,9 +8,13 @@ import HeroIcon from "../icon/HeroIcon";
 import TowerText from "../tower/TowerText";
 import MonkeyIcon from "../icon/MonkeyIcon";
 import {rgbaHex} from "../../lib/utils/utils";
+import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {TOGGLE_BORDER, TOGGLE_HEROES, TOGGLE_MONKEYS, updateFilter} from "../../lib/redux/actions";
 import {getBorder, getDarkMode, getHeroState, getMonkeyState, getMobile} from "../../lib/redux/selectors";
+
+
+const iconSize = siteSizes.icon.filter.height;
 
 const FilterContainer = styled(FormControl)`
   padding: 20px;
@@ -28,18 +32,18 @@ const FilterArea = styled.div`
 `;
 
 const BorderOutlined = styled(BorderOuterIcon)`
-  width: 50px;
-  height: 50px;
+  width: ${iconSize};
+  height: ${iconSize};
 `;
 
 const BorderClear = styled(BorderClearIcon)`
-  width: 50px;
-  height: 50px;
+  width: ${iconSize};
+  height: ${iconSize};
 `;
 
 const Monkey = styled(MonkeyIcon)`
-  width: 50px;
-  height: 50px;
+  width: ${iconSize};
+  height: ${iconSize};
   fill: currentColor;
   transition: 0.3s;
 
@@ -47,8 +51,8 @@ const Monkey = styled(MonkeyIcon)`
 `;
 
 const Hero = styled(HeroIcon)`
-  width: 50px;
-  height: 50px;
+  width: ${iconSize};
+  height: ${iconSize};
   padding: 3px 0;
   fill: currentColor;
   transition: 0.3s;

@@ -19,6 +19,7 @@ const TopDrawer = styled(Drawer)`
 const DrawerContainer = styled.div`
   height: 100%;
   padding-top: ${siteSizes.nav.height};
+  padding-bottom: 25%;
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   color: ${props => props["data-dm"] ?  siteColors.text.dark : siteColors.text.light};
   transition: 0.3s;
@@ -26,6 +27,14 @@ const DrawerContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const DrawerLink = styled(NavLink)`
+  flex: 1;
+`;
+
+const DrawerDarkMode = styled(DarkMode)`
+  flex: 1;
 `;
 
 export default function NavDrawer() {
@@ -46,8 +55,8 @@ export default function NavDrawer() {
                 transitionDuration={350}
             >
                 <DrawerContainer data-dm={darkMode}>
-                    { siteLinks.middle.map(mid => <NavLink {...mid} closeDrawer={closeDrawer}/>) }
-                    <DarkMode />
+                    { siteLinks.middle.map(mid => <DrawerLink {...mid} closeDrawer={closeDrawer}/>) }
+                    <DrawerDarkMode />
                 </DrawerContainer>
             </TopDrawer>
         </>
