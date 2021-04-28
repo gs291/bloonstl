@@ -1,15 +1,15 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
+import {useRouter} from "next/router";
 import {useSelector} from "react-redux";
-import { Link as MUILink } from "@material-ui/core";
+import {Link as MUILink} from "@material-ui/core";
 
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
-import {useRouter} from "next/router";
 
 const HoverLink = styled.div`
-  transition: 0.3s;
+  transition: 0.1s;
   text-align: center;
   padding: 0 2em;
   height: ${props => props["data-m"] ? "100%" : siteSizes.nav.height};
