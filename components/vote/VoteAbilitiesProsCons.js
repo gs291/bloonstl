@@ -59,12 +59,11 @@ const ProConLabelContainer = styled.div`
 
 const ProConDescription = styled.div`
   margin-left: 5px;
-  color: ${props => rgbaHex(props["data-dm"] ? siteColors.text.light : siteColors.text.dark, 0.5)};
 `;
 
 const ProConText = styled(Typography)`
   font-family: sans-serif;
-  color: ${props => rgbaHex(props["data-dm"] ? siteColors.text.light : siteColors.text.dark, 0.5)};
+  color: ${props => rgbaHex(props["data-dm"] ? siteColors.text.dark : siteColors.text.light, 0.75)};
 `;
 
 const ProsConsLabel = ({proCon, type, darkMode}) => (

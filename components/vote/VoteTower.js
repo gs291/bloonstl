@@ -14,6 +14,7 @@ import {useSelector} from "react-redux";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getTowerLink} from "../../lib/utils/utils";
 
 const VoteTowerContainer = styled.div`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
@@ -118,11 +119,11 @@ export default function VoteTower({towers, tower}) {
                                 >
                                     <ListSubheader disableSticky value="">Monkeys</ListSubheader>
                                     {towers.monkeys.map(monkey => (
-                                        <MenuItem value={monkey.name} key={monkey.id}>{monkey.name}</MenuItem>
+                                        <MenuItem value={getTowerLink(monkey)} key={monkey.id}>{monkey.name}</MenuItem>
                                     ))}
                                     <ListSubheader disableSticky value="">Heroes</ListSubheader>
                                     {towers.heroes.map(hero => (
-                                        <MenuItem value={hero.name} key={hero.id}>{hero.name}</MenuItem>
+                                        <MenuItem value={getTowerLink(hero)} key={hero.id}>{hero.name}</MenuItem>
                                     ))}
                                 </TowerSelect>
                             </>

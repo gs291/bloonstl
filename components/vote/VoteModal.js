@@ -6,9 +6,8 @@ import ProsCons from "../tower/ProsCons";
 import RankTitle from "../tower/RankTitle";
 import FixedDivider from "../divider/FixedDivider";
 import siteColors from "../../lib/utils/siteColors";
+import {parseTowerLink} from "../../lib/utils/utils";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
-import TowerText from "../tower/TowerText";
-import {getTierColor} from "../../lib/utils/utils";
 
 const Check = styled(Modal)`
   display: flex;
@@ -63,11 +62,6 @@ const TowerTier = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const TierText = styled(Typography)`
-  color: ${props => props["data-tc"]};
-  ${props => !props["data-dm"] && `text-shadow: 5px 5px 10px ${siteColors.text.light}`};
 `;
 
 export default function VoteModal({className, form, modalStatus, handleSubmit, handleClose}) {
@@ -129,7 +123,7 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
                                     <Error error={form.err} />
                                     : (
                                         <>
-                                            <Tower tower={form.tower} tier={form["tower-tier"]} />
+                                            <Tower tower={parseTowerLink(form.tower)} tier={form["tower-tier"]} />
 
                                             {form["ability-tier"] && (
                                                 <Ability rank={form["ability-tier"]}
