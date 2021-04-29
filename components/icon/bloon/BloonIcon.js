@@ -14,6 +14,8 @@ const Svg = styled.svg`
 
 const OuterPath = styled.path`
   opacity: 0.07;
+  transition: 0.3s;
+  fill: currentColor;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
@@ -22,6 +24,8 @@ const FollowPath = styled.path`
 `;
 
 const InnerPath = styled.path`
+  transition: 0.3s;
+  fill: currentColor;
   color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light}
 `;
 

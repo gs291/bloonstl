@@ -33,7 +33,7 @@ const AboveCenter = styled(Grid)`
 `;
 
 const TextContainer = styled.div`
-  margin-bottom: 20%;
+  margin-bottom: 150px;
 `;
 
 const BackgroundContainer = styled.div`
