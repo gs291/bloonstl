@@ -71,12 +71,12 @@ export default function TowerCard({tower, towerType, rank, ignoreFilter}) {
     let href, borderColor, backgroundColor, hoverBackgroundColor;
 
     if (towerType === "monkey") {
-        href = `/monkey/${getTowerLink(tower)}`;
+        href = `/monkey/${getTowerLink(tower.name)}`;
         borderColor = getMonkeyColor(tower.type, darkMode);
         backgroundColor = getMonkeyColor(tower.type, darkMode,  rank, true);
         hoverBackgroundColor = getMonkeyColor(tower.type, darkMode, rank, true, true);
     } else if (towerType === "hero") {
-        href = `/hero/${getTowerLink(tower)}`;
+        href = `/hero/${getTowerLink(tower.name)}`;
         borderColor = getHeroColor(tower.name, darkMode);
         backgroundColor = getHeroColor(tower.name, darkMode, rank, true, false);
         hoverBackgroundColor = getHeroColor(tower.name, darkMode, rank, true, true);

@@ -17,10 +17,6 @@ const OptionalDiv = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-
-  &:hover {
-    cursor: pointer;
-  }
 `;
 
 const OptionalContainer = styled.div`
@@ -29,6 +25,10 @@ const OptionalContainer = styled.div`
   padding: 1em;
   background-color: ${props => props["data-dm"] ? siteColors.vote.optional.dark : siteColors.vote.optional.light};
   border-radius: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Expander = styled.div`
@@ -46,8 +46,8 @@ export default function VoteOptional({className, title, collapse, handleCollapse
 
     return (
         <>
-            <OptionalDiv onClick={handleCollapse} data-dm={darkMode}>
-                <OptionalContainer data-dm={darkMode} className={className}>
+            <OptionalDiv data-dm={darkMode}>
+                <OptionalContainer onClick={handleCollapse} data-dm={darkMode} className={className}>
                     <div>
                         <Typography variant="body1" color="inherit">
                             {title}

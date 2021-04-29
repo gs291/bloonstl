@@ -22,7 +22,7 @@ export async function getStaticPaths() {
     const paths = heroes.map(hero => {
         return {
             params: {
-                name: getTowerLink(hero)
+                name: getTowerLink(hero.name)
             }
         }
     });

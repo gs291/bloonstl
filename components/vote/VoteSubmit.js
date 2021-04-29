@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import ErrorIcon from "@material-ui/icons/Error";
-import {Button, CircularProgress} from "@material-ui/core";
+import {Button, CircularProgress, Typography} from "@material-ui/core";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 import siteColors from "../../lib/utils/siteColors";
@@ -63,7 +63,9 @@ export default function VoteSubmit ({className, progress}) {
                                 </ProgressContainer>
                             ) : (
                                 <SubmitVote type="submit" data-dm={darkMode}>
-                                    Vote!
+                                    <Typography variant="h2" color="inherit">
+                                        Vote!
+                                    </Typography>
                                 </SubmitVote>
                             )
                         }

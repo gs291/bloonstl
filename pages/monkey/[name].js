@@ -23,7 +23,7 @@ export async function getStaticPaths() {
     const paths = monkeys.map(monkey => {
         return {
             params: {
-                name: getTowerLink(monkey)
+                name: getTowerLink(monkey.name)
             }
         }
     });

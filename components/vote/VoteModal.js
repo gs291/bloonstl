@@ -28,7 +28,7 @@ const ModalContainer = styled.div`
 
   min-height: 200px;
   max-height: 95vh;
-  padding: 3em ${props => props["data-m"] ? 1 : 2}em;
+  padding: ${props => props["data-m"] ? "2em 1em" : "3em 2em"};
   margin: 5%;
   
   
@@ -55,7 +55,20 @@ const ModalButton = styled(Button)`
   margin: 0 10px;
   padding: 1.5em 3em;
   
+  border-radius: 20px;
   color: inherit;
+`;
+
+const SubmitButton = styled(ModalButton)`
+  &:hover {
+    background-color: ${props => props["data-dm"] ? siteColors.vote.modal.submit.dark : siteColors.vote.modal.submit.light};
+  }
+`;
+
+const CancelButton = styled(ModalButton)`
+  &:hover {
+    background-color: ${props => props["data-dm"] ? siteColors.vote.modal.cancel.dark : siteColors.vote.modal.cancel.light}; 
+  }
 `;
 
 const TowerTier = styled.div`
@@ -81,7 +94,7 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
 
     const Tower = ({tower, tier}) => (
         <>
-                <Typography variant="h3" color="inherit">
+                <Typography variant={mobile ? "h4" : "h3"} color="inherit">
                     {tower}
                 </Typography>
 
@@ -94,7 +107,7 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
     const Ability = ({rank, ranks, pros, cons}) => (
         <>
             <FixedDivider width={80} />
-            <Typography variant="h3" color="inherit">
+            <Typography variant={mobile ? "h4" : "h3"} color="inherit">
                 Ability Tier
             </Typography>
             <RankTitle rank={rank} ranks={ranks} />
@@ -111,12 +124,12 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
                 onClose={handleClose}
                 className={className}
             >
-                <Fade in={modalStatus}>
+                <Fade in={modalStatus} timeout={mobile ? 50 : 100}>
                     <ModalContainer data-m={mobile} data-dm={darkMode}>
-                        <Typography variant="h2">
+                        <Typography variant={mobile ? "h3" : "h2"}>
                             Review Your Vote:
                         </Typography>
-                        <FixedDivider width={80} />
+                        <FixedDivider width={100} height={2} />
                         <ModalBodyContainer>
                             <ModalBody>
                                 {form.err ?
@@ -141,15 +154,15 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
                                 }
                             </ModalBody>
                         </ModalBodyContainer>
-                        <FixedDivider width={80} />
+                        <FixedDivider width={100} height={2} />
                         <div>
-                            <ModalButton onClick={handleClose} variant="outlined" size="large" data-dm={darkMode}>
+                            <CancelButton onClick={handleClose} variant="outlined" size="large" data-dm={darkMode}>
                                 Cancel
-                            </ModalButton>
+                            </CancelButton>
                             {!form.err && (
-                                <ModalButton onClick={handleSubmit} variant="outlined" size="large" data-dm={darkMode}>
+                                <SubmitButton onClick={handleSubmit} variant="outlined" size="large" data-dm={darkMode}>
                                     Submit
-                                </ModalButton>
+                                </SubmitButton>
                             )}
                         </div>
                     </ModalContainer>

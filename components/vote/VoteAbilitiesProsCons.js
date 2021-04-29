@@ -27,6 +27,11 @@ const ProsConsGrid = styled(Grid)`
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 300px;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    background: transparent;
+  }
 `;
 
 const LabelContainer = styled.div`
@@ -36,7 +41,9 @@ const LabelContainer = styled.div`
 `;
 
 const Label = styled(Typography)`
-  color: ${props => props["data-t"] === "pro" ? siteColors.chip.pros : siteColors.chip.cons};
+  color: ${props => props["data-t"] === "pro"
+          ? props["data-dm"] ? siteColors.pros.dark : siteColors.pros.light
+          : props["data-dm"] ? siteColors.cons.dark : siteColors.cons.light};
 `;
 
 const ProsConsControl = styled(FormControlLabel)`
@@ -48,7 +55,10 @@ const ControlCheckBox = styled(Checkbox)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   
   &.Mui-checked {
-    color: ${props => props["data-t"] === "pro" ? siteColors.chip.pros : siteColors.chip.cons};
+    color: ${props => 
+            props["data-t"] === "pro" 
+                    ? props["data-dm"] ? siteColors.pros.dark : siteColors.pros.light 
+                    : props["data-dm"] ? siteColors.cons.dark : siteColors.cons.light};
   }
 `;
 
@@ -96,7 +106,7 @@ export default function VoteAbilitiesProsCons({className}) {
         <>
             <GridContainer data-dm={darkMode}>
                 <LabelContainer>
-                    <Label variant="h4" data-t="pro">
+                    <Label variant="h4" data-t="pro" data-dm={darkMode}>
                         Pros
                     </Label>
                     <FixedDivider width={100} backgroundColor="#fff"/>
@@ -121,7 +131,7 @@ export default function VoteAbilitiesProsCons({className}) {
 
             <GridContainer data-dm={darkMode}>
                 <LabelContainer>
-                    <Label variant="h4" data-t="con">
+                    <Label variant="h4" data-t="con" data-dm={darkMode}>
                         Cons
                     </Label>
                     <FixedDivider width={100} backgroundColor="#fff"/>

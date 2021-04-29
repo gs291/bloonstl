@@ -47,7 +47,9 @@ const Monkey = styled(MonkeyIcon)`
   fill: currentColor;
   transition: 0.3s;
 
-  border-bottom: 2px solid ${props => props["data-s"] ? siteColors.chip.pros : siteColors.chip.cons};
+  border-bottom: 2px solid ${props => props["data-s"] 
+          ? props["data-dm"] ? siteColors.pros.dark : siteColors.pros.light
+          : props["data-dm"] ? siteColors.cons.dark : siteColors.cons.light};
 `;
 
 const Hero = styled(HeroIcon)`
@@ -57,7 +59,9 @@ const Hero = styled(HeroIcon)`
   fill: currentColor;
   transition: 0.3s;
   
-  border-bottom: 2px solid ${props => props["data-s"] ? siteColors.chip.pros : siteColors.chip.cons};
+  border-bottom: 2px solid ${props => props["data-s"]
+          ? props["data-dm"] ? siteColors.pros.dark : siteColors.pros.light
+          : props["data-dm"] ? siteColors.cons.dark : siteColors.cons.light};
 `;
 
 const FilterIcon = styled.div`
@@ -128,12 +132,12 @@ export default function FiltersTierList({className}) {
                     </FilterTooltip>
                     <FilterTooltip tooltip={"Toggle Monkeys"}>
                         <FilterIcon data-dm={darkMode} onClick={handleMonkeys}>
-                                <Monkey data-s={monkeys}/>
+                                <Monkey data-s={monkeys} data-dm={darkMode}/>
                         </FilterIcon>
                     </FilterTooltip>
                     <FilterTooltip tooltip={"Toggle Heroes"}>
                         <FilterIcon data-dm={darkMode} onClick={handleHeroes}>
-                                <Hero data-s={heroes}/>
+                                <Hero data-s={heroes} data-dm={darkMode}/>
                         </FilterIcon>
                     </FilterTooltip>
                 </FilterArea>

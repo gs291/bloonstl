@@ -84,6 +84,7 @@ export default function VoteTower({towers, tower}) {
     const [towerSelect, setTowerSelect] = useState("");
     const handleSelect = (e) => setTowerSelect(e.target.value);
 
+    console.log(tower);
     return (
         <>
             <VoteTowerContainer data-dm={darkMode}>
@@ -114,16 +115,16 @@ export default function VoteTower({towers, tower}) {
                                     value={towerSelect}
                                     onChange={handleSelect}
                                     data-dm={darkMode}
-                                    defaultValue={tower ? getTowerLink(tower) : ""}
+                                    defaultValue={tower ? tower : ""}
                                     required
                                 >
                                     <ListSubheader disableSticky value="">Monkeys</ListSubheader>
                                     {towers.monkeys.map(monkey => (
-                                        <MenuItem value={getTowerLink(monkey)} key={monkey.id}>{monkey.name}</MenuItem>
+                                        <MenuItem value={getTowerLink(monkey.name)} key={monkey.id}>{monkey.name}</MenuItem>
                                     ))}
                                     <ListSubheader disableSticky value="">Heroes</ListSubheader>
                                     {towers.heroes.map(hero => (
-                                        <MenuItem value={getTowerLink(hero)} key={hero.id}>{hero.name}</MenuItem>
+                                        <MenuItem value={getTowerLink(hero.name)} key={hero.id}>{hero.name}</MenuItem>
                                     ))}
                                 </TowerSelect>
                             </>
