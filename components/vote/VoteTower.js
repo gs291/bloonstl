@@ -114,7 +114,7 @@ export default function VoteTower({towers, tower}) {
                                     value={towerSelect}
                                     onChange={handleSelect}
                                     data-dm={darkMode}
-                                    defaultValue={tower ? tower : ""}
+                                    defaultValue={tower ? getTowerLink(tower) : ""}
                                     required
                                 >
                                     <ListSubheader disableSticky value="">Monkeys</ListSubheader>
