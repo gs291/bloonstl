@@ -47,9 +47,7 @@ const Monkey = styled(MonkeyIcon)`
   fill: currentColor;
   transition: 0.3s;
 
-  border-bottom: 2px solid ${props => props["data-s"] 
-          ? props["data-dm"] ? siteColors.pros.dark : siteColors.pros.light
-          : props["data-dm"] ? siteColors.cons.dark : siteColors.cons.light};
+  border-bottom: 2px solid ${props => props["data-s"] ? siteColors.pros.dark : siteColors.cons.dark};
 `;
 
 const Hero = styled(HeroIcon)`
@@ -59,9 +57,7 @@ const Hero = styled(HeroIcon)`
   fill: currentColor;
   transition: 0.3s;
   
-  border-bottom: 2px solid ${props => props["data-s"]
-          ? props["data-dm"] ? siteColors.pros.dark : siteColors.pros.light
-          : props["data-dm"] ? siteColors.cons.dark : siteColors.cons.light};
+  border-bottom: 2px solid ${props => props["data-s"] ? siteColors.pros.dark : siteColors.cons.dark};
 `;
 
 const FilterIcon = styled.div`

@@ -28,6 +28,7 @@ const PathSlider = styled(Slider)`
   width: ${props => props["data-m"] ? 90 : 75}%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 40px;
   
   color: inherit;
   
@@ -133,7 +134,7 @@ export default function VoteAbilities() {
                     <TierLabel value="b" control={<TierRadio />} label="B" labelPlacement="top"/>
                 </AbilityTier>
 
-                <VoteOptional title="Want to vote on Ability Path Pros/Cons?" collapse={collapseProCon} handleCollapse={handleCollapseProCon} />
+                <VoteOptional title="Vote on on Ability Path Pros/Cons" collapse={collapseProCon} handleCollapse={handleCollapseProCon} />
                 <Collapse in={collapseProCon}>
                     <VoteAbilitiesProsCons />
                 </Collapse>

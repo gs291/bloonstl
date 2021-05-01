@@ -9,8 +9,8 @@ import VoteSubmit from "./VoteSubmit";
 import VoteOptional from "./VoteOptional";
 import VoteAbilities from "./VoteAbilities";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {parseForm, sendVote} from "../../lib/utils/utils";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const VoteForm = styled.form`
   width: 100%;
@@ -20,6 +20,10 @@ const VoteForm = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const VoteSection = styled(Grid)`
+  width: 100%;
 `;
 
 const VoteContainer = styled.div`
@@ -39,6 +43,7 @@ const Description = styled(Typography)`
 
 
 export default function Vote({towers, tower}) {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     const [collapsePaths, setCollapsePaths] = useState(false);
@@ -87,30 +92,30 @@ export default function Vote({towers, tower}) {
             </Description>
             <VoteForm onSubmit={checkSubmit}>
                 <Grid container
-                      spacing={4}
+                      spacing={mobile ? 2 : 4}
                       direction="column"
                       justify="center"
                 >
-                    <Grid item>
+                    <VoteSection item>
                         <PaddedVoteContainer data-dm={darkMode}>
                             <VoteTower towers={towers} tower={tower} />
                         </PaddedVoteContainer>
-                    </Grid>
+                    </VoteSection>
 
-                    <Grid item>
+                    <VoteSection item>
                         <PaddedVoteContainer data-dm={darkMode}>
-                            <VoteOptional title="Want to vote on Ability Paths?" collapse={collapsePaths} handleCollapse={handleCollapsePaths} />
+                            <VoteOptional title="Vote on Ability Paths" collapse={collapsePaths} handleCollapse={handleCollapsePaths} />
                             <Collapse in={collapsePaths}>
                                 <VoteAbilities />
                             </Collapse>
                         </PaddedVoteContainer>
-                    </Grid>
+                    </VoteSection>
 
-                    <Grid item>
+                    <VoteSection item>
                         <VoteContainer data-dm={darkMode}>
                             <VoteSubmit progress={progress}/>
                         </VoteContainer>
-                    </Grid>
+                    </VoteSection>
                 </Grid>
             </VoteForm>
             <VoteModal

@@ -4,7 +4,7 @@ import {DoubleArrow} from "@material-ui/icons";
 
 import {getTierColor} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const UpgradeArrowContainer = styled.div`
   display: flex;
@@ -19,14 +19,16 @@ const Arrow = styled(DoubleArrow)`
                   ? getTierColor(props.rank) 
                   : props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   transition: 0.3s;
+  ${props => props["data-m"] ? "width: 15px;" : ""}
 `;
 
 export default function UpgradeArrow({ className, rank, selected }) {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
     return (
         <>
             <UpgradeArrowContainer className={className}>
-                <Arrow data-s={selected} rank={rank} data-dm={darkMode}/>
+                <Arrow data-s={selected} rank={rank} data-dm={darkMode} data-m={mobile}/>
             </UpgradeArrowContainer>
         </>
     );

@@ -24,10 +24,10 @@ const ModalContainer = styled.div`
   
   border-radius: 20px;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-  background-color:  ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
+  background-color:  ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
 
   min-height: 200px;
-  max-height: 95vh;
+  max-height: 90vh;
   padding: ${props => props["data-m"] ? "2em 1em" : "3em 2em"};
   margin: 5%;
   
@@ -57,6 +57,7 @@ const ModalButton = styled(Button)`
   
   border-radius: 20px;
   color: inherit;
+  border: 1px solid ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
 const SubmitButton = styled(ModalButton)`
@@ -77,18 +78,30 @@ const TowerTier = styled.div`
   align-items: center;
 `;
 
+const ErrorContainer = styled.div`
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const ErrorTitle = styled(Typography)`
+  margin-bottom: 20px;
+`;
+
 export default function VoteModal({className, form, modalStatus, handleSubmit, handleClose}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     const Error = ({error}) => (
         <>
-            <Typography variant="h3" color="error">
-                Error
-            </Typography>
-            <Typography variant="h4" color="error">
-                {error}
-            </Typography>
+            <ErrorContainer>
+                <ErrorTitle variant="h3" color="error">
+                    Error
+                </ErrorTitle>
+                <Typography variant="h4" color="error">
+                    {error}
+                </Typography>
+            </ErrorContainer>
         </>
     );
 
@@ -112,7 +125,10 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
             </Typography>
             <RankTitle rank={rank} ranks={ranks} />
             {(pros || cons) && (
-                <ProsCons pros={pros} cons={cons} />
+                <>
+                    <FixedDivider width={80} />
+                    <ProsCons pros={pros} cons={cons} />
+                </>
             )}
         </>
     );
