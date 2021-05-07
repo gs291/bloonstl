@@ -1,9 +1,9 @@
 -- MySQL bloonstl initial.sql
 -- Gregory Sanchez
 
-DROP TABLE IF EXISTS AbilityRanksInfo;
-DROP TABLE IF EXISTS TowerRanks;
-DROP TABLE IF EXISTS AbilityRanks;
+DROP TABLE IF EXISTS AbilityTiersInfo;
+DROP TABLE IF EXISTS TowerTiers;
+DROP TABLE IF EXISTS AbilityTiers;
 DROP TABLE IF EXISTS Abilities;
 DROP TABLE IF EXISTS Towers;
 DROP TABLE IF EXISTS Monkeys;
@@ -55,7 +55,7 @@ CREATE TABLE `Abilities` (
     CONSTRAINT `ab_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `TowerRanks` (
+CREATE TABLE `TowerTiers` (
     `id` INT(11) AUTO_INCREMENT NOT NULL,
     `tower_id` INT(11) NOT NULL,
     `tier` VARCHAR(1) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE `TowerRanks` (
     CONSTRAINT `twr_rnk_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `AbilityRanks` (
+CREATE TABLE `AbilityTiers` (
     `id` INT(11) AUTO_INCREMENT NOT NULL,
     `tower_id` INT(11) NOT NULL,
     `tier` VARCHAR(1) NOT NULL,
@@ -115,11 +115,11 @@ CREATE TABLE `AbilityRanks` (
 --   - trkp: Track Placement
 --   - vis: Visibility
 --   - zomg: Z.O.M.G (Zeppelin of Mighty Gargantuaness)
-CREATE TABLE `AbilityRanksInfo` (
+CREATE TABLE `AbilityTiersInfo` (
     `id` INT(11) AUTO_INCREMENT NOT NULL,
     `rank_id` INT(11) NOT NULL,
     `pros` VARCHAR(255) NOT NULL,
     `cons` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`),
-    CONSTRAINT `ab_rnk_ifo_fk_1` FOREIGN KEY (`rank_id`) REFERENCES `AbilityRanks` (`id`) ON DELETE CASCADE
+    CONSTRAINT `ab_rnk_ifo_fk_1` FOREIGN KEY (`rank_id`) REFERENCES `AbilityTiers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
