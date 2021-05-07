@@ -44,14 +44,13 @@ export default function Footer({ className }) {
         <>
             <FooterContainer className={className}>
                 <FooterText component="span" variant="body1">
+                    © 2021 Gregory Sanchez
+                </FooterText>
+                <FooterText component="span" variant="body1">
                     Written and maintained by
                     <FooterLink href="https://gregsanchez.netlify.app/" data-dm={darkMode}>
                         Gregory Sanchez
                     </FooterLink>
-                    .
-                </FooterText>
-                <FooterText component="span" variant="body1">
-                    © 2021 Gregory Sanchez. All rights reserved.
                 </FooterText>
             </FooterContainer>
         </>
