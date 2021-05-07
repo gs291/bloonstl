@@ -1,14 +1,15 @@
 import styled from "@emotion/styled";
+import {useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 import NavLink from "./NavLink";
 import MenuButton from "./MenuButton";
 import NavCollapse from "./NavCollapse";
 import DarkMode from "../dark-mode/DarkMode";
+import TextTooltip from "../tooltip/TextTooltip";
 import siteLinks from "../../lib/utils/siteLinks";
 import {closeDrawer} from "../../lib/redux/actions";
-import {getMobile} from "../../lib/redux/selectors";
-import {useRef, useState} from "react";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const NavSection = styled.div`
   flex: 0.5;
@@ -31,6 +32,7 @@ export default function SiteLinks() {
     const expanderRef = useRef();
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);
+    const darkMode = useSelector(getDarkMode);
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -80,7 +82,9 @@ export default function SiteLinks() {
             <SmallNavSection>
                 <NavContainer>
                     {!mobile && (
-                        <DarkMode />
+                        <TextTooltip tooltip={`${darkMode ? "Light" : "Dark"} Mode`}>
+                            <DarkMode />
+                        </TextTooltip>
                     )}
                     { mobile && (
                         <MenuButton />

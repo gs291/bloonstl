@@ -8,6 +8,7 @@ import {rgbaHex} from "../../lib/utils/utils";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import TextTooltip from "../tooltip/TextTooltip";
 
 const NavExpandText = styled.div`
   height: 10px;
@@ -71,13 +72,15 @@ export default function NavCollapse({links, expanderRef, anchorEl, handleExpand,
 
     return (
         <>
-            <NavExpand onClick={handleExpand} ref={expanderRef} data-m={mobile} data-dm={darkMode}>
-                <NavExpandHover>
-                    <NavExpandText>
-                        . . .
-                    </NavExpandText>
-                </NavExpandHover>
-            </NavExpand>
+            <TextTooltip tooltip={"More"}>
+                <NavExpand onClick={handleExpand} ref={expanderRef} data-m={mobile} data-dm={darkMode}>
+                    <NavExpandHover>
+                        <NavExpandText>
+                            . . .
+                        </NavExpandText>
+                    </NavExpandHover>
+                </NavExpand>
+            </TextTooltip>
             <ExpandMenu
                 open={!!anchorEl}
                 onClose={handleClose}

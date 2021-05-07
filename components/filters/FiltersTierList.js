@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
+import {FormControl} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
-import {FormControl, Tooltip} from "@material-ui/core";
 import BorderClearIcon from '@material-ui/icons/BorderClear';
 import BorderOuterIcon from '@material-ui/icons/BorderOuter';
 
 import HeroIcon from "../icon/HeroIcon";
-import TowerText from "../tower/TowerText";
 import MonkeyIcon from "../icon/MonkeyIcon";
 import {rgbaHex} from "../../lib/utils/utils";
+import TextTooltip from "../tooltip/TextTooltip";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {TOGGLE_BORDER, TOGGLE_HEROES, TOGGLE_MONKEYS, updateFilter} from "../../lib/redux/actions";
@@ -79,28 +79,6 @@ const FilterIcon = styled.div`
   }
 `;
 
-const FilterTooltip = ({children, tooltip}) => (
-    <>
-        <Tooltip
-            arrow
-            placement="top"
-            title={(
-                <TowerText
-                    variant="h6"
-                    font={true}
-                    textColor={siteColors.text.dark}
-                >
-                    {tooltip}
-                </TowerText>
-            )}
-        >
-            <div>
-                {children}
-            </div>
-        </Tooltip>
-    </>
-);
-
 export default function FiltersTierList({className}) {
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);
@@ -117,7 +95,7 @@ export default function FiltersTierList({className}) {
         <>
             <FilterContainer data-m={mobile} className={className}>
                 <FilterArea>
-                    <FilterTooltip tooltip={"Toggle Borders"}>
+                    <TextTooltip tooltip={"Toggle Borders"}>
                         <FilterIcon data-dm={darkMode} onClick={handleBorder}>
                                 {border ? (
                                     <BorderOutlined />
@@ -125,17 +103,17 @@ export default function FiltersTierList({className}) {
                                     <BorderClear />
                                 )}
                         </FilterIcon>
-                    </FilterTooltip>
-                    <FilterTooltip tooltip={"Toggle Monkeys"}>
+                    </TextTooltip>
+                    <TextTooltip tooltip={"Toggle Monkeys"}>
                         <FilterIcon data-dm={darkMode} onClick={handleMonkeys}>
                                 <Monkey data-s={monkeys} data-dm={darkMode}/>
                         </FilterIcon>
-                    </FilterTooltip>
-                    <FilterTooltip tooltip={"Toggle Heroes"}>
+                    </TextTooltip>
+                    <TextTooltip tooltip={"Toggle Heroes"}>
                         <FilterIcon data-dm={darkMode} onClick={handleHeroes}>
                                 <Hero data-s={heroes} data-dm={darkMode}/>
                         </FilterIcon>
-                    </FilterTooltip>
+                    </TextTooltip>
                 </FilterArea>
             </FilterContainer>
         </>
