@@ -1200,7 +1200,7 @@ SELECT id INTO @obyn_greenfoot FROM Heroes WHERE name='Obyn Greenfoot';
 INSERT INTO `Towers` VALUES (NULL, @obyn_greenfoot, NULL);
 SELECT id INTO @tower_obyn_greenfoot FROM Towers WHERE hero_id=@obyn_greenfoot;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_obyn_greenfoot, 'a', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_obyn_greenfoot, 'b', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 0, '', 'Sends wolf spirits to attack the Bloons.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 1, '', 'Nature''s Wrath: All Druids in range get +1 pierce.', 0, 0);
@@ -1230,7 +1230,7 @@ SELECT id INTO @sauda FROM Heroes WHERE name='Sauda';
 INSERT INTO `Towers` VALUES (NULL, @sauda, NULL);
 SELECT id INTO @tower_sauda FROM Towers WHERE hero_id=@sauda;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_sauda, 's', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_sauda, 'b', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 0, '', 'Slashes with both swords at nearby Bloons', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 1, '', 'Pops more Bloons per attack.', 0, 0);
@@ -1346,7 +1346,7 @@ SELECT id INTO @pat_fusty FROM Heroes WHERE name='Pat Fusty';
 INSERT INTO `Towers` VALUES (NULL, @pat_fusty, NULL);
 SELECT id INTO @tower_pat_fusty FROM Towers WHERE hero_id=@pat_fusty;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_pat_fusty, 'a', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_pat_fusty, 's', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 0, '', 'Pat slams Bloons into the ground.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 1, '', 'Increased radius of Pat''s slam attack.', 0, 0);
@@ -1406,7 +1406,7 @@ SELECT id INTO @admiral_brickell FROM Heroes WHERE name='Admiral Brickell';
 INSERT INTO `Towers` VALUES (NULL, @admiral_brickell, NULL);
 SELECT id INTO @tower_admiral_brickell FROM Towers WHERE hero_id=@admiral_brickell;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_admiral_brickell, 'b', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_admiral_brickell, 'a', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 0, '', 'Drops powerful sea mines that seek and destroy Bloons.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 1, '', 'Increased attack speed.', 0, 0);
