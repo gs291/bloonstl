@@ -40,7 +40,7 @@ export async function getStaticProps({ params }) {
 
     if (hero) {
         const hid = hero.id;
-        hero.abilities = await dataSources().abilitiesAPI.getAbilitiesByHeroId({ hid });
+        hero.abilities = await dataSources().abilitiesAPI.getAbilitiesByHeroId({ id: hid });
     }
 
     return {
