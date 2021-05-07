@@ -44,12 +44,12 @@ export async function getStaticProps({ params }) {
         monkey.abilities = await dataSources().abilitiesAPI.getAbilitiesByMonkeyId({ id: mid });
 
         const name = monkey.name;
-        const abilityRanks = await dataSources().abilitiesAPI.getAbilityTiersWithInfoByMonkeyName({name});
-        if (abilityRanks) {
-            let abilityRankObj = { "s": [], "a": [], "b": [] };
+        const abilityTiers = await dataSources().abilitiesAPI.getAbilityTiersWithInfoByMonkeyName({name});
+        if (abilityTiers) {
+            let abilityTiersObj = { "s": [], "a": [], "b": [] };
 
-            abilityRanks.forEach(ar => abilityRankObj[ar.tier].push(ar));
-            monkey.ranks = abilityRankObj;
+            abilityTiers.forEach(ar => abilityTiersObj[ar.tier].push(ar));
+            monkey.ranks = abilityTiersObj;
         }
     }
 

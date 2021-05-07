@@ -27,6 +27,7 @@ export default function TierListGrid({ className, tiers }) {
         "s": getTierColor("s"),
         "a": getTierColor("a"),
         "b": getTierColor("b"),
+        "c": getTierColor("c")
     }
 
     let gridSpacing = 6;
@@ -54,6 +55,7 @@ export default function TierListGrid({ className, tiers }) {
         "s": filterTowers(tiers["s"]),
         "a": filterTowers(tiers["a"]),
         "b": filterTowers(tiers["b"]),
+        "c": filterTowers(tiers["c"]),
     }
 
     return (
@@ -89,6 +91,16 @@ export default function TierListGrid({ className, tiers }) {
                         rank="b"
                         backgroundColor={darkMode ? siteColors.tier.b.grid.dark : siteColors.tier.b.grid.light}
                         titleColor={colors.b}
+                        ignoreFilter={0}
+                    />
+                </Grid>
+                <Grid item>
+                    <GridTowerContainer
+                        towers={filteredTiers["c"]}
+                        title="C Tier"
+                        rank="c"
+                        backgroundColor={darkMode ? siteColors.tier.c.grid.dark : siteColors.tier.c.grid.light}
+                        titleColor={colors.c}
                         ignoreFilter={0}
                     />
                 </Grid>
