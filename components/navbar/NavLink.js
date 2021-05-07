@@ -33,8 +33,8 @@ const MLink = styled(MUILink)`
           props["data-m"] 
               ? props["data-dm"] ? siteColors.page.dark : siteColors.page.light
               : props["data-dm"]
-                  ? props["data-a"] ? siteColors.accent.dark : siteColors.page.dark
-                  : props["data-a"] ? siteColors.accent.light : siteColors.page.light
+                  ? props["data-a"] ? siteColors.accent.dark : "transparent"
+                  : props["data-a"] ? siteColors.accent.light : "transparent"
   };
 `;
 

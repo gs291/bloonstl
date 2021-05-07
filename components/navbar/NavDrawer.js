@@ -3,12 +3,12 @@ import {Drawer} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 
 import NavLink from "./NavLink";
+import DarkMode from "../dark-mode/DarkMode";
 import siteLinks from "../../lib/utils/siteLinks";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {toggleDrawer} from "../../lib/redux/actions";
 import {getDarkMode, getDrawer} from "../../lib/redux/selectors";
-import DarkMode from "../dark-mode/DarkMode";
 
 const TopDrawer = styled(Drawer)`
   .MuiDrawer-paper {
@@ -55,7 +55,8 @@ export default function NavDrawer() {
                 transitionDuration={350}
             >
                 <DrawerContainer data-dm={darkMode}>
-                    { siteLinks.middle.map(mid => <DrawerLink {...mid} closeDrawer={closeDrawer}/>) }
+                    { siteLinks.middle.links.map(mid => <DrawerLink {...mid} closeDrawer={closeDrawer}/>) }
+                    { siteLinks.middle.collapse.map(mid => <DrawerLink {...mid} closeDrawer={closeDrawer}/>) }
                     <DrawerDarkMode />
                 </DrawerContainer>
             </TopDrawer>
