@@ -3,7 +3,7 @@ import {useSelector} from "react-redux";
 import {Button, Fade, Modal, Typography} from "@material-ui/core";
 
 import ProsCons from "../tower/ProsCons";
-import RankTitle from "../tower/RankTitle";
+import TierTitle from "../tower/TierTitle";
 import FixedDivider from "../divider/FixedDivider";
 import siteColors from "../../lib/utils/siteColors";
 import {parseTowerLink} from "../../lib/utils/utils";
@@ -112,18 +112,18 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
                 </Typography>
 
             <TowerTier>
-                <RankTitle rank={tier} showText={true}/>
+                <TierTitle tier={tier} showText={true}/>
             </TowerTier>
         </>
     );
 
-    const Ability = ({rank, ranks, pros, cons}) => (
+    const Ability = ({tier, tiers, pros, cons}) => (
         <>
             <FixedDivider width={80} />
             <Typography variant={mobile ? "h4" : "h3"} color="inherit">
                 Ability Tier
             </Typography>
-            <RankTitle rank={rank} ranks={ranks} />
+            <TierTitle tier={tier} tiers={tiers} />
             {(pros || cons) && (
                 <>
                     <FixedDivider width={80} />
@@ -155,10 +155,10 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
                                             <Tower tower={parseTowerLink(form.tower)} tier={form["tower-tier"]} />
 
                                             {form["ability-tier"] && (
-                                                <Ability rank={form["ability-tier"]}
+                                                <Ability tier={form["ability-tier"]}
                                                          pros={form["pros"]}
                                                          cons={form["cons"]}
-                                                         ranks={{
+                                                         tiers={{
                                                              "top_path": form["ability-top"],
                                                              "middle_path": form["ability-middle"],
                                                              "bottom_path": form["ability-bottom"]

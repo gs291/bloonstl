@@ -8,11 +8,11 @@ const TooltipContainer = styled.div`
   padding: 1em;
 `;
 
-export default function AbilityTooltip({className, ability, rank, towerType, selected}) {
+export default function AbilityTooltip({className, ability, tier, towerType, selected}) {
     return (
         <>
             <TooltipContainer className={className}>
-                { towerType === "monkey" && <MonkeyAbilityTooltip ability={ability} rank={rank} selected={selected}/> }
+                { towerType === "monkey" && <MonkeyAbilityTooltip ability={ability} tier={tier} selected={selected}/> }
                 { towerType === "hero" && <HeroAbilityTooltip ability={ability} /> }
             </TooltipContainer>
         </>

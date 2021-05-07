@@ -21,7 +21,7 @@ const AbilityContainer = styled.div`
 const CardContainer = styled(Card)`
   border-radius: 50%;
   background-color: ${props => props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
-  border: 3px solid ${props => props["data-s"] ? getTierColor(props.rank) : props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
+  border: 3px solid ${props => props["data-s"] ? getTierColor(props.tier) : props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
   transition: 0.3s;
   box-shadow: 0 0 7.5px ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   
@@ -68,7 +68,7 @@ const ActivatedAbility = styled(OfflineBoltIcon)`
   }
 `;
 
-export default function Ability({className, ability, fileName, rank, towerType, selected}) {
+export default function Ability({className, ability, fileName, tier, towerType, selected}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
     return (
@@ -77,13 +77,13 @@ export default function Ability({className, ability, fileName, rank, towerType, 
                 <Tooltip
                     title={
                         <AbilityTooltip ability={ability}
-                                        rank={rank}
+                                        tier={tier}
                                         towerType={towerType}
                                         selected={selected}
                         />}
                     active={ability.active}
                 >
-                    <CardContainer data-s={selected} rank={rank} data-dm={darkMode}>
+                    <CardContainer data-s={selected} tier={tier} data-dm={darkMode}>
                         <CardContentContainer data-m={mobile}>
                             { towerType === "monkey" && (
                                 <ImageFill

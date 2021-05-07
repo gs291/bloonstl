@@ -117,9 +117,9 @@ CREATE TABLE `AbilityTiers` (
 --   - zomg: Z.O.M.G (Zeppelin of Mighty Gargantuaness)
 CREATE TABLE `AbilityTiersInfo` (
     `id` INT(11) AUTO_INCREMENT NOT NULL,
-    `rank_id` INT(11) NOT NULL,
+    `tier_id` INT(11) NOT NULL,
     `pros` VARCHAR(255) NOT NULL,
     `cons` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`),
-    CONSTRAINT `ab_rnk_ifo_fk_1` FOREIGN KEY (`rank_id`) REFERENCES `AbilityTiers` (`id`) ON DELETE CASCADE
+    CONSTRAINT `ab_rnk_ifo_fk_1` FOREIGN KEY (`tier_id`) REFERENCES `AbilityTiers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -52,16 +52,16 @@ export default class MonkeyAbilities extends PureComponent {
     }
 
     getAbilitiesCost() {
-        const { abilities, ranks } = this.props;
+        const { abilities, tiers } = this.props;
 
         let cost = 0;
 
         abilities.forEach(ability => {
-            if (ability.upgrade_path === 0 && ability.upgrade_tier < ranks.top_path) {
+            if (ability.upgrade_path === 0 && ability.upgrade_tier < tiers.top_path) {
                 cost += ability.cost_gold;
-            } else if (ability.upgrade_path === 1 && ability.upgrade_tier < ranks.middle_path) {
+            } else if (ability.upgrade_path === 1 && ability.upgrade_tier < tiers.middle_path) {
                 cost += ability.cost_gold;
-            } else if (ability.upgrade_path === 2 && ability.upgrade_tier < ranks.bottom_path){
+            } else if (ability.upgrade_path === 2 && ability.upgrade_tier < tiers.bottom_path){
                 cost += ability.cost_gold;
             }
         });
@@ -70,26 +70,26 @@ export default class MonkeyAbilities extends PureComponent {
     }
 
     getAbilities() {
-        const { abilities, monkeyFile, rank, ranks } = this.props;
+        const { abilities, monkeyFile, tier, tiers } = this.props;
 
         let pathTop = [], pathMiddle = [], pathBottom = [];
 
         abilities.forEach(ability => {
             if (ability.upgrade_path === 0) {
                 pathTop.push(
-                    <AbilityContainer ability={ability} fileName={monkeyFile} rank={rank}
-                                      towerType="monkey" selected={ability.upgrade_tier < ranks.top_path} key={ability.id}
+                    <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier}
+                                      towerType="monkey" selected={ability.upgrade_tier < tiers.top_path} key={ability.id}
                     />);
 
             } else if (ability.upgrade_path === 1) {
                 pathMiddle.push(
-                    <AbilityContainer ability={ability} fileName={monkeyFile} rank={rank}
-                                      towerType="monkey" selected={ability.upgrade_tier < ranks.middle_path} key={ability.id}
+                    <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier}
+                                      towerType="monkey" selected={ability.upgrade_tier < tiers.middle_path} key={ability.id}
                     />);
             } else {
                 pathBottom.push(
-                    <AbilityContainer ability={ability} fileName={monkeyFile} rank={rank}
-                                      towerType="monkey" selected={ability.upgrade_tier < ranks.bottom_path} key={ability.id}
+                    <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier}
+                                      towerType="monkey" selected={ability.upgrade_tier < tiers.bottom_path} key={ability.id}
                     />);
             }
         });

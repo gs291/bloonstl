@@ -68,7 +68,7 @@ export default function TierListGrid({ className, tiers }) {
                     <GridTowerContainer
                         towers={filteredTiers["s"]}
                         title="S Tier"
-                        rank="s"
+                        tier="s"
                         backgroundColor={darkMode ? siteColors.tier.s.grid.dark : siteColors.tier.s.grid.light}
                         titleColor={colors.s}
                         ignoreFilter={0}
@@ -78,7 +78,7 @@ export default function TierListGrid({ className, tiers }) {
                     <GridTowerContainer
                         towers={filteredTiers["a"]}
                         title="A Tier"
-                        rank="a"
+                        tier="a"
                         backgroundColor={darkMode ? siteColors.tier.a.grid.dark : siteColors.tier.a.grid.light}
                         titleColor={colors.a}
                         ignoreFilter={0}
@@ -88,7 +88,7 @@ export default function TierListGrid({ className, tiers }) {
                     <GridTowerContainer
                         towers={filteredTiers["b"]}
                         title="B Tier"
-                        rank="b"
+                        tier="b"
                         backgroundColor={darkMode ? siteColors.tier.b.grid.dark : siteColors.tier.b.grid.light}
                         titleColor={colors.b}
                         ignoreFilter={0}
@@ -98,7 +98,7 @@ export default function TierListGrid({ className, tiers }) {
                     <GridTowerContainer
                         towers={filteredTiers["c"]}
                         title="C Tier"
-                        rank="c"
+                        tier="c"
                         backgroundColor={darkMode ? siteColors.tier.c.grid.dark : siteColors.tier.c.grid.light}
                         titleColor={colors.c}
                         ignoreFilter={0}

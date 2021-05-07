@@ -30,7 +30,7 @@ export default function TierSection({className}) {
                 data-dm={darkMode}
             >
                 <Typography variant="h4">
-                    Compare Tier Ranks
+                    Compare Tier Tiers
                 </Typography>
                 <br />
                 <SansSerifText variant="body1">

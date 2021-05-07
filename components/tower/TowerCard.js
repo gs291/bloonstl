@@ -63,7 +63,7 @@ const TowerName = styled(Typography)`
   text-overflow: ellipsis;
 `;
 
-export default function TowerCard({tower, towerType, rank, ignoreFilter}) {
+export default function TowerCard({tower, towerType, tier, ignoreFilter}) {
     const mobile = useSelector(getMobile);
     const border = useSelector(getBorder);
     const darkMode = useSelector(getDarkMode);
@@ -73,13 +73,13 @@ export default function TowerCard({tower, towerType, rank, ignoreFilter}) {
     if (towerType === "monkey") {
         href = `/monkey/${getTowerLink(tower.name)}`;
         borderColor = getMonkeyColor(tower.type, darkMode);
-        backgroundColor = getMonkeyColor(tower.type, darkMode,  rank, true);
-        hoverBackgroundColor = getMonkeyColor(tower.type, darkMode, rank, true, true);
+        backgroundColor = getMonkeyColor(tower.type, darkMode,  tier, true);
+        hoverBackgroundColor = getMonkeyColor(tower.type, darkMode, tier, true, true);
     } else if (towerType === "hero") {
         href = `/hero/${getTowerLink(tower.name)}`;
         borderColor = getHeroColor(tower.name, darkMode);
-        backgroundColor = getHeroColor(tower.name, darkMode, rank, true, false);
-        hoverBackgroundColor = getHeroColor(tower.name, darkMode, rank, true, true);
+        backgroundColor = getHeroColor(tower.name, darkMode, tier, true, false);
+        hoverBackgroundColor = getHeroColor(tower.name, darkMode, tier, true, true);
     }
 
     if (!border && ignoreFilter === 0) {

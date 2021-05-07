@@ -6,7 +6,7 @@ import {getDifficulty} from "../../lib/redux/selectors";
 import {getThousandsNumber, getTierColor, goldCost} from "../../lib/utils/utils";
 
 
-export default function MonkeyAbilityTooltip({ ability, rank, selected }) {
+export default function MonkeyAbilityTooltip({ ability, tier, selected }) {
     const difficulty = useSelector(getDifficulty);
 
     return (
@@ -15,7 +15,7 @@ export default function MonkeyAbilityTooltip({ ability, rank, selected }) {
                 variant="h5"
                 textColor={
                     selected
-                        ? getTierColor(rank)
+                        ? getTierColor(tier)
                         : siteColors.text.dark
                 }
             >

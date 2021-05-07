@@ -23,7 +23,7 @@ const Label = styled(Typography)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
-const RankButton  = styled(Button)`
+const TierButton  = styled(Button)`
   background-color: ${props => getTierColor(props.value)};
   font-family: ${font_family};
   
@@ -34,10 +34,10 @@ const RankButton  = styled(Button)`
   }
 `;
 
-export default function FilterRanks({ className, handleRank }) {
+export default function FilterTiers({ className, handleTier }) {
     const darkMode = useSelector(getDarkMode);
 
-    if (!handleRank){ handleRank = (_, __) => <></>; }
+    if (!handleTier){ handleTier = (_, __) => <></>; }
     return (
         <>
             <FilterContainer>
@@ -45,30 +45,30 @@ export default function FilterRanks({ className, handleRank }) {
                     Ability Path Tiers:
                 </Label>
                 <BGroup variant="contained" disableElevation>
-                    <RankButton
-                        onClick={(e) => handleRank(e, "s")}
-                        name="rank"
+                    <TierButton
+                        onClick={(e) => handleTier(e, "s")}
+                        name="tier"
                         value="s"
                         data-dm={darkMode}
                     >
                         S&nbsp;&nbsp;Tier
-                    </RankButton>
-                    <RankButton
-                        onClick={(e) => handleRank(e, "a")}
-                        name="rank"
+                    </TierButton>
+                    <TierButton
+                        onClick={(e) => handleTier(e, "a")}
+                        name="tier"
                         value="a"
                         data-dm={darkMode}
                     >
                         A&nbsp;&nbsp;Tier
-                    </RankButton>
-                    <RankButton
-                        onClick={(e) => handleRank(e, "b")}
-                        name="rank"
+                    </TierButton>
+                    <TierButton
+                        onClick={(e) => handleTier(e, "b")}
+                        name="tier"
                         value="b"
                         data-dm={darkMode}
                     >
                         B&nbsp;&nbsp;Tier
-                    </RankButton>
+                    </TierButton>
                 </BGroup>
             </FilterContainer>
         </>

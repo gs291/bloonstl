@@ -49,7 +49,7 @@ export async function getStaticProps({ params }) {
             let abilityTiersObj = { "s": [], "a": [], "b": [] };
 
             abilityTiers.forEach(ar => abilityTiersObj[ar.tier].push(ar));
-            monkey.ranks = abilityTiersObj;
+            monkey.tiers = abilityTiersObj;
         }
     }
 
