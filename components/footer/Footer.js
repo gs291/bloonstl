@@ -19,6 +19,7 @@ const FooterText = styled(Typography)`
   font-family: sans-serif;
   display: flex;
   align-items: center;
+  text-align: center;
 `;
 
 const FooterLink = styled.a`

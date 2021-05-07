@@ -16,6 +16,7 @@ const ProsConsContainer = styled(Grid)`
 
 const SpacedGrid = styled(Grid)`
   flex: ${props => props["data-m"] ? 1 : 0.5};
+  width: ${props => props["data-m"] ? 100 : 90}%;
 `;
 
 export default function ProsCons({ className, pros, cons, backgroundColor }) {

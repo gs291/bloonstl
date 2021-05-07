@@ -63,7 +63,7 @@ export default function MonkeyPage({ monkey }) {
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <TierTitle tier={tier} tiers={tiers} totalCost={totalCost} backgroundColor={dividerBackgroundColor}/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <TotalCost variant="h4">
+            <TotalCost variant={mobile ? "h5" : "h4"}>
                 Path Cost: $<Counter cost={totalCost} />
             </TotalCost>
             <MonkeyAbilities abilities={monkey.abilities} monkeyFile={monkey.filename} tier={tier} tiers={tiers} updateCost={updateTotalCost}/>
