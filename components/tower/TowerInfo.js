@@ -48,11 +48,11 @@ export default function TowerInfo({tower}) {
                 <TierCostContainer data-m={mobile}>
                     <TowerTier tier={tower.tier} showText={true}/>
                     <TowerCosts data-m={mobile}>
-                        <TowerText variant="body1" textColor={siteColors.tower.gold}>
+                        <TowerText variant="body1" textColor={darkMode ? siteColors.tower.gold.dark : siteColors.tower.gold.light}>
                             In-game cost:&nbsp;$<Counter cost={tower.cost_gold} />
                         </TowerText>
                         { typeof tower.cost_cash === "number" && (
-                            <TowerText variant="body1" textColor={siteColors.tower.cash}>
+                            <TowerText variant="body1" textColor={darkMode ? siteColors.tower.cash.dark : siteColors.tower.cash.light}>
                                 Cash cost: {tower.cost_cash > 0 ? `\$${getThousandsNumber(tower.cost_cash)}` : "FREE"}
                             </TowerText>
                         )}
