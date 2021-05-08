@@ -152,16 +152,16 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
                                     <Error error={form.err} />
                                     : (
                                         <>
-                                            <Tower tower={parseTowerLink(form.tower)} tier={form["tower-tier"]} />
+                                            <Tower tower={parseTowerLink(form.tower)} tier={form["tower_tier"]} />
 
-                                            {form["ability-tier"] && (
-                                                <Ability tier={form["ability-tier"]}
+                                            {form["ability_tier"] && (
+                                                <Ability tier={form["ability_tier"]}
                                                          pros={form["pros"]}
                                                          cons={form["cons"]}
                                                          tiers={{
-                                                             "top_path": form["ability-top"],
-                                                             "middle_path": form["ability-middle"],
-                                                             "bottom_path": form["ability-bottom"]
+                                                             "top_path": form["ability_top"],
+                                                             "middle_path": form["ability_middle"],
+                                                             "bottom_path": form["ability_bottom"]
                                                          }}
                                                 />
                                             )}

@@ -84,7 +84,6 @@ export default function VoteTower({towers, tower}) {
     const [towerSelect, setTowerSelect] = useState("");
     const handleSelect = (e) => setTowerSelect(e.target.value);
 
-    console.log(tower);
     return (
         <>
             <VoteTowerContainer data-dm={darkMode}>
