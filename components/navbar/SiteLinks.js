@@ -82,7 +82,7 @@ export default function SiteLinks() {
             <SmallNavSection>
                 <NavContainer>
                     {!mobile && (
-                        <TextTooltip tooltip={`${darkMode ? "Light" : "Dark"} Mode`}>
+                        <TextTooltip tooltip={`Toggle ${darkMode ? "Light" : "Dark"} Mode`}>
                             <DarkMode />
                         </TextTooltip>
                     )}
