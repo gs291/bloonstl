@@ -65,15 +65,37 @@ const NavExpandItem = styled(MenuItem)`
   align-items: center;
 `;
 
+const MoreTooltip = styled(TextTooltip)`
+  ${props => props["data-d"] ? "" : "display: none;" }
+`;
+
 export default function NavCollapse({links, expanderRef, anchorEl, handleExpand, handleClose}){
+    const [isHover, setIsHover] = useState(false);
 
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
+    const Expander = () => (
+        <NavExpand onClick={handleExpand} ref={expanderRef} data-m={mobile} data-dm={darkMode}>
+            <NavExpandHover>
+                <NavExpandText>
+                    . . .
+                </NavExpandText>
+            </NavExpandHover>
+        </NavExpand>
+    )
+
     return (
         <>
-            <TextTooltip tooltip={"More"}>
-                <NavExpand onClick={handleExpand} ref={expanderRef} data-m={mobile} data-dm={darkMode}>
+            <TextTooltip tooltip={"More"} open={!anchorEl && isHover}>
+                <NavExpand
+                    onClick={handleExpand}
+                    ref={expanderRef}
+                    data-m={mobile}
+                    data-dm={darkMode}
+                    onMouseOver={() => setIsHover(true)}
+                    onMouseLeave={() => setIsHover(false)}
+                >
                     <NavExpandHover>
                         <NavExpandText>
                             . . .
