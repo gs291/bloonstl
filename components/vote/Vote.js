@@ -66,12 +66,12 @@ export default function Vote({towers, tower}) {
     const handleModalSubmit = async () => {
         setProgress(prg => ({...prg, modalStatus: false}))
 
-        let ignore = false;
+        let ignore = {"ignore": false};
         const controller = new AbortController();
         await sendVote(formInfo, controller, ignore, setProgress)
         return () => {
             controller.abort();
-            ignore = true;
+            ignore.ignore = true;
         };
     }
 
