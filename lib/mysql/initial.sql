@@ -85,7 +85,7 @@ CREATE TABLE `AbilityTiersInfo` (
     CONSTRAINT `ab_rnk_ifo_fk_1` FOREIGN KEY (`tier_id`) REFERENCES `AbilityTiers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `Votes` (
+CREATE TABLE `TowerVotes` (
     `id` INT(11) AUTO_INCREMENT NOT NULL,
     `tower_id` INT(11) NOT NULL,
     `tower_tier` VARCHAR(1) NOT NULL,

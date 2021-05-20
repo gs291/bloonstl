@@ -77,12 +77,15 @@ const StyledRadio = styled(Radio)`
   color: inherit;
 `;
 
-export default function VoteTower({towers, tower}) {
+export default function VoteTower({towers, tower, handleVoteType}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     const [towerSelect, setTowerSelect] = useState("");
-    const handleSelect = (e) => setTowerSelect(e.target.value);
+    const handleSelect = (e) => {
+        handleVoteType(e.target.value.slice(0, 1));
+        setTowerSelect(e.target.value);
+    }
 
     return (
         <>
@@ -119,11 +122,11 @@ export default function VoteTower({towers, tower}) {
                                 >
                                     <ListSubheader disableSticky value="">Monkeys</ListSubheader>
                                     {towers.monkeys.map(monkey => (
-                                        <MenuItem value={getTowerLink(monkey.name)} key={monkey.id}>{monkey.name}</MenuItem>
+                                        <MenuItem value={`m-${getTowerLink(monkey.name)}`} key={monkey.id}>{monkey.name}</MenuItem>
                                     ))}
                                     <ListSubheader disableSticky value="">Heroes</ListSubheader>
                                     {towers.heroes.map(hero => (
-                                        <MenuItem value={getTowerLink(hero.name)} key={hero.id}>{hero.name}</MenuItem>
+                                        <MenuItem value={`h-${getTowerLink(hero.name)}`} key={hero.id}>{hero.name}</MenuItem>
                                     ))}
                                 </TowerSelect>
                             </>

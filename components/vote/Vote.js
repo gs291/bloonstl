@@ -11,6 +11,8 @@ import VoteAbilities from "./VoteAbilities";
 import siteColors from "../../lib/utils/siteColors";
 import {parseForm, sendVote} from "../../lib/utils/utils";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import VoteAbilitiesProsCons from "./VoteAbilitiesProsCons";
+import voteQueries from "../../lib/graphql/queries/voteQueries";
 
 const VoteForm = styled.form`
   width: 100%;
@@ -46,6 +48,9 @@ export default function Vote({towers, tower}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
+    const [voteType, setVoteType] = useState("");
+    const handleVoteType = (type) => setVoteType(type);
+
     const [collapsePaths, setCollapsePaths] = useState(false);
     const handleCollapsePaths = (_) => setCollapsePaths(!collapsePaths);
 
@@ -68,7 +73,11 @@ export default function Vote({towers, tower}) {
 
         let ignore = {"ignore": false};
         const controller = new AbortController();
-        await sendVote(formInfo, controller, ignore, setProgress)
+        let query = voteQueries.submitMonkeyVoteMutation;
+        if (voteType === "h") {
+            query = voteQueries.submitHeroVoteMutation;
+        }
+        await sendVote(query, formInfo, controller, ignore, setProgress)
         return () => {
             controller.abort();
             ignore.ignore = true;
@@ -98,16 +107,28 @@ export default function Vote({towers, tower}) {
                 >
                     <VoteSection item>
                         <PaddedVoteContainer data-dm={darkMode}>
-                            <VoteTower towers={towers} tower={tower} />
+                            <VoteTower towers={towers} tower={tower} handleVoteType={handleVoteType}/>
                         </PaddedVoteContainer>
                     </VoteSection>
 
                     <VoteSection item>
                         <PaddedVoteContainer data-dm={darkMode}>
-                            <VoteOptional title="Vote on Ability Paths" collapse={collapsePaths} handleCollapse={handleCollapsePaths} />
-                            <Collapse in={collapsePaths}>
-                                <VoteAbilities />
-                            </Collapse>
+                            {voteType === "m" && (
+                                <>
+                                    <VoteOptional title="Vote on Ability Paths" collapse={collapsePaths} handleCollapse={handleCollapsePaths} />
+                                    <Collapse in={collapsePaths}>
+                                        <VoteAbilities />
+                                    </Collapse>
+                                </>
+                            )}
+                            {voteType === "h" && (
+                                <>
+                                    <VoteOptional title="Vote on Pros/Cons" collapse={collapsePaths} handleCollapse={handleCollapsePaths} />
+                                    <Collapse in={collapsePaths}>
+                                        <VoteAbilitiesProsCons />
+                                    </Collapse>
+                                </>
+                            )}
                         </PaddedVoteContainer>
                     </VoteSection>
 
