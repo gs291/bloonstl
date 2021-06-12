@@ -12,7 +12,7 @@ import {useSelector} from "react-redux";
 
 import VoteOptional from "./VoteOptional";
 import siteColors from "../../lib/utils/siteColors";
-import VoteAbilitiesProsCons from "./VoteAbilitiesProsCons";
+import VoteProsCons from "./VoteProsCons";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
@@ -136,7 +136,7 @@ export default function VoteAbilities() {
 
                 <VoteOptional title="Vote on on Ability Path Pros/Cons" collapse={collapseProCon} handleCollapse={handleCollapseProCon} />
                 <Collapse in={collapseProCon}>
-                    <VoteAbilitiesProsCons />
+                    <VoteProsCons />
                 </Collapse>
             </AbilitiesContainers>
         </>

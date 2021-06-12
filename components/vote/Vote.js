@@ -6,13 +6,13 @@ import {Collapse, Grid, Typography} from "@material-ui/core";
 import VoteModal from "./VoteModal";
 import VoteTower from "./VoteTower";
 import VoteSubmit from "./VoteSubmit";
+import VoteProsCons from "./VoteProsCons";
 import VoteOptional from "./VoteOptional";
 import VoteAbilities from "./VoteAbilities";
 import siteColors from "../../lib/utils/siteColors";
-import {parseForm, sendVote} from "../../lib/utils/utils";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
-import VoteAbilitiesProsCons from "./VoteAbilitiesProsCons";
 import voteQueries from "../../lib/graphql/queries/voteQueries";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {parseHeroForm, parseMonkeyForm, sendVote} from "../../lib/utils/utils";
 
 const VoteForm = styled.form`
   width: 100%;
@@ -64,7 +64,11 @@ export default function Vote({towers, tower}) {
 
     const checkSubmit = async (e) => {
         e.preventDefault()
-        setFormInfo(parseForm(e.target));
+        if (voteType === "m") {
+            setFormInfo(parseMonkeyForm(e.target));
+        } else if (voteType === "h") {
+            setFormInfo(parseHeroForm(e.target));
+        }
         setProgress(prg => ({...prg, modalStatus: true}));
     }
 
@@ -125,7 +129,7 @@ export default function Vote({towers, tower}) {
                                 <>
                                     <VoteOptional title="Vote on Pros/Cons" collapse={collapsePaths} handleCollapse={handleCollapsePaths} />
                                     <Collapse in={collapsePaths}>
-                                        <VoteAbilitiesProsCons />
+                                        <VoteProsCons />
                                     </Collapse>
                                 </>
                             )}

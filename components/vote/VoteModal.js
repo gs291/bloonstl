@@ -117,19 +117,24 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
         </>
     );
 
-    const Ability = ({tier, tiers, pros, cons}) => (
+    const ProsCons = ({pros, cons}) => (
         <>
-            <FixedDivider width={80} />
-            <Typography variant={mobile ? "h4" : "h3"} color="inherit">
-                Ability Tier
-            </Typography>
-            <TierTitle tier={tier} tiers={tiers} />
             {(pros || cons) && (
                 <>
                     <FixedDivider width={80} />
                     <ProsCons pros={pros} cons={cons} />
                 </>
             )}
+        </>
+    )
+
+    const Ability = ({tier, tiers}) => (
+        <>
+            <FixedDivider width={80} />
+            <Typography variant={mobile ? "h4" : "h3"} color="inherit">
+                Ability Tier
+            </Typography>
+            <TierTitle tier={tier} tiers={tiers} />
         </>
     );
 
@@ -155,15 +160,19 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
                                             <Tower tower={parseTowerLink(form.tower)} tier={form["tower_tier"]} />
 
                                             {form["ability_tier"] && (
-                                                <Ability tier={form["ability_tier"]}
-                                                         pros={form["pros"]}
-                                                         cons={form["cons"]}
-                                                         tiers={{
-                                                             "top_path": form["ability_top"],
-                                                             "middle_path": form["ability_middle"],
-                                                             "bottom_path": form["ability_bottom"]
-                                                         }}
-                                                />
+                                                <>
+                                                    <Ability tier={form["ability_tier"]}
+                                                             tiers={{
+                                                                 "top_path": form["ability_top"],
+                                                                 "middle_path": form["ability_middle"],
+                                                                 "bottom_path": form["ability_bottom"]
+                                                             }}
+                                                    />
+                                                    <ProsCons pros={form["pros"]} cons={form["cons"]} />
+                                                </>
+                                            )}
+                                            {!form["ability_tier"] && (
+                                                <ProsCons pros={form["pros"]} cons={form["cons"]} />
                                             )}
                                         </>
                                     )

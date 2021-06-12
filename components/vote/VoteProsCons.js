@@ -93,7 +93,7 @@ const ProsConsLabel = ({proCon, type, darkMode}) => (
 
 const prosConsKeys = Object.keys(siteProsCons);
 
-export default function VoteAbilitiesProsCons({className}) {
+export default function VoteProsCons({className}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
