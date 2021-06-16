@@ -23,7 +23,7 @@ const CardContainer = styled(Card)`
   background-color: ${props => props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
   border: 3px solid ${props => props["data-s"] ? getTierColor(props.tier) : props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
   transition: 0.3s;
-  box-shadow: 0 0 7.5px ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  box-shadow: 0 0 7.5px #000000;
   
   &:hover {
     cursor: pointer;
