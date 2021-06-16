@@ -20,9 +20,9 @@ const TotalCost = styled(TowerText)`
   margin-top: 10px;
 `;
 
-const Filters = styled.div`
+const AbilityTier = styled.div`
   display: flex;
-  flex-direction: ${props => props["data-m"] ? "column-reverse" : "row"};
+  flex-direction: ${props => props["data-m"] ? "column" : "row"};
   width: ${props => props["data-m"] ? 100 : 80}%;
   justify-content: space-evenly;
   align-items: center;
@@ -31,7 +31,8 @@ const Filters = styled.div`
 `;
 
 const FilterDiff = styled(FilterDifficulty)`
-  ${props => props["data-m"] ? "margin-bottom: 10px;" : ""};
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 
 export default function MonkeyPage({ monkey }) {
@@ -56,12 +57,12 @@ export default function MonkeyPage({ monkey }) {
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <Filters data-m={mobile}>
-                <FilterTiers handleTier={handleTier} />
-                <FilterDiff data-m={mobile}/>
-            </Filters>
+            <FilterDiff data-m={mobile}/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <TierTitle tier={tier} tiers={tiers} totalCost={totalCost} backgroundColor={dividerBackgroundColor}/>
+            <AbilityTier data-m={mobile}>
+                <FilterTiers tier={tier} handleTier={handleTier} />
+                <TierTitle tier={tier} tiers={tiers} totalCost={totalCost} backgroundColor={dividerBackgroundColor}/>
+            </AbilityTier>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <TotalCost variant={mobile ? "h5" : "h4"}>
                 Path Cost: $<Counter cost={totalCost} />

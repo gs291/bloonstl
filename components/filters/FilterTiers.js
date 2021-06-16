@@ -27,14 +27,14 @@ const TierButton  = styled(Button)`
   background-color: ${props => getTierColor(props.value)};
   font-family: ${font_family};
   
-  &:hover,
-  &:active,
-  &:focus {
+  ${props => props["data-s"] ? "box-shadow: inset 0 0 20px 2px #000000;" : ""}
+  
+  &:hover {
     background-color: ${props => getTierCardColor(props.value, props["data-dm"], true)};
   }
 `;
 
-export default function FilterTiers({ className, handleTier }) {
+export default function FilterTiers({ className, tier, handleTier }) {
     const darkMode = useSelector(getDarkMode);
 
     if (!handleTier){ handleTier = (_, __) => <></>; }
@@ -50,6 +50,7 @@ export default function FilterTiers({ className, handleTier }) {
                         name="tier"
                         value="s"
                         data-dm={darkMode}
+                        data-s={tier === "s"}
                     >
                         S&nbsp;&nbsp;Tier
                     </TierButton>
@@ -58,6 +59,7 @@ export default function FilterTiers({ className, handleTier }) {
                         name="tier"
                         value="a"
                         data-dm={darkMode}
+                        data-s={tier === "a"}
                     >
                         A&nbsp;&nbsp;Tier
                     </TierButton>
@@ -66,6 +68,7 @@ export default function FilterTiers({ className, handleTier }) {
                         name="tier"
                         value="b"
                         data-dm={darkMode}
+                        data-s={tier === "b"}
                     >
                         B&nbsp;&nbsp;Tier
                     </TierButton>
