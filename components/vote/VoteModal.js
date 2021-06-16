@@ -117,7 +117,7 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
         </>
     );
 
-    const ProsCons = ({pros, cons}) => (
+    const ProsConsContainer = ({pros, cons}) => (
         <>
             {(pros || cons) && (
                 <>
@@ -168,11 +168,11 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
                                                                  "bottom_path": form["ability_bottom"]
                                                              }}
                                                     />
-                                                    <ProsCons pros={form["pros"]} cons={form["cons"]} />
+                                                    <ProsConsContainer pros={form["pros"]} cons={form["cons"]} />
                                                 </>
                                             )}
                                             {!form["ability_tier"] && (
-                                                <ProsCons pros={form["pros"]} cons={form["cons"]} />
+                                                <ProsConsContainer pros={form["pros"]} cons={form["cons"]} />
                                             )}
                                         </>
                                     )
