@@ -41,7 +41,7 @@ export default function FilterTiers({ className, tier, handleTier }) {
     return (
         <>
             <FilterContainer>
-                <Label variant="body1" data-dm={darkMode}>
+                <Label variant="h5" data-dm={darkMode}>
                     Ability Path Tiers:
                 </Label>
                 <BGroup variant="contained" disableElevation>
