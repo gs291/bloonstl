@@ -2,7 +2,6 @@ import {useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
-import Votes from "../tower/Votes";
 import Counter from "../tower/Counter";
 import ProsCons from "../tower/ProsCons";
 import TierTitle from "../tower/TierTitle";
@@ -68,7 +67,6 @@ export default function MonkeyPage({ monkey }) {
                 Path Cost: $<Counter cost={totalCost} />
             </TotalCost>
             <MonkeyAbilities abilities={monkey.abilities} monkeyFile={monkey.filename} tier={tier} tiers={tiers} updateCost={updateTotalCost}/>
-            <Votes votes={tiers.votes} />
             <FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <ProsCons pros={tiers.pros} cons={tiers.cons} backgroundColor={dividerBackgroundColor}/>
