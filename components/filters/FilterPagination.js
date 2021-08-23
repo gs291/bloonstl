@@ -7,6 +7,7 @@ import {getDarkMode} from "../../lib/redux/selectors";
 
 const Pages = styled(Pagination)`
   transition: 0.3s;
+  margin-top: 10px;
   margin-bottom: 10px;
   & .MuiPaginationItem-root {
     color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};

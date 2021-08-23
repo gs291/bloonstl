@@ -18,7 +18,7 @@ const TowerTextContainer = styled.div`
 
 const TierCostContainer = styled.div`
   display: flex;
-  flex-direction: ${props => props["data-m"] ? "column" : "row"};
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
