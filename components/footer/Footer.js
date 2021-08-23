@@ -10,7 +10,7 @@ import {font_family, rgbaHex} from "../../lib/utils/utils";
 const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   height: ${siteSizes.footer.height};
 `;
@@ -44,9 +44,6 @@ export default function Footer({ className }) {
     return (
         <>
             <FooterContainer className={className}>
-                <FooterText component="span" variant="body1">
-                    © 2021 Gregory Sanchez
-                </FooterText>
                 <FooterText component="span" variant="body1">
                     Written and maintained by
                     <FooterLink href="https://gregsanchez.netlify.app/" data-dm={darkMode}>
