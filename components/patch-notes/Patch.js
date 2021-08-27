@@ -1,4 +1,5 @@
-import {useState} from "react";
+import PatchItems from "./PatchItems";
+import TowerText from "../tower/TowerText";
 
 
 export default function Patch({ patch }) {
@@ -7,7 +8,14 @@ export default function Patch({ patch }) {
 
     return (
         <>
-
+            {patch.map(patchItem => (
+                <div key={patchItem.title}>
+                    <TowerText variant="h3">
+                        {patchItem.title}
+                    </TowerText>
+                    <PatchItems items={patchItem.items} />
+                </div>
+            ))}
         </>
     );
 }
