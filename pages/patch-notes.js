@@ -7,7 +7,6 @@ import PatchNotesPage from "../components/patch-notes/PatchNotesPage";
 export default function PatchNotes({ patches }) {
     patches = JSON.parse(patches);
 
-    console.log(patches);
     return (
         <>
             <Header title="Patch Notes" />

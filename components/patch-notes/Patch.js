@@ -8,14 +8,12 @@ const PatchTitle = styled(TowerText)`
   margin-top: 30px;
 `;
 
-export default function Patch({ patch }) {
-
-    console.log(patch);
+export default function Patch({ patch, tags }) {
 
     return (
         <>
-            {patch.map(patchItem => (
-                <div key={patchItem.title}>
+            {patch.map((patchItem, idx) => (
+                <div id={tags[idx] && tags[idx].href} key={patchItem.title}>
                     <PatchTitle variant="h3">
                         {patchItem.title}
                     </PatchTitle>
