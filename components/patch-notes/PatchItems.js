@@ -6,10 +6,6 @@ const ItemList = styled.li`
   margin-top: 20px;
 `;
 
-const SubItemList = styled.li`
-  margin-top: 5px;
-`;
-
 export default function PatchItems({ className, items }) {
 
     return (
