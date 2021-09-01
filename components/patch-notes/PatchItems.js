@@ -34,15 +34,17 @@ export default function PatchItems({ className, items }) {
                                 <TowerText variant="h6" font={!!item.text}>
                                     {item.text ? item.text : item.title}
                                 </TowerText>
-                                <ul>
-                                    {item.subtexts && item.subtexts.map(text => (
-                                        <SubItemList key={text}>
-                                            <TowerText variant="body2" font={true}>
-                                                {text}
-                                            </TowerText>
-                                        </SubItemList>
-                                    ))}
-                                </ul>
+                                {item.subtexts && (
+                                    <ul>
+                                        {item.subtexts.map(text => (
+                                            <SubItemList key={text}>
+                                                <TowerText variant="body2" font={true}>
+                                                    {text}
+                                                </TowerText>
+                                            </SubItemList>
+                                        ))}
+                                    </ul>
+                                )}
                             </>
                         )}
                     </ItemList>
