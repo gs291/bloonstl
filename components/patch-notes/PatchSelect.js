@@ -29,6 +29,10 @@ const VersionSelect = styled(Select)`
   &:before {
     border-bottom: 1px solid ${props => rgbaHex(props["data-dm"] ? siteColors.text.dark : siteColors.text.light, 0.42)};
   }
+
+  &:hover:not(.Mui-disabled):before {
+    border-bottom: 2px solid ${props => rgbaHex(props["data-dm"] ? siteColors.text.dark : siteColors.text.light, 0.87)};
+  }
   
   &:after {
     border-bottom: 1px solid ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
