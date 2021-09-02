@@ -33,12 +33,17 @@ const TocList = styled.ul`
 const TocItem = styled.li`
   margin-top: 10px;
   list-style-type: lower-roman;
+  
+  &::marker {
+    color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  }
 `;
 
 const TocLink = styled.a`
   &:hover {
     cursor: pointer;
     text-decoration: underline;
+    text-decoration-color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   }
 `;
 
@@ -58,9 +63,9 @@ export default function TableOfContents({ tags }) {
                     </TowerText>
                     <TocList>
                         {tags.map(tag => (
-                            <TocItem key={tag.href}>
+                            <TocItem key={tag.href} data-dm={darkMode}>
                                 <Link href={`#${tag.href}`}>
-                                    <TocLink>
+                                    <TocLink data-dm={darkMode}>
                                         <TocText variant="h6">
                                             {tag.title}
                                         </TocText>

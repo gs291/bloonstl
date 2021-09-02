@@ -15,7 +15,7 @@ const ItemList = styled.li`
 `;
 
 const TowerTitle = styled(TowerText)`
-  ${props => props["data-bc"] ? `text-shadow: 0 5px 10px ${props["data-bc"]};` : ''}
+  ${props => props["data-bc"] ? `text-shadow: 0 5px 20px ${props["data-bc"]};` : ''}
 `;
 
 export default function PatchItems({ className, items }) {
