@@ -1,9 +1,14 @@
+import styled from "@emotion/styled";
 import {useEffect, useState} from "react";
 
 import Patch from "./Patch";
 import PatchSelect from "./PatchSelect";
-import {getTowerLink} from "../../lib/utils/utils";
 import TableOfContents from "./TableOfContents";
+import {getTowerLink} from "../../lib/utils/utils";
+
+const PageContainer = styled.div`
+  width: 100%;
+`;
 
 
 export default function PatchNotesPage({ patches }) {
@@ -28,9 +33,11 @@ export default function PatchNotesPage({ patches }) {
 
     return (
         <>
-            <PatchSelect patch={patch} handlePatchSelect={handlePatchSelect} />
-            <TableOfContents tags={toc} />
-            <Patch patch={patches[patch]} tags={toc}/>
+            <PageContainer>
+                <PatchSelect patch={patch} handlePatchSelect={handlePatchSelect} />
+                <TableOfContents tags={toc} />
+                <Patch patch={patches[patch]} tags={toc}/>
+            </PageContainer>
         </>
     );
 }

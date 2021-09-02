@@ -12,9 +12,7 @@ export default function PatchNotes({ patches }) {
             <Header title="Patch Notes" />
             <MainContainer>
                 <PageTitle title="Patch Notes" />
-                <div>
-                    <PatchNotesPage patches={patches}/>
-                </div>
+                <PatchNotesPage patches={patches}/>
             </MainContainer>
         </>
     );
