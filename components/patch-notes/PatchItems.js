@@ -4,7 +4,11 @@ import {useSelector} from "react-redux";
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
-import {getHeroColor, getMonkeyColor} from "../../lib/utils/utils";
+import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
+
+const Items = styled.ul`
+  padding-left: 20px;
+`;
 
 const ItemList = styled.li`
   margin-top: 20px;
@@ -23,11 +27,11 @@ export default function PatchItems({ className, items }) {
 
     return (
         <>
-            <ul>
+            <Items>
                 {items.map((item, idx) => (
                     <ItemList key={idx} data-dm={darkMode}>
                         <TowerTitle
-                            variant={item.text ? "h6" : "h5"}
+                            variant={item.text ? "body1" : "h6"}
                             font={!!item.text}
                             data-bc={
                                 item.tower ?
@@ -40,14 +44,14 @@ export default function PatchItems({ className, items }) {
                                 : item.tower ? item.tower : item.title}
                         </TowerTitle>
                         {item.description && (
-                            <TowerText variant="body1" font={true}>
+                            <TowerText variant="body1" font={true} textColor={rgbaHex(darkMode ? siteColors.text.dark : siteColors.text.light, 0.5)}>
                                 {item.description}
                             </TowerText>
                         )}
                         {item.items && (<PatchItems items={item.items} />)}
                     </ItemList>
                 ))}
-            </ul>
+            </Items>
         </>
     );
 }

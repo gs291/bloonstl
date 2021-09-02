@@ -10,9 +10,10 @@ const PatchTitle = styled(TowerText)`
 
 export default function Patch({ patch, tags }) {
 
+    console.log(patch);
     return (
         <>
-            {patch.map((patchItem, idx) => (
+            {patch.items.map((patchItem, idx) => (
                 <div id={tags[idx] && tags[idx].href} key={patchItem.title}>
                     <PatchTitle variant="h3">
                         {patchItem.title}
