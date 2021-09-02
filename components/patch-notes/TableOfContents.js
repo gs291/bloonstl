@@ -35,6 +35,7 @@ const TocItem = styled.li`
   list-style-type: lower-roman;
   
   &::marker {
+    transition: 0.3s;
     color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   }
 `;
