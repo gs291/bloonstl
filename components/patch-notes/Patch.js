@@ -10,7 +10,6 @@ const PatchTitle = styled(TowerText)`
 
 export default function Patch({ patch, tags }) {
 
-    console.log(patch);
     return (
         <>
             {patch.items.map((patchItem, idx) => (
