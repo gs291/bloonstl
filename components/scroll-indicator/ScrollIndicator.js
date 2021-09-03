@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import Chevron from "./Cheveron";
+import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
-import {hexToRgb} from "../../lib/utils/utils";
 
 const IndicatorContainer = styled.div`
   position: relative;
@@ -21,7 +21,7 @@ const ClickContainer = styled.div`
   padding-top: 50px;
   padding-bottom: 100px;
   &:hover {
-    background-color: rgba(${props => props["data-dm"] ? hexToRgb(siteColors.accent.dark) : hexToRgb(siteColors.accent.light)}, 0.25);
+    background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.25)};
     cursor: pointer;
   }
 `;

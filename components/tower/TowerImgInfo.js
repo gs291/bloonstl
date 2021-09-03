@@ -15,10 +15,10 @@ const TowerContainer = styled(Grid)`
 
 export default function TowerImgInfo({tower, towerType}) {
     const mobile = useSelector(getMobile);
-    let backgroundColor, gridSpacing = 4;
+    let backgroundColor, gridSpacing = 5;
 
     if (mobile) {
-        gridSpacing = 6
+        gridSpacing = 12
     }
 
     if (towerType === "monkey") {

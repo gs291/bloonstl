@@ -22,7 +22,7 @@ export async function getStaticPaths() {
     const paths = heroes.map(hero => {
         return {
             params: {
-                name: getTowerLink(hero)
+                name: getTowerLink(hero.name)
             }
         }
     });
@@ -40,7 +40,10 @@ export async function getStaticProps({ params }) {
 
     if (hero) {
         const hid = hero.id;
-        hero.abilities = await dataSources().abilitiesAPI.getAbilitiesByHeroId({ hid });
+        hero.abilities = await dataSources().abilitiesAPI.getAbilitiesByHeroId({ id: hid });
+
+        const hero_tier = await dataSources().towersAPI.getTowerTierByHeroId({id: hid})
+        hero.tier = hero_tier.tier
     }
 
     return {

@@ -14,6 +14,11 @@ const ProsConsContainer = styled(Grid)`
   margin-bottom: 10px;
 `;
 
+const SpacedGrid = styled(Grid)`
+  flex: ${props => props["data-m"] ? 1 : 0.5};
+  width: ${props => props["data-m"] ? 100 : 90}%;
+`;
+
 export default function ProsCons({ className, pros, cons, backgroundColor }) {
     const mobile = useSelector(getMobile);
     if (!pros) { pros = ""; }
@@ -30,17 +35,17 @@ export default function ProsCons({ className, pros, cons, backgroundColor }) {
                                alignItems={mobile ? "center" : "stretch"}
                                data-m={mobile}
             >
-                <Grid item>
+                <SpacedGrid data-m={mobile} item>
                     <GridProsCons isPro={true} proCons={pros}/>
-                </Grid>
+                </SpacedGrid>
                 { mobile ? (
                     <FixedDivider width={80} backgroundColor={backgroundColor}/>
                 ) : (
                     <VerticalDivider backgroundColor={backgroundColor} />
                 )}
-                <Grid item>
+                <SpacedGrid data-m={mobile} item>
                     <GridProsCons isPro={false} proCons={cons}/>
-                </Grid>
+                </SpacedGrid>
             </ProsConsContainer>
         </>
     );

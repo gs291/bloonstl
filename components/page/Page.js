@@ -49,7 +49,7 @@ export default function Page(props) {
     const globals = css`
       ::-webkit-scrollbar {
         width: 10px;
-        background-color: ${darkMode ? siteColors.scroll.dark : siteColors.scroll.light};
+        background: ${darkMode ? siteColors.scroll.dark : siteColors.scroll.light};
       }
     
       ::-webkit-scrollbar-track {

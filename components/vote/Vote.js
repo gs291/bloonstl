@@ -6,11 +6,13 @@ import {Collapse, Grid, Typography} from "@material-ui/core";
 import VoteModal from "./VoteModal";
 import VoteTower from "./VoteTower";
 import VoteSubmit from "./VoteSubmit";
+import VoteProsCons from "./VoteProsCons";
 import VoteOptional from "./VoteOptional";
 import VoteAbilities from "./VoteAbilities";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
-import {parseForm, sendVote} from "../../lib/utils/utils";
+import voteQueries from "../../lib/graphql/queries/voteQueries";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {parseHeroForm, parseMonkeyForm, sendVote} from "../../lib/utils/utils";
 
 const VoteForm = styled.form`
   width: 100%;
@@ -20,6 +22,10 @@ const VoteForm = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const VoteSection = styled(Grid)`
+  width: 100%;
 `;
 
 const VoteContainer = styled.div`
@@ -39,7 +45,11 @@ const Description = styled(Typography)`
 
 
 export default function Vote({towers, tower}) {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
+
+    const [voteType, setVoteType] = useState("");
+    const handleVoteType = (type) => setVoteType(type);
 
     const [collapsePaths, setCollapsePaths] = useState(false);
     const handleCollapsePaths = (_) => setCollapsePaths(!collapsePaths);
@@ -54,19 +64,27 @@ export default function Vote({towers, tower}) {
 
     const checkSubmit = async (e) => {
         e.preventDefault()
-        setFormInfo(parseForm(e.target));
+        if (voteType === "m") {
+            setFormInfo(parseMonkeyForm(e.target));
+        } else if (voteType === "h") {
+            setFormInfo(parseHeroForm(e.target));
+        }
         setProgress(prg => ({...prg, modalStatus: true}));
     }
 
     const handleModalSubmit = async () => {
         setProgress(prg => ({...prg, modalStatus: false}))
 
-        let ignore = false;
+        let ignore = {"ignore": false};
         const controller = new AbortController();
-        await sendVote(formInfo, controller, ignore, setProgress)
+        let query = voteQueries.submitMonkeyVoteMutation;
+        if (voteType === "h") {
+            query = voteQueries.submitHeroVoteMutation;
+        }
+        await sendVote(query, formInfo, controller, ignore, setProgress)
         return () => {
             controller.abort();
-            ignore = true;
+            ignore.ignore = true;
         };
     }
 
@@ -87,30 +105,42 @@ export default function Vote({towers, tower}) {
             </Description>
             <VoteForm onSubmit={checkSubmit}>
                 <Grid container
-                      spacing={4}
+                      spacing={mobile ? 2 : 4}
                       direction="column"
                       justify="center"
                 >
-                    <Grid item>
+                    <VoteSection item>
                         <PaddedVoteContainer data-dm={darkMode}>
-                            <VoteTower towers={towers} tower={tower} />
+                            <VoteTower towers={towers} tower={tower} handleVoteType={handleVoteType}/>
                         </PaddedVoteContainer>
-                    </Grid>
+                    </VoteSection>
 
-                    <Grid item>
+                    <VoteSection item>
                         <PaddedVoteContainer data-dm={darkMode}>
-                            <VoteOptional title="Want to vote on Ability Paths?" collapse={collapsePaths} handleCollapse={handleCollapsePaths} />
-                            <Collapse in={collapsePaths}>
-                                <VoteAbilities />
-                            </Collapse>
+                            {voteType === "m" && (
+                                <>
+                                    <VoteOptional title="Vote on Ability Paths" collapse={collapsePaths} handleCollapse={handleCollapsePaths} />
+                                    <Collapse in={collapsePaths}>
+                                        <VoteAbilities />
+                                    </Collapse>
+                                </>
+                            )}
+                            {voteType === "h" && (
+                                <>
+                                    <VoteOptional title="Vote on Pros/Cons" collapse={collapsePaths} handleCollapse={handleCollapsePaths} />
+                                    <Collapse in={collapsePaths}>
+                                        <VoteProsCons />
+                                    </Collapse>
+                                </>
+                            )}
                         </PaddedVoteContainer>
-                    </Grid>
+                    </VoteSection>
 
-                    <Grid item>
+                    <VoteSection item>
                         <VoteContainer data-dm={darkMode}>
                             <VoteSubmit progress={progress}/>
                         </VoteContainer>
-                    </Grid>
+                    </VoteSection>
                 </Grid>
             </VoteForm>
             <VoteModal

@@ -3,12 +3,11 @@ import {useSelector} from "react-redux";
 import {Button, Fade, Modal, Typography} from "@material-ui/core";
 
 import ProsCons from "../tower/ProsCons";
-import RankTitle from "../tower/RankTitle";
+import TierTitle from "../tower/TierTitle";
 import FixedDivider from "../divider/FixedDivider";
 import siteColors from "../../lib/utils/siteColors";
+import {parseTowerLink} from "../../lib/utils/utils";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
-import TowerText from "../tower/TowerText";
-import {getTierColor} from "../../lib/utils/utils";
 
 const Check = styled(Modal)`
   display: flex;
@@ -25,11 +24,11 @@ const ModalContainer = styled.div`
   
   border-radius: 20px;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-  background-color:  ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
+  background-color:  ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
 
   min-height: 200px;
-  max-height: 95vh;
-  padding: 3em ${props => props["data-m"] ? 1 : 2}em;
+  max-height: 90vh;
+  padding: ${props => props["data-m"] ? "2em 1em" : "3em 2em"};
   margin: 5%;
   
   
@@ -56,7 +55,21 @@ const ModalButton = styled(Button)`
   margin: 0 10px;
   padding: 1.5em 3em;
   
+  border-radius: 20px;
   color: inherit;
+  border: 1px solid ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+`;
+
+const SubmitButton = styled(ModalButton)`
+  &:hover {
+    background-color: ${props => props["data-dm"] ? siteColors.vote.modal.submit.dark : siteColors.vote.modal.submit.light};
+  }
+`;
+
+const CancelButton = styled(ModalButton)`
+  &:hover {
+    background-color: ${props => props["data-dm"] ? siteColors.vote.modal.cancel.dark : siteColors.vote.modal.cancel.light}; 
+  }
 `;
 
 const TowerTier = styled.div`
@@ -65,9 +78,14 @@ const TowerTier = styled.div`
   align-items: center;
 `;
 
-const TierText = styled(Typography)`
-  color: ${props => props["data-tc"]};
-  ${props => !props["data-dm"] && `text-shadow: 5px 5px 10px ${siteColors.text.light}`};
+const ErrorContainer = styled.div`
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const ErrorTitle = styled(Typography)`
+  margin-bottom: 20px;
 `;
 
 export default function VoteModal({className, form, modalStatus, handleSubmit, handleClose}) {
@@ -76,37 +94,47 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
 
     const Error = ({error}) => (
         <>
-            <Typography variant="h3" color="error">
-                Error
-            </Typography>
-            <Typography variant="h4" color="error">
-                {error}
-            </Typography>
+            <ErrorContainer>
+                <ErrorTitle variant="h3" color="error">
+                    Error
+                </ErrorTitle>
+                <Typography variant="h4" color="error">
+                    {error}
+                </Typography>
+            </ErrorContainer>
         </>
     );
 
     const Tower = ({tower, tier}) => (
         <>
-                <Typography variant="h3" color="inherit">
+                <Typography variant={mobile ? "h4" : "h3"} color="inherit">
                     {tower}
                 </Typography>
 
             <TowerTier>
-                <RankTitle rank={tier} showText={true}/>
+                <TierTitle tier={tier} showText={true}/>
             </TowerTier>
         </>
     );
 
-    const Ability = ({rank, ranks, pros, cons}) => (
+    const ProsConsContainer = ({pros, cons}) => (
+        <>
+            {(pros || cons) && (
+                <>
+                    <FixedDivider width={80} />
+                    <ProsCons pros={pros} cons={cons} />
+                </>
+            )}
+        </>
+    )
+
+    const Ability = ({tier, tiers}) => (
         <>
             <FixedDivider width={80} />
-            <Typography variant="h3" color="inherit">
+            <Typography variant={mobile ? "h4" : "h3"} color="inherit">
                 Ability Tier
             </Typography>
-            <RankTitle rank={rank} ranks={ranks} />
-            {(pros || cons) && (
-                <ProsCons pros={pros} cons={cons} />
-            )}
+            <TierTitle tier={tier} tiers={tiers} />
         </>
     );
 
@@ -117,45 +145,49 @@ export default function VoteModal({className, form, modalStatus, handleSubmit, h
                 onClose={handleClose}
                 className={className}
             >
-                <Fade in={modalStatus}>
+                <Fade in={modalStatus} timeout={mobile ? 50 : 100}>
                     <ModalContainer data-m={mobile} data-dm={darkMode}>
-                        <Typography variant="h2">
+                        <Typography variant={mobile ? "h3" : "h2"}>
                             Review Your Vote:
                         </Typography>
-                        <FixedDivider width={80} />
+                        <FixedDivider width={100} height={2} />
                         <ModalBodyContainer>
                             <ModalBody>
                                 {form.err ?
                                     <Error error={form.err} />
                                     : (
                                         <>
-                                            <Tower tower={form.tower} tier={form["tower-tier"]} />
+                                            <Tower tower={parseTowerLink(form.tower)} tier={form["tower_tier"]} />
 
-                                            {form["ability-tier"] && (
-                                                <Ability rank={form["ability-tier"]}
-                                                         pros={form["pros"]}
-                                                         cons={form["cons"]}
-                                                         ranks={{
-                                                             "top_path": form["ability-top"],
-                                                             "middle_path": form["ability-middle"],
-                                                             "bottom_path": form["ability-bottom"]
-                                                         }}
-                                                />
+                                            {form["ability_tier"] && (
+                                                <>
+                                                    <Ability tier={form["ability_tier"]}
+                                                             tiers={{
+                                                                 "top_path": form["ability_top"],
+                                                                 "middle_path": form["ability_middle"],
+                                                                 "bottom_path": form["ability_bottom"]
+                                                             }}
+                                                    />
+                                                    <ProsConsContainer pros={form["pros"]} cons={form["cons"]} />
+                                                </>
+                                            )}
+                                            {!form["ability_tier"] && (
+                                                <ProsConsContainer pros={form["pros"]} cons={form["cons"]} />
                                             )}
                                         </>
                                     )
                                 }
                             </ModalBody>
                         </ModalBodyContainer>
-                        <FixedDivider width={80} />
+                        <FixedDivider width={100} height={2} />
                         <div>
-                            <ModalButton onClick={handleClose} variant="outlined" size="large" data-dm={darkMode}>
+                            <CancelButton onClick={handleClose} variant="outlined" size="large" data-dm={darkMode}>
                                 Cancel
-                            </ModalButton>
+                            </CancelButton>
                             {!form.err && (
-                                <ModalButton onClick={handleSubmit} variant="outlined" size="large" data-dm={darkMode}>
+                                <SubmitButton onClick={handleSubmit} variant="outlined" size="large" data-dm={darkMode}>
                                     Submit
-                                </ModalButton>
+                                </SubmitButton>
                             )}
                         </div>
                     </ModalContainer>

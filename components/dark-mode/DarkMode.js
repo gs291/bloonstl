@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {useDispatch, useSelector} from "react-redux";
 
-import {hexToRgb} from "../../lib/utils/utils";
+import {rgbaHex} from "../../lib/utils/utils";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {toggleDarkMode} from "../../lib/redux/actions";
@@ -44,9 +44,9 @@ const Switch = styled.input`
 `;
 
 const DarkModeContainer = styled.div`
-  height: ${props => props["data-m"] ? siteSizes.nav.height : siteSizes.nav.link.height};
-  width: ${props => props["data-m"] ? "100%" : "75px"};
-  border-radius: ${props => props["data-m"] ? 0 : 10}%;
+  height: ${props => props["data-m"] ? "100%" : siteSizes.icon.darkMode.height};
+  width: ${props => props["data-m"] ? "100%" : siteSizes.icon.darkMode.height};
+  border-radius: ${props => props["data-m"] ? 0 : 50}%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,11 +54,11 @@ const DarkModeContainer = styled.div`
   
   &:hover {
     cursor: pointer;
-    background-color: rgba(${props => props["data-dm"] ? hexToRgb(siteColors.accent.dark) : hexToRgb(siteColors.accent.light)}, 0.25);
+    background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.5)};
   }
 `;
 
-export default function DarkMode({}){
+export default function DarkMode({className}){
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
@@ -71,6 +71,7 @@ export default function DarkMode({}){
                 onClick={changeDarkMode}
                 data-dm={darkMode}
                 data-m={mobile}
+                className={className}
             >
                 <Switch
                     checked={!darkMode}

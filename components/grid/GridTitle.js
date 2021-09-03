@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {Grid, Typography} from "@material-ui/core";
 
-import {hexToRgb} from "../../lib/utils/utils";
+import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 
@@ -12,7 +12,7 @@ const Title = styled(Grid)`
   
   text-align: center;
   transition: 0.3s;
-  background-color:  rgba(${props => hexToRgb(props["data-bc"])}, ${props => props["data-dm"] ? 0.75 : 1});;
+  background-color: ${props => rgbaHex(props["data-bc"], props["data-dm"] ? 0.75 : 1)};
   border-top-left-radius: 13px;
   border-top-right-radius: 13px;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};

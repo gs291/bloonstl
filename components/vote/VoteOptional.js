@@ -17,18 +17,23 @@ const OptionalDiv = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+`;
+
+const OptionalContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  
+  padding: 1em;
+  background-color: ${props => props["data-dm"] ? siteColors.vote.optional.dark : siteColors.vote.optional.light};
+  border-radius: 10px;
 
   &:hover {
     cursor: pointer;
   }
 `;
 
-const OptionalContainer = styled.div`
-  display: flex;
-  
-  padding: 1em;
-  background-color: ${props => props["data-dm"] ? siteColors.vote.optional.dark : siteColors.vote.optional.light};
-  border-radius: 10px;
+const OptionalText = styled(Typography)`
+  color: ${props => props["data-dm"] ? siteColors.text.optional.dark : siteColors.text.optional.light};
 `;
 
 const Expander = styled.div`
@@ -46,15 +51,15 @@ export default function VoteOptional({className, title, collapse, handleCollapse
 
     return (
         <>
-            <OptionalDiv onClick={handleCollapse} data-dm={darkMode}>
-                <OptionalContainer data-dm={darkMode} className={className}>
+            <OptionalDiv data-dm={darkMode}>
+                <OptionalContainer onClick={handleCollapse} data-dm={darkMode} className={className}>
                     <div>
                         <Typography variant="body1" color="inherit">
                             {title}
                         </Typography>
-                        <Typography variant="body1" color="secondary">
+                        <OptionalText variant="body1" data-dm={darkMode}>
                             optional *
-                        </Typography>
+                        </OptionalText>
                     </div>
                     <Expander>
                         { collapse ? (

@@ -2,12 +2,11 @@ import {useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
-import Votes from "../tower/Votes";
 import Counter from "../tower/Counter";
 import ProsCons from "../tower/ProsCons";
-import RankTitle from "../tower/RankTitle";
+import TierTitle from "../tower/TierTitle";
 import TowerText from "../tower/TowerText";
-import FilterRanks from "../filters/FilterRanks";
+import FilterTiers from "../filters/FilterTiers";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
@@ -20,9 +19,9 @@ const TotalCost = styled(TowerText)`
   margin-top: 10px;
 `;
 
-const Filters = styled.div`
+const AbilityTier = styled.div`
   display: flex;
-  flex-direction: ${props => props["data-m"] ? "column-reverse" : "row"};
+  flex-direction: ${props => props["data-m"] ? "column" : "row"};
   width: ${props => props["data-m"] ? 100 : 80}%;
   justify-content: space-evenly;
   align-items: center;
@@ -31,18 +30,19 @@ const Filters = styled.div`
 `;
 
 const FilterDiff = styled(FilterDifficulty)`
-  ${props => props["data-m"] ? "margin-bottom: 10px;" : ""};
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 
 export default function MonkeyPage({ monkey }) {
     const mobile = useSelector(getMobile);
-    const [ rank, setRank ] = useState("s");
+    const [ tier, setTier ] = useState("s");
     const [ page, setPage ] = useState(1);
     const [ totalCost, setTotalCost ] = useState(0);
 
-    const handleRank = (_, r) => {
+    const handleTier = (_, r) => {
         setPage(1);
-        setRank(r);
+        setTier(r);
     };
     const handlePage = (_, p) => {
         setPage(p);
@@ -51,26 +51,25 @@ export default function MonkeyPage({ monkey }) {
 
     const dividerBackgroundColor = getMonkeyColor(monkey.type);
 
-    const ranks = monkey.ranks[rank][page-1];
+    const tiers = monkey.tiers[tier][page-1];
     return (
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <Filters data-m={mobile}>
-                <FilterRanks handleRank={handleRank} />
-                <FilterDiff data-m={mobile}/>
-            </Filters>
+            <FilterDiff data-m={mobile}/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <RankTitle rank={rank} ranks={ranks} totalCost={totalCost} backgroundColor={dividerBackgroundColor}/>
+            <AbilityTier data-m={mobile}>
+                <FilterTiers tier={tier} handleTier={handleTier} />
+                <TierTitle tier={tier} tiers={tiers} totalCost={totalCost} backgroundColor={dividerBackgroundColor}/>
+            </AbilityTier>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <TotalCost variant="h4">
+            <TotalCost variant={mobile ? "h5" : "h4"}>
                 Path Cost: $<Counter cost={totalCost} />
             </TotalCost>
-            <MonkeyAbilities abilities={monkey.abilities} monkeyFile={monkey.filename} rank={rank} ranks={ranks} updateCost={updateTotalCost}/>
-            <Votes votes={ranks.votes} />
-            <FilterPagination pageCount={monkey.ranks[rank].length} page={page} handlePage={handlePage} />
+            <MonkeyAbilities abilities={monkey.abilities} monkeyFile={monkey.filename} tier={tier} tiers={tiers} updateCost={updateTotalCost}/>
+            <FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <ProsCons pros={ranks.pros} cons={ranks.cons} backgroundColor={dividerBackgroundColor}/>
+            <ProsCons pros={tiers.pros} cons={tiers.cons} backgroundColor={dividerBackgroundColor}/>
         </>
     );
 }

@@ -1,19 +1,18 @@
+import styled from "@emotion/styled";
 import {Grid} from "@material-ui/core";
 
 import TowerText from "./TowerText";
-import styled from "@emotion/styled";
 
 const VotesContainer = styled(Grid)`
-  width: 325px;
-  margin-top: 10px;
+  margin: 20px 0;
 `;
 
 export default function Votes ({ className, votes }) {
     return (
         <>
-            <VotesContainer container className={className} justify="flex-end">
+            <VotesContainer container className={className} justify="center">
                 <Grid item>
-                    <TowerText variant="caption">
+                    <TowerText variant="body2">
                         Votes:  { votes }
                     </TowerText>
                 </Grid>

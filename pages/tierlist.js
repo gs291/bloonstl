@@ -37,7 +37,7 @@ export async function getStaticProps(context) {
         } else if (monkey.tier === "a") {
             aTier.push(monkey);
         } else {
-            bTier.push(monkey)
+            bTier.push(monkey);
         }
     })
 
@@ -46,7 +46,7 @@ export async function getStaticProps(context) {
             sTier.push(hero);
         } else if (hero.tier === "a") {
             aTier.push(hero);
-        } else {
+        }  else {
             bTier.push(hero)
         }
     });

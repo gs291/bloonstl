@@ -9,6 +9,7 @@ const FDivider = styled(Divider)`
   width: ${props => props["data-w"]}%;
   margin-top: 10px;
   margin-bottom: 10px;
+  height: ${props => props["data-h"] ? props["data-h"] : 1}px;
 
   background-color: ${props => 
           props["data-bc"] 
@@ -17,11 +18,11 @@ const FDivider = styled(Divider)`
   transition: 0.3s;
 `;
 
-export default function FixedDivider({ width, backgroundColor }) {
+export default function FixedDivider({width, backgroundColor, height}) {
     const darkMode = useSelector(getDarkMode);
     return (
       <>
-          <FDivider data-w={width} data-bc={backgroundColor} data-dm={darkMode}/>
+          <FDivider data-w={width} data-bc={backgroundColor} data-dm={darkMode} data-h={height}/>
       </>
     );
 }

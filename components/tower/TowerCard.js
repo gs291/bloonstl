@@ -5,10 +5,35 @@ import {Card, CardContent, Link as MUILink, Typography} from "@material-ui/core"
 
 import Icon from "../tower/Icon";
 import siteColors from "../../lib/utils/siteColors";
-import {getBorder, getDarkMode} from "../../lib/redux/selectors";
-import {getTowerLink, getMonkeyColor, getHeroColor} from "../../lib/utils/utils";
+import {getBorder, getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getTowerLink, getMonkeyColor, getHeroColor, rgbaHex} from "../../lib/utils/utils";
 
 const CardContainer = styled(Card)`
+  @keyframes popup {
+    0% {
+      transform: scale(0);
+      opacity: 0.0;
+    }
+    60% {
+      transform: scale(1.1);
+    }
+    80% {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  animation-name: popup;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  
+  
+  
   margin: 5px;
   background-color: ${props => props["data-bc"]};
   border: 4px solid ${props => props["data-brc"]};
@@ -17,7 +42,9 @@ const CardContainer = styled(Card)`
   
   &:hover{
     cursor: pointer;
+    transform: translateY(-10px);
     background-color: ${props => props["data-hbc"]};
+    box-shadow: 0 10px 10px ${props => rgbaHex(props["data-bc"], 0.75)};
   }
 `;
 
@@ -36,24 +63,26 @@ const TowerName = styled(Typography)`
   text-overflow: ellipsis;
 `;
 
-export default function TowerCard({tower, towerType, rank, keepBorder}) {
+export default function TowerCard({tower, towerType, tier, ignoreFilter}) {
+    const mobile = useSelector(getMobile);
     const border = useSelector(getBorder);
     const darkMode = useSelector(getDarkMode);
+
     let href, borderColor, backgroundColor, hoverBackgroundColor;
 
     if (towerType === "monkey") {
-        href = `/monkey/${getTowerLink(tower)}`;
+        href = `/monkey/${getTowerLink(tower.name)}`;
         borderColor = getMonkeyColor(tower.type, darkMode);
-        backgroundColor = getMonkeyColor(tower.type, darkMode,  rank, true);
-        hoverBackgroundColor = getMonkeyColor(tower.type, darkMode, rank, true, true);
+        backgroundColor = getMonkeyColor(tower.type, darkMode,  tier, true);
+        hoverBackgroundColor = getMonkeyColor(tower.type, darkMode, tier, true, true);
     } else if (towerType === "hero") {
-        href = `/hero/${getTowerLink(tower)}`;
+        href = `/hero/${getTowerLink(tower.name)}`;
         borderColor = getHeroColor(tower.name, darkMode);
-        backgroundColor = getHeroColor(tower.name, darkMode, rank, true, false);
-        hoverBackgroundColor = getHeroColor(tower.name, darkMode, rank, true, true);
+        backgroundColor = getHeroColor(tower.name, darkMode, tier, true, false);
+        hoverBackgroundColor = getHeroColor(tower.name, darkMode, tier, true, true);
     }
 
-    if (!border && keepBorder === 0) {
+    if (!border && ignoreFilter === 0) {
         borderColor = backgroundColor;
     }
 
@@ -64,7 +93,7 @@ export default function TowerCard({tower, towerType, rank, keepBorder}) {
                     <CardContainer data-brc={borderColor} data-bc={backgroundColor} data-hbc={hoverBackgroundColor}>
                         <CardContent>
                             <Icon tower={tower}/>
-                            <TowerName varient="body1" data-dm={darkMode}>
+                            <TowerName variant={mobile ? "body1" : "h5"} data-dm={darkMode}>
                                 {tower.name}
                             </TowerName>
                         </CardContent>

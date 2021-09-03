@@ -12,8 +12,8 @@ import {useSelector} from "react-redux";
 
 import VoteOptional from "./VoteOptional";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
-import VoteAbilitiesProsCons from "./VoteAbilitiesProsCons";
+import VoteProsCons from "./VoteProsCons";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const AbilitiesContainers = styled.div`
@@ -25,9 +25,10 @@ const AbilitiesContainers = styled.div`
 `;
 
 const PathSlider = styled(Slider)`
-  width: 90%;
+  width: ${props => props["data-m"] ? 90 : 75}%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 40px;
   
   color: inherit;
   
@@ -36,7 +37,7 @@ const PathSlider = styled(Slider)`
   }
 
   & .MuiSlider-valueLabel {
-    color: black;
+    color: ${props => props["data-dm"] ? siteColors.text.light : siteColors.text.dark};
   }
   
   & .MuiSlider-valueLabel span span {
@@ -71,6 +72,7 @@ const marks = [
 ]
 
 export default function VoteAbilities() {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     const [collapseProCon, setCollapseProCon] = useState(false);
@@ -91,6 +93,7 @@ export default function VoteAbilities() {
                     marks={marks}
                     name="slider-top"
                     data-dm={darkMode}
+                    data-m={mobile}
                 />
 
                 <Typography variant="body1" color="inherit" id="slider-middle">
@@ -105,6 +108,7 @@ export default function VoteAbilities() {
                     marks={marks}
                     name="slider-middle"
                     data-dm={darkMode}
+                    data-m={mobile}
                 />
 
                 <Typography variant="body1" color="inherit" id="slider-bottom">
@@ -119,6 +123,7 @@ export default function VoteAbilities() {
                     marks={marks}
                     name="slider-bottom"
                     data-dm={darkMode}
+                    data-m={mobile}
                 />
 
                 <Typography variant="body1" color="inherit">What tier is this ability path?</Typography>
@@ -129,9 +134,9 @@ export default function VoteAbilities() {
                     <TierLabel value="b" control={<TierRadio />} label="B" labelPlacement="top"/>
                 </AbilityTier>
 
-                <VoteOptional title="Want to vote on Ability Path Pros/Cons?" collapse={collapseProCon} handleCollapse={handleCollapseProCon} />
+                <VoteOptional title="Vote on on Ability Path Pros/Cons" collapse={collapseProCon} handleCollapse={handleCollapseProCon} />
                 <Collapse in={collapseProCon}>
-                    <VoteAbilitiesProsCons />
+                    <VoteProsCons />
                 </Collapse>
             </AbilitiesContainers>
         </>

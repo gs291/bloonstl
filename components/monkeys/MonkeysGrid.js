@@ -28,7 +28,7 @@ export default function MonkeysGrid({ primary, military, magic, support }) {
                             : siteColors.monkeyType.primary.grid.light
                         }
                         titleColor={getMonkeyColor("Primary")}
-                        keepBorder={1}
+                        ignoreFilter={1}
                     />
                 </Grid>
                 <Grid item>
@@ -40,7 +40,7 @@ export default function MonkeysGrid({ primary, military, magic, support }) {
                             : siteColors.monkeyType.military.grid.light
                         }
                         titleColor={getMonkeyColor("Military")}
-                        keepBorder={1}
+                        ignoreFilter={1}
                     />
                 </Grid>
                 <Grid item>
@@ -52,7 +52,7 @@ export default function MonkeysGrid({ primary, military, magic, support }) {
                             : siteColors.monkeyType.magic.grid.light
                         }
                         titleColor={getMonkeyColor("Magic")}
-                        keepBorder={1}
+                        ignoreFilter={1}
                     />
                 </Grid>
                 <Grid item>
@@ -64,7 +64,7 @@ export default function MonkeysGrid({ primary, military, magic, support }) {
                             : siteColors.monkeyType.support.grid.light
                         }
                         titleColor={getMonkeyColor("Support")}
-                        keepBorder={1}
+                    ignoreFilter={1}
                     />
                 </Grid>
             </Grid>

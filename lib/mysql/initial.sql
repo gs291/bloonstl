@@ -1,9 +1,9 @@
 -- MySQL bloonstl initial.sql
 -- Gregory Sanchez
 
-DROP TABLE IF EXISTS AbilityRanksInfo;
-DROP TABLE IF EXISTS TowerRanks;
-DROP TABLE IF EXISTS AbilityRanks;
+DROP TABLE IF EXISTS AbilityTiersInfo;
+DROP TABLE IF EXISTS TowerTiers;
+DROP TABLE IF EXISTS AbilityTiers;
 DROP TABLE IF EXISTS Abilities;
 DROP TABLE IF EXISTS Towers;
 DROP TABLE IF EXISTS Monkeys;
@@ -55,7 +55,7 @@ CREATE TABLE `Abilities` (
     CONSTRAINT `ab_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `TowerRanks` (
+CREATE TABLE `TowerTiers` (
     `id` INT(11) AUTO_INCREMENT NOT NULL,
     `tower_id` INT(11) NOT NULL,
     `tier` VARCHAR(1) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE `TowerRanks` (
     CONSTRAINT `twr_rnk_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `AbilityRanks` (
+CREATE TABLE `AbilityTiers` (
     `id` INT(11) AUTO_INCREMENT NOT NULL,
     `tower_id` INT(11) NOT NULL,
     `tier` VARCHAR(1) NOT NULL,
@@ -76,50 +76,25 @@ CREATE TABLE `AbilityRanks` (
     CONSTRAINT `ab_rnk_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- DOCS:
---   - abil: Ability
---   - atksp: Attack Speed
---   - bad: B.A.D (Big Airship of Doom)
---   - bfb: B.F.B (Brutal Floating Behemoth)
---   - bln: Bloons
---   - blnc: Balanced
---   - buff: Buffs Towers
---   - camo: Camo Bloons
---   - cc: Crowd Control
---   - cd: Ability Cool down
---   - chep: Cheap
---   - chmp: Chimps Mode
---   - cm: Ceramics
---   - dps: Damage Per Second
---   - ddt: D.D.T (Dark Dirigible Titan)
---   - eg: Early Game
---   - fbl: Fortified Bloons
---   - fcm: Fortified Ceramics
---   - gbl: Global
---   - grpb: Grouped Bloons
---   - kb: Knockback
---   - lead: Lead Bloons
---   - lg: Late Game
---   - map: Map Specific Tower
---   - mg: Mid Game
---   - micr: Micromanage
---   - moab: M.O.A.B (Massive Ornary Air Blimp)
---   - purp: Purple Blooons
---   - rang: Range
---   - scm: Super Ceramics
---   - spam: Spam Towers required
---   - stnb: Stuns Bloons
---   - sub: Submerged
---   - supp: Support
---   - time: Ability Timing
---   - trkp: Track Placement
---   - vis: Visibility
---   - zomg: Z.O.M.G (Zeppelin of Mighty Gargantuaness)
-CREATE TABLE `AbilityRanksInfo` (
+CREATE TABLE `AbilityTiersInfo` (
     `id` INT(11) AUTO_INCREMENT NOT NULL,
-    `rank_id` INT(11) NOT NULL,
+    `tier_id` INT(11) NOT NULL,
     `pros` VARCHAR(255) NOT NULL,
     `cons` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`),
-    CONSTRAINT `ab_rnk_ifo_fk_1` FOREIGN KEY (`rank_id`) REFERENCES `AbilityRanks` (`id`) ON DELETE CASCADE
+    CONSTRAINT `ab_rnk_ifo_fk_1` FOREIGN KEY (`tier_id`) REFERENCES `AbilityTiers` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `TowerVotes` (
+    `id` INT(11) AUTO_INCREMENT NOT NULL,
+    `tower_id` INT(11) NOT NULL,
+    `tower_tier` VARCHAR(1) NOT NULL,
+    `ability_tier` VARCHAR(1),
+    `ability_top` TINYINT(1),
+    `ability_middle` TINYINT(1),
+    `ability_bottom` TINYINT(1),
+    `pros` VARCHAR(255),
+    `cons` VARCHAR(255),
+    PRIMARY KEY (`id`),
+    CONSTRAINT `v_t_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

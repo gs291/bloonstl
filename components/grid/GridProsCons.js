@@ -6,12 +6,19 @@ import Tooltip from "../tooltip/Tooltip";
 import TowerText from "../tower/TowerText";
 import ChipTooltip from "../tooltip/ChipTooltip";
 import siteColors from "../../lib/utils/siteColors";
-import {getMobile} from "../../lib/redux/selectors";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+
+const GridContainer = styled(Grid)`
+  width: 100%;
+`;
 
 const ChipContainer = styled(Grid)`
-  margin: 0;
-  width: 350px;
   min-height: 50px;
+`;
+
+const ChipItem = styled(Grid)`
+  display: flex;
+  justify-content: center;
 `;
 
 const Title = styled(TowerText)`
@@ -44,7 +51,9 @@ const StyledChip = styled(Chip)`
   animation-timing-function: ease-in-out;
   
   width: 100px;
-  background-color: ${props => props["data-pro"] ? siteColors.chip.pros: siteColors.chip.cons};
+  background-color: ${props => props["data-pro"]
+          ? props["data-dm"] ? siteColors.pros.dark : siteColors.pros.light
+          : props["data-dm"] ? siteColors.cons.dark : siteColors.cons.light};
 
   &:hover {
     cursor: pointer;
@@ -53,39 +62,44 @@ const StyledChip = styled(Chip)`
 
 export default function GridProsCons({ className, isPro, proCons}) {
     const mobile = useSelector(getMobile);
+    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <Grid container
                   spacing={1}
                   direction="column"
+                  justify="center"
+                  alignItems="center"
+                  alignContent="center"
             >
-                <Grid item>
+                <GridContainer item>
                     <Title variant="h5">
                         {isPro ? "Pros" : "Cons"}
                     </Title>
-                </Grid>
-                <Grid item>
+                </GridContainer>
+                <GridContainer item>
                     { proCons.length > 0 && (
                         <ChipContainer container spacing={2}>
                             { proCons.map(pc => ( pc &&
                                 (
-                                    <Grid item xs={4} key={pc.title}>
+                                    <ChipItem item xs={proCons.length > 1 ? mobile ? 6 : 4 : 12} key={pc.title}>
                                         <Tooltip
                                             title={
                                                 <ChipTooltip isPro={isPro}
                                                              title={pc.title}
                                                              text={isPro ? pc.pro : pc.con}
+                                                             data-dm={darkMode}
                                                 />}
                                         >
                                             <StyledChip label={pc.title} data-pro={isPro} />
                                         </Tooltip>
-                                    </Grid>
+                                    </ChipItem>
                                 )
                             ))}
                         </ChipContainer>
                     )}
-                </Grid>
+                </GridContainer>
             </Grid>
         </>
     );

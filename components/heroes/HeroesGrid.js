@@ -21,7 +21,7 @@ export default function HeroesGrid({ heroes }) {
                             : siteColors.heroes.grid.light
                         }
                         titleColor={siteColors.heroes.color}
-                        keepBorder={1}
+                        ignoreFilter={1}
                     />
                 </Grid>
             </Grid>
