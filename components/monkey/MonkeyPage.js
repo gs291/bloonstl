@@ -4,8 +4,8 @@ import {useSelector} from "react-redux";
 
 import Counter from "../tower/Counter";
 import ProsCons from "../tower/ProsCons";
-import TierTitle from "../tower/TierTitle";
 import TowerText from "../tower/TowerText";
+import TierPathText from "../tower/TierPathText";
 import FilterTiers from "../filters/FilterTiers";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
@@ -60,7 +60,7 @@ export default function MonkeyPage({ monkey }) {
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <AbilityTier data-m={mobile}>
                 <FilterTiers tier={tier} handleTier={handleTier} />
-                <TierTitle tier={tier} tiers={tiers} totalCost={totalCost} backgroundColor={dividerBackgroundColor}/>
+                <TierPathText tier={tier} tiers={tiers}/>
             </AbilityTier>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <TotalCost variant={mobile ? "h5" : "h4"}>
