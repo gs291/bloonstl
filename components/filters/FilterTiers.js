@@ -21,7 +21,6 @@ const FilterContainer = styled.div`
 `;
 
 
-
 const TierButtons = styled.div`
   display: flex;
   flex-direction: row;
