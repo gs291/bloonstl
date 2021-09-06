@@ -20,9 +20,7 @@ const FilterContainer = styled.div`
   align-content: center;
 `;
 
-const Label = styled(Typography)`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-`;
+
 
 const TierButtons = styled.div`
   display: flex;
@@ -37,10 +35,7 @@ export default function FilterTiers({ className, tier, handleTier }) {
     if (!handleTier){ handleTier = (_, __) => <></>; }
     return (
         <>
-            <FilterContainer>
-                <Label variant="h5" data-dm={darkMode}>
-                    Ability Path Tiers:
-                </Label>
+            <FilterContainer className={className}>
                 <TierButtons>
                     <TierButton
                         tier={"s"}

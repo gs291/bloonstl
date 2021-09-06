@@ -8,6 +8,7 @@ import {getDarkMode} from "../../lib/redux/selectors";
 
 const Tier = styled(Typography)`
   color: ${props => getTierColor(props.name)};
+  cursor: default;
   ${props => !props["data-dm"] && `text-shadow: 5px 5px 10px ${siteColors.text.light}`};
   transition: 0.3s;
 `;

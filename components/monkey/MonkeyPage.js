@@ -5,8 +5,6 @@ import {useSelector} from "react-redux";
 import Counter from "../tower/Counter";
 import ProsCons from "../tower/ProsCons";
 import TowerText from "../tower/TowerText";
-import TierPathText from "../tower/TierPathText";
-import FilterTiers from "../filters/FilterTiers";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
@@ -14,19 +12,11 @@ import {getMonkeyColor} from "../../lib/utils/utils";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
+import AbilityPathSelection from "../ability/AbilityPathSelection";
 
 const TotalCost = styled(TowerText)`
   margin-top: 10px;
-`;
-
-const AbilityTier = styled.div`
-  display: flex;
-  flex-direction: ${props => props["data-m"] ? "column" : "row"};
-  width: ${props => props["data-m"] ? 100 : 80}%;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  cursor: default;
 `;
 
 const FilterDiff = styled(FilterDifficulty)`
@@ -58,10 +48,7 @@ export default function MonkeyPage({ monkey }) {
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff data-m={mobile}/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <AbilityTier data-m={mobile}>
-                <FilterTiers tier={tier} handleTier={handleTier} />
-                <TierPathText tier={tier} tiers={tiers}/>
-            </AbilityTier>
+            <AbilityPathSelection tier={tier} tiers={tiers} handleTier={handleTier} />
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <TotalCost variant={mobile ? "h5" : "h4"}>
                 Path Cost: $<Counter cost={totalCost} />

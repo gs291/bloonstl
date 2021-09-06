@@ -10,14 +10,17 @@ import {getDarkMode} from "../../lib/redux/selectors";
 const Button = styled.div`
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  padding: 20px 20px;
+  padding: 5px 5px;
   border-radius: 50%;
   background-color: ${props => props["data-s"] ? getTierColor(props["data-t"]) : "none"};
-  border: 2px solid transparent;
+  border: 5px solid transparent;
   transition: 0.3s;
   
   &:hover {
-    border: 2px solid ${props => getTierColor(props["data-t"])};
+    cursor: pointer;
+    transform: scale(1.2);
+    box-shadow: 5px 5px 7.5px 0 ${props => props["data-dm"] ? siteColors.page.light : siteColors.page.dark};
+    border: 5px solid ${props => getTierColor(props["data-t"])};
   }
 `;
 
@@ -42,6 +45,7 @@ export default function TierButton({ className, tier, selected, handleTier }) {
                 onClick={(e) => handleTier(e, tier)}
                 data-t={tier}
                 data-s={selected}
+                data-dm={darkMode}
                 name="tier"
                 value={tier}
                 className={className}

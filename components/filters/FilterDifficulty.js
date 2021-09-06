@@ -32,7 +32,8 @@ const FormRow = styled.div`
 const FilterLabel = styled(FormLabel)`
   color: inherit;
   text-align: center;
-  font-size: 1.5rem
+  font-size: 2rem;
+  margin-bottom: 10px;
 `;
 
 const DifficultyLabel = styled(FormControlLabel)`
