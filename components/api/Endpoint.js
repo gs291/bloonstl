@@ -6,12 +6,14 @@ export default function Endpoint({item}) {
     return (
        <>
            <div>
-               <TowerText textColor={"#FFB400"} variant="h4">
-                   {item.request.method}
+               <div>
+                   <TowerText textColor={"#FFB400"} variant="h4">
+                       {item.request.method}
+                   </TowerText>
                    <TowerText variant="h4" font={true}>
                        {item.name}
                    </TowerText>
-               </TowerText>
+               </div>
                <TowerText variant="h5" font={true}>
                    {item.description}
                </TowerText>

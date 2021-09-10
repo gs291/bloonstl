@@ -14,7 +14,7 @@ export default function Objects({ objs }) {
             </TowerText>
 
             {objs.items.map(row => (
-                <FieldTable items={row} key={row.name}/>
+                <FieldTable row={row} key={row.name}/>
             ))}
         </>
     );

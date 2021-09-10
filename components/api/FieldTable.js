@@ -1,12 +1,17 @@
+import styled from "@emotion/styled";
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
 
 import TowerText from "../tower/TowerText";
+
+const FieldContainer = styled.div`
+  width: 100%;
+`;
 
 export default function FieldTable({row}) {
 
     return (
         <>
-            <div>
+            <FieldContainer>
                 <TowerText variant="h4">
                     {row.name}
                 </TowerText>
@@ -15,20 +20,20 @@ export default function FieldTable({row}) {
                         <TableHead>
                             <TableRow>
                                 <TableCell>Name</TableCell>
-                                <TableCell align="right">Description</TableCell>
+                                <TableCell>Description</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {row.fields.map(field => (
                                 <TableRow key={field.key}>
-                                    <TableCell align="right">{field.key} ({field.type})</TableCell>
-                                    <TableCell align="right">{field.text} </TableCell>
+                                    <TableCell align="left">{field.key} ({field.type})</TableCell>
+                                    <TableCell align="left">{field.text} </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
-            </div>
+            </FieldContainer>
         </>
     );
 }
