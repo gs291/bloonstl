@@ -1,11 +1,14 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 
 import TowerText from "../tower/TowerText";
+import {rgbaHex} from "../../lib/utils/utils";
+import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
 
 const EndpointContainer = styled.div`
   width: 100%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 `;
 
 const MethodName = styled.div`
@@ -30,12 +33,16 @@ const CodeContainer = styled.div`
   padding: 1em;
   margin-bottom: 20px;
 
-  border: 1px solid #ccc;
+  border: 1px solid #CCC;
   border-radius: 10px;
 `;
 
 const Code = styled.div`
   white-space: pre-wrap;
+  font-family: monospace;
+`;
+
+const CodeText = styled(TowerText)`
   font-family: monospace;
 `;
 
@@ -45,18 +52,20 @@ const LanguageType = styled.div`
   padding: 0.5em;
   
   border-radius: 5px;
-  background-color: #ccc;
+  background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.6)};
   text-align: center;
+  
+  transition: 0.3s;
 `;
 
 export default function Endpoint({item}) {
-
+    const darkMode = useSelector(getDarkMode);
 
     return (
        <>
            <EndpointContainer>
                <MethodName>
-                   <TowerText textColor={"#FFB400"} variant="h4">
+                   <TowerText textColor={"#2DABE8"} variant="h4">
                        {item.request.method}
                    </TowerText>
                    <Name variant="h4" font={true}>
@@ -72,13 +81,15 @@ export default function Endpoint({item}) {
                        QUERY
                    </BoldText>
                    <CodeContainer>
-                       <LanguageType>
+                       <LanguageType data-dm={darkMode}>
                            <BoldText variant="body2" font={true}>
                                graphql
                            </BoldText>
                        </LanguageType>
                        <Code>
-                           {item.request.body.query}
+                           <CodeText variant="body2" font={true}>
+                               {item.request.body.query}
+                           </CodeText>
                        </Code>
                    </CodeContainer>
 
@@ -86,13 +97,15 @@ export default function Endpoint({item}) {
                        VARIABLES
                    </BoldText>
                    <CodeContainer>
-                       <LanguageType>
+                       <LanguageType data-dm={darkMode}>
                            <BoldText variant="body2" font={true}>
                                json
                            </BoldText>
                        </LanguageType>
                        <Code>
-                           {item.request.body.variables}
+                           <CodeText variant="body2" font={true}>
+                               {item.request.body.variables}
+                           </CodeText>
                        </Code>
                    </CodeContainer>
                </div>
