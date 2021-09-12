@@ -32,10 +32,10 @@ export default function ApiItem({ api, type }) {
             </TitleDescContainer>
 
             {api.items.map(item => (
-                <>
-                    {type === "obj" && (<FieldTable row={item} key={item.name}/>)}
-                    {type === "queries" && (<Endpoint item={item} key={item.name}/>)}
-                </>
+                <div key={item.name}>
+                    {type === "obj" && (<FieldTable row={item}/>)}
+                    {type === "queries" && (<Endpoint item={item}/>)}
+                </div>
             ))}
         </>
     );
