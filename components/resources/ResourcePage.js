@@ -1,6 +1,4 @@
-import Queries from "../api/Queries";
-import Objects from "../api/Objects";
-import FixedDivider from "../divider/FixedDivider";
+import GraphQL from "../api/GraphQL";
 
 
 export default function ResourcesPage({ api }) {
@@ -8,9 +6,7 @@ export default function ResourcesPage({ api }) {
 
     return (
         <>
-            <Queries queries={api.queries} />
-            <FixedDivider width={100} />
-            <Objects objs={api.objects} />
+            <GraphQL api={api} />
         </>
     );
 }

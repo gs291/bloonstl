@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 
+import Endpoint from "./Endpoint";
 import FieldTable from "./FieldTable";
 import TowerText from "../tower/TowerText";
 
@@ -17,21 +18,24 @@ const Title = styled(TowerText)`
 `;
 
 
-export default function Objects({ objs }) {
+export default function ApiItem({ api, type }) {
 
     return (
         <>
             <TitleDescContainer>
-                <Title variant="h3" font={true}>
-                    {objs.title}
+                <Title variant="h3">
+                    {api.title}
                 </Title>
                 <TowerText variant="h6" font={true}>
-                    {objs.description}
+                    {api.description}
                 </TowerText>
             </TitleDescContainer>
 
-            {objs.items.map(row => (
-                <FieldTable row={row} key={row.name}/>
+            {api.items.map(item => (
+                <>
+                    {type === "obj" && (<FieldTable row={item} key={item.name}/>)}
+                    {type === "queries" && (<Endpoint item={item} key={item.name}/>)}
+                </>
             ))}
         </>
     );
