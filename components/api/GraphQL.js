@@ -11,6 +11,15 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {useEffect, useState} from "react";
 
+const GraphQLContainer = styled.div`
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 const Information = styled.div`
   display: flex;
   flex-direction: column;
@@ -58,7 +67,7 @@ const ExpandedDetails = styled(AccordionDetails)`
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
 `;
 
-export default function GraphQL({ api }) {
+export default function GraphQL({ className, api, tag}) {
     const darkMode = useSelector(getDarkMode);
     const [path, setPath] = useState("");
 
@@ -70,41 +79,40 @@ export default function GraphQL({ api }) {
 
     return (
         <>
-            <Information>
-                <TowerText variant="h2" font={true}>
-                    GraphQL API
-                </TowerText>
-                <TowerText variant="h2" font={true}>
-                </TowerText>
-                <TowerText variant="h2" font={true}>
-                    Documentation
-                </TowerText>
-            </Information>
-            <Information>
-                <Description variant="h6" font={true}>
-                    Expand below to get information on the GraphQL API endpoint located at:
-                </Description>
-                <Link href={path} data-dm={darkMode}>
-                    {path}
-                </Link>
-            </Information>
+            <GraphQLContainer className={className} id={tag.href}>
+                <Information>
+                    <TowerText variant="h2" font={true}>
+                        GraphQL API
+                    </TowerText>
+                    <TowerText variant="h2" font={true}>
+                        Documentation
+                    </TowerText>
+                </Information>
+                <Information>
+                    <Description variant="h6" font={true}>
+                        Expand below to get information on the GraphQL API endpoint located at:
+                    </Description>
+                    <Link href={path} data-dm={darkMode}>
+                        {path}
+                    </Link>
+                </Information>
 
-            <ExpanderContainer>
-                <Expander data-dm={darkMode}>
-                    <ExpanderSummary
-                        expandIcon={<ExpandMore data-dm={darkMode} />}
-                        data-dm={darkMode}
-                    >
-                        <TowerText variant="h5">Queries and Objects</TowerText>
-                    </ExpanderSummary>
-                    <ExpandedDetails data-dm={darkMode}>
-                        <ApiItem api={api.queries} type="queries"/>
-                        <FixedDivider width={100} />
-                        <ApiItem api={api.objects} type="obj"/>
-                    </ExpandedDetails>
-                </Expander>
-            </ExpanderContainer>
-
+                <ExpanderContainer>
+                    <Expander data-dm={darkMode}>
+                        <ExpanderSummary
+                            expandIcon={<ExpandMore data-dm={darkMode} />}
+                            data-dm={darkMode}
+                        >
+                            <TowerText variant="h5">Queries and Objects</TowerText>
+                        </ExpanderSummary>
+                        <ExpandedDetails data-dm={darkMode}>
+                            <ApiItem api={api.queries} type="queries"/>
+                            <FixedDivider width={100} />
+                            <ApiItem api={api.objects} type="obj"/>
+                        </ExpandedDetails>
+                    </Expander>
+                </ExpanderContainer>
+            </GraphQLContainer>
         </>
     );
 }

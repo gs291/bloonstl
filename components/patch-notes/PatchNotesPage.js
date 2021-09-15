@@ -2,10 +2,10 @@ import styled from "@emotion/styled";
 import {useEffect, useState} from "react";
 
 import Patch from "./Patch";
-import PatchSelect from "./PatchSelect";
-import TableOfContents from "./TableOfContents";
-import {getTowerLink} from "../../lib/utils/utils";
 import PatchDate from "./PatchDate";
+import PatchSelect from "./PatchSelect";
+import {getTowerLink} from "../../lib/utils/utils";
+import TableOfContents from "../table-of-contents/TableOfContents";
 
 const PageContainer = styled.div`
   width: 100%;

@@ -23,7 +23,7 @@ const TocContainer = styled.div`
   justify-content: center;
   
   margin-top: 15px;
-  margin-bottom: 15px
+  margin-bottom: 15px;
 `;
 
 const TocList = styled.ul`
@@ -52,12 +52,12 @@ const TocText = styled(TowerText)`
   padding-left: 10px;
 `;
 
-export default function TableOfContents({ tags }) {
+export default function TableOfContents({ tags, className }) {
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <TocContainer>
+            <TocContainer className={className}>
                 <TocWrapper data-dm={darkMode}>
                     <TowerText variant="h5">
                         Contents
