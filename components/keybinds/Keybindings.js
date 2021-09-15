@@ -84,7 +84,7 @@ export default function Keybindings({ className, tag }) {
                 </TowerText>
                 <Description variant="h6" font={true}>
                     Below is a useful visual representation of the default in-game keybindings.
-                    Toggle the slider below to switch from keyboard keys and icons. Click on the image to view the full image.
+                    Toggle the slider below to switch between keyboard keys and icons. Click on the image to view the full image.
                 </Description>
                 <SliderContainer data-dm={darkMode}>
                     <Label
@@ -97,7 +97,7 @@ export default function Keybindings({ className, tag }) {
                     />
                 </SliderContainer>
 
-                <ImgContainer href={`https://res.cloudinary.com/bloons/image/upload/f_auto,c_limit,w_960,q_100/${src[show]}`}>
+                <ImgContainer href={`https://res.cloudinary.com/bloons/image/upload/q_100/${src[show]}`}>
                     <ImageFill src={src[show]} alt="Hotkey image helper" quality={100} />
                 </ImgContainer>
                 <Author>
