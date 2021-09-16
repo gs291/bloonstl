@@ -20,7 +20,7 @@ const Date = styled(PatchDate)`
 `;
 
 export default function PatchNotesPage({ patches }) {
-    const [patch, setPatch] = useState("27.0");
+    const [patch, setPatch] = useState("27.2");
     const [toc, setToc] = useState([]);
 
     const handlePatchSelect = (e) => {
