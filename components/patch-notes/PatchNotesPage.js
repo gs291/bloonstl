@@ -11,6 +11,13 @@ const PageContainer = styled.div`
   width: 100%;
 `;
 
+const Select = styled(PatchSelect)`
+  margin-bottom: 50px;
+`;
+
+const Date = styled(PatchDate)`
+  margin-top: 50px;
+`;
 
 export default function PatchNotesPage({ patches }) {
     const [patch, setPatch] = useState("27.0");
@@ -35,9 +42,9 @@ export default function PatchNotesPage({ patches }) {
     return (
         <>
             <PageContainer>
-                <PatchSelect patch={patch} handlePatchSelect={handlePatchSelect} />
+                <Select patch={patch} handlePatchSelect={handlePatchSelect} />
                 <TableOfContents tags={toc} />
-                <PatchDate date={patches[patch].release} />
+                <Date date={patches[patch].release} />
                 <Patch patch={patches[patch]} tags={toc}/>
             </PageContainer>
         </>

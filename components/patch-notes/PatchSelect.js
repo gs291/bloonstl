@@ -44,12 +44,12 @@ const VersionSelect = styled(Select)`
   }
 `;
 
-export default function PatchSelect({ patch, handlePatchSelect }) {
+export default function PatchSelect({ className, patch, handlePatchSelect }) {
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <SelectContainer>
+            <SelectContainer className={className}>
                 <FormControl>
                     <SelectLabel id="patch-select-label" data-dm={darkMode}>Patch Version</SelectLabel>
                     <VersionSelect
