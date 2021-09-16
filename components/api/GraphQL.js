@@ -37,6 +37,7 @@ const Link = styled.a`
   transition: 0.3s;
   font-size: 1.25rem;
   line-break: anywhere;
+  text-decoration: underline;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 

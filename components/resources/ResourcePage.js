@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 
+import GitHub from "./GitHub";
 import GraphQL from "../api/GraphQL";
 import Keybindings from "../keybinds/Keybindings";
 import FixedDivider from "../divider/FixedDivider";
@@ -12,7 +13,12 @@ const KeybindingsComponent = styled(Keybindings)`
 `;
 
 const GraphQlComponent = styled(GraphQL)`
-  margin-top: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+`;
+
+const GitHubComponent = styled(GitHub)`
+  margin-top: 50px;
 `;
 
 
@@ -25,6 +31,10 @@ export default function ResourcesPage({ api }) {
         {
             "href": getTowerLink("GraphQL"),
             "title": "API Documentation"
+        },
+        {
+            "href": getTowerLink("GitHub"),
+            "title": "GitHub Information"
         }
     ];
 
@@ -34,6 +44,8 @@ export default function ResourcesPage({ api }) {
             <KeybindingsComponent tag={toc[0]}/>
             <FixedDivider width={100} />
             <GraphQlComponent api={api} tag={toc[1]}/>
+            <FixedDivider width={100} />
+            <GitHubComponent tag={toc[2]}/>
         </>
     );
 }
