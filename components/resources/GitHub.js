@@ -16,6 +16,7 @@ const Title = styled(TowerText)`
 `;
 
 const TextLink = styled.a`
+  font-family: monospace;
   text-decoration: underline;
 `;
 
