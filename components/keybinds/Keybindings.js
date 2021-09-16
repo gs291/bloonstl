@@ -68,8 +68,8 @@ export default function Keybindings({ className, tag }) {
     const darkMode = useSelector(getDarkMode);
     const [show, setShow] = useState(false);
     const src = {
-        "false": "hotkeys.png",
-        "true": "hotkeys-icons.png"
+        "false": "resources/hotkeys.png",
+        "true": "resources/hotkeys-icons.png"
     };
 
     const handleChange = (e) => {
