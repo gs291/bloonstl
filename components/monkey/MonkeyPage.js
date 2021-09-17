@@ -46,7 +46,7 @@ export default function MonkeyPage({ monkey }) {
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
-            <FilterDiff data-m={mobile}/>
+            <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
             <AbilityPathSelection tier={tier} tiers={tiers} handleTier={handleTier} />
             <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>

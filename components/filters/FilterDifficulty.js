@@ -1,95 +1,83 @@
 import styled from "@emotion/styled";
-import {
-    FormLabel,
-    FormControl,
-    FormControlLabel,
-    Radio,
-    RadioGroup} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 
 
-import siteColors from "../../lib/utils/siteColors";
+import TowerText from "../tower/TowerText";
+import DifficultyButton from "./DifficultyButton";
+import {getDifficulty, getMobile} from "../../lib/redux/selectors";
 import {UPDATE_DIFFICULTY, updateFilter} from "../../lib/redux/actions";
-import {getDarkMode, getDifficulty, getMobile} from "../../lib/redux/selectors";
 
-const DifficultyContainer = styled(FormControl)`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-  transition: 0.3s;
+const DifficultyContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
-const FormRow = styled.div`
+const ButtonContainer = styled.div`
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
+const Row = styled.div`
   display: flex;
   flex-direction: row;
 
   justify-content: center;
   align-items: center;
-
-  & :last-child {
-    margin-right: 0;
-  }
 `;
 
-const FilterLabel = styled(FormLabel)`
-  color: inherit;
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 10px;
+const Label = styled(TowerText)`
+  cursor: default;
 `;
 
-const DifficultyLabel = styled(FormControlLabel)`
-  color: inherit;
-`;
-
-const Difficulty = styled(Radio)`
-  color: inherit;
-`;
-
-export default function FilterDifficulty({ className }) {
-    const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
-    const difficulty = useSelector(getDifficulty);
+export default function FilterDifficulty({ className, color }) {
     const dispatch = useDispatch();
+    const mobile = useSelector(getMobile);
+    const difficulty = useSelector(getDifficulty);
 
-    const handleDifficulty = (e) => {
-        dispatch(updateFilter(UPDATE_DIFFICULTY, e.target.value));
+    const handleDifficulty = (e, difficulty) => {
+        dispatch(updateFilter(UPDATE_DIFFICULTY, difficulty));
     }
 
     const easyMed = (
         <>
-            <DifficultyLabel value="easy" control={<Difficulty size="small"/>} label="Easy" />
-            <DifficultyLabel value="medium" control={<Difficulty size="small" />} label="Medium" />
+            <DifficultyButton difficulty={"easy"} selected={difficulty === "easy"} color={color} handleChange={handleDifficulty} />
+            <DifficultyButton difficulty={"medium"} selected={difficulty === "medium"} color={color} handleChange={handleDifficulty} />
         </>
     );
 
     const hardImp = (
         <>
-            <DifficultyLabel value="hard" control={<Difficulty size="small"/>} label="Hard" />
-            <DifficultyLabel value="impoppable" control={<Difficulty size="small"/>} label="Impoppable" />
+            <DifficultyButton difficulty={"hard"} selected={difficulty === "hard"} color={color} handleChange={handleDifficulty} />
+            <DifficultyButton difficulty={"impoppable"} selected={difficulty === "impoppable"} color={color} handleChange={handleDifficulty} />
         </>
     )
 
     return (
         <>
-            <DifficultyContainer component="fieldset" className={className} data-dm={darkMode}>
-                <FilterLabel focused={false}>Difficulty Prices:</FilterLabel>
-                <RadioGroup value={difficulty} onChange={handleDifficulty}>
+            <DifficultyContainer className={className}>
+                <Label variant="h4">
+                    Difficulty Prices:
+                </Label>
+                <ButtonContainer>
                     { !mobile && (
-                        <FormRow>
+                        <Row>
                             { easyMed }
                             { hardImp }
-                        </FormRow>
+                        </Row>
                     )}
                     { mobile && (
                         <>
-                            <FormRow>
+                            <Row>
                                 { easyMed }
-                            </FormRow>
-                            <FormRow>
+                            </Row>
+                            <Row>
                                 { hardImp }
-                            </FormRow>
+                            </Row>
                         </>
                     )}
-                </RadioGroup>
+                </ButtonContainer>
             </DifficultyContainer>
         </>
     );
