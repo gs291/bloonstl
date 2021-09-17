@@ -17,9 +17,9 @@ export default function HeroPage({ hero }) {
     return (
         <>
             <TowerImgInfo tower={hero} towerType="hero" />
-            <FixedDivider width={ 80 } backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
-            <FixedDivider width={ 80 } backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <HeroAbilities abilities={ hero.abilities } heroFile={ hero.filename }/>
         </>
     );

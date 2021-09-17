@@ -45,17 +45,17 @@ export default function MonkeyPage({ monkey }) {
     return (
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
-            <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
-            <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <AbilityPathSelection tier={tier} tiers={tiers} handleTier={handleTier} />
-            <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <TotalCost variant={mobile ? "h5" : "h4"}>
                 Path Cost: $<Counter cost={totalCost} />
             </TotalCost>
             <MonkeyAbilities abilities={monkey.abilities} monkeyFile={monkey.filename} tier={tier} tiers={tiers} updateCost={updateTotalCost}/>
             <FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />
-            <FixedDivider width={80} backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <ProsCons pros={tiers.pros} cons={tiers.cons} backgroundColor={dividerBackgroundColor}/>
         </>
     );
