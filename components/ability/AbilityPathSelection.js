@@ -1,10 +1,9 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Typography} from "@material-ui/core";
 
+import TowerText from "../tower/TowerText";
 import FilterTiers from "../filters/FilterTiers";
 import TierPathText from "../tower/TierPathText";
-import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const AbilityTier = styled.div`
@@ -25,9 +24,9 @@ const Selection = styled.div`
   width: ${props => props["data-m"] ? 100 : 80}%;
 `;
 
-const Label = styled(Typography)`
+const Label = styled(TowerText)`
   cursor: default;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  text-align: center;
 `;
 
 export default function AbilityPathSelection({ tier, tiers, handleTier }) {
@@ -37,7 +36,7 @@ export default function AbilityPathSelection({ tier, tiers, handleTier }) {
     return (
         <>
             <Selection data-m={mobile}>
-                <Label variant="h4" data-dm={darkMode}>
+                <Label variant="h4">
                     Ability Path Tiers:
                 </Label>
                 <AbilityTier data-m={mobile}>

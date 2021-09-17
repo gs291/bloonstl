@@ -29,6 +29,7 @@ const Row = styled.div`
 
 const Label = styled(TowerText)`
   cursor: default;
+  text-align: center;
 `;
 
 export default function FilterDifficulty({ className, color }) {
