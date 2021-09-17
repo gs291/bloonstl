@@ -4,9 +4,9 @@ import { Global, css } from "@emotion/react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {createMuiTheme, StylesProvider, ThemeProvider} from "@material-ui/core/styles";
 
-import store from "../lib/redux/store";
 import Page from "../components/page/Page";
 import {font_family} from "../lib/utils/utils";
+import configureStore from "../lib/redux/store";
 
 const theme = createMuiTheme({
     typography: {
@@ -36,6 +36,7 @@ const globals = css`
 `;
 
 export default function App({ Component, pageProps }) {
+    const store = configureStore();
 
     useEffect(() => {
         // Remove the server-side injected CSS.
