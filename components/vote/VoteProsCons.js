@@ -114,7 +114,7 @@ export default function VoteProsCons({className}) {
                 <ProsConsGrid
                     container
                     spacing={2}
-                    justify="center"
+                    justifyContent="center"
                     alignItems="center"
                 >
                     {prosConsKeys.map(key => (
@@ -139,7 +139,7 @@ export default function VoteProsCons({className}) {
                 <ProsConsGrid
                     container
                     spacing={2}
-                    justify="center"
+                    justifyContent="center"
                     alignItems="center"
                 >
                     {prosConsKeys.map(key => (

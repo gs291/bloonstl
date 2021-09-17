@@ -25,7 +25,7 @@ export default function TierSection({className}) {
                 container
                 direction="column"
                 alignItems="center"
-                justify="center"
+                justifyContent="center"
                 className={className}
                 data-dm={darkMode}
             >

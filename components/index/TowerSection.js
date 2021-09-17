@@ -25,7 +25,7 @@ export default function TowerSection({ className }) {
                 container
                 direction="column"
                 alignItems="center"
-                justify="center"
+                justifyContent="center"
                 data-dm={darkMode}
                 className={className}
             >

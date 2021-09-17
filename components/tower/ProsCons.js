@@ -30,7 +30,7 @@ export default function ProsCons({ className, pros, cons, backgroundColor }) {
         <>
             <ProsConsContainer container
                                spacing={2}
-                               justify="center"
+                               justifyContent="center"
                                direction={mobile ? "column" : "row"}
                                alignItems={mobile ? "center" : "stretch"}
                                data-m={mobile}

@@ -107,7 +107,7 @@ export default function Vote({towers, tower}) {
                 <Grid container
                       spacing={mobile ? 2 : 4}
                       direction="column"
-                      justify="center"
+                      justifyContent="center"
                 >
                     <VoteSection item>
                         <PaddedVoteContainer data-dm={darkMode}>

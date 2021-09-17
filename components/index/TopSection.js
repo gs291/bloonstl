@@ -68,7 +68,7 @@ export default function TopSection({className, scrollTo}) {
                 container
                 direction="column"
                 alignItems="center"
-                justify="space-between"
+                justifyContent="space-between"
                 data-dm={darkMode}
                 className={className}
             >

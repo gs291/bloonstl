@@ -31,7 +31,7 @@ export default function TowerImgInfo({tower, towerType}) {
         <>
             <TowerContainer container
                             spacing={2}
-                            justify="center"
+                            justifyContent="center"
                             direction={mobile ? "column" : "row"}
                             alignItems="center"
             >

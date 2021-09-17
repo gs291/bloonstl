@@ -69,7 +69,7 @@ export default function GridProsCons({ className, isPro, proCons}) {
             <Grid container
                   spacing={1}
                   direction="column"
-                  justify="center"
+                  justifyContent="center"
                   alignItems="center"
                   alignContent="center"
             >
