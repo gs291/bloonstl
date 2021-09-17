@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import {Provider} from "react-redux";
 import { Global, css } from "@emotion/react";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import {createTheme} from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import {StylesProvider, ThemeProvider} from "@material-ui/core/styles";
 
 import Page from "../components/page/Page";
