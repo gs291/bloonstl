@@ -4,15 +4,17 @@ import PageTitle from "../components/page/PageTitle";
 import MainContainer from "../components/page/MainContainer";
 import TierListGrid from "../components/tierlist-grid/TierListGrid";
 
-export default function TierList({s, a, b}) {
+export default function TierList({s, a, b, c}) {
     s = JSON.parse(s);
     a = JSON.parse(a);
     b = JSON.parse(b);
+    c = JSON.parse(c);
 
     const tiers = {
         "s": s,
         "a": a,
-        "b": b
+        "b": b,
+        "c": c
     }
 
     return (
@@ -27,7 +29,7 @@ export default function TierList({s, a, b}) {
 }
 
 export async function getStaticProps(context) {
-    let sTier = [], aTier = [], bTier = [];
+    let sTier = [], aTier = [], bTier = [], cTier = [];
     let heroes = await dataSources().heroesAPI.getAllHeroesWithTiers();
     let monkeys = await dataSources().monkeysAPI.getAllMonkeysWithTiers();
 
@@ -36,8 +38,10 @@ export async function getStaticProps(context) {
             sTier.push(monkey);
         } else if (monkey.tier === "a") {
             aTier.push(monkey);
-        } else {
+        } else if (monkey.tier === "b") {
             bTier.push(monkey);
+        } else {
+            cTier.push(monkey)
         }
     })
 
@@ -46,8 +50,10 @@ export async function getStaticProps(context) {
             sTier.push(hero);
         } else if (hero.tier === "a") {
             aTier.push(hero);
-        }  else {
+        }  else if (hero.tier === "b"){
             bTier.push(hero)
+        } else {
+            cTier.push(hero)
         }
     });
 
@@ -58,12 +64,14 @@ export async function getStaticProps(context) {
     sTier.sort( sortByName );
     aTier.sort( sortByName );
     bTier.sort( sortByName );
+    cTier.sort( sortByName );
 
     return {
         props: {
             s: JSON.stringify(sTier),
             a: JSON.stringify(aTier),
-            b: JSON.stringify(bTier)
+            b: JSON.stringify(bTier),
+            c: JSON.stringify(cTier)
         }
     }
 }
