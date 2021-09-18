@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {useRef, useState} from "react";
 import {useSelector} from "react-redux";
-import {Menu, MenuItem} from "@material-ui/core";
+import {ClickAwayListener, Menu, MenuItem, Popover, Popper} from "@material-ui/core";
 
 import NavLink from "./NavLink";
 import {rgbaHex} from "../../lib/utils/utils";
@@ -46,14 +46,14 @@ const NavExpand = styled.div`
   }
 `;
 
-const ExpandMenu = styled(Menu)`
-  & .MuiMenu-paper {
+const ExpandMenu = styled(Popover)`
+  & .MuiPaper-root {
     background-color: ${props => props["data-dm"] ? siteColors.expander.dark : siteColors.expander.light};
   }
 `;
 
 const MenuContainer = styled.div`
-  
+
 `;
 
 const NavExpandItem = styled(MenuItem)`
@@ -116,15 +116,24 @@ export default function NavCollapse({links, expanderRef, anchorEl, handleExpand,
                     horizontal: "center",
                 }}
                 getContentAnchorEl={null}
+                container={expanderRef.current}
+                role={undefined}
                 data-dm={darkMode}
+                style={{
+                    zIndex: 1,
+                    position: "inherit",
+                }}
+                hideBackdrop
             >
-                <MenuContainer>
-                    {links.map(link => (
-                        <NavExpandItem onClick={handleClose} key={link.key}>
-                            <NavLink {...link} />
-                        </NavExpandItem>
-                    ))}
-                </MenuContainer>
+                <ClickAwayListener onClickAway={handleClose}>
+                    <MenuContainer>
+                        {links.map(link => (
+                            <NavExpandItem onClick={handleClose} key={link.key}>
+                                <NavLink {...link} />
+                            </NavExpandItem>
+                        ))}
+                    </MenuContainer>
+                </ClickAwayListener>
             </ExpandMenu>
         </>
     );
