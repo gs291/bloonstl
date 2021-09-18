@@ -8,7 +8,10 @@ import {getTowerLink} from "../../lib/utils/utils";
 import TableOfContents from "../table-of-contents/TableOfContents";
 
 const PageContainer = styled.div`
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Select = styled(PatchSelect)`
