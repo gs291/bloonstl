@@ -35,7 +35,6 @@ export default function TierListGrid({ className, tiers }) {
         gridSpacing = 4;
     }
 
-    const sortByName = (a, b) =>  (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
     const filterTowers = (towers) =>
         towers.filter(tower => {
             const towerType = getTowerType(tower.type);
