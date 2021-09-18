@@ -36,8 +36,8 @@ export default function TierListGrid({ className, tiers }) {
     }
 
     const sortByName = (a, b) =>  (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
-    const filterTowers = (towers) => {
-        let filteredTowers = towers.filter(tower => {
+    const filterTowers = (towers) =>
+        towers.filter(tower => {
             const towerType = getTowerType(tower.type);
             if (towerType === "monkey" && !monkeys) {
                 return false;
@@ -46,10 +46,6 @@ export default function TierListGrid({ className, tiers }) {
             }
             return true;
         });
-
-        filteredTowers.sort(sortByName);
-        return filteredTowers;
-    }
 
     const filteredTiers = {
         "s": filterTowers(tiers["s"]),
