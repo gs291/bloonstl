@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
 
+import ProsCons from "../tower/ProsCons";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getHeroColor} from "../../lib/utils/utils";
 import HeroAbilities from "../abilities/HeroAbilities";
 import FilterDifficulty from "../filters/FilterDifficulty";
+
 
 const FilterDiff = styled(FilterDifficulty)`
   margin-top: 10px;
@@ -21,6 +23,8 @@ export default function HeroPage({ hero }) {
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <HeroAbilities abilities={ hero.abilities } heroFile={ hero.filename }/>
+            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+            <ProsCons pros={hero.info.pros} cons={hero.info.cons} backgroundColor={dividerBackgroundColor}/>
         </>
     );
 }
