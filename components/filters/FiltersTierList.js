@@ -50,7 +50,6 @@ const Monkey = styled(MonkeyIcon)`
   width: ${iconSize};
   height: ${iconSize};
   fill: currentColor;
-  transition: 0.3s;
 
   border-bottom: 3px solid ${props => props["data-s"] ? siteColors.pros.dark : siteColors.cons.dark};
 `;
@@ -60,7 +59,6 @@ const Hero = styled(HeroIcon)`
   height: ${iconSize};
   padding: 3px 0;
   fill: currentColor;
-  transition: 0.3s;
   
   border-bottom: 3px solid ${props => props["data-s"] ? siteColors.pros.dark : siteColors.cons.dark};
 `;
