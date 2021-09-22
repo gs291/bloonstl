@@ -3,12 +3,12 @@ import {Provider} from "react-redux";
 import { Global, css } from "@emotion/react";
 import {createTheme} from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
+import {PersistGate} from "redux-persist/integration/react";
 import {StyledEngineProvider, ThemeProvider} from "@mui/material/styles";
 
 import Page from "../components/page/Page";
 import {font_family} from "../lib/utils/utils";
 import configureStore from "../lib/redux/store";
-import {PersistGate} from "redux-persist/integration/react";
 
 const theme = createTheme({
     typography: {
