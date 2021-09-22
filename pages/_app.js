@@ -8,6 +8,7 @@ import {StyledEngineProvider, ThemeProvider} from "@mui/material/styles";
 import Page from "../components/page/Page";
 import {font_family} from "../lib/utils/utils";
 import configureStore from "../lib/redux/store";
+import {PersistGate} from "redux-persist/integration/react";
 
 const theme = createTheme({
     typography: {
@@ -36,8 +37,9 @@ const globals = css`
   }
 `;
 
+const store = configureStore();
+
 export default function App({ Component, pageProps }) {
-    const store = configureStore();
 
     useEffect(() => {
         // Remove the server-side injected CSS.
@@ -49,7 +51,8 @@ export default function App({ Component, pageProps }) {
 
     return (
         <Provider store={store}>
-            <Global styles={globals} />
+            <PersistGate loading={null} persistor={store.__PERSISTOR}>
+                <Global styles={globals} />
                 <StyledEngineProvider injectFirst>
                     <ThemeProvider theme={theme}>
                         <CssBaseline />
@@ -58,6 +61,7 @@ export default function App({ Component, pageProps }) {
                         </Page>
                     </ThemeProvider>
                 </StyledEngineProvider>
+            </PersistGate>
         </Provider>
     );
 }
