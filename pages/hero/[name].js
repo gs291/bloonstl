@@ -5,7 +5,7 @@ import MainContainer from "../../components/page/MainContainer";
 import {getTowerLink, parseTowerLink} from "../../lib/utils/utils";
 
 
-export default function Monkey({ hero }) {
+export default function Hero({ hero }) {
     hero = JSON.parse(hero);
     return (
         <>
