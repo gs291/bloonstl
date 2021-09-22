@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import {Button} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-import ClearIcon from "@material-ui/icons/Clear";
+import {Button} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import ClearIcon from "@mui/icons-material/Clear";
 import {useDispatch, useSelector} from "react-redux";
 
 import siteSizes from "../../lib/utils/siteSizes";

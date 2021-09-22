@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Checkbox, FormControlLabel, Grid, Typography} from "@material-ui/core";
+import {Checkbox, FormControlLabel, Grid, Typography} from "@mui/material";
 
 import {rgbaHex} from "../../lib/utils/utils";
 import FixedDivider from "../divider/FixedDivider";

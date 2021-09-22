@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Typography} from "@material-ui/core";
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import {Typography} from "@mui/material";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";

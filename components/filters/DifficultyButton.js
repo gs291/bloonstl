@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Typography} from "@material-ui/core";
+import {Typography} from "@mui/material";
 
-import {getTierColor} from "../../lib/utils/utils";
+import ImageFill from "../image/ImageFill";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
-import ImageFill from "../image/ImageFill";
 
 
 const Button = styled.div`
@@ -33,6 +32,7 @@ const DifficultyImageContainer = styled.div`
   max-width: 50px;
   height: 50px;
   max-height: 50px;
+  position: relative;
 `;
 
 const DifficultyText = styled(Typography)`

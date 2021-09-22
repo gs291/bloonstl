@@ -1,14 +1,8 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {ButtonGroup} from "@material-ui/core";
 
 import TierButton from "./TierButton";
 import {getDarkMode} from "../../lib/redux/selectors";
-
-const BGroup = styled(ButtonGroup)`
-  justify-content: center;
-  height: 45px;
-`;
 
 const FilterContainer = styled.div`
   display: flex;

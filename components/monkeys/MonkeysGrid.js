@@ -1,4 +1,4 @@
-import {Grid} from "@material-ui/core";
+import {Grid} from "@mui/material";
 import {useSelector} from "react-redux";
 
 import siteColors from "../../lib/utils/siteColors";

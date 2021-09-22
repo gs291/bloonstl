@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import {Typography} from "@material-ui/core";
+import {Typography} from "@mui/material";
 
 import siteColors from "../../lib/utils/siteColors";
 import {useSelector} from "react-redux";

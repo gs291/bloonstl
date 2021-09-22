@@ -1,7 +1,7 @@
 import {useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {FormControl, FormControlLabel, Switch} from "@material-ui/core";
+import {FormControl, FormControlLabel, Switch} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 import ImageFill from "../image/ImageFill";

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import {Accordion, AccordionDetails, AccordionSummary} from "@material-ui/core";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
 
 
 import ApiItem from "../api/ApiItem";

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {useState} from "react";
 import {useSelector} from "react-redux";
-import {ClickAwayListener, MenuItem, Popover} from "@material-ui/core";
+import {ClickAwayListener, MenuItem, Popover} from "@mui/material";
 
 import NavLink from "./NavLink";
 import {rgbaHex} from "../../lib/utils/utils";
@@ -11,9 +11,11 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const NavExpandText = styled.div`
-  height: 10px;
+  line-height: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
 `;
 
 const NavExpandHover = styled.span`
@@ -21,8 +23,8 @@ const NavExpandHover = styled.span`
   border-radius: 10px;
   transition: 0.3s;
   font-size: 1.5em;
-  height: 43px;
-  width: 43px;
+  height: 50px;
+  width: 50px;
 `;
 
 const NavExpand = styled.div`
@@ -97,7 +99,6 @@ export default function NavCollapse({links, expanderRef, anchorEl, handleExpand,
                     vertical: "top",
                     horizontal: "center",
                 }}
-                getContentAnchorEl={null}
                 container={expanderRef.current}
                 role={undefined}
                 data-dm={darkMode}

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {Collapse, Grid, Typography} from "@material-ui/core";
+import {Collapse, Grid, Typography} from "@mui/material";
 
 import VoteModal from "./VoteModal";
 import VoteTower from "./VoteTower";

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import {Drawer} from "@material-ui/core";
+import {Drawer} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 
 import NavLink from "./NavLink";

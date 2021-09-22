@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Chip, Grid} from "@material-ui/core";
+import {Chip, Grid} from "@mui/material";
 
 import Tooltip from "../tooltip/Tooltip";
 import TowerText from "../tower/TowerText";

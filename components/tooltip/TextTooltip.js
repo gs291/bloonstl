@@ -1,4 +1,4 @@
-import {Tooltip} from "@material-ui/core";
+import {Tooltip} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";

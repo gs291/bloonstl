@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import {FormControl} from "@material-ui/core";
+import {FormControl} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import BorderClearIcon from '@material-ui/icons/BorderClear';
-import BorderOuterIcon from '@material-ui/icons/BorderOuter';
+import BorderClearIcon from '@mui/icons-material/BorderClear';
+import BorderOuterIcon from '@mui/icons-material/BorderOuter';
 
 import HeroIcon from "../icon/HeroIcon";
 import TowerText from "../tower/TowerText";

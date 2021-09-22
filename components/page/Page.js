@@ -1,8 +1,8 @@
 import {useEffect} from "react";
 import styled from "@emotion/styled";
 import {Global, css} from "@emotion/react";
+import { useMediaQuery } from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import { Container, useMediaQuery } from "@material-ui/core";
 
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";

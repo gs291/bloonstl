@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import {Provider} from "react-redux";
 import { Global, css } from "@emotion/react";
-import {createTheme} from "@material-ui/core";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import {StylesProvider, ThemeProvider} from "@material-ui/core/styles";
+import {createTheme} from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+import {StyledEngineProvider, ThemeProvider} from "@mui/material/styles";
 
 import Page from "../components/page/Page";
 import {font_family} from "../lib/utils/utils";
@@ -50,14 +50,14 @@ export default function App({ Component, pageProps }) {
     return (
         <Provider store={store}>
             <Global styles={globals} />
-                <StylesProvider injectFirst>
+                <StyledEngineProvider injectFirst>
                     <ThemeProvider theme={theme}>
                         <CssBaseline />
                         <Page>
-                                <Component {...pageProps} />
+                            <Component {...pageProps} />
                         </Page>
                     </ThemeProvider>
-                </StylesProvider>
+                </StyledEngineProvider>
         </Provider>
     );
 }

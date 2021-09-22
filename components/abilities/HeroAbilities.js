@@ -1,6 +1,6 @@
+import {Grid} from "@mui/material";
 import styled from "@emotion/styled";
 import { PureComponent } from "react";
-import {Grid} from "@material-ui/core";
 
 import AbilityContainer from "../ability/AbilityContainer";
 

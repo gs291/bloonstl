@@ -1,5 +1,5 @@
+import {Grid} from "@mui/material";
 import styled from "@emotion/styled";
-import {Grid} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
 import Icon from "../tower/Icon";

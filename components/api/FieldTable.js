@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 

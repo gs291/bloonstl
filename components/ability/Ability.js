@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Card, CardContent} from "@material-ui/core";
-import OfflineBoltIcon from "@material-ui/icons/OfflineBolt";
+import {Card, CardContent} from "@mui/material";
+import OfflineBoltIcon from "@mui/icons-material/OfflineBolt";
 
 import Tooltip from "../tooltip/Tooltip";
 import ImageFill from "../image/ImageFill";
