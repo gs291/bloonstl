@@ -81,9 +81,9 @@ export default function GridProsCons({ className, isPro, proCons}) {
                 <GridContainer item>
                     { proCons.length > 0 && (
                         <ChipContainer container spacing={2}>
-                            { proCons.map(pc => ( pc &&
+                            { proCons.map((pc, idx) => ( pc &&
                                 (
-                                    <ChipItem item xs={proCons.length > 1 ? mobile ? 6 : 4 : 12} key={pc.title}>
+                                    <ChipItem item xs={proCons.length > 1 ? mobile ? 6 : 4 : 12} key={idx}>
                                         <Tooltip
                                             title={
                                                 <ChipTooltip isPro={isPro}
