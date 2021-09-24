@@ -7,7 +7,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const TitleContainer = styled(Grid)`
-  min-height: 350px;
+  min-height: 375px;
   padding: 3em;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   transition: 0.3s;
@@ -42,12 +42,15 @@ export default function ProConSection({ className, monkey }) {
                 className={className}
             >
                 <Grid item>
-                    <Typography variant="h4">
-                        Lastly, Vote
+                    <Typography variant="h3">
+                        Lastly, View Descriptive Information
                     </Typography>
                     <br />
-                    <SansSerifText variant="body1">
-                        On what you think is the best.
+                    <SansSerifText variant="h6">
+                        On monkeys and heroes
+                    </SansSerifText>
+                    <SansSerifText variant="h6">
+                        With the pros and cons of each tower
                     </SansSerifText>
                 </Grid>
                 <GridItem item>

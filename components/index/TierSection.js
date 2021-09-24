@@ -7,7 +7,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const TitleContainer = styled(Grid)`
-  min-height: 350px;
+  min-height: 375px;
   padding: 3em;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   text-align: center;
@@ -35,18 +35,15 @@ export default function TierSection({className, monkey}) {
                 data-dm={darkMode}
             >
                 <Grid item xs={10}>
-                    <Typography variant="h4">
+                    <Typography variant="h3">
                         Compare Towers
                     </Typography>
                     <br />
-                    <SansSerifText variant="body1">
-                        Voted by you.
+                    <SansSerifText variant="h6">
+                        Between Monkeys and Heroes
                     </SansSerifText>
-                    <SansSerifText variant="body1">
-                        Between Monkeys and Heroes.
-                    </SansSerifText>
-                    <SansSerifText variant="body1">
-                        And between Ability trees for each Monkey.
+                    <SansSerifText variant="h6">
+                        From a tier list ranging from S to C
                     </SansSerifText>
                 </Grid>
                 <Grid item xs={6}>
