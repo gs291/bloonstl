@@ -14,6 +14,10 @@ const TitleContainer = styled(Grid)`
   text-align: center;
 `;
 
+const PathText = styled(Typography)`
+  margin-bottom: 15px;
+`;
+
 const SansSerifText = styled(Typography)`
   font-family: sans-serif;
 `;
@@ -35,6 +39,9 @@ export default function TowerSection({ className, monkey }) {
                 className={className}
             >
                 <Grid item xs={6}>
+                    <PathText variant="h5">
+                        S Tier Ability Path:
+                    </PathText>
                     <TierPathText tier="s" tiers={monkey} />
                 </Grid>
                 <Grid item xs={10}>

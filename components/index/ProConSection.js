@@ -43,11 +43,11 @@ export default function ProConSection({ className, monkey }) {
             >
                 <Grid item>
                     <Typography variant="h3">
-                        Lastly, View Descriptive Information
+                        View Descriptive Information
                     </Typography>
                     <br />
                     <SansSerifText variant="h6">
-                        On monkeys and heroes
+                        On Monkeys and Heroes
                     </SansSerifText>
                     <SansSerifText variant="h6">
                         With the pros and cons of each tower
