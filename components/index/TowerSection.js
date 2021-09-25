@@ -50,10 +50,10 @@ export default function TowerSection({ className, monkey }) {
                     </Typography>
                     <br />
                     <SansSerifText variant="h6">
-                        On all monkey abilities
+                        Showing the best ability paths for all monkeys
                     </SansSerifText>
                     <SansSerifText variant="h6">
-                        Showing the best ability paths for all monkeys.
+                        With each monkey having a tier list for ability paths
                     </SansSerifText>
                 </Grid>
             </TitleContainer>

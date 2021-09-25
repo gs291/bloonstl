@@ -50,7 +50,7 @@ export default function ProConSection({ className, monkey }) {
                         On Monkeys and Heroes
                     </SansSerifText>
                     <SansSerifText variant="h6">
-                        With the pros and cons of each tower
+                        With the pros and cons of each tower and/or ability path
                     </SansSerifText>
                 </Grid>
                 <GridItem item>
