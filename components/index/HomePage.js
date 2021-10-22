@@ -3,8 +3,8 @@ import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 
 import TierSection from "./TierSection";
-import ProConSection from "./ProConSection";
 import TowerSection from "./TowerSection";
+import ProConSection from "./ProConSection";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 
