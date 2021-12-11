@@ -1,7 +1,7 @@
 import {useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Tooltip as MUITooltip, ClickAwayListener} from "@material-ui/core";
+import {Tooltip as MUITooltip, ClickAwayListener} from "@mui/material";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";

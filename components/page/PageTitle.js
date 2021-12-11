@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Typography} from "@material-ui/core";
+import {Typography} from "@mui/material";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
@@ -9,6 +9,7 @@ const Title = styled(Typography)`
   width: 100%;
   text-align: center;
   margin-bottom: 100px;
+  transition: 0.3s;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   border-bottom: 6px solid ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
 `;

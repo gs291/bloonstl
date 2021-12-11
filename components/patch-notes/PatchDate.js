@@ -9,7 +9,7 @@ const DateText = styled(TowerText)`
   margin-left: 7px;
 `;
 
-export default function PatchDate({ date }) {
+export default function PatchDate({ className, date }) {
 
     const dateTime = new Date(date);
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -17,7 +17,7 @@ export default function PatchDate({ date }) {
 
     return (
         <>
-            <DateContainer>
+            <DateContainer className={className}>
                 <TowerText variant="h5">
                     Released:
                 </TowerText>

@@ -2,18 +2,28 @@ import styled from "@emotion/styled";
 import {useEffect, useState} from "react";
 
 import Patch from "./Patch";
-import PatchSelect from "./PatchSelect";
-import TableOfContents from "./TableOfContents";
-import {getTowerLink} from "../../lib/utils/utils";
 import PatchDate from "./PatchDate";
+import PatchSelect from "./PatchSelect";
+import {getTowerLink} from "../../lib/utils/utils";
+import TableOfContents from "../table-of-contents/TableOfContents";
 
 const PageContainer = styled.div`
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
+const Select = styled(PatchSelect)`
+  margin-bottom: 50px;
+`;
+
+const Date = styled(PatchDate)`
+  margin-top: 50px;
+`;
 
 export default function PatchNotesPage({ patches }) {
-    const [patch, setPatch] = useState("27.0");
+    const [patch, setPatch] = useState("27.2");
     const [toc, setToc] = useState([]);
 
     const handlePatchSelect = (e) => {
@@ -35,9 +45,9 @@ export default function PatchNotesPage({ patches }) {
     return (
         <>
             <PageContainer>
-                <PatchSelect patch={patch} handlePatchSelect={handlePatchSelect} />
+                <Select patch={patch} handlePatchSelect={handlePatchSelect} />
                 <TableOfContents tags={toc} />
-                <PatchDate date={patches[patch].release} />
+                <Date date={patches[patch].release} />
                 <Patch patch={patches[patch]} tags={toc}/>
             </PageContainer>
         </>

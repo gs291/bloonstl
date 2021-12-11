@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Grid, Typography} from "@material-ui/core";
+import {Grid, Typography} from "@mui/material";
 
 import TopBackground from "./TopBackground";
 import siteSizes from "../../lib/utils/siteSizes";
@@ -68,7 +68,7 @@ export default function TopSection({className, scrollTo}) {
                 container
                 direction="column"
                 alignItems="center"
-                justify="space-between"
+                justifyContent="space-between"
                 data-dm={darkMode}
                 className={className}
             >

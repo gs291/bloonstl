@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {Collapse, Grid, Typography} from "@material-ui/core";
+import {Collapse, Grid, Typography} from "@mui/material";
 
 import VoteModal from "./VoteModal";
 import VoteTower from "./VoteTower";
@@ -107,7 +107,7 @@ export default function Vote({towers, tower}) {
                 <Grid container
                       spacing={mobile ? 2 : 4}
                       direction="column"
-                      justify="center"
+                      justifyContent="center"
                 >
                     <VoteSection item>
                         <PaddedVoteContainer data-dm={darkMode}>

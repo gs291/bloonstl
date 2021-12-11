@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Checkbox, FormControlLabel, Grid, Typography} from "@material-ui/core";
+import {Checkbox, FormControlLabel, Grid, Typography} from "@mui/material";
 
 import {rgbaHex} from "../../lib/utils/utils";
 import FixedDivider from "../divider/FixedDivider";
@@ -114,7 +114,7 @@ export default function VoteProsCons({className}) {
                 <ProsConsGrid
                     container
                     spacing={2}
-                    justify="center"
+                    justifyContent="center"
                     alignItems="center"
                 >
                     {prosConsKeys.map(key => (
@@ -139,7 +139,7 @@ export default function VoteProsCons({className}) {
                 <ProsConsGrid
                     container
                     spacing={2}
-                    justify="center"
+                    justifyContent="center"
                     alignItems="center"
                 >
                     {prosConsKeys.map(key => (

@@ -3,6 +3,7 @@ import Header from "../components/page/Header";
 import PageTitle from "../components/page/PageTitle";
 import MonkeysGrid from "../components/monkeys/MonkeysGrid";
 import MainContainer from "../components/page/MainContainer";
+import HorizontalAD from "../components/advertisment/HorizontalAD";
 
 
 export default function Monkeys({ monkeys }) {
@@ -16,6 +17,7 @@ export default function Monkeys({ monkeys }) {
             <Header title="Monkeys" />
             <MainContainer>
                 <PageTitle title="Monkeys" />
+                <HorizontalAD />
                 <MonkeysGrid primary={primary} military={military} magic={magic} support={support} />
             </MainContainer>
         </>

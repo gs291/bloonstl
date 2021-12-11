@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Chip, Grid} from "@material-ui/core";
+import {Chip, Grid} from "@mui/material";
 
 import Tooltip from "../tooltip/Tooltip";
 import TowerText from "../tower/TowerText";
@@ -69,7 +69,7 @@ export default function GridProsCons({ className, isPro, proCons}) {
             <Grid container
                   spacing={1}
                   direction="column"
-                  justify="center"
+                  justifyContent="center"
                   alignItems="center"
                   alignContent="center"
             >
@@ -81,9 +81,9 @@ export default function GridProsCons({ className, isPro, proCons}) {
                 <GridContainer item>
                     { proCons.length > 0 && (
                         <ChipContainer container spacing={2}>
-                            { proCons.map(pc => ( pc &&
+                            { proCons.map((pc, idx) => ( pc &&
                                 (
-                                    <ChipItem item xs={proCons.length > 1 ? mobile ? 6 : 4 : 12} key={pc.title}>
+                                    <ChipItem item xs={proCons.length > 1 ? mobile ? 6 : 4 : 12} key={idx}>
                                         <Tooltip
                                             title={
                                                 <ChipTooltip isPro={isPro}

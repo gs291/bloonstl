@@ -1,6 +1,7 @@
 -- MySQL bloonstl initial.sql
 -- Gregory Sanchez
 
+DROP TABLE IF EXISTS TowerTiersInfo;
 DROP TABLE IF EXISTS AbilityTiersInfo;
 DROP TABLE IF EXISTS TowerTiers;
 DROP TABLE IF EXISTS AbilityTiers;
@@ -85,16 +86,11 @@ CREATE TABLE `AbilityTiersInfo` (
     CONSTRAINT `ab_rnk_ifo_fk_1` FOREIGN KEY (`tier_id`) REFERENCES `AbilityTiers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `TowerVotes` (
+CREATE TABLE `TowerTiersInfo` (
     `id` INT(11) AUTO_INCREMENT NOT NULL,
     `tower_id` INT(11) NOT NULL,
-    `tower_tier` VARCHAR(1) NOT NULL,
-    `ability_tier` VARCHAR(1),
-    `ability_top` TINYINT(1),
-    `ability_middle` TINYINT(1),
-    `ability_bottom` TINYINT(1),
-    `pros` VARCHAR(255),
-    `cons` VARCHAR(255),
+    `pros` VARCHAR(255) NOT NULL,
+    `cons` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`),
-    CONSTRAINT `v_t_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
+    CONSTRAINT `twr_rnk_ifo_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import ErrorIcon from "@material-ui/icons/Error";
-import {Button, CircularProgress, Typography} from "@material-ui/core";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import ErrorIcon from "@mui/icons-material/Error";
+import {Button, CircularProgress, Typography} from "@mui/material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";

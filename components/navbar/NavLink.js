@@ -2,7 +2,7 @@ import Link from "next/link";
 import styled from "@emotion/styled";
 import {useRouter} from "next/router";
 import {useSelector} from "react-redux";
-import {Link as MUILink} from "@material-ui/core";
+import {Link as MUILink} from "@mui/material";
 
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
@@ -40,7 +40,7 @@ const MLink = styled(MUILink)`
 
 const A = styled.div`
   display: inline-block;
-  min-width: 85px;
+  min-width: 100px;
   font-size: ${props => props["data-m"] ? 2 : 1.5 }em;
   line-height: ${siteSizes.nav.height};
 `;

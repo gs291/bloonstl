@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Grid, Typography} from "@material-ui/core";
+import {Grid, Typography} from "@mui/material";
 
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";

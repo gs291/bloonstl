@@ -1,5 +1,5 @@
+import {Grid} from "@mui/material";
 import styled from "@emotion/styled";
-import {Grid} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
 import Icon from "../tower/Icon";
@@ -31,7 +31,7 @@ export default function TowerImgInfo({tower, towerType}) {
         <>
             <TowerContainer container
                             spacing={2}
-                            justify="center"
+                            justifyContent="center"
                             direction={mobile ? "column" : "row"}
                             alignItems="center"
             >

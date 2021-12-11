@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import {Container} from "@material-ui/core";
+import {Container} from "@mui/material";
 
 const Main = styled(Container)`
   display: flex;

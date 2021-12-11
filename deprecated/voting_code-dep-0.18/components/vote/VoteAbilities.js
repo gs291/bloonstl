@@ -5,7 +5,7 @@ import {
     RadioGroup,
     Slider,
     Typography
-} from "@material-ui/core";
+} from "@mui/material";
 import {useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";

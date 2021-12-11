@@ -12,7 +12,7 @@ SELECT id INTO @dart_monkey FROM Monkeys WHERE name='Dart Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @dart_monkey);
 SELECT id INTO @tower_dart_monkey FROM Towers WHERE monkey_id=@dart_monkey;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_dart_monkey, 'b', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_dart_monkey, 'c', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 0, 0, 'Sharp Shots', 'Can pop 1 extra Bloon per shot.', 140, 100);
@@ -211,7 +211,7 @@ SELECT id INTO @ice_monkey FROM Monkeys WHERE name='Ice Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @ice_monkey);
 SELECT id INTO @tower_ice_monkey FROM Towers WHERE monkey_id=@ice_monkey;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_ice_monkey, 's', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_ice_monkey, 'a', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 0, 'Permafrost', 'Bloons move slowly even after thawing out.', 100, 160);
@@ -558,7 +558,7 @@ SELECT id INTO @mortar_monkey FROM Monkeys WHERE name='Mortar Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @mortar_monkey);
 SELECT id INTO @tower_mortar_monkey FROM Towers WHERE monkey_id=@mortar_monkey;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_mortar_monkey, 'a', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_mortar_monkey, 'b', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 0, 0, 'Bigger Blast', 'Bigger shells deliver a bigger blast radius.', 500, 180);
@@ -607,7 +607,7 @@ SELECT id INTO @dartling_gunner FROM Monkeys WHERE name='Dartling Gunner';
 INSERT INTO `Towers` VALUES (NULL, NULL, @dartling_gunner);
 SELECT id INTO @tower_dartling_gunner FROM Towers WHERE monkey_id=@dartling_gunner;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_dartling_gunner, 'a', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_dartling_gunner, 'b', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_dartling_gunner, false, 0, 0, 'Focused Firing', 'Increases accuracy of the Dartling Gun.', 300, 150);
@@ -705,7 +705,7 @@ SELECT id INTO @super_monkey FROM Monkeys WHERE name='Super Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @super_monkey);
 SELECT id INTO @tower_super_monkey FROM Towers WHERE monkey_id=@super_monkey;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_super_monkey, 's', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_super_monkey, 'a', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, false, 0, 0, 'Laser Blasts', 'Shoots powerful blasts of a laser instead of darts.', 2500, 500);
@@ -857,7 +857,7 @@ SELECT id INTO @druid FROM Monkeys WHERE name='Druid';
 INSERT INTO `Towers` VALUES (NULL, NULL, @druid);
 SELECT id INTO @tower_druid FROM Towers WHERE monkey_id=@druid;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_druid, 'a', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_druid, 'b', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 0, 'Hard Thorns', 'Hard thorns can pop 2 Bloons each and pop Frozen Bloons.', 250, 150);
@@ -1009,7 +1009,7 @@ SELECT id INTO @monkey_village FROM Monkeys WHERE name='Monkey Village';
 INSERT INTO `Towers` VALUES (NULL, NULL, @monkey_village);
 SELECT id INTO @tower_monkey_village FROM Towers WHERE monkey_id=@monkey_village;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_monkey_village, 'a', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_monkey_village, 'b', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 0, 0, 'Bigger Radius', 'Increases influence radius of the village.', 400, 160);
@@ -1058,7 +1058,7 @@ SELECT id INTO @engineer_monkey FROM Monkeys WHERE name='Engineer Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @engineer_monkey);
 SELECT id INTO @tower_engineer_monkey FROM Towers WHERE monkey_id=@engineer_monkey;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_engineer_monkey, 'b', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_engineer_monkey, 'c', 0);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 0, 0, 'Sentry Gun', 'Creates temporary sentry guns and deploys them nearby.', 500, 160);
@@ -1110,7 +1110,7 @@ SELECT id INTO @quincy FROM Heroes WHERE name='Quincy';
 INSERT INTO `Towers` VALUES (NULL, @quincy, NULL);
 SELECT id INTO @tower_quincy FROM Towers WHERE hero_id=@quincy;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_quincy, 'a', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_quincy, 'b', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 0, '', 'Quincy\'s arrows bounce to 3 different targets.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 1, '', 'Base attack bounces up to 4 targets.', 0, 0);
@@ -1133,6 +1133,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 17, '', 'Quincy a
 INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 18, '', 'Each arrow gets even more popping power.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 19, '', 'Storm of Arrows increased damage per arrows and even more arrows.', 0, 0);
 
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_quincy, 'blnc,chep,mg,lg,dps,moab', 'eg,xp');
 
 --      Hero - Gwendolin
 INSERT INTO `Heroes` VALUES (NULL, 'Gwendolin', 'Pyromaniac', 'Gwendolin believes there hasn\'t been a Bloon problem that can\'t be solved with fire. Lots of fire.', 900, 0, 'gwendolin.png');
@@ -1163,6 +1164,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 17, '', 'Incre
 INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 18, '', 'Shoots 3 blasts of fire per shot.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 19, '', 'Firestorm does hugely increased damage.', 0, 0);
 
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_gwendolin, 'lead,eg,mg,tbf,cm', 'prup,camo');
 
 --      Hero - Striker Jones
 INSERT INTO `Heroes` VALUES (NULL, 'Striker Jones', 'Artillery Commander', 'Striker Jones is a string Commander who uses his knowledge of long range combat to greatly boost the power of explosives.', 750, 0, 'striker-jones.png');
@@ -1193,6 +1195,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 17, '', 'A
 INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 18, '', 'Increased attack speed and makes all Black Bloons vulnerable to explosive damage.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 19, '', 'Artillery Command also gives double damage and popping power to all Bomb Shooters and Mortar Monkeys for 10 seconds.', 0, 0);
 
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_striker_jones, 'stnb,supp,tbf', 'camo,trkp');
 
 --      Hero - Obyn Greenfoot
 INSERT INTO `Heroes` VALUES (NULL, 'Obyn Greenfoot', 'Forest Guardian', 'Commanding powers of nature, Obyn can shoot through solid obstacles with his spirit wolf attack.', 650, 0, 'obyn-greenfoot.png');
@@ -1200,7 +1203,7 @@ SELECT id INTO @obyn_greenfoot FROM Heroes WHERE name='Obyn Greenfoot';
 INSERT INTO `Towers` VALUES (NULL, @obyn_greenfoot, NULL);
 SELECT id INTO @tower_obyn_greenfoot FROM Towers WHERE hero_id=@obyn_greenfoot;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_obyn_greenfoot, 'b', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_obyn_greenfoot, 'c', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 0, '', 'Sends wolf spirits to attack the Bloons.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 1, '', 'Nature''s Wrath: All Druids in range get +1 pierce.', 0, 0);
@@ -1223,6 +1226,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 17, '', '
 INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 18, '', 'Attack pops extra layers.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 19, '', 'Wall of Trees can hold a lot more Bloons.', 0, 0);
 
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_obyn_greenfoot, 'lead,tbf,eg', 'camo,purp,supp');
 
 --      Hero - Sauda
 INSERT INTO `Heroes` VALUES (NULL, 'Sauda', 'Swordmaster', 'With a calm fury, Sauda can carve Bloons up with her twin razor-sharp swords.', 600, 5000, 'sauda.png');
@@ -1230,7 +1234,7 @@ SELECT id INTO @sauda FROM Heroes WHERE name='Sauda';
 INSERT INTO `Towers` VALUES (NULL, @sauda, NULL);
 SELECT id INTO @tower_sauda FROM Towers WHERE hero_id=@sauda;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_sauda, 'b', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_sauda, 's', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 0, '', 'Slashes with both swords at nearby Bloons', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 1, '', 'Pops more Bloons per attack.', 0, 0);
@@ -1253,13 +1257,15 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 17, '', 'Sauda\'s 
 INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 18, '', 'Enchanted Blades do extra damage to Regrow, Fortified, and Camo Bloons.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 19, '', 'Sword Charge sweeps all track paths three times!', 0, 0);
 
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_sauda, 'dps,camo,atksp,bln,chep', 'rang,map,trkp');
+
 --      Hero - Captain Churchill
 INSERT INTO `Heroes` VALUES (NULL, 'Captain Churchill', 'Tank', 'In his armored battle tank, the captain is a no-nonsense powerhouse on the battlefield.', 2000, 2500, 'captain-churchill.png');
 SELECT id INTO @captain_churchill FROM Heroes WHERE name='Captain Churchill';
 INSERT INTO `Towers` VALUES (NULL, @captain_churchill, NULL);
 SELECT id INTO @tower_captain_churchill FROM Towers WHERE hero_id=@captain_churchill;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_captain_churchill, 'a', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_captain_churchill, 'b', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 0, '', 'Piercing bombs shot from the tank can explode up to 3 times.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 1, '', 'Increased popping power per shot.', 0, 0);
@@ -1281,6 +1287,8 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 16, ''
 INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 17, '', 'All shells pop an extra layer of Bloon.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 18, '', 'Shells can explode 7 times.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 19, '', 'MOAB Barrage and Main Gun do massively increased damage per hit.', 0, 0);
+
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_captain_churchill, 'cm,camo,moab,fbl,dps', 'chep,ddt,xp');
 
 --      Hero - Benjamin
 INSERT INTO `Heroes` VALUES (NULL, 'Benjamin', 'Code Monkey', 'Using his elite hacking skills, Benjamin can generate extra money for the cause.', 1200, 3000, 'benjamin.png');
@@ -1311,13 +1319,15 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 17, '', 'Bloon 
 INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 18, '', 'Biohack lasts 9 seconds and affected Monkeys pop 3 extra layers instead of 2.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 19, '', 'Syphon Funding lasts 20 seconds and cash per pop is tripled for affected Bloons.', 0, 0);
 
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_benjamin, 'mny,supp,hlth,moab,eg', 'chmp');
+
 --      Hero - Ezili
 INSERT INTO `Heroes` VALUES (NULL, 'Ezili', 'Voodoo Monkey', 'Ezili is a wielder of dark arts and manipulator of Bloons. Beware.', 600, 3000, 'ezili.png');
 SELECT id INTO @ezili FROM Heroes WHERE name='Ezili';
 INSERT INTO `Towers` VALUES (NULL, @ezili, NULL);
 SELECT id INTO @tower_ezili FROM Towers WHERE hero_id=@ezili;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_ezili, 'b', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_ezili, 'c', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 0, '', 'Ezili curses Bloons with dark voodoo power.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 1, '', 'Increased attack range.', 0, 0);
@@ -1339,6 +1349,8 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 16, '', 'Base atta
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 17, '', 'Increased attack speed.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 18, '', 'Each damage tick from base attack pop 2 layers.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 19, '', 'MOAB Hex works faster and can destroy BAD Bloons.', 0, 0);
+
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_ezili, 'camo,lead,tbf,moab,bln,fbl,scm,chep', 'purp,hlth,eg,grpb');
 
 --      Hero - Pat Fusty
 INSERT INTO `Heroes` VALUES (NULL, 'Pat Fusty', 'Giant Monkey', 'Pat is a huge Monkey of enormous strength. His unique size and power is a great asset in the war on bloons.', 800, 3000, 'pat-fusty.png');
@@ -1369,6 +1381,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 17, '', 'Incre
 INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 18, '', 'Attack pops more layers.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 19, '', 'Big Squeeze can grab several big Bloons at once.', 0, 0);
 
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_pat_fusty, 'lead,moab,cc,stnb,bln,chmp,kb', 'camo,trkp,time');
 
 --      Hero - Adora
 INSERT INTO `Heroes` VALUES (NULL, 'Adora', 'High Priestess', 'Adora\'s devotion compels her to strike Bloons down with furious vengeance.', 1000, 5000, 'adora.png');
@@ -1399,6 +1412,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 17, '', 'Shoots 8 
 INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 18, '', 'Increased attack range.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 19, '', 'Ball of Light is greatly improved.', 0, 0);
 
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_adora, 'lead,dps,bln,eg,buff', 'camo,purp,supp,chimp,mg');
 
 --      Hero - Admiral Brickell
 INSERT INTO `Heroes` VALUES (NULL, 'Admiral Brickell', 'Naval Commander', 'Command all your water-based Monkeys to decisive victory. Requires water to place.', 750, 5000, 'admiral-brickell.png');
@@ -1406,7 +1420,7 @@ SELECT id INTO @admiral_brickell FROM Heroes WHERE name='Admiral Brickell';
 INSERT INTO `Towers` VALUES (NULL, @admiral_brickell, NULL);
 SELECT id INTO @tower_admiral_brickell FROM Towers WHERE hero_id=@admiral_brickell;
 
-INSERT INTO `TowerTiers` VALUES (NULL, @tower_admiral_brickell, 'a', 0);
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_admiral_brickell, 'c', 0);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 0, '', 'Drops powerful sea mines that seek and destroy Bloons.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 1, '', 'Increased attack speed.', 0, 0);
@@ -1429,6 +1443,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 17, '',
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 18, '', 'Naval Tactics affects all water-based towers everywhere.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 19, '', 'Mega Mine does massively increased damage and longer stun.', 0, 0);
 
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_admiral_brickell, 'tbf,camo,eg,moab', 'wtrp,map,camo,time');
 
 --      Hero - Etienne
 INSERT INTO `Heroes` VALUES (NULL, 'Etienne', 'Drone Operator', 'This high-tech hero can pursue the Bloons wherever they go with his remote controlled drone.', 850, 5000, 'etienne.png');
@@ -1453,8 +1468,41 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 11, '', 'Drone u
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 12, '', 'UCAV ability cooldown reduced.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 13, '', 'Drone damage increased greatly.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 14, '', 'UCAV damage output and duration greatly increased.', 0, 0);
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 15, '', 'Etienne''s range, drone popping power, and Drone Swarm ability cooldown all improved.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 15, '', 'Etienne\'s range, drone popping power, and Drone Swarm ability cooldown all improved.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 16, '', 'UCAV damage output greatly increased again!', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 17, '', 'Drone damage increased.', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 18, '', 'Etienne now controls four drones all the time!', 0, 0);
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 19, '', 'Perma-UCAV: Surveillance drone becomes permanent UCAV. When activated becomes more powerful for a short time and can pop all Bloon types.', 0, 0);
+
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_etienne, 'rang,camo,dps,blnc,mg,lg,vis', 'trg,eg,cd');
+
+--      Hero - Psi
+INSERT INTO `Heroes` VALUES (NULL, 'Psi', 'Psionic Monkey', 'A gifted monkey child, Psi uses only the power of the mind to destroy Bloons from the inside out.', 800, 5000, 'psi.png');
+SELECT id INTO @psi FROM Heroes WHERE name='Psi';
+INSERT INTO `Towers` VALUES (NULL, @psi, NULL);
+SELECT id INTO @tower_psi FROM Towers WHERE hero_id=@psi;
+
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_psi, 'a', 0);
+
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 0, '', 'Over any range or obstacle, Psi sets up deadly vibrations that completely destroy one Bloon at a time. Can target Camo.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 1, '', 'Attacks slightly faster.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, true, 0, 2, 'Psychic Blast', 'Psi unleashes a wave of power that stuns nearby Bloons for a long time.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 3, '', 'Psi\'s attack can hit another Bloon if very close to the targeted Bloon', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 4, '', 'The psionic vibrations destroy Bloons faster than normal.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 5, '', 'Psi\'s powerful mind can penetrate through Lead Bloons.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 6, '', 'Psychic Blast pulses twice. Psi can now destroy Ceramic Bloons.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 7, '', 'Destructive Resonance causes Bloons destroyed by Psi\'s main attack to damage other Bloons nearby.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 8, '', 'Split the Mind. Psi can now target two different Bloons at once.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, true, 0, 9, 'Psionic Scream', 'Psi unleashes a silent scream that throws the Bloons into utter chaos.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 10, '', 'The psionic vibrations destroy Bloons even faster.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 11, '', 'Psychic Blast pulses three times.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 12, '', 'Not even Purple Bloons can resist the power of Psi\'s mind attacks.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 13, '', 'Psi\'s immense psychic power allows targeting and destruction of MOABs.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 14, '', 'Destructive Resonance is more destructive.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 15, '', 'The psionic vibrations destroy Bloons very fast. Psi can now target BFBs.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 16, '', 'Split the Mind. Psi can now target three different Bloons at once.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 17, '', 'Psi\'s attacks affect Bloons within a larger radius of the target Bloon.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 18, '', 'Destructive Resonance is much much more destructive.', 0, 0);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 19, '', 'Psionic Scream holds and damages all Bloons on screen. Psi can now target DDTs and ZOMGs.', 0, 0);
+
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_psi, 'camo,stnb,eg,mg,lg,lead,cm,moab,supp', 'purp,lead,cm,xp');

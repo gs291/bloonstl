@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 import {Provider} from "react-redux";
 import { Global, css } from "@emotion/react";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import {createMuiTheme, StylesProvider, ThemeProvider} from "@material-ui/core/styles";
+import {createTheme} from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+import {PersistGate} from "redux-persist/integration/react";
+import {StyledEngineProvider, ThemeProvider} from "@mui/material/styles";
 
-import store from "../lib/redux/store";
 import Page from "../components/page/Page";
 import {font_family} from "../lib/utils/utils";
+import configureStore from "../lib/redux/store";
 
-const theme = createMuiTheme({
+const theme = createTheme({
     typography: {
         fontFamily: font_family,
     }
@@ -35,6 +37,8 @@ const globals = css`
   }
 `;
 
+const store = configureStore();
+
 export default function App({ Component, pageProps }) {
 
     useEffect(() => {
@@ -47,15 +51,17 @@ export default function App({ Component, pageProps }) {
 
     return (
         <Provider store={store}>
-            <Global styles={globals} />
-                <StylesProvider injectFirst>
+            <PersistGate loading={null} persistor={store.__PERSISTOR}>
+                <Global styles={globals} />
+                <StyledEngineProvider injectFirst>
                     <ThemeProvider theme={theme}>
                         <CssBaseline />
                         <Page>
-                                <Component {...pageProps} />
+                            <Component {...pageProps} />
                         </Page>
                     </ThemeProvider>
-                </StylesProvider>
+                </StyledEngineProvider>
+            </PersistGate>
         </Provider>
     );
 }

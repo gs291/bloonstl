@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Button, Fade, Modal, Typography} from "@material-ui/core";
+import {Button, Fade, Modal, Typography} from "@mui/material";
 
 import ProsCons from "../tower/ProsCons";
 import TierTitle from "../tower/TierTitle";

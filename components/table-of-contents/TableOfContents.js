@@ -7,27 +7,48 @@ import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 
+const TocContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 60%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+  transition: 0.3s;
+`;
+
 const TocWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   
-  min-width: 60%;
-  padding: 1em 2em;
-  border-radius: 20px;
+  padding: 2em 3em;
+  width: 100%;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.25)};
+  transition: 0.3s;
 `;
 
-const TocContainer = styled.div`
+const TitleContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   
-  margin-top: 15px;
-  margin-bottom: 15px
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.5)};
+  transition: 0.3s;
 `;
 
 const TocList = styled.ul`
-  
+  margin: 0;
 `;
 
 const TocItem = styled.li`
@@ -52,16 +73,18 @@ const TocText = styled(TowerText)`
   padding-left: 10px;
 `;
 
-export default function TableOfContents({ tags }) {
+export default function TableOfContents({ tags, className }) {
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <TocContainer>
-                <TocWrapper data-dm={darkMode}>
+            <TocContainer className={className}>
+                <TitleContainer>
                     <TowerText variant="h5">
                         Contents
                     </TowerText>
+                </TitleContainer>
+                <TocWrapper data-dm={darkMode}>
                     <TocList>
                         {tags.map(tag => (
                             <TocItem key={tag.href} data-dm={darkMode}>

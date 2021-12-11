@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import Counter from "./Counter";
+import TierText from "./TierText";
 import TowerText from "./TowerText";
-import TierTitle from "./TierTitle";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getThousandsNumber, rgbaHex} from "../../lib/utils/utils";
@@ -23,7 +23,7 @@ const TierCostContainer = styled.div`
   align-items: center;
 `;
 
-const TowerTier = styled(TierTitle)`
+const TowerTier = styled(TierText)`
   flex: 33%;
 `;
 

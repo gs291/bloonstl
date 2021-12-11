@@ -3,6 +3,7 @@ import Header from "../components/page/Header";
 import PageTitle from "../components/page/PageTitle";
 import HeroesGrid from "../components/heroes/HeroesGrid";
 import MainContainer from "../components/page/MainContainer";
+import HorizontalAD from "../components/advertisment/HorizontalAD";
 
 
 export default function Heroes({ heroes }) {
@@ -13,6 +14,7 @@ export default function Heroes({ heroes }) {
             <Header title="Heroes" />
             <MainContainer>
                 <PageTitle title="Heroes" />
+                <HorizontalAD />
                 <HeroesGrid heroes={heroes} />
             </MainContainer>
         </>

@@ -1,5 +1,5 @@
+import {Grid} from "@mui/material";
 import styled from "@emotion/styled";
-import {Grid} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
 import siteColors from "../../lib/utils/siteColors";
@@ -26,7 +26,8 @@ export default function TierListGrid({ className, tiers }) {
     const colors = {
         "s": getTierColor("s"),
         "a": getTierColor("a"),
-        "b": getTierColor("b")
+        "b": getTierColor("b"),
+        "c": getTierColor("c")
     }
 
     let gridSpacing = 6;
@@ -34,9 +35,8 @@ export default function TierListGrid({ className, tiers }) {
         gridSpacing = 4;
     }
 
-    const sortByName = (a, b) =>  (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);
-    const filterTowers = (towers) => {
-        let filteredTowers = towers.filter(tower => {
+    const filterTowers = (towers) =>
+        towers.filter(tower => {
             const towerType = getTowerType(tower.type);
             if (towerType === "monkey" && !monkeys) {
                 return false;
@@ -46,14 +46,11 @@ export default function TierListGrid({ className, tiers }) {
             return true;
         });
 
-        filteredTowers.sort(sortByName);
-        return filteredTowers;
-    }
-
     const filteredTiers = {
         "s": filterTowers(tiers["s"]),
         "a": filterTowers(tiers["a"]),
-        "b": filterTowers(tiers["b"])
+        "b": filterTowers(tiers["b"]),
+        "c": filterTowers(tiers["c"])
     }
 
     return (
@@ -89,6 +86,16 @@ export default function TierListGrid({ className, tiers }) {
                         tier="b"
                         backgroundColor={darkMode ? siteColors.tier.b.grid.dark : siteColors.tier.b.grid.light}
                         titleColor={colors.b}
+                        ignoreFilter={0}
+                    />
+                </Grid>
+                <Grid item>
+                    <GridTowerContainer
+                        towers={filteredTiers["c"]}
+                        title="C Tier"
+                        tier="c"
+                        backgroundColor={darkMode ? siteColors.tier.c.grid.dark : siteColors.tier.c.grid.light}
+                        titleColor={colors.c}
                         ignoreFilter={0}
                     />
                 </Grid>

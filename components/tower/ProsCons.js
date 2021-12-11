@@ -1,5 +1,5 @@
+import {Grid} from "@mui/material";
 import styled from "@emotion/styled";
-import {Grid} from "@material-ui/core";
 import {useSelector} from "react-redux";
 
 import GridProsCons from "../grid/GridProsCons";
@@ -30,7 +30,7 @@ export default function ProsCons({ className, pros, cons, backgroundColor }) {
         <>
             <ProsConsContainer container
                                spacing={2}
-                               justify="center"
+                               justifyContent="center"
                                direction={mobile ? "column" : "row"}
                                alignItems={mobile ? "center" : "stretch"}
                                data-m={mobile}

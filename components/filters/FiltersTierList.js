@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
-import {FormControl} from "@material-ui/core";
+import {FormControl} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import BorderClearIcon from '@material-ui/icons/BorderClear';
-import BorderOuterIcon from '@material-ui/icons/BorderOuter';
+import BorderClearIcon from '@mui/icons-material/BorderClear';
+import BorderOuterIcon from '@mui/icons-material/BorderOuter';
 
 import HeroIcon from "../icon/HeroIcon";
+import TowerText from "../tower/TowerText";
 import MonkeyIcon from "../icon/MonkeyIcon";
 import {rgbaHex} from "../../lib/utils/utils";
 import TextTooltip from "../tooltip/TextTooltip";
@@ -21,7 +22,11 @@ const FilterContainer = styled(FormControl)`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: ${props => props["data-m"] ? "column": "row"};
+  flex-direction: column;
+`;
+
+const FilterTitle = styled(TowerText)`
+  margin-bottom: 30px;
 `;
 
 const FilterArea = styled.div`
@@ -45,9 +50,8 @@ const Monkey = styled(MonkeyIcon)`
   width: ${iconSize};
   height: ${iconSize};
   fill: currentColor;
-  transition: 0.3s;
 
-  border-bottom: 2px solid ${props => props["data-s"] ? siteColors.pros.dark : siteColors.cons.dark};
+  border-bottom: 3px solid ${props => props["data-s"] ? siteColors.pros.dark : siteColors.cons.dark};
 `;
 
 const Hero = styled(HeroIcon)`
@@ -55,9 +59,16 @@ const Hero = styled(HeroIcon)`
   height: ${iconSize};
   padding: 3px 0;
   fill: currentColor;
-  transition: 0.3s;
   
-  border-bottom: 2px solid ${props => props["data-s"] ? siteColors.pros.dark : siteColors.cons.dark};
+  border-bottom: 3px solid ${props => props["data-s"] ? siteColors.pros.dark : siteColors.cons.dark};
+`;
+
+
+const FilterIconContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const FilterIcon = styled.div`
@@ -79,6 +90,7 @@ const FilterIcon = styled.div`
   }
 `;
 
+
 export default function FiltersTierList({className}) {
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);
@@ -94,26 +106,45 @@ export default function FiltersTierList({className}) {
     return (
         <>
             <FilterContainer data-m={mobile} className={className}>
+                <FilterTitle variant="h4">
+                    Filters
+                </FilterTitle>
                 <FilterArea>
-                    <TextTooltip tooltip={"Toggle Borders"}>
-                        <FilterIcon data-dm={darkMode} onClick={handleBorder}>
+                    <FilterIconContainer>
+                        <TowerText variant="caption">
+                            Borders
+                        </TowerText>
+                        <TextTooltip tooltip={"Toggle Borders"}>
+                            <FilterIcon data-dm={darkMode} onClick={handleBorder}>
                                 {border ? (
                                     <BorderOutlined />
                                 ) : (
                                     <BorderClear />
                                 )}
-                        </FilterIcon>
-                    </TextTooltip>
-                    <TextTooltip tooltip={"Toggle Monkeys"}>
-                        <FilterIcon data-dm={darkMode} onClick={handleMonkeys}>
+                            </FilterIcon>
+                        </TextTooltip>
+                    </FilterIconContainer>
+                    <FilterIconContainer>
+                        <TowerText variant="caption">
+                            Monkeys
+                        </TowerText>
+                        <TextTooltip tooltip={"Toggle Monkeys"}>
+                            <FilterIcon data-dm={darkMode} onClick={handleMonkeys}>
                                 <Monkey data-s={monkeys} data-dm={darkMode}/>
-                        </FilterIcon>
-                    </TextTooltip>
-                    <TextTooltip tooltip={"Toggle Heroes"}>
-                        <FilterIcon data-dm={darkMode} onClick={handleHeroes}>
+                            </FilterIcon>
+                        </TextTooltip>
+                    </FilterIconContainer>
+                    <FilterIconContainer>
+                        <TowerText variant="caption">
+                            Heroes
+                        </TowerText>
+                        <TextTooltip tooltip={"Toggle Heroes"}>
+                            <FilterIcon data-dm={darkMode} onClick={handleHeroes}>
                                 <Hero data-s={heroes} data-dm={darkMode}/>
-                        </FilterIcon>
-                    </TextTooltip>
+                            </FilterIcon>
+                        </TextTooltip>
+                    </FilterIconContainer>
+
                 </FilterArea>
             </FilterContainer>
         </>

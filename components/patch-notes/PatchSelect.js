@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {FormControl, InputLabel, MenuItem, Select} from "@material-ui/core";
+import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
@@ -44,13 +44,13 @@ const VersionSelect = styled(Select)`
   }
 `;
 
-export default function PatchSelect({ patch, handlePatchSelect }) {
+export default function PatchSelect({ className, patch, handlePatchSelect }) {
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <SelectContainer>
-                <FormControl>
+            <SelectContainer className={className}>
+                <FormControl variant="standard">
                     <SelectLabel id="patch-select-label" data-dm={darkMode}>Patch Version</SelectLabel>
                     <VersionSelect
                         labelId="patch-select-label"
@@ -65,8 +65,7 @@ export default function PatchSelect({ patch, handlePatchSelect }) {
                             transformOrigin: {
                                 vertical: "top",
                                 horizontal: "center"
-                            },
-                            getContentAnchorEl: null
+                            }
                         }}
                     >
                         <MenuItem value={"27.2"}>v 27.2</MenuItem>

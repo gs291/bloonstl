@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {DoubleArrow} from "@material-ui/icons";
+import {DoubleArrow} from "@mui/icons-material";
 
 import {getTierColor} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";

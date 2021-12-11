@@ -1,5 +1,5 @@
+import {Grid} from "@mui/material";
 import styled from "@emotion/styled";
-import {Grid} from "@material-ui/core";
 
 import TowerText from "./TowerText";
 
@@ -10,7 +10,7 @@ const VotesContainer = styled(Grid)`
 export default function Votes ({ className, votes }) {
     return (
         <>
-            <VotesContainer container className={className} justify="center">
+            <VotesContainer container className={className} justifyContent="center">
                 <Grid item>
                     <TowerText variant="body2">
                         Votes:  { votes }
