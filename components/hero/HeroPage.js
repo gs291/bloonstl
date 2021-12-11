@@ -5,6 +5,7 @@ import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getHeroColor} from "../../lib/utils/utils";
 import HeroAbilities from "../abilities/HeroAbilities";
+import HorizontalAD from "../advertisment/HorizontalAD";
 import FilterDifficulty from "../filters/FilterDifficulty";
 
 
@@ -19,6 +20,7 @@ export default function HeroPage({ hero }) {
     return (
         <>
             <TowerImgInfo tower={hero} towerType="hero" />
+            <HorizontalAD />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
