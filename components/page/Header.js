@@ -33,6 +33,8 @@ export default function Header({ title }) {
                 `}
                 </script>
 
+                {/*// <!-- Google Analytics --> */}
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4102574682241123" />
 
             </Head>
         </>

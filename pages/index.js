@@ -3,8 +3,9 @@ import {useRef} from "react";
 import {dataSources} from "../lib/mysql/db";
 import Header from "../components/page/Header";
 import HomePage from "../components/index/HomePage";
-import MainContainer from "../components/page/MainContainer";
 import TopSection from "../components/index/TopSection";
+import MainContainer from "../components/page/MainContainer";
+import HorizontalAD from "../components/advertisment/HorizontalAD";
 
 export default function Home({ monkeys }) {
     const tierSection = useRef(null);
@@ -15,6 +16,7 @@ export default function Home({ monkeys }) {
             <Header />
             <TopSection scrollTo={tierSection}/>
             <MainContainer>
+                <HorizontalAD />
                 <HomePage scrollTo={tierSection} monkeys={monkeys}/>
             </MainContainer>
         </>

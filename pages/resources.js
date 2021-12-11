@@ -3,6 +3,7 @@ import PageTitle from "../components/page/PageTitle";
 import apiDescription from "../lib/graphql/apiDescription";
 import MainContainer from "../components/page/MainContainer";
 import ResourcesPage from "../components/resources/ResourcePage";
+import HorizontalAD from "../components/advertisment/HorizontalAD";
 
 export default function Resources({ api }) {
     api = JSON.parse(api);
@@ -12,6 +13,7 @@ export default function Resources({ api }) {
             <Header title="Resources" />
             <MainContainer>
                 <PageTitle title="Resources" />
+                <HorizontalAD />
                 <ResourcesPage api={api}/>
             </MainContainer>
         </>
