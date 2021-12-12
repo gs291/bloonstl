@@ -24,13 +24,13 @@ export default function Header({ title }) {
 
                 {/*// <!-- Global site tag (gtag.js) - Google Analytics --> */}
                 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERWW6617M8" />
-                <script>{`
-                    window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-
-                        gtag('config', 'G-ERWW6617M8');
-                `}
+                <script>
+                    {
+                        `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ERWW6617M8');`
+                    }
                 </script>
 
                 {/*// <!-- Google Adsense --> */}
