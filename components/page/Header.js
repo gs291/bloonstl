@@ -26,14 +26,14 @@ export default function Header({ title }) {
                 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERWW6617M8" />
                 <script>
                     {
-                        `window.dataLayer = window.dataLayer || [];
+`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-ERWW6617M8');`
                     }
                 </script>
 
-                {/*// <!-- Google Adsense --> */}
+                {/*// <!-- Google AdSense --> */}
                 <script
                     async
                     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4102574682241123"
