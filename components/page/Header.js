@@ -40,6 +40,9 @@ gtag('config', 'G-ERWW6617M8');`
                     crossOrigin="anonymous"
                 />
 
+                {/*// <!-- Google Search Console Verification --> */}
+                <meta name="google-site-verification" content="xdbV4aYKSCsp9idnlAXq_nxbcHSQggDBC2zy-3gqPJg" />
+
             </Head>
         </>
     );
