@@ -16,7 +16,6 @@ export default function Home({ monkeys }) {
             <Header />
             <TopSection scrollTo={tierSection}/>
             <MainContainer>
-                <HorizontalAD />
                 <HomePage scrollTo={tierSection} monkeys={monkeys}/>
             </MainContainer>
         </>
