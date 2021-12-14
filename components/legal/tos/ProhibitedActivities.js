@@ -1,11 +1,20 @@
-import {Section, Text, ToSText, ToSTitle} from "./TermsOfService";
-import TowerText from "../../tower/TowerText";
+import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
+
+import {ToSText, ToSTitle} from "./TermsOfService";
+import siteColors from "../../../lib/utils/siteColors";
+import {getDarkMode} from "../../../lib/redux/selectors";
+
+const List = styled.ul`
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+`;
 
 export default function ProhibitedActivities({tag}) {
+    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <ToSTitle id={tag.href} variant="h4">
+            <ToSTitle id={tag.href} variant="h3">
                 {tag.title}
             </ToSTitle>
             <ToSText variant="h6" font={true}>
@@ -16,7 +25,7 @@ export default function ProhibitedActivities({tag}) {
             <ToSText variant="h6" font={true}>
                 As a user of the Site, you agree not to:
             </ToSText>
-            <ul>
+            <List data-dm={darkMode}>
                 <li>
                     <ToSText variant="h6" font={true}>
                         Systematically retrieve data or other content from the Site to create or compile,
@@ -144,7 +153,7 @@ export default function ProhibitedActivities({tag}) {
                         enterprise.
                     </ToSText>
                 </li>
-            </ul>
+            </List>
         </>
     );
 }

@@ -3,7 +3,7 @@ import {ToSText, ToSTitle} from "./TermsOfService";
 export default function CaliforniaUsersAndResidents({tag}) {
     return (
         <>
-            <ToSTitle id={tag.href} variant="h4">
+            <ToSTitle id={tag.href} variant="h3">
                 {tag.title}
             </ToSTitle>
             <ToSText variant="h6" font={true}>

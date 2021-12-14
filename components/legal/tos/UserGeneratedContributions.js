@@ -1,11 +1,20 @@
-import TowerText from "../../tower/TowerText";
+import styled from "@emotion/styled";
+
 import {ToSText, ToSTitle} from "./TermsOfService";
+import siteColors from "../../../lib/utils/siteColors";
+import {getDarkMode} from "../../../lib/redux/selectors";
+import {useSelector} from "react-redux";
+
+const List = styled.ul`
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+`;
 
 export default function UserGeneratedContributions({tag}) {
+    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <ToSTitle id={tag.href} variant="h4">
+            <ToSTitle id={tag.href} variant="h3">
                 {tag.title}
             </ToSTitle>
             <ToSText variant="h6" font={true}>
@@ -18,7 +27,7 @@ export default function UserGeneratedContributions({tag}) {
                 Contributions you transmit may be treated in accordance with the Site Privacy Policy.
                 When you create or make available any Contributions, you thereby represent and warrant that:
             </ToSText>
-            <ul>
+            <List data-dm={darkMode}>
                 <li>
                     <ToSText variant="h6" font={true}>
                         The creation, distribution, transmission, public display, or performance, and the
@@ -117,7 +126,7 @@ export default function UserGeneratedContributions({tag}) {
                         actual infringement or misappropriation of any proprietary right in your Submissions.
                     </ToSText>
                 </li>
-            </ul>
+            </List>
             <ToSText variant="h6" font={true}>
                 Any use of the Site in violation of the foregoing violates these Terms of Service and may
                 result in, among other things, termination or suspension of your rights to use the Site.
