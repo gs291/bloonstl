@@ -1,13 +1,14 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import {Typography} from "@mui/material";
 
 import siteColors from "../../lib/utils/siteColors";
-import {useSelector} from "react-redux";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {font_family_default} from "../../lib/utils/utils";
 
 const TowerDetail = styled(Typography)`
   transition: 0.3s;
-  ${props => props["data-f"] ? `font-family: sans-serif;` : "" }
+  ${props => props["data-f"] ? `font-family: ${font_family_default};` : "" }
   color: ${props => 
           props["data-tc"] 
                   ? props["data-tc"] 
