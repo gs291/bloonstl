@@ -30,7 +30,7 @@ export default function GitHub({className, tag}) {
     return (
         <>
             <GitHubContainer className={className} id={tag.href}>
-                <Title variant="h2" font={true}>
+                <Title variant="h2">
                     GitHub Information
                 </Title>
 

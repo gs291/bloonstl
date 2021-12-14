@@ -79,7 +79,7 @@ export default function Keybindings({ className, tag }) {
     return (
         <>
             <KeybindContainer className={className} id={tag.href}>
-                <TowerText variant="h2" font={true}>
+                <TowerText variant="h2">
                     Keybindings
                 </TowerText>
                 <Description variant="h6" font={true}>

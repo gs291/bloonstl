@@ -82,10 +82,10 @@ export default function GraphQL({ className, api, tag}) {
         <>
             <GraphQLContainer className={className} id={tag.href}>
                 <Information>
-                    <TowerText variant="h2" font={true}>
+                    <TowerText variant="h2">
                         GraphQL API
                     </TowerText>
-                    <TowerText variant="h2" font={true}>
+                    <TowerText variant="h2">
                         Documentation
                     </TowerText>
                 </Information>
