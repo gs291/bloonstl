@@ -50,7 +50,7 @@ const tags = [
     { "title": "CALIFORNIA USERS AND RESIDENTS", "href": "california-users-and-residents" },
     { "title": "MISCELLANEOUS", "href": "miscellaneous" },
     { "title": "CONTACT US", "href": "contact-us" },
-]
+];
 
 export default function TermsOfService({}) {
 
