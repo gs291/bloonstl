@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 
 import {ToSText, ToSTitle} from "./TermsOfService";
 import siteColors from "../../../lib/utils/siteColors";
 import {getDarkMode} from "../../../lib/redux/selectors";
-import {useSelector} from "react-redux";
 
 const List = styled.ul`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};

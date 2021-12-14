@@ -1,8 +1,7 @@
-
 import Header from "../../components/page/Header";
+import PageTitle from "../../components/page/PageTitle";
 import MainContainer from "../../components/page/MainContainer";
 import TermsOfService from "../../components/legal/tos/TermsOfService";
-import PageTitle from "../../components/page/PageTitle";
 
 
 export default function TOS({  }) {

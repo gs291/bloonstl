@@ -59,22 +59,22 @@ export default function TermsOfService({}) {
             <TableOfContents tags={tags} />
 
             <ToSContainer>
-                <AgreementToTerms tag={tags[0]}/>
-                <UserRepresentations tag={tags[1]}/>
-                <ProhibitedActivities tag={tags[2]}/>
-                <UserGeneratedContributions tag={tags[3]}/>
-                <ContributionLicense tag={tags[4]} />
-                <ThirdPartWebsiteAndContent tag={tags[5]} />
-                <Advertisers tag={tags[6]} />
-                <TermAndTermination tag={tags[7]} />
-                <GoverningLaw tag={tags[8]} />
-                <Disclaimer tag={tags[9]} />
-                <LimitationsOfLiability tag={tags[10]} />
-                <Indemnification tag={tags[11]} />
-                <UserData tag={tags[12]} />
-                <CaliforniaUsersAndResidents tag={tags[13]} />
-                <Miscellaneous tag={tags[14]} />
-                <ContactUs tag={tags[15]} />
+                <AgreementToTerms               tag={tags[0]}/>
+                <UserRepresentations            tag={tags[1]}/>
+                <ProhibitedActivities           tag={tags[2]}/>
+                <UserGeneratedContributions     tag={tags[3]}/>
+                <ContributionLicense            tag={tags[4]} />
+                <ThirdPartWebsiteAndContent     tag={tags[5]} />
+                <Advertisers                    tag={tags[6]} />
+                <TermAndTermination             tag={tags[7]} />
+                <GoverningLaw                   tag={tags[8]} />
+                <Disclaimer                     tag={tags[9]} />
+                <LimitationsOfLiability         tag={tags[10]} />
+                <Indemnification                tag={tags[11]} />
+                <UserData                       tag={tags[12]} />
+                <CaliforniaUsersAndResidents    tag={tags[13]} />
+                <Miscellaneous                  tag={tags[14]} />
+                <ContactUs                      tag={tags[15]} />
             </ToSContainer>
         </>
     );
