@@ -103,11 +103,26 @@ export default function UserGeneratedContributions({tag}) {
                         provision of these Terms of Service, or any applicable law or regulation.
                     </ToSText>
                 </li>
+                <li>
+                    <ToSText variant="h6" font={true}>
+                        You acknowledge and agree that any questions, comments, suggestions, ideas,
+                        feedback, or other information regarding the Site ("Submissions" or "Contributions") provided by you to
+                        us are non-confidential and shall become our sole property. We shall own exclusive
+                        rights, including all intellectual property rights, and shall be entitled to the unrestricted
+                        use and dissemination of these Submissions for any lawful purpose, commercial or
+                        otherwise, without acknowledgment or compensation to you. You hereby waive all
+                        moral rights to any such Submissions, and you hereby warrant that any such
+                        Submissions are original with you or that you have the right to submit such
+                        Submissions. You agree there shall be no recourse against us for any alleged or
+                        actual infringement or misappropriation of any proprietary right in your Submissions.
+                    </ToSText>
+                </li>
             </ul>
             <ToSText variant="h6" font={true}>
                 Any use of the Site in violation of the foregoing violates these Terms of Service and may
                 result in, among other things, termination or suspension of your rights to use the Site.
             </ToSText>
+
         </>
     );
 }
