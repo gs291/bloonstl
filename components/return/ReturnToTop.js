@@ -24,6 +24,7 @@ const TopContainer = styled.div`
   
   &:hover {
     cursor: pointer;
+    background-color: ${props => props["data-dm"] ? siteColors.returnTop.hover.dark : siteColors.returnTop.hover.light};
   }
 `;
 
