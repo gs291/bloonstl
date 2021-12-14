@@ -7,7 +7,7 @@ export default function ThirdPartWebsiteAndContent({tag}) {
             <ToSTitle id={tag.href} variant="h3">
                 {tag.title}
             </ToSTitle>
-            <ToSText variant="h6" font={true}>
+            <ToSText variant="body1" font={true}>
                 The Site may contain (or you may be sent via the Site) links to other websites ("ThirdParty Websites") as well as articles, photographs, text, graphics, pictures, designs,
                 music, sound, video, information, applications, software, and other content or items
                 belonging to or originating from third parties ("Third-Party Content"). Such Third-Party Websites and Third-Party Content are not investigated, monitored, or checked for

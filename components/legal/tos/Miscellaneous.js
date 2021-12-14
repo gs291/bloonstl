@@ -7,7 +7,7 @@ export default function Miscellaneous({tag}) {
             <ToSTitle id={tag.href} variant="h3">
                 {tag.title}
             </ToSTitle>
-            <ToSText variant="h6" font={true}>
+            <ToSText variant="body1" font={true}>
                 These Terms of Service and any policies or operating rules posted by us on the Site or in
                 respect to the Site constitute the entire agreement and understanding between you
                 and us. Our failure to exercise or enforce any right or provision of these Terms of Service

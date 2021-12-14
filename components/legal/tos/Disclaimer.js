@@ -7,7 +7,7 @@ export default function Disclaimer({tag}) {
             <ToSTitle id={tag.href} variant="h3">
                 {tag.title}
             </ToSTitle>
-            <ToSText variant="h6" font={true}>
+            <ToSText variant="body1" font={true}>
                 THE SITE IS PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOU AGREE
                 THAT YOUR USE OF THE SITE AND OUR SERVICES WILL BE AT YOUR SOLE
                 RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SITE AND

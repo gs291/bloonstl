@@ -7,7 +7,7 @@ export default function ContactUs({tag}) {
             <ToSTitle id={tag.href} variant="h3">
                 {tag.title}
             </ToSTitle>
-            <ToSText variant="h6" font={true}>
+            <ToSText variant="body1" font={true}>
                 In order to resolve a complaint regarding the Site or to receive further information
                 regarding use of the Site, please contact us at: bloonstl@gmail.com
             </ToSText>

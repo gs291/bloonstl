@@ -7,7 +7,7 @@ export default function Indemnification({tag}) {
             <ToSTitle id={tag.href} variant="h3">
                 {tag.title}
             </ToSTitle>
-            <ToSText variant="h6" font={true}>
+            <ToSText variant="body1" font={true}>
                 You agree to defend, indemnify, and hold us harmless, including our subsidiaries,
                 affiliates, and all of our respective officers, agents, partners, and employees, from
                 and against any loss, damage, liability, claim, or demand, including reasonable

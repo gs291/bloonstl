@@ -7,7 +7,7 @@ export default function UserData({tag}) {
             <ToSTitle id={tag.href} variant="h3">
                 {tag.title}
             </ToSTitle>
-            <ToSText variant="h6" font={true}>
+            <ToSText variant="body1" font={true}>
                 We will maintain certain data that you transmit to the Site for the purpose of
                 managing the performance of the Site, as well as data relating to your use of the Site.
                 Although we perform regular routine backups of data, you are solely responsible for
@@ -16,7 +16,7 @@ export default function UserData({tag}) {
                 such data, and you hereby waive any right of action against us arising from any such
                 loss or corruption of such data.
             </ToSText>
-            <ToSText variant="h6" font={true}>
+            <ToSText variant="body1" font={true}>
                 Please be advised the Site is hosted in the United States. If you access the Site from
                 any other region of the world with laws or other requirements governing personal
                 data collection, use, or disclosure that differ from applicable laws in the United

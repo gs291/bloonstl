@@ -7,7 +7,7 @@ export default function TermAndTermination({tag}) {
             <ToSTitle id={tag.href} variant="h3">
                 {tag.title}
             </ToSTitle>
-            <ToSText variant="h6" font={true}>
+            <ToSText variant="body1" font={true}>
                 These Terms of Service shall remain in full force and effect while you use the Site.
                 WITHOUT LIMITING ANY OTHER PROVISION OF THESE TERMS OF SERVICE, WE
                 RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT NOTICE
@@ -20,7 +20,7 @@ export default function TermAndTermination({tag}) {
                 INFORMATION THAT YOU POSTED AT ANY TIME, WITHOUT WARNING, IN OUR
                 SOLE DISCRETION.
             </ToSText>
-            <ToSText variant="h6" font={true}>
+            <ToSText variant="body1" font={true}>
                 If we terminate or suspend your account for any reason, you are prohibited from
                 registering and creating a new account under your name, a fake or borrowed name,
                 or the name of any third party, even if you may be acting on behalf of the third party.

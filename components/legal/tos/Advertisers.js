@@ -7,7 +7,7 @@ export default function Advertisers({tag}) {
             <ToSTitle id={tag.href} variant="h3">
                 {tag.title}
             </ToSTitle>
-            <ToSText variant="h6" font={true}>
+            <ToSText variant="body1" font={true}>
                 We allow advertisers to display their advertisements and other information in certain
                 areas of the Site, such as sidebar advertisements or banner advertisements. If you
                 are an advertiser, you shall take full responsibility for any advertisements you place
