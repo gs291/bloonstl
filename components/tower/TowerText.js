@@ -15,7 +15,7 @@ const TowerDetail = styled(Typography)`
                   : (props["data-dm"] ? siteColors.text.dark : siteColors.text.light)};
 `;
 
-export default function TowerText({ className, children, variant, textColor, font }) {
+export default function TowerText({ className, children, variant, textColor, font, ...rest }) {
     const darkMode = useSelector(getDarkMode);
 
     return (
@@ -26,6 +26,7 @@ export default function TowerText({ className, children, variant, textColor, fon
                 data-f={font}
                 data-dm={darkMode}
                 className={className}
+                { ...rest }
             >
                 { children }
             </TowerDetail>
