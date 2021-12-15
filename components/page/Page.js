@@ -10,8 +10,8 @@ import NavDrawer from "../navbar/NavDrawer";
 import ReturnToTop from "../return/ReturnToTop";
 import siteColors from "../../lib/utils/siteColors";
 import { updateMobile } from "../../lib/redux/actions";
+import ConsentToast from "../legal/consent/ConsentToast";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
-import ConsentToast from "../legal/ConsentToast";
 
 const PageContainer = styled.div`
   display: flex;
