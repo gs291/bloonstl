@@ -19,16 +19,6 @@ import ThirdPartWebsiteAndContent from "./ThirdPartWebsiteAndContent";
 import UserGeneratedContributions from "./UserGeneratedContributions";
 import CaliforniaUsersAndResidents from "./CaliforniaUsersAndResidents";
 
-
-export const ToSTitle = styled(TowerText)`
-  margin-top: 30px;
-  margin-bottom: 30px;
-`;
-
-export const ToSText = styled(TowerText)`
-  margin-bottom: 20px;
-`;
-
 const ToSContainer = styled.div`
   
 `;

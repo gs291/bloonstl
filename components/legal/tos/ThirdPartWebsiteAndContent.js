@@ -1,13 +1,14 @@
-import {ToSText, ToSTitle} from "./TermsOfService";
+import LegalText from "../LegalText";
+import LegalTitle from "../LegalTitle";
 
 export default function ThirdPartWebsiteAndContent({tag}) {
 
     return (
         <>
-            <ToSTitle id={tag.href} variant="h3">
+            <LegalTitle id={tag.href} variant="h3">
                 {tag.title}
-            </ToSTitle>
-            <ToSText variant="body1" font={true}>
+            </LegalTitle>
+            <LegalText variant="body1" font={true}>
                 The Site may contain (or you may be sent via the Site) links to other websites ("ThirdParty Websites") as well as articles, photographs, text, graphics, pictures, designs,
                 music, sound, video, information, applications, software, and other content or items
                 belonging to or originating from third parties ("Third-Party Content"). Such Third-Party Websites and Third-Party Content are not investigated, monitored, or checked for
@@ -30,7 +31,7 @@ export default function ThirdPartWebsiteAndContent({tag}) {
                 such products or services. Additionally, you shall hold us harmless from any losses
                 sustained by you or harm caused to you relating to or resulting in any way from any
                 Third-Party Content or any contact with Third-Party Websites.
-            </ToSText>
+            </LegalText>
         </>
     );
 }

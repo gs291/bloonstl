@@ -1,13 +1,14 @@
-import {ToSText, ToSTitle} from "./TermsOfService";
+import LegalText from "../LegalText";
+import LegalTitle from "../LegalTitle";
 
 export default function Miscellaneous({tag}) {
 
     return (
         <>
-            <ToSTitle id={tag.href} variant="h3">
+            <LegalTitle id={tag.href} variant="h3">
                 {tag.title}
-            </ToSTitle>
-            <ToSText variant="body1" font={true}>
+            </LegalTitle>
+            <LegalText variant="body1" font={true}>
                 These Terms of Service and any policies or operating rules posted by us on the Site or in
                 respect to the Site constitute the entire agreement and understanding between you
                 and us. Our failure to exercise or enforce any right or provision of these Terms of Service
@@ -24,7 +25,7 @@ export default function Miscellaneous({tag}) {
                 by virtue of having drafted them. You hereby waive any and all defenses you may
                 have based on the electronic form of these Terms of Service and the lack of signing by
                 the parties hereto to execute these Terms of Service.
-            </ToSText>
+            </LegalText>
         </>
     );
 }

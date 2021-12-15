@@ -1,13 +1,14 @@
-import {ToSText, ToSTitle} from "./TermsOfService";
+import LegalText from "../LegalText";
+import LegalTitle from "../LegalTitle";
 
 export default function Advertisers({tag}) {
 
     return (
         <>
-            <ToSTitle id={tag.href} variant="h3">
+            <LegalTitle id={tag.href} variant="h3">
                 {tag.title}
-            </ToSTitle>
-            <ToSText variant="body1" font={true}>
+            </LegalTitle>
+            <LegalText variant="body1" font={true}>
                 We allow advertisers to display their advertisements and other information in certain
                 areas of the Site, such as sidebar advertisements or banner advertisements. If you
                 are an advertiser, you shall take full responsibility for any advertisements you place
@@ -17,7 +18,7 @@ export default function Advertisers({tag}) {
                 limited to, intellectual property rights, publicity rights, and contractual rights. We
                 simply provide the space to place such advertisements, and we have no other
                 relationship with advertisers.
-            </ToSText>
+            </LegalText>
         </>
     );
 }

@@ -1,13 +1,14 @@
-import {ToSText, ToSTitle} from "./TermsOfService";
+import LegalText from "../LegalText";
+import LegalTitle from "../LegalTitle";
 
 export default function Indemnification({tag}) {
 
     return (
         <>
-            <ToSTitle id={tag.href} variant="h3">
+            <LegalTitle id={tag.href} variant="h3">
                 {tag.title}
-            </ToSTitle>
-            <ToSText variant="body1" font={true}>
+            </LegalTitle>
+            <LegalText variant="body1" font={true}>
                 You agree to defend, indemnify, and hold us harmless, including our subsidiaries,
                 affiliates, and all of our respective officers, agents, partners, and employees, from
                 and against any loss, damage, liability, claim, or demand, including reasonable
@@ -21,7 +22,7 @@ export default function Indemnification({tag}) {
                 indemnify us, and you agree to cooperate, at your expense, with our defense of such
                 claims. We will use reasonable efforts to notify you of any such claim, action, or
                 proceeding which is subject to this indemnification upon becoming aware of it.
-            </ToSText>
+            </LegalText>
         </>
     );
 }

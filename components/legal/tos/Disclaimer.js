@@ -1,13 +1,14 @@
-import {ToSText, ToSTitle} from "./TermsOfService";
+import LegalText from "../LegalText";
+import LegalTitle from "../LegalTitle";
 
 export default function Disclaimer({tag}) {
 
     return (
         <>
-            <ToSTitle id={tag.href} variant="h3">
+            <LegalTitle id={tag.href} variant="h3">
                 {tag.title}
-            </ToSTitle>
-            <ToSText variant="body1" font={true}>
+            </LegalTitle>
+            <LegalText variant="body1" font={true}>
                 THE SITE IS PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOU AGREE
                 THAT YOUR USE OF THE SITE AND OUR SERVICES WILL BE AT YOUR SOLE
                 RISK. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE SITE AND
@@ -37,7 +38,7 @@ export default function Disclaimer({tag}) {
                 PRODUCT OR SERVICE THROUGH ANY MEDIUM OR IN ANY ENVIRONMENT,
                 YOU SHOULD USE YOUR BEST JUDGMENT AND EXERCISE CAUTION WHERE
                 APPROPRIATE
-            </ToSText>
+            </LegalText>
         </>
     );
 }
