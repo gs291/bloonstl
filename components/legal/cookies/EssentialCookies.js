@@ -10,7 +10,7 @@ const head = [
 ];
 
 const rows = [
-    { "name": "eu_cookie_consent", "columns": ["Remembers the state of visitor acceptance to the cookie banner. Only set when the visitor clicks Accept, Agree, Ok or close box (X)."]}
+    { "name": "eu_cookie_consent", "columns": ["Remembers the state of user acceptance to the cookie banner. Only set when the user clicks Accept, Agree, Ok or close box (X)."]}
 ];
 const CookieTable = styled(LegalTable)`
   margin-top: 30px;

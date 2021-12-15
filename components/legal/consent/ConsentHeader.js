@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Cookies from "universal-cookie";
 import {useSelector} from "react-redux";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
@@ -46,8 +47,25 @@ const CancelIcon = styled(CancelOutlinedIcon)`
   }
 `;
 
-export default function ConsentHeader({}) {
+
+export default function ConsentHeader({setShow, checkConsent}) {
     const darkMode = useSelector(getDarkMode);
+
+    const acceptConsent = () => {
+        const cookies = new Cookies();
+        const current = new Date();
+        const nextYear = new Date();
+
+        nextYear.setFullYear(current.getFullYear() + 1);
+
+        try {
+            cookies.set("eu_cookie_consent", "accepted", { path: '/', expires: nextYear });
+        } catch (e) {
+            console.log(e);
+        }
+
+        checkConsent();
+    };
 
     return (
         <>
@@ -58,7 +76,7 @@ export default function ConsentHeader({}) {
                         Cookies
                     </TitleText>
                 </Title>
-                <CancelIcon data-dm={darkMode}/>
+                <CancelIcon data-dm={darkMode} onClick={acceptConsent}/>
             </Header>
         </>
     );
