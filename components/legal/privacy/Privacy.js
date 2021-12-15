@@ -36,6 +36,7 @@ export const GDPRItem = styled.li`
 `;
 
 const PrivacyContainer = styled.div`
+  width: 100%;
   margin-top: 50px;
 `;
 

@@ -13,8 +13,10 @@ import EssentialCookies from "./EssentialCookies";
 import ControllingCookies from "./ControllingCookies";
 import TargetedAdvertising from "./TargetedAdvertising";
 import TableOfContents from "../../table-of-contents/TableOfContents";
+import ThirdPartyCookies from "./ThirdPartyCookies";
 
 const CookieContainer = styled.div`
+  width: 100%;
   margin-top: 50px;
 `;
 
@@ -23,6 +25,7 @@ const tags = [
     { "title": "Why do we use cookies?", "href": "why-do-we-use-cookies" },
     { "title": "How can I control cookies?", "href": "how-can-i-control-cookies" },
     { "title": "Essential website cookies", "href": "essential-website-cookies" },
+    { "title": "Third Party Cookies", "href": "third-party-cookies" },
     { "title": "What about other tracking technologies, like web beacons?", "href": "tracking-technologies" },
     { "title": "Do you use Flash cookies or Local Shared Objects?", "href": "flash-cookies" },
     { "title": "Do you serve targeted advertising?", "href": "targeted-advertising" },
@@ -57,11 +60,12 @@ export default function Cookies({}) {
                 <WhyWeUseCookies        tag={tags[1]}/>
                 <ControllingCookies     tag={tags[2]}/>
                 <EssentialCookies       tag={tags[3]}/>
-                <Tracking               tag={tags[4]}/>
-                <FlashCookies           tag={tags[5]}/>
-                <TargetedAdvertising    tag={tags[6]}/>
-                <UpdateFrequency        tag={tags[7]}/>
-                <ContactUs              tag={tags[8]}/>
+                <ThirdPartyCookies      tag={tags[4]}/>
+                <Tracking               tag={tags[5]}/>
+                <FlashCookies           tag={tags[6]}/>
+                <TargetedAdvertising    tag={tags[7]}/>
+                <UpdateFrequency        tag={tags[8]}/>
+                <ContactUs              tag={tags[9]}/>
                 <LegalText variant="caption" font={true}>
                     This privacy policy was created using Termly's Cookie Consent Generator.
                 </LegalText>

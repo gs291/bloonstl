@@ -1,5 +1,21 @@
+import styled from "@emotion/styled";
+
 import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
+import LegalTable from "../LegalTable";
+
+const head = [
+    "Cookie",
+    "Purpose"
+];
+
+const rows = [
+    { "name": "eu_cookie_consent", "columns": ["Remembers the state of visitor acceptance to the cookie banner. Only set when the visitor clicks Accept, Agree, Ok or close box (X)."]}
+];
+const CookieTable = styled(LegalTable)`
+  margin-top: 30px;
+  margin-bottom: 30px;
+`;
 
 export default function EssentialCookies({tag}) {
 
@@ -9,15 +25,10 @@ export default function EssentialCookies({tag}) {
                 {tag.title}
             </LegalTitle>
             <LegalText variant="body1" font={true}>
-                We do not use any first party cookies. However we do provide a set of third party providers that may
-                set cookies independent from bloonstl.
+                These cookies are strictly necessary to provide you with services available through our websites
+                and to use some of its features, such as access to secure areas.
             </LegalText>
-
-            <LegalText variant="body1" font={true}>
-                Third party providers that use cookies: Google AdSense and Analytics. To view Google AdSense cookie usage you
-                can browse them at https://policies.google.com/technologies/ads. To view Google Analytics cookie usage you can
-                browse them at https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage.
-            </LegalText>
+            <CookieTable head={head} rows={rows}/>
         </>
     );
 }

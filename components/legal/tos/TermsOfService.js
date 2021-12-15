@@ -18,9 +18,12 @@ import TableOfContents from "../../table-of-contents/TableOfContents";
 import ThirdPartWebsiteAndContent from "./ThirdPartWebsiteAndContent";
 import UserGeneratedContributions from "./UserGeneratedContributions";
 import CaliforniaUsersAndResidents from "./CaliforniaUsersAndResidents";
+import LegalText from "../LegalText";
+import LegalTitle from "../LegalTitle";
 
 const ToSContainer = styled.div`
-  
+  width: 100%;
+  margin-top: 50px;
 `;
 
 const tags = [
@@ -46,6 +49,12 @@ export default function TermsOfService({}) {
 
     return (
         <>
+            <LegalTitle variant="body1" font={true}>
+                <strong>
+                    Last updated December 15, 2021
+                </strong>
+            </LegalTitle>
+
             <TableOfContents tags={tags} />
 
             <ToSContainer>
@@ -65,6 +74,9 @@ export default function TermsOfService({}) {
                 <CaliforniaUsersAndResidents    tag={tags[13]} />
                 <Miscellaneous                  tag={tags[14]} />
                 <ContactUs                      tag={tags[15]} />
+                <LegalText variant="caption" font={true}>
+                    This terms of service was created using Termly's Terms and Conditions Generator.
+                </LegalText>
             </ToSContainer>
         </>
     );

@@ -19,6 +19,7 @@ import DeletionOrReturnOfCompanyPersonalData from "./DeletionOrReturnOfCompanyPe
 import DataProtectionImpactAssessmentAndPriorConsultation from "./DataProtectionImpactAssessmentAndPriorConsultation";
 
 const GDPRContainer = styled.div`
+  width: 100%;
   margin-top: 50px;
 `;
 
@@ -68,8 +69,8 @@ export default function GDPRDataProcessingAgreement({}) {
                 <DataTransfer                               tag={tags[10]}/>
                 <GeneralTerms                               tag={tags[11]}/>
                 <GoverningLawAndJurisdiction                tag={tags[12]}/>
-                <TowerText variant="body2" font={true}>
-                    If your company requires this DPA signed by ProtonMail or have any questions, please email us at bloonstl@gmail.com.
+                <TowerText variant="caption" font={true}>
+                    If your company requires this DPA signed by bloonstl or have any questions, please email us at bloonstl@gmail.com.
                 </TowerText>
             </GDPRContainer>
         </>
