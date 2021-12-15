@@ -1,13 +1,8 @@
-import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
-import {getDarkMode} from "../../lib/redux/selectors";
-
 
 export default function LegalTable({head, rows, ...rest}) {
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
