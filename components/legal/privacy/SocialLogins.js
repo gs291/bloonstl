@@ -9,11 +9,11 @@ export default function SocialLogins({tag}) {
                 HOW DO WE HANDLE YOUR SOCIAL LOGINS?
             </LegalTitle>
             <LegalText variant="body1" font={true}>
-                <strong>In Short:</strong> If you choose to register or log in to our services using a social media
-                account, we may have access to certain information about you.
+                <strong>In Short:</strong> At this time we do not provide any way to log in to our
+                services, let alone with a social media account.
             </LegalText>
             <LegalText variant="body1" font={true}>
-                Our offers you the ability to register and login using your third-party social media
+                If we offer you the ability to register and login using your third-party social media
                 account details (like your Facebook or Twitter logins). Where you choose to do this,
                 we will receive certain profile information about you from your social media provider.
                 The profile information we receive may vary depending on the social media provider

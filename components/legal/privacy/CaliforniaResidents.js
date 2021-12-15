@@ -24,11 +24,11 @@ export default function CaliforniaResidents({tag}) {
             </LegalText>
             <LegalText variant="body1" font={true}>
                 If you are under 18 years of age, reside in California, and have a registered account
-                with , you have the right to request removal of unwanted data that you publicly post
-                on the . To request removal of such data, please contact us using the contact
+                with the website, you have the right to request removal of unwanted data that you publicly post
+                on the website. To request removal of such data, please contact us using the contact
                 information provided below, and include the email address associated with your
                 account and a statement that you reside in California. We will make sure the data is
-                not publicly displayed on the , but please be aware that the data may not be
+                not publicly displayed on the website, but please be aware that the data may not be
                 completely or comprehensively removed from all our systems (e.g. backups, etc.).
             </LegalText>
         </>

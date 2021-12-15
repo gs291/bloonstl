@@ -17,9 +17,7 @@ export default function InformationCollection({tag}) {
             <LegalText variant="body1" font={true}>
                 We collect personal information that you voluntarily provide to us when you register
                 on the express an interest in obtaining information about us or our products and
-                Services, when you participate in activities on the (such as by posting messages in
-                our online forums or entering competitions, contests or giveaways) or otherwise
-                when you contact us.
+                Services, when you participate in activities or otherwise when you contact us.
             </LegalText>
             <LegalText variant="body1" font={true}>
                 The personal information that we collect depends on the context of your interactions
@@ -36,11 +34,11 @@ export default function InformationCollection({tag}) {
             </LegalTitle>
             <LegalText variant="body1" font={true}>
                 <strong>In Short:</strong> Some information — such as your Internet Protocol (IP) address and/or
-                browser and device characteristics — is collected automatically when you visit our .
+                browser and device characteristics — is collected automatically when you visit our website.
 
             </LegalText>
             <LegalText variant="body1" font={true}>
-                We automatically collect certain information when you visit, use or navigate the . This
+                We automatically collect certain information when you visit, use or navigate the wesbite. This
                 information does not reveal your specific identity (like your name or contact
                 information) but may include device and usage information, such as your IP address,
                 browser and device characteristics, operating system, language preferences,

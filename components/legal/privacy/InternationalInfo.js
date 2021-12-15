@@ -13,8 +13,8 @@ export default function InternationalInfo({tag}) {
                 than your own.
             </LegalText>
             <LegalText variant="body1" font={true}>
-                Our servers are located in. If you are accessing our from outside, please be aware
-                that your information may be transferred to, stored, and processed by us in our
+                Our servers are located in multiple countries around the world. If you are accessing our from outside,
+                please be aware that your information may be transferred to, stored, and processed by us in our
                 facilities and by those third parties with whom we may share your personal
                 information (see "WILL YOUR INFORMATION BE SHARED WITH ANYONE?"
                 above), in and other countries.

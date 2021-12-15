@@ -9,19 +9,15 @@ export default function ControllingCookies({tag}) {
                 {tag.title}
             </LegalTitle>
             <LegalText variant="body1" font={true}>
-                You have the right to decide whether to accept or reject cookies. You can exercise
-                your cookie rights by setting your preferences in the Cookie Consent Manager. The
-                Cookie Consent Manager allows you to select which categories of cookies you
-                accept or reject. Essential cookies cannot be rejected as they are strictly necessary
-                to provide you with services.
-            </LegalText>
-            <LegalText variant="body1" font={true}>
-                The Cookie Consent Manager can be found in the notification banner and on our
-                website. If you choose to reject cookies, you may still use our website though your
-                access to some functionality and areas of our website may be restricted. You may
-                also set or amend your web browser controls to accept or refuse cookies. As the
-                means by which you can refuse cookies through your web browser controls vary from
-                browser-to-browser, you should visit your browser's help menu for more information.
+                You have the right to decide whether to accept or reject cookies.
+                Most browsers provide for ways to control cookie behavior such as the length of time they are stored –
+                either through built-in functionality or by utilizing third party plugins.
+                If you disable cookies, please be aware that some of the features of our service may not function correctly.
+                To find out more on how to manage and delete cookies, visit your web browser's help page or read your web browser's user manual.
+                For more details on your choices regarding use of your web browsing activity for
+                interest-based advertising visit youronlinechoices.eu (EU based) or optout.aboutads.info (US based).
+                On a mobile device, you may also be to adjust your settings to limit ad tracking.
+                You can opt out of Google Analytics by installing Google’s opt-out browser add-on.
             </LegalText>
             <LegalText variant="body1" font={true}>
                 In addition, most advertising networks offer you a way to opt out of targeted
