@@ -42,6 +42,9 @@ export default function TOS({  }) {
                     <li>
                         <FullLink href="cookie-policy" title="Cookie Policy" />
                     </li>
+                    <li>
+                        <FullLink href="data-processing-agreement" title="Data Processing Agreement" />
+                    </li>
                 </ul>
             </MainContainer>
         </>
