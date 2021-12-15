@@ -1,3 +1,5 @@
+import LegalOList from "../LegalOList";
+import LegalListItem from "../LegalListItem";
 import TowerText from "../../tower/TowerText";
 
 export default function Whereas({}) {
@@ -7,19 +9,19 @@ export default function Whereas({}) {
             <TowerText variant="body1" font={true}>
                 WHEREAS
             </TowerText>
-            <ol>
-                <li>
+            <LegalOList>
+                <LegalListItem>
                     <TowerText variant="body1" font={true}>
                         The Company acts as a Data Controller.
                     </TowerText>
-                </li>
-                <li>
+                </LegalListItem>
+                <LegalListItem>
                     <TowerText variant="body1" font={true}>
                         The Company wishes to subcontract certain Services, which imply the
                         processing of personal data, to the Data Processor.
                     </TowerText>
-                </li>
-                <li>
+                </LegalListItem>
+                <LegalListItem>
                     <TowerText variant="body1" font={true}>
                         The Parties seek to implement a data processing agreement that complies
                         with the requirements of the current legal framework in relation to data
@@ -29,13 +31,13 @@ export default function Whereas({}) {
                         movement of such data, and repealing Directive 95/46/EC (General Data
                         Protection Regulation).
                     </TowerText>
-                </li>
-                <li>
+                </LegalListItem>
+                <LegalListItem>
                     <TowerText variant="body1" font={true}>
                         The Parties wish to lay down their rights and obligations.
                     </TowerText>
-                </li>
-            </ol>
+                </LegalListItem>
+            </LegalOList>
 
         </>
     );

@@ -1,17 +1,8 @@
-import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
-
 import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
-import siteColors from "../../../lib/utils/siteColors";
-import {getDarkMode} from "../../../lib/redux/selectors";
-
-const List = styled.ul`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-`;
+import LegalUList from "../LegalUList";
 
 export default function UserGeneratedContributions({tag}) {
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -28,7 +19,7 @@ export default function UserGeneratedContributions({tag}) {
                 Contributions you transmit may be treated in accordance with the Site Privacy Policy.
                 When you create or make available any Contributions, you thereby represent and warrant that:
             </LegalText>
-            <List data-dm={darkMode}>
+            <LegalUList>
                 <li>
                     <LegalText variant="body1" font={true}>
                         The creation, distribution, transmission, public display, or performance, and the
@@ -127,7 +118,7 @@ export default function UserGeneratedContributions({tag}) {
                         actual infringement or misappropriation of any proprietary right in your Submissions.
                     </LegalText>
                 </li>
-            </List>
+            </LegalUList>
             <LegalText variant="body1" font={true}>
                 Any use of the Site in violation of the foregoing violates these Terms of Service and may
                 result in, among other things, termination or suspension of your rights to use the Site.

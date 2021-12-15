@@ -1,17 +1,18 @@
+import LegalOList from "../LegalOList";
+import LegalListItem from "../LegalListItem";
 import TowerText from "../../tower/TowerText";
-import {GDPRItem, GDPRList} from "./GDPRDataProcessingAgreement";
 
 export default function GoverningLawAndJurisdiction({tag}) {
 
     return (
         <>
-            <GDPRList start={12} id={tag.href}>
-                <GDPRItem>
+            <LegalOList start={12} id={tag.href}>
+                <LegalListItem>
                     <TowerText variant="body1" font={true}>
                         <strong>Governing Law and Jurisdiction</strong>
                     </TowerText>
-                    <GDPRList start={12}>
-                        <GDPRItem>
+                    <LegalOList start={12}>
+                        <LegalListItem>
                             <TowerText variant="body1" font={true}>
                                 Upon receipt of any legally binding order or request for disclosure of Personal Data by a
                                 competent government authority or law enforcement authority, bloonstl shall use reasonable
@@ -21,10 +22,10 @@ export default function GoverningLawAndJurisdiction({tag}) {
                                 prohibited by applicable laws from notifying Customer of the relevant authority’s request or
                                 order, bloonstl shall use reasonable efforts to challenge such request or order.
                             </TowerText>
-                        </GDPRItem>
-                    </GDPRList>
-                </GDPRItem>
-            </GDPRList>
+                        </LegalListItem>
+                    </LegalOList>
+                </LegalListItem>
+            </LegalOList>
 
         </>
     );

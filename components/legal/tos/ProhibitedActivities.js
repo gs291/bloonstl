@@ -1,17 +1,8 @@
-import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
-
 import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
-import siteColors from "../../../lib/utils/siteColors";
-import {getDarkMode} from "../../../lib/redux/selectors";
-
-const List = styled.ul`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-`;
+import LegalUList from "../LegalUList";
 
 export default function ProhibitedActivities({tag}) {
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -26,7 +17,7 @@ export default function ProhibitedActivities({tag}) {
             <LegalText variant="body1" font={true}>
                 As a user of the Site, you agree not to:
             </LegalText>
-            <List data-dm={darkMode}>
+            <LegalUList>
                 <li>
                     <LegalText variant="body1" font={true}>
                         Systematically retrieve data or other content from the Site to create or compile,
@@ -154,7 +145,7 @@ export default function ProhibitedActivities({tag}) {
                         enterprise.
                     </LegalText>
                 </li>
-            </List>
+            </LegalUList>
         </>
     );
 }

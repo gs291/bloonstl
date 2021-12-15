@@ -1,17 +1,18 @@
+import LegalOList from "../LegalOList";
+import LegalListItem from "../LegalListItem";
 import TowerText from "../../tower/TowerText";
-import {GDPRItem, GDPRList} from "./GDPRDataProcessingAgreement";
 
 export default function DataTransfer({tag}) {
 
     return (
         <>
-            <GDPRList start={10} id={tag.href}>
-                <GDPRItem>
+            <LegalOList start={10} id={tag.href}>
+                <LegalListItem>
                     <TowerText variant="body1" font={true}>
                         <strong>Data Transfer</strong>
                     </TowerText>
-                    <GDPRList start={10}>
-                        <GDPRItem>
+                    <LegalOList start={10}>
+                        <LegalListItem>
                             <TowerText variant="body1" font={true}>
                                 The Processor may not transfer or authorize the transfer of Data to
                                 countries outside the EU and/or the European Economic Area (EEA)
@@ -23,10 +24,10 @@ export default function DataTransfer({tag}) {
                                 on EU approved standard contractual clauses for the transfer of personal
                                 data.
                             </TowerText>
-                        </GDPRItem>
-                    </GDPRList>
-                </GDPRItem>
-            </GDPRList>
+                        </LegalListItem>
+                    </LegalOList>
+                </LegalListItem>
+            </LegalOList>
         </>
     );
 }

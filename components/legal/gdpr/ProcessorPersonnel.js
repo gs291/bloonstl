@@ -1,12 +1,13 @@
+import LegalOList from "../LegalOList";
+import LegalListItem from "../LegalListItem";
 import TowerText from "../../tower/TowerText";
-import {GDPRItem, GDPRList} from "./GDPRDataProcessingAgreement";
 
 export default function ProcessorPersonnel({tag}) {
 
     return (
         <>
-            <GDPRList start={2}  id={tag.href}>
-                <GDPRItem>
+            <LegalOList start={2}  id={tag.href}>
+                <LegalListItem>
                     <TowerText variant="body1" font={true}>
                         <strong>Processor Personnel</strong>
                     </TowerText>
@@ -21,8 +22,8 @@ export default function ProcessorPersonnel({tag}) {
                         that all such individuals are subject to confidentiality undertakings or
                         professional or statutory obligations of confidentiality.
                     </TowerText>
-                </GDPRItem>
-            </GDPRList>
+                </LegalListItem>
+            </LegalOList>
 
         </>
     );

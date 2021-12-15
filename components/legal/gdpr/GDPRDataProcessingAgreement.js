@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 import Whereas from "./Whereas";
 import Security from "./Security";
+import LegalText from "../LegalText";
 import AuditRights from "./AuditRights";
 import DataTransfer from "./DataTransfer";
 import GeneralTerms from "./GeneralTerms";
@@ -16,24 +17,6 @@ import DefinitionsAndInterpretation from "./DefinitionsAndInterpretation";
 import ProcessingOfCompanyPersonalData from "./ProcessingOfCompanyPersonalData";
 import DeletionOrReturnOfCompanyPersonalData from "./DeletionOrReturnOfCompanyPersonalData";
 import DataProtectionImpactAssessmentAndPriorConsultation from "./DataProtectionImpactAssessmentAndPriorConsultation";
-
-export const GDPRList = styled.ol`
-  counter-reset: item ${props => props.start};
-`;
-
-export const GDPRItem = styled.li`
-  display: block;
-  
-  &:before {
-    content: counters(item, ".") " ";
-    counter-increment: item
-  }
-  
-  & > p {
-    display: inline;
-    margin-left: 10px;
-  }
-`;
 
 const GDPRContainer = styled.div`
   margin-top: 50px;
@@ -62,12 +45,12 @@ export default function GDPRDataProcessingAgreement({}) {
             <TableOfContents tags={tags} />
 
             <GDPRContainer>
-                <TowerText variant="body1" font={true}>
+                <LegalText variant="body1" font={true}>
                     This Data Processing Agreement ("<strong>Agreement</strong>") forms part of the Contract for
                     Services ("<strong>Principal Agreement</strong>") between bloonstl (“we," “us," or “our”)
                     and bloonstl Terms of Service (The "<strong>Data Processor</strong>")
                     (together as the “<strong>Parties</strong>”)
-                </TowerText>
+                </LegalText>
                 <Whereas />
                 <TowerText variant="body1" font={true}>
                     IT IS AGREED AS FOLLOWS:

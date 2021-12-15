@@ -1,17 +1,18 @@
+import LegalOList from "../LegalOList";
+import LegalListItem from "../LegalListItem";
 import TowerText from "../../tower/TowerText";
-import {GDPRItem, GDPRList} from "./GDPRDataProcessingAgreement";
 
 export default function DataSubjectRights({tag}) {
 
     return (
         <>
-            <GDPRList start={5} id={tag.href}>
-                <GDPRItem>
+            <LegalOList start={5} id={tag.href}>
+                <LegalListItem>
                     <TowerText variant="body1" font={true}>
                         <strong>Data Subject Rights</strong>
                     </TowerText>
-                    <GDPRList start={5}>
-                        <GDPRItem>
+                    <LegalOList start={5}>
+                        <LegalListItem>
                             <TowerText variant="body1" font={true}>
                                 Taking into account the nature of the Processing, Processor shall assist
                                 the Company by implementing appropriate technical and organisational
@@ -19,20 +20,20 @@ export default function DataSubjectRights({tag}) {
                                 obligations, as reasonably understood by Company, to respond to
                                 requests to exercise Data Subject rights under the Data Protection Laws.
                             </TowerText>
-                        </GDPRItem>
-                        <GDPRItem>
+                        </LegalListItem>
+                        <LegalListItem>
                             <TowerText variant="body1" font={true}>
                                 Processor shall:
                             </TowerText>
-                            <GDPRList start={5}>
-                                <GDPRItem>
+                            <LegalOList start={5}>
+                                <LegalListItem>
                                     <TowerText variant="body1" font={true}>
                                         promptly notify Company if it receives a request from a Data
                                         Subject under any Data Protection Law in respect of Company
                                         Personal Data; and
                                     </TowerText>
-                                </GDPRItem>
-                                <GDPRItem>
+                                </LegalListItem>
+                                <LegalListItem>
                                     <TowerText variant="body1" font={true}>
                                         ensure that it does not respond to that request except on the
                                         documented instructions of Company or as required by
@@ -41,12 +42,12 @@ export default function DataSubjectRights({tag}) {
                                         inform Company of that legal requirement before the Contracted
                                         Processor responds to the request.
                                     </TowerText>
-                                </GDPRItem>
-                            </GDPRList>
-                        </GDPRItem>
-                    </GDPRList>
-                </GDPRItem>
-            </GDPRList>
+                                </LegalListItem>
+                            </LegalOList>
+                        </LegalListItem>
+                    </LegalOList>
+                </LegalListItem>
+            </LegalOList>
         </>
     );
 }

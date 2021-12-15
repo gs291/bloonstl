@@ -1,5 +1,6 @@
 import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
+import LegalUList from "../LegalUList";
 
 export default function InformationSharing({tag}) {
 
@@ -17,7 +18,7 @@ export default function InformationSharing({tag}) {
                 More specifically, we may need to process your data or share your personal
                 information in the following situations:
             </LegalText>
-            <ul>
+            <LegalUList>
                 <li>
                     <LegalText variant="body1" font={true}>
                         <strong>Business Transfers</strong>. We may share or transfer your information in connection
@@ -51,7 +52,7 @@ export default function InformationSharing({tag}) {
                         your profile.
                     </LegalText>
                 </li>
-            </ul>
+            </LegalUList>
         </>
     );
 }
