@@ -40,19 +40,19 @@ const PrivacyContainer = styled.div`
 `;
 
 const tags = [
-    { "title": "WHAT INFORMATION DO WE COLLECT?", "href": "what-information-do-we-collect" },
-    { "title": "WILL YOUR INFORMATION BE SHARED WITH ANYONE?", "href": "will-your-information-be-shared-with-anyone" },
-    { "title": "DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?", "href": "do-we-use-cookies-and-other-tracking-technologies" },
-    { "title": "HOW DO WE HANDLE YOUR SOCIAL LOGINS?", "href": "how-do-we-handle-your-social-logins" },
-    { "title": "IS YOUR INFORMATION TRANSFERRED INTERNATIONALLY?", "href": "is-your-information-transferred-internationally" },
-    { "title": "HOW LONG DO WE KEEP YOUR INFORMATION?", "href": "how-long-do-we-keep-your-information" },
+    { "title": "WHAT INFORMATION DO WE COLLECT?", "href": "information-collection" },
+    { "title": "WILL YOUR INFORMATION BE SHARED WITH ANYONE?", "href": "information-sharing" },
+    { "title": "DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?", "href": "cookies-and-tracking" },
+    { "title": "HOW DO WE HANDLE YOUR SOCIAL LOGINS?", "href": "social-logins" },
+    { "title": "IS YOUR INFORMATION TRANSFERRED INTERNATIONALLY?", "href": "internationally-transferred-information" },
+    { "title": "HOW LONG DO WE KEEP YOUR INFORMATION?", "href": "information-storage-time" },
     { "title": "DO WE COLLECT INFORMATION FROM MINORS?", "href": "do-we-collect-information-from-minors" },
-    { "title": "WHAT ARE YOUR PRIVACY RIGHTS?", "href": "what-are-your-privacy-rights" },
-    { "title": "CONTROLS FOR DO-NOT-TRACK FEATURES", "href": "controls-for-do-not-track-features" },
-    { "title": "DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?", "href": "do-california-residents-have-specific-privacy-rights" },
-    { "title": "DO WE MAKE UPDATES TO THIS NOTICE?", "href": "do-we-make-updates-to-this-notice" },
-    { "title": "HOW CAN YOU CONTACT US ABOUT THIS NOTICE?", "href": "how-can-you-contact-us-about-this-notice" },
-    { "title": "HOW CAN YOU REVIEW, UPDATE OR DELETE THE DATA WE COLLECT FROM YOU?", "href": "how-can-you-review-update-or-delete-the-data-we-collect-from-you" }
+    { "title": "WHAT ARE YOUR PRIVACY RIGHTS?", "href": "privacy-rights" },
+    { "title": "CONTROLS FOR DO-NOT-TRACK FEATURES", "href": "control-do-not-track" },
+    { "title": "DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?", "href": "california-residents" },
+    { "title": "DO WE MAKE UPDATES TO THIS NOTICE?", "href": "updates-to-notice" },
+    { "title": "HOW CAN YOU CONTACT US ABOUT THIS NOTICE?", "href": "contact-us" },
+    { "title": "HOW CAN YOU REVIEW, UPDATE OR DELETE THE DATA WE COLLECT FROM YOU?", "href": "review-update-or-delete-data" }
 ];
 
 export default function Privacy({}) {
@@ -61,7 +61,7 @@ export default function Privacy({}) {
         <>
             <LegalTitle variant="body1" font={true}>
                 <strong>
-                    Last updated 12/14/2021
+                    Last updated December 15, 2021
                 </strong>
             </LegalTitle>
 
@@ -101,7 +101,7 @@ export default function Privacy({}) {
                 <Updates                    tag={tags[10]}/>
                 <ContactUs                  tag={tags[11]}/>
                 <ReviewUpdateDeleteData     tag={tags[12]}/>
-                <LegalText variant="body2" font={true}>
+                <LegalText variant="caption" font={true}>
                     This privacy policy was created using Termly's Privacy Policy Generator.
                 </LegalText>
             </PrivacyContainer>
