@@ -7,6 +7,7 @@ import FiltersTierList from "../filters/FiltersTierList";
 import GridTowerContainer from "../grid/GridTowerContainer";
 import {getTierColor, getTowerType} from "../../lib/utils/utils";
 import {getDarkMode, getHeroState, getMobile, getMonkeyState} from "../../lib/redux/selectors";
+import HorizontalAD from "../advertisment/HorizontalAD";
 
 const FilterContainer = styled.div`
   margin-bottom: 50px;
@@ -69,6 +70,7 @@ export default function TierListGrid({ className, tiers }) {
                         ignoreFilter={0}
                     />
                 </Grid>
+                <HorizontalAD />
                 <Grid item>
                     <GridTowerContainer
                         towers={filteredTiers["a"]}
@@ -79,6 +81,7 @@ export default function TierListGrid({ className, tiers }) {
                         ignoreFilter={0}
                     />
                 </Grid>
+                <HorizontalAD />
                 <Grid item>
                     <GridTowerContainer
                         towers={filteredTiers["b"]}
@@ -89,6 +92,7 @@ export default function TierListGrid({ className, tiers }) {
                         ignoreFilter={0}
                     />
                 </Grid>
+                <HorizontalAD />
                 <Grid item>
                     <GridTowerContainer
                         towers={filteredTiers["c"]}
