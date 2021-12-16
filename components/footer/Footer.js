@@ -1,9 +1,9 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Typography} from "@mui/material";
 import {Link as MUILink} from "@mui/material";
 
+import TowerText from "../tower/TowerText";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
@@ -25,8 +25,7 @@ const LinkContainer = styled.div`
   text-align: center;
 `;
 
-const FooterText = styled(Typography)`
-  font-family: sans-serif;
+const FooterText = styled(TowerText)`
   display: flex;
   align-items: center;
   text-align: center;
@@ -95,7 +94,7 @@ export default function Footer({ className }) {
                         </LinkContainer>
                     ))}
                 </LinkContainer>
-                <FooterText component="span" variant="body1">
+                <FooterText component="span" variant="body1" font={true}>
                     Written and maintained by
                     <FooterLink href="https://gregsanchez.netlify.app/" data-dm={darkMode}>
                         Gregory Sanchez

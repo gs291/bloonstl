@@ -10,7 +10,7 @@ const Nav = styled(AppBar)`
   display: flex;
   flex-direction: row;
   align-items: center;
-  z-index: 99999;
+  z-index: 1500;
   height: ${siteSizes.nav.height};
   justify-content: ${props => props["data-m"] ? "flex-start" : "center"};
 `;
