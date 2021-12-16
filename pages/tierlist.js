@@ -25,6 +25,7 @@ export default function TierList({s, a, b, c}) {
                 <PageTitle title="Tier List" />
                 <HorizontalAD />
                 <TierListGrid tiers={tiers}/>
+                <HorizontalAD />
             </MainContainer>
         </>
     );

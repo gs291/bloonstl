@@ -27,6 +27,7 @@ export default function HeroPage({ hero }) {
             <HeroAbilities abilities={ hero.abilities } heroFile={ hero.filename }/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <ProsCons pros={hero.info.pros} cons={hero.info.cons} backgroundColor={dividerBackgroundColor}/>
+            <HorizontalAD />
         </>
     );
 }

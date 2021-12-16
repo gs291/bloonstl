@@ -16,6 +16,7 @@ export default function Heroes({ heroes }) {
                 <PageTitle title="Heroes" />
                 <HorizontalAD />
                 <HeroesGrid heroes={heroes} />
+                <HorizontalAD />
             </MainContainer>
         </>
     );

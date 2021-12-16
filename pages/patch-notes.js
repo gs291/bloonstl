@@ -15,6 +15,7 @@ export default function PatchNotes({ patches }) {
                 <PageTitle title="Patch Notes" />
                 <HorizontalAD />
                 <PatchNotesPage patches={patches}/>
+                <HorizontalAD />
             </MainContainer>
         </>
     );
