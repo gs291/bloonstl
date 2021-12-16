@@ -63,8 +63,8 @@ const globals = css`
     right: 0;
     width: 100px;
     height: 100%;
-    -webkit-box-shadow: 0 0 10px #29d, 0 0 5px #29d;
-    box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+    -webkit-box-shadow: 0 0 10px ${siteColors.accent.light}, 0 0 5px ${siteColors.accent.light};
+    box-shadow: 0 0 10px ${siteColors.accent.light}, 0 0 5px ${siteColors.accent.light};
     opacity: 1.0;
 
     -webkit-transform: rotate(3deg) translate(0px, -4px);
