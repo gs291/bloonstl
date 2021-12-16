@@ -86,7 +86,7 @@ export default function App({ Component, pageProps }) {
         // Progress bar for page switching
         NProgress.configure({ showSpinner: false });
         const progressStart = () => NProgress.start();
-        const progressEnd = () => NProgress.end();
+        const progressEnd = () => NProgress.done();
 
         Router.events.on('routeChangeStart', progressStart);
         Router.events.on('routeChangeComplete', progressEnd);
