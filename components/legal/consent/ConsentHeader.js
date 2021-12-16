@@ -14,7 +14,11 @@ const Header = styled.div`
   justify-content: space-between;
   
   padding: 0.86rem 1.4rem;
-  background-color: ${props => props["data-dm"] ? siteColors.toast.header.dark : siteColors.toast.header.light};
+  background-color: ${
+    props => props["data-e"] 
+            ? props["data-dm"] ? siteColors.toast.error.header.dark : siteColors.toast.error.header.light
+            : props["data-dm"] ? siteColors.toast.header.dark : siteColors.toast.header.light 
+  };
 
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -48,7 +52,7 @@ const CancelIcon = styled(CancelOutlinedIcon)`
 `;
 
 
-export default function ConsentHeader({setShow, checkConsent}) {
+export default function ConsentHeader({checkConsent, error}) {
     const darkMode = useSelector(getDarkMode);
 
     const acceptConsent = () => {
@@ -64,12 +68,13 @@ export default function ConsentHeader({setShow, checkConsent}) {
             console.log(e);
         }
 
-        checkConsent();
+        const clicked = true;
+        checkConsent(clicked);
     };
 
     return (
         <>
-            <Header data-dm={darkMode}>
+            <Header data-dm={darkMode} data-e={error}>
                 <Title>
                     <InfoIcon data-dm={darkMode}/>
                     <TitleText variant="h6">

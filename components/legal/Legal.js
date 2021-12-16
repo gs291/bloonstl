@@ -23,6 +23,7 @@ const LegalLinks = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 `;
 
 const FullLink = ({href, title}) => (
