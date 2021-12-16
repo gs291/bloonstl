@@ -4,11 +4,15 @@ import {Link as MUILink} from "@mui/material";
 
 import LegalText from "./LegalText";
 import TowerText from "../tower/TowerText";
+import siteColors from "../../lib/utils/siteColors";
+import {useSelector} from "react-redux";
+import {getDarkMode} from "../../lib/redux/selectors";
 
 const MLink = styled(MUILink)`
   text-decoration: none;
   &:hover {
     text-decoration: underline;
+    text-decoration-color: ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
   }
 `;
 
@@ -26,19 +30,20 @@ const LegalLinks = styled.div`
   text-align: center;
 `;
 
-const FullLink = ({href, title}) => (
-    <LinkContainer>
-        <Link href={`/legal/${href}`} passHref>
-            <MLink>
-                <TowerText variant="h4">
-                    {title}
-                </TowerText>
-            </MLink>
-        </Link>
-    </LinkContainer>
-);
-
 export default function Legal({  }) {
+    const darkMode = useSelector(getDarkMode);
+
+    const FullLink = ({href, title}) => (
+        <LinkContainer>
+            <Link href={`/legal/${href}`} passHref>
+                <MLink data-dm={darkMode}>
+                    <TowerText variant="h4">
+                        {title}
+                    </TowerText>
+                </MLink>
+            </Link>
+        </LinkContainer>
+    );
 
     return (
         <>
