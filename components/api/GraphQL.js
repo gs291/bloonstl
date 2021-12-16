@@ -26,6 +26,14 @@ const Information = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
+  width: 100%;
+`;
+
+const Title = styled(TowerText)`
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
 `;
 
 const Description = styled(TowerText)`
@@ -82,12 +90,12 @@ export default function GraphQL({ className, api, tag}) {
         <>
             <GraphQLContainer className={className} id={tag.href}>
                 <Information>
-                    <TowerText variant="h2">
+                    <Title variant="h2">
                         GraphQL API
-                    </TowerText>
-                    <TowerText variant="h2">
+                    </Title>
+                    <Title variant="h2">
                         Documentation
-                    </TowerText>
+                    </Title>
                 </Information>
                 <Information>
                     <Description variant="h6" font={true}>

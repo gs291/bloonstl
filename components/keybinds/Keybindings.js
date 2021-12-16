@@ -17,6 +17,13 @@ const KeybindContainer = styled.div`
   justify-content: center;
 `;
 
+const Title = styled(TowerText)`
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+`;
+
 const Description = styled(TowerText)`
   text-align: center;
   
@@ -79,9 +86,9 @@ export default function Keybindings({ className, tag }) {
     return (
         <>
             <KeybindContainer className={className} id={tag.href}>
-                <TowerText variant="h2">
+                <Title variant="h2">
                     Keybindings
-                </TowerText>
+                </Title>
                 <Description variant="h6" font={true}>
                     Below is a useful visual representation of the default in-game keybindings.
                     Toggle the slider below to switch between keyboard keys and icons. Click on the image to view the full image.

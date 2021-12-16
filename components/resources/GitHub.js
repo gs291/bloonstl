@@ -13,6 +13,9 @@ const GitHubContainer = styled.div`
 const Title = styled(TowerText)`
   text-align: center;
   margin-bottom: 30px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 const TextLink = styled.a`
