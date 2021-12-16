@@ -48,48 +48,27 @@ export default function Tooltip({className, children, title, active}) {
 
     return (
         <>
-            { !mobile && (
-                <>
+            <ClickAwayListener onClickAway={handleTooltipClose}>
+                <div>
                     <StyledTooltip
+                        onClose={handleTooltipClose}
+                        onMouseEnter={handleTooltipOpen}
+                        open={open}
                         title={title}
-                        leaveDelay={100}
+                        leaveDelay={250}
+                        leaveTouchDelay={3500}
                         placement="top"
                         data-a={active}
                         data-m={mobile}
                         data-dm={darkMode}
                         arrow
                     >
-                        <div>
+                        <div onClick={handleTooltipOpen}>
                             { children }
                         </div>
                     </StyledTooltip>
-                </>
-            )}
-            { mobile && (
-                <>
-                    <ClickAwayListener onClickAway={handleTooltipClose}>
-                        <div>
-                            <StyledTooltip
-                                onClose={handleTooltipClose}
-                                open={open}
-                                disableFocusListener
-                                disableHoverListener
-                                disableTouchListener
-                                title={title}
-                                placement="top"
-                                data-a={active}
-                                data-m={mobile}
-                                data-dm={darkMode}
-                                arrow
-                            >
-                                <div onClick={handleTooltipOpen}>
-                                    { children }
-                                </div>
-                            </StyledTooltip>
-                        </div>
-                    </ClickAwayListener>
-                </>
-            )}
+                </div>
+            </ClickAwayListener>
         </>
     );
 }
