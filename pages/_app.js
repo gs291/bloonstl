@@ -74,14 +74,6 @@ const globals = css`
 
 const store = configureStore();
 
-NProgress.configure({ showSpinner: false });
-
-//Binding events.
-Router.events.on('routeChangeStart', () => NProgress.start());
-Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());
-
-
 export default function App({ Component, pageProps }) {
 
     useEffect(() => {
@@ -89,6 +81,21 @@ export default function App({ Component, pageProps }) {
         const jssStyles = document.querySelector("#jss-server-side");
         if (jssStyles) {
             jssStyles.parentElement.removeChild(jssStyles);
+        }
+
+        // Progress bar for page switching
+        NProgress.configure({ showSpinner: false });
+        const progressStart = () => NProgress.start();
+        const progressEnd = () => NProgress.end();
+
+        Router.events.on('routeChangeStart', progressStart);
+        Router.events.on('routeChangeComplete', progressEnd);
+        Router.events.on('routeChangeError', progressEnd);
+
+        return () => {
+            Router.events.off('routeChangeStart', progressStart)
+            Router.events.off('routeChangeComplete', progressEnd);
+            Router.events.off('routeChangeError', progressEnd);
         }
     }, []);
 
