@@ -3,9 +3,9 @@ import {useSelector} from "react-redux";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getMonkeyColor} from "../../lib/utils/utils";
+import HorizontalAD from "../advertisment/HorizontalAD";
 import GridTowerContainer from "../grid/GridTowerContainer";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
-import HorizontalAD from "../advertisment/HorizontalAD";
 
 
 export default function MonkeysGrid({ primary, military, magic, support }) {

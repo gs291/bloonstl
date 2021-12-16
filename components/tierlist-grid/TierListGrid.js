@@ -3,11 +3,11 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import siteColors from "../../lib/utils/siteColors";
+import HorizontalAD from "../advertisment/HorizontalAD";
 import FiltersTierList from "../filters/FiltersTierList";
 import GridTowerContainer from "../grid/GridTowerContainer";
 import {getTierColor, getTowerType} from "../../lib/utils/utils";
 import {getDarkMode, getHeroState, getMobile, getMonkeyState} from "../../lib/redux/selectors";
-import HorizontalAD from "../advertisment/HorizontalAD";
 
 const FilterContainer = styled.div`
   margin-bottom: 50px;

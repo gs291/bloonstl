@@ -1,11 +1,11 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import {Link as MUILink} from "@mui/material";
 
 import LegalText from "./LegalText";
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
-import {useSelector} from "react-redux";
 import {getDarkMode} from "../../lib/redux/selectors";
 
 const MLink = styled(MUILink)`
