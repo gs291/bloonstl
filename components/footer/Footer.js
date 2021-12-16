@@ -8,7 +8,6 @@ import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {font_family, rgbaHex} from "../../lib/utils/utils";
-import NavLink from "../navbar/NavLink";
 
 const FooterContainer = styled.footer`
   display: flex;
