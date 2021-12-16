@@ -59,6 +59,7 @@ export default function MonkeyPage({ monkey }) {
             <FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <ProsCons pros={tiers.pros} cons={tiers.cons} backgroundColor={dividerBackgroundColor}/>
+            <HorizontalAD />
         </>
     );
 }

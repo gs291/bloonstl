@@ -45,25 +45,43 @@ const A = styled.div`
   line-height: ${siteSizes.nav.height};
 `;
 
-export default function NavLink({className, path, text, closeDrawer}) {
+export default function NavLink({className, path, text, prefetch, closeDrawer}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     const router = useRouter();
 
     return (
-            <Link href={path} passHref>
-                <MLink
-                    className={className}
-                    underline="none"
-                    data-m={mobile}
-                    data-dm={darkMode}
-                    data-a={router.pathname === path}
-                >
-                    <HoverLink onClick={closeDrawer} data-m={mobile} data-dm={darkMode}>
-                        <A data-m={mobile}>{text}</A>
-                    </HoverLink>
-                </MLink>
-            </Link>
+        <>
+            {!prefetch ? (
+                <Link href={path} prefetch={false} passHref>
+                    <MLink
+                        className={className}
+                        underline="none"
+                        data-m={mobile}
+                        data-dm={darkMode}
+                        data-a={router.pathname === path}
+                    >
+                        <HoverLink onClick={closeDrawer} data-m={mobile} data-dm={darkMode}>
+                            <A data-m={mobile}>{text}</A>
+                        </HoverLink>
+                    </MLink>
+                </Link>
+            ) : (
+                <Link href={path} passHref>
+                    <MLink
+                        className={className}
+                        underline="none"
+                        data-m={mobile}
+                        data-dm={darkMode}
+                        data-a={router.pathname === path}
+                    >
+                        <HoverLink onClick={closeDrawer} data-m={mobile} data-dm={darkMode}>
+                            <A data-m={mobile}>{text}</A>
+                        </HoverLink>
+                    </MLink>
+                </Link>
+            )}
+        </>
     );
 }

@@ -13,6 +13,9 @@ const GitHubContainer = styled.div`
 const Title = styled(TowerText)`
   text-align: center;
   margin-bottom: 30px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 const TextLink = styled.a`
@@ -30,7 +33,7 @@ export default function GitHub({className, tag}) {
     return (
         <>
             <GitHubContainer className={className} id={tag.href}>
-                <Title variant="h2" font={true}>
+                <Title variant="h2">
                     GitHub Information
                 </Title>
 

@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import siteColors from "../../lib/utils/siteColors";
+import HorizontalAD from "../advertisment/HorizontalAD";
 import FiltersTierList from "../filters/FiltersTierList";
 import GridTowerContainer from "../grid/GridTowerContainer";
 import {getTierColor, getTowerType} from "../../lib/utils/utils";
@@ -69,6 +70,7 @@ export default function TierListGrid({ className, tiers }) {
                         ignoreFilter={0}
                     />
                 </Grid>
+                <HorizontalAD />
                 <Grid item>
                     <GridTowerContainer
                         towers={filteredTiers["a"]}
@@ -79,6 +81,7 @@ export default function TierListGrid({ className, tiers }) {
                         ignoreFilter={0}
                     />
                 </Grid>
+                <HorizontalAD />
                 <Grid item>
                     <GridTowerContainer
                         towers={filteredTiers["b"]}
@@ -89,6 +92,7 @@ export default function TierListGrid({ className, tiers }) {
                         ignoreFilter={0}
                     />
                 </Grid>
+                <HorizontalAD />
                 <Grid item>
                     <GridTowerContainer
                         towers={filteredTiers["c"]}

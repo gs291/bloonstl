@@ -1,7 +1,9 @@
+import Link from "next/link";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {Typography} from "@mui/material";
+import {Link as MUILink} from "@mui/material";
 
+import TowerText from "../tower/TowerText";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
@@ -15,8 +17,15 @@ const FooterContainer = styled.footer`
   height: ${siteSizes.footer.height};
 `;
 
-const FooterText = styled(Typography)`
-  font-family: sans-serif;
+const LinkContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;
+
+const FooterText = styled(TowerText)`
   display: flex;
   align-items: center;
   text-align: center;
@@ -38,13 +47,54 @@ const FooterLink = styled.a`
   }
 `;
 
+const MLink = styled(MUILink)`
+  margin-left: 10px;
+  margin-right: 10px;
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  font-size: 1.25em;
+
+  &:hover {
+    cursor: pointer;
+    color: ${props => props["data-dm"] ? siteColors.text.navLink.dark : siteColors.text.navLink.light};
+  }
+`;
+
+const Dot = styled.div`
+  width: 5px; 
+  height: 5px; 
+  border-radius: 5px; 
+  margin-left: 8px; 
+  margin-right: 8px; 
+  background-color: ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};;
+`;
+
+const links = [
+    { "text": "Terms", "path": "/legal/terms-of-service", "dot": true },
+    { "text": "Privacy", "path": "/legal/privacy-policy", "dot": true },
+    { "text": "Cookie", "path": "/legal/cookie-policy" }
+]
+
 export default function Footer({ className }) {
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <FooterContainer className={className}>
-                <FooterText component="span" variant="body1">
+                <LinkContainer>
+                    {links.map(link => (
+                        <LinkContainer key={link.text}>
+                            <Link href={link.path} prefetch={false} passHref>
+                                <MLink underline="none" data-dm={darkMode}>
+                                    {link.text}
+                                </MLink>
+                            </Link>
+                            {link.dot && (
+                                <Dot data-dm={darkMode}/>
+                            )}
+                        </LinkContainer>
+                    ))}
+                </LinkContainer>
+                <FooterText component="span" variant="body1" font={true}>
                     Written and maintained by
                     <FooterLink href="https://gregsanchez.netlify.app/" data-dm={darkMode}>
                         Gregory Sanchez

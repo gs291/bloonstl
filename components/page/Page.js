@@ -7,8 +7,10 @@ import {useDispatch, useSelector} from "react-redux";
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
 import NavDrawer from "../navbar/NavDrawer";
+import ReturnToTop from "../return/ReturnToTop";
 import siteColors from "../../lib/utils/siteColors";
 import { updateMobile } from "../../lib/redux/actions";
+import ConsentToast from "../legal/consent/ConsentToast";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const PageContainer = styled.div`
@@ -81,6 +83,8 @@ export default function Page(props) {
                 </Main>
 
                 <Foot data-dm={darkMode}/>
+                <ReturnToTop />
+                <ConsentToast />
             </PageContainer>
         </>
     );

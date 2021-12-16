@@ -12,6 +12,8 @@ const Title = styled(Typography)`
   transition: 0.3s;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   border-bottom: 6px solid ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 export default function PageTitle({title}) {

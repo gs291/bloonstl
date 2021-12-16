@@ -15,6 +15,7 @@ export default function Resources({ api }) {
                 <PageTitle title="Resources" />
                 <HorizontalAD />
                 <ResourcesPage api={api}/>
+                <HorizontalAD />
             </MainContainer>
         </>
     );

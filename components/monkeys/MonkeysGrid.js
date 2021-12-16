@@ -3,6 +3,7 @@ import {useSelector} from "react-redux";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getMonkeyColor} from "../../lib/utils/utils";
+import HorizontalAD from "../advertisment/HorizontalAD";
 import GridTowerContainer from "../grid/GridTowerContainer";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
@@ -31,6 +32,7 @@ export default function MonkeysGrid({ primary, military, magic, support }) {
                         ignoreFilter={1}
                     />
                 </Grid>
+                <HorizontalAD />
                 <Grid item>
                     <GridTowerContainer
                         towers={military}
@@ -43,6 +45,7 @@ export default function MonkeysGrid({ primary, military, magic, support }) {
                         ignoreFilter={1}
                     />
                 </Grid>
+                <HorizontalAD />
                 <Grid item>
                     <GridTowerContainer
                         towers={magic}
@@ -55,6 +58,7 @@ export default function MonkeysGrid({ primary, military, magic, support }) {
                         ignoreFilter={1}
                     />
                 </Grid>
+                <HorizontalAD />
                 <Grid item>
                     <GridTowerContainer
                         towers={support}
