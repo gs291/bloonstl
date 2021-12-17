@@ -13,7 +13,6 @@ export default function Header({ title }) {
         <>
             <Head>
                 <title>{ title && `${title} - ` }Bloons</title>
-                <link rel="icon" href="/favicon.ico" />
 
                 {/*// <!-- Chrome, Firefox OS and Opera -->*/}
                 <meta name="theme-color" content={barColor} />
@@ -21,27 +20,6 @@ export default function Header({ title }) {
                 <meta name="msapplication-navbutton-color" content={barColor} />
                 {/*// <!-- iOS Safari -->*/}
                 <meta name="apple-mobile-web-app-status-bar-style" content={barColor} />
-
-                {/*// <!-- Global site tag (gtag.js) - Google Analytics --> */}
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERWW6617M8" />
-                <script>
-                    {
-`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-ERWW6617M8');`
-                    }
-                </script>
-
-                {/*// <!-- Google AdSense --> */}
-                <script
-                    async
-                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4102574682241123"
-                    crossOrigin="anonymous"
-                />
-
-                {/*// <!-- Google Search Console Verification --> */}
-                <meta name="google-site-verification" content="xdbV4aYKSCsp9idnlAXq_nxbcHSQggDBC2zy-3gqPJg" />
 
             </Head>
         </>

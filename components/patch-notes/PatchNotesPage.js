@@ -41,7 +41,7 @@ export default function PatchNotesPage({ patch }) {
         });
 
         setToc(tags);
-    }, [patchVersion])
+    }, [patchData])
 
     return (
         <>
