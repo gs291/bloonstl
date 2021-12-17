@@ -62,7 +62,7 @@ export default function PatchNotesPage({ patch }) {
 
     const handlePatchSelect = (e) => {
         if (!patchData[e.target.value]) {
-            setPatchData(prevState => ({...prevState, [e.target.value]: {"release": "1900-01-01", "items": []}}));
+            setPatchData(prevState => ({...prevState, [e.target.value]: {"release": "", "items": []}}));
         }
         setPatchVersion(e.target.value);
     }
@@ -81,7 +81,7 @@ export default function PatchNotesPage({ patch }) {
             }
         }
 
-        if (patchData[patchVersion] && patchData[patchVersion].release === "1900-01-01") {
+        if (patchData[patchVersion] && patchData[patchVersion].release === "") {
             fetchData();
         }
 
@@ -102,7 +102,7 @@ export default function PatchNotesPage({ patch }) {
     }, [patchVersion])
 
     useEffect(() => {
-        if (patchData[patchVersion] && patchData[patchVersion].release !== "1900-01-01") {
+        if (patchData[patchVersion] && patchData[patchVersion].release !== "") {
             const tags = patchData[patchVersion].items.map(item => {
                 return {
                     "href": getTowerLink(item.title),
