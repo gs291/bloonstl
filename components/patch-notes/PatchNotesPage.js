@@ -5,6 +5,7 @@ import Patch from "./Patch";
 import PatchDate from "./PatchDate";
 import PatchSelect from "./PatchSelect";
 import {getTowerLink} from "../../lib/utils/utils";
+import {patchVersions} from "../../lib/utils/patches";
 import TableOfContents from "../table-of-contents/TableOfContents";
 
 const PageContainer = styled.div`
@@ -23,7 +24,7 @@ const Date = styled(PatchDate)`
 `;
 
 export default function PatchNotesPage({ patches }) {
-    const [patch, setPatch] = useState("27.2");
+    const [patch, setPatch] = useState(patchVersions[0]);
     const [toc, setToc] = useState([]);
 
     const handlePatchSelect = (e) => {

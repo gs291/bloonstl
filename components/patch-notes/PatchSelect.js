@@ -5,6 +5,7 @@ import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {patchVersions} from "../../lib/utils/patches";
 
 const SelectContainer = styled.div`
   display: flex;
@@ -68,19 +69,9 @@ export default function PatchSelect({ className, patch, handlePatchSelect }) {
                             }
                         }}
                     >
-                        <MenuItem value={"27.2"}>v 27.2</MenuItem>
-                        <MenuItem value={"27.1"}>v 27.1</MenuItem>
-                        <MenuItem value={"27.0"}>v 27.0</MenuItem>
-                        <MenuItem value={"26.1"}>v 26.1</MenuItem>
-                        <MenuItem value={"26.0"}>v 26.0</MenuItem>
-                        <MenuItem value={"25.1"}>v 25.1</MenuItem>
-                        <MenuItem value={"25.0"}>v 25.0</MenuItem>
-                        <MenuItem value={"24.2"}>v 24.2</MenuItem>
-                        <MenuItem value={"24.1"}>v 24.1</MenuItem>
-                        <MenuItem value={"24.0"}>v 24.0</MenuItem>
-                        <MenuItem value={"23.0"}>v 23.0</MenuItem>
-                        <MenuItem value={"21.1"}>v 21.1</MenuItem>
-                        <MenuItem value={"21.0"}>v 21.0</MenuItem>
+                        {patchVersions.map(patch => (
+                            <MenuItem value={patch} key={patch}>v {patch}</MenuItem>
+                        ))}
                     </VersionSelect>
                 </FormControl>
             </SelectContainer>
