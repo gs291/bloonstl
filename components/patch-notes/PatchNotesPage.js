@@ -23,17 +23,17 @@ const Date = styled(PatchDate)`
   margin-top: 50px;
 `;
 
-export default function PatchNotesPage({ patches }) {
-    const [patch, setPatch] = useState(patchVersions[0]);
+export default function PatchNotesPage({ patch }) {
+    const [patchVersion, setPatchVersion] = useState(patchVersions[0]);
+    const [patchData, setPatchData] = useState(patch);
     const [toc, setToc] = useState([]);
 
     const handlePatchSelect = (e) => {
-        setPatch(e.target.value);
+        setPatchVersion(e.target.value); //TODO: FETCH DATA INSTEAD OF USING HUGE JSON VARIABLE
     }
 
     useEffect(() => {
-        const currPatch = patches[patch];
-        const tags = currPatch.items.map(item => {
+        const tags = patchData.items.map(item => {
             return {
                 "href": getTowerLink(item.title),
                 "title": item.title
@@ -41,15 +41,15 @@ export default function PatchNotesPage({ patches }) {
         });
 
         setToc(tags);
-    }, [patch])
+    }, [patchVersion])
 
     return (
         <>
             <PageContainer>
-                <Select patch={patch} handlePatchSelect={handlePatchSelect} />
+                <Select patch={patchVersion} handlePatchSelect={handlePatchSelect} />
                 <TableOfContents tags={toc} />
-                <Date date={patches[patch].release} />
-                <Patch patch={patches[patch]} tags={toc}/>
+                <Date date={patchData.release} />
+                <Patch patch={patchData} tags={toc}/>
             </PageContainer>
         </>
     );
