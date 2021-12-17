@@ -19,7 +19,7 @@ const TopDrawer = styled(Drawer)`
 const DrawerContainer = styled.div`
   height: 100%;
   padding-top: ${siteSizes.nav.height};
-  padding-bottom: 25%;
+  padding-bottom: 5%;
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   color: ${props => props["data-dm"] ?  siteColors.text.dark : siteColors.text.light};
   transition: 0.3s;
@@ -27,6 +27,8 @@ const DrawerContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  
+  overflow-y: auto;
 `;
 
 const DrawerLink = styled(NavLink)`
