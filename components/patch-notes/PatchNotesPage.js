@@ -58,6 +58,8 @@ export default function PatchNotesPage({ patch }) {
         errorMessages: []
     });
 
+
+
     const handlePatchSelect = (e) => {
         if (!patchData[e.target.value]) {
             setPatchData(prevState => ({...prevState, [e.target.value]: {"release": "1900-01-01", "items": []}}));
