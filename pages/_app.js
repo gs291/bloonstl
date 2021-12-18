@@ -53,7 +53,7 @@ const globals = css`
     left: 0;
 
     width: 100%;
-    height: 5px;
+    height: 4px;
   }
 
   /* Fancy blur effect */

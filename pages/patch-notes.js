@@ -1,12 +1,12 @@
-import patches from "../lib/utils/patches";
 import Header from "../components/page/Header";
 import PageTitle from "../components/page/PageTitle";
+import patches, {patchVersions} from "../lib/utils/patches";
 import MainContainer from "../components/page/MainContainer";
 import HorizontalAD from "../components/advertisment/HorizontalAD";
 import PatchNotesPage from "../components/patch-notes/PatchNotesPage";
 
-export default function PatchNotes({ patches }) {
-    patches = JSON.parse(patches);
+export default function PatchNotes({ latestPatch }) {
+    latestPatch = JSON.parse(latestPatch);
 
     return (
         <>
@@ -14,7 +14,7 @@ export default function PatchNotes({ patches }) {
             <MainContainer>
                 <PageTitle title="Patch Notes" />
                 <HorizontalAD />
-                <PatchNotesPage patches={patches}/>
+                <PatchNotesPage patch={latestPatch}/>
                 <HorizontalAD />
             </MainContainer>
         </>
@@ -25,7 +25,7 @@ export async function getStaticProps(context) {
 
     return {
         props: {
-            patches: JSON.stringify(patches)
+            latestPatch: JSON.stringify(patches[patchVersions[0]])
         }
     };
 }

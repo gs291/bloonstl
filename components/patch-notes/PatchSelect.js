@@ -1,10 +1,21 @@
 import styled from "@emotion/styled";
+import {makeStyles} from "@mui/styles";
 import {useSelector} from "react-redux";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 
+import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {patchVersions} from "../../lib/utils/patches";
+
+
+const useStyles = makeStyles({
+    menuPaper: {
+        maxHeight: "400px",
+        backgroundColor: (props) => props.darkMode ? siteColors.select.dark : siteColors.select.light,
+    }
+});
 
 const SelectContainer = styled.div`
   display: flex;
@@ -12,8 +23,6 @@ const SelectContainer = styled.div`
 `;
 
 const SelectLabel = styled(InputLabel)`
-  width: 115px;
-  
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   
   &.Mui-focused {
@@ -44,20 +53,33 @@ const VersionSelect = styled(Select)`
   }
 `;
 
+const Item = styled(MenuItem)`
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
+const SelectItemText = styled(TowerText)`
+  &:hover {
+    color: ${props => props["data-dm"] ? siteColors.text.navLink.dark : siteColors.text.navLink.light};
+  }
+`;
+
 export default function PatchSelect({ className, patch, handlePatchSelect }) {
     const darkMode = useSelector(getDarkMode);
+    const classes = useStyles({darkMode});
 
     return (
         <>
             <SelectContainer className={className}>
                 <FormControl variant="standard">
-                    <SelectLabel id="patch-select-label" data-dm={darkMode}>Patch Version</SelectLabel>
+                    <SelectLabel id="patch-select-label" data-dm={darkMode} sx={{ fontSize: "1.3em" }}>Patch Version</SelectLabel>
                     <VersionSelect
                         labelId="patch-select-label"
                         value={patch}
                         onChange={handlePatchSelect}
                         data-dm={darkMode}
                         MenuProps={{
+                            classes: { paper: classes.menuPaper },
                             anchorOrigin: {
                                 vertical: "bottom",
                                 horizontal: "center"
@@ -68,19 +90,13 @@ export default function PatchSelect({ className, patch, handlePatchSelect }) {
                             }
                         }}
                     >
-                        <MenuItem value={"27.2"}>v 27.2</MenuItem>
-                        <MenuItem value={"27.1"}>v 27.1</MenuItem>
-                        <MenuItem value={"27.0"}>v 27.0</MenuItem>
-                        <MenuItem value={"26.1"}>v 26.1</MenuItem>
-                        <MenuItem value={"26.0"}>v 26.0</MenuItem>
-                        <MenuItem value={"25.1"}>v 25.1</MenuItem>
-                        <MenuItem value={"25.0"}>v 25.0</MenuItem>
-                        <MenuItem value={"24.2"}>v 24.2</MenuItem>
-                        <MenuItem value={"24.1"}>v 24.1</MenuItem>
-                        <MenuItem value={"24.0"}>v 24.0</MenuItem>
-                        <MenuItem value={"23.0"}>v 23.0</MenuItem>
-                        <MenuItem value={"21.1"}>v 21.1</MenuItem>
-                        <MenuItem value={"21.0"}>v 21.0</MenuItem>
+                        {patchVersions.map(patch => (
+                            <Item value={patch} key={patch}>
+                                <SelectItemText variant="h4" data-dm={darkMode}>
+                                    v {patch}
+                                </SelectItemText>
+                            </Item>
+                        ))}
                     </VersionSelect>
                 </FormControl>
             </SelectContainer>
