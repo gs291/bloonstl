@@ -17,9 +17,7 @@ export default function Monkeys({ monkeys }) {
             <Header title="Monkeys" />
             <MainContainer>
                 <PageTitle title="Monkeys" />
-                <HorizontalAD />
                 <MonkeysGrid primary={primary} military={military} magic={magic} support={support} />
-                <HorizontalAD />
             </MainContainer>
         </>
     );
