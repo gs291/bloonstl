@@ -77,8 +77,10 @@ export default function PatchNotesPage({ patch }) {
         const fetchData = async () => {
             const responseBody = await fetchAPI(query, variables, controller, ignore, setProgress);
 
-            if (!responseBody.errors && responseBody.data && responseBody.data.patchByVersion) {
-                setPatchData(prevState => { return { ...prevState, [patchVersion]: responseBody.data.patchByVersion }});
+            if (responseBody) {
+                if (!responseBody.errors && responseBody.data && responseBody.data.patchByVersion) {
+                    setPatchData(prevState => { return { ...prevState, [patchVersion]: responseBody.data.patchByVersion }});
+                }
             }
         }
 
