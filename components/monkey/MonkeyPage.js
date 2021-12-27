@@ -8,12 +8,13 @@ import TowerText from "../tower/TowerText";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
-import {getMonkeyColor} from "../../lib/utils/utils";
+import {getInitialTowerStats, getMonkeyColor} from "../../lib/utils/utils";
 import HorizontalAD from "../advertisment/HorizontalAD";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
 import AbilityPathSelection from "../ability/AbilityPathSelection";
+import Stats from "../statistics/Stats";
 
 const TotalCost = styled(TowerText)`
   margin-top: 10px;
@@ -29,7 +30,7 @@ export default function MonkeyPage({ monkey }) {
     const mobile = useSelector(getMobile);
     const [ tier, setTier ] = useState("s");
     const [ page, setPage ] = useState(1);
-    const [ totalCost, setTotalCost ] = useState(0);
+    const [ stats, setStats ] = useState(getInitialTowerStats(monkey.stats));
 
     const handleTier = (_, r) => {
         setPage(1);
@@ -38,24 +39,30 @@ export default function MonkeyPage({ monkey }) {
     const handlePage = (_, p) => {
         setPage(p);
     }
-    const updateTotalCost = (cost) => setTotalCost(cost);
 
     const dividerBackgroundColor = getMonkeyColor(monkey.type);
 
     const tiers = monkey.tiers[tier][page-1];
+    console.log(stats);
     return (
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
             <HorizontalAD />
+            <Stats stats={stats}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <AbilityPathSelection tier={tier} tiers={tiers} handleTier={handleTier} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <TotalCost variant={mobile ? "h5" : "h4"}>
-                Path Cost: $<Counter cost={totalCost} />
+                Path Cost: $<Counter cost={stats.cost} />
             </TotalCost>
-            <MonkeyAbilities abilities={monkey.abilities} monkeyFile={monkey.filename} tier={tier} tiers={tiers} updateCost={updateTotalCost}/>
+            <MonkeyAbilities
+                abilities={monkey.abilities}
+                monkeyFile={monkey.filename}
+                tier={tier} tiers={tiers}
+                stats={monkey.stats} setStats={setStats}
+            />
             <FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <ProsCons pros={tiers.pros} cons={tiers.cons} backgroundColor={dividerBackgroundColor}/>

@@ -587,7 +587,7 @@ SELECT id INTO @tower_mortar_monkey FROM Towers WHERE monkey_id=@mortar_monkey;
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_mortar_monkey, 'b');
 
 --          Statistics      --  (  id,             tower_id,  r,  p, d,      bd,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,     dur, note, fp,  hk, dt)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_mortar_monkey, -1, 40, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 2, DEFAULT, DEFAULT, NULL, 11, 'N', 'explosion');
+INSERT INTO `TowerStats` VALUES (NULL, @tower_mortar_monkey, 20, 40, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 2, DEFAULT, DEFAULT, NULL, 11, 'N', 'explosion');
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 0, 0, 'Bigger Blast', 'Bigger shells deliver a bigger blast radius.', 500, 180, '+5p,+8r,cross:103:note:attack:flare:+20r,cross:104:attack:strip:+5p;+8r,cross:105:attack:wall_of_fire+5p;+6r');
@@ -600,7 +600,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 0, 4, 'The Bi
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 1, 0, 'Faster Reload', 'Increases the attack speed of the Mortar.', 300, 150, '*75%s');
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 1, 1, 'Rapid Reload', 'Even faster reload.', 500, 600, '*75%s');
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 1, 2, 'Heavy Shells', 'Heavy shells do extra damage to Ceramic, Lead, and all Fortified Bloons. Can also pop Black Bloons.', 900, 2300, '+3cd,+1md,+1fd,+1ld,+2sd,type:normal');
-INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, true, 1, 3, 'Artillery Battery', 'Artillery battery has 3 barrels for triple the pain.', 5500, 12500, '*25%,abil:bombardment:60clt;8dur;*25%s;+15%r');
+INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, true, 1, 3, 'Artillery Battery', 'Artillery battery has 3 barrels for triple the pain.', 5500, 12500, '*25%s,abil:bombardment:60clt;8dur;*25%s;+15%r');
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, true, 1, 4, 'Pop and Awe', 'Rains explosions over the whole screen, popping and immobilizing all Bloons for a few seconds.', 30000, 32000, '+9cd,+3md,+3fd,+3ld,+8sd,abil:pop_and_awe:60clt;8dur;20d;-1p;-1r;1.0s;type:normal;status:stun:1dur');
 
 --          Bottom Path

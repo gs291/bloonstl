@@ -3,6 +3,11 @@ import styled from "@emotion/styled";
 import {PureComponent} from "react";
 
 import AbilityContainer from "../ability/AbilityContainer";
+import {
+    getInitialTowerStats,
+    getMonkeyAbilityParseOrder,
+    parseAbilityModifiers
+} from "../../lib/utils/utils";
 
 const GridContainer = styled(Grid)`
   display: flex;
@@ -21,13 +26,13 @@ export default class MonkeyAbilities extends PureComponent {
     constructor(props){
         super(props);
         this.getAbilities = this.getAbilities.bind(this);
-        this.getAbilitiesCost = this.getAbilitiesCost.bind(this);
+        this.getAbilityStats = this.getAbilityStats.bind(this);
     }
     componentDidMount() {
-        this.props.updateCost(this.getAbilitiesCost());
+        this.props.setStats(this.getAbilityStats());
     }
     componentDidUpdate(_, __, ___) {
-        this.props.updateCost(this.getAbilitiesCost());
+        this.props.setStats(this.getAbilityStats());
     }
 
     render() {
@@ -51,22 +56,28 @@ export default class MonkeyAbilities extends PureComponent {
         );
     }
 
-    getAbilitiesCost() {
-        const { abilities, tiers } = this.props;
+    getAbilityStats() {
+        const { abilities, stats, tiers } = this.props;
 
-        let cost = 0;
+        const order = getMonkeyAbilityParseOrder(tiers);
 
-        abilities.forEach(ability => {
-            if (ability.upgrade_path === 0 && ability.upgrade_tier < tiers.top_path) {
-                cost += ability.cost_gold;
-            } else if (ability.upgrade_path === 1 && ability.upgrade_tier < tiers.middle_path) {
-                cost += ability.cost_gold;
-            } else if (ability.upgrade_path === 2 && ability.upgrade_tier < tiers.bottom_path){
-                cost += ability.cost_gold;
+        const tempStats = getInitialTowerStats(stats);
+
+        let i = 0;
+        for (i; i < 3; i++) {
+            let j = order[i];
+            const path = j === 0 ? "top_path" : j === 5 ? "middle_path" : "bottom_path";
+            const limit = j + 5;
+            for(j; j < limit; j++) {
+                if (abilities[j].upgrade_tier < tiers[path]) {
+                    console.log(abilities[j].name);
+                    tempStats.cost = tempStats.cost + abilities[j].cost_gold;
+                    parseAbilityModifiers(abilities[j].modifiers, tiers, tempStats);
+                }
             }
-        });
+        }
 
-        return cost;
+        return { ...tempStats };
     }
 
     getAbilities() {
