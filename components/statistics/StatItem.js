@@ -1,6 +1,7 @@
-import TowerText from "../tower/TowerText";
 import styled from "@emotion/styled";
+
 import Counter from "../tower/Counter";
+import TowerText from "../tower/TowerText";
 
 const Item = styled(TowerText)`
   padding: 0.5em;

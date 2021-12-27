@@ -3,18 +3,18 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import Counter from "../tower/Counter";
+import Stats from "../statistics/Stats";
 import ProsCons from "../tower/ProsCons";
 import TowerText from "../tower/TowerText";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
-import {getInitialTowerStats, getMonkeyColor} from "../../lib/utils/utils";
 import HorizontalAD from "../advertisment/HorizontalAD";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
 import AbilityPathSelection from "../ability/AbilityPathSelection";
-import Stats from "../statistics/Stats";
+import {getInitialTowerStats, getMonkeyColor} from "../../lib/utils/utils";
 
 const TotalCost = styled(TowerText)`
   margin-top: 10px;

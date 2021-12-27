@@ -1,8 +1,9 @@
-import TowerText from "../tower/TowerText";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {getDarkMode} from "../../lib/redux/selectors";
+
+import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
 
 const Card = styled.div`
   padding: 0.25em 1em;
@@ -54,7 +55,6 @@ const varToText = (variable) => variable &&
 
 export default function StatsCard({stats, type, level = 1, ...rest}) {
     const darkMode = useSelector(getDarkMode);
-    console.log(stats);
 
     const getTitle = (type) => {
         switch (type) {

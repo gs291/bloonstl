@@ -1,9 +1,10 @@
+import styled from "@emotion/styled";
+
 import BaseStats from "./BaseStats";
-import DamageStats from "./DamageStats";
 import InfoStats from "./InfoStats";
 import StatsCard from "./StatsCard";
+import DamageStats from "./DamageStats";
 import TowerText from "../tower/TowerText";
-import styled from "@emotion/styled";
 
 const CardsContainer = styled.div`
   display: flex;

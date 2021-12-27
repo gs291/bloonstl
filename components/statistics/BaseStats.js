@@ -1,6 +1,7 @@
-import StatItem from "./StatItem";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+
+import StatItem from "./StatItem";
 import {getMobile} from "../../lib/redux/selectors";
 
 const StatsContainer = styled.div`

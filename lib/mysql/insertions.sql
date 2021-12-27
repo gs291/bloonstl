@@ -902,13 +902,13 @@ INSERT INTO `TowerStats` VALUES (NULL, @tower_druid, 35, 1, 1, DEFAULT, DEFAULT,
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 0, 'Hard Thorns', 'Hard thorns can pop 2 Bloons each and pop Frozen Bloons.', 250, 150, '+1p,type:normal');
-INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 1, 'Heart of Thunder', 'Unleashes regular blasts of forked lightning that arc from Bloon to Bloon.', 1000, 750, 'attack:lightning:5i;35r;2.3s;1d;type:plasma;extra:jump;split,cross:205:note:+1 damage for every 6000 total bloon count on screen, capped at +15');
+INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 1, 'Heart of Thunder', 'Unleashes regular blasts of forked lightning that arc from Bloon to Bloon.', 1000, 750, 'attack:lightning:5i;35r;2.3s;1d;type:plasma;extra:jump;split,cross:205:note:+1 damage for every 6000 total bloon count on screen capped at +15');
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 2, 'Druid of the Storm', 'Gusts of wind blow Bloons off the track away from the exit.', 2000, 2500, 'attack:tornado:0d;30p;2.5s;type:normal;-moab;-lead;note:sends back 100-200 units. removes glue and frozen status');
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 3, 'Ball Lightning', 'Creates powerful balls of lightning that shoot additional lightning bolts.', 5500, 12000, 'attack:lightball:5dur;2d;43r;0.3s');
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 4, 'Superstorm', 'Superstorm blasts all Bloon types for massive damage and blows them away from the exit. Can blow away ZOMGs', 90000, 35000, '+camo,attack:lightning:+2d,attack:lightball:+3d,attack:superstorm:12d;200p;4s;-BAD;5.7dur;note:MOABs use 5p. BFBs 20p. ZOMGs 50p. DDTs 10p. Removes glue and frozen status. Sends back at least 100 units');
 
 --          Middle Path
-INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 1, 0, 'Thorn Swarm', 'Shoots 8 thorns instead of 5.', 250, 140, '+3j,');
+INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 1, 0, 'Thorn Swarm', 'Shoots 8 thorns instead of 5.', 250, 140, '+3j');
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 1, 1, 'Heart of Oak', 'Thorns convert Regrow Bloons into normal Bloons.', 250, 600, 'note:degrow');
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 1, 2, 'Druid of the Jungle', 'Calls a vine from the ground to entangle and crush Bloons one at a time.', 950, 2000, 'attack:vine_grab:-1r;1.4s;status:snared:1d=30p=2r=0.3s=type:normal=4.5dur=note:degrow');
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, true, 1, 3, 'Jungle''s Bounty', 'Generates 200 money plus another 100 per Banana Farm type tower near the Druid.', 5000, 11000, '+10r,attack:vine_grab:2j,abil:jungle_bounty:60clt;3mpr;+240mon;note:+$120 for every farm within range');
