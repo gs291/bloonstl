@@ -31,7 +31,7 @@ export default function InfoStats({stats, ...rest}) {
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Projectile count" value={stats.projectile_count} />
                             <StatItem text="Duration" value={stats.duration} />
-                            <StatItem text="Delay" value={stats.delay} counter={false}/>
+                            <StatItem text="Delay" value={stats.delay} />
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Income" value={stats.income} />
@@ -47,7 +47,7 @@ export default function InfoStats({stats, ...rest}) {
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Income" value={stats.income} />
-                            <StatItem text="Delay" value={stats.delay} counter={false}/>
+                            <StatItem text="Delay" value={stats.delay} />
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Duration" value={stats.duration} />

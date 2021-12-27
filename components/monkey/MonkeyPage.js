@@ -43,7 +43,7 @@ export default function MonkeyPage({ monkey }) {
     const dividerBackgroundColor = getMonkeyColor(monkey.type);
 
     const tiers = monkey.tiers[tier][page-1];
-    console.log(stats);
+
     return (
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>

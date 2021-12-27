@@ -1,6 +1,17 @@
 import BaseStats from "./BaseStats";
 import DamageStats from "./DamageStats";
 import InfoStats from "./InfoStats";
+import StatsCard from "./StatsCard";
+import TowerText from "../tower/TowerText";
+import styled from "@emotion/styled";
+
+const CardsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px 50px;
+`;
 
 export default function Stats({stats, ...rest}) {
 
@@ -26,7 +37,8 @@ export default function Stats({stats, ...rest}) {
                 "fortified_moab_damage": stats.modifiers.fortified_moab_damage,
                 "lead_damage": stats.modifiers.lead_damage,
                 "moab_damage": stats.modifiers.moab_damage,
-                "stun_damage": stats.modifiers.stun_damage
+                "stun_damage": stats.modifiers.stun_damage,
+                "status_damage": stats.modifiers.status_damage
             }}
             />
 
@@ -41,6 +53,23 @@ export default function Stats({stats, ...rest}) {
             }}
             />
 
+            {stats.targets.map(target => (
+                <TowerText variant="body1" font={true} key={target}>
+                    {target}
+                </TowerText>
+            ))}
+            {stats.notes.map(note => (
+                <TowerText variant="body1" font={true} key={note}>
+                    note: {note}
+                </TowerText>
+            ))}
+
+            <CardsContainer>
+                <StatsCard stats={stats.abils} type="abils" />
+                <StatsCard stats={stats.attacks} type="attacks" />
+                <StatsCard stats={stats.buffs} type="buffs" />
+                <StatsCard stats={stats.statuses} type="statuses" />
+            </CardsContainer>
         </>
     );
 }

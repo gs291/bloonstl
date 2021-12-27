@@ -103,6 +103,10 @@ CREATE TABLE `TowerStats` (
     `pierce` INT(11) NOT NULL,
     `damage` INT(11) NOT NULL,
     `boss_damage` INT(11) NULL DEFAULT 0,
+    `camo_damage` INT(11) NULL DEFAULT 0,
+    `crit_damage` INT(11) NULL DEFAULT 0,
+    `stun_damage` INT(11) NULL DEFAULT 0,
+    `status_damage` INT(11) NULL DEFAULT 0,
     `moab_damage` INT(11) NULL DEFAULT 0,
     `fortified_moab_damage` INT(11) NULL DEFAULT 0,
     `ceramic_damage` INT(11) NULL DEFAULT 0,
@@ -117,6 +121,9 @@ CREATE TABLE `TowerStats` (
     `footprint` INT(11) NOT NULL,
     `hotkey` VARCHAR(32) NOT NULL,
     `damage_type` VARCHAR(31) NOT NULL,
+    `cooldown` INT(11) NULL DEFAULT 0,
+    `crit_occurance` VARCHAR(7) NULL DEFAULT '0~0',
+    `delay` INT(11) NULL DEFAULT 0,
     PRIMARY KEY (`id`),
     CONSTRAINT `twr_stats_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

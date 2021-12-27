@@ -32,11 +32,12 @@ export default function DamageStats({stats, ...rest}) {
                 {mobile ? (
                     <>
                         <ItemsContainer data-m={mobile}>
-                            <Item text="Camo Damage" value={stats.camo_damage} counter={false}/>
-                            <Item text="Crit Damage" value={stats.crit_damage} counter={false}/>
+                            <Item text="Camo Damage" value={stats.camo_damage} />
+                            <Item text="Crit Damage" value={stats.crit_damage} />
                             <Item text="Fortified Lead Damage" value={stats.fortified_lead_damage} />
-                            <Item text="Stun Damage" value={stats.stun_damage} counter={false}/>
+                            <Item text="Stun Damage" value={stats.stun_damage} />
                             <Item text="Moab Damage" value={stats.moab_damage} />
+                            <Item text="Status Damage" value={stats.stun_damage}/>
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <Item text="Ceramic Damage" value={stats.ceramic_damage} />
@@ -49,9 +50,10 @@ export default function DamageStats({stats, ...rest}) {
                 ) : (
                     <>
                         <ItemsContainer data-m={mobile}>
-                            <Item text="Camo Damage" value={stats.camo_damage} counter={false}/>
+                            <Item text="Camo Damage" value={stats.camo_damage}/>
                             <Item text="Fortified Damage" value={stats.fortified_damage} />
-                            <Item text="Stun Damage" value={stats.stun_damage} counter={false}/>
+                            <Item text="Stun Damage" value={stats.stun_damage}/>
+                            <Item text="Status Damage" value={stats.stun_damage}/>
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <Item text="Ceramic Damage" value={stats.ceramic_damage} />
@@ -60,7 +62,7 @@ export default function DamageStats({stats, ...rest}) {
                             <Item text="Boss Damage" value={stats.boss_damage} />
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
-                            <Item text="Crit Damage" value={stats.crit_damage} counter={false}/>
+                            <Item text="Crit Damage" value={stats.crit_damage}/>
                             <Item text="Fortified MOAB Damage" value={stats.fortified_moab_damage} />
                             <Item text="Moab Damage" value={stats.moab_damage} />
                         </ItemsContainer>

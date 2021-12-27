@@ -33,12 +33,12 @@ export default function BaseStats({stats, ...rest}) {
                         <ItemsContainer data-m={mobile}>
                             <Item text="Attack Speed" value={stats.attack_speed} decimals={3} />
                             <Item text="Pierce" value={stats.pierce} />
-                            <Item text="Type" value={stats.damage_type} />
+                            <Item text="Type" value={stats.damage_type} counter={false} />
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <Item text="Range" value={stats.range} />
                             <Item text="Damage" value={stats.damage} />
-                            <Item text="Hotkey" value={stats.hotkey} />
+                            <Item text="Hotkey" value={stats.hotkey} counter={false} />
                         </ItemsContainer>
                     </>
                 ) : (
@@ -49,11 +49,11 @@ export default function BaseStats({stats, ...rest}) {
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <Item text="Range" value={stats.range} />
-                            <Item text="Type" value={stats.damage_type} />
+                            <Item text="Type" value={stats.damage_type} counter={false} />
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <Item text="Pierce" value={stats.pierce} />
-                            <Item text="Hotkey" value={stats.hotkey} />
+                            <Item text="Hotkey" value={stats.hotkey} counter={false} />
                         </ItemsContainer>
                     </>
                 )}
