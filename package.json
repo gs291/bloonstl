@@ -29,5 +29,8 @@
     "redux-persist": "^6.0.0",
     "serverless-mysql": "^1.5.4",
     "universal-cookie": "^4.0.4"
+  },
+  "devDependencies": {
+    "@emotion/babel-plugin": "^11.7.2"
   }
 }
