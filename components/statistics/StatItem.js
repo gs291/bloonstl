@@ -1,4 +1,3 @@
-import {css} from "@emotion/react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
@@ -23,9 +22,8 @@ const Value = styled(TowerText)`
 `;
 
 const ItemContainer = styled.div`
-  width: 100px;
-  max-width: 100px;
-  margin: 10px;
+  width: ${props => props["size"] === "medium" ? 100 : 85}px;
+  max-width: ${props => props["size"] === "medium" ? 100 : 85}px;
   
   text-align: center;
   transition: 0.3s;
@@ -61,23 +59,31 @@ const StatCounter = styled(Counter)`
   color: ${props => getStatColor(props["data-d"], props["data-dm"], props["decimals"])};
 `;
 
+const StatText = styled(TowerText)`
+  color: ${props => getStatColor(props["data-d"], props["data-dm"], props["decimals"])};
+`;
 
-const FullItem = ({text, value, prevValue, counter = true, decimals, tooltip, prefix, suffix, darkMode, ...rest}) => (
-    <ItemContainer data-dm={darkMode} { ...rest }>
-        <Item variant="subtitle1" component="div" >
+
+const FullItem = ({text, value, prevValue, counter = true, size = "medium", decimals, tooltip, prefix, suffix, darkMode, ...rest}) => (
+    <ItemContainer data-dm={darkMode} size={size} { ...rest }>
+        <Item variant={size === "medium" ? "subtitle1" : "subtitle2"} component="div" >
             {text}
         </Item>
-        <Value variant="h6" component="div" font={true}>
+        <Value variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true}>
             {prefix && (
-                <TowerText variant="h6" component="div" font={true}>
+                <TowerText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true}>
                     {prefix}
                 </TowerText>
             )}
             {(counter === true && typeof value === "number") ? (
                 <StatCounter cost={value} data-d={value - prevValue} data-dm={darkMode} decimals={decimals ? decimals : 0} gold={false}/>
-            ) : (value)}
+            ) : (
+                <StatText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true} data-d={prevValue} data-dm={darkMode}>
+                    {value}
+                </StatText>
+            )}
             {suffix && (
-                <TowerText variant="h6" component="div" font={true}>
+                <TowerText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true}>
                     {suffix}
                 </TowerText>
             )}

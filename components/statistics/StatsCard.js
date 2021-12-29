@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import StatItem from "./StatItem";
 
 const Card = styled.div`
   padding: 0.25em 1em;
@@ -86,15 +87,7 @@ export default function StatsCard({stats, type, level = 1, ...rest}) {
                                 || (mod === "projectile_count" && stats[key].modifiers[mod] > 1))) {
                                 return (
                                     <ModifierContainer key={mod}>
-                                        <TowerText variant={level === 1 ? "body1" : "body2"}>
-                                            {varToText(mod)}
-                                        </TowerText>
-                                        <Divider variant={level === 1 ? "body1" : "body2"}>
-                                            :
-                                        </Divider>
-                                        <TowerText variant={level === 1 ? "body1" : "body2"}>
-                                            {stats[key].modifiers[mod]}
-                                        </TowerText>
+                                        <StatItem text={mod} value={stats[key].modifiers[mod]} size="small"/>
                                     </ModifierContainer>
                                 )
                             }

@@ -58,7 +58,7 @@ export default function MoreStats({stats, defaults, ...rest}) {
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Income" value={stats.income} prevValue={defaults.income} prefix="+&nbsp;$" tooltip={<TextTooltip text={`Money generated per round: +$${stats.income}`} />} />
-                            <StatItem text="Crit Rate" value={stats.crit_occurance} counter={false} tooltip={<TextTooltip text={critOccurrenceToText(stats.crit_occurance)} />} />
+                            <StatItem text="Crit Rate" value={stats.crit_occurance} prevValue={stats.crit_occurance !== "0~0" ? 1 : 0} counter={false} tooltip={<TextTooltip text={critOccurrenceToText(stats.crit_occurance)} />} />
                         </ItemsContainer>
                     </>
                 ) : (
@@ -71,7 +71,7 @@ export default function MoreStats({stats, defaults, ...rest}) {
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Footprint" value={stats.footprint} counter={false} tooltip={<TextTooltip text={`Size the tower takes up on the map: ${stats.footprint}`} />}/>
                             <StatItem text="Duration" value={stats.duration} prevValue={defaults.duration} suffix="&nbsp;s" tooltip={<TextTooltip text={`Duration the tower base attack lasts: ${stats.duration} seconds. (e.g. Banana Farm passive bananas)`} />} />
-                            <StatItem text="Crit Rate" value={stats.crit_occurance} counter={false} tooltip={<TextTooltip text={critOccurrenceToText(stats.crit_occurance)} />} />
+                            <StatItem text="Crit Rate" value={stats.crit_occurance} prevValue={stats.crit_occurance !== "0~0" ? 1 : 0} counter={false} tooltip={<TextTooltip text={critOccurrenceToText(stats.crit_occurance)} />} />
                         </ItemsContainer>
                     </>
                 )}
