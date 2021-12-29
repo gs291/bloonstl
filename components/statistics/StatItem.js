@@ -13,6 +13,10 @@ const Item = styled(TowerText)`
 `;
 
 const Value = styled(TowerText)`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 `;
@@ -32,7 +36,7 @@ const ItemContainer = styled.div`
   }
 `;
 
-export default function StatItem({text, value, counter = true, decimals, tooltip, ...rest}) {
+export default function StatItem({text, value, counter = true, decimals, tooltip, prefix, suffix, ...rest}) {
     const darkMode = useSelector(getDarkMode);
 
     const FullItem = () => (
@@ -41,9 +45,19 @@ export default function StatItem({text, value, counter = true, decimals, tooltip
                 {text}
             </Item>
             <Value variant="h6" component="div" font={true}>
+                {prefix && (
+                    <TowerText variant="h6" component="div" font={true}>
+                        {prefix}
+                    </TowerText>
+                )}
                 {(counter === true && typeof value === "number") ? (
                     <Counter cost={value} decimals={decimals ? decimals : 0} gold={false}/>
                 ) : (value)}
+                {suffix && (
+                    <TowerText variant="h6" component="div" font={true}>
+                        {suffix}
+                    </TowerText>
+                )}
             </Value>
         </ItemContainer>
     );

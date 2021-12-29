@@ -28,14 +28,14 @@ export default function InfoStats({stats, ...rest}) {
                     <>
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Hotkey" value={stats.hotkey} counter={false} />
-                            <StatItem text="Duration" value={stats.duration} />
+                            <StatItem text="Duration" value={stats.duration} suffix="&nbsp;s"/>
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Footprint" value={stats.footprint} counter={false} />
-                            <StatItem text="Delay" value={stats.delay} />
+                            <StatItem text="Delay" value={stats.delay} suffix="&nbsp;s"/>
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
-                            <StatItem text="Income" value={stats.income} />
+                            <StatItem text="Income" value={stats.income} prefix="+&nbsp;$"/>
                             <StatItem text="Crit Occurance" value={stats.crit_occurance} counter={false}/>
                         </ItemsContainer>
                     </>
@@ -43,12 +43,12 @@ export default function InfoStats({stats, ...rest}) {
                     <>
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Hotkey" value={stats.hotkey} counter={false} />
-                            <StatItem text="Income" value={stats.income} />
-                            <StatItem text="Delay" value={stats.delay} />
+                            <StatItem text="Income" value={stats.income} prefix="+&nbsp;$"/>
+                            <StatItem text="Delay" value={stats.delay} suffix="&nbsp;s"/>
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Footprint" value={stats.footprint} counter={false} />
-                            <StatItem text="Duration" value={stats.duration} />
+                            <StatItem text="Duration" value={stats.duration} suffix="&nbsp;s"/>
                             <StatItem text="Crit Rate" value={stats.crit_occurance} counter={false}/>
                         </ItemsContainer>
                     </>

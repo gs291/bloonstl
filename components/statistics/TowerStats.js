@@ -27,7 +27,7 @@ export default function TowerStats({stats, targets, ...rest}) {
                     <StatItem text="Damage" value={stats.damage} />
                     <StatItem text="Pierce" value={stats.pierce} />
                     <StatItem text="Range" value={stats.range} />
-                    <StatItem text="Atk Spd" value={stats.attack_speed} decimals={3} />
+                    <StatItem text="Atk Spd" value={stats.attack_speed} decimals={3} suffix="&nbsp;s"/>
                     <StatItem text="Projectiles" value={stats.projectile_count} />
                     <StatItem text="Type" value={stats.damage_type} counter={false} tooltip={<Types type={stats.damage_type} />}/>
                 </ItemsContainer>
