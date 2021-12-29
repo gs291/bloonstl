@@ -54,7 +54,7 @@ const DamageText = (type, typeDamage, baseDamage, extraDamage = 0 ) => {
 }
 
 
-export default function DamageStats({stats, ...rest}) {
+export default function DamageStats({stats, defaults, ...rest}) {
     const mobile = useSelector(getMobile);
 
     return (
@@ -63,43 +63,43 @@ export default function DamageStats({stats, ...rest}) {
                 {mobile ? (
                     <>
                         <ItemsContainer data-m={mobile}>
-                            <StatItem text="Camo" value={stats.camo_damage + stats.damage} tooltip={DamageText("Camo", stats.camo_damage, stats.damage)}/>
-                            <StatItem text="Boss" value={stats.boss_damage + stats.damage} tooltip={DamageText("Boss", stats.boss_damage, stats.damage)}/>
-                            <StatItem text="Fortified" value={stats.fortified_damage + stats.damage} tooltip={DamageText("Fortified", stats.fortified_damage, stats.damage)}/>
-                            <StatItem text="Status" value={stats.stun_damage + stats.damage} tooltip={DamageText("Status", stats.stun_damage, stats.damage)}/>
+                            <StatItem text="Camo" value={stats.camo_damage + stats.damage} prevValue={defaults.camo_damage + defaults.damage} tooltip={DamageText("Camo", stats.camo_damage, stats.damage)}/>
+                            <StatItem text="Boss" value={stats.boss_damage + stats.damage} prevValue={defaults.boss_damage + defaults.damage} tooltip={DamageText("Boss", stats.boss_damage, stats.damage)}/>
+                            <StatItem text="Fortified" value={stats.fortified_damage + stats.damage} prevValue={defaults.fortified_damage + defaults.damage} tooltip={DamageText("Fortified", stats.fortified_damage, stats.damage)}/>
+                            <StatItem text="Status" value={stats.status_damage + stats.damage} prevValue={defaults.status_damage + defaults.damage} tooltip={DamageText("Status", stats.stun_damage, stats.damage)}/>
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
-                            <StatItem text="Ceramic" value={stats.ceramic_damage + stats.damage} tooltip={DamageText("Ceramic", stats.ceramic_damage, stats.damage)}/>
-                            <StatItem text="Lead" value={stats.lead_damage + stats.damage} tooltip={DamageText("Lead", stats.lead_damage, stats.damage)}/>
-                            <StatItem text="F Lead" value={stats.fortified_lead_damage + stats.lead_damage + stats.damage} tooltip={DamageText("Fortified Lead", stats.fortified_lead_damage, stats.damage, stats.lead_damage)}/>
-                            <StatItem text="Stun" value={stats.stun_damage + stats.damage} tooltip={DamageText("Stun", stats.stun_damage, stats.damage)}/>
+                            <StatItem text="Ceramic" value={stats.ceramic_damage + stats.damage} prevValue={defaults.ceramic_damage + defaults.damage} tooltip={DamageText("Ceramic", stats.ceramic_damage, stats.damage)}/>
+                            <StatItem text="Lead" value={stats.lead_damage + stats.damage} prevValue={defaults.lead_damage + defaults.damage} tooltip={DamageText("Lead", stats.lead_damage, stats.damage)}/>
+                            <StatItem text="F Lead" value={stats.fortified_lead_damage + stats.lead_damage + stats.damage} prevValue={defaults.fortified_lead_damage + defaults.lead_damage + defaults.damage} tooltip={DamageText("Fortified Lead", stats.fortified_lead_damage, stats.damage, stats.lead_damage)}/>
+                            <StatItem text="Stun" value={stats.stun_damage + stats.damage} prevValue={defaults.stun_damage + defaults.damage} tooltip={DamageText("Stun", stats.stun_damage, stats.damage)}/>
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
-                            <StatItem text="Crit" value={stats.crit_damage + stats.damage} tooltip={DamageText("Critical", stats.crit_damage, stats.damage)}/>
-                            <StatItem text="Moab" value={stats.moab_damage + stats.damage} tooltip={DamageText("Moab", stats.moab_damage, stats.damage)}/>
-                            <StatItem text="F MOAB" value={stats.fortified_moab_damage + stats.moab_damage + stats.damage} tooltip={DamageText("Fortified MOAB", stats.fortified_moab_damage, stats.damage, stats.moab_damage)}/>
+                            <StatItem text="Crit" value={stats.crit_damage + stats.damage} prevValue={defaults.crit_damage + defaults.damage} tooltip={DamageText("Critical", stats.crit_damage, stats.damage)}/>
+                            <StatItem text="Moab" value={stats.moab_damage + stats.damage} prevValue={defaults.moab_damage + defaults.damage} tooltip={DamageText("Moab", stats.moab_damage, stats.damage)}/>
+                            <StatItem text="F MOAB" value={stats.fortified_moab_damage + stats.moab_damage + stats.damage} prevValue={defaults.fortified_moab_damage + defaults.moab_damage + defaults.damage} tooltip={DamageText("Fortified MOAB", stats.fortified_moab_damage, stats.damage, stats.moab_damage)}/>
                         </ItemsContainer>
                     </>
                 ) : (
                     <>
                         <ItemsContainer data-m={mobile}>
-                            <StatItem text="Camo" value={stats.camo_damage + stats.damage} tooltip={DamageText("Camo", stats.camo_damage, stats.damage)}/>
-                            <StatItem text="Boss" value={stats.boss_damage + stats.damage} tooltip={DamageText("Boss", stats.boss_damage, stats.damage)}/>
-                            <StatItem text="Fortified" value={stats.fortified_damage + stats.damage} tooltip={DamageText("Fortified", stats.fortified_damage, stats.damage)}/>
+                            <StatItem text="Camo" value={stats.camo_damage + stats.damage} prevValue={defaults.camo_damage + defaults.damage} tooltip={DamageText("Camo", stats.camo_damage, stats.damage)}/>
+                            <StatItem text="Boss" value={stats.boss_damage + stats.damage} prevValue={defaults.boss_damage + defaults.damage} tooltip={DamageText("Boss", stats.boss_damage, stats.damage)}/>
+                            <StatItem text="Fortified" value={stats.fortified_damage + stats.damage} prevValue={defaults.fortified_damage + defaults.damage} tooltip={DamageText("Fortified", stats.fortified_damage, stats.damage)}/>
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
-                            <StatItem text="Ceramic" value={stats.ceramic_damage + stats.damage} tooltip={DamageText("Ceramic", stats.ceramic_damage, stats.damage)}/>
-                            <StatItem text="Lead" value={stats.lead_damage + stats.damage} tooltip={DamageText("Lead", stats.lead_damage, stats.damage)}/>
-                            <StatItem text="F Lead" value={stats.fortified_lead_damage + stats.lead_damage + stats.damage} tooltip={DamageText("Fortified Lead", stats.fortified_lead_damage, stats.damage, stats.lead_damage)}/>
+                            <StatItem text="Ceramic" value={stats.ceramic_damage + stats.damage} prevValue={defaults.ceramic_damage + defaults.damage} tooltip={DamageText("Ceramic", stats.ceramic_damage, stats.damage)}/>
+                            <StatItem text="Lead" value={stats.lead_damage + stats.damage} prevValue={defaults.lead_damage + defaults.damage} tooltip={DamageText("Lead", stats.lead_damage, stats.damage)}/>
+                            <StatItem text="F Lead" value={stats.fortified_lead_damage + stats.lead_damage + stats.damage} prevValue={defaults.fortified_lead_damage + defaults.lead_damage + defaults.damage} tooltip={DamageText("Fortified Lead", stats.fortified_lead_damage, stats.damage, stats.lead_damage)}/>
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
-                            <StatItem text="Crit" value={stats.crit_damage + stats.damage} tooltip={DamageText("Critical", stats.crit_damage, stats.damage)}/>
-                            <StatItem text="Moab" value={stats.moab_damage + stats.damage} tooltip={DamageText("Moab", stats.moab_damage, stats.damage)}/>
-                            <StatItem text="F MOAB" value={stats.fortified_moab_damage + stats.moab_damage + stats.damage} tooltip={DamageText("Fortified MOAB", stats.fortified_moab_damage, stats.damage, stats.moab_damage)}/>
+                            <StatItem text="Crit" value={stats.crit_damage + stats.damage} prevValue={defaults.crit_damage + defaults.damage} tooltip={DamageText("Critical", stats.crit_damage, stats.damage)}/>
+                            <StatItem text="Moab" value={stats.moab_damage + stats.damage} prevValue={defaults.moab_damage + defaults.damage} tooltip={DamageText("Moab", stats.moab_damage, stats.damage)}/>
+                            <StatItem text="F MOAB" value={stats.fortified_moab_damage + stats.moab_damage + stats.damage} prevValue={defaults.fortified_moab_damage + defaults.moab_damage + defaults.damage} tooltip={DamageText("Fortified MOAB", stats.fortified_moab_damage, stats.damage, stats.moab_damage)}/>
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
-                            <StatItem text="Status" value={stats.stun_damage + stats.damage} tooltip={DamageText("Status", stats.stun_damage, stats.damage)}/>
-                            <StatItem text="Stun" value={stats.stun_damage + stats.damage} tooltip={DamageText("Stun", stats.stun_damage, stats.damage)}/>
+                            <StatItem text="Status" value={stats.status_damage + stats.damage} prevValue={defaults.status_damage + defaults.damage} tooltip={DamageText("Status", stats.stun_damage, stats.damage)}/>
+                            <StatItem text="Stun" value={stats.stun_damage + stats.damage} prevValue={defaults.stun_damage + defaults.damage} tooltip={DamageText("Stun", stats.stun_damage, stats.damage)}/>
                         </ItemsContainer>
                     </>
                 )}

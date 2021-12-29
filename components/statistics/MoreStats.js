@@ -40,7 +40,7 @@ const critOccurrenceToText = (critOccurrence) => {
 }
 
 
-export default function MoreStats({stats, ...rest}) {
+export default function MoreStats({stats, defaults, ...rest}) {
     const mobile = useSelector(getMobile);
 
     return (
@@ -50,27 +50,27 @@ export default function MoreStats({stats, ...rest}) {
                     <>
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Hotkey" value={stats.hotkey} counter={false} tooltip={<TextTooltip text={`Default keyboard hotkey keybind: ${stats.hotkey}`} />} />
-                            <StatItem text="Duration" value={stats.duration} suffix="&nbsp;s" tooltip={<TextTooltip text={`Duration the tower base attack lasts: ${stats.duration} seconds. (e.g. Banana Farm passive bananas)`} />} />
+                            <StatItem text="Duration" value={stats.duration} prevValue={defaults.duration} suffix="&nbsp;s" tooltip={<TextTooltip text={`Duration the tower base attack lasts: ${stats.duration} seconds. (e.g. Banana Farm passive bananas)`} />} />
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Footprint" value={stats.footprint} counter={false} tooltip={<TextTooltip text={`Size the tower takes up on the map: ${stats.footprint}`} />} />
-                            <StatItem text="Delay" value={stats.delay} suffix="&nbsp;s" tooltip={<TextTooltip text={`Delay until the attack occurs: ${stats.delay} seconds.`} />} />
+                            <StatItem text="Delay" value={stats.delay} prevValue={defaults.delay} suffix="&nbsp;s" tooltip={<TextTooltip text={`Delay until the attack occurs: ${stats.delay} seconds.`} />} />
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
-                            <StatItem text="Income" value={stats.income} prefix="+&nbsp;$" tooltip={<TextTooltip text={`Money generated per round: +$${stats.income}`} />} />
-                            <StatItem text="Crit Rate" value={stats.crit_occurance} counter={false} tooltip={<TextTooltip text={`Critical damage occurs every ${critOccurrenceToText(stats.crit_occurance)} shots`} />} />
+                            <StatItem text="Income" value={stats.income} prevValue={defaults.income} prefix="+&nbsp;$" tooltip={<TextTooltip text={`Money generated per round: +$${stats.income}`} />} />
+                            <StatItem text="Crit Rate" value={stats.crit_occurance} counter={false} tooltip={<TextTooltip text={critOccurrenceToText(stats.crit_occurance)} />} />
                         </ItemsContainer>
                     </>
                 ) : (
                     <>
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Hotkey" value={stats.hotkey} counter={false} tooltip={<TextTooltip text={`Default keyboard hotkey keybind: ${stats.hotkey}`} />} />
-                            <StatItem text="Income" value={stats.income} prefix="+&nbsp;$" tooltip={<TextTooltip text={`Money generated per round: +$${stats.income}`} />} />
-                            <StatItem text="Delay" value={stats.delay} suffix="&nbsp;s" tooltip={<TextTooltip text={`Delay until the attack occurs: ${stats.delay} seconds.`} />} />
+                            <StatItem text="Income" value={stats.income} prevValue={defaults.income} prefix="+&nbsp;$" tooltip={<TextTooltip text={`Money generated per round: +$${stats.income}`} />} />
+                            <StatItem text="Delay" value={stats.delay} prevValue={defaults.delay} suffix="&nbsp;s" tooltip={<TextTooltip text={`Delay until the attack occurs: ${stats.delay} seconds.`} />} />
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <StatItem text="Footprint" value={stats.footprint} counter={false} tooltip={<TextTooltip text={`Size the tower takes up on the map: ${stats.footprint}`} />}/>
-                            <StatItem text="Duration" value={stats.duration} suffix="&nbsp;s" tooltip={<TextTooltip text={`Duration the tower base attack lasts: ${stats.duration} seconds. (e.g. Banana Farm passive bananas)`} />} />
+                            <StatItem text="Duration" value={stats.duration} prevValue={defaults.duration} suffix="&nbsp;s" tooltip={<TextTooltip text={`Duration the tower base attack lasts: ${stats.duration} seconds. (e.g. Banana Farm passive bananas)`} />} />
                             <StatItem text="Crit Rate" value={stats.crit_occurance} counter={false} tooltip={<TextTooltip text={critOccurrenceToText(stats.crit_occurance)} />} />
                         </ItemsContainer>
                     </>

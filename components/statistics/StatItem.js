@@ -1,3 +1,4 @@
+import {css} from "@emotion/react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
@@ -36,7 +37,32 @@ const ItemContainer = styled.div`
   }
 `;
 
-const FullItem = ({text, value, counter = true, decimals, tooltip, prefix, suffix, darkMode, ...rest}) => (
+const getStatColor = (difference, darkMode, decimals) => {
+    if (decimals > 0) {
+        if (difference < 0) {
+            return darkMode ? siteColors.pros.dark : siteColors.pros.dark;
+        } else if (difference > 0) {
+            return darkMode ? siteColors.cons.dark : siteColors.cons.dark;
+        } else {
+            return darkMode ? siteColors.text.dark : siteColors.text.light;
+        }
+    }
+
+    if (difference > 0) {
+        return darkMode ? siteColors.pros.dark : siteColors.pros.dark;
+    } else if (difference < 0) {
+        return darkMode ? siteColors.cons.dark : siteColors.cons.dark;
+    } else {
+        return darkMode ? siteColors.text.dark : siteColors.text.light;
+    }
+}
+
+const StatCounter = styled(Counter)`
+  color: ${props => getStatColor(props["data-d"], props["data-dm"], props["decimals"])};
+`;
+
+
+const FullItem = ({text, value, prevValue, counter = true, decimals, tooltip, prefix, suffix, darkMode, ...rest}) => (
     <ItemContainer data-dm={darkMode} { ...rest }>
         <Item variant="subtitle1" component="div" >
             {text}
@@ -48,7 +74,7 @@ const FullItem = ({text, value, counter = true, decimals, tooltip, prefix, suffi
                 </TowerText>
             )}
             {(counter === true && typeof value === "number") ? (
-                <Counter cost={value} decimals={decimals ? decimals : 0} gold={false}/>
+                <StatCounter cost={value} data-d={value - prevValue} data-dm={darkMode} decimals={decimals ? decimals : 0} gold={false}/>
             ) : (value)}
             {suffix && (
                 <TowerText variant="h6" component="div" font={true}>
