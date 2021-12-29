@@ -10,16 +10,19 @@ import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 const StyledTooltip = styled(({ className, ...other }) => (
     <MUITooltip classes={{ tooltip: className }} {...other} />
 ))`
-  background-color: ${siteColors.tooltip.dark};
+  background-color: ${props => props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
   width: 300px;
   transition: 0.3s;
+  padding: 4px 6px;
   
+  margin-left: 15px;
+  margin-right: 15px;
   ${props => props["data-m"] ? "margin-bottom: 10px;" : ""}
   
   border: 2px solid ${props =>
           props["data-a"] 
                   ? siteColors.ability.activated 
-                  : props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
+                  : props["data-dm"] ? siteColors.tooltip.light : siteColors.tooltip.dark};
 
   .MuiTooltip-arrow {
     color: ${siteColors.tooltip.dark};
@@ -29,7 +32,7 @@ const StyledTooltip = styled(({ className, ...other }) => (
     border: 2px solid ${props => 
             props["data-a"] 
                     ? siteColors.ability.activated 
-                    : props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
+                    : props["data-dm"] ? siteColors.tooltip.light : siteColors.tooltip.dark};
   }
 `;
 
@@ -55,8 +58,8 @@ export default function Tooltip({className, children, title, active}) {
                         onMouseEnter={handleTooltipOpen}
                         open={open}
                         title={title}
-                        leaveDelay={250}
-                        leaveTouchDelay={3500}
+                        leaveDelay={100}
+                        leaveTouchDelay={5000}
                         placement="top"
                         data-a={active}
                         data-m={mobile}

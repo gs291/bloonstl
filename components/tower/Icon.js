@@ -14,17 +14,17 @@ const IconContainer  = styled.div`
 
 const ImgContainer = styled.div`
   position: relative;
-  width: 120px;
-  max-width: 120px;
-  height: 150px;
-  max-height: 150px;
+  width: ${props => props["data-t"] === "monkey" ? 180 : props["data-t"] === "hero" ? 310 : 120}px;
+  max-width: ${props => props["data-t"] === "monkey" ? 180 : props["data-t"] === "hero" ? 310 : 120}px;
+  height: ${props => props["data-t"] === "monkey" ? 300 : props["data-t"] === "hero" ? 400 : 150}px;
+  max-height: ${props => props["data-t"] === "monkey" ? 300 : props["data-t"] === "hero" ? 400 : 150}px;
 `;
 
-export default function Icon({ className, tower, detailed }) {
+export default function Icon({ className, tower, towerType, detailed }) {
     return (
         <>
             <IconContainer data-d={detailed} className={className}>
-                <ImgContainer>
+                <ImgContainer data-t={towerType}>
                     <ImageFill
                         src={getImageUrl(tower.filename)}
                         quality={100}

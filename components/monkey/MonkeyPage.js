@@ -10,6 +10,7 @@ import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
 import HorizontalAD from "../advertisment/HorizontalAD";
+import StatsAbilities from "../statistics/StatsAbilities";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
@@ -64,6 +65,8 @@ export default function MonkeyPage({ monkey }) {
                 stats={monkey.stats} setStats={setStats}
             />
             <FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />
+            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+            <StatsAbilities stats={stats}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <ProsCons pros={tiers.pros} cons={tiers.cons} backgroundColor={dividerBackgroundColor}/>
             <HorizontalAD />
