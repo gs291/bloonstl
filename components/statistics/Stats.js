@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import StatNotes from "./StatNotes";
-import InfoStats from "./InfoStats";
+import MoreStats from "./MoreStats";
 import TowerStats from "./TowerStats";
 import DamageStats from "./DamageStats";
 import siteColors from "../../lib/utils/siteColors";
@@ -90,7 +90,7 @@ export default function Stats({stats, ...rest}) {
                     </DamageContainer>
 
                     <MoreContainer data-m={mobile} data-dm={darkMode}>
-                        <InfoStats
+                        <MoreStats
                             stats={{
                                 "footprint": stats.modifiers.footprint,
                                 "hotkey": stats.modifiers.hotkey,
@@ -104,9 +104,11 @@ export default function Stats({stats, ...rest}) {
                     </MoreContainer>
                 </ExtraStats>
 
-                <StatsContainer data-dm={darkMode}>
-                    <StatNotes notes={stats.notes} />
-                </StatsContainer>
+                {stats.notes.length > 0 && (
+                    <StatsContainer data-dm={darkMode}>
+                        <StatNotes notes={stats.notes} />
+                    </StatsContainer>
+                )}
             </AllModifiersAndNotes>
         </>
     );

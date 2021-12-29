@@ -110,7 +110,7 @@ INSERT INTO `AbilityTiersInfo` VALUES (NULL, @ability_tiers_boomerang_monkey_b, 
 
 
 --      Monkey - Bomb Shooter
-INSERT INTO `Monkeys` VALUES (NULL, 'Bomb Shooter', 'Primary', 'Launches a powerful bom that the Bloons. Slow rate of fire but afect a radius around the explosion', 600, 'bomb-shooter.png');
+INSERT INTO `Monkeys` VALUES (NULL, 'Bomb Shooter', 'Primary', 'Launches a powerful bomb at the Bloons. Slow rate of fire but affects a radius around the explosion', 600, 'bomb-shooter.png');
 SELECT id INTO @bomb_shooter FROM Monkeys WHERE name='Bomb Shooter';
 INSERT INTO `Towers` VALUES (NULL, NULL, @bomb_shooter);
 SELECT id INTO @tower_bomb_shooter FROM Towers WHERE monkey_id=@bomb_shooter;

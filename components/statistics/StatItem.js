@@ -36,40 +36,40 @@ const ItemContainer = styled.div`
   }
 `;
 
-export default function StatItem({text, value, counter = true, decimals, tooltip, prefix, suffix, ...rest}) {
-    const darkMode = useSelector(getDarkMode);
+const FullItem = ({text, value, counter = true, decimals, tooltip, prefix, suffix, darkMode, ...rest}) => (
+    <ItemContainer data-dm={darkMode} { ...rest }>
+        <Item variant="subtitle1" component="div" >
+            {text}
+        </Item>
+        <Value variant="h6" component="div" font={true}>
+            {prefix && (
+                <TowerText variant="h6" component="div" font={true}>
+                    {prefix}
+                </TowerText>
+            )}
+            {(counter === true && typeof value === "number") ? (
+                <Counter cost={value} decimals={decimals ? decimals : 0} gold={false}/>
+            ) : (value)}
+            {suffix && (
+                <TowerText variant="h6" component="div" font={true}>
+                    {suffix}
+                </TowerText>
+            )}
+        </Value>
+    </ItemContainer>
+);
 
-    const FullItem = () => (
-        <ItemContainer data-dm={darkMode} { ...rest }>
-            <Item variant="subtitle1" component="div" >
-                {text}
-            </Item>
-            <Value variant="h6" component="div" font={true}>
-                {prefix && (
-                    <TowerText variant="h6" component="div" font={true}>
-                        {prefix}
-                    </TowerText>
-                )}
-                {(counter === true && typeof value === "number") ? (
-                    <Counter cost={value} decimals={decimals ? decimals : 0} gold={false}/>
-                ) : (value)}
-                {suffix && (
-                    <TowerText variant="h6" component="div" font={true}>
-                        {suffix}
-                    </TowerText>
-                )}
-            </Value>
-        </ItemContainer>
-    );
+export default function StatItem(props) {
+    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            {tooltip ? (
-                <Tooltip title={tooltip}>
-                    <FullItem />
+            {props.tooltip ? (
+                <Tooltip title={props.tooltip}>
+                    <FullItem {...props} darkMode={darkMode}/>
                 </Tooltip>
             ) : (
-                <FullItem />
+                <FullItem {...props} darkMode={darkMode}/>
             )}
         </>
     );

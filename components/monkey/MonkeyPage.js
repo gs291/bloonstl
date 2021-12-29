@@ -45,6 +45,11 @@ export default function MonkeyPage({ monkey }) {
 
     const tiers = monkey.tiers[tier][page-1];
 
+    const abilLength = Object.keys(stats.abils).length;
+    const attkLength = Object.keys(stats.attacks).length;
+    const buffLength = Object.keys(stats.buffs).length;
+    const statusLength = Object.keys(stats.statuses).length;
+
     return (
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
@@ -65,8 +70,12 @@ export default function MonkeyPage({ monkey }) {
                 stats={monkey.stats} setStats={setStats}
             />
             <FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <StatsAbilities stats={stats}/>
+            {(abilLength > 0 || attkLength > 0 || buffLength > 0 || statusLength > 0) && (
+                <>
+                    <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+                    <StatsAbilities stats={stats}/>
+                </>
+            )}
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <ProsCons pros={tiers.pros} cons={tiers.cons} backgroundColor={dividerBackgroundColor}/>
             <HorizontalAD />
