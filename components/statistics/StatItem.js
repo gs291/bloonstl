@@ -70,11 +70,7 @@ const FullItem = ({text, value, prevValue, counter = true, size = "medium", deci
             {text}
         </Item>
         <Value variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true}>
-            {prefix && (
-                <TowerText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true}>
-                    {prefix}
-                </TowerText>
-            )}
+            {prefix && (<TowerText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true} dangerouslySetInnerHTML={{__html: prefix}} />)}
             {(counter === true && typeof value === "number") ? (
                 <StatCounter cost={value} data-d={value - prevValue} data-dm={darkMode} decimals={decimals ? decimals : 0} gold={false}/>
             ) : (
@@ -82,11 +78,7 @@ const FullItem = ({text, value, prevValue, counter = true, size = "medium", deci
                     {value}
                 </StatText>
             )}
-            {suffix && (
-                <TowerText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true}>
-                    {suffix}
-                </TowerText>
-            )}
+            {suffix && (<TowerText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true} dangerouslySetInnerHTML={{__html: suffix}} />)}
         </Value>
     </ItemContainer>
 );

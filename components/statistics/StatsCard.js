@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import TowerText from "../tower/TowerText";
+import StatItemWrapper from "./StatItemWrapper";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
-import StatItem from "./StatItem";
 
 const Card = styled.div`
   padding: 0.25em 1em;
@@ -22,7 +22,8 @@ const Modifiers = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10px;
 `;
 
 const ModifierContainer = styled.div`
@@ -30,7 +31,7 @@ const ModifierContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  max-width: 120px;
+  max-width: 85px;
 `;
 
 const Type = styled(TowerText)`
@@ -54,6 +55,37 @@ const varToText = (variable) => variable &&
         .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
         .join(' ');
 
+const statCodeParser = (code) => {
+    const codes = {
+        "damage": "Damage",
+        "pierce": "Pierce",
+        "range": "Range",
+        "attack_speed": "Atk Spd",
+        "damage_type": "Type",
+        "camo_damage": "Camo",
+        "ceramic_damage": "Ceramic",
+        "crit_damage": "Crit",
+        "boss_damage": "Boss",
+        "lead_damage": "Lead",
+        "moab_damage": "Moab",
+        "fortified_damage": "Fortified",
+        "fortified_lead_damage": "F Lead",
+        "fortified_moab_damage": "F Moab",
+        "status_damage": "Status",
+        "stun_damage": "Stun",
+        "hotkey": "Hotkey",
+        "footprint": "Footprint",
+        "income": "Income",
+        "projectile_count": "Projectiles",
+        "duration": "Duration",
+        "cooldown": "Cooldown",
+        "crit_occurance": "Crit Rate",
+        "delay": "Delay",
+    }
+
+    return codes[code];
+}
+
 export default function StatsCard({stats, type, level = 1, ...rest}) {
     const darkMode = useSelector(getDarkMode);
 
@@ -67,7 +99,7 @@ export default function StatsCard({stats, type, level = 1, ...rest}) {
                 return "Buff";
             case "statuses":
                 return "Status";
-        };
+        }
     };
 
     return (
@@ -87,9 +119,9 @@ export default function StatsCard({stats, type, level = 1, ...rest}) {
                                 || (mod === "projectile_count" && stats[key].modifiers[mod] > 1))) {
                                 return (
                                     <ModifierContainer key={mod}>
-                                        <StatItem text={mod} value={stats[key].modifiers[mod]} size="small"/>
+                                        <StatItemWrapper text={statCodeParser(mod)} value={stats[key].modifiers[mod]} size="small" counter={false}/>
                                     </ModifierContainer>
-                                )
+                                );
                             }
                         })}
                     </Modifiers>
