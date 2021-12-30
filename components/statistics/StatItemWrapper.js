@@ -100,7 +100,8 @@ const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, e
         case "Delay": return {"tooltip": <TextTooltip text={`Delay until the attack occurs: ${value} seconds.`} />, "suffix": "&nbsp;s"};
         case "Income": return {"prefix": "+&nbsp;$", "tooltip": <TextTooltip text={`Money generated per round: +$${value}`} />};
         case "Crit Rate": return {"counter": false, "tooltip": <TextTooltip text={critOccurrenceToText(value)} />};
-        default: return {"tooltip": "Error"}
+        case "Cooldown": return {"tooltip": <TextTooltip text={`Cooldown timer: ${value} seconds`} />};
+        default: return {"tooltip": <TextTooltip text="Error" />};
     }
 };
 

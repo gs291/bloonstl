@@ -7,6 +7,7 @@ import StatItemWrapper from "./StatItemWrapper";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import StatsTargets from "./StatsTargets";
+import StatNotes from "./StatNotes";
 
 
 const CardContainer = styled.div`
@@ -87,6 +88,10 @@ const TitleContainer = styled.div`
   text-align: center;
 `;
 
+const ListItem = styled.li`
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+`;
+
 const varToText = (variable) => variable &&
     variable
         .split('_')
@@ -156,11 +161,17 @@ export default function StatsCard({stats, type, level = 1, parentBackgroundColor
                                 <StatsCard stats={stats[key].statuses} level={level + 1} type="statuses" parentBackgroundColor={darkMode ? siteColors.stats[type].background.dark : siteColors.stats[type].background.light} />
                             )}
                             <StatsTargets targets={stats[key].targets} />
-                            {stats[key].notes.map(note => (
-                                <TowerText variant={level === 1 ? "body1" : "body2"} font={true} key={note}>
-                                    note: {note}
-                                </TowerText>
-                            ))}
+                            {stats[key].notes.length > 0 && (
+                                <ul>
+                                    {stats[key].notes.map(note => (
+                                        <ListItem key={note} data-dm={darkMode}>
+                                            <TowerText variant="body1" font={true} key={note}>
+                                                {note}
+                                            </TowerText>
+                                        </ListItem>
+                                    ))}
+                                </ul>
+                            )}
                         </CardContent>
                     </Card>
                 </CardContainer>

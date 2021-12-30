@@ -116,7 +116,7 @@ export default function StatTab({type, title, level, parentBackgroundColor}) {
 
                 <TabRightSide>
                     <TabTitle data-dm={darkMode} data-t={type}>
-                        <TowerText variant={level === 1 ? "h6" : "subtitle1"}>
+                        <TowerText variant={level === 1 ? "h6" : "subtitle1"} font={true}>
                             {title}
                         </TowerText>
                     </TabTitle>
