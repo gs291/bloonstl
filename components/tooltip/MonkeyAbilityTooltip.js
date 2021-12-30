@@ -17,7 +17,7 @@ export default function MonkeyAbilityTooltip({ ability, tier, selected }) {
                 textColor={
                     selected
                         ? getTierColor(tier)
-                        : siteColors.text.dark
+                        : darkMode ? siteColors.text.dark : siteColors.text.light
                 }
             >
                 {ability.name}
@@ -26,7 +26,7 @@ export default function MonkeyAbilityTooltip({ ability, tier, selected }) {
                 In-game cost:&nbsp;
                 ${getThousandsNumber(goldCost(ability.cost_gold, difficulty))}
             </TowerText>
-            <TowerText variant="body2" textColor={siteColors.tower.description} font={1}>
+            <TowerText variant="body2" textColor={darkMode ? siteColors.tower.description.dark : siteColors.tower.description.light } font={true}>
                 {ability.description}
             </TowerText>
         </>

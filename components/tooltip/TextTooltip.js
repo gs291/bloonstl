@@ -16,7 +16,6 @@ export default function TextTooltip({children, className, tooltip, ...rest}) {
                     <TowerText
                         variant="h6"
                         font={true}
-                        textColor={siteColors.text.dark}
                     >
                         {tooltip}
                     </TowerText>
