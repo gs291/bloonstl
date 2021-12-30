@@ -27,6 +27,19 @@ const FilterDiff = styled(FilterDifficulty)`
   margin-bottom: 10px;
 `;
 
+const Title = styled(TowerText)`
+  margin-top: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+  cursor: default;
+`;
+
+const TitleOnTop = styled(TowerText)`
+  margin-top: 10px;
+  text-align: center;
+  cursor: default;
+`;
+
 export default function MonkeyPage({ monkey }) {
     const mobile = useSelector(getMobile);
     const [ tier, setTier ] = useState("s");
@@ -61,7 +74,7 @@ export default function MonkeyPage({ monkey }) {
             <AbilityPathSelection tier={tier} tiers={tiers} handleTier={handleTier} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <TotalCost variant={mobile ? "h5" : "h4"}>
-                Path Cost: $<Counter cost={stats.cost} />
+                Ability Path Cost: $<Counter cost={stats.cost} />
             </TotalCost>
             <MonkeyAbilities
                 abilities={monkey.abilities}
@@ -73,10 +86,19 @@ export default function MonkeyPage({ monkey }) {
             {(abilLength > 0 || attkLength > 0 || buffLength > 0 || statusLength > 0) && (
                 <>
                     <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+                    <TitleOnTop variant={mobile ? "h5" : "h4"}>
+                        Ability Path
+                    </TitleOnTop>
+                    <Title variant={mobile ? "h5" : "h4"}>
+                        Abilities / Attacks / Buffs / Statuses
+                    </Title>
                     <StatsAbilities stats={stats}/>
                 </>
             )}
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+            <Title variant={mobile ? "h5" : "h4"}>
+                Ability Path Pros / Cons
+            </Title>
             <ProsCons pros={tiers.pros} cons={tiers.cons} backgroundColor={dividerBackgroundColor}/>
             <HorizontalAD />
         </>

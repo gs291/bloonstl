@@ -110,15 +110,16 @@ export default function StatItemWrapper({text, value, prevValue, initialDamage, 
 
     return (
         <>
-            <StatItem text={text}
-                      value={value}
-                      prevValue={prevValue}
-                      tooltip={codeValue.tooltip}
-                      counter={codeValue.counter}
-                      prefix={codeValue.prefix}
-                      suffix={codeValue.suffix}
-                      decimals={codeValue.decimals}
-                      {...rest}
+            <StatItem
+                text={text}
+                value={value}
+                prevValue={prevValue}
+                tooltip={codeValue.tooltip}
+                counter={codeValue.counter}
+                prefix={codeValue.prefix}
+                suffix={codeValue.suffix}
+                decimals={codeValue.decimals}
+                {...rest}
             />
         </>
     );

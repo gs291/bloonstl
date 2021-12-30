@@ -5,6 +5,7 @@ import TowerText from "../tower/TowerText";
 import StatsContainer from "./StatsContainer";
 import StatItemWrapper from "./StatItemWrapper";
 import {getMobile} from "../../lib/redux/selectors";
+import StatsTargets from "./StatsTargets";
 
 const ItemsContainer = styled.div`
   width: ${props => props["data-m"] ? 100 : 100}%;
@@ -30,11 +31,7 @@ export default function TowerStats({stats, defaults, targets, ...rest}) {
                     <StatItemWrapper text="Type" value={stats.damage_type} prevValue={defaults.damage_type} />
                 </ItemsContainer>
                 <ItemsContainer>
-                    {targets.map(target => (
-                        <TowerText variant="body1" font={true} key={target}>
-                            {target}
-                        </TowerText>
-                    ))}
+                    <StatsTargets targets={targets} />
                 </ItemsContainer>
             </StatsContainer>
         </>

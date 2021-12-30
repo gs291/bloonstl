@@ -228,24 +228,24 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_ice_monkey, 'a');
 INSERT INTO `TowerStats` VALUES (NULL, @tower_ice_monkey, 20, 40, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 2.4, DEFAULT, DEFAULT, NULL,  6, 'T', 'cold', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
-INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 0, 'Permafrost', 'Bloons move slowly even after thawing out.', 100, 160, 'status:permafrost:50%slownote:50% slow on bloons. 25% slow on blimps');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 1, 'Metal Freeze', 'Can freeze and pop Lead Bloons.', 300, 500, '+lead,+camo');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 0, 'Permafrost', 'Bloons move slowly even after thawing out.', 100, 160, 'status:permafrost:50%slow,note:50% slow on bloons. 25% slow on blimps');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 1, 'Metal Freeze', 'Can freeze and pop Lead Bloons.', 300, 500, '+lead,+camo,cross:204:attack:icicles:+lead');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 2, 'Ice Shards', 'Razor sharp shards fly out when Frozen Bloons pop.', 1500, 2500, '+5r,attack:shards:1d;3j;3p;type:shatter;note:emits when frozen bloons are popped');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 3, 'Embrittlement', 'Detects Camo Bloons and all Bloons hit become brittle, taking extra damage for a short time and losing Camo & Regrow properties permanently.', 2200, 8250, '+camo,status:brittle:+1d;2dur,attack:shards:note:gains decamo and degrow,note:gains decamo and degrow');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 3, 'Embrittlement', 'Detects Camo Bloons and all Bloons hit become brittle, taking extra damage for a short time and losing Camo & Regrow properties permanently.', 2200, 8250, '+camo,+decamo,+degrow,status:brittle:+1d;2dur,attack:shards:+decamo;+degrow');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 4, 'Super Brittle', 'Bloons take huge damage while frozen including MOAB-Class Bloons.', 28000, 25000, '*90%s,type:normal,status:brittle:+4d;3dur');
 
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 1, 0, 'Enhanced Freeze', 'Attacks faster and freezes for longer.', 225, 160, '*75%s,note:frozen status duration increased to 2.2 seconds');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 1, 1, 'Deep Freeze', 'Freezes through 2 layers of Bloon.', 350, 500, 'note:frozen status soaks through 1 layer');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 1, 2, 'Arctic Wind', 'Greatly increases pierce & gains a super cold aura that slows Bloons and freezes water nearby.', 2900, 2500, '+60p,attack:slow:40%slow;note:cannot affect white/lead/blimp');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 1, 2, 'Arctic Wind', 'Greatly increases pierce & gains a super cold aura that slows Bloons and freezes water nearby.', 2900, 2500, '+60p,attack:slow:40%slow;-white;-lead;-moab');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, true, 1, 3, 'Snowstorm', 'Freezes all bloons on screen, and briefly freezes white, zebra, camo and MOAB class.', 3000, 8500, '+10r,abil:snowstorm:30clt;1d;-1p;-1r;+camo;type:shatter;note:applies frozen status (6 seconds duration or 3 seconds for camo/white/blimp');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, true, 1, 4, 'Absolute Zero', 'Ability is so cold it freezes all regular Bloons for longer, including White, Zebra, and Camo, slows MOAB-class longer, and greatly increases the attack speed of all Ice Monkeys for the duration.', 26000, 27500, '+200p,+10r,+moab,attack:slow:60%slow,abil:snowstorm:20clt;1d;-1p;-1r;+camo;type:normal;note:all ice towers gain 66.66% attack speed buff for 10 seconds');
 
 --          Bottom Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 0, 'Larger Radius', 'Larger freeze area.', 100, 160, '+7r');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 1, 'Re-Freeze', 'Can re-freeze Bloons that are already frozen.', 200, 500, 'type:glacier');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 2, 'Cryo Cannon', 'Shoots freezing bombs at Bloons over longer range.', 1750, 2500, '+16r,1s,-moab,status:frozen:1.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 3, 'Icicles', 'Frozen Bloons grow sharp icicles that can pop Bloons that touch them.', 2000, 9000, 'note:frozen bloons have icicles that do 2 damage, 3 pierce and are of the sharp type');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 2, 'Cryo Cannon', 'Shoots freezing bombs at Bloons over longer range.', 1750, 2500, '+1d,-10p,1s,-7r,-moab,status:frozen:1.5dur');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 3, 'Icicles', 'Frozen Bloons grow sharp icicles that can pop Bloons that touch them.', 2000, 9000, 'attack:icicles:2d;3p;type:sharp');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 4, 'Icicle Impale', 'Shoots huge icicle spikes that do huge damage to MOAB-Class Bloons and freezes them.', 30000, 30000, '+48md,*75%s,type:shatter,+moab');
 
 --          Ability Tiers - S
@@ -607,7 +607,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, true, 1, 4, 'Pop and
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 2, 0, 'Increased Accuracy', 'Makes the shots more accurate.', 200, 140, 'note:8 units random target variance');
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 2, 1, 'Burny Stuff', 'Damaged Bloons are set ablaze momentarily with each hit.', 500, 650, 'status:burn:3.85dur;1d;1.25s;type:fire,cross:302:status:burn:2d;1.5s,cross:502:status:burn:25d;1.5s');
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 2, 2, 'Signal Flare', 'Camo Bloons popped by flares lose their camouflage permanently.', 700, 2200, '+camo,attack:flare:80p;50r;note:flares do no affect DDT');
-INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 2, 3, 'Shattering Shells', 'Shattering shells strip all bloon properties off all but the biggest bloons.', 11000, 12000, 'attack:strip:40p;20r;note:On hit degrow and defortify. Cannot affect DDT ZOMG or BAD');
+INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 2, 3, 'Shattering Shells', 'Shattering shells strip all bloon properties off all but the biggest bloons.', 11000, 12000, 'attack:strip:40p;20r;+degrow;+defortify;note:Cannot affect DDT ZOMG or BAD');
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 2, 4, 'Blooncineration', 'Superhot burny stuff melts through 5 layers of bloon each shot, burns MOAB class bloons for extra damage, and strips DDT camo.', 40000, 35000, 'type:normal,status:burn:5d;100md;1s,attack:wall_of_fire:1d;20p;15r;0.1s;type:fire;+camo,attack:flare:note:can affect DDTs,attack:strip:note:can affect DDTs');
 
 --          Ability Tiers - S
@@ -696,7 +696,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 0, 0, 'Guided
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 0, 1, 'Arcane Blast', 'Bigger, more powerful magic blasts pop through 2 layers of Bloon.', 600, 600, '+1d');
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 0, 2, 'Arcane Mastery', 'Attacks 2X faster over 2X longer range and adds 4+ pierce.', 1300, 2300, '20r,+1d,+4p,*50%s');
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 0, 3, 'Arcane Spike', 'Magic does extra damage to MOAB-Class Bloons and adds a 2X attack speed bonus', 10900, 11000, '+2d,+11md,*50%s,type:plasma');
-INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 0, 4, 'Archmage', 'A true master of magical wizardry. Gives the monkey Shimmer and Dragon''s Breath. Also doubles magic bolt fire rate and increases its pierce and damage', 32000, 35000, '+2d,+6md,+4p,*50%s,attack:shimmer:200p;70r;2.5s;+camo;note:decamo,attack:flame:1d;1cd;4p;70r;0.1s;type:fire;status:burn:1d=1.5s=type:fire=3.1dur');
+INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 0, 4, 'Archmage', 'A true master of magical wizardry. Gives the monkey Shimmer and Dragon''s Breath. Also doubles magic bolt fire rate and increases its pierce and damage', 32000, 35000, '+2d,+6md,+4p,*50%s,attack:shimmer:200p;70r;2.5s;+camo;+decamo,attack:flame:1d;1cd;4p;70r;0.1s;type:fire;status:burn:1d=1.5s=type:fire=3.1dur');
 
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 1, 0, 'Fireball', 'Every few seconds casts an explosive fireball spell.', 300, 130, 'attack:fireball:1d;2.2s;type:fire;attack:explosion:1d=15p=10r=type:explosion');
@@ -708,7 +708,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, true, 1, 4, 'Wizard 
 --          Bottom Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 0, 'Intense magic', '	More powerful magic shots move faster and can pop more Bloons.', 275, 140, '+5p,cross:021:attack:wall_of_fire:+4p,cross:031:attack:flame:+2p');
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 1, 'Monkey Sense', 'Allows the Wizard to hit Camo Bloons.', 300, 500, '+camo');
-INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 2, 'Shimmer', 'Gains a dark magic attack that periodically reveals location of all nearby Camo bloons permanently.', 1700, 2200, 'attack:shimmer:200p;70r;2.5s;+camo;note:decamo and can see past obstacles');
+INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 2, 'Shimmer', 'Gains a dark magic attack that periodically reveals location of all nearby Camo bloons permanently.', 1700, 2200, 'attack:shimmer:200p;70r;2.5s;+camo;+decamo;note:Can see past obstacles');
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 3, 'Necromancer: Unpopped Army', 'Reanimate recently popped enemies as servants to destroy the Bloons.', 2800, 10000, 'attack:reanimate:40r;4j;1.5s;2d;11p;type:normal;10dur,note:graveyard holds up to 500 bloon layers. Pops after round 80 are worth 7-13 graveyard bloons. +1d for every 200 graveyard bloons stacking additively up to 10 times. -10%s for every 100 graveyard bloons stacking additively up to 5 times');
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 2, 4, 'Prince of Darkness', 'Reanimate even more powerful bloon servants to obliterate the enemy and buffs other Necromancers.', 24000, 30000, '+40r,*25%s,attack:shimmer:*50%s,attack:reanimate_blimp_zmoab:3s;40d;20p;type:normal;20dur;note: if < 2000 pops in the graveyard use 20. Spawns zmoab,attack:reanimate_blimp_zbtb:3s;100d;50p;type:normal;13.3dur;note: if > 2000 pops in the graveyard use 50');
 
@@ -802,7 +802,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 0, 4, 'Grandma
 
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 1, 0, 'Distraction', 'Some Bloons will become distracted and move backwards.', 350, 200, 'note:15% chance to send bloons 10-300 units back');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 1, 1, 'Counter-Espionage', 'Ninja attacks can strip camo from Bloons they damage.', 500, 600, 'note:decamo');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 1, 1, 'Counter-Espionage', 'Ninja attacks can strip camo from Bloons they damage.', 500, 600, '+decamo');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 1, 2, 'Shinobi Tactics', 'Increases attack speed of all ninjas in its range - more Shinobi means more attack speed, with a cap of 20', 900, 2000, 'buff:shinobi:note:affects ninjas in range with 92% increased attack speed (stacking multiplicative) and +8 pierce (stacking additively). stacks up to 20 times');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, true, 1, 3, 'Bloon Sabotage', 'Lasts 15 seconds. During the sabotage, all Bloons move at half speed.', 5000, 14000, 'abil:sabotage:60clt;15dur;note:all bloons and blimps move at half speed but not children of blimps');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, true, 1, 4, 'Grand Saboteur', 'Ability duration is longer, and MOAB-Class Bloons spawn with less health during the sabotage.', 22000, 35000, 'abil:sabotage:+15dur;note:25% damage to new blimps entering the map');
@@ -853,7 +853,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_alchemist, false, 0, 4, 'Permanent 
 
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_alchemist, false, 1, 0, 'Stronger Acid', 'Acid potions dissolve Bloons faster.', 250, 140, 'status:acid:1d;1.5s;4.55dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_alchemist, false, 1, 1, 'Perishing Potions', 'Attack potions deal more damage to MOAB-class Bloons and strip Fortified off smaller Bloons. Also strengthens Brews and Stimulants.', 475, 500, '+4md,+15fmd,note:can defortify bloons,cross:220:attack:acid_drip:buff:acidfied:note:+3 shots per buff,cross:320:attack:brew:buff:berserk:+1dur=note:lasts 40 shots and cannot be reapplied for 4.0 seconds,cross:420:attack:brew:buff:berserk:+1dur');
+INSERT INTO `Abilities` VALUES (NULL, @tower_alchemist, false, 1, 1, 'Perishing Potions', 'Attack potions deal more damage to MOAB-class Bloons and strip Fortified off smaller Bloons. Also strengthens Brews and Stimulants.', 475, 500, '+4md,+15fmd,+defortify,cross:220:attack:acid_drip:buff:acidfied:note:+3 shots per buff,cross:320:attack:brew:buff:berserk:+1dur=note:lasts 40 shots and cannot be reapplied for 4.0 seconds,cross:420:attack:brew:buff:berserk:+1dur');
 INSERT INTO `Abilities` VALUES (NULL, @tower_alchemist, false, 1, 2, 'Unstable Concoction', 'Coats MOAB-Class Bloons in an explosive substance that causes a large explosion when they are popped.', 3000, 2500, 'attack:unstable_potion:67.5r;6s;-bloon;50p;note:damage to blimps. 20 damage from MOABs. 70 damage from BFBs. 40 damage from DDTs. 400 damage from ZOMGs and BADs. 1000 damage from bosses');
 INSERT INTO `Abilities` VALUES (NULL, @tower_alchemist, true, 1, 3, 'Transforming Tonic', 'Turns Alchemist into powerful attack Monster for 20 seconds.', 4500, 10000, 'abil:transform:60clt;20dur;2d;6p;72r;0.03s;type:plasma;note:transforms into a monster that can see past obstacles but will collide with them');
 INSERT INTO `Abilities` VALUES (NULL, @tower_alchemist, true, 1, 4, 'Total Transformation', 'Transforms five Monkeys nearby into crazy attack monsters for 20 seconds.', 45000, 28000, 'abil:transform:40clt;20dur;2d;10p;72r;0.03s;type:plasma;note:additionally transforms 5 nearby towers (tier 3 or lower) into monsters');
@@ -909,8 +909,8 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 4, 'Superstorm', '
 
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 1, 0, 'Thorn Swarm', 'Shoots 8 thorns instead of 5.', 250, 140, '+3j');
-INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 1, 1, 'Heart of Oak', 'Thorns convert Regrow Bloons into normal Bloons.', 250, 600, 'note:degrow');
-INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 1, 2, 'Druid of the Jungle', 'Calls a vine from the ground to entangle and crush Bloons one at a time.', 950, 2000, 'attack:vine_grab:-1r;1.4s;status:snared:1d=30p=2r=0.3s=type:normal=4.5dur=note:degrow');
+INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 1, 1, 'Heart of Oak', 'Thorns convert Regrow Bloons into normal Bloons.', 250, 600, '+degrow');
+INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 1, 2, 'Druid of the Jungle', 'Calls a vine from the ground to entangle and crush Bloons one at a time.', 950, 2000, 'attack:vine_grab:-1r;1.4s;status:snared:1d=30p=2r=0.3s=type:normal=4.5dur=+degrow');
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, true, 1, 3, 'Jungle''s Bounty', 'Generates 200 money plus another 100 per Banana Farm type tower near the Druid.', 5000, 11000, '+10r,attack:vine_grab:2j,abil:jungle_bounty:60clt;3mpr;+240mon;note:+$120 for every farm within range');
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, true, 1, 4, 'Spirit of the Forest', 'Grows thorned vines along the path that deal constant damage plus bonus damage to ceramics, and generates lives and money when ability is activated.', 35000, 40000, '+1d,+1000mon,attack:vine_grab:0.3s;status:snared:+4d,abil:jungle_bounty:note:+25 lives,attack:brambles:-1p;-1r;+camo;note:anywhere in range 2d/0.5s 10cd/0.5s 10md/0.5s sharp type;note:within 100r +1d/s (3) +4cd/s (15) +4md/s (15) sharp type;note:within 50r: +1d/s (4) +4cd/s (20) +4md/s (20) sharp type');
 
@@ -1119,7 +1119,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 0, 4, 'Sent
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 1, 0, 'Larger Service Area', 'Shoots further and deploys sentries in a much larger area.', 250, 170, '+20r,cross:110:attack:sentry:+4r,cross:410:note:all sentries +4 range +1 moab damage and +1 fortified damage');
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 1, 1, 'Deconstruction', 'Nail gun and Sentry shots do extra damage to MOAB-class and Fortified Bloons.', 350, 500, '+1md,+1fd,cross:120:attack:sentry:+1md=+1fd');
-INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 1, 2, 'Cleansing Foam', 'Sprays foam that removes Regrow and Camo and pops Lead Bloons.', 800, 2000, 'attack:place_foam:60r;2s;1ld;10p;type:normal;8.5dur;note:decamo and degrow');
+INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 1, 2, 'Cleansing Foam', 'Sprays foam that removes Regrow and Camo and pops Lead Bloons.', 800, 2000, 'attack:place_foam:60r;2s;1ld;10p;type:normal;8.5dur;+decamo;+degrow');
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, true, 1, 3, 'Overclock', 'Overclock Ability: Target another tower to supercharge its attack speed for a short time.', 13500, 14000, '+12p,abil:overclock:45clt;note:chosen tower\'s attack speed increased by 40%;note:farms can be overclocked. producing bananas is an "attack" whose cooldown changes according to the current round length;note:villages can be overclocked even when not upgraded to 5-X-X the range is increased by 25%');
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, true, 1, 4, 'Ultraboost', 'Ultra-Overclocked Monkeys gain a small but permanent boost every time they are overclocked.', 120000, 35000, '+15p,abil:overclock:30clt;note:additionally applies a permanent 4% reload buff which stacks additively up to 10 times (in the case of villages this is +2.5% to range)');
 
@@ -1380,7 +1380,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 4, '', 'Increases 
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 5, '', 'Damage over time lasts longer and damages faster.', 0, 0, 'status:cursed:5.5dur');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, true, 0, 6, 'Sacrificial Totem', 'A totem that gives Camo detection, extra pierce, attack range, attack speed, and projectile speed to nearby Monkeys. Drains 10 lives.', 0, 0, 'abil:sacrificial_totem:78r;30dur;buff:support:+1p=+20%r=86%s=+camo=note:affects all towers in range');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 7, '', 'Ezili\'s attack does far more damage to MOAB-Class Bloons.', 0, 0, '+19md;status:cursed:+1d;+19md;1.8s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 8, '', 'Ezili\'s attack strips off Camo, Regrow and Fortified properties from non-MOAB Class Bloons.', 0, 0, 'note:decamo. degrow. defortify for 6 seconds. Not applied to blimps');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 8, '', 'Ezili\'s attack strips off Camo, Regrow and Fortified properties from non-MOAB Class Bloons.', 0, 0, '+degrow,+deforitfy,note:Defortify lasts for 6 seconds. Not applied to blimps');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, true, 0, 9, 'MOAB Hex', 'places a curse on a MOAB-Class Bloon, it takes damage every second until annihilated.', 0, 0, 'abil:moab_hex:60clt;25dur;note:transfers to the next target if it pops with time remaining. Exludes BADs');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 10, '', 'Increased attack range. Increases pierce of reanimated Bloons by 50%.', 0, 0, '+2r;note:gains buff for all X-X-4+ wizards: zombloon +1 pierce, zmoab +10 pierce');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 11, '', 'Heartstopper reduced cooldown and increased duration.', 0, 0, '+10md,abil:heartstopper:45clt;15dur;note:antigrow for 15 seconds');
@@ -1491,7 +1491,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 10, '',
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 11, '', 'Pistol attack increased speed and damage, Sea Mines increased damage.', 0, 0, '+2d,0.4s,attack:mine:+5d');
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 12, '', 'Mega Mine cooldown reduced.', 0, 0, 'abil:mega_mine:50clt');
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 13, '', 'Naval Tactics duration increased.', 0, 0, 'abil:naval_tactics:12dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 14, '', 'Enhanced Sea Mines have a larger explosion, can damage Black Bloons and can remove Camo.', 0, 0, 'attack:mine:+10r;type:normal;note:decamo');
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 14, '', 'Enhanced Sea Mines have a larger explosion, can damage Black Bloons and can remove Camo.', 0, 0, 'attack:mine:+10r;type:normal;+decamo');
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 15, '', 'Attack and Sea Mine deploy range increased slightly.', 0, 0, '+4r');
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 16, '', 'Sea Mines do greatly increased damage.', 0, 0, 'attack:mine:+10d');
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 17, '', 'Mega Mine cooldown reduced even further.', 0, 0, 'abil:mega_mine:40clt');

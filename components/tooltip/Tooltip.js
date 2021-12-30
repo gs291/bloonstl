@@ -65,6 +65,7 @@ export default function Tooltip({className, children, title, active}) {
                         data-m={mobile}
                         data-dm={darkMode}
                         arrow
+                        disableInteractive
                     >
                         <div onClick={handleTooltipOpen}>
                             { children }

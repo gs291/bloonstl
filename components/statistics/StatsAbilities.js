@@ -8,7 +8,8 @@ const CardsContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px 50px;
+  width: 100%;
+  gap: 20px 50px;
 `;
 
 export default function StatsAbilities({stats}) {
