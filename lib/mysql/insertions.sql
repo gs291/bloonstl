@@ -1048,7 +1048,7 @@ INSERT INTO `AbilityTiersInfo` VALUES (NULL, @ability_tiers_spike_factory_b, 'ch
 
 
 --      Monkey - Monkey Village
-INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Village', 'Support', 'Hub of Monkey industry, has a number of different benefits to aid all of your Monkeys. Increases rawnge of all monkeys in its radius by 10%.', 1200, 'monkey-village.png');
+INSERT INTO `Monkeys` VALUES (NULL, 'Monkey Village', 'Support', 'Hub of Monkey industry, has a number of different benefits to aid all of your Monkeys. Increases range of all monkeys in its radius by 10%.', 1200, 'monkey-village.png');
 SELECT id INTO @monkey_village FROM Monkeys WHERE name='Monkey Village';
 INSERT INTO `Towers` VALUES (NULL, NULL, @monkey_village);
 SELECT id INTO @tower_monkey_village FROM Towers WHERE monkey_id=@monkey_village;
@@ -1060,7 +1060,7 @@ INSERT INTO `TowerStats` VALUES (NULL, @tower_monkey_village, 40, 0, 0, DEFAULT,
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 0, 0, 'Bigger Radius', 'Increases influence radius of the village.', 400, 160, '+8r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 0, 1, 'Jungle Drums', 'Increases attack speed of all Monkeys in the radius.', 1500, 1000, 'buff:support:*85%s');
+INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 0, 1, 'Jungle Drums', 'Increases attack speed of all Monkeys in the radius.', 1500, 1000, 'buff:support:desc:Gain increased attack speed;*85%s');
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 0, 2, 'Primary Training', 'All Primary Monkeys in radius get more range, pierce and projectile speed.', 800, 2000, 'buff:primary_support:desc:Increased pierce and range buff;+1;+10%r;note:affects primary towers');
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 0, 3, 'Primary Mentoring', 'All Primary Monkeys in radius get tier 1 upgrades for free.', 2500, 12000, 'buff:primary_support:+5r;note:(4-0-0) free tier 1 upgrades;note:-10% ability cooldown time');
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 0, 4, 'Primary Expertise', 'All Primary Monkeys in radius get tier 1 AND 2 upgrades for free. Gains Mega Ballista attack.', 25000, 32000, '+7r,buff:primary_support:+2p;note:(5-0-0) free tier 2 upgrades;note:(5-0-0)-10% ability cooldown time,attack:catapult:desc:Attack gained by 5-0-0;10d;190cd;190md;100p;-1r;3s;type:normal;+camo;note:blimps use 10 pierce;note:jumps to a nearby target after hitting;note:Cannot be used with subs to gain camo detection');
@@ -1099,7 +1099,7 @@ INSERT INTO `AbilityTiersInfo` VALUES (NULL, @ability_tiers_monkey_village_b, 's
 
 
 --      Monkey - Engineer Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Engineer Monkey', 'Support', 'Holds a trusty nail-gun to pop the Bloons. Can upgrade to creat its own nail-shooting sentry turrets.', 450, 'engineer-monkey.png');
+INSERT INTO `Monkeys` VALUES (NULL, 'Engineer Monkey', 'Support', 'Holds a trusty nail-gun to pop the Bloons. Can upgrade to create its own nail-shooting sentry turrets.', 450, 'engineer-monkey.png');
 SELECT id INTO @engineer_monkey FROM Monkeys WHERE name='Engineer Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @engineer_monkey);
 SELECT id INTO @tower_engineer_monkey FROM Towers WHERE monkey_id=@engineer_monkey;
