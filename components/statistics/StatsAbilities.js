@@ -10,6 +10,7 @@ const CardsContainer = styled.div`
   justify-content: center;
   width: 100%;
   gap: 20px 50px;
+  margin-bottom: 25px;
 `;
 
 export default function StatsAbilities({stats}) {
