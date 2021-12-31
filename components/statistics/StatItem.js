@@ -38,18 +38,18 @@ const ItemContainer = styled.div`
 const getStatColor = (difference, darkMode, decimals) => {
     if (decimals > 0) {
         if (difference < 0) {
-            return darkMode ? siteColors.pros.dark : siteColors.pros.dark;
+            return darkMode ? siteColors.stats.pros.dark : siteColors.stats.pros.light;
         } else if (difference > 0) {
-            return darkMode ? siteColors.cons.dark : siteColors.cons.dark;
+            return darkMode ? siteColors.stats.cons.dark : siteColors.stats.cons.light;
         } else {
             return darkMode ? siteColors.text.dark : siteColors.text.light;
         }
     }
 
     if (difference > 0) {
-        return darkMode ? siteColors.pros.dark : siteColors.pros.dark;
+        return darkMode ? siteColors.stats.pros.dark : siteColors.stats.pros.light;
     } else if (difference < 0) {
-        return darkMode ? siteColors.cons.dark : siteColors.cons.dark;
+        return darkMode ? siteColors.stats.cons.dark : siteColors.stats.cons.light;
     } else {
         return darkMode ? siteColors.text.dark : siteColors.text.light;
     }

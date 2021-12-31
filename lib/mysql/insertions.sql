@@ -78,7 +78,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 0, 4, 'Gla
 
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 1, 0, 'Faster Throwing', 'Throws boomerangs faster.', 175, 120, '*75%s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 1, 1, 'Faster Rangs', 'Boomerangs fire and travel faster.', 250, 550, '*75%');
+INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 1, 1, 'Faster Rangs', 'Boomerangs fire and travel faster.', 250, 550, '*75%s');
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 1, 2, 'Bionic Boomerang', 'Replaces arm with a strong bionic arm that can throw boomerangs extremely fast and does extra damage to MOAB-class bloons', 1600, 2500, '+2md,0.238s');
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, true, 1, 3, 'Turbo Charge', 'Makes this Monkey attack incredibly fast for 10 seconds.', 4000, 9000, 'abil:turbo_charge:45clt;10dur;+1d;*14.2857%s;desc:Buffs tower damage and increases attack speed by');
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, true, 1, 4, 'Perma Charge', 'Perma Charge has a permanent super fast attack speed. Ability increases the lethality even more.', 35000, 32000, '+3d,0.034s,abil:turbo_charge:40clt;15dur;+8d');
