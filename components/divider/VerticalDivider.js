@@ -9,6 +9,9 @@ const VDivider = styled(Divider)`
   margin-left: 10px;
   margin-right: 10px;
   
+  width: ${props => props["data-w"] ? props["data-w"] : 1}px;
+  border-width: ${props => props["data-w"] ? props["data-w"] : 1}px;
+  
   border-color: ${props => 
           props["data-bc"] 
                   ? props["data-bc"] 
@@ -16,12 +19,12 @@ const VDivider = styled(Divider)`
   transition: 0.3s;
 `;
 
-export default function VerticalDivider({ backgroundColor }) {
+export default function VerticalDivider({ width, backgroundColor }) {
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <VDivider flexItem orientation="vertical" data-bc={backgroundColor} data-dm={darkMode}/>
+            <VDivider flexItem orientation="vertical" data-w={width} data-bc={backgroundColor} data-dm={darkMode}/>
         </>
     );
 }

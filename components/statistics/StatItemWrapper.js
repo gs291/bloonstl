@@ -101,7 +101,10 @@ const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, e
         case "Income": return {"prefix": "+&nbsp;$", "tooltip": <TextTooltip text={`Money generated per round: +$${value}`} />};
         case "Crit Rate": return {"counter": false, "tooltip": <TextTooltip text={critOccurrenceToText(value)} />};
         case "Cooldown": return {"tooltip": <TextTooltip text={`Cooldown timer: ${value} seconds`} />};
-        default: return {"tooltip": <TextTooltip text="Error" />};
+        case "P Impact": return {"tooltip": <TextTooltip text={`Pierce Impact: ${value}`} />};
+        case "Slow": return {"tooltip": <TextTooltip text={`Slow is a applied to all bloons: ${value * 100}%`} />};
+        case "Max/Round": return {"tooltip": <TextTooltip text={`Max uses per round: ${value}`} />};
+        default: return {"tooltip": <TextTooltip text={`Error: ${code} : ${value}`} />};
     }
 };
 

@@ -17,12 +17,12 @@ const ItemsContainer = styled.div`
   gap: 5px;
 `;
 
-export default function MoreStats({stats, defaults, ...rest}) {
+export default function MoreStats({stats, defaults, type, ...rest}) {
     const mobile = useSelector(getMobile);
 
     return (
         <>
-            <StatsContainer title="More Stats">
+            <StatsContainer title="More Stats" type={type}>
                 {mobile ? (
                     <>
                         <ItemsContainer data-m={mobile}>

@@ -5,13 +5,15 @@ import StatNotes from "./StatNotes";
 import MoreStats from "./MoreStats";
 import TowerStats from "./TowerStats";
 import DamageStats from "./DamageStats";
+import StatsContainer from "./StatsContainer";
 import siteColors from "../../lib/utils/siteColors";
+import {getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const AllModifiersAndNotes = styled.div`
   margin-top: 25px;
   margin-bottom: 25px;
-  width: 100%;
+  width: ${props => props["data-m"] ? 100 : 95}%;
 `;
 
 const ExtraStats = styled.div`
@@ -24,38 +26,33 @@ const ExtraStats = styled.div`
   margin-bottom: 20px;
 `;
 
-const StatsContainer = styled.div`
+const ModifierContainer = styled.div`
   width: 100%;
   border-radius: 10px;
   transition: 0.3s;
-  border: 4px solid ${props => props["data-dm"] ? siteColors.stats.dark : siteColors.stats.light};
-  background-color: ${props => props["data-dm"] ? siteColors.stats.dark : siteColors.stats.light};
+  border: 6px solid ${props =>
+          props["data-t"]
+                  ? rgbaHex(getMonkeyColor(props["data-t"]), props["data-dm"] ? 0.5 : 1)
+                  : props["data-dm"] ? siteColors.stats.dark : siteColors.stats.light
+  };
 `;
 
-const DamageContainer = styled.div`
+const DamageContainer = styled(ModifierContainer)`
   width: ${props => props["data-m"] ? 100 : 70}%;
-  border-radius: 10px;
-  transition: 0.3s;
-  border: 4px solid ${props => props["data-dm"] ? siteColors.stats.dark : siteColors.stats.light};
-  background-color: ${props => props["data-dm"] ? siteColors.stats.dark : siteColors.stats.light};
 `;
 
-const MoreContainer = styled.div`
+const MoreContainer = styled(ModifierContainer)`
   width: ${props => props["data-m"] ? 100 : 30}%;
-  border-radius: 10px;
-  transition: 0.3s;
-  border: 4px solid ${props => props["data-dm"] ? siteColors.stats.dark : siteColors.stats.light};
-  background-color: ${props => props["data-dm"] ? siteColors.stats.dark : siteColors.stats.light};
 `;
 
-export default function Stats({stats, ...rest}) {
+export default function Stats({stats, type, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <AllModifiersAndNotes>
-                <StatsContainer data-dm={darkMode}>
+            <AllModifiersAndNotes data-m={mobile}>
+                <ModifierContainer data-dm={darkMode} data-t={type}>
                     <TowerStats
                         stats={{
                             "attack_speed": stats.modifiers.attack_speed, "range": stats.modifiers.range,
@@ -68,11 +65,12 @@ export default function Stats({stats, ...rest}) {
                             "damage": stats.defaults.damage, "damage_type": stats.defaults.damage_type
                         }}
                         targets={stats.targets}
+                        type={type}
                     />
-                </StatsContainer>
+                </ModifierContainer>
 
                 <ExtraStats data-m={mobile}>
-                    <DamageContainer data-m={mobile} data-dm={darkMode}>
+                    <DamageContainer data-m={mobile} data-dm={darkMode} data-t={type}>
                         <DamageStats
                             stats={{
                                 "damage": stats.modifiers.damage,
@@ -88,10 +86,11 @@ export default function Stats({stats, ...rest}) {
                                 "fortified_damage": stats.defaults.fortified_damage, "fortified_lead_damage": stats.defaults.fortified_lead_damage, "fortified_moab_damage": stats.defaults.fortified_moab_damage,
                                 "stun_damage": stats.defaults.stun_damage, "lead_damage": stats.defaults.lead_damage, "moab_damage": stats.defaults.moab_damage,
                             }}
+                            type={type}
                         />
                     </DamageContainer>
 
-                    <MoreContainer data-m={mobile} data-dm={darkMode}>
+                    <MoreContainer data-m={mobile} data-dm={darkMode} data-t={type}>
                         <MoreStats
                             stats={{
                                 "footprint": stats.modifiers.footprint, "hotkey": stats.modifiers.hotkey, "duration": stats.modifiers.duration,
@@ -103,14 +102,17 @@ export default function Stats({stats, ...rest}) {
                                 "income": stats.defaults.income, "cooldown": stats.defaults.cooldown,
                                 "crit_occurance": stats.defaults.crit_occurance, "delay": stats.defaults.delay
                             }}
+                            type={type}
                         />
                     </MoreContainer>
                 </ExtraStats>
 
                 {stats.notes.length > 0 && (
-                    <StatsContainer data-dm={darkMode}>
-                        <StatNotes notes={stats.notes} />
-                    </StatsContainer>
+                    <ModifierContainer data-dm={darkMode} data-t={type}>
+                        <StatsContainer title="Notes" direction="column" type={type}>
+                            <StatNotes notes={stats.notes} />
+                        </StatsContainer>
+                    </ModifierContainer>
                 )}
             </AllModifiersAndNotes>
         </>

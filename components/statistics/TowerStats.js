@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
-import TowerText from "../tower/TowerText";
+import StatsTargets from "./StatsTargets";
 import StatsContainer from "./StatsContainer";
 import StatItemWrapper from "./StatItemWrapper";
 import {getMobile} from "../../lib/redux/selectors";
-import StatsTargets from "./StatsTargets";
 
 const ItemsContainer = styled.div`
   width: ${props => props["data-m"] ? 100 : 100}%;
@@ -16,12 +15,12 @@ const ItemsContainer = styled.div`
   align-items: center;
 `;
 
-export default function TowerStats({stats, defaults, targets, ...rest}) {
+export default function TowerStats({stats, defaults, type, targets, ...rest}) {
     const mobile = useSelector(getMobile);
 
     return (
         <>
-            <StatsContainer title="Tower Stats" direction="column">
+            <StatsContainer title="Tower Stats" direction="column" type={type}>
                 <ItemsContainer data-m={mobile}>
                     <StatItemWrapper text="Damage" value={stats.damage} prevValue={defaults.damage} />
                     <StatItemWrapper text="Pierce" value={stats.pierce} prevValue={defaults.pierce} />

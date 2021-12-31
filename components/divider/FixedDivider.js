@@ -9,8 +9,9 @@ const FDivider = styled(Divider)`
   width: ${props => props["data-w"]}%;
   margin-top: 10px;
   margin-bottom: 10px;
+  border-width: ${props => props["data-h"] ? props["data-h"] : 1}px;
   height: ${props => props["data-h"] ? props["data-h"] : 1}px;
-
+  
   border-color: ${props => 
           props["data-bc"] 
                   ? props["data-bc"] 

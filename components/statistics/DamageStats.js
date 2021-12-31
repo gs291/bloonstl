@@ -18,12 +18,12 @@ const ItemsContainer = styled.div`
 `;
 
 
-export default function DamageStats({stats, defaults, ...rest}) {
+export default function DamageStats({stats, defaults, type, ...rest}) {
     const mobile = useSelector(getMobile);
 
     return (
         <>
-            <StatsContainer title="Damage Stats">
+            <StatsContainer title="Damage Stats" type={type}>
                 {mobile ? (
                     <>
                         <ItemsContainer data-m={mobile}>

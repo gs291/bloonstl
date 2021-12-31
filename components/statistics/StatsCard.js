@@ -2,12 +2,13 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import StatTab from "./StatTab";
+import StatNotes from "./StatNotes";
+import StatsTargets from "./StatsTargets";
 import TowerText from "../tower/TowerText";
+import {rgbaHex} from "../../lib/utils/utils";
 import StatItemWrapper from "./StatItemWrapper";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
-import StatsTargets from "./StatsTargets";
-import StatNotes from "./StatNotes";
 
 
 const CardContainer = styled.div`
@@ -27,7 +28,7 @@ const Card = styled.div`
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 
-  box-shadow: -5px 5px 5px 0 rgb(0 0 0 / 50%);
+  box-shadow: -5px 5px 5px 0 ${props => rgbaHex(props["data-dm"] ? siteColors.stats[props["data-t"]].dark : siteColors.stats[props["data-t"]].light, 0.5)};
   background-color: ${props => props["data-dm"] ? siteColors.stats[props["data-t"]].dark : siteColors.stats[props["data-t"]].light};
   border: 1px solid ${props => props["data-dm"] ? siteColors.stats[props["data-t"]].border.dark : siteColors.stats[props["data-t"]].border.light};
   border-top-width: 0;
@@ -101,11 +102,11 @@ const varToText = (variable) => variable &&
 const statCodeParser = (code) => {
     const codes = {
         "damage": "Damage", "pierce": "Pierce", "range": "Range", "attack_speed": "Atk Spd", "damage_type": "Type",
-        "camo_damage": "Camo", "ceramic_damage": "Ceramic", "crit_damage": "Crit", "boss_damage": "Boss",
-        "lead_damage": "Lead", "moab_damage": "Moab", "fortified_damage": "Fortified",
+        "camo_damage": "Camo", "ceramic_damage": "Ceramic", "crit_damage": "Crit", "boss_damage": "Boss", "pierce_impact": "P Impact",
+        "lead_damage": "Lead", "moab_damage": "Moab", "fortified_damage": "Fortified", "delay": "Delay", "max_per_round": "Max/Round",
         "fortified_lead_damage": "F Lead", "fortified_moab_damage": "F Moab", "status_damage": "Status",
-        "stun_damage": "Stun", "hotkey": "Hotkey", "footprint": "Footprint", "income": "Income",
-        "projectile_count": "Projectiles", "duration": "Duration", "cooldown": "Cooldown", "crit_occurance": "Crit Rate", "delay": "Delay",
+        "stun_damage": "Stun", "hotkey": "Hotkey", "footprint": "Footprint", "income": "Income", "slow": "Slow",
+        "projectile_count": "Projectiles", "duration": "Duration", "cooldown": "Cooldown", "crit_occurance": "Crit Rate",
     }
 
     return codes[code];
@@ -133,6 +134,11 @@ export default function StatsCard({stats, type, level = 1, parentBackgroundColor
                             <TowerText variant={level === 1 ? "h5" : "h6"}>
                                 {varToText(key)}
                             </TowerText>
+                            {stats[key].description !== "" && (
+                                <TowerText variant={level === 1 ? "subtitle2" : "caption"} font={true}>
+                                    {stats[key].description}
+                                </TowerText>
+                            )}
                         </TitleContainer>
                         <CardContent data-t={type} data-dm={darkMode}>
                             <Modifiers>
@@ -162,15 +168,7 @@ export default function StatsCard({stats, type, level = 1, parentBackgroundColor
                             )}
                             <StatsTargets targets={stats[key].targets} />
                             {stats[key].notes.length > 0 && (
-                                <ul>
-                                    {stats[key].notes.map(note => (
-                                        <ListItem key={note} data-dm={darkMode}>
-                                            <TowerText variant="body1" font={true} key={note}>
-                                                {note}
-                                            </TowerText>
-                                        </ListItem>
-                                    ))}
-                                </ul>
+                                <StatNotes notes={stats[key].notes} size="small"/>
                             )}
                         </CardContent>
                     </Card>
