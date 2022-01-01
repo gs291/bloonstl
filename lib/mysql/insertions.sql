@@ -110,7 +110,7 @@ INSERT INTO `AbilityTiersInfo` VALUES (NULL, @ability_tiers_boomerang_monkey_b, 
 
 
 --      Monkey - Bomb Shooter
-INSERT INTO `Monkeys` VALUES (NULL, 'Bomb Shooter', 'Primary', 'Launches a powerful bomb at the Bloons. Slow rate of fire but affects a radius around the explosion', 600, 'bomb-shooter.png');
+INSERT INTO `Monkeys` VALUES (NULL, 'Bomb Shooter', 'Primary', 'Launches a powerful bomb at the Bloons. Slow rate of fire but affects a radius around the explosion', 525, 'bomb-shooter.png');
 SELECT id INTO @bomb_shooter FROM Monkeys WHERE name='Bomb Shooter';
 INSERT INTO `Towers` VALUES (NULL, NULL, @bomb_shooter);
 SELECT id INTO @tower_bomb_shooter FROM Towers WHERE monkey_id=@bomb_shooter;
@@ -130,7 +130,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 0, 4, 'Bloon C
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 1, 0, 'Faster Reload', 'Reloads 20% faster.', 250, 180, '*75%s');
 INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 1, 1, 'Missile Launcher', 'Shoots missiles instead of bombs, missiles fly faster with longer range', 400, 640, '*73.33%,+4r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 1, 2, 'MOAB Mauler', 'MOAB Maulers do much more damage to MOAB-Class Bloons.', 900, 2700, '+5r,+1cd,+18md');
+INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 1, 2, 'MOAB Mauler', 'MOAB Maulers do much more damage to MOAB-Class Bloons.', 1100, 2700, '+5r,+1cd,+18md');
 INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, true, 1, 3, 'MOAB Assassin', 'Assassinate MOAB ability: Special missile flies out and does massive damage to MOAB-Class Bloons. Regular attack range and MOAB-class damage also increased.', 3200, 10000, '+5r,+3cd,+12md,abil:moab_assassin:30clt;750d;desc:Huge damage that targets the strongest blimp;attack:assassinate_explosion:3d=100p=30r=type:normal=desc:Deals damage after ability contact with blimp');
 INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, true, 1, 4, 'MOAB Eliminator', 'Assassinate ability does 6x damage with a shorter cooldown.', 25000, 35000, '+69md,type:normal,abil:moab_assassin:10clt;4500d');
 
@@ -229,7 +229,7 @@ INSERT INTO `TowerStats` VALUES (NULL, @tower_ice_monkey, 20, 40, 1, DEFAULT, DE
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 0, 'Permafrost', 'Bloons move slowly even after thawing out.', 100, 160, 'status:permafrost:50%slow;desc:50% slow on bloons. 25% slow on blimps (if targetable)');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 1, 'Metal Freeze', 'Can freeze and pop Lead Bloons.', 300, 500, '+lead,+camo,cross:204:attack:icicles:+lead');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 1, 'Cold Snap', 'Can freeze and pop Lead Bloons.', 250, 500, '+lead,+camo,cross:204:attack:icicles:+lead');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 2, 'Ice Shards', 'Razor sharp shards fly out when Frozen Bloons pop.', 1500, 2500, '+5r,attack:shards:1d;3j;3p;type:shatter;desc:Emitted when frozen bloons are popped');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 3, 'Embrittlement', 'Detects Camo Bloons and all Bloons hit become brittle, taking extra damage for a short time and losing Camo & Regrow properties permanently.', 2200, 8250, '+camo,+decamo,+degrow,+blimp,status:brittle:+1d;2dur;desc:Take +1 damage and no damage immunity,attack:shards:+decamo;+degrow');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 4, 'Super Brittle', 'Bloons take huge damage while frozen including MOAB-Class Bloons.', 28000, 25000, '*90%s,type:normal,status:brittle:+4d;3dur');
@@ -242,9 +242,9 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, true, 1, 3, 'Snowstorm'
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, true, 1, 4, 'Absolute Zero', 'Ability is so cold it freezes all regular Bloons for longer, including White, Zebra, and Camo, slows MOAB-class longer, and greatly increases the attack speed of all Ice Monkeys for the duration.', 26000, 27500, '+200p,+10r,+blimp,attack:slow:60%slow,note:(0-5-0) blimps will take damage but cannot be frozen,abil:snowstorm:20clt;1d;-1p;-1r;+camo;type:normal;note:all ice towers gain 66.66% attack speed buff for 10 seconds;note:(0-5-0) applies frozen status 10 seconds duration');
 
 --          Bottom Path
-INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 0, 'Larger Radius', 'Larger freeze area.', 100, 160, '+7r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 1, 'Re-Freeze', 'Can re-freeze Bloons that are already frozen.', 200, 500, 'type:glacier');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 2, 'Cryo Cannon', 'Shoots freezing bombs at Bloons over longer range.', 1750, 2500, '+1d,-10p,1s,-7r,-blimp,note:(0-0-3) applies frozen status (1.5s duration)');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 0, 'Larger Radius', 'Larger freeze area.', 175, 160, '+7r');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 1, 'Re-Freeze', 'Can re-freeze Bloons that are already frozen.', 225, 500, 'type:glacier');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 2, 'Cryo Cannon', 'Shoots freezing bombs at Bloons over longer range.', 1950, 2500, '+1d,-10p,1s,-7r,-blimp,note:(0-0-3) applies frozen status (1.5s duration)');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 3, 'Icicles', 'Frozen Bloons grow sharp icicles that can pop Bloons that touch them.', 2000, 9000, 'attack:icicles:2d;3p;type:sharp;desc:Icicles attached to frozen bloons');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 4, 'Icicle Impale', 'Shoots huge icicle spikes that do huge damage to MOAB-Class Bloons and freezes them.', 30000, 30000, '+48md,*75%s,type:shatter,+blimp,note:(0-0-5) Frozen ZOMGSs are 50% slower,note:(0-0-5) Other frozen blimps move at ZOMGs\' original speed');
 
@@ -347,7 +347,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, true, 1, 4, 'Elite S
 INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 2, 0, 'Fast Firing', 'Shoots faster than normal.', 400, 130, '*70%s');
 INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 2, 1, 'Even Faster Firing', 'Shoots even faster!', 400, 600, '*70%s');
 INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 2, 2, 'Semi-Automatic', 'Attacks 3x as fast!', 3500, 2750, '*33.33%s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 2, 3, 'Full Auto Rifle', 'Fully automatic weapon with incredible popping power, including damage to Lead Bloons.', 4750, 10000, '*50%s');
+INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 2, 3, 'Full Auto Rifle', 'Fully automatic weapon with incredible popping power, including damage to Lead Bloons.', 4250, 10000, '*50%s');
 INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 2, 4, 'Elite Defender', 'A lost life gives this Sniper 4x attack speed for a short time in retaliation. Also attacks faster the further the Bloons are along the track.', 14000, 30000, '*50%s,abil:retaliation:10clt;7dur;*25%s;desc:Leaking causes increased attack speed,note:additionally shoots x% faster. where x% is how far along the track the furthest forward bloon is');
 
 --          Ability Tiers - S
@@ -905,7 +905,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 0, 'Hard Thorns', 
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 1, 'Heart of Thunder', 'Unleashes regular blasts of forked lightning that arc from Bloon to Bloon.', 1000, 750, 'attack:lightning:desc:Attack gained by 2-0-0;5i;35r;2.3s;1d;type:plasma;note:If any pierce remain splits into 2;note:Both copies jump to a new target within 86 units,cross:205:note:(2-0-5) +1 damage for every 6000 total bloon count on screen capped at +15');
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 2, 'Druid of the Storm', 'Gusts of wind blow Bloons off the track away from the exit.', 2000, 2500, 'attack:tornado:0d;30p;2.5s;type:normal;-blimp;-lead;desc:Attack gained by 3-0-0;note:sends back 100-200 units;note:removes glue and frozen status');
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 3, 'Ball Lightning', 'Creates powerful balls of lightning that shoot additional lightning bolts.', 5500, 12000, 'attack:lightball:5dur;2d;43r;0.3s;desc:Attack gained by 4-0-0');
-INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 4, 'Superstorm', 'Superstorm blasts all Bloon types for massive damage and blows them away from the exit. Can blow away ZOMGs', 90000, 35000, '+camo,attack:lightning:+2d;+camo,attack:lightball:+3d;+camo,attack:superstorm:desc:Attack gained by 5-0-0;+camo;12d;200p;4s;-bad;5.7dur;note:MOABs use 5 pierce. BFBs 20 pierce. ZOMGs 50 pierce. DDTs 10 pierce;note:Removes glue and frozen status;note:Sends back at least 100 units');
+INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 4, 'Superstorm', 'Superstorm blasts all Bloon types for massive damage and blows them away from the exit. Can blow away ZOMGs', 80000, 35000, '+camo,attack:lightning:+2d;+camo,attack:lightball:+3d;+camo,attack:superstorm:desc:Attack gained by 5-0-0;+camo;12d;200p;4s;-bad;5.7dur;note:MOABs use 5 pierce. BFBs 20 pierce. ZOMGs 50 pierce. DDTs 10 pierce;note:Removes glue and frozen status;note:Sends back at least 100 units');
 
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 1, 0, 'Thorn Swarm', 'Shoots 8 thorns instead of 5.', 250, 140, '+3j');
@@ -1012,7 +1012,7 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_spike_factory, false, 0, 0, 'Bigger
 INSERT INTO `Abilities` VALUES (NULL, @tower_spike_factory, false, 0, 1, 'White Hot Spikes', 'Cuts through Lead Bloons and Frozen Bloons.', 600, 600, 'type:normal');
 INSERT INTO `Abilities` VALUES (NULL, @tower_spike_factory, false, 0, 2, 'Spiked Balls', 'Produces spiked balls that do extra damage to Ceramics and Fortified Bloons.', 2300, 2400, '+1d,+3cd,+1fd,+4p');
 INSERT INTO `Abilities` VALUES (NULL, @tower_spike_factory, false, 0, 3, 'Spiked Mines', 'Spiked mines explode violently when they lose all their spikes.', 11000, 15000, '+3cd,attack:explosion:desc:Attack gained by 4-0-0;10d;2cd;1fd;40p;19r;type:explosion:status:burn:1d=2s=6dur=desc:Burn applied by explosion');
-INSERT INTO `Abilities` VALUES (NULL, @tower_spike_factory, false, 0, 4, 'Super Mines', 'Creates gigantic exploding spiked mines that can wipe out almost anything.', 162500, 32500, '+48d,+14cd,+14fd,attack:mini_explosion:desc:Attack gained by 5-0-0;20d;10cd;5fd;30p;20r;type:normal,attack:explosion:+990d;0cd;+249fd;+20p;100r;type:normal');
+INSERT INTO `Abilities` VALUES (NULL, @tower_spike_factory, false, 0, 4, 'Super Mines', 'Creates gigantic exploding spiked mines that can wipe out almost anything.', 150000, 32500, '+48d,+14cd,+14fd,attack:mini_explosion:desc:Attack gained by 5-0-0;20d;10cd;5fd;30p;20r;type:normal,attack:explosion:+990d;0cd;+249fd;+20p;100r;type:normal');
 
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_spike_factory, false, 1, 0, 'Faster Production', 'Rapidly increases production rate.', 600, 180, '*80%s');
@@ -1099,7 +1099,7 @@ INSERT INTO `AbilityTiersInfo` VALUES (NULL, @ability_tiers_monkey_village_b, 's
 
 
 --      Monkey - Engineer Monkey
-INSERT INTO `Monkeys` VALUES (NULL, 'Engineer Monkey', 'Support', 'Holds a trusty nail-gun to pop the Bloons. Can upgrade to create its own nail-shooting sentry turrets.', 450, 'engineer-monkey.png');
+INSERT INTO `Monkeys` VALUES (NULL, 'Engineer Monkey', 'Support', 'Holds a trusty nail-gun to pop the Bloons. Can upgrade to create its own nail-shooting sentry turrets.', 400, 'engineer-monkey.png');
 SELECT id INTO @engineer_monkey FROM Monkeys WHERE name='Engineer Monkey';
 INSERT INTO `Towers` VALUES (NULL, NULL, @engineer_monkey);
 SELECT id INTO @tower_engineer_monkey FROM Towers WHERE monkey_id=@engineer_monkey;
@@ -1112,7 +1112,7 @@ INSERT INTO `TowerStats` VALUES (NULL, @tower_engineer_monkey, 40, 3, 1, DEFAULT
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 0, 0, 'Sentry Gun', 'Creates temporary sentry guns and deploys them nearby.', 500, 160, 'attack:sentry:desc:Sentry subtower creator;25dur;45r;0.95s;1d;2p;type:sharp;note:unable to be buffed by alchemist;note:(1-0-0) places a tower every 10 seconds randomly on land');
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 0, 1, 'Faster Engineering', 'Increased build speed produces sentries more often.', 400, 550, 'attack:sentry:note:(2-0-0) places a tower every 6 seconds randomly on land,cross:230:attack:place_foam:*60%s,cross:204:attack:trap:9s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 0, 2, 'Sprockets', 'Increased sentry gun and Engineer attack speed.', 525, 1850, '*60%s,attack:sentry:*60%s');
+INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 0, 2, 'Sprockets', 'Increased sentry gun and Engineer attack speed.', 575, 1850, '*60%s,attack:sentry:*60%s');
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 0, 3, 'Sentry Expert', 'Sentries deploy with different damage types based on your need.', 2500, 9500, 'attack:crushing_sentry:desc:One of four sentries gained by 4-0-0;2d;1cd;22p;50r;1.1s;type:sharp,attack:boom_sentry:desc:One of four sentries gained by 4-0-0;50r;0.9s;2d;30p;type:explosion,attack:cold_sentry:desc:One of four sentries gained by 4-0-0;50r;1d;15p;type:cold,attack:energy_sentry:desc:One of four sentries gained by 4-0-0;2d;8p;50r;0.57s;type:energy,note:(4-0-0) places crushing_sentry boom_sentry cold_sentry energy_sentry on a cycle. Sentries may be skipped');
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 0, 4, 'Sentry Paragon', 'Creates super-powerful but highly unstable sentries.', 32000, 30000, 'attack:champion_sentry_plasma:desc:Sentry gained by 5-0-0;2d;5p;50r;0.06s;type:plasma,attack:champion_sentry_self_destruct:100d;50p;50r;type:plasma;desc:Self exploding attack;note:activates when sold or 2 seconds after expiring');
 

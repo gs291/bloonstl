@@ -17,7 +17,6 @@ const StyledTooltip = styled(({ className, ...other }) => (
   
   margin-left: 15px;
   margin-right: 15px;
-  ${props => props["data-m"] ? "margin-bottom: 10px;" : ""}
   
   border: 2px solid ${props =>
           props["data-a"] 
