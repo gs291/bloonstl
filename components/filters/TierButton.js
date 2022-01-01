@@ -19,7 +19,10 @@ const Button = styled.div`
   &:hover {
     cursor: pointer;
     transform: scale(1.2);
-    box-shadow: 5px 5px 7.5px 0 ${props => props["data-dm"] ? siteColors.page.light : siteColors.page.dark};
+    box-shadow: 5px 5px 7.5px 0 ${props => props["data-t"] 
+            ? getTierColor(props["data-t"]) 
+            : props["data-dm"] ? siteColors.page.light : siteColors.page.dark
+    };
     border: 5px solid ${props => getTierColor(props["data-t"])};
   }
 `;

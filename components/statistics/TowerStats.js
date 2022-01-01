@@ -5,6 +5,7 @@ import StatsTargets from "./StatsTargets";
 import StatsContainer from "./StatsContainer";
 import StatItemWrapper from "./StatItemWrapper";
 import {getMobile} from "../../lib/redux/selectors";
+import {getMonkeyColor} from "../../lib/utils/utils";
 
 const ItemsContainer = styled.div`
   width: ${props => props["data-m"] ? 100 : 100}%;
@@ -22,12 +23,12 @@ export default function TowerStats({stats, defaults, type, targets, ...rest}) {
         <>
             <StatsContainer title="Tower Stats" direction="column" type={type}>
                 <ItemsContainer data-m={mobile}>
-                    <StatItemWrapper text="Damage" value={stats.damage} prevValue={defaults.damage} />
-                    <StatItemWrapper text="Pierce" value={stats.pierce} prevValue={defaults.pierce} />
-                    <StatItemWrapper text="Range" value={stats.range} prevValue={defaults.range} />
-                    <StatItemWrapper text="Atk Spd" value={stats.attack_speed} prevValue={defaults.attack_speed} />
-                    <StatItemWrapper text="Projectiles" value={stats.projectile_count} prevValue={defaults.projectile_count} />
-                    <StatItemWrapper text="Type" value={stats.damage_type} prevValue={defaults.damage_type} />
+                    <StatItemWrapper text="Damage" value={stats.damage} prevValue={defaults.damage} data-s={getMonkeyColor(type)} />
+                    <StatItemWrapper text="Pierce" value={stats.pierce} prevValue={defaults.pierce} data-s={getMonkeyColor(type)} />
+                    <StatItemWrapper text="Range" value={stats.range} prevValue={defaults.range} data-s={getMonkeyColor(type)} />
+                    <StatItemWrapper text="Atk Spd" value={stats.attack_speed} prevValue={defaults.attack_speed} data-s={getMonkeyColor(type)} />
+                    <StatItemWrapper text="Projectiles" value={stats.projectile_count} prevValue={defaults.projectile_count} data-s={getMonkeyColor(type)} />
+                    <StatItemWrapper text="Type" value={stats.damage_type} prevValue={defaults.damage_type} data-s={getMonkeyColor(type)} />
                 </ItemsContainer>
                 <ItemsContainer>
                     <StatsTargets targets={targets} />

@@ -31,7 +31,11 @@ const ItemContainer = styled.div`
 
   &:hover  {
     cursor: pointer;
-    box-shadow: 0 0 5px 5px ${props => props["data-dm"] ? siteColors.stats.hover.dark : siteColors.stats.hover.light};
+    box-shadow: 0 0 5px 5px ${props => 
+            props["data-s"] 
+                    ? props["data-s"] 
+                    :  props["data-dm"] ? siteColors.stats.hover.dark : siteColors.stats.hover.light
+    };
   }
 `;
 

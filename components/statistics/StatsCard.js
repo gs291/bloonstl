@@ -148,7 +148,7 @@ export default function StatsCard({stats, type, level = 1, parentBackgroundColor
                                         || (mod === "projectile_count" && stats[key].modifiers[mod] > 1))) {
                                         return (
                                             <ModifierContainer key={mod}>
-                                                <StatItemWrapper text={statCodeParser(mod)} value={stats[key].modifiers[mod]} size="small" counter={false}/>
+                                                <StatItemWrapper text={statCodeParser(mod)} value={stats[key].modifiers[mod]} size="small" counter={false} data-s={darkMode ? siteColors.stats[type].dark : siteColors.stats[type].light}/>
                                             </ModifierContainer>
                                         );
                                     }
