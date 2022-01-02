@@ -11,7 +11,8 @@ const StyledTooltip = styled(({ className, ...other }) => (
     <MUITooltip classes={{ tooltip: className }} {...other} />
 ))`
   background-color: ${props => props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
-  width: 300px;
+  max-width: ${props => props["data-m"] ? 300 : 600}px;
+  
   transition: 0.3s;
   padding: 4px 6px;
   

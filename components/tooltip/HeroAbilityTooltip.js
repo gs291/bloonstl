@@ -1,26 +1,17 @@
 import TowerText from "../tower/TowerText";
+import AbilityModifiersTooltip from "./AbilityModifiersTooltip";
 
-export default function HeroAbilityTooltip({ ability }) {
+export default function HeroAbilityTooltip({ ability, pathTier }) {
 
     return (
         <>
-            { ability.active === 1 && (
-                <>
-                    <TowerText variant="h5">
-                        {ability.name}
-                    </TowerText>
-                    <TowerText variant="body1" font={true}>
-                        {ability.description}
-                    </TowerText>
-                </>
-            )}
-            { ability.active === 0 && (
-                <>
-                    <TowerText variant="body1" font={true}>
-                        {ability.description}
-                    </TowerText>
-                </>
-            )}
+            <TowerText variant="h5">
+                {ability.name !== "" ? ability.name : `Level ${pathTier + 1}`}
+            </TowerText>
+            <TowerText variant="body1" font={true}>
+                {ability.description}
+            </TowerText>
+            <AbilityModifiersTooltip modifiers={ability.modifiers} />
         </>
     );
 }

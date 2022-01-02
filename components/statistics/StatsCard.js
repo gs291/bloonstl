@@ -5,10 +5,10 @@ import StatTab from "./StatTab";
 import StatNotes from "./StatNotes";
 import StatsTargets from "./StatsTargets";
 import TowerText from "../tower/TowerText";
-import {rgbaHex} from "../../lib/utils/utils";
 import StatItemWrapper from "./StatItemWrapper";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {getStatAttributeText, rgbaHex} from "../../lib/utils/utils";
 
 
 const CardContainer = styled.div`
@@ -89,16 +89,6 @@ const TitleContainer = styled.div`
   text-align: center;
 `;
 
-const ListItem = styled.li`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-`;
-
-const varToText = (variable) => variable &&
-    variable
-        .split('_')
-        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-        .join(' ');
-
 const statCodeParser = (code) => {
     const codes = {
         "damage": "Damage", "pierce": "Pierce", "range": "Range", "attack_speed": "Atk Spd", "damage_type": "Type",
@@ -132,7 +122,7 @@ export default function StatsCard({stats, type, level = 1, parentBackgroundColor
                     <Card data-t={type} data-dm={darkMode}>
                         <TitleContainer>
                             <TowerText variant={level === 1 ? "h5" : "h6"}>
-                                {varToText(key)}
+                                {getStatAttributeText(key)}
                             </TowerText>
                             {stats[key].description !== "" && (
                                 <TowerText variant={level === 1 ? "subtitle2" : "caption"} font={true}>

@@ -63,6 +63,9 @@ export default class MonkeyAbilities extends PureComponent {
 
         const tempStats = getInitialTowerStats(stats);
 
+        // This loop takes advantage to the sorted abilities obtained from the database
+        // all abilities are sorted by first ascending ability path then ascending ability tier
+        // i.e. sorted by index (0-5 is top path) (5-10 is middle path) (10-15 is bottom path)
         let i = 0;
         for (i; i < 3; i++) {
             let j = order[i];

@@ -27,7 +27,7 @@ export default class HeroAbilities extends PureComponent {
         abilities.forEach(ability => {
             dividedAbilities[Math.floor(ability.upgrade_tier / 5)]
                 .push((
-                    <AbilityContainer ability={ability} fileName={heroFile} towerType="hero" key={ability.id} />
+                    <AbilityContainer ability={ability} fileName={heroFile} towerType="hero" key={ability.id} pathTier={ability.upgrade_tier} />
                 ))
         })
 

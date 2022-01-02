@@ -68,7 +68,7 @@ const ActivatedAbility = styled(OfflineBoltIcon)`
   }
 `;
 
-export default function Ability({className, ability, fileName, tier, towerType, selected}) {
+export default function Ability({className, ability, fileName, tier, towerType, selected, path, pathTier, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
     return (
@@ -81,6 +81,8 @@ export default function Ability({className, ability, fileName, tier, towerType, 
                             tier={tier}
                             towerType={towerType}
                             selected={selected}
+                            path={path}
+                            pathTier={pathTier}
                         />}
                     active={ability.active}
                 >
