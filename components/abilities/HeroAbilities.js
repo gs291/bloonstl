@@ -37,7 +37,7 @@ export default class HeroAbilities extends PureComponent {
     }
 
     getAbilities() {
-        const {abilities, heroFile} = this.props;
+        const {abilities, tiers, heroFile} = this.props;
 
         let dividedAbilities = [ [], [], [], [], [] ];
 
@@ -58,11 +58,10 @@ export default class HeroAbilities extends PureComponent {
 
 
     render() {
-        const {className, abilities, heroFile} = this.props;
+        const {className} = this.props;
 
         const { firstFiveAbilities, secondFiveAbilities, thirdFiveAbilities, fourthFiveAbilities} = this.getAbilities();
 
-        console.log(firstFiveAbilities, secondFiveAbilities, thirdFiveAbilities, fourthFiveAbilities);
         return (
             <>
                 <GridContainer container spacing={2} className={className}>
