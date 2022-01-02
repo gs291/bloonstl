@@ -73,7 +73,6 @@ export default class MonkeyAbilities extends PureComponent {
             const limit = j + 5;
             for(j; j < limit; j++) {
                 if (abilities[j].upgrade_tier < tiers[path]) {
-
                     tempStats.cost = tempStats.cost + abilities[j].cost_gold;
                     parseAbilityModifiers(abilities[j].modifiers, tiers, tempStats);
                 }

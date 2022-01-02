@@ -13,6 +13,8 @@ import {useState} from "react";
 import StatsAbilities from "../statistics/StatsAbilities";
 import {useSelector} from "react-redux";
 import {getMobile} from "../../lib/redux/selectors";
+import SandboxSwitch from "../filters/SandboxSwitch";
+import TierPathText from "../tower/TierPathText";
 
 
 const FilterDiff = styled(FilterDifficulty)`
@@ -33,26 +35,41 @@ const Title = styled(TowerText)`
   cursor: default;
 `;
 
+const Abilities = styled(HeroAbilities)`
+  margin-bottom: 20px;
+`
+
 export default function HeroPage({ hero }) {
     const mobile = useSelector(getMobile);
     const dividerBackgroundColor = getHeroColor(hero.name);
+
+    const [ path, setPath ] = useState(0);
+    const [ sandbox, setSandbox ] = useState(false);
     const [ stats, setStats ] = useState(getInitialTowerStats(hero.stats));
 
-    const abilLength = Object.keys(stats.abils).length;
-    const attkLength = Object.keys(stats.attacks).length;
-    const buffLength = Object.keys(stats.buffs).length;
-    const statusLength = Object.keys(stats.statuses).length;
 
     return (
         <>
             <TowerImgInfo tower={hero} towerType="hero" />
             <HorizontalAD />
-            <Stats stats={stats} type={hero.name} towerType="hero" />
+            {stats && (
+                <Stats stats={stats} type={hero.name} towerType="hero" />
+            )}
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <HeroAbilities abilities={ hero.abilities } heroFile={ hero.filename } setStats={setStats}/>
-            {(abilLength > 0 || attkLength > 0 || buffLength > 0 || statusLength > 0) && (
+            <TierPathText tier={hero.tier} tiers={{"top_path": path + 1}} towerType="hero" />
+            <SandboxSwitch sandbox={sandbox} setSandbox={setSandbox} />
+            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+            <Abilities
+                abilities={ hero.abilities } heroFile={ hero.filename }
+                defaultStats={hero.stats} setStats={setStats} sandbox={sandbox}
+                path={path} setPath={setPath}
+            />
+            {stats && ((Object.keys(stats.abils).length > 0
+                || Object.keys(stats.attacks).length > 0
+                || Object.keys(stats.buffs).length > 0
+                || Object.keys(stats.statuses).length > 0)) && (
                 <>
                     <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
                     <TitleOnTop variant={mobile ? "h5" : "h4"}>

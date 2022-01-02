@@ -73,7 +73,7 @@ export default function Ability({className, ability, fileName, tier, towerType, 
     const darkMode = useSelector(getDarkMode);
     return (
         <>
-            <AbilityContainer className={className}>
+            <AbilityContainer className={className} {...rest}>
                 <Tooltip
                     title={
                         <AbilityTooltip

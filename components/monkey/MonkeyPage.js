@@ -58,16 +58,13 @@ export default function MonkeyPage({ monkey }) {
 
     const tiers = monkey.tiers[tier][page-1];
 
-    const abilLength = Object.keys(stats.abils).length;
-    const attkLength = Object.keys(stats.attacks).length;
-    const buffLength = Object.keys(stats.buffs).length;
-    const statusLength = Object.keys(stats.statuses).length;
-
     return (
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
             <HorizontalAD />
-            <Stats stats={stats} type={monkey.type} />
+            {stats && (
+                <Stats stats={stats} type={monkey.type} />
+            )}
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
@@ -83,7 +80,10 @@ export default function MonkeyPage({ monkey }) {
                 stats={monkey.stats} setStats={setStats}
             />
             <FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />
-            {(abilLength > 0 || attkLength > 0 || buffLength > 0 || statusLength > 0) && (
+            {stats && ((Object.keys(stats.abils).length > 0
+                || Object.keys(stats.attacks).length > 0
+                || Object.keys(stats.buffs).length > 0
+                || Object.keys(stats.statuses).length > 0)) && (
                 <>
                     <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
                     <TitleOnTop variant={mobile ? "h5" : "h4"}>

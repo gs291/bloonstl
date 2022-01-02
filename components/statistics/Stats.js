@@ -115,7 +115,7 @@ export default function Stats({stats, type, towerType = "monkey", ...rest}) {
 
                 {stats.notes.length > 0 && (
                     <ModifierContainer data-dm={darkMode} data-t={type} data-tow={towerType}>
-                        <StatsContainer title="Notes" direction="column" type={type} towerType={type}>
+                        <StatsContainer title="Notes" direction="column" type={type} towerType={towerType}>
                             <StatNotes notes={stats.notes} />
                         </StatsContainer>
                     </ModifierContainer>

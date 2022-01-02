@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { PureComponent } from "react";
 
 import AbilityContainer from "../ability/AbilityContainer";
+import {getInitialTowerStats, parseAbilityModifiers} from "../../lib/utils/utils";
 
 const GridContainer = styled(Grid)`
   display: flex;
@@ -25,26 +26,44 @@ export default class HeroAbilities extends PureComponent {
         this.getAbilityStats = this.getAbilityStats.bind(this);
     }
 
-    // componentDidMount() {
-    //     this.props.setStats(this.getAbilityStats());
-    // }
-    // componentDidUpdate(_, __, ___) {
-    //     this.props.setStats(this.getAbilityStats());
-    // }
+    componentDidMount() {
+        this.props.setStats(this.getAbilityStats());
+    }
+    componentDidUpdate(_, __, ___) {
+        this.props.setStats(this.getAbilityStats());
+    }
 
     getAbilityStats() {
+        const {abilities, path, defaultStats} = this.props;
 
+        const tempStats = getInitialTowerStats(defaultStats);
+
+        abilities.forEach(ability => {
+            if (ability.upgrade_tier < path + 1) {
+                parseAbilityModifiers(ability.modifiers, null, tempStats);
+            }
+        })
+
+        return { ...tempStats }
     }
 
     getAbilities() {
-        const {abilities, tiers, heroFile} = this.props;
+        const {abilities, path, sandbox, setPath, heroFile} = this.props;
 
         let dividedAbilities = [ [], [], [], [], [] ];
 
         abilities.forEach(ability => {
             dividedAbilities[Math.floor(ability.upgrade_tier / 5)]
                 .push((
-                    <AbilityContainer ability={ability} fileName={heroFile} towerType="hero" key={ability.id} pathTier={ability.upgrade_tier} />
+                    <AbilityContainer
+                        ability={ability}
+                        fileName={heroFile}
+                        towerType="hero"
+                        key={ability.id}
+                        pathTier={ability.upgrade_tier}
+                        selected={path + 1 > ability.upgrade_tier}
+                        onClick={sandbox ? () => setPath(ability.upgrade_tier) : () => {}}
+                    />
                 ))
         })
 

@@ -21,19 +21,26 @@ const TierContainer = styled.div`
 `;
 
 
-export default function TierPathText ({ className, tier, tiers }) {
+export default function TierPathText ({ className, tier, tiers, towerType}) {
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <TierContainer className={className}>
-                <Tier variant="h3" component="h2" name={tier} data-dm={darkMode}>
-                    { tiers.top_path }
-                    &nbsp;-&nbsp;
-                    { tiers.middle_path }
-                    &nbsp;-&nbsp;
-                    { tiers.bottom_path }
-                </Tier>
+                {towerType === "hero" ? (
+                    <Tier variant="h3" component="h2" name={tier} data-dm={darkMode}>
+                        Level {tiers.top_path}
+                    </Tier>
+                ) : (
+                    <Tier variant="h3" component="h2" name={tier} data-dm={darkMode}>
+                        { tiers.top_path }
+                        &nbsp;-&nbsp;
+                        { tiers.middle_path }
+                        &nbsp;-&nbsp;
+                        { tiers.bottom_path }
+                    </Tier>
+                )}
+
             </TierContainer>
         </>
     );
