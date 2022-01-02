@@ -76,10 +76,11 @@ export default function Ability({className, ability, fileName, tier, towerType, 
             <AbilityContainer className={className}>
                 <Tooltip
                     title={
-                        <AbilityTooltip ability={ability}
-                                        tier={tier}
-                                        towerType={towerType}
-                                        selected={selected}
+                        <AbilityTooltip
+                            ability={ability}
+                            tier={tier}
+                            towerType={towerType}
+                            selected={selected}
                         />}
                     active={ability.active}
                 >
