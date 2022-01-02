@@ -19,8 +19,25 @@ const GridItem = styled(Grid)`
 
 export default class HeroAbilities extends PureComponent {
 
-    render() {
-        const {className, abilities, heroFile} = this.props;
+    constructor(props){
+        super(props);
+        this.getAbilities = this.getAbilities.bind(this);
+        this.getAbilityStats = this.getAbilityStats.bind(this);
+    }
+
+    // componentDidMount() {
+    //     this.props.setStats(this.getAbilityStats());
+    // }
+    // componentDidUpdate(_, __, ___) {
+    //     this.props.setStats(this.getAbilityStats());
+    // }
+
+    getAbilityStats() {
+
+    }
+
+    getAbilities() {
+        const {abilities, heroFile} = this.props;
 
         let dividedAbilities = [ [], [], [], [], [] ];
 
@@ -31,23 +48,35 @@ export default class HeroAbilities extends PureComponent {
                 ))
         })
 
+        return {
+            "firstFiveAbilities": dividedAbilities[0],
+            "secondFiveAbilities": dividedAbilities[1],
+            "thirdFiveAbilities": dividedAbilities[2],
+            "fourthFiveAbilities": dividedAbilities[3],
+        }
+    }
+
+
+    render() {
+        const {className, abilities, heroFile} = this.props;
+
+        const { firstFiveAbilities, secondFiveAbilities, thirdFiveAbilities, fourthFiveAbilities} = this.getAbilities();
+
+        console.log(firstFiveAbilities, secondFiveAbilities, thirdFiveAbilities, fourthFiveAbilities);
         return (
             <>
                 <GridContainer container spacing={2} className={className}>
                     <GridItem item>
-                        { dividedAbilities[0] }
+                        { firstFiveAbilities }
                     </GridItem>
                     <GridItem item>
-                        { dividedAbilities[1] }
+                        { secondFiveAbilities }
                     </GridItem>
                     <GridItem item>
-                        { dividedAbilities[2] }
+                        { thirdFiveAbilities }
                     </GridItem>
                     <GridItem item>
-                        { dividedAbilities[3] }
-                    </GridItem>
-                    <GridItem item>
-                        { dividedAbilities[4] }
+                        { fourthFiveAbilities }
                     </GridItem>
                 </GridContainer>
             </>

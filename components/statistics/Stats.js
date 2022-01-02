@@ -7,7 +7,7 @@ import TowerStats from "./TowerStats";
 import DamageStats from "./DamageStats";
 import StatsContainer from "./StatsContainer";
 import siteColors from "../../lib/utils/siteColors";
-import {getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
+import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const AllModifiersAndNotes = styled.div`
@@ -32,7 +32,10 @@ const ModifierContainer = styled.div`
   transition: 0.3s;
   border: 6px solid ${props =>
           props["data-t"]
-                  ? rgbaHex(getMonkeyColor(props["data-t"]), props["data-dm"] ? 0.5 : 1)
+                  ? rgbaHex(props["data-tow"] === "hero" 
+                          ? getHeroColor(props["data-t"]) 
+                          :  getMonkeyColor(props["data-t"])
+                          , props["data-dm"] ? 0.5 : 1)
                   : props["data-dm"] ? siteColors.stats.dark : siteColors.stats.light
   };
 `;
@@ -45,14 +48,14 @@ const MoreContainer = styled(ModifierContainer)`
   width: ${props => props["data-m"] ? 100 : 30}%;
 `;
 
-export default function Stats({stats, type, ...rest}) {
+export default function Stats({stats, type, towerType = "monkey", ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <AllModifiersAndNotes data-m={mobile}>
-                <ModifierContainer data-dm={darkMode} data-t={type}>
+                <ModifierContainer data-dm={darkMode} data-t={type} data-tow={towerType}>
                     <TowerStats
                         stats={{
                             "attack_speed": stats.modifiers.attack_speed, "range": stats.modifiers.range,
@@ -66,11 +69,12 @@ export default function Stats({stats, type, ...rest}) {
                         }}
                         targets={stats.targets}
                         type={type}
+                        towerType={towerType}
                     />
                 </ModifierContainer>
 
                 <ExtraStats data-m={mobile}>
-                    <DamageContainer data-m={mobile} data-dm={darkMode} data-t={type}>
+                    <DamageContainer data-m={mobile} data-dm={darkMode} data-t={type} data-tow={towerType}>
                         <DamageStats
                             stats={{
                                 "damage": stats.modifiers.damage,
@@ -87,10 +91,11 @@ export default function Stats({stats, type, ...rest}) {
                                 "stun_damage": stats.defaults.stun_damage, "lead_damage": stats.defaults.lead_damage, "moab_damage": stats.defaults.moab_damage,
                             }}
                             type={type}
+                            towerType={towerType}
                         />
                     </DamageContainer>
 
-                    <MoreContainer data-m={mobile} data-dm={darkMode} data-t={type}>
+                    <MoreContainer data-m={mobile} data-dm={darkMode} data-t={type} data-tow={towerType}>
                         <MoreStats
                             stats={{
                                 "footprint": stats.modifiers.footprint, "hotkey": stats.modifiers.hotkey, "duration": stats.modifiers.duration,
@@ -103,13 +108,14 @@ export default function Stats({stats, type, ...rest}) {
                                 "crit_occurance": stats.defaults.crit_occurance, "delay": stats.defaults.delay
                             }}
                             type={type}
+                            towerType={towerType}
                         />
                     </MoreContainer>
                 </ExtraStats>
 
                 {stats.notes.length > 0 && (
-                    <ModifierContainer data-dm={darkMode} data-t={type}>
-                        <StatsContainer title="Notes" direction="column" type={type}>
+                    <ModifierContainer data-dm={darkMode} data-t={type} data-tow={towerType}>
+                        <StatsContainer title="Notes" direction="column" type={type} towerType={type}>
                             <StatNotes notes={stats.notes} />
                         </StatsContainer>
                     </ModifierContainer>

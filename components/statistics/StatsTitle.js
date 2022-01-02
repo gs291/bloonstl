@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
-import {getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
+import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
 
 const TitleContainer = styled.div`
   width: 100%;
@@ -13,8 +13,10 @@ const TitleContainer = styled.div`
   border-top-right-radius: 3px;
 
   background-color: ${props =>
-          rgbaHex(props["data-t"]
-                          ? getMonkeyColor(props["data-t"])
+          rgbaHex(props["data-t"] 
+                          ? props["data-tow"] === "hero" 
+                                  ? getHeroColor(props["data-t"]) 
+                                  :  getMonkeyColor(props["data-t"])
                           : props["data-dm"] ? siteColors.page.dark : siteColors.page.light
                   , props["data-dm"] ? 0.5 : 1)};
 `;
@@ -28,12 +30,12 @@ const Title = styled(TowerText)`
   
 `;
 
-export default function StatsTitle({title, type, ...rest}) {
+export default function StatsTitle({title, type, towerType, ...rest}) {
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <TitleContainer data-t={type} data-dm={darkMode} {...rest}>
+            <TitleContainer data-t={type} data-dm={darkMode} data-tow={towerType} {...rest}>
                 <TitleWrapper>
                     <Title variant="h5">
                         {title}
