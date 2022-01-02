@@ -10,11 +10,11 @@ import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
 import HorizontalAD from "../advertisment/HorizontalAD";
-import StatsAbilities from "../statistics/StatsAbilities";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
 import AbilityPathSelection from "../ability/AbilityPathSelection";
+import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
 import {getInitialTowerStats, getMonkeyColor} from "../../lib/utils/utils";
 
 const TotalCost = styled(TowerText)`
@@ -30,12 +30,6 @@ const FilterDiff = styled(FilterDifficulty)`
 const Title = styled(TowerText)`
   margin-top: 10px;
   margin-bottom: 30px;
-  text-align: center;
-  cursor: default;
-`;
-
-const TitleOnTop = styled(TowerText)`
-  margin-top: 10px;
   text-align: center;
   cursor: default;
 `;
@@ -62,9 +56,7 @@ export default function MonkeyPage({ monkey }) {
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
             <HorizontalAD />
-            {stats && (
-                <Stats stats={stats} type={monkey.type} />
-            )}
+            <Stats stats={stats} type={monkey.type} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
@@ -80,21 +72,7 @@ export default function MonkeyPage({ monkey }) {
                 stats={monkey.stats} setStats={setStats}
             />
             <FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />
-            {stats && ((Object.keys(stats.abils).length > 0
-                || Object.keys(stats.attacks).length > 0
-                || Object.keys(stats.buffs).length > 0
-                || Object.keys(stats.statuses).length > 0)) && (
-                <>
-                    <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-                    <TitleOnTop variant={mobile ? "h5" : "h4"}>
-                        Ability Path
-                    </TitleOnTop>
-                    <Title variant={mobile ? "h5" : "h4"}>
-                        Abilities / Attacks / Buffs / Statuses
-                    </Title>
-                    <StatsAbilities stats={stats}/>
-                </>
-            )}
+            <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h5" : "h4"}>
                 Ability Path Pros / Cons

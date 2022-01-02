@@ -1,20 +1,20 @@
+import {useState} from "react";
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 
+import Stats from "../statistics/Stats";
 import ProsCons from "../tower/ProsCons";
 import TowerText from "../tower/TowerText";
+import TierPathText from "../tower/TierPathText";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
-import {getHeroColor, getInitialTowerStats} from "../../lib/utils/utils";
+import {getMobile} from "../../lib/redux/selectors";
+import SandboxSwitch from "../filters/SandboxSwitch";
 import HeroAbilities from "../abilities/HeroAbilities";
 import HorizontalAD from "../advertisment/HorizontalAD";
 import FilterDifficulty from "../filters/FilterDifficulty";
-import Stats from "../statistics/Stats";
-import {useState} from "react";
-import StatsAbilities from "../statistics/StatsAbilities";
-import {useSelector} from "react-redux";
-import {getMobile} from "../../lib/redux/selectors";
-import SandboxSwitch from "../filters/SandboxSwitch";
-import TierPathText from "../tower/TierPathText";
+import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
+import {getHeroColor, getInitialTowerStats} from "../../lib/utils/utils";
 
 
 const FilterDiff = styled(FilterDifficulty)`
@@ -36,7 +36,7 @@ const Title = styled(TowerText)`
 `;
 
 const Abilities = styled(HeroAbilities)`
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 `
 
 export default function HeroPage({ hero }) {
@@ -52,9 +52,7 @@ export default function HeroPage({ hero }) {
         <>
             <TowerImgInfo tower={hero} towerType="hero" />
             <HorizontalAD />
-            {stats && (
-                <Stats stats={stats} type={hero.name} towerType="hero" />
-            )}
+            <Stats stats={stats} type={hero.name} towerType="hero" />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
@@ -66,21 +64,7 @@ export default function HeroPage({ hero }) {
                 defaultStats={hero.stats} setStats={setStats} sandbox={sandbox}
                 path={path} setPath={setPath}
             />
-            {stats && ((Object.keys(stats.abils).length > 0
-                || Object.keys(stats.attacks).length > 0
-                || Object.keys(stats.buffs).length > 0
-                || Object.keys(stats.statuses).length > 0)) && (
-                <>
-                    <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-                    <TitleOnTop variant={mobile ? "h5" : "h4"}>
-                        Ability Path
-                    </TitleOnTop>
-                    <Title variant={mobile ? "h5" : "h4"}>
-                        Abilities / Attacks / Buffs / Statuses
-                    </Title>
-                    <StatsAbilities stats={stats}/>
-                </>
-            )}
+            <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h5" : "h4"}>
                 Ability Path Pros / Cons
