@@ -22,17 +22,25 @@ const FilterDiff = styled(FilterDifficulty)`
   margin-bottom: 10px;
 `;
 
-const TitleOnTop = styled(TowerText)`
-  margin-top: 10px;
-  text-align: center;
-  cursor: default;
-`;
-
 const Title = styled(TowerText)`
   margin-top: 10px;
   margin-bottom: 30px;
   text-align: center;
   cursor: default;
+`;
+
+const SmallTitle = styled(TowerText)`
+  margin-top: 10px;
+  text-align: center;
+  cursor: default;
+`;
+
+const SandboxMode = styled(SandboxSwitch)`
+  margin-bottom: 15px;
+`;
+
+const TierText = styled(TierPathText)`
+  margin-bottom: 15px;
 `;
 
 const Abilities = styled(HeroAbilities)`
@@ -56,9 +64,20 @@ export default function HeroPage({ hero }) {
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <TierPathText tier={hero.tier} tiers={{"top_path": path + 1}} towerType="hero" />
-            <SandboxSwitch sandbox={sandbox} setSandbox={setSandbox} />
+            <SmallTitle variant={mobile ? "h5" : "h4"}>
+                Sandbox Mode
+            </SmallTitle>
+            <SandboxMode sandbox={sandbox} setSandbox={setSandbox} tier={hero.tier} />
+            <TierText tier={hero.tier} tiers={{"top_path": path + 1}} towerType="hero" />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+            <SmallTitle variant={mobile ? "h5" : "h4"}>
+                Ability Path
+            </SmallTitle>
+            {sandbox && (
+                <TowerText variant={mobile ? "h6" : "h5"} font={true}>
+                    Click on an ability to change the path!
+                </TowerText>
+            )}
             <Abilities
                 abilities={ hero.abilities } heroFile={ hero.filename }
                 defaultStats={hero.stats} setStats={setStats} sandbox={sandbox}
