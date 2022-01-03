@@ -183,7 +183,7 @@ export default function SandboxSwitch({sandbox, setSandbox, handleReset, tier, t
                         {towerType === "monkey" && (
                             <CaptionText>
                                 <TowerText variant={mobile ? "caption" : "caption"} font={true}>
-                                    * Don't forget to follow BTD 6 Path Rules!
+                                    * Sandbox mode follows BTD 6 Path Rules!
                                 </TowerText>
                                 <TowerText variant={mobile ? "caption" : "caption"} font={true}>
                                     * (e.g. 2-0-5 or 2-2-0 are valid while 1-1-1 or 5-3-0 are not)

@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {Typography} from "@mui/material";
 
-import {getTierColor, rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {getTierColor, rgbaHex} from "../../lib/utils/utils";
 
 
 const Button = styled.div`
