@@ -36,6 +36,10 @@ const StyledTooltip = styled(({ className, ...other }) => (
   }
 `;
 
+const TooltipContainer = styled.div``;
+
+const ContentContainer = styled.div``;
+
 export default function Tooltip({className, children, title, active}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
@@ -52,7 +56,7 @@ export default function Tooltip({className, children, title, active}) {
     return (
         <>
             <ClickAwayListener onClickAway={handleTooltipClose}>
-                <div>
+                <TooltipContainer>
                     <StyledTooltip
                         onClose={handleTooltipClose}
                         onMouseEnter={handleTooltipOpen}
@@ -67,11 +71,11 @@ export default function Tooltip({className, children, title, active}) {
                         arrow
                         disableInteractive
                     >
-                        <div onClick={handleTooltipOpen}>
+                        <ContentContainer onClick={handleTooltipOpen}>
                             { children }
-                        </div>
+                        </ContentContainer>
                     </StyledTooltip>
-                </div>
+                </TooltipContainer>
             </ClickAwayListener>
         </>
     );

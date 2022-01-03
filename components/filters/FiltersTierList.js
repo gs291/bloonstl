@@ -5,6 +5,7 @@ import BorderClearIcon from '@mui/icons-material/BorderClear';
 import BorderOuterIcon from '@mui/icons-material/BorderOuter';
 
 import HeroIcon from "../icon/HeroIcon";
+import Tooltip from "../tooltip/Tooltip";
 import TowerText from "../tower/TowerText";
 import MonkeyIcon from "../icon/MonkeyIcon";
 import {rgbaHex} from "../../lib/utils/utils";
@@ -114,7 +115,7 @@ export default function FiltersTierList({className}) {
                         <TowerText variant="caption">
                             Borders
                         </TowerText>
-                        <TextTooltip tooltip={"Toggle Borders"}>
+                        <Tooltip title={(<TextTooltip text="Toggle Borders" />)}>
                             <FilterIcon data-dm={darkMode} onClick={handleBorder}>
                                 {border ? (
                                     <BorderOutlined />
@@ -122,27 +123,27 @@ export default function FiltersTierList({className}) {
                                     <BorderClear />
                                 )}
                             </FilterIcon>
-                        </TextTooltip>
+                        </Tooltip>
                     </FilterIconContainer>
                     <FilterIconContainer>
                         <TowerText variant="caption">
                             Monkeys
                         </TowerText>
-                        <TextTooltip tooltip={"Toggle Monkeys"}>
+                        <Tooltip title={(<TextTooltip text="Toggle Monkeys" />)}>
                             <FilterIcon data-dm={darkMode} onClick={handleMonkeys}>
                                 <Monkey data-s={monkeys} data-dm={darkMode}/>
                             </FilterIcon>
-                        </TextTooltip>
+                        </Tooltip>
                     </FilterIconContainer>
                     <FilterIconContainer>
                         <TowerText variant="caption">
                             Heroes
                         </TowerText>
-                        <TextTooltip tooltip={"Toggle Heroes"}>
+                        <Tooltip title={(<TextTooltip text="Toggle Heroes" />)}>
                             <FilterIcon data-dm={darkMode} onClick={handleHeroes}>
                                 <Hero data-s={heroes} data-dm={darkMode}/>
                             </FilterIcon>
-                        </TextTooltip>
+                        </Tooltip>
                     </FilterIconContainer>
 
                 </FilterArea>

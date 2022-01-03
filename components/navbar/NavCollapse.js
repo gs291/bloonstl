@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import {ClickAwayListener, MenuItem, Popover} from "@mui/material";
 
 import NavLink from "./NavLink";
+import Tooltip from "../tooltip/Tooltip";
 import {rgbaHex} from "../../lib/utils/utils";
 import TextTooltip from "../tooltip/TextTooltip";
 import siteSizes from "../../lib/utils/siteSizes";
@@ -71,7 +72,7 @@ export default function NavCollapse({links, expanderRef, anchorEl, handleExpand,
 
     return (
         <>
-            <TextTooltip tooltip={"More"} open={!anchorEl && isHover}>
+            <Tooltip title={(<TextTooltip text="More" />)} open={!anchorEl && isHover}>
                 <NavExpand
                     onClick={handleExpand}
                     ref={expanderRef}
@@ -86,7 +87,7 @@ export default function NavCollapse({links, expanderRef, anchorEl, handleExpand,
                         </NavExpandText>
                     </NavExpandHover>
                 </NavExpand>
-            </TextTooltip>
+            </Tooltip>
             <ExpandMenu
                 open={!!anchorEl}
                 onClose={handleClose}

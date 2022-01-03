@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import NavLink from "./NavLink";
 import MenuButton from "./MenuButton";
 import NavCollapse from "./NavCollapse";
+import Tooltip from "../tooltip/Tooltip";
 import DarkMode from "../dark-mode/DarkMode";
 import TextTooltip from "../tooltip/TextTooltip";
 import siteLinks from "../../lib/utils/siteLinks";
@@ -82,9 +83,9 @@ export default function SiteLinks() {
             <SmallNavSection>
                 <NavContainer>
                     {!mobile && (
-                        <TextTooltip tooltip={`Toggle ${darkMode ? "Light" : "Dark"} Mode`}>
+                        <Tooltip title={(<TextTooltip text={`Toggle ${darkMode ? "Light" : "Dark"} Mode`} />)}>
                             <DarkMode />
-                        </TextTooltip>
+                        </Tooltip>
                     )}
                     { mobile && (
                         <MenuButton />

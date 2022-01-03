@@ -1,30 +1,17 @@
-import {Tooltip} from "@mui/material";
-
 import TowerText from "../tower/TowerText";
-import siteColors from "../../lib/utils/siteColors";
 
-export default function TextTooltip({children, className, tooltip, ...rest}) {
+export default function TextTooltip({text, variant="h6", ...rest}) {
 
     return (
         <>
-            <Tooltip
-                arrow
-                placement="top"
-                className={className}
+            <TowerText
+                variant={variant}
+                font={true}
+                component="div"
                 {...rest}
-                title={(
-                    <TowerText
-                        variant="h6"
-                        font={true}
-                    >
-                        {tooltip}
-                    </TowerText>
-                )}
             >
-                <div>
-                    {children}
-                </div>
-            </Tooltip>
+                {text}
+            </TowerText>
         </>
     );
 }
