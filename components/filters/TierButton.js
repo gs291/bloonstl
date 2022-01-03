@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {Typography} from "@mui/material";
 
-import {getTierColor} from "../../lib/utils/utils";
+import {getTierColor, rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 
@@ -20,7 +20,7 @@ const Button = styled.div`
     cursor: pointer;
     transform: scale(1.2);
     box-shadow: 5px 5px 7.5px 0 ${props => props["data-t"] 
-            ? getTierColor(props["data-t"]) 
+            ? rgbaHex(getTierColor(props["data-t"]), 0.5) 
             : props["data-dm"] ? siteColors.page.light : siteColors.page.dark
     };
     border: 5px solid ${props => getTierColor(props["data-t"])};
