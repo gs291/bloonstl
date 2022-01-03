@@ -93,6 +93,10 @@ const ResetButton = styled(Button)`
   }
 `;
 
+const TopReset = styled(ResetButton)`
+  margin-top: ${props => props["data-tow"] === "hero" ? 0 : "25px"};
+`;
+
 const SmallTitle = styled(TowerText)`
   margin-top: 20px;
   text-align: center;
@@ -124,6 +128,19 @@ export default function SandboxSwitch({sandbox, setSandbox, handleReset, tier, t
     return (
         <>
             <Group {...rest}>
+                {sandbox && (
+                    <TopReset
+                        onClick={handleReset}
+                        data-dm={darkMode}
+                        data-tow={towerType}
+                        data-t={tier}
+                        variant={darkMode ? "outlined" : "contained"}
+                    >
+                        <TowerText variant="subtitle2" font={true}>
+                            Reset Path
+                        </TowerText>
+                    </TopReset>
+                )}
                 <div>
                     <SmallTitle variant={mobile ? "h6" : "h5"}>
                         Sandbox Mode
