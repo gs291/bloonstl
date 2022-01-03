@@ -19,11 +19,11 @@ const FDivider = styled(Divider)`
   transition: 0.3s;
 `;
 
-export default function FixedDivider({width, backgroundColor, height}) {
+export default function FixedDivider({width, backgroundColor, height, ...rest}) {
     const darkMode = useSelector(getDarkMode);
     return (
       <>
-          <FDivider data-w={width} data-bc={backgroundColor} data-dm={darkMode} data-h={height}/>
+          <FDivider data-w={width} data-bc={backgroundColor} data-dm={darkMode} data-h={height} {...rest}/>
       </>
     );
 }

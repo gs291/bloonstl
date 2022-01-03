@@ -1,6 +1,6 @@
 import {Grid} from "@mui/material";
-import styled from "@emotion/styled";
 import {PureComponent} from "react";
+import styled from "@emotion/styled";
 
 import AbilityContainer from "../ability/AbilityContainer";
 import {
@@ -57,9 +57,9 @@ export default class MonkeyAbilities extends PureComponent {
     }
 
     getAbilityStats() {
-        const { abilities, stats, tiers } = this.props;
+        const { abilities, stats, path } = this.props;
 
-        const order = getMonkeyAbilityParseOrder(tiers);
+        const order = getMonkeyAbilityParseOrder(path);
 
         const tempStats = getInitialTowerStats(stats);
 
@@ -69,12 +69,12 @@ export default class MonkeyAbilities extends PureComponent {
         let i = 0;
         for (i; i < 3; i++) {
             let j = order[i];
-            const path = j === 0 ? "top_path" : j === 5 ? "middle_path" : "bottom_path";
+            const pathOrder = j === 0 ? "top_path" : j === 5 ? "middle_path" : "bottom_path";
             const limit = j + 5;
             for(j; j < limit; j++) {
-                if (abilities[j].upgrade_tier < tiers[path]) {
+                if (abilities[j].upgrade_tier < path[pathOrder]) {
                     tempStats.cost = tempStats.cost + abilities[j].cost_gold;
-                    parseAbilityModifiers(abilities[j].modifiers, tiers, tempStats);
+                    parseAbilityModifiers(abilities[j].modifiers, path, tempStats);
                 }
             }
         }
@@ -83,26 +83,29 @@ export default class MonkeyAbilities extends PureComponent {
     }
 
     getAbilities() {
-        const { abilities, monkeyFile, tier, tiers } = this.props;
+        const { abilities, monkeyFile, tier, path, sandbox, setPath, handlePathChange, setSnackPack } = this.props;
 
         let pathTop = [], pathMiddle = [], pathBottom = [];
 
         abilities.forEach(ability => {
             if (ability.upgrade_path === 0) {
                 pathTop.push(
-                    <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier}
-                                      towerType="monkey" selected={ability.upgrade_tier < tiers.top_path} key={ability.id}
+                    <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
+                                      onClick={sandbox ? () => handlePathChange({"top_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
+                                      selected={ability.upgrade_tier < path.top_path} key={ability.id}
                     />);
 
             } else if (ability.upgrade_path === 1) {
                 pathMiddle.push(
-                    <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier}
-                                      towerType="monkey" selected={ability.upgrade_tier < tiers.middle_path} key={ability.id}
+                    <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
+                                      onClick={sandbox ? () => handlePathChange({"middle_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
+                                      selected={ability.upgrade_tier < path.middle_path} key={ability.id}
                     />);
             } else {
                 pathBottom.push(
-                    <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier}
-                                      towerType="monkey" selected={ability.upgrade_tier < tiers.bottom_path} key={ability.id}
+                    <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
+                                      onClick={sandbox ? () => handlePathChange({"bottom_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
+                                      selected={ability.upgrade_tier < path.bottom_path} key={ability.id}
                     />);
             }
         });

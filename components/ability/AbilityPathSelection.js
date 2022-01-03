@@ -29,7 +29,7 @@ const Label = styled(TowerText)`
   text-align: center;
 `;
 
-export default function AbilityPathSelection({ tier, tiers, handleTier }) {
+export default function AbilityPathSelection({ tier, tiers, handleTier, sandbox }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
@@ -37,10 +37,12 @@ export default function AbilityPathSelection({ tier, tiers, handleTier }) {
         <>
             <Selection data-m={mobile}>
                 <Label variant="h4">
-                    Ability Path Tiers:
+                    Ability Path{!sandbox && " Tiers"}
                 </Label>
                 <AbilityTier data-m={mobile}>
-                    <FilterTiers tier={tier} handleTier={handleTier} />
+                    {!sandbox && (
+                        <FilterTiers tier={tier} handleTier={handleTier} />
+                    )}
                     <TierPathText tier={tier} tiers={tiers}/>
                 </AbilityTier>
             </Selection>

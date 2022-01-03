@@ -17,6 +17,7 @@ import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
 import {getHeroColor, getInitialTowerStats} from "../../lib/utils/utils";
 
 
+
 const FilterDiff = styled(FilterDifficulty)`
   margin-top: 10px;
   margin-bottom: 10px;
@@ -40,6 +41,7 @@ const SandboxMode = styled(SandboxSwitch)`
 `;
 
 const TierText = styled(TierPathText)`
+  margin-top: 10px;
   margin-bottom: 15px;
 `;
 
@@ -55,6 +57,9 @@ export default function HeroPage({ hero }) {
     const [ sandbox, setSandbox ] = useState(false);
     const [ stats, setStats ] = useState(getInitialTowerStats(hero.stats));
 
+    const handlePathReset = () => {
+        setPath(0);
+    }
 
     return (
         <>
@@ -65,28 +70,23 @@ export default function HeroPage({ hero }) {
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <SmallTitle variant={mobile ? "h5" : "h4"}>
-                Sandbox Mode
+                Ability Path Level
             </SmallTitle>
-            <SandboxMode sandbox={sandbox} setSandbox={setSandbox} tier={hero.tier} />
             <TierText tier={hero.tier} tiers={{"top_path": path + 1}} towerType="hero" />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <SmallTitle variant={mobile ? "h5" : "h4"}>
-                Ability Path
-            </SmallTitle>
-            {sandbox && (
-                <TowerText variant={mobile ? "h6" : "h5"} font={true}>
-                    Click on an ability to change the path!
-                </TowerText>
-            )}
+            <Title variant={mobile ? "h5" : "h4"}>
+                Hero Level Abilities
+            </Title>
             <Abilities
                 abilities={ hero.abilities } heroFile={ hero.filename }
                 defaultStats={hero.stats} setStats={setStats} sandbox={sandbox}
                 path={path} setPath={setPath}
             />
+            <SandboxMode sandbox={sandbox} setSandbox={setSandbox} tier={hero.tier} handleReset={handlePathReset} towerType="hero"/>
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h5" : "h4"}>
-                Ability Path Pros / Cons
+                Tower Pros / Cons
             </Title>
             <ProsCons pros={hero.info.pros} cons={hero.info.cons} backgroundColor={dividerBackgroundColor}/>
             <HorizontalAD />

@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
-import {FormControlLabel, FormGroup, Switch} from "@mui/material";
-import TowerText from "../tower/TowerText";
 import {useSelector} from "react-redux";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
-import {getHeroColor, getMonkeyColor, getTierColor, rgbaHex} from "../../lib/utils/utils";
+import {Button, FormControlLabel, FormGroup, Switch} from "@mui/material";
+
+import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
+import {getTierColor, rgbaHex} from "../../lib/utils/utils";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import ColorChangingDivider from "../divider/ColorChangingDivider";
 
 const Group = styled(FormGroup)`
   align-items: center;
@@ -31,8 +33,24 @@ const StyledSwitch = styled(Switch)`
               rgbaHex(props["data-t"]
                       ? getTierColor(props["data-t"])
                       : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-                      , 0.075)};
+                      , props["data-dm"] ? 0.075 : 0.3)};
     }
+  }
+
+  & .MuiSwitch-switchBase {
+    color: ${props => props["data-dm"] ? "#FFFFFF" : "#CCCCCC"};
+    
+    &:hover {
+      background-color: ${props =>
+              rgbaHex(props["data-t"]
+                              ? getTierColor(props["data-t"])
+                              : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
+                      , 0.25)};
+    }
+  }
+
+  & .MuiSwitch-switchBase + .MuiSwitch-track {
+    opacity: ${props => props["data-dm"] ? 0.5 : 0.7};
   }
   
   & .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track {
@@ -40,12 +58,62 @@ const StyledSwitch = styled(Switch)`
             rgbaHex(props["data-t"]
                             ? getTierColor(props["data-t"])
                             : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-                    , 0.5)
+                    , props["data-dm"] ? 0.5 : 1)
     };;
   }
 `;
 
-export default function SandboxSwitch({sandbox, setSandbox, tier, ...rest}) {
+const ResetButton = styled(Button)`
+  color: ${props => props["data-t"]
+          ? getTierColor(props["data-t"])
+          : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
+
+  background-color: ${props =>
+          rgbaHex(props["data-t"]
+                          ? getTierColor(props["data-t"])
+                          : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
+                  , props["data-dm"] ? 0 : 0.75)};
+  
+  border-color: ${props => 
+          rgbaHex(props["data-t"] 
+                          ? getTierColor(props["data-t"]) 
+                          : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
+                  , 0.5)};
+  
+  &:hover {
+    background-color: ${props =>
+            rgbaHex(props["data-t"]
+                            ? getTierColor(props["data-t"])
+                            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
+                    , props["data-dm"] ? 0.05 : 1)};
+    
+    border-color: ${props => props["data-t"]
+            ? getTierColor(props["data-t"])
+            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
+  }
+`;
+
+const SmallTitle = styled(TowerText)`
+  margin-top: 20px;
+  text-align: center;
+  cursor: default;
+`;
+
+const HelperText = styled.div`
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CaptionText = styled(HelperText)`
+  margin-top: 0;
+  margin-bottom: 20px;
+`;
+
+export default function SandboxSwitch({sandbox, setSandbox, handleReset, tier, towerType, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
@@ -56,6 +124,12 @@ export default function SandboxSwitch({sandbox, setSandbox, tier, ...rest}) {
     return (
         <>
             <Group {...rest}>
+                <div>
+                    <SmallTitle variant={mobile ? "h6" : "h5"}>
+                        Sandbox Mode
+                    </SmallTitle>
+                    {sandbox && (<ColorChangingDivider />)}
+                </div>
                 <Label
                     control={(
                         <StyledSwitch
@@ -66,11 +140,54 @@ export default function SandboxSwitch({sandbox, setSandbox, tier, ...rest}) {
                         />
                     )}
                     label={(
-                        <TowerText variant={mobile ? "subtitle1" : "h6"} font={true}>
-                            Enter sandbox mode to set your own path!
+                        <TowerText variant={mobile ? "subtitle2" : "subtitle1"} font={true}>
+                            {sandbox ? (
+                                <>
+                                    Sandbox mode is currently active!
+                                </>
+                            ) : (
+                                <>
+                                    Enter sandbox mode to set your own path!
+                                </>
+                            )}
+
                         </TowerText>
                     )}
                 />
+
+                {sandbox && (
+                    <>
+                        <HelperText>
+                            <TowerText variant={mobile ? "subtitle1" : "h6"} font={true}>
+                                Click on an ability to change the path!{towerType === "monkey" && ('*')}
+                            </TowerText>
+                            <ColorChangingDivider height={3}/>
+                        </HelperText>
+                        {towerType === "monkey" && (
+                            <CaptionText>
+                                <TowerText variant={mobile ? "caption" : "caption"} font={true}>
+                                    * Don't forget to follow BTD 6 Path Rules!
+                                </TowerText>
+                                <TowerText variant={mobile ? "caption" : "caption"} font={true}>
+                                    * (e.g. 2-0-5 or 2-2-0 are valid while 1-1-1 or 5-3-0 are not)
+                                </TowerText>
+                            </CaptionText>
+                        )}
+                    </>
+                )}
+
+                {sandbox && (
+                    <ResetButton
+                        onClick={handleReset}
+                        data-dm={darkMode}
+                        data-t={tier}
+                        variant={darkMode ? "outlined" : "contained"}
+                    >
+                        <TowerText variant="subtitle2" font={true}>
+                            Reset Path
+                        </TowerText>
+                    </ResetButton>
+                )}
             </Group>
         </>
     )
