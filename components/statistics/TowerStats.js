@@ -28,7 +28,7 @@ export default function TowerStats({stats, defaults, type, towerType, targets, .
                     <StatItemWrapper text="Pierce" value={stats.pierce} prevValue={defaults.pierce} data-s={color} />
                     <StatItemWrapper text="Range" value={stats.range} prevValue={defaults.range} data-s={color} />
                     <StatItemWrapper text="Atk Spd" value={stats.attack_speed} prevValue={defaults.attack_speed} data-s={color} />
-                    <StatItemWrapper text="Projectiles" value={stats.projectile_count} prevValue={defaults.projectile_count} data-s={color} />
+                    <StatItemWrapper text="Proj" value={stats.projectile_count} prevValue={defaults.projectile_count} data-s={color} />
                     <StatItemWrapper text="Type" value={stats.damage_type} prevValue={defaults.damage_type} data-s={color} />
                 </ItemsContainer>
                 <ItemsContainer>

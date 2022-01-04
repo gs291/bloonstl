@@ -139,7 +139,7 @@ export default function MonkeyPage({ monkey }) {
             />
             {!sandbox && (<FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />)}
             <SandboxMode sandbox={sandbox} setSandbox={setSandbox} tier={sandbox ? monkey.tier : tier} handleReset={handlePathReset} towerType="monkey"/>
-            <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} />
+            <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="monkey" type={monkey.type}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h5" : "h4"}>
                 Tower Pros / Cons

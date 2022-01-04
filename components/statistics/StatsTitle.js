@@ -18,7 +18,7 @@ const TitleContainer = styled.div`
                                   ? getHeroColor(props["data-t"]) 
                                   :  getMonkeyColor(props["data-t"])
                           : props["data-dm"] ? siteColors.page.dark : siteColors.page.light
-                  , props["data-dm"] ? 0.5 : 1)};
+                  , props["data-dm"] ? 0.65 : 1)};
 `;
 
 const TitleWrapper = styled.div`

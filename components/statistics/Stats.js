@@ -35,7 +35,7 @@ const ModifierContainer = styled.div`
                   ? rgbaHex(props["data-tow"] === "hero" 
                           ? getHeroColor(props["data-t"]) 
                           :  getMonkeyColor(props["data-t"])
-                          , props["data-dm"] ? 0.5 : 1)
+                          , props["data-dm"] ? 0.65 : 1)
                   : props["data-dm"] ? siteColors.stats.dark : siteColors.stats.light
   };
 `;

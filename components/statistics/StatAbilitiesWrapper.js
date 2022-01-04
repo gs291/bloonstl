@@ -19,7 +19,7 @@ const TitleOnTop = styled(TowerText)`
   cursor: default;
 `;
 
-export default function StatAbilitiesWrapper({stats, dividerBackgroundColor}) {
+export default function StatAbilitiesWrapper({stats, towerType, type, dividerBackgroundColor}) {
     const mobile = useSelector(getMobile);
 
     return (
@@ -36,7 +36,7 @@ export default function StatAbilitiesWrapper({stats, dividerBackgroundColor}) {
                     <Title variant={mobile ? "h5" : "h4"}>
                         Abilities / Attacks / Buffs / Statuses
                     </Title>
-                    <StatsAbilities stats={stats}/>
+                    <StatsAbilities stats={stats} towerType={towerType} type={type}/>
                 </>
             )}
         </>

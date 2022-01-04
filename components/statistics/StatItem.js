@@ -7,8 +7,14 @@ import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 
+const Item = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-const Item = styled(TowerText)`
+const ItemText = styled(TowerText)`
+  width: 90%;
   border-bottom: 2px solid;
 `;
 
@@ -28,10 +34,11 @@ const ItemContainer = styled.div`
   text-align: center;
   transition: 0.3s;
   border-radius: 10px;
+  padding: 3px 0;
 
   &:hover  {
     cursor: pointer;
-    box-shadow: 0 0 5px 5px ${props => 
+    box-shadow: 0 0 5px 4px ${props => 
             props["data-s"] 
                     ? props["data-s"] 
                     :  props["data-dm"] ? siteColors.stats.hover.dark : siteColors.stats.hover.light
@@ -70,8 +77,10 @@ const StatText = styled(TowerText)`
 
 const FullItem = ({text, value, prevValue, counter = true, size = "medium", decimals, tooltip, prefix, suffix, darkMode, ...rest}) => (
     <ItemContainer data-dm={darkMode} size={size} { ...rest }>
-        <Item variant={size === "medium" ? "subtitle1" : "subtitle2"} component="div" >
-            {text}
+        <Item>
+            <ItemText variant={size === "medium" ? "subtitle1" : "subtitle2"} component="div" >
+                {text}
+            </ItemText>
         </Item>
         <Value variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true}>
             {prefix && (<TowerText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true} dangerouslySetInnerHTML={{__html: prefix}} />)}

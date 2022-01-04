@@ -11,7 +11,7 @@ const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, e
         case "Pierce": return {"tooltip": <TextWithPreviousTooltip text={`Pierce (a.k.a Popping Power) is the number of different targets a single projectile can hit.`} value={value} prevValue={prevValue} />};
         case "Range": return {"tooltip": <TextWithPreviousTooltip text={`Range is the radius of the targetable area.`} value={value} prevValue={prevValue} />};
         case "Atk Spd": return {"decimals": 3,"tooltip": <TextWithPreviousTooltip text={`Attack Speed (a.k.a Reload time) is the number of seconds between attacks.`} value={value} prevValue={prevValue} />, "suffix": "&nbsp;s"};
-        case "Projectiles": return {"tooltip": <TextWithPreviousTooltip text={`Projectile Count is the number of projectiles emitted at once.`} value={value} prevValue={prevValue} />};
+        case "Proj": return {"tooltip": <TextWithPreviousTooltip text={`Projectile Count is the number of projectiles emitted at once.`} value={value} prevValue={prevValue} />};
         case "Type": return {"counter": false, "tooltip": <TypesTooltip type={value} prevType={prevValue} />};
         case "Camo": return {"tooltip": <DamageTooltip type="Camo" typeDamage={initialDamage} baseDamage={baseDamage} />};
         case "Ceramic": return {"tooltip": <DamageTooltip type="Ceramic" typeDamage={initialDamage} baseDamage={baseDamage} />};

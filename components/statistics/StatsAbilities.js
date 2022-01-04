@@ -13,15 +13,15 @@ const CardsContainer = styled.div`
   margin-bottom: 25px;
 `;
 
-export default function StatsAbilities({stats}) {
+export default function StatsAbilities({stats, towerType, type}) {
 
     return (
         <>
             <CardsContainer>
-                <StatsCard stats={stats.abils} type="abils" />
-                <StatsCard stats={stats.attacks} type="attacks" />
-                <StatsCard stats={stats.buffs} type="buffs" />
-                <StatsCard stats={stats.statuses} type="statuses" />
+                <StatsCard stats={stats.abils} type={type} towerType={towerType} cardType="abils" />
+                <StatsCard stats={stats.attacks} type={type} towerType={towerType} cardType="attacks" />
+                <StatsCard stats={stats.buffs} type={type} towerType={towerType} cardType="buffs" />
+                <StatsCard stats={stats.statuses} type={type} towerType={towerType} cardType="statuses" />
             </CardsContainer>
         </>
     );
