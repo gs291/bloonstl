@@ -3,9 +3,11 @@ import styled from "@emotion/styled";
 import TowerText from "../tower/TowerText";
 import FixedDivider from "../divider/FixedDivider";
 import StatNumbers from "../statistics/StatNumbers";
+import {useSelector} from "react-redux";
+import {getMobile} from "../../lib/redux/selectors";
 
 const TooltipContainer = styled.div`
-  padding: 2em 1em;
+  padding: ${props => props["data-m"] ? 1 : 2}em 1em;
   
   display: flex;
   flex-direction: column;
@@ -14,8 +16,8 @@ const TooltipContainer = styled.div`
 `;
 
 const TallDivider = styled(FixedDivider)`
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  margin-top: ${props => props["data-m"] ? 1 : 1.5}em;
+  margin-bottom: ${props => props["data-m"] ? 1 : 1.5}em;
 `;
 
 const Text = styled(TowerText)`
@@ -25,14 +27,15 @@ const Text = styled(TowerText)`
 
 
 export default function TextTooltip({text, title, variant="body1", value, prevValue, ...rest}) {
+    const mobile = useSelector(getMobile);
 
     return (
         <>
-            <TooltipContainer>
+            <TooltipContainer data-m={mobile}>
                 <Text variant="h5">
                     {title}
                 </Text>
-                <TallDivider width={100} />
+                <TallDivider width={100} data-m={mobile}/>
                 <Text
                     variant={variant}
                     font={true}
@@ -44,7 +47,7 @@ export default function TextTooltip({text, title, variant="body1", value, prevVa
 
                 {(typeof value === "number" && typeof prevValue === "number") && ((value - prevValue) !== 0) && (
                     <>
-                        <TallDivider width={100} />
+                        <TallDivider width={100} data-m={mobile} />
                         <StatNumbers
                             rows={[
                                 {

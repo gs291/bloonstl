@@ -11,8 +11,8 @@ const TooltipContainer = styled.div`
 `;
 
 const TallDivider = styled(FixedDivider)`
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: ${props => props["data-m"] ? 0.75 : 1}m;
+  margin-bottom: ${props => props["data-m"] ? 0.75 : 1}em;
 `;
 
 const Text = styled(TowerText)`
@@ -33,11 +33,11 @@ export default function TypesTooltip({type, prevType}) {
                 <Text variant="h5">
                     Attack Types
                 </Text>
-                <TallDivider width={100} />
+                <TallDivider width={100} data-m={mobile} />
                 <Text variant="body1" font={true}>
                     See what attack damages what bloons
                 </Text>
-                <TallDivider width={100} />
+                <TallDivider width={100} data-m={mobile} />
                 {prevType && prevType !== "" && (
                     <InitialTypeText variant="body1" font={true}>
                         Initial tower attack type: {prevType}

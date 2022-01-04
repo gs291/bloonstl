@@ -1,9 +1,12 @@
 import styled from "@emotion/styled";
 
 import TowerText from "../tower/TowerText";
+import {useSelector} from "react-redux";
+import {getMobile} from "../../lib/redux/selectors";
 
 const Number = styled.div`
-  margin-bottom: 5px;
+  margin-top: ${props => props["data-e"] ? 7.5 : 0}px;
+  margin-bottom: ${props => props["data-m"] ? 0 : 5}px;
   width: 100%;
   
   display: flex;
@@ -30,12 +33,13 @@ const TotalNumber = styled(TowerText)`
 `;
 
 export default function StatNumbers({rows, widthLeft = 50, widthRight = 50}) {
+    const mobile = useSelector(getMobile);
 
     return (
         <>
             <TotalContainer>
                 {rows.map(row => (
-                    <Number key={row.title}>
+                    <Number key={row.title} data-e={row.title === "Total"} data-m={mobile}>
                         <TotalText variant="body1" data-w={widthLeft}>{row.title}</TotalText>
                         <TotalNumber variant="body1" font={true} data-w={widthRight}>{row.text}</TotalNumber>
                     </Number>

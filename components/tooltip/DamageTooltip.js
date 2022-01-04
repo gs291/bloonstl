@@ -3,17 +3,21 @@ import styled from "@emotion/styled";
 import TowerText from "../tower/TowerText";
 import FixedDivider from "../divider/FixedDivider";
 import StatNumbers from "../statistics/StatNumbers";
+import {useSelector} from "react-redux";
+import {getMobile} from "../../lib/redux/selectors";
 
 const TooltipContainer = styled.div`
-  padding: 2em 1em;
+  padding: ${props => props["data-m"] ? 1 : 2}em 1em;
 `;
 
 const TallDivider = styled(FixedDivider)`
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  margin-top: ${props => props["data-m"] ? 1 : 1.5}em;
+  margin-bottom: ${props => props["data-m"] ? 1 : 1.5}em;
 `;
 
 export default function DamageTooltip({type, typeDamage, baseDamage, extraDamage = 0} ) {
+    const mobile = useSelector(getMobile);
+
     const totalDamage = typeDamage + baseDamage + extraDamage;
 
     let extraDamageText = "Extra DMG";
@@ -24,14 +28,14 @@ export default function DamageTooltip({type, typeDamage, baseDamage, extraDamage
 
     return (
         <>
-            <TooltipContainer>
+            <TooltipContainer data-m={mobile}>
                 <TowerText variant="h5">
                     {type} Damage
                 </TowerText>
-                <TallDivider width={100} />
+                <TallDivider width={100} data-m={mobile} />
                 <StatNumbers
-                    widthLeft={50}
-                    widthRight={50}
+                    widthLeft={mobile ? 60 : 50}
+                    widthRight={mobile ? 40 : 50}
                     rows={[
                         {
                             "title": `${type} DMG`,
