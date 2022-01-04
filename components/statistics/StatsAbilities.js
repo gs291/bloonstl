@@ -9,7 +9,7 @@ const CardsContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-  gap: 20px 50px;
+  gap: 20px;
   margin-bottom: 25px;
 `;
 

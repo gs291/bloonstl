@@ -13,7 +13,7 @@ import {getHeroColor, getMonkeyColor, getStatAttributeText, rgbaHex} from "../..
 
 const CardContainer = styled.div`
   width: 100%;
-  ${props => props["data-m"] ? "" : "max-width: 300px"};
+  ${props => props["data-m"] ? "" : "max-width: 290px"};
   
   display: flex;
   flex-direction: column;

@@ -12,7 +12,7 @@ const StyledTooltip = styled(({ className, ...other }) => (
 ))`
   background-color: ${props => props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
   min-width:${props => props["data-fw"] 
-          ? props["data-m"] ? 200 : 450 
+          ? props["data-m"] ? 300 : 600 
           : 0 }px;
   ${props => props["data-fw"] ? `min-width: ${props => props["data-m"] ? 200 : 450}px;` : ""} 
   max-width: ${props => props["data-m"] ? 300 : 600}px;

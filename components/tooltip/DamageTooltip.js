@@ -13,12 +13,6 @@ const TallDivider = styled(FixedDivider)`
   margin-bottom: 1.5em;
 `;
 
-const SmallDivider = styled(FixedDivider)`
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-`;
-
-
 export default function DamageTooltip({type, typeDamage, baseDamage, extraDamage = 0} ) {
     const totalDamage = typeDamage + baseDamage + extraDamage;
 
@@ -36,8 +30,8 @@ export default function DamageTooltip({type, typeDamage, baseDamage, extraDamage
                 </TowerText>
                 <TallDivider width={100} />
                 <StatNumbers
-                    widthLeft={60}
-                    widthRight={40}
+                    widthLeft={50}
+                    widthRight={50}
                     rows={[
                         {
                             "title": `${type} DMG`,
