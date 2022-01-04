@@ -55,6 +55,7 @@ export default function HeroPage({ hero }) {
 
     const [ path, setPath ] = useState(0);
     const [ sandbox, setSandbox ] = useState(false);
+    const [ pauseSandbox, setPauseSandbox ] = useState(false);
     const [ stats, setStats ] = useState(getInitialTowerStats(hero.stats));
 
     const handlePathReset = () => {
@@ -79,11 +80,11 @@ export default function HeroPage({ hero }) {
             </Title>
             <Abilities
                 abilities={ hero.abilities } heroFile={ hero.filename }
-                defaultStats={hero.stats} setStats={setStats} sandbox={sandbox}
-                path={path} setPath={setPath}
+                defaultStats={hero.stats} setStats={setStats}
+                path={path} setPath={sandbox && !pauseSandbox && setPath}
             />
-            <SandboxMode sandbox={sandbox} setSandbox={setSandbox} tier={hero.tier} handleReset={handlePathReset} towerType="hero"/>
-            <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} />
+            <SandboxMode sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={hero.tier} handleReset={handlePathReset} towerType="hero"/>
+            <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="hero" type={hero.name} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h5" : "h4"}>
                 Tower Pros / Cons

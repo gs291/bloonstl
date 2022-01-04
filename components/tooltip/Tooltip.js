@@ -63,7 +63,7 @@ export default function Tooltip({className, children, title, active}) {
                         open={open}
                         title={title}
                         leaveDelay={100}
-                        leaveTouchDelay={5000}
+                        leaveTouchDelay={6000}
                         placement="top"
                         data-a={active}
                         data-m={mobile}

@@ -42,7 +42,7 @@ const SandboxMode = styled(SandboxSwitch)`
   margin-bottom: 15px;
 `;
 
-// In order to an infinite re rendering issue from path being set back and forth components
+// In order to fix an infinite re rendering issue from path being set back and forth components
 // this function had to be placed outside the component so its never "re-rendered"
 // This unfortunately forces having to pass state sets into the function down the component tree
 const handlePathChange = (changes, {setPath, setSnackPack}) => {
@@ -70,6 +70,7 @@ export default function MonkeyPage({ monkey }) {
     const [ tier, setTier ] = useState("s");
     const [ path, setPath ] = useState(monkey.tiers[tier][page-1]);
     const [ sandbox, setSandbox ] = useState(false);
+    const [ pauseSandbox, setPauseSandbox ] = useState(false);
     const [ stats, setStats ] = useState(getInitialTowerStats(monkey.stats));
 
     const [snackPack, setSnackPack] = useState([]);
@@ -134,11 +135,11 @@ export default function MonkeyPage({ monkey }) {
                 abilities={monkey.abilities}
                 monkeyFile={monkey.filename}
                 tier={sandbox ? monkey.tier : tier}
-                path={path} setPath={setPath} handlePathChange={handlePathChange}
-                sandbox={sandbox} stats={monkey.stats} setStats={setStats} setSnackPack={setSnackPack}
+                path={path} setPath={setPath} handlePathChange={sandbox && !pauseSandbox && handlePathChange}
+                stats={monkey.stats} setStats={setStats} setSnackPack={setSnackPack}
             />
             {!sandbox && (<FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />)}
-            <SandboxMode sandbox={sandbox} setSandbox={setSandbox} tier={sandbox ? monkey.tier : tier} handleReset={handlePathReset} towerType="monkey"/>
+            <SandboxMode sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={sandbox ? monkey.tier : tier} handleReset={handlePathReset} towerType="monkey"/>
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="monkey" type={monkey.type}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h5" : "h4"}>

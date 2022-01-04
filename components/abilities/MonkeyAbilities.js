@@ -83,7 +83,7 @@ export default class MonkeyAbilities extends PureComponent {
     }
 
     getAbilities() {
-        const { abilities, monkeyFile, tier, path, sandbox, setPath, handlePathChange, setSnackPack } = this.props;
+        const { abilities, monkeyFile, tier, path, setPath, handlePathChange, setSnackPack } = this.props;
 
         let pathTop = [], pathMiddle = [], pathBottom = [];
 
@@ -91,20 +91,20 @@ export default class MonkeyAbilities extends PureComponent {
             if (ability.upgrade_path === 0) {
                 pathTop.push(
                     <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
-                                      onClick={sandbox ? () => handlePathChange({"top_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
+                                      onClick={handlePathChange ? () => handlePathChange({"top_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
                                       selected={ability.upgrade_tier < path.top_path} key={ability.id}
                     />);
 
             } else if (ability.upgrade_path === 1) {
                 pathMiddle.push(
                     <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
-                                      onClick={sandbox ? () => handlePathChange({"middle_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
+                                      onClick={handlePathChange ? () => handlePathChange({"middle_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
                                       selected={ability.upgrade_tier < path.middle_path} key={ability.id}
                     />);
             } else {
                 pathBottom.push(
                     <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
-                                      onClick={sandbox ? () => handlePathChange({"bottom_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
+                                      onClick={handlePathChange ? () => handlePathChange({"bottom_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
                                       selected={ability.upgrade_tier < path.bottom_path} key={ability.id}
                     />);
             }

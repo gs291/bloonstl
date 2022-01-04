@@ -48,7 +48,7 @@ export default class HeroAbilities extends PureComponent {
     }
 
     getAbilities() {
-        const {abilities, path, sandbox, setPath, heroFile} = this.props;
+        const {abilities, path, setPath, heroFile} = this.props;
 
         let dividedAbilities = [ [], [], [], [], [] ];
 
@@ -62,7 +62,7 @@ export default class HeroAbilities extends PureComponent {
                         key={ability.id}
                         pathTier={ability.upgrade_tier}
                         selected={path + 1 > ability.upgrade_tier}
-                        onClick={sandbox ? () => setPath(ability.upgrade_tier) : () => {}}
+                        onClick={setPath ? () => setPath(ability.upgrade_tier) : () => {}}
                     />
                 ))
         })
