@@ -6,8 +6,8 @@ import NavLink from "./NavLink";
 import MenuButton from "./MenuButton";
 import NavCollapse from "./NavCollapse";
 import Tooltip from "../tooltip/Tooltip";
+import TowerText from "../tower/TowerText";
 import DarkMode from "../dark-mode/DarkMode";
-import TextTooltip from "../tooltip/TextTooltip";
 import siteLinks from "../../lib/utils/siteLinks";
 import {closeDrawer} from "../../lib/redux/actions";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
@@ -83,7 +83,7 @@ export default function SiteLinks() {
             <SmallNavSection>
                 <NavContainer>
                     {!mobile && (
-                        <Tooltip title={(<TextTooltip text={`Toggle ${darkMode ? "Light" : "Dark"} Mode`} />)}>
+                        <Tooltip title={(<TowerText variant="h6" font={true} >{`Toggle ${darkMode ? "Light" : "Dark"} Mode`}</TowerText>)} forceWidth={false}>
                             <DarkMode />
                         </Tooltip>
                     )}

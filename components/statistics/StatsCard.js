@@ -7,13 +7,13 @@ import StatsTargets from "./StatsTargets";
 import TowerText from "../tower/TowerText";
 import StatItemWrapper from "./StatItemWrapper";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getHeroColor, getMonkeyColor, getStatAttributeText, rgbaHex} from "../../lib/utils/utils";
 
 
 const CardContainer = styled.div`
   width: 100%;
-  max-width: 315px;
+  ${props => props["data-m"] ? "" : "max-width: 300px"};
   
   display: flex;
   flex-direction: column;
@@ -47,7 +47,7 @@ const CardContent = styled.div`
   align-items: center;
   gap: 10px 0;
   
-  padding: 0.5em 5px;
+  padding: ${props => props["data-m"] ? "1em 10px" : "0.5em 5px"};
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   background-color: ${props => props["data-bc"]};
@@ -90,6 +90,7 @@ const statCodeParser = (code) => {
 }
 
 export default function StatsCard({stats, type, level = 1, towerType, cardType, parentBackgroundColor, ...rest}) {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     const getTitle = (key) => {
@@ -141,9 +142,9 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
     return (
         <>
             {Object.keys(stats).map(key => (
-                <CardContainer key={key}>
+                <CardContainer key={key} data-m={mobile}>
                     <StatTab cardType={cardType} title={getTitle(cardType)} level={level} backgroundColor={titleColor} parentBackgroundColor={parentBackgroundColor}/>
-                    <Card data-bc={titleColor} data-dm={darkMode}>
+                    <Card data-bc={titleColor} data-dm={darkMode} data-m={mobile}>
                         <TitleContainer>
                             <TowerText variant={level === 1 ? "h5" : "h6"}>
                                 {getStatAttributeText(key)}
@@ -154,7 +155,7 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                                 </TowerText>
                             )}
                         </TitleContainer>
-                        <CardContent data-bc={gridColor} data-dm={darkMode}>
+                        <CardContent data-bc={gridColor} data-dm={darkMode} data-m={mobile}>
                             <Modifiers>
                                 {Object.keys(stats[key].modifiers).map(mod => {
                                     if (((stats[key].modifiers[mod] > 0 && mod !== "projectile_count")

@@ -9,7 +9,6 @@ import Tooltip from "../tooltip/Tooltip";
 import TowerText from "../tower/TowerText";
 import MonkeyIcon from "../icon/MonkeyIcon";
 import {rgbaHex} from "../../lib/utils/utils";
-import TextTooltip from "../tooltip/TextTooltip";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {TOGGLE_BORDER, TOGGLE_HEROES, TOGGLE_MONKEYS, updateFilter} from "../../lib/redux/actions";
@@ -115,7 +114,7 @@ export default function FiltersTierList({className}) {
                         <TowerText variant="caption">
                             Borders
                         </TowerText>
-                        <Tooltip title={(<TextTooltip text="Toggle Borders" />)}>
+                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Borders</TowerText>)} forceWidth={false} placement="bottom" >
                             <FilterIcon data-dm={darkMode} onClick={handleBorder}>
                                 {border ? (
                                     <BorderOutlined />
@@ -129,7 +128,7 @@ export default function FiltersTierList({className}) {
                         <TowerText variant="caption">
                             Monkeys
                         </TowerText>
-                        <Tooltip title={(<TextTooltip text="Toggle Monkeys" />)}>
+                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Monkeys</TowerText>)} forceWidth={false} placement="bottom" >
                             <FilterIcon data-dm={darkMode} onClick={handleMonkeys}>
                                 <Monkey data-s={monkeys} data-dm={darkMode}/>
                             </FilterIcon>
@@ -139,7 +138,7 @@ export default function FiltersTierList({className}) {
                         <TowerText variant="caption">
                             Heroes
                         </TowerText>
-                        <Tooltip title={(<TextTooltip text="Toggle Heroes" />)}>
+                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Heroes</TowerText>)} forceWidth={false} placement="bottom" >
                             <FilterIcon data-dm={darkMode} onClick={handleHeroes}>
                                 <Hero data-s={heroes} data-dm={darkMode}/>
                             </FilterIcon>

@@ -6,8 +6,8 @@ import {Link as MUILink} from "@mui/material";
 import TowerText from "../tower/TowerText";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {font_family, rgbaHex} from "../../lib/utils/utils";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const FooterContainer = styled.footer`
   display: flex;
@@ -48,8 +48,8 @@ const FooterLink = styled.a`
 `;
 
 const MLink = styled(MUILink)`
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: ${props => props["data-m"] ? 5 : 10}px;
+  margin-right: ${props => props["data-m"] ? 5 : 10}px;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   font-size: 1.25em;
 
@@ -75,6 +75,7 @@ const links = [
 ]
 
 export default function Footer({ className }) {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     return (
@@ -84,7 +85,7 @@ export default function Footer({ className }) {
                     {links.map(link => (
                         <LinkContainer key={link.text}>
                             <Link href={link.path} prefetch={false} passHref>
-                                <MLink underline="none" data-dm={darkMode}>
+                                <MLink underline="none" data-dm={darkMode} data-m={mobile}>
                                     {link.text}
                                 </MLink>
                             </Link>

@@ -11,6 +11,10 @@ const StyledTooltip = styled(({ className, ...other }) => (
     <MUITooltip classes={{ tooltip: className }} {...other} />
 ))`
   background-color: ${props => props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
+  min-width:${props => props["data-fw"] 
+          ? props["data-m"] ? 200 : 450 
+          : 0 }px;
+  ${props => props["data-fw"] ? `min-width: ${props => props["data-m"] ? 200 : 450}px;` : ""} 
   max-width: ${props => props["data-m"] ? 300 : 600}px;
   
   transition: 0.3s;
@@ -18,6 +22,7 @@ const StyledTooltip = styled(({ className, ...other }) => (
   
   margin-left: 15px;
   margin-right: 15px;
+  ${props => props["data-m"] ? "margin-bottom: 10px;" : ""}
   
   border: 2px solid ${props =>
           props["data-a"] 
@@ -40,7 +45,7 @@ const TooltipContainer = styled.div``;
 
 const ContentContainer = styled.div``;
 
-export default function Tooltip({className, children, title, active}) {
+export default function Tooltip({children, title, active, forceWidth=true, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
     const [open, setOpen] = useState(false);
@@ -68,8 +73,10 @@ export default function Tooltip({className, children, title, active}) {
                         data-a={active}
                         data-m={mobile}
                         data-dm={darkMode}
+                        data-fw={forceWidth}
                         arrow
                         disableInteractive
+                        {...rest}
                     >
                         <ContentContainer onClick={handleTooltipOpen}>
                             { children }

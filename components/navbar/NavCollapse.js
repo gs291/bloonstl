@@ -5,8 +5,8 @@ import {ClickAwayListener, MenuItem, Popover} from "@mui/material";
 
 import NavLink from "./NavLink";
 import Tooltip from "../tooltip/Tooltip";
+import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
-import TextTooltip from "../tooltip/TextTooltip";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
@@ -72,7 +72,7 @@ export default function NavCollapse({links, expanderRef, anchorEl, handleExpand,
 
     return (
         <>
-            <Tooltip title={(<TextTooltip text="More" />)} open={!anchorEl && isHover}>
+            <Tooltip title={(<TowerText variant="h6" font={true}>More</TowerText>)} forceWidth={false} open={!anchorEl && isHover}>
                 <NavExpand
                     onClick={handleExpand}
                     ref={expanderRef}

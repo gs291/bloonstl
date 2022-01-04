@@ -75,7 +75,7 @@ const StatText = styled(TowerText)`
 `;
 
 
-const FullItem = ({text, value, prevValue, counter = true, size = "medium", decimals, tooltip, prefix, suffix, darkMode, ...rest}) => (
+const FullItem = ({text, value, prevValue, counter = true, size = "medium", decimals, prefix, suffix, darkMode, ...rest}) => (
     <ItemContainer data-dm={darkMode} size={size} { ...rest }>
         <Item>
             <ItemText variant={size === "medium" ? "subtitle1" : "subtitle2"} component="div" >
@@ -96,17 +96,17 @@ const FullItem = ({text, value, prevValue, counter = true, size = "medium", deci
     </ItemContainer>
 );
 
-export default function StatItem(props) {
+export default function StatItem({tooltip, ...rest}) {
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            {props.tooltip ? (
-                <Tooltip title={props.tooltip}>
-                    <FullItem {...props} darkMode={darkMode}/>
+            {tooltip ? (
+                <Tooltip title={tooltip}>
+                    <FullItem {...rest} darkMode={darkMode}/>
                 </Tooltip>
             ) : (
-                <FullItem {...props} darkMode={darkMode}/>
+                <FullItem {...rest} darkMode={darkMode}/>
             )}
         </>
     );
