@@ -13,7 +13,7 @@ export default function AbilityTooltip({className, ability, tier, towerType, sel
         <>
             <TooltipContainer className={className}>
                 { towerType === "monkey" && <MonkeyAbilityTooltip ability={ability} tier={tier} selected={selected} {...rest} /> }
-                { towerType === "hero" && <HeroAbilityTooltip ability={ability} {...rest} /> }
+                { towerType === "hero" && <HeroAbilityTooltip ability={ability} tier={tier} selected={selected} {...rest} /> }
             </TooltipContainer>
         </>
     );

@@ -68,9 +68,10 @@ const ActivatedAbility = styled(OfflineBoltIcon)`
   }
 `;
 
-export default function Ability({className, ability, fileName, tier, towerType, selected, path, pathTier, ...rest}) {
+export default function Ability({className, ability, fileName, tier, towerType, selected, showAllModifiers, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
+
     return (
         <>
             <AbilityContainer className={className} {...rest}>
@@ -81,9 +82,16 @@ export default function Ability({className, ability, fileName, tier, towerType, 
                             tier={tier}
                             towerType={towerType}
                             selected={selected}
-                            path={path}
-                            pathTier={pathTier}
+                            fileName={fileName}
+                            showAllModifiers={showAllModifiers}
                         />}
+                    borderColor={ability.active
+                        ? siteColors.ability.activated
+                        : selected
+                            ? getTierColor(tier)
+                            : null
+                    }
+
                     active={ability.active}
                 >
                     <CardContainer data-s={selected} tier={tier} data-dm={darkMode}>

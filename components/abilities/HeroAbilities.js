@@ -4,6 +4,7 @@ import { PureComponent } from "react";
 
 import AbilityContainer from "../ability/AbilityContainer";
 import {getInitialTowerStats, parseAbilityModifiers} from "../../lib/utils/utils";
+import ShowAllAbilityModifiers from "./ShowAllAbilityModifiers";
 
 const GridContainer = styled(Grid)`
   display: flex;
@@ -22,6 +23,13 @@ export default class HeroAbilities extends PureComponent {
 
     constructor(props){
         super(props);
+
+        this.state = {
+            "showAll": false
+        };
+
+        this.setShowAll = this.setShowAll.bind(this);
+
         this.getAbilities = this.getAbilities.bind(this);
         this.getAbilityStats = this.getAbilityStats.bind(this);
     }
@@ -31,6 +39,15 @@ export default class HeroAbilities extends PureComponent {
     }
     componentDidUpdate(_, __, ___) {
         this.props.setStats(this.getAbilityStats());
+    }
+
+    setShowAll(event) {
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                "showAll": event.target.checked
+            };
+        });
     }
 
     getAbilityStats() {
@@ -48,7 +65,7 @@ export default class HeroAbilities extends PureComponent {
     }
 
     getAbilities() {
-        const {abilities, path, setPath, heroFile} = this.props;
+        const {abilities, tier, path, setPath, heroFile} = this.props;
 
         let dividedAbilities = [ [], [], [], [], [] ];
 
@@ -60,12 +77,13 @@ export default class HeroAbilities extends PureComponent {
                         fileName={heroFile}
                         towerType="hero"
                         key={ability.id}
-                        pathTier={ability.upgrade_tier}
+                        tier={tier}
                         selected={path + 1 > ability.upgrade_tier}
                         onClick={setPath ? () => setPath(ability.upgrade_tier) : () => {}}
+                        showAllModifiers={this.state.showAll}
                     />
-                ))
-        })
+                ));
+        });
 
         return {
             "firstFiveAbilities": dividedAbilities[0],
@@ -77,12 +95,13 @@ export default class HeroAbilities extends PureComponent {
 
 
     render() {
-        const {className} = this.props;
+        const {className, tier} = this.props;
 
         const { firstFiveAbilities, secondFiveAbilities, thirdFiveAbilities, fourthFiveAbilities} = this.getAbilities();
 
         return (
             <>
+                <ShowAllAbilityModifiers tier={tier} checked={this.state.showAll} handleCheckboxChange={this.setShowAll} />
                 <GridContainer container spacing={2} className={className}>
                     <GridItem item>
                         { firstFiveAbilities }

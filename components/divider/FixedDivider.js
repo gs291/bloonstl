@@ -11,7 +11,11 @@ const FDivider = styled(Divider)`
   margin-bottom: 10px;
   border-width: ${props => props["data-h"] ? props["data-h"] : 1}px;
   height: ${props => props["data-h"] ? props["data-h"] : 1}px;
-  
+
+  background-color: ${props =>
+          props["data-bc"]
+                  ? props["data-bc"]
+                  : props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   border-color: ${props => 
           props["data-bc"] 
                   ? props["data-bc"] 

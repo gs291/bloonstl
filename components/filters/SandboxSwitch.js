@@ -94,13 +94,17 @@ const ResetButton = styled(Button)`
 `;
 
 const TopReset = styled(ResetButton)`
-  margin-top: ${props => props["data-tow"] === "hero" ? 0 : "25px"};
+  margin-top: ${props => props["data-tow"] === "hero" ? 0 : 20}px;
 `;
 
 const SmallTitle = styled(TowerText)`
   margin-top: 20px;
   text-align: center;
   cursor: default;
+`;
+
+const TempContainer = styled.div`
+  height: 20px;
 `;
 
 const HelperText = styled.div`
@@ -149,10 +153,10 @@ export default function SandboxSwitch({sandbox, setSandbox, handleReset, tier, p
                     </>
                 )}
                 <div>
-                    <SmallTitle variant={mobile ? "h6" : "h5"}>
+                    <SmallTitle variant={mobile ? "h6" : "h5"} data-s={sandbox}>
                         Sandbox Mode
                     </SmallTitle>
-                    {sandbox && (<ColorChangingDivider />)}
+                    {sandbox ? (<ColorChangingDivider />) : (<TempContainer />)}
                 </div>
                 <Label
                     control={(

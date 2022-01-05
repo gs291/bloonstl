@@ -22,6 +22,7 @@ const Text = styled(TowerText)`
 const InitialTypeText = styled(TowerText)`
   margin-top: 5px;
   margin-bottom: 10px;
+  text-align: center;
 `;
 
 export default function TypesTooltip({type, prevType}) {

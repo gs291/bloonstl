@@ -81,6 +81,7 @@ export default function ConsecutiveSnackbars({snackPack, setSnackPack, open, set
                     vertical: "bottom",
                     horizontal: "center"
                 }}
+                sx={{zIndex: 1600}}
                 onClose={handleClose}
                 TransitionProps={{ onExited: handleExited }}
             >

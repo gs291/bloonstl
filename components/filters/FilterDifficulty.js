@@ -58,7 +58,7 @@ export default function FilterDifficulty({ className, color }) {
     return (
         <>
             <DifficultyContainer className={className}>
-                <Label variant="h4">
+                <Label variant={mobile ? "h4" : "h3"}>
                     Difficulty Prices
                 </Label>
                 <ButtonContainer>

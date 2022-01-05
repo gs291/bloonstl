@@ -36,7 +36,7 @@ export default function AbilityPathSelection({ tier, tiers, handleTier, sandbox 
     return (
         <>
             <Selection data-m={mobile}>
-                <Label variant="h4">
+                <Label variant={mobile ? "h4" : "h3"}>
                     Ability Path{!sandbox && " Tiers"}
                 </Label>
                 <AbilityTier data-m={mobile}>

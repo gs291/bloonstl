@@ -1,0 +1,138 @@
+import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
+
+import TowerText from "../tower/TowerText";
+import ImageFill from "../image/ImageFill";
+import FixedDivider from "../divider/FixedDivider";
+import siteColors from "../../lib/utils/siteColors";
+import VerticalDivider from "../divider/VerticalDivider";
+import {getDarkMode, getDifficulty, getMobile} from "../../lib/redux/selectors";
+import {getImageUrl, getThousandsNumber, getTierColor, goldCost} from "../../lib/utils/utils";
+
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
+const InfoContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: ${props => props["data-m"] ? "row" : "column"};
+  justify-content: ${props => props["data-m"] ? "center" : "start"};
+  align-items: ${props => props["data-m"] ? "center" : "start"}
+`;
+
+const FullContainer = styled.div`
+  width: 100%;
+`;
+
+const Image = styled.div`
+  width: ${props => props["data-m"] ? 50 : 75}px;
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  margin-left: auto;
+  height: ${props => props["data-m"] ? 50 : 75}px;
+  width: ${props => props["data-m"] ? 50 : 75}px;
+  max-width: ${props => props["data-m"] ? 50 : 75}px;
+  max-height: ${props => props["data-m"] ? 50 : 75}px;
+`;
+
+export default function AbilityTitleTooltip({ ability, tier, selected, fileName, showAllModifiers, towerType, ...rest }) {
+    const mobile = useSelector(getMobile);
+    const darkMode = useSelector(getDarkMode);
+    const difficulty = useSelector(getDifficulty);
+
+    return (
+        <>
+            <TitleContainer>
+                <InfoContainer data-m={mobile}>
+                    <FullContainer>
+                        {towerType === "hero" && (
+                            <TowerText
+                                variant="h5"
+                                textColor={
+                                    selected
+                                        ? getTierColor(tier)
+                                        : darkMode ? siteColors.text.dark : siteColors.text.light
+                                }
+                            >
+                                Level {ability.upgrade_tier + 1}
+                            </TowerText>
+                        )}
+                        { ability.name !== "" && (
+                            <TowerText
+                                variant="h5"
+                                textColor={
+                                    (selected && towerType !== "hero")
+                                        ? getTierColor(tier)
+                                        : darkMode ? siteColors.text.dark : siteColors.text.light
+                                }
+                            >
+                                {ability.name}
+                            </TowerText>
+                        )}
+                        {towerType === "monkey" && (
+                            <TowerText variant="body1" textColor={darkMode ? siteColors.tower.gold.dark : siteColors.tower.gold.light}>
+                                In-game cost:&nbsp;
+                                ${getThousandsNumber(goldCost(ability.cost_gold, difficulty))}
+                            </TowerText>
+                        )}
+                    </FullContainer>
+                    {(mobile && ability.name !== "" ) && (
+                        <>
+                            <VerticalDivider backgroundColor={darkMode ? siteColors.text.dark : siteColors.text.light} />
+                            <Image data-m={mobile}>
+                                <ImageContainer data-m={mobile}>
+                                    <ImageFill
+                                        src={ getImageUrl(fileName, ability.upgrade_path, ability.upgrade_tier) }
+                                        alt={ ability.name }
+                                    />
+                                </ImageContainer>
+                            </Image>
+                        </>
+                    )}
+                    { !mobile && (
+                        <TowerText
+                            variant="body2"
+                            textColor={darkMode ? siteColors.tower.description.dark : siteColors.tower.description.light}
+                            font={true}>
+                            {ability.description}
+                        </TowerText>
+                    )}
+                </InfoContainer>
+
+                {(!mobile && ability.name !== "" ) && (
+                    <>
+                        <VerticalDivider backgroundColor={darkMode ? siteColors.text.dark : siteColors.text.light} />
+                        <Image data-m={mobile}>
+                            <ImageContainer data-m={mobile}>
+                                <ImageFill
+                                    src={ getImageUrl(fileName, ability.upgrade_path, ability.upgrade_tier) }
+                                    alt={ ability.name }
+                                />
+                            </ImageContainer>
+                        </Image>
+                    </>
+                )}
+            </TitleContainer>
+
+            {mobile && (
+                <FixedDivider width={100} />
+            )}
+
+            { mobile && (
+                <TowerText
+                    variant="body2"
+                    textColor={darkMode ? siteColors.tower.description.dark : siteColors.tower.description.light}
+                    font={true}>
+                    {ability.description}
+                </TowerText>
+            )}
+        </>
+    );
+}

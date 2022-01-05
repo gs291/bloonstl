@@ -30,10 +30,10 @@ export default function StatAbilitiesWrapper({stats, towerType, type, dividerBac
                 || Object.keys(stats.statuses).length > 0)) && (
                 <>
                     <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-                    <TitleOnTop variant={mobile ? "h5" : "h4"}>
+                    <TitleOnTop variant={mobile ? "h4" : "h3"}>
                         Ability Path
                     </TitleOnTop>
-                    <Title variant={mobile ? "h5" : "h4"}>
+                    <Title variant={mobile ? "h6" : "h5"}>
                         Abilities / Attacks / Buffs / Statuses
                     </Title>
                     <StatsAbilities stats={stats} towerType={towerType} type={type}/>

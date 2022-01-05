@@ -169,6 +169,10 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                                     }
                                 })}
                             </Modifiers>
+                            <StatsTargets targets={stats[key].targets} />
+                            {stats[key].notes.length > 0 && (
+                                <StatNotes notes={stats[key].notes} size="small"/>
+                            )}
                             {Object.keys(stats[key].abils).length > 0 && (
                                 <StatsCard stats={stats[key].abils} level={level + 1} type={type} towerType={towerType} parentBackgroundColor={gridColor} cardType="abils" />
                             )}
@@ -180,10 +184,6 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                             )}
                             {Object.keys(stats[key].statuses).length > 0 && (
                                 <StatsCard stats={stats[key].statuses} level={level + 1} type={type} towerType={towerType} parentBackgroundColor={gridColor} cardType="statuses" />
-                            )}
-                            <StatsTargets targets={stats[key].targets} />
-                            {stats[key].notes.length > 0 && (
-                                <StatNotes notes={stats[key].notes} size="small"/>
                             )}
                         </CardContent>
                     </Card>

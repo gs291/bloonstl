@@ -9,8 +9,8 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 
 const PaddedCell = styled(TableCell)`
-  padding: 1px 3px;
-  border: 1px solid ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  padding: 0 3px;
+  border-bottom: 1px solid ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
 const Row = styled(TableRow)`

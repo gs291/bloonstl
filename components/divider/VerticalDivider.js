@@ -11,7 +11,11 @@ const VDivider = styled(Divider)`
   
   width: ${props => props["data-w"] ? props["data-w"] : 1}px;
   border-width: ${props => props["data-w"] ? props["data-w"] : 1}px;
-  
+
+  background-color: ${props =>
+          props["data-bc"]
+                  ? props["data-bc"]
+                  : props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   border-color: ${props => 
           props["data-bc"] 
                   ? props["data-bc"] 

@@ -20,7 +20,7 @@ import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
 import {checkIfValidPath, getInitialTowerStats, getMonkeyColor} from "../../lib/utils/utils";
 
 
-const TotalCost = styled(TowerText)`
+const AbilitiesText = styled(TowerText)`
   margin-top: 10px;
   margin-bottom: 20px;
   cursor: default;
@@ -126,11 +126,13 @@ export default function MonkeyPage({ monkey }) {
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <AbilityPathSelection tier={sandbox ? monkey.tier : tier} tiers={path} handleTier={handleTier} sandbox={sandbox} />
-
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <TotalCost variant={mobile ? "h5" : "h4"}>
-                Ability Path Cost: $<Counter cost={stats.cost} />
-            </TotalCost>
+            <AbilitiesText variant={mobile ? "h4" : "h3"}>
+                Tower Abilities
+            </AbilitiesText>
+            <TowerText variant={mobile ? "h6" : "h4"}>
+                Path Cost: $<Counter cost={stats.cost} />
+            </TowerText>
             <MonkeyAbilities
                 abilities={monkey.abilities}
                 monkeyFile={monkey.filename}
@@ -142,7 +144,7 @@ export default function MonkeyPage({ monkey }) {
             <SandboxMode sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={sandbox ? monkey.tier : tier} handleReset={handlePathReset} towerType="monkey"/>
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="monkey" type={monkey.type}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <Title variant={mobile ? "h5" : "h4"}>
+            <Title variant={mobile ? "h4" : "h3"}>
                 Tower Pros / Cons
             </Title>
             <ProsCons pros={path.pros} cons={path.cons} backgroundColor={dividerBackgroundColor}/>
