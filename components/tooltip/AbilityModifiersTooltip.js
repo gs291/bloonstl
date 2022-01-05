@@ -4,8 +4,8 @@ import {useSelector} from "react-redux";
 import TowerText from "../tower/TowerText";
 import FixedDivider from "../divider/FixedDivider";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {parseAbilityModifiers, rgbaHex} from "../../lib/utils/utils";
+import {getDarkMode, getShowTooltipModifiers} from "../../lib/redux/selectors";
 
 const ModifierWrapper = styled.div`
   width: 100%;
@@ -39,8 +39,9 @@ const ListItem = styled.li`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light}
 `;
 
-export default function AbilityModifiersTooltip({modifiers, showAllModifiers, ...rest}) {
+export default function AbilityModifiersTooltip({modifiers, ...rest}) {
     const darkMode = useSelector(getDarkMode);
+    const showAllModifiers = useSelector(getShowTooltipModifiers);
 
     return (
         <>

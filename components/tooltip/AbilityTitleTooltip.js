@@ -49,7 +49,7 @@ const ImageContainer = styled.div`
 //   This shouldn't be here because ImageContainer has both position and width/height, right!?
 //   It has to most likely do with tooltip transition exiting/entering and its component mount timings but idk
 
-export default function AbilityTitleTooltip({ ability, tier, selected, fileName, showAllModifiers, towerType, ...rest }) {
+export default function AbilityTitleTooltip({ ability, tier, selected, fileName, towerType, ...rest }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
     const difficulty = useSelector(getDifficulty);

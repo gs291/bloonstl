@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
 import {getTierColor, rgbaHex} from "../../lib/utils/utils";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {TOGGLE_TOOLTIP_MODIFIERS, updateFilter} from "../../lib/redux/actions";
+import {getDarkMode, getMobile, getShowTooltipModifiers} from "../../lib/redux/selectors";
 
 
 const Group = styled(FormGroup)`
@@ -38,9 +39,14 @@ const StyledCheckbox = styled(Checkbox)`
   }
 `;
 
-export default function ShowAllAbilityModifiers({tier, checked, handleCheckboxChange, ...rest}) {
+export default function ShowAllAbilityModifiers({tier, ...rest}) {
+    const dispatch = useDispatch();
+
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
+    const showAllModifiers = useSelector(getShowTooltipModifiers);
+
+    const handleShowAllModifiers = (event) => dispatch(updateFilter(TOGGLE_TOOLTIP_MODIFIERS, event.target.checked));
 
     return (
         <>
@@ -48,15 +54,15 @@ export default function ShowAllAbilityModifiers({tier, checked, handleCheckboxCh
             <Label
                 control={(
                     <StyledCheckbox
-                        checked={checked}
-                        onChange={handleCheckboxChange}
+                        checked={showAllModifiers}
+                        onChange={handleShowAllModifiers}
                         data-dm={darkMode}
                         data-t={tier}
                     />
                 )}
                 label={(
                     <TowerText variant={mobile ? "subtitle2" : "subtitle1"} font={true}>
-                        {checked ? (
+                        {showAllModifiers ? (
                             <>
                                 Hide all tooltip modifiers
                             </>

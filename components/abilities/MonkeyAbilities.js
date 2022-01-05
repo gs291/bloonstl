@@ -3,12 +3,12 @@ import {PureComponent} from "react";
 import styled from "@emotion/styled";
 
 import AbilityContainer from "../ability/AbilityContainer";
+import ShowAllAbilityModifiers from "./ShowAllAbilityModifiers";
 import {
     getInitialTowerStats,
     getMonkeyAbilityParseOrder,
     parseAbilityModifiers
 } from "../../lib/utils/utils";
-import ShowAllAbilityModifiers from "./ShowAllAbilityModifiers";
 
 const GridContainer = styled(Grid)`
   display: flex;
@@ -27,12 +27,6 @@ export default class MonkeyAbilities extends PureComponent {
     constructor(props){
         super(props);
 
-        this.state = {
-            "showAll": false
-        };
-
-        this.setShowAll = this.setShowAll.bind(this);
-
         this.getAbilities = this.getAbilities.bind(this);
         this.getAbilityStats = this.getAbilityStats.bind(this);
     }
@@ -41,15 +35,6 @@ export default class MonkeyAbilities extends PureComponent {
     }
     componentDidUpdate(_, __, ___) {
         this.props.setStats(this.getAbilityStats());
-    }
-
-    setShowAll(event) {
-        this.setState(prevState => {
-            return {
-                ...prevState,
-                "showAll": event.target.checked
-            };
-        });
     }
 
     getAbilityStats() {
@@ -88,20 +73,20 @@ export default class MonkeyAbilities extends PureComponent {
                 pathTop.push(
                     <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
                                       onClick={handlePathChange ? () => handlePathChange({"top_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
-                                      selected={ability.upgrade_tier < path.top_path} showAllModifiers={this.state.showAll} key={ability.id}
+                                      selected={ability.upgrade_tier < path.top_path} key={ability.id}
                     />);
 
             } else if (ability.upgrade_path === 1) {
                 pathMiddle.push(
                     <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
                                       onClick={handlePathChange ? () => handlePathChange({"middle_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
-                                      selected={ability.upgrade_tier < path.middle_path} showAllModifiers={this.state.showAll}  key={ability.id}
+                                      selected={ability.upgrade_tier < path.middle_path} key={ability.id}
                     />);
             } else {
                 pathBottom.push(
                     <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
                                       onClick={handlePathChange ? () => handlePathChange({"bottom_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
-                                      selected={ability.upgrade_tier < path.bottom_path} showAllModifiers={this.state.showAll}  key={ability.id}
+                                      selected={ability.upgrade_tier < path.bottom_path} key={ability.id}
                     />);
             }
         });
@@ -118,7 +103,7 @@ export default class MonkeyAbilities extends PureComponent {
 
         return (
             <>
-                <ShowAllAbilityModifiers tier={tier} checked={this.state.showAll} handleCheckboxChange={this.setShowAll} />
+                <ShowAllAbilityModifiers tier={tier} />
                 <GridContainer container spacing={2} className={className}>
                     <GridItem item>
                         {pathTop}

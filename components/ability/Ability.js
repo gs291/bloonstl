@@ -68,7 +68,7 @@ const ActivatedAbility = styled(OfflineBoltIcon)`
   }
 `;
 
-export default function Ability({className, ability, fileName, tier, towerType, selected, showAllModifiers, ...rest}) {
+export default function Ability({className, ability, fileName, tier, towerType, selected, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
@@ -83,7 +83,6 @@ export default function Ability({className, ability, fileName, tier, towerType, 
                             towerType={towerType}
                             selected={selected}
                             fileName={fileName}
-                            showAllModifiers={showAllModifiers}
                         />}
                     borderColor={ability.active
                         ? siteColors.ability.activated

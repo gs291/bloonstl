@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 import { PureComponent } from "react";
 
 import AbilityContainer from "../ability/AbilityContainer";
-import {getInitialTowerStats, parseAbilityModifiers} from "../../lib/utils/utils";
 import ShowAllAbilityModifiers from "./ShowAllAbilityModifiers";
+import {getInitialTowerStats, parseAbilityModifiers} from "../../lib/utils/utils";
 
 const GridContainer = styled(Grid)`
   display: flex;
@@ -24,12 +24,6 @@ export default class HeroAbilities extends PureComponent {
     constructor(props){
         super(props);
 
-        this.state = {
-            "showAll": false
-        };
-
-        this.setShowAll = this.setShowAll.bind(this);
-
         this.getAbilities = this.getAbilities.bind(this);
         this.getAbilityStats = this.getAbilityStats.bind(this);
     }
@@ -39,15 +33,6 @@ export default class HeroAbilities extends PureComponent {
     }
     componentDidUpdate(_, __, ___) {
         this.props.setStats(this.getAbilityStats());
-    }
-
-    setShowAll(event) {
-        this.setState(prevState => {
-            return {
-                ...prevState,
-                "showAll": event.target.checked
-            };
-        });
     }
 
     getAbilityStats() {
@@ -80,7 +65,6 @@ export default class HeroAbilities extends PureComponent {
                         tier={tier}
                         selected={path + 1 > ability.upgrade_tier}
                         onClick={setPath ? () => setPath(ability.upgrade_tier) : () => {}}
-                        showAllModifiers={this.state.showAll}
                     />
                 ));
         });
@@ -101,7 +85,7 @@ export default class HeroAbilities extends PureComponent {
 
         return (
             <>
-                <ShowAllAbilityModifiers tier={tier} checked={this.state.showAll} handleCheckboxChange={this.setShowAll} />
+                <ShowAllAbilityModifiers tier={tier} />
                 <GridContainer container spacing={2} className={className}>
                     <GridItem item>
                         { firstFiveAbilities }

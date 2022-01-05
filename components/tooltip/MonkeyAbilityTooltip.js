@@ -2,12 +2,12 @@ import AbilityTitleTooltip from "./AbilityTitleTooltip";
 import AbilityModifiersTooltip from "./AbilityModifiersTooltip";
 
 
-export default function MonkeyAbilityTooltip({ ability, tier, selected, fileName, showAllModifiers, ...rest }) {
+export default function MonkeyAbilityTooltip({ ability, tier, selected, fileName, ...rest }) {
 
     return (
         <>
-            <AbilityTitleTooltip ability={ability} tier={tier} showAllModifiers={showAllModifiers} fileName={fileName} selected={selected} towerType="monkey" />
-            <AbilityModifiersTooltip modifiers={ability.modifiers} showAllModifiers={showAllModifiers} />
+            <AbilityTitleTooltip ability={ability} tier={tier} fileName={fileName} selected={selected} towerType="monkey" />
+            <AbilityModifiersTooltip modifiers={ability.modifiers} />
         </>
     );
 }
