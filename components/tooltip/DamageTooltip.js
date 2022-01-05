@@ -1,13 +1,17 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 
 import TowerText from "../tower/TowerText";
 import FixedDivider from "../divider/FixedDivider";
 import StatNumbers from "../statistics/StatNumbers";
-import {useSelector} from "react-redux";
 import {getMobile} from "../../lib/redux/selectors";
 
 const TooltipContainer = styled.div`
   padding: ${props => props["data-m"] ? 1 : 2}em 1em;
+`;
+
+const TitleText = styled(TowerText)`
+  text-align: center;
 `;
 
 const TallDivider = styled(FixedDivider)`
@@ -29,9 +33,9 @@ export default function DamageTooltip({type, typeDamage, baseDamage, extraDamage
     return (
         <>
             <TooltipContainer data-m={mobile}>
-                <TowerText variant="h5">
+                <TitleText variant="h5">
                     {type} Damage
-                </TowerText>
+                </TitleText>
                 <TallDivider width={100} data-m={mobile} />
                 <StatNumbers
                     widthLeft={mobile ? 60 : 50}

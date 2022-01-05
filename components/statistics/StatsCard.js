@@ -51,6 +51,21 @@ const CardContent = styled.div`
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   background-color: ${props => props["data-bc"]};
+
+  ${props => (props["data-l"] === 1 && !props["data-m"]) ? `
+  overflow-y: auto;
+  max-height: 300px;
+  ` : ""}
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 0;
+  }
 `;
 
 const Modifiers = styled.div`
@@ -155,7 +170,7 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                                 </TowerText>
                             )}
                         </TitleContainer>
-                        <CardContent data-bc={gridColor} data-dm={darkMode} data-m={mobile}>
+                        <CardContent data-bc={gridColor} data-dm={darkMode} data-m={mobile} data-l={level} >
                             <Modifiers>
                                 {Object.keys(stats[key].modifiers).map(mod => {
                                     if (((stats[key].modifiers[mod] > 0 && mod !== "projectile_count")

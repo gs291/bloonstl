@@ -42,6 +42,13 @@ const ImageContainer = styled.div`
   max-height: ${props => props["data-m"] ? 50 : 75}px;
 `;
 
+// Currently has a bug that I (gs291) did not know how to fix
+//   with rendering an Image in a Tooltip. Switching different (Monkey/Hero)Page states and
+//   switching between different tooltips at the same times causes warning messages to appear that shouldn't be there. For example:
+//   `Image with src "dart-monkey/dart-monkey23.png" may not render properly with a parent using position:"". Consider changing the parent style to position:"relative" with a width and height.`
+//   This shouldn't be here because ImageContainer has both position and width/height, right!?
+//   It has to most likely do with tooltip transition exiting/entering and its component mount timings but idk
+
 export default function AbilityTitleTooltip({ ability, tier, selected, fileName, showAllModifiers, towerType, ...rest }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

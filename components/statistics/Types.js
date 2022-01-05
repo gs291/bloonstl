@@ -28,7 +28,7 @@ const EnabledContainer = styled.div`
 `;
 
 const EnabledCheckbox = styled(CheckBoxIcon)`
-  color: ${props => props["data-dm"] ? siteColors.pros.dark : siteColors.pros.light};;
+  color: ${props => props["data-dm"] ? siteColors.pros.dark : siteColors.pros.light};
 `;
 
 const Enabled = ({darkMode}) => (
