@@ -6,7 +6,7 @@ import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const PaddedCell = styled(TableCell)`
   padding: 0 3px;
@@ -21,10 +21,23 @@ const TypeText = styled(TowerText)`
   
 `;
 
-const Enabled = styled(CheckBoxIcon)`
+const EnabledContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const EnabledCheckbox = styled(CheckBoxIcon)`
   color: ${props => props["data-dm"] ? siteColors.pros.dark : siteColors.pros.light};;
 `;
 
+const Enabled = ({darkMode}) => (
+    <>
+        <EnabledContainer>
+            <EnabledCheckbox data-dm={darkMode}/>
+        </EnabledContainer>
+    </>
+);
 
 const createData = (type, black, white, purple, lead, frozen) => {
     return { type, black, white, purple, lead, frozen };
@@ -44,6 +57,7 @@ const rows = [
 ];
 
 export default function Types({type}) {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     return (
@@ -71,11 +85,11 @@ export default function Types({type}) {
                                         {row.type}
                                     </TypeText>
                                 </PaddedCell>
-                                <PaddedCell align="center" data-dm={darkMode}>{row.black && <Enabled data-dm={darkMode} />}</PaddedCell>
-                                <PaddedCell align="center" data-dm={darkMode}>{row.white && <Enabled data-dm={darkMode} />}</PaddedCell>
-                                <PaddedCell align="center" data-dm={darkMode}>{row.purple && <Enabled data-dm={darkMode} />}</PaddedCell>
-                                <PaddedCell align="center" data-dm={darkMode}>{row.lead && <Enabled data-dm={darkMode} />}</PaddedCell>
-                                <PaddedCell align="center" data-dm={darkMode}>{row.frozen && <Enabled data-dm={darkMode} />}</PaddedCell>
+                                <PaddedCell align="center" data-dm={darkMode}>{row.black && <Enabled darkMode={darkMode} />}</PaddedCell>
+                                <PaddedCell align="center" data-dm={darkMode}>{row.white && <Enabled darkMode={darkMode} />}</PaddedCell>
+                                <PaddedCell align="center" data-dm={darkMode}>{row.purple && <Enabled darkMode={darkMode} />}</PaddedCell>
+                                <PaddedCell align="center" data-dm={darkMode}>{row.lead && <Enabled darkMode={darkMode} />}</PaddedCell>
+                                <PaddedCell align="center" data-dm={darkMode}>{row.frozen && <Enabled darkMode={darkMode} />}</PaddedCell>
                             </Row>
                         ))}
                     </TableBody>
