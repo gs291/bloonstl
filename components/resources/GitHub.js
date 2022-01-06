@@ -1,7 +1,7 @@
 import TowerText from "../tower/TowerText";
 import styled from "@emotion/styled";
 
-const GitHubContainer = styled.div`
+const GitHubContainer = styled("div")`
   width: 100%;
 
   display: flex;
@@ -18,7 +18,7 @@ const Title = styled(TowerText)`
   overflow: hidden;
 `;
 
-const TextLink = styled.a`
+const TextLink = styled("a")`
   font-family: monospace;
   text-decoration: underline;
 `;

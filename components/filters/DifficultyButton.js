@@ -4,10 +4,11 @@ import {Typography} from "@mui/material";
 
 import ImageFill from "../image/ImageFill";
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
-const Button = styled.div`
+const Button = styled("div", globalOptions)`
   position: relative;
   margin-left: ${props => props["data-m"] ? 2 : 3}rem;
   margin-right: ${props => props["data-m"] ? 2 : 3}rem;
@@ -27,7 +28,7 @@ const Button = styled.div`
   }
 `;
 
-const DifficultyImageContainer = styled.div`
+const DifficultyImageContainer = styled("div", globalOptions)`
   width: ${props => props["data-m"] ? 45 : 50}px;
   max-width: ${props => props["data-m"] ? 45 : 50}px;
   height: ${props => props["data-m"] ? 45 : 50}px;
@@ -35,7 +36,7 @@ const DifficultyImageContainer = styled.div`
   position: relative;
 `;
 
-const DifficultyText = styled(Typography)`
+const DifficultyText = styled(Typography, globalOptions)`
   transition: 0.3s;
   color: ${props => props["data-s"] 
           ? props["data-c"] 

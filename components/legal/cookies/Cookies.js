@@ -15,7 +15,7 @@ import TargetedAdvertising from "./TargetedAdvertising";
 import TableOfContents from "../../table-of-contents/TableOfContents";
 import ThirdPartyCookies from "./ThirdPartyCookies";
 
-const CookieContainer = styled.div`
+const CookieContainer = styled("div")`
   width: 100%;
   margin-top: 50px;
 `;

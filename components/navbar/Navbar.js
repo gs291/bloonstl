@@ -5,8 +5,9 @@ import {useSelector} from "react-redux";
 import SiteLinks from "./SiteLinks";
 import siteSizes from "../../lib/utils/siteSizes";
 import {getMobile} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const Nav = styled(AppBar)`
+const Nav = styled(AppBar, globalOptions)`
   display: flex;
   flex-direction: row;
   align-items: center;

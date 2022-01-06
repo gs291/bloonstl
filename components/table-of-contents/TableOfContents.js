@@ -6,8 +6,9 @@ import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const TocContainer = styled.div`
+const TocContainer = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +21,7 @@ const TocContainer = styled.div`
   transition: 0.3s;
 `;
 
-const TocWrapper = styled.div`
+const TocWrapper = styled("div", globalOptions)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +34,7 @@ const TocWrapper = styled.div`
   transition: 0.3s;
 `;
 
-const TitleContainer = styled.div`
+const TitleContainer = styled("div", globalOptions)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,11 +48,11 @@ const TitleContainer = styled.div`
   transition: 0.3s;
 `;
 
-const TocList = styled.ul`
+const TocList = styled("ul")`
   margin: 0;
 `;
 
-const TocItem = styled.li`
+const TocItem = styled("li", globalOptions)`
   margin-top: 10px;
   list-style-type: lower-roman;
   
@@ -61,7 +62,7 @@ const TocItem = styled.li`
   }
 `;
 
-const TocLink = styled.a`
+const TocLink = styled('a', globalOptions)`
   &:hover {
     cursor: pointer;
     text-decoration: underline;

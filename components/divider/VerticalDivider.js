@@ -4,8 +4,9 @@ import {useSelector} from "react-redux";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const VDivider = styled(Divider)`
+const VDivider = styled(Divider, globalOptions)`
   margin-left: 10px;
   margin-right: 10px;
   

@@ -6,7 +6,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
-const TooltipContainer = styled.div`
+const TooltipContainer = styled("div")`
   padding: 1em;
 `;
 

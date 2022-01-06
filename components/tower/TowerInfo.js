@@ -8,7 +8,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getThousandsNumber, rgbaHex} from "../../lib/utils/utils";
 
-const TowerTextContainer = styled.div`
+const TowerTextContainer = styled("div")`
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -16,7 +16,7 @@ const TowerTextContainer = styled.div`
   align-items: center;
 `;
 
-const TierCostContainer = styled.div`
+const TierCostContainer = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,7 @@ const TowerTier = styled(TierText)`
   flex: 33%;
 `;
 
-const TowerCosts = styled.div`
+const TowerCosts = styled("div")`
   margin-left: ${props => props["data-m"] ? 0 : "20px"};
   flex: 66%;
 `;

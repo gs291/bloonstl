@@ -7,8 +7,9 @@ import TowerText from "../tower/TowerText";
 import ImageFill from "../image/ImageFill";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const KeybindContainer = styled.div`
+const KeybindContainer = styled("div")`
   width: 100%;
   
   display: flex;
@@ -30,7 +31,7 @@ const Description = styled(TowerText)`
   margin-top: 20px;
 `;
 
-const SliderContainer = styled(FormControl)`
+const SliderContainer = styled(FormControl, globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   transition: 0.3s;
   margin-top: 20px;
@@ -45,7 +46,7 @@ const Label = styled(FormControlLabel)`
   }
 `;
 
-const Slider = styled(Switch)`
+const Slider = styled(Switch, globalOptions)`
     & .MuiSwitch-switchBase.Mui-checked {
       color: ${props => props["data-dm"] ? siteColors.switch.dark : siteColors.switch.light};
     }
@@ -55,7 +56,7 @@ const Slider = styled(Switch)`
   }
 `;
 
-const ImgContainer = styled.a`
+const ImgContainer = styled("a")`
   position: relative;
   width: 100%;
   max-width: 100%;
@@ -63,11 +64,11 @@ const ImgContainer = styled.a`
   max-height: 515px;
 `;
 
-const Author = styled.div`
+const Author = styled("div")`
   width: 100%;
 `;
 
-const TextLink = styled.a`
+const TextLink = styled("a")`
   text-decoration: underline;
 `;
 

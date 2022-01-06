@@ -18,7 +18,7 @@ import ProcessingOfCompanyPersonalData from "./ProcessingOfCompanyPersonalData";
 import DeletionOrReturnOfCompanyPersonalData from "./DeletionOrReturnOfCompanyPersonalData";
 import DataProtectionImpactAssessmentAndPriorConsultation from "./DataProtectionImpactAssessmentAndPriorConsultation";
 
-const GDPRContainer = styled.div`
+const GDPRContainer = styled("div")`
   width: 100%;
   margin-top: 50px;
 `;

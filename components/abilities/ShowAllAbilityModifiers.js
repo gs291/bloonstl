@@ -4,6 +4,7 @@ import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getTierColor, rgbaHex} from "../../lib/utils/utils";
 import {TOGGLE_TOOLTIP_MODIFIERS, updateFilter} from "../../lib/redux/actions";
 import {getDarkMode, getMobile, getShowTooltipModifiers} from "../../lib/redux/selectors";
@@ -17,7 +18,7 @@ const Label = styled(FormControlLabel)`
 
 `;
 
-const StyledCheckbox = styled(Checkbox)`
+const StyledCheckbox = styled(Checkbox, globalOptions)`
   color: ${props => props["data-t"] 
           ? getTierColor(props["data-t"]) 
           : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light

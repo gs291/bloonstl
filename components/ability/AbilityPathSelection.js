@@ -4,9 +4,10 @@ import {useSelector} from "react-redux";
 import TowerText from "../tower/TowerText";
 import FilterTiers from "../filters/FilterTiers";
 import TierPathText from "../tower/TierPathText";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const AbilityTier = styled.div`
+const AbilityTier = styled("div", globalOptions)`
   display: flex;
   flex-direction: ${props => props["data-m"] ? "column" : "row"};
   width: 100%;
@@ -16,7 +17,7 @@ const AbilityTier = styled.div`
   margin-bottom: 10px;
 `;
 
-const Selection = styled.div`
+const Selection = styled("div", globalOptions)`
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -7,16 +7,17 @@ import TowerStats from "./TowerStats";
 import DamageStats from "./DamageStats";
 import StatsContainer from "./StatsContainer";
 import siteColors from "../../lib/utils/siteColors";
-import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
 
-const AllModifiersAndNotes = styled.div`
+const AllModifiersAndNotes = styled("div", globalOptions)`
   margin-top: 25px;
   margin-bottom: 25px;
   width: ${props => props["data-m"] ? 100 : 95}%;
 `;
 
-const ExtraStats = styled.div`
+const ExtraStats = styled("div", globalOptions)`
   display: flex;
   flex-direction: ${props => props["data-m"] ? "column" : "row"};
   gap: 20px;
@@ -26,7 +27,7 @@ const ExtraStats = styled.div`
   margin-bottom: 20px;
 `;
 
-const ModifierContainer = styled.div`
+const ModifierContainer = styled("div", globalOptions)`
   width: 100%;
   border-radius: 10px;
   transition: 0.3s;

@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import StatsCard from "./StatsCard";
 
 
-const CardsContainer = styled.div`
+const CardsContainer = styled("div")`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

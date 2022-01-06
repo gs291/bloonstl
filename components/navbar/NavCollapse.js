@@ -9,9 +9,10 @@ import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const NavExpandText = styled.div`
+const NavExpandText = styled("div")`
   line-height: 20px;
   display: flex;
   align-items: center;
@@ -19,7 +20,7 @@ const NavExpandText = styled.div`
   text-align: center;
 `;
 
-const NavExpandHover = styled.span`
+const NavExpandHover = styled("span")`
   padding: 10px;
   border-radius: 10px;
   transition: 0.3s;
@@ -28,7 +29,7 @@ const NavExpandHover = styled.span`
   width: 50px;
 `;
 
-const NavExpand = styled.div`
+const NavExpand = styled("div", globalOptions)`
   padding: 0 2em;
   border-bottom: 5px solid transparent;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
@@ -49,7 +50,7 @@ const NavExpand = styled.div`
   }
 `;
 
-const ExpandMenu = styled(Popover)`
+const ExpandMenu = styled(Popover, globalOptions)`
   & .MuiPaper-root {
     background-color: ${props => props["data-dm"] ? siteColors.expander.dark : siteColors.expander.light};
   }

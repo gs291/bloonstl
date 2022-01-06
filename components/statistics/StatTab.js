@@ -2,10 +2,11 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import TowerText from "../tower/TowerText";
-import {getDarkMode} from "../../lib/redux/selectors";
 import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const TabContainer = styled.div`
+const TabContainer = styled("div")`
   width: 100%;
   height: 30px;
   
@@ -13,16 +14,16 @@ const TabContainer = styled.div`
   flex-direction: row;
 `;
 
-const TabLeftSide = styled.div`
+const TabLeftSide = styled("div")`
   width: 60%;
   position: relative;
 `;
 
-const TabRightSide = styled.div`
+const TabRightSide = styled("div")`
   width: 41%
 `;
 
-const LeftSideOuter = styled.div`
+const LeftSideOuter = styled("div", globalOptions)`
   height: 100%;
   width: 100%;
 
@@ -33,7 +34,7 @@ const LeftSideOuter = styled.div`
   z-index: 1;
 `;
 
-const LeftSideInner = styled.div`
+const LeftSideInner = styled("div", globalOptions)`
   height: 100%;
   width: 100%;
   position: absolute;
@@ -46,7 +47,7 @@ const LeftSideInner = styled.div`
   background: ${props => props["data-bc"]};
 `;
 
-const TabTitle = styled.div`
+const TabTitle = styled("div", globalOptions)`
   width: 100%;
   height: 100%;
   display: flex;

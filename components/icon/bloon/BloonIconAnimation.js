@@ -71,25 +71,37 @@ const BloonAnimation = props =>
       offset-path: path("M 216.724 10.094 C 371.613 30.398 428.021 141.54 366.567 291.144 C 362.039 302.166 354.478 313.617 354.737 313.856 C 356.013 315.039 339.233 338.287 327.032 351.091 C 291.181 388.711 242.877 414.706 181.071 430.237 L 165.251 434.539 L 161.872 446.252 C 150.847 484.478 123.111 490.519 95.621 462.923 C 64.666 431.849 60.586 406.069 93.632 399.816 C 95.642 399.437 94.886 399.589 88.922 393.347 C 43.663 345.976 14.168 279.744 12.01 235.335 C 11.702 229.011 11.686 222.021 11.18 218.215 C 10.096 210.057 13.128 182.853 16.538 166.344 C 39.717 54.121 126.57 -8.455 216.724 10.094");
     `;
 
-const FollowBloon = styled.path`
+const FollowBloon = styled("path", {
+    shouldForwardProp: prop =>
+        prop !== "data-r" && prop !== "data-dur" && prop !== "data-dly" && prop !== "data-c"
+})`
   ${BloonAnimation};
   
   transform: scale(0.25);
 `;
 
-const FollowMOABOuter = styled.path`
+const FollowMOABOuter = styled("path", {
+    shouldForwardProp: prop =>
+        prop !== "data-r" && prop !== "data-dur" && prop !== "data-dly" && prop !== "data-c" && prop !== "data-moab"
+})`
   ${BloonAnimation};
   
   offset-rotate: auto -40deg;
 `;
 
-const FollowMOABInner = styled.path`
+const FollowMOABInner = styled("path", {
+    shouldForwardProp: prop =>
+        prop !== "data-r" && prop !== "data-dur" && prop !== "data-dly" && prop !== "data-c" && prop !== "data-moab"
+})`
   ${BloonAnimation};
 
   offset-rotate: auto -40deg;
 `;
 
-const NativeFollowBloon = styled.circle`
+const NativeFollowBloon = styled("circle", {
+    shouldForwardProp: prop =>
+        prop !== "data-c" && prop !== "data-moab"
+})`
   fill: currentColor;
   color: ${props => props["data-c"]};
   stroke-width: 3px;

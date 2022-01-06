@@ -4,10 +4,11 @@ import {Typography} from "@mui/material";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getTierColor, rgbaHex} from "../../lib/utils/utils";
 
 
-const Button = styled.div`
+const Button = styled("div", globalOptions)`
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   padding: 5px 5px;
@@ -27,7 +28,7 @@ const Button = styled.div`
   }
 `;
 
-const TierText = styled(Typography)`
+const TierText = styled(Typography, globalOptions)`
   transition: 0.3s;
   color: ${props => props["data-s"] 
           ? props["data-dm"] ? siteColors.page.dark : siteColors.page.light 

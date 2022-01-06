@@ -12,15 +12,15 @@ import siteLinks from "../../lib/utils/siteLinks";
 import {closeDrawer} from "../../lib/redux/actions";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const NavSection = styled.div`
+const NavSection = styled("div")`
   flex: 0.5;
 `;
 
-const SmallNavSection = styled.div`
+const SmallNavSection = styled("div")`
   flex: 0.25;
 `;
 
-const NavContainer = styled.div`
+const NavContainer = styled("div")`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

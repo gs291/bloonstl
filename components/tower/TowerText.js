@@ -5,8 +5,9 @@ import {Typography} from "@mui/material";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {font_family_default} from "../../lib/utils/utils";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const TowerDetail = styled(Typography)`
+const TowerDetail = styled(Typography, globalOptions)`
   transition: 0.3s;
   ${props => props["data-f"] ? `font-family: ${font_family_default};` : "" }
   color: ${props => 

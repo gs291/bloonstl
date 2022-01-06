@@ -3,9 +3,10 @@ import {Grid} from "@mui/material";
 import {useSelector} from "react-redux";
 
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const GridItem = styled(Grid)`
+const GridItem = styled(Grid, globalOptions)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

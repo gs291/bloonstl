@@ -4,9 +4,10 @@ import {useSelector} from "react-redux";
 import StatsContainer from "./StatsContainer";
 import StatItemWrapper from "./StatItemWrapper";
 import {getMobile} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getHeroColor, getMonkeyColor} from "../../lib/utils/utils";
 
-const ItemsContainer = styled.div`
+const ItemsContainer = styled("div", globalOptions)`
   padding-left: 10px;
   padding-right: 10px;
   width: ${props => props["data-m"] ? 33 : 25}%;

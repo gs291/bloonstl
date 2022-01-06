@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import TierButton from "./TierButton";
 import {getDarkMode} from "../../lib/redux/selectors";
 
-const FilterContainer = styled.div`
+const FilterContainer = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,7 +13,7 @@ const FilterContainer = styled.div`
 `;
 
 
-const TierButtons = styled.div`
+const TierButtons = styled("div")`
   display: flex;
   flex-direction: row;
   margin-top: 10px;

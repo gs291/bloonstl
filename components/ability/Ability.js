@@ -10,15 +10,17 @@ import siteColors from "../../lib/utils/siteColors";
 import {getMobile} from "../../lib/redux/selectors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import AbilityTooltip from "../tooltip/AbilityTooltip";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getImageUrl, getTierColor} from "../../lib/utils/utils";
 
-const AbilityContainer = styled.div`
+
+const AbilityContainer = styled("div")`
   display: flex;
   flex-direction: row;
   position: relative;
 `;
 
-const CardContainer = styled(Card)`
+const CardContainer = styled(Card, globalOptions)`
   border-radius: 50%;
   background-color: ${props => props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
   border: 4px solid ${props => props["data-s"] ? getTierColor(props.tier) : props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
@@ -30,7 +32,7 @@ const CardContainer = styled(Card)`
   }
 `;
 
-const CardContentContainer = styled(CardContent)`
+const CardContentContainer = styled(CardContent, globalOptions)`
   position: relative;
   width: ${props => props["data-m"] ? siteSizes.ability.mobile.width : siteSizes.ability.width};
   max-width: ${props => props["data-m"] ? siteSizes.ability.mobile.width : siteSizes.ability.width};
@@ -48,12 +50,12 @@ const CardContentContainer = styled(CardContent)`
   }
 `;
 
-const AbilityLevel = styled.div`
+const AbilityLevel = styled("div", globalOptions)`
   text-align: center;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
-const ActivatedAbility = styled(OfflineBoltIcon)`
+const ActivatedAbility = styled(OfflineBoltIcon, globalOptions)`
   position: absolute;
   top: -5px;
   left: 30px;

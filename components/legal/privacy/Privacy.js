@@ -17,11 +17,11 @@ import InformationCollection from "./InformationCollection";
 import ReviewUpdateDeleteData from "./ReviewUpdateDeleteData";
 import TableOfContents from "../../table-of-contents/TableOfContents";
 
-export const GDPRList = styled.ol`
+export const GDPRList = styled("ol")`
   counter-reset: item ${props => props.start};
 `;
 
-export const GDPRItem = styled.li`
+export const GDPRItem = styled("li")`
   display: block;
   
   &:before {
@@ -35,7 +35,7 @@ export const GDPRItem = styled.li`
   }
 `;
 
-const PrivacyContainer = styled.div`
+const PrivacyContainer = styled("div")`
   width: 100%;
   margin-top: 50px;
 `;

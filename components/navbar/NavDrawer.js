@@ -8,6 +8,7 @@ import siteLinks from "../../lib/utils/siteLinks";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {toggleDrawer} from "../../lib/redux/actions";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getDrawer} from "../../lib/redux/selectors";
 
 const TopDrawer = styled(Drawer)`
@@ -16,7 +17,7 @@ const TopDrawer = styled(Drawer)`
   }
 `;
 
-const DrawerContainer = styled.div`
+const DrawerContainer = styled("div", globalOptions)`
   height: 100%;
   padding-top: ${siteSizes.nav.height};
   padding-bottom: 5%;

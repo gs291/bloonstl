@@ -4,8 +4,9 @@ import {useSelector} from "react-redux";
 import StatsTitle from "./StatsTitle";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const Stats = styled.div`
+const Stats = styled("div", globalOptions)`
   display: flex;
   flex-direction: ${props => props["data-d"]};
   

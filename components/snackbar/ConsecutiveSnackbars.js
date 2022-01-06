@@ -6,9 +6,10 @@ import {Alert, Snackbar} from "@mui/material";
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const PageAlert = styled(Alert)`
+const PageAlert = styled(Alert, globalOptions)`
   width: ${props => props["data-m"] ? 90 : 100}%;
   align-items: center;
   

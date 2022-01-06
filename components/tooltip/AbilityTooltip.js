@@ -4,7 +4,7 @@ import HeroAbilityTooltip from "./HeroAbilityTooltip";
 import MonkeyAbilityTooltip from "./MonkeyAbilityTooltip";
 
 
-const TooltipContainer = styled.div`
+const TooltipContainer = styled("div")`
   padding: 1em;
 `;
 

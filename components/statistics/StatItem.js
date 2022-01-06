@@ -6,8 +6,9 @@ import Tooltip from "../tooltip/Tooltip";
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const Item = styled.div`
+const Item = styled("div")`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +28,7 @@ const Value = styled(TowerText)`
   border-bottom-right-radius: 10px;
 `;
 
-const ItemContainer = styled.div`
+const ItemContainer = styled("div", globalOptions)`
   width: ${props => props["size"] === "medium" ? 100 : 85}px;
   max-width: ${props => props["size"] === "medium" ? 100 : 85}px;
   

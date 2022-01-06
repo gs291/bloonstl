@@ -6,8 +6,9 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const TopContainer = styled.div`
+const TopContainer = styled("div", globalOptions)`
   position: fixed;
   bottom: 3em;
   right: 2em;

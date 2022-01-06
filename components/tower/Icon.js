@@ -2,8 +2,9 @@ import styled from "@emotion/styled";
 
 import ImageFill from "../image/ImageFill";
 import { getImageUrl } from "../../lib/utils/utils";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const IconContainer  = styled.div`
+const IconContainer  = styled("div", globalOptions)`
   margin-right: 10px;
   display: flex;
   justify-content: center;
@@ -12,7 +13,7 @@ const IconContainer  = styled.div`
   ${props => props["data-d"] ? "" : "width: 100%;"}
 `;
 
-const ImgContainer = styled.div`
+const ImgContainer = styled("div", globalOptions)`
   position: relative;
   width: ${props => props["data-t"] === "monkey" ? 180 : props["data-t"] === "hero" ? 310 : 120}px;
   max-width: ${props => props["data-t"] === "monkey" ? 180 : props["data-t"] === "hero" ? 310 : 120}px;

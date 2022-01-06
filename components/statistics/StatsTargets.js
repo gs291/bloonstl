@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import ProConChip from "../tower/ProConChip";
 import siteProsCons from "../../lib/utils/siteProsCons";
 
-const TargetsContainer = styled.div`
+const TargetsContainer = styled("div")`
   width: 100%;
   margin-top: 10px;
   margin-bottom: 5px;

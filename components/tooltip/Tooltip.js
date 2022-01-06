@@ -4,12 +4,13 @@ import {useSelector} from "react-redux";
 import {Tooltip as MUITooltip, ClickAwayListener} from "@mui/material";
 
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 //https://stackoverflow.com/questions/59934683/style-material-ui-tooltip-using-emotion-styled
 const StyledTooltip = styled(({ className, ...other }) => (
     <MUITooltip classes={{ tooltip: className }} {...other} />
-))`
+), globalOptions)`
   background-color: ${props => props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
   min-width:${props => props["data-fw"] 
           ? props["data-m"] ? 300 : 450
@@ -41,9 +42,9 @@ const StyledTooltip = styled(({ className, ...other }) => (
   }
 `;
 
-const TooltipContainer = styled.div``;
+const TooltipContainer = styled("div")``;
 
-const ContentContainer = styled.div``;
+const ContentContainer = styled("div")``;
 
 export default function Tooltip({children, title, borderColor, forceWidth=true, ...rest}) {
     const mobile = useSelector(getMobile);

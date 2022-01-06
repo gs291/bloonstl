@@ -6,10 +6,11 @@ import ImageFill from "../image/ImageFill";
 import FixedDivider from "../divider/FixedDivider";
 import siteColors from "../../lib/utils/siteColors";
 import VerticalDivider from "../divider/VerticalDivider";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getDifficulty, getMobile} from "../../lib/redux/selectors";
 import {getImageUrl, getThousandsNumber, getTierColor, goldCost} from "../../lib/utils/utils";
 
-const TitleContainer = styled.div`
+const TitleContainer = styled("div")`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -17,7 +18,7 @@ const TitleContainer = styled.div`
   width: 100%;
 `;
 
-const InfoContainer = styled.div`
+const InfoContainer = styled("div", globalOptions)`
   width: 100%;
   display: flex;
   flex-direction: ${props => props["data-m"] ? "row" : "column"};
@@ -25,15 +26,15 @@ const InfoContainer = styled.div`
   align-items: ${props => props["data-m"] ? "center" : "start"}
 `;
 
-const FullContainer = styled.div`
+const FullContainer = styled("div")`
   width: 100%;
 `;
 
-const Image = styled.div`
+const Image = styled("div", globalOptions)`
   width: ${props => props["data-m"] ? 50 : 75}px;
 `;
 
-const ImageContainer = styled.div`
+const ImageContainer = styled("div", globalOptions)`
   position: relative;
   margin-left: auto;
   height: ${props => props["data-m"] ? 50 : 75}px;

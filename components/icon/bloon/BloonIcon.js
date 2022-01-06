@@ -4,26 +4,27 @@ import {useSelector} from "react-redux";
 import BloonIconAnimator from "./BloonIconAnimator";
 import siteColors from "../../../lib/utils/siteColors";
 import {getDarkMode} from "../../../lib/redux/selectors";
+import {globalOptions} from "../../../lib/utils/emotionStyled";
 
-const Svg = styled.svg`
+const Svg = styled("svg")`
   padding: 5px;
   overflow: hidden;
   width: 100%;
   height: 100%;
 `;
 
-const OuterPath = styled.path`
+const OuterPath = styled("path", globalOptions)`
   opacity: 0.07;
   transition: 0.3s;
   fill: currentColor;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
-const FollowPath = styled.path`
+const FollowPath = styled("path")`
   opacity: 0;
 `;
 
-const InnerPath = styled.path`
+const InnerPath = styled("path", globalOptions)`
   transition: 0.3s;
   fill: currentColor;
   color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light}

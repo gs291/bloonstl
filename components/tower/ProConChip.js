@@ -4,8 +4,9 @@ import styled from "@emotion/styled";
 import Tooltip from "../tooltip/Tooltip";
 import ChipTooltip from "../tooltip/ChipTooltip";
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const StyledChip = styled(Chip)`
+const StyledChip = styled(Chip, globalOptions)`
   @keyframes popup {
     0% {
       transform: scale(0);

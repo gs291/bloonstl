@@ -8,10 +8,11 @@ import TowerText from "../tower/TowerText";
 import StatItemWrapper from "./StatItemWrapper";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getHeroColor, getMonkeyColor, getStatAttributeText, rgbaHex} from "../../lib/utils/utils";
 
 
-const CardContainer = styled.div`
+const CardContainer = styled("div", globalOptions)`
   width: 100%;
   ${props => props["data-m"] ? "" : "max-width: 290px"};
   
@@ -19,7 +20,7 @@ const CardContainer = styled.div`
   flex-direction: column;
 `;
 
-const Card = styled.div`
+const Card = styled("div", globalOptions)`
   padding: 0.5em 0.3em;
   margin-bottom: 10px;
   width: 100%;
@@ -38,7 +39,7 @@ const Card = styled.div`
   flex-direction: column;
 `;
 
-const CardContent = styled.div`
+const CardContent = styled("div", globalOptions)`
   width: 100%;
   height: 100%;
   display: flex;
@@ -68,7 +69,7 @@ const CardContent = styled.div`
   }
 `;
 
-const Modifiers = styled.div`
+const Modifiers = styled("div")`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -76,7 +77,7 @@ const Modifiers = styled.div`
   gap: 5px;
 `;
 
-const ModifierContainer = styled.div`
+const ModifierContainer = styled("div")`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -84,7 +85,7 @@ const ModifierContainer = styled.div`
   max-width: 85px;
 `;
 
-const TitleContainer = styled.div`
+const TitleContainer = styled("div")`
   width: 100%;
   margin-bottom: 10px;
   

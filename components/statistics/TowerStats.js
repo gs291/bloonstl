@@ -5,9 +5,10 @@ import StatsTargets from "./StatsTargets";
 import StatsContainer from "./StatsContainer";
 import StatItemWrapper from "./StatItemWrapper";
 import {getMobile} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getHeroColor, getMonkeyColor} from "../../lib/utils/utils";
 
-const ItemsContainer = styled.div`
+const ItemsContainer = styled("div", globalOptions)`
   width: ${props => props["data-m"] ? 100 : 100}%;
   display: flex;
   flex-direction: row;

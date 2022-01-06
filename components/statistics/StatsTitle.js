@@ -4,9 +4,10 @@ import {useSelector} from "react-redux";
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
 
-const TitleContainer = styled.div`
+const TitleContainer = styled("div", globalOptions)`
   width: 100%;
   padding: 0.6em;
   border-top-left-radius: 3px;
@@ -21,7 +22,7 @@ const TitleContainer = styled.div`
                   , props["data-dm"] ? 0.65 : 1)};
 `;
 
-const TitleWrapper = styled.div`
+const TitleWrapper = styled("div")`
   display: flex;
   justify-content: center;
 `;

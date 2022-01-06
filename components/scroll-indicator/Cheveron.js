@@ -4,8 +4,9 @@ import {useSelector} from "react-redux";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const AnimatedChevron = styled.div`
+const AnimatedChevron = styled("div", globalOptions)`
   position: absolute;
   width: 28px;
   height: 5px;

@@ -4,6 +4,7 @@ import {Button, FormControlLabel, FormGroup, Switch} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getTierColor, rgbaHex} from "../../lib/utils/utils";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import ColorChangingDivider from "../divider/ColorChangingDivider";
@@ -16,7 +17,7 @@ const Label = styled(FormControlLabel)`
 
 `;
 
-const StyledSwitch = styled(Switch)`
+const StyledSwitch = styled(Switch, globalOptions)`
   color: ${props => props["data-t"] 
           ? getTierColor(props["data-t"])
           : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
@@ -63,7 +64,7 @@ const StyledSwitch = styled(Switch)`
   }
 `;
 
-const ResetButton = styled(Button)`
+const ResetButton = styled(Button, globalOptions)`
   color: ${props => props["data-t"]
           ? getTierColor(props["data-t"])
           : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
@@ -93,7 +94,7 @@ const ResetButton = styled(Button)`
   }
 `;
 
-const TopReset = styled(ResetButton)`
+const TopReset = styled(ResetButton, globalOptions)`
   margin-top: ${props => props["data-tow"] === "hero" ? 0 : 20}px;
 `;
 
@@ -103,11 +104,11 @@ const SmallTitle = styled(TowerText)`
   cursor: default;
 `;
 
-const TempContainer = styled.div`
+const TempContainer = styled("div")`
   height: 20px;
 `;
 
-const HelperText = styled.div`
+const HelperText = styled("div")`
   margin-top: 20px;
   margin-bottom: 10px;
   display: flex;

@@ -6,9 +6,10 @@ import TopBackground from "./TopBackground";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import ScrollIndicator from "../scroll-indicator/ScrollIndicator";
 
-const TitleContainer = styled(Grid)`
+const TitleContainer = styled(Grid, globalOptions)`
   height: calc(100vh - ${siteSizes.nav.height});
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   text-align: center;
@@ -32,11 +33,11 @@ const AboveCenter = styled(Grid)`
   height: 100%;
 `;
 
-const TextContainer = styled.div`
+const TextContainer = styled("div")`
   margin-bottom: 150px;
 `;
 
-const BackgroundContainer = styled.div`
+const BackgroundContainer = styled("div")`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -53,7 +54,7 @@ const SansSerifText = styled(Typography)`
   font-family: sans-serif;
 `;
 
-const ScrollContainer = styled.div`
+const ScrollContainer = styled("div")`
   display: grid;
   margin-top: auto;
 `;

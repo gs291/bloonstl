@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 
 import TowerText from "../tower/TowerText";
 import FixedDivider from "../divider/FixedDivider";
 import StatNumbers from "../statistics/StatNumbers";
-import {useSelector} from "react-redux";
 import {getMobile} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const TooltipContainer = styled.div`
+const TooltipContainer = styled("div", globalOptions)`
   padding: ${props => props["data-m"] ? 1 : 2}em 1em;
   
   display: flex;

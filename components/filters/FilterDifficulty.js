@@ -7,19 +7,19 @@ import DifficultyButton from "./DifficultyButton";
 import {getDifficulty, getMobile} from "../../lib/redux/selectors";
 import {UPDATE_DIFFICULTY, updateFilter} from "../../lib/redux/actions";
 
-const DifficultyContainer = styled.div`
+const DifficultyContainer = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled("div")`
   margin-top: 10px;
   margin-bottom: 10px;
 `;
 
-const Row = styled.div`
+const Row = styled("div")`
   display: flex;
   flex-direction: row;
 

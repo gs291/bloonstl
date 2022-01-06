@@ -7,8 +7,9 @@ import LegalText from "./LegalText";
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const MLink = styled(MUILink)`
+const MLink = styled(MUILink, globalOptions)`
   text-decoration: none;
   &:hover {
     text-decoration: underline;
@@ -16,11 +17,11 @@ const MLink = styled(MUILink)`
   }
 `;
 
-const LinkContainer = styled.div`
+const LinkContainer = styled("div")`
   margin-bottom: 20px;
 `;
 
-const LegalLinks = styled.div`
+const LegalLinks = styled("div")`
   margin-top: 50px;
   
   display: flex;

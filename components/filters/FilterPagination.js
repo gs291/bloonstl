@@ -4,8 +4,9 @@ import {Pagination} from "@mui/material";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const Pages = styled(Pagination)`
+const Pages = styled(Pagination, globalOptions)`
   transition: 0.3s;
   margin-top: 10px;
   margin-bottom: 10px;

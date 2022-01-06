@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 import BloonIcon from "../icon/bloon/BloonIcon";
 
-const BloonBackground = styled.div`
+const BloonBackground = styled("div")`
   color: #000;
   height: 100%;
 `;

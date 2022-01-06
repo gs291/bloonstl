@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 
 import TowerText from "../tower/TowerText";
-import {useSelector} from "react-redux";
 import {getMobile} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const Number = styled.div`
+const Number = styled("div", globalOptions)`
   margin-top: ${props => props["data-e"] ? 7.5 : 0}px;
   margin-bottom: ${props => props["data-m"] ? 0 : 5}px;
   width: 100%;
@@ -15,7 +16,7 @@ const Number = styled.div`
   align-items: center;
 `;
 
-const TotalContainer = styled.div`
+const TotalContainer = styled("div", globalOptions)`
   width: 100%;
   min-width: ${props => props["data-m"] ? 175 : 225}px;
   display: flex;

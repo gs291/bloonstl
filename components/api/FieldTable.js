@@ -3,18 +3,18 @@ import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "
 
 import TowerText from "../tower/TowerText";
 
-const FieldContainer = styled.div`
+const FieldContainer = styled("div")`
   width: 100%;
   margin-bottom: 40px;
 `;
 
-const FieldName = styled.div`
+const FieldName = styled("div")`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 `;
 
-const TypeContainer = styled.div`
+const TypeContainer = styled("div")`
   display: flex;
   flex-direction: row;
   white-space: nowrap;

@@ -11,6 +11,7 @@ import MonkeyIcon from "../icon/MonkeyIcon";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {TOGGLE_BORDER, TOGGLE_HEROES, TOGGLE_MONKEYS, updateFilter} from "../../lib/redux/actions";
 import {getBorder, getDarkMode, getHeroState, getMonkeyState, getMobile} from "../../lib/redux/selectors";
 
@@ -29,7 +30,7 @@ const FilterTitle = styled(TowerText)`
   margin-bottom: 30px;
 `;
 
-const FilterArea = styled.div`
+const FilterArea = styled("div")`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -64,14 +65,14 @@ const Hero = styled(HeroIcon)`
 `;
 
 
-const FilterIconContainer = styled.div`
+const FilterIconContainer = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const FilterIcon = styled.div`
+const FilterIcon = styled("div", globalOptions)`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -4,9 +4,10 @@ import {Grid, Typography} from "@mui/material";
 
 import ProsCons from "../tower/ProsCons";
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const TitleContainer = styled(Grid)`
+const TitleContainer = styled(Grid, globalOptions)`
   min-height: 375px;
   padding: 3em;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
@@ -18,7 +19,7 @@ const GridItem = styled(Grid)`
   width: 100%;
 `;
 
-const ProConContainer = styled.div`
+const ProConContainer = styled("div")`
   width: 100%;
 `;
 

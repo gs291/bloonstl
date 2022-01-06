@@ -6,14 +6,15 @@ import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const PaddedCell = styled(TableCell)`
+const PaddedCell = styled(TableCell, globalOptions)`
   padding: 0 3px;
   border-bottom: 1px solid ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
-const Row = styled(TableRow)`
+const Row = styled(TableRow, globalOptions)`
   ${props => props["data-s"] ? `background-color: ${rgbaHex(props["data-dm"] ? siteColors.stats.types.dark : siteColors.stats.types.light, 0.4)};` : ""}
 `;
 
@@ -21,13 +22,13 @@ const TypeText = styled(TowerText)`
   
 `;
 
-const EnabledContainer = styled.div`
+const EnabledContainer = styled("div")`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const EnabledCheckbox = styled(CheckBoxIcon)`
+const EnabledCheckbox = styled(CheckBoxIcon, globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.pros.dark : siteColors.pros.light};
 `;
 

@@ -4,22 +4,23 @@ import {useSelector} from "react-redux";
 import TowerText from "../tower/TowerText";
 import FixedDivider from "../divider/FixedDivider";
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {parseAbilityModifiers, rgbaHex} from "../../lib/utils/utils";
 import {getDarkMode, getShowTooltipModifiers} from "../../lib/redux/selectors";
 
-const ModifierWrapper = styled.div`
+const ModifierWrapper = styled("div")`
   width: 100%;
   position: relative;
 `;
 
-const ModifiersContainer = styled.div`
+const ModifiersContainer = styled("div", globalOptions)`
   ${props => props["data-s"] ? "" : `
   max-height: 100px;
   overflow-y: hidden;
   `}
 `;
 
-const ShadowContainer = styled.div`
+const ShadowContainer = styled("div", globalOptions)`
   display: ${props => props["data-s"] ? "none": "block"};
   ${props => props["data-s"] ? "" : `
   position: absolute;
@@ -31,11 +32,11 @@ const ShadowContainer = styled.div`
   `}
 `;
 
-const List = styled.ul`
+const List = styled("ul")`
   padding-left: 20px;
 `;
 
-const ListItem = styled.li`
+const ListItem = styled("li", globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light}
 `;
 
