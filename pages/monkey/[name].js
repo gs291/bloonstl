@@ -43,8 +43,11 @@ export async function getStaticProps({ params }) {
         const mid = monkey.id;
         monkey.abilities = await dataSources().abilitiesAPI.getAbilitiesByMonkeyId({ id: mid });
 
-        const monkey_tier = await dataSources().towersAPI.getTowerTierByMonkeyId({id: mid})
-        monkey.tier = monkey_tier.tier
+        const monkey_tier = await dataSources().towersAPI.getTowerTierByMonkeyId({id: mid});
+        monkey.tier = monkey_tier.tier;
+
+        const monkey_stats = await dataSources().towersAPI.getTowerStatsByMonkeyId({id: mid});
+        monkey.stats = monkey_stats;
 
         const name = monkey.name;
         const abilityTiers = await dataSources().abilitiesAPI.getAbilityTiersWithInfoByMonkeyName({name});

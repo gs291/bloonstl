@@ -4,7 +4,7 @@ import Endpoint from "./Endpoint";
 import FieldTable from "./FieldTable";
 import TowerText from "../tower/TowerText";
 
-const TitleDescContainer = styled.div`
+const TitleDescContainer = styled("div")`
   display: flex;
   flex-direction: column;
   

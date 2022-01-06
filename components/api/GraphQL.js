@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {useEffect, useState} from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
 
@@ -9,9 +10,9 @@ import TowerText from "../tower/TowerText";
 import FixedDivider from "../divider/FixedDivider";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
-import {useEffect, useState} from "react";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const GraphQLContainer = styled.div`
+const GraphQLContainer = styled("div")`
   width: 100%;
 
   display: flex;
@@ -20,7 +21,7 @@ const GraphQLContainer = styled.div`
   justify-content: center;
 `;
 
-const Information = styled.div`
+const Information = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,7 +41,7 @@ const Description = styled(TowerText)`
   
 `;
 
-const Link = styled.a`
+const Link = styled('a', globalOptions)`
   font-family: monospace;
   transition: 0.3s;
   font-size: 1.25rem;
@@ -49,26 +50,26 @@ const Link = styled.a`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
-const ExpanderContainer = styled.div`
+const ExpanderContainer = styled("div")`
   width: 100%;
 `;
 
-const Expander = styled(Accordion)`
+const Expander = styled(Accordion, globalOptions)`
   ${props => {
       const rgb = props["data-dm"] ? '255 255 255' : '0 0 0';
       return `box-shadow: 0px 2px 10px -1px rgb(${rgb} / 20%), 0px 1px 3px 0px rgb(${rgb} / 14%), 0px 1px 3px 0px rgb(${rgb} / 12%);`;
   }}
 `;
 
-const ExpandMore = styled(ExpandMoreIcon)`
+const ExpandMore = styled(ExpandMoreIcon, globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
-const ExpanderSummary = styled(AccordionSummary)`
+const ExpanderSummary = styled(AccordionSummary, globalOptions)`
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
 `;
 
-const ExpandedDetails = styled(AccordionDetails)`
+const ExpandedDetails = styled(AccordionDetails, globalOptions)`
   flex-direction: column;
 
   padding-top: 20px;

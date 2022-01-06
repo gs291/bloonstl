@@ -5,10 +5,11 @@ import {Card, CardContent, Link as MUILink, Typography} from "@mui/material";
 
 import Icon from "../tower/Icon";
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getBorder, getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getTowerLink, getMonkeyColor, getHeroColor, rgbaHex} from "../../lib/utils/utils";
 
-const CardContainer = styled(Card)`
+const CardContainer = styled(Card, globalOptions)`
   @keyframes popup {
     0% {
       transform: scale(0);
@@ -55,7 +56,7 @@ const MLink = styled(MUILink)`
   }
 `;
 
-const TowerName = styled(Typography)`
+const TowerName = styled(Typography, globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   transition: 0.3s;
   text-align: center;

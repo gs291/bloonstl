@@ -1,6 +1,7 @@
 -- MySQL bloonstl initial.sql
 -- Gregory Sanchez
 
+DROP TABLE IF EXISTS TowerStats;
 DROP TABLE IF EXISTS TowerTiersInfo;
 DROP TABLE IF EXISTS AbilityTiersInfo;
 DROP TABLE IF EXISTS TowerTiers;
@@ -52,6 +53,7 @@ CREATE TABLE `Abilities` (
     `description` VARCHAR(255) NOT NULL,
     `cost_gold` MEDIUMINT(6) NOT NULL,
     `cost_xp` MEDIUMINT(6) NOT NULL,
+    `modifiers` VARCHAR(511) NULL DEFAULT '',
     PRIMARY KEY (`id`),
     CONSTRAINT `ab_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -60,7 +62,6 @@ CREATE TABLE `TowerTiers` (
     `id` INT(11) AUTO_INCREMENT NOT NULL,
     `tower_id` INT(11) NOT NULL,
     `tier` VARCHAR(1) NOT NULL,
-    `votes` INT(11) NOT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT `twr_rnk_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -72,7 +73,6 @@ CREATE TABLE `AbilityTiers` (
     `top_path` TINYINT(1) NOT NULL,
     `middle_path` TINYINT(1) NOT NULL,
     `bottom_path` TINYINT(1) NOT NULL,
-    `votes` INT(11) NOT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT `ab_rnk_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -94,3 +94,37 @@ CREATE TABLE `TowerTiersInfo` (
     PRIMARY KEY (`id`),
     CONSTRAINT `twr_rnk_ifo_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `TowerStats` (
+    `id` INT(11) AUTO_INCREMENT NOT NULL,
+    `tower_id` INT(11) NOT NULL,
+    `range` DECIMAL(7,4) NOT NULL,
+    `pierce` INT(11) NOT NULL,
+    `damage` INT(11) NOT NULL,
+    `boss_damage` INT(11) NULL DEFAULT 0,
+    `camo_damage` INT(11) NULL DEFAULT 0,
+    `crit_damage` INT(11) NULL DEFAULT 0,
+    `stun_damage` INT(11) NULL DEFAULT 0,
+    `status_damage` INT(11) NULL DEFAULT 0,
+    `moab_damage` INT(11) NULL DEFAULT 0,
+    `fortified_moab_damage` INT(11) NULL DEFAULT 0,
+    `ceramic_damage` INT(11) NULL DEFAULT 0,
+    `fortified_damage` INT(11) NULL DEFAULT 0,
+    `lead_damage` INT(11) NULL DEFAULT 0,
+    `fortified_lead_damage` INT(11) NULL DEFAULT 0,
+    `projectile_count` INT(11) NULL DEFAULT 1,
+    `attack_speed` DECIMAL(9,6) NOT NULL,
+    `income` INT(11) NULL DEFAULT 0,
+    `duration` INT(11) NULL DEFAULT 0,
+    `note` VARCHAR(511) NULL DEFAULT '',
+    `footprint` INT(11) NOT NULL,
+    `hotkey` VARCHAR(32) NOT NULL,
+    `damage_type` VARCHAR(31) NOT NULL,
+    `cooldown` INT(11) NULL DEFAULT 0,
+    `crit_occurance` VARCHAR(7) NULL DEFAULT '0~0',
+    `delay` INT(11) NULL DEFAULT 0,
+    PRIMARY KEY (`id`),
+    CONSTRAINT `twr_stats_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+

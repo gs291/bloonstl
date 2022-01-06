@@ -45,6 +45,9 @@ export async function getStaticProps({ params }) {
         const hero_tier = await dataSources().towersAPI.getTowerTierByHeroId({id: hid})
         hero.tier = hero_tier.tier;
 
+        const hero_stats = await dataSources().towersAPI.getTowerStatsByHeroId({id: hid});
+        hero.stats = hero_stats;
+
         const name = hero.name;
         const heroInfo = await dataSources().towersAPI.getTowerTierInfoByHeroName({name});
         hero.info = heroInfo;

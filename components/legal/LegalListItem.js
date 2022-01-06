@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const ListItem = styled.li`
+export const ListItem = styled("li")`
   display: block;
   margin-bottom: 20px;
 

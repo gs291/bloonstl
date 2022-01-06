@@ -6,9 +6,10 @@ import {Link as MUILink} from "@mui/material";
 
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const HoverLink = styled.div`
+const HoverLink = styled("div", globalOptions)`
   transition: 0.1s;
   text-align: center;
   padding: 0 2em;
@@ -24,7 +25,7 @@ const HoverLink = styled.div`
   }
 `;
 
-const MLink = styled(MUILink)`
+const MLink = styled(MUILink, globalOptions)`
   transition: 0.3s;
   height: ${props => props["data-m"] ? "" : siteSizes.nav.height};
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
@@ -38,7 +39,7 @@ const MLink = styled(MUILink)`
   };
 `;
 
-const A = styled.div`
+const A = styled("div", globalOptions)`
   display: inline-block;
   min-width: 100px;
   font-size: ${props => props["data-m"] ? 2 : 1.5 }em;

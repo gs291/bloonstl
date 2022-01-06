@@ -4,9 +4,10 @@ import {useSelector} from "react-redux";
 import TowerText from "../tower/TowerText";
 import FilterTiers from "../filters/FilterTiers";
 import TierPathText from "../tower/TierPathText";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const AbilityTier = styled.div`
+const AbilityTier = styled("div", globalOptions)`
   display: flex;
   flex-direction: ${props => props["data-m"] ? "column" : "row"};
   width: 100%;
@@ -16,7 +17,7 @@ const AbilityTier = styled.div`
   margin-bottom: 10px;
 `;
 
-const Selection = styled.div`
+const Selection = styled("div", globalOptions)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,18 +30,20 @@ const Label = styled(TowerText)`
   text-align: center;
 `;
 
-export default function AbilityPathSelection({ tier, tiers, handleTier }) {
+export default function AbilityPathSelection({ tier, tiers, handleTier, sandbox }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <Selection data-m={mobile}>
-                <Label variant="h4">
-                    Ability Path Tiers:
+                <Label variant={mobile ? "h4" : "h3"}>
+                    Ability Path{!sandbox && " Tiers"}
                 </Label>
                 <AbilityTier data-m={mobile}>
-                    <FilterTiers tier={tier} handleTier={handleTier} />
+                    {!sandbox && (
+                        <FilterTiers tier={tier} handleTier={handleTier} />
+                    )}
                     <TierPathText tier={tier} tiers={tiers}/>
                 </AbilityTier>
             </Selection>

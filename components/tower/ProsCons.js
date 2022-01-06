@@ -7,14 +7,15 @@ import FixedDivider from "../divider/FixedDivider";
 import {parseProsCons} from "../../lib/utils/utils";
 import {getMobile} from "../../lib/redux/selectors";
 import VerticalDivider from "../divider/VerticalDivider";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const ProsConsContainer = styled(Grid)`
+const ProsConsContainer = styled(Grid, globalOptions)`
   min-height: ${props => props["data-m"] ? "250px" : "125px"};
   margin-top: 10px;
   margin-bottom: 10px;
 `;
 
-const SpacedGrid = styled(Grid)`
+const SpacedGrid = styled(Grid, globalOptions)`
   flex: ${props => props["data-m"] ? 1 : 0.5};
   width: ${props => props["data-m"] ? 100 : 90}%;
 `;

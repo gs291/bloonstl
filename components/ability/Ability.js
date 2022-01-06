@@ -10,27 +10,29 @@ import siteColors from "../../lib/utils/siteColors";
 import {getMobile} from "../../lib/redux/selectors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import AbilityTooltip from "../tooltip/AbilityTooltip";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getImageUrl, getTierColor} from "../../lib/utils/utils";
 
-const AbilityContainer = styled.div`
+
+const AbilityContainer = styled("div")`
   display: flex;
   flex-direction: row;
   position: relative;
 `;
 
-const CardContainer = styled(Card)`
+const CardContainer = styled(Card, globalOptions)`
   border-radius: 50%;
   background-color: ${props => props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
   border: 4px solid ${props => props["data-s"] ? getTierColor(props.tier) : props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
   transition: 0.3s;
-  box-shadow: 0 0 7.5px #000000;
+  box-shadow: 0 0 10px 2px ${props => props["data-dm"] ? "#2A526A" : "#000000"};
   
   &:hover {
     cursor: pointer;
   }
 `;
 
-const CardContentContainer = styled(CardContent)`
+const CardContentContainer = styled(CardContent, globalOptions)`
   position: relative;
   width: ${props => props["data-m"] ? siteSizes.ability.mobile.width : siteSizes.ability.width};
   max-width: ${props => props["data-m"] ? siteSizes.ability.mobile.width : siteSizes.ability.width};
@@ -48,12 +50,12 @@ const CardContentContainer = styled(CardContent)`
   }
 `;
 
-const AbilityLevel = styled.div`
+const AbilityLevel = styled("div", globalOptions)`
   text-align: center;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
-const ActivatedAbility = styled(OfflineBoltIcon)`
+const ActivatedAbility = styled(OfflineBoltIcon, globalOptions)`
   position: absolute;
   top: -5px;
   left: 30px;
@@ -68,19 +70,29 @@ const ActivatedAbility = styled(OfflineBoltIcon)`
   }
 `;
 
-export default function Ability({className, ability, fileName, tier, towerType, selected}) {
+export default function Ability({className, ability, fileName, tier, towerType, selected, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
+
     return (
         <>
-            <AbilityContainer className={className}>
+            <AbilityContainer className={className} {...rest}>
                 <Tooltip
                     title={
-                        <AbilityTooltip ability={ability}
-                                        tier={tier}
-                                        towerType={towerType}
-                                        selected={selected}
+                        <AbilityTooltip
+                            ability={ability}
+                            tier={tier}
+                            towerType={towerType}
+                            selected={selected}
+                            fileName={fileName}
                         />}
+                    borderColor={ability.active
+                        ? siteColors.ability.activated
+                        : selected
+                            ? getTierColor(tier)
+                            : null
+                    }
+
                     active={ability.active}
                 >
                     <CardContainer data-s={selected} tier={tier} data-dm={darkMode}>

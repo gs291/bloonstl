@@ -6,10 +6,11 @@ import GridTitle from "./GridTitle";
 import GridItems from "./GridItems";
 import TowerCard from "../tower/TowerCard";
 import {rgbaHex} from "../../lib/utils/utils";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
-const TowerGrid = styled(Grid)`
+const TowerGrid = styled(Grid, globalOptions)`
   border-radius: 20px;
   border: 6px solid ${props => rgbaHex(props["data-tc"], props["data-dm"] ? 0.75 : 1)};
   box-shadow: 10px 10px 10px ${props => props["data-bc"]};

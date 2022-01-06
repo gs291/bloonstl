@@ -5,12 +5,13 @@ import BorderClearIcon from '@mui/icons-material/BorderClear';
 import BorderOuterIcon from '@mui/icons-material/BorderOuter';
 
 import HeroIcon from "../icon/HeroIcon";
+import Tooltip from "../tooltip/Tooltip";
 import TowerText from "../tower/TowerText";
 import MonkeyIcon from "../icon/MonkeyIcon";
 import {rgbaHex} from "../../lib/utils/utils";
-import TextTooltip from "../tooltip/TextTooltip";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {TOGGLE_BORDER, TOGGLE_HEROES, TOGGLE_MONKEYS, updateFilter} from "../../lib/redux/actions";
 import {getBorder, getDarkMode, getHeroState, getMonkeyState, getMobile} from "../../lib/redux/selectors";
 
@@ -29,7 +30,7 @@ const FilterTitle = styled(TowerText)`
   margin-bottom: 30px;
 `;
 
-const FilterArea = styled.div`
+const FilterArea = styled("div")`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -64,14 +65,14 @@ const Hero = styled(HeroIcon)`
 `;
 
 
-const FilterIconContainer = styled.div`
+const FilterIconContainer = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-const FilterIcon = styled.div`
+const FilterIcon = styled("div", globalOptions)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,7 +115,7 @@ export default function FiltersTierList({className}) {
                         <TowerText variant="caption">
                             Borders
                         </TowerText>
-                        <TextTooltip tooltip={"Toggle Borders"}>
+                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Borders</TowerText>)} forceWidth={false} placement="bottom" >
                             <FilterIcon data-dm={darkMode} onClick={handleBorder}>
                                 {border ? (
                                     <BorderOutlined />
@@ -122,27 +123,27 @@ export default function FiltersTierList({className}) {
                                     <BorderClear />
                                 )}
                             </FilterIcon>
-                        </TextTooltip>
+                        </Tooltip>
                     </FilterIconContainer>
                     <FilterIconContainer>
                         <TowerText variant="caption">
                             Monkeys
                         </TowerText>
-                        <TextTooltip tooltip={"Toggle Monkeys"}>
+                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Monkeys</TowerText>)} forceWidth={false} placement="bottom" >
                             <FilterIcon data-dm={darkMode} onClick={handleMonkeys}>
                                 <Monkey data-s={monkeys} data-dm={darkMode}/>
                             </FilterIcon>
-                        </TextTooltip>
+                        </Tooltip>
                     </FilterIconContainer>
                     <FilterIconContainer>
                         <TowerText variant="caption">
                             Heroes
                         </TowerText>
-                        <TextTooltip tooltip={"Toggle Heroes"}>
+                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Heroes</TowerText>)} forceWidth={false} placement="bottom" >
                             <FilterIcon data-dm={darkMode} onClick={handleHeroes}>
                                 <Hero data-s={heroes} data-dm={darkMode}/>
                             </FilterIcon>
-                        </TextTooltip>
+                        </Tooltip>
                     </FilterIconContainer>
 
                 </FilterArea>

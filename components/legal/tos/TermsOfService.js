@@ -21,7 +21,7 @@ import CaliforniaUsersAndResidents from "./CaliforniaUsersAndResidents";
 import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
 
-const ToSContainer = styled.div`
+const ToSContainer = styled("div")`
   width: 100%;
   margin-top: 50px;
 `;

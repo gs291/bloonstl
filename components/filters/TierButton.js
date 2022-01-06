@@ -2,12 +2,13 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {Typography} from "@mui/material";
 
-import {getTierColor} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
+import {getTierColor, rgbaHex} from "../../lib/utils/utils";
 
 
-const Button = styled.div`
+const Button = styled("div", globalOptions)`
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   padding: 5px 5px;
@@ -19,12 +20,15 @@ const Button = styled.div`
   &:hover {
     cursor: pointer;
     transform: scale(1.2);
-    box-shadow: 5px 5px 7.5px 0 ${props => props["data-dm"] ? siteColors.page.light : siteColors.page.dark};
+    box-shadow: 5px 5px 7.5px 0 ${props => props["data-t"] 
+            ? rgbaHex(getTierColor(props["data-t"]), 0.5) 
+            : props["data-dm"] ? siteColors.page.light : siteColors.page.dark
+    };
     border: 5px solid ${props => getTierColor(props["data-t"])};
   }
 `;
 
-const TierText = styled(Typography)`
+const TierText = styled(Typography, globalOptions)`
   transition: 0.3s;
   color: ${props => props["data-s"] 
           ? props["data-dm"] ? siteColors.page.dark : siteColors.page.light 

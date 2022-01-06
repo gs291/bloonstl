@@ -7,10 +7,11 @@ import TowerSection from "./TowerSection";
 import ProConSection from "./ProConSection";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
 const delay = 7500;
 
-const OddSection = styled.div`
+const OddSection = styled("div", globalOptions)`
   width: 100%;
   
   display: flex;

@@ -5,14 +5,15 @@ import Chevron from "./Cheveron";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const IndicatorContainer = styled.div`
+const IndicatorContainer = styled("div")`
   position: relative;
   width: 30px;
   height: 45px;
 `;
 
-const ClickContainer = styled.div`
+const ClickContainer = styled("div", globalOptions)`
   width: 100%;
   display: flex;
   height: 75px;

@@ -11,28 +11,29 @@ import ReturnToTop from "../return/ReturnToTop";
 import siteColors from "../../lib/utils/siteColors";
 import { updateMobile } from "../../lib/redux/actions";
 import ConsentToast from "../legal/consent/ConsentToast";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const PageContainer = styled.div`
+const PageContainer = styled("div")`
   display: flex;
   min-height: 100vh;
   flex-direction: column;  
 `;
 
-const Nav = styled(Navbar)`
+const Nav = styled(Navbar, globalOptions)`
   transition: 0.3s;
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   box-shadow: none;
 `;
 
-const Main = styled.main`
+const Main = styled("main", globalOptions)`
   flex: 1;
   transition: 0.3s;
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   padding-bottom: 30px;
 `;
 
-const Foot = styled(Footer)`
+const Foot = styled(Footer, globalOptions)`
   transition: 0.3s;
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};

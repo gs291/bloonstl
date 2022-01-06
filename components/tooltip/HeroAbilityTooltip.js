@@ -1,27 +1,12 @@
-import TowerText from "../tower/TowerText";
-import siteColors from "../../lib/utils/siteColors";
+import AbilityTitleTooltip from "./AbilityTitleTooltip";
+import AbilityModifiersTooltip from "./AbilityModifiersTooltip";
 
-export default function HeroAbilityTooltip({ ability }) {
+export default function HeroAbilityTooltip({ ability, fileName, tier, selected, ...rest }) {
 
     return (
         <>
-            { ability.active === 1 && (
-                <>
-                    <TowerText variant="h5" textColor={siteColors.text.dark}>
-                        {ability.name}
-                    </TowerText>
-                    <TowerText variant="body1" textColor={siteColors.text.dark} font={true}>
-                        {ability.description}
-                    </TowerText>
-                </>
-            )}
-            { ability.active === 0 && (
-                <>
-                    <TowerText variant="body1" textColor={siteColors.text.dark} font={true}>
-                        {ability.description}
-                    </TowerText>
-                </>
-            )}
+            <AbilityTitleTooltip ability={ability} tier={tier} fileName={fileName} selected={selected} towerType="hero" />
+            <AbilityModifiersTooltip modifiers={ability.modifiers} />
         </>
     );
 }

@@ -4,14 +4,15 @@ import {Typography} from "@mui/material";
 
 import ImageFill from "../image/ImageFill";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
-const Button = styled.div`
+const Button = styled("div", globalOptions)`
   position: relative;
-  margin-left: 3rem;
-  margin-right: 3rem;
-  margin-bottom: 2rem;
+  margin-left: ${props => props["data-m"] ? 2 : 3}rem;
+  margin-right: ${props => props["data-m"] ? 2 : 3}rem;
+  margin-bottom: ${props => props["data-m"] ? 2 : 2}rem;
   padding: 5px 5px;
   border-radius: 50%;
   border: 5px solid transparent;
@@ -27,15 +28,15 @@ const Button = styled.div`
   }
 `;
 
-const DifficultyImageContainer = styled.div`
-  width: 50px;
-  max-width: 50px;
-  height: 50px;
-  max-height: 50px;
+const DifficultyImageContainer = styled("div", globalOptions)`
+  width: ${props => props["data-m"] ? 45 : 50}px;
+  max-width: ${props => props["data-m"] ? 45 : 50}px;
+  height: ${props => props["data-m"] ? 45 : 50}px;
+  max-height: ${props => props["data-m"] ? 45 : 50}px;
   position: relative;
 `;
 
-const DifficultyText = styled(Typography)`
+const DifficultyText = styled(Typography, globalOptions)`
   transition: 0.3s;
   color: ${props => props["data-s"] 
           ? props["data-c"] 
@@ -52,6 +53,7 @@ const DifficultyText = styled(Typography)`
 `;
 
 export default function DifficultyButton({ className, difficulty, selected, color, handleChange }) {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     return (
@@ -61,9 +63,10 @@ export default function DifficultyButton({ className, difficulty, selected, colo
                 data-s={selected}
                 data-c={color}
                 data-dm={darkMode}
+                data-m={mobile}
                 className={className}
             >
-                <DifficultyImageContainer>
+                <DifficultyImageContainer data-m={mobile}>
                     <ImageFill src={`difficulty/${difficulty}.png`} alt={`Difficulty icon: ${difficulty}`} />
                 </DifficultyImageContainer>
                 <DifficultyText

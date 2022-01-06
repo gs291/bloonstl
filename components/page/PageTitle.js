@@ -3,9 +3,10 @@ import {useSelector} from "react-redux";
 import {Typography} from "@mui/material";
 
 import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const Title = styled(Typography)`
+const Title = styled(Typography, globalOptions)`
   width: 100%;
   text-align: center;
   margin-bottom: 100px;

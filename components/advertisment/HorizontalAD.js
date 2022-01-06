@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import styled from "@emotion/styled";
 
-const ADContainer = styled.div`
+const ADContainer = styled("div")`
   width: 100%;
   padding: 0.5em 0;
   margin-top: 5px;
@@ -9,7 +9,7 @@ const ADContainer = styled.div`
   border-radius: 5px;
 `;
 
-const StyledAD = styled.ins`
+const StyledAD = styled("ins")`
   width: 100%;
   height: 100px;
 `;

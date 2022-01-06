@@ -6,10 +6,11 @@ import {Link as MUILink} from "@mui/material";
 import TowerText from "../tower/TowerText";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {font_family, rgbaHex} from "../../lib/utils/utils";
+import {globalOptions} from "../../lib/utils/emotionStyled";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const FooterContainer = styled.footer`
+const FooterContainer = styled("footer")`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,7 +18,7 @@ const FooterContainer = styled.footer`
   height: ${siteSizes.footer.height};
 `;
 
-const LinkContainer = styled.div`
+const LinkContainer = styled("div")`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -31,7 +32,7 @@ const FooterText = styled(TowerText)`
   text-align: center;
 `;
 
-const FooterLink = styled.a`
+const FooterLink = styled('a', globalOptions)`
   font-family: ${font_family};
   transition: 0.3s;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
@@ -47,9 +48,9 @@ const FooterLink = styled.a`
   }
 `;
 
-const MLink = styled(MUILink)`
-  margin-left: 10px;
-  margin-right: 10px;
+const MLink = styled(MUILink, globalOptions)`
+  margin-left: ${props => props["data-m"] ? 5 : 10}px;
+  margin-right: ${props => props["data-m"] ? 5 : 10}px;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   font-size: 1.25em;
 
@@ -59,7 +60,7 @@ const MLink = styled(MUILink)`
   }
 `;
 
-const Dot = styled.div`
+const Dot = styled("div", globalOptions)`
   width: 5px; 
   height: 5px; 
   border-radius: 5px; 
@@ -75,6 +76,7 @@ const links = [
 ]
 
 export default function Footer({ className }) {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     return (
@@ -84,7 +86,7 @@ export default function Footer({ className }) {
                     {links.map(link => (
                         <LinkContainer key={link.text}>
                             <Link href={link.path} prefetch={false} passHref>
-                                <MLink underline="none" data-dm={darkMode}>
+                                <MLink underline="none" data-dm={darkMode} data-m={mobile}>
                                     {link.text}
                                 </MLink>
                             </Link>

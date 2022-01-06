@@ -5,8 +5,9 @@ import {Grid, Typography} from "@mui/material";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const Title = styled(Grid)`
+const Title = styled(Grid, globalOptions)`
   padding-top: 20px;
   padding-bottom: 20px;
   

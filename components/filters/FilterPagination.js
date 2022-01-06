@@ -4,8 +4,9 @@ import {Pagination} from "@mui/material";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const Pages = styled(Pagination)`
+const Pages = styled(Pagination, globalOptions)`
   transition: 0.3s;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -15,6 +16,12 @@ const Pages = styled(Pagination)`
 
   & .MuiPaginationItem-root.Mui-selected {
     background-color: ${props => props["data-dm"] ? siteColors.pagination.selected.dark : siteColors.pagination.selected.light};
+  }
+
+  & .MuiPaginationItem-root.Mui-selected:hover,
+  & .MuiPaginationItem-root.Mui-selected:active,
+  & .MuiPaginationItem-root.Mui-selected:focus {
+    background-color: ${props => props["data-dm"] ? siteColors.pagination.dark : siteColors.pagination.light};
   }
 
   & .MuiPaginationItem-root:hover,

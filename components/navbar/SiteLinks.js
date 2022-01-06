@@ -5,21 +5,22 @@ import {useDispatch, useSelector} from "react-redux";
 import NavLink from "./NavLink";
 import MenuButton from "./MenuButton";
 import NavCollapse from "./NavCollapse";
+import Tooltip from "../tooltip/Tooltip";
+import TowerText from "../tower/TowerText";
 import DarkMode from "../dark-mode/DarkMode";
-import TextTooltip from "../tooltip/TextTooltip";
 import siteLinks from "../../lib/utils/siteLinks";
 import {closeDrawer} from "../../lib/redux/actions";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const NavSection = styled.div`
+const NavSection = styled("div")`
   flex: 0.5;
 `;
 
-const SmallNavSection = styled.div`
+const SmallNavSection = styled("div")`
   flex: 0.25;
 `;
 
-const NavContainer = styled.div`
+const NavContainer = styled("div")`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -82,9 +83,9 @@ export default function SiteLinks() {
             <SmallNavSection>
                 <NavContainer>
                     {!mobile && (
-                        <TextTooltip tooltip={`Toggle ${darkMode ? "Light" : "Dark"} Mode`}>
+                        <Tooltip title={(<TowerText variant="h6" font={true} >{`Toggle ${darkMode ? "Light" : "Dark"} Mode`}</TowerText>)} forceWidth={false}>
                             <DarkMode />
-                        </TextTooltip>
+                        </Tooltip>
                     )}
                     { mobile && (
                         <MenuButton />

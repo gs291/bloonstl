@@ -7,8 +7,9 @@ import ConsentBody from "./ConsentBody";
 import ConsentHeader from "./ConsentHeader";
 import siteColors from "../../../lib/utils/siteColors";
 import {getDarkMode} from "../../../lib/redux/selectors";
+import {globalOptions} from "../../../lib/utils/emotionStyled";
 
-const Toast = styled.div`
+const Toast = styled("div", globalOptions)`
   width: 20rem;
   position: fixed;
   left: 20px;

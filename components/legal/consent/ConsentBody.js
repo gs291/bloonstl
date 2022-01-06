@@ -1,21 +1,22 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 import TowerText from "../../tower/TowerText";
-import {useSelector} from "react-redux";
 import siteColors from "../../../lib/utils/siteColors";
 import {getDarkMode} from "../../../lib/redux/selectors";
+import {globalOptions} from "../../../lib/utils/emotionStyled";
 
 
-const Body = styled.div`
+const Body = styled("div")`
   padding: 0.86rem 1.4rem;
   
   display: flex;
   flex-direction: column;
 `;
 
-const Error = styled.div`
+const Error = styled("div")`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -28,7 +29,7 @@ const ErrorText = styled(TowerText)`
   margin-left: 10px;
 `;
 
-const ATag = styled.a`
+const ATag = styled("a")`
   text-decoration: underline;
   
   &:hover {
@@ -36,7 +37,7 @@ const ATag = styled.a`
   }
 `;
 
-const ErrorIcon = styled(ErrorOutlineIcon)`
+const ErrorIcon = styled(ErrorOutlineIcon, globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.toast.error.alert.dark : siteColors.toast.error.alert.light};
 `;
 

@@ -5,13 +5,14 @@ import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const EndpointContainer = styled.div`
+const EndpointContainer = styled("div")`
   width: 100%;
   margin-bottom: 40px;
 `;
 
-const MethodName = styled.div`
+const MethodName = styled("div")`
   display: flex;
   flex-direction: row;
 `;
@@ -29,7 +30,7 @@ const BoldText = styled(TowerText)`
   font-weight: bold;
 `;
 
-const CodeContainer = styled.div`
+const CodeContainer = styled("div")`
   padding: 1em;
   margin-bottom: 20px;
 
@@ -37,7 +38,7 @@ const CodeContainer = styled.div`
   border-radius: 10px;
 `;
 
-const Code = styled.div`
+const Code = styled("div")`
   white-space: pre-wrap;
   font-family: monospace;
 `;
@@ -46,7 +47,7 @@ const CodeText = styled(TowerText)`
   font-family: monospace;
 `;
 
-const LanguageType = styled.div`
+const LanguageType = styled("div", globalOptions)`
   max-width: 85px;
   margin-bottom: 10px;
   padding: 0.5em;

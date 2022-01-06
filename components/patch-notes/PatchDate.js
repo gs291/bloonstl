@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 
 import TowerText from "../tower/TowerText";
 
-const DateContainer = styled.div`
+const DateContainer = styled("div")`
   display: flex;
 `;
 

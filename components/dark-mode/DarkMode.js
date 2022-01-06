@@ -5,9 +5,10 @@ import {rgbaHex} from "../../lib/utils/utils";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {toggleDarkMode} from "../../lib/redux/actions";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
-const Switch = styled.input`
+const Switch = styled("input")`
   --size: 2rem;
 
   appearance: none;
@@ -43,7 +44,7 @@ const Switch = styled.input`
   }
 `;
 
-const DarkModeContainer = styled.div`
+const DarkModeContainer = styled("div", globalOptions)`
   height: ${props => props["data-m"] ? "100%" : siteSizes.icon.darkMode.height};
   width: ${props => props["data-m"] ? "100%" : siteSizes.icon.darkMode.height};
   border-radius: ${props => props["data-m"] ? 0 : 50}%;

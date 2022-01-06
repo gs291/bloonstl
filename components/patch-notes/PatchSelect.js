@@ -8,6 +8,7 @@ import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {patchVersions} from "../../lib/utils/patches";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
 
 const useStyles = makeStyles({
@@ -17,12 +18,12 @@ const useStyles = makeStyles({
     }
 });
 
-const SelectContainer = styled.div`
+const SelectContainer = styled("div")`
   display: flex;
   justify-content: center;
 `;
 
-const SelectLabel = styled(InputLabel)`
+const SelectLabel = styled(InputLabel, globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   
   &.Mui-focused {
@@ -30,7 +31,7 @@ const SelectLabel = styled(InputLabel)`
   }
 `;
 
-const VersionSelect = styled(Select)`
+const VersionSelect = styled(Select, globalOptions)`
   width: 115px;
   transition: 0.3s;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};

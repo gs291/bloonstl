@@ -14,7 +14,7 @@ import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
 import TableOfContents from "../table-of-contents/TableOfContents";
 
-const PageContainer = styled.div`
+const PageContainer = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,7 +30,7 @@ const Date = styled(PatchDate)`
   margin-top: 50px;
 `;
 
-const Loading = styled.div`
+const Loading = styled("div")`
   margin-top: 30px;
   margin-bottom: 30px;
   
@@ -41,7 +41,7 @@ const Loading = styled.div`
   text-align: center;
 `;
 
-const ErrorContainer = styled.div`
+const ErrorContainer = styled("div")`
   margin-top: 30px;
   margin-bottom: 30px;
 `;

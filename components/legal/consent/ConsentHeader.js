@@ -7,8 +7,9 @@ import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import TowerText from "../../tower/TowerText";
 import siteColors from "../../../lib/utils/siteColors";
 import {getDarkMode} from "../../../lib/redux/selectors";
+import {globalOptions} from "../../../lib/utils/emotionStyled";
 
-const Header = styled.div`
+const Header = styled("div", globalOptions)`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -25,7 +26,7 @@ const Header = styled.div`
   transition-duration: 0.3s;
 `;
 
-const Title = styled.div`
+const Title = styled("div")`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -36,12 +37,12 @@ const TitleText = styled(TowerText)`
   margin-left: 10px;
 `;
 
-const InfoIcon = styled(InfoOutlinedIcon)`
+const InfoIcon = styled(InfoOutlinedIcon, globalOptions)`
   transition: 0.3s;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
-const CancelIcon = styled(CancelOutlinedIcon)`
+const CancelIcon = styled(CancelOutlinedIcon, globalOptions)`
   transition: 0.3s;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   

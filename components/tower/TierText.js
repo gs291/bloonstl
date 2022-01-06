@@ -5,14 +5,15 @@ import {Typography} from "@mui/material";
 import {getTierColor} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
-const Tier = styled(Typography)`
+const Tier = styled(Typography, globalOptions)`
   color: ${props => getTierColor(props.name)};
   ${props => !props["data-dm"] && `text-shadow: 5px 5px 10px ${siteColors.text.light}`};
   transition: 0.3s;
 `;
 
-const TierContainer = styled.div`
+const TierContainer = styled("div")`
   display: flex;
   flex-direction: row;
   justify-content: center;

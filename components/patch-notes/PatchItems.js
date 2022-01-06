@@ -4,13 +4,14 @@ import {useSelector} from "react-redux";
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
 
-const Items = styled.ul`
+const Items = styled("ul")`
   padding-left: 20px;
 `;
 
-const ItemList = styled.li`
+const ItemList = styled("li", globalOptions)`
   margin-top: 20px;
   
   &::marker {
@@ -18,7 +19,7 @@ const ItemList = styled.li`
   }
 `;
 
-const TowerTitle = styled(TowerText)`
+const TowerTitle = styled(TowerText, globalOptions)`
   ${props => props["data-bc"] ? `text-shadow: 0 5px 20px ${props["data-bc"]};` : ''}
 `;
 

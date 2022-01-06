@@ -4,7 +4,7 @@ import PatchItems from "./PatchItems";
 import TowerText from "../tower/TowerText";
 import FixedDivider from "../divider/FixedDivider";
 
-const PatchContainer = styled.div`
+const PatchContainer = styled("div")`
   width: 100%;
 `;
 
