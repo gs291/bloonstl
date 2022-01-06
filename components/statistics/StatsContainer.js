@@ -22,8 +22,8 @@ const Stats = styled("div", globalOptions)`
           props["data-t"] 
                   ? props["data-tow"] === "hero" 
                           ? props["data-dm"] 
-                                  ? siteColors.hero[props["data-t"].substring(0, 1).toLowerCase() + props["data-t"].substring(1).replace(/\s+/g, '')].color
-                                  : siteColors.hero[props["data-t"].substring(0, 1).toLowerCase() + props["data-t"].substring(1).replace(/\s+/g, '')].color
+                                  ? siteColors.hero[props["data-t"].substring(0, 1).toLowerCase() + props["data-t"].substring(1).replace(/\s+/g, '')].grid.dark
+                                  : siteColors.hero[props["data-t"].substring(0, 1).toLowerCase() + props["data-t"].substring(1).replace(/\s+/g, '')].grid.light
                           : props["data-dm"] ? siteColors.monkeyType[props["data-t"].toLowerCase()].grid.dark : siteColors.monkeyType[props["data-t"].toLowerCase()].grid.light
                   : props["data-dm"] ? siteColors.page.dark : siteColors.page.light
   };

@@ -25,7 +25,7 @@ const CardContainer = styled(Card, globalOptions)`
   background-color: ${props => props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
   border: 4px solid ${props => props["data-s"] ? getTierColor(props.tier) : props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
   transition: 0.3s;
-  box-shadow: 0 0 7.5px #000000;
+  box-shadow: 0 0 10px 2px ${props => props["data-dm"] ? "#2A526A" : "#000000"};
   
   &:hover {
     cursor: pointer;

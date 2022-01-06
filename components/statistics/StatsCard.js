@@ -142,19 +142,6 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                     : siteColors.monkeyType[towerVar].grid.light
             : darkMode ? siteColors.page.dark : siteColors.page.light;
 
-    const hoverColor =
-        type
-            ? towerType === "hero"
-                ? darkMode
-                    ? siteColors.hero[towerVar].hover.dark
-                    : siteColors.hero[towerVar].hover.light
-                : darkMode
-                    ? siteColors.monkeyType[towerVar].hover.dark
-                    : siteColors.monkeyType[towerVar].hover.light
-            : darkMode ? siteColors.page.dark : siteColors.page.light;
-
-
-
     return (
         <>
             {Object.keys(stats).map(key => (

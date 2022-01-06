@@ -15,10 +15,10 @@ const IconContainer  = styled("div", globalOptions)`
 
 const ImgContainer = styled("div", globalOptions)`
   position: relative;
-  width: ${props => props["data-t"] === "monkey" ? 180 : props["data-t"] === "hero" ? 310 : 120}px;
-  max-width: ${props => props["data-t"] === "monkey" ? 180 : props["data-t"] === "hero" ? 310 : 120}px;
-  height: ${props => props["data-t"] === "monkey" ? 300 : props["data-t"] === "hero" ? 400 : 150}px;
-  max-height: ${props => props["data-t"] === "monkey" ? 300 : props["data-t"] === "hero" ? 400 : 150}px;
+  width: ${props => props["data-t"] === "monkey" ? 250 : props["data-t"] === "hero" ? 250 : 120}px;
+  max-width: ${props => props["data-t"] === "monkey" ? 250 : props["data-t"] === "hero" ? 250 : 120}px;
+  height: ${props => props["data-t"] === "monkey" ? 300 : props["data-t"] === "hero" ? 300 : 150}px;
+  max-height: ${props => props["data-t"] === "monkey" ? 300 : props["data-t"] === "hero" ? 300 : 150}px;
 `;
 
 export default function Icon({ className, tower, towerType, detailed }) {

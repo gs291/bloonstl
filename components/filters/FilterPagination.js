@@ -18,6 +18,12 @@ const Pages = styled(Pagination, globalOptions)`
     background-color: ${props => props["data-dm"] ? siteColors.pagination.selected.dark : siteColors.pagination.selected.light};
   }
 
+  & .MuiPaginationItem-root.Mui-selected:hover,
+  & .MuiPaginationItem-root.Mui-selected:active,
+  & .MuiPaginationItem-root.Mui-selected:focus {
+    background-color: ${props => props["data-dm"] ? siteColors.pagination.dark : siteColors.pagination.light};
+  }
+
   & .MuiPaginationItem-root:hover,
   & .MuiPaginationItem-root:active,
   & .MuiPaginationItem-root:focus {
