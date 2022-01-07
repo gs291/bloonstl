@@ -26,6 +26,10 @@ const AbilitiesText = styled(TowerText)`
   cursor: default;
 `;
 
+const PathCost = styled(TowerText)`
+  margin-bottom: 20px;
+`;
+
 const FilterDiff = styled(FilterDifficulty)`
   margin-top: 10px;
   margin-bottom: 10px;
@@ -130,9 +134,9 @@ export default function MonkeyPage({ monkey }) {
             <AbilitiesText variant={mobile ? "h4" : "h3"}>
                 Tower Abilities
             </AbilitiesText>
-            <TowerText variant={mobile ? "h6" : "h4"}>
+            <PathCost variant={mobile ? "h6" : "h4"}>
                 Path Cost: $<Counter cost={stats.cost} />
-            </TowerText>
+            </PathCost>
             <MonkeyAbilities
                 abilities={monkey.abilities}
                 monkeyFile={monkey.filename}

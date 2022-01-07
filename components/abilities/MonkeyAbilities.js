@@ -1,4 +1,4 @@
-import {Checkbox, Grid} from "@mui/material";
+import {Grid} from "@mui/material";
 import {PureComponent} from "react";
 import styled from "@emotion/styled";
 
@@ -10,12 +10,18 @@ import {
     parseAbilityModifiers
 } from "../../lib/utils/utils";
 
+const AbilitiesContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const GridContainer = styled(Grid)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5px;
 `;
 
 const GridItem = styled(Grid)`
@@ -104,18 +110,20 @@ export default class MonkeyAbilities extends PureComponent {
 
         return (
             <>
-                <ShowAllAbilityModifiers tier={tier} />
-                <GridContainer container spacing={2} className={className}>
-                    <GridItem item>
-                        {pathTop}
-                    </GridItem>
-                    <GridItem item>
-                        {pathMiddle}
-                    </GridItem>
-                    <GridItem item>
-                        {pathBottom}
-                    </GridItem>
-                </GridContainer>
+                <AbilitiesContainer className={className}>
+                    <GridContainer container spacing={2}>
+                        <GridItem item>
+                            {pathTop}
+                        </GridItem>
+                        <GridItem item>
+                            {pathMiddle}
+                        </GridItem>
+                        <GridItem item>
+                            {pathBottom}
+                        </GridItem>
+                    </GridContainer>
+                    <ShowAllAbilityModifiers tier={tier} />
+                </AbilitiesContainer>
             </>
         );
     }

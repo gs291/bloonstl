@@ -6,12 +6,18 @@ import AbilityContainer from "../ability/AbilityContainer";
 import ShowAllAbilityModifiers from "./ShowAllAbilityModifiers";
 import {getInitialTowerStats, parseAbilityModifiers} from "../../lib/utils/utils";
 
+const AbilitiesContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const GridContainer = styled(Grid)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
 `;
 
 const GridItem = styled(Grid)`
@@ -86,21 +92,23 @@ export default class HeroAbilities extends PureComponent {
 
         return (
             <>
-                <ShowAllAbilityModifiers tier={tier} />
-                <GridContainer container spacing={2} className={className}>
-                    <GridItem item>
-                        { firstFiveAbilities }
-                    </GridItem>
-                    <GridItem item>
-                        { secondFiveAbilities }
-                    </GridItem>
-                    <GridItem item>
-                        { thirdFiveAbilities }
-                    </GridItem>
-                    <GridItem item>
-                        { fourthFiveAbilities }
-                    </GridItem>
-                </GridContainer>
+                <AbilitiesContainer className={className}>
+                    <GridContainer container spacing={2}>
+                        <GridItem item>
+                            { firstFiveAbilities }
+                        </GridItem>
+                        <GridItem item>
+                            { secondFiveAbilities }
+                        </GridItem>
+                        <GridItem item>
+                            { thirdFiveAbilities }
+                        </GridItem>
+                        <GridItem item>
+                            { fourthFiveAbilities }
+                        </GridItem>
+                    </GridContainer>
+                    <ShowAllAbilityModifiers tier={tier} />
+                </AbilitiesContainer>
             </>
         );
     }

@@ -10,8 +10,10 @@ import {TOGGLE_TOOLTIP_MODIFIERS, updateFilter} from "../../lib/redux/actions";
 import {getDarkMode, getMobile, getShowTooltipModifiers} from "../../lib/redux/selectors";
 
 
-const Group = styled(FormGroup)`
-  align-items: center;
+const Group = styled(FormGroup, globalOptions)`
+  align-self: end;
+  margin-top: 5px;
+  margin-right: ${props => props["data-m"] ? 15 : 20}px;
 `;
 
 const Label = styled(FormControlLabel)`
@@ -51,31 +53,32 @@ export default function ShowAllAbilityModifiers({tier, ...rest}) {
 
     return (
         <>
-            <Group {...rest}>
-            <Label
-                control={(
-                    <StyledCheckbox
-                        checked={showAllModifiers}
-                        onChange={handleShowAllModifiers}
-                        data-dm={darkMode}
-                        data-t={tier}
-                    />
-                )}
-                label={(
-                    <TowerText variant={mobile ? "subtitle2" : "subtitle1"} font={true}>
-                        {showAllModifiers ? (
-                            <>
-                                Hide all tooltip modifiers
-                            </>
-                        ) : (
-                            <>
-                                Show all tooltip modifiers
-                            </>
-                        )}
+            <Group data-m={mobile} {...rest}>
+                <Label
+                    labelPlacement="start"
+                    control={(
+                        <StyledCheckbox
+                            checked={showAllModifiers}
+                            onChange={handleShowAllModifiers}
+                            data-dm={darkMode}
+                            data-t={tier}
+                        />
+                    )}
+                    label={(
+                        <TowerText variant={mobile ? "caption" : "subtitle2"} font={true}>
+                            {showAllModifiers ? (
+                                <>
+                                    Hide all tooltip modifiers
+                                </>
+                            ) : (
+                                <>
+                                    Show all tooltip modifiers
+                                </>
+                            )}
 
-                    </TowerText>
-                )}
-            />
+                        </TowerText>
+                    )}
+                />
             </Group>
         </>
     );

@@ -49,7 +49,11 @@ const TierText = styled(TierPathText)`
 
 const Abilities = styled(HeroAbilities)`
   margin-bottom: 30px;
-`
+`;
+
+const PathXPCost = styled(TowerText)`
+  margin-bottom: 20px;
+`;
 
 export default function HeroPage({ hero }) {
     const mobile = useSelector(getMobile);
@@ -81,9 +85,9 @@ export default function HeroPage({ hero }) {
             <Title variant={mobile ? "h4" : "h3"}>
                 Hero Level Abilities
             </Title>
-            <TowerText variant={mobile ? "h6" : "h4"}>
+            <PathXPCost variant={mobile ? "h6" : "h4"}>
                 Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} />
-            </TowerText>
+            </PathXPCost>
             <Abilities
                 abilities={ hero.abilities } heroFile={ hero.filename }
                 defaultStats={hero.stats} setStats={setStats} tier={hero.tier}
