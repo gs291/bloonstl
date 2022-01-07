@@ -2,6 +2,7 @@ import {useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
+import Counter from "../tower/Counter";
 import Stats from "../statistics/Stats";
 import ProsCons from "../tower/ProsCons";
 import TowerText from "../tower/TowerText";
@@ -61,7 +62,8 @@ export default function HeroPage({ hero }) {
 
     const handlePathReset = () => {
         setPath(0);
-    }
+    };
+
 
     return (
         <>
@@ -79,6 +81,9 @@ export default function HeroPage({ hero }) {
             <Title variant={mobile ? "h4" : "h3"}>
                 Hero Level Abilities
             </Title>
+            <TowerText variant={mobile ? "h6" : "h4"}>
+                Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} />
+            </TowerText>
             <Abilities
                 abilities={ hero.abilities } heroFile={ hero.filename }
                 defaultStats={hero.stats} setStats={setStats} tier={hero.tier}

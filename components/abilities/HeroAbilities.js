@@ -42,6 +42,7 @@ export default class HeroAbilities extends PureComponent {
 
         abilities.forEach(ability => {
             if (ability.upgrade_tier < path + 1) {
+                tempStats.xp = tempStats.xp + ability.cost_xp;
                 parseAbilityModifiers(ability.modifiers, null, tempStats);
             }
         })

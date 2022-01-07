@@ -44,7 +44,7 @@ export default function Page(props) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
-    const screen = useMediaQuery("(max-width: 960px)");
+    const screen = useMediaQuery("(max-width: 900px)");
     useEffect(() => {
         dispatch(updateMobile(screen));
     }, [screen]);
