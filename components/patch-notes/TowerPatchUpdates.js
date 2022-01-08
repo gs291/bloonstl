@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import {Button} from "@mui/material";
 import {useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
+
+import useVisible from "../../lib/utils/hooks";
 
 import PatchItems from "./PatchItems";
 import TowerText from "../tower/TowerText";
@@ -18,11 +20,12 @@ const PatchContainer = styled("div", globalOptions)`
   margin-top: 10px;
   margin-bottom: 10px;
   
-  width: ${props => props["data-m"] ? 100 : 80}%;
+  min-height: 100px;
+  width: ${props => props["data-m"] ? 100 : 90}%;
 `;
 
 const PatchItemsContainer = styled("div", globalOptions)`
-  padding:  ${props => props["data-m"] ? 0.3 : 1}em;
+  padding:  ${props => props["data-m"] ? 0.5 : 1}em;
   
   border-radius: 20px;
   border: 2px solid ${props => 
@@ -30,11 +33,6 @@ const PatchItemsContainer = styled("div", globalOptions)`
                   ? props["data-bc"]
                   : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
   };
-`;
-
-const PatchScrollContainer = styled("div", globalOptions)`
-  max-height: ${props => props["data-m"] ? "none" : "750px"};
-  overflow-y: auto;
 `;
 
 const PatchItemsWrapper = styled("div", globalOptions)`
@@ -92,16 +90,25 @@ const FooterContainer = styled("div")`
 
 
 export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
+    const elemRef = useRef();
+    const isVisible = useVisible(elemRef);
+
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
-    const [fetch, setFetch] = useState(true);
+    const [fetch, setFetch] = useState(false);
     const [patchData, setPatchData] = useState({start: 0, patchData: []});
     const [progress, setProgress] = useState({
         isLoading: false,
         isError: false,
         errorMessages: []
     });
+
+    useEffect(() => {
+        if (isVisible) {
+            setFetch(true);
+        }
+    }, [isVisible])
 
     useEffect( () => {
         let ignore = {"ignore": false};
@@ -139,42 +146,40 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
 
     return (
         <>
-            <PatchContainer {...rest}>
+            <PatchContainer data-m={mobile} ref={elemRef} {...rest}>
                 {patchData.patchData.length > 0 && (
                     <PatchItemsContainer data-bc={borderColor} data-m={mobile} data-dm={darkMode}>
-                        <PatchScrollContainer data-m={mobile}>
-                            <PatchFlex>
-                                {patchData.patchData.map(patchUpdate => (
-                                    <PatchUpdateItem key={patchUpdate.release}>
-                                        <TowerText variant="h4">
-                                            Patch Version {patchUpdate.release}
-                                        </TowerText>
-                                        <PatchItemsWrapper data-m={mobile}>
-                                            <PatchItems items={patchUpdate.items} />
-                                        </PatchItemsWrapper>
-                                    </PatchUpdateItem>
-                                ))}
-                                <FooterContainer>
-                                    {patchData.start !== -1 ? (<>{!progress.isLoading && (
-                                            <LoadButton onClick={handleFetch} data-t={tier} data-dm={darkMode} variant={darkMode ? "outlined" : "contained"}>
-                                                <TowerText variant={"h6"}>
-                                                    Load More
-                                                </TowerText>
-                                            </LoadButton>
-                                    )}</>) : (
-                                        <TowerText variant={"h6"}>
-                                            No more data to be fetched.
-                                        </TowerText>
-                                    )}
-                                    {progress.isLoading && (
-                                        <FetchLoading />
-                                    )}
-                                </FooterContainer>
-                            </PatchFlex>
-                        </PatchScrollContainer>
+                        <PatchFlex>
+                            {patchData.patchData.map(patchUpdate => (
+                                <PatchUpdateItem key={patchUpdate.release}>
+                                    <TowerText variant={mobile ? "h5" : "h4"}>
+                                        Patch Version {patchUpdate.release}
+                                    </TowerText>
+                                    <PatchItemsWrapper data-m={mobile}>
+                                        <PatchItems items={patchUpdate.items} />
+                                    </PatchItemsWrapper>
+                                </PatchUpdateItem>
+                            ))}
+                            <FooterContainer>
+                                {patchData.start !== -1 ? (<>{!progress.isLoading && (
+                                        <LoadButton onClick={handleFetch} data-t={tier} data-dm={darkMode} variant={darkMode ? "outlined" : "contained"}>
+                                            <TowerText variant={mobile ? "subtitle1" : "h6"}>
+                                                Load More
+                                            </TowerText>
+                                        </LoadButton>
+                                )}</>) : (
+                                    <TowerText variant={mobile ? "subtitle2" : "subtitle1"} font={true}>
+                                        No more data can be fetched
+                                    </TowerText>
+                                )}
+                                {progress.isLoading && (
+                                    <FetchLoading />
+                                )}
+                            </FooterContainer>
+                        </PatchFlex>
                     </PatchItemsContainer>
                 )}
-                {progress.isLoading && (
+                {progress.isLoading && !patchData.patchData.length && (
                     <FetchLoading />
                 )}
                 {(progress.isError || progress.errorMessages.length > 0) && (

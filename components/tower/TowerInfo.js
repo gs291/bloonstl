@@ -39,20 +39,20 @@ export default function TowerInfo({tower}) {
     return (
         <>
             <TowerTextContainer>
-                <TowerText variant={"h2"} component="div">
+                <TowerText variant={mobile ? "h3" : "h2"}>
                     {tower.name}
                 </TowerText>
-                <TowerText variant="body1" textColor={rgbaHex(darkMode ? siteColors.text.dark: siteColors.text.light, 0.5)} font={1}>
+                <TowerText variant="subtitle1" textColor={rgbaHex(darkMode ? siteColors.text.dark: siteColors.text.light, 0.5)} font={1}>
                     {tower.description}
                 </TowerText>
                 <TierCostContainer data-m={mobile}>
                     <TowerTier tier={tower.tier} showText={true}/>
                     <TowerCosts data-m={mobile}>
-                        <TowerText variant="body1" textColor={darkMode ? siteColors.tower.gold.dark : siteColors.tower.gold.light}>
+                        <TowerText variant="subtitle1" textColor={darkMode ? siteColors.tower.gold.dark : siteColors.tower.gold.light}>
                             In-game cost:&nbsp;$<Counter cost={tower.cost_gold} />
                         </TowerText>
                         { typeof tower.cost_cash === "number" && (
-                            <TowerText variant="body1" textColor={darkMode ? siteColors.tower.cash.dark : siteColors.tower.cash.light}>
+                            <TowerText variant="subtitle1" textColor={darkMode ? siteColors.tower.cash.dark : siteColors.tower.cash.light}>
                                 Cash cost: {tower.cost_cash > 0 ? `\$${getThousandsNumber(tower.cost_cash)}` : "FREE"}
                             </TowerText>
                         )}
