@@ -54,32 +54,32 @@ const PatchFlex = styled("div")`
 `;
 
 const LoadButton = styled(Button, globalOptions)`
-    color: ${props => props["data-t"]
-    ? getTierColor(props["data-t"])
-    : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
+    color: ${props => props["data-bc"] 
+            ? props["data-bc"] 
+            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
 
-  background-color: ${props =>
-    rgbaHex(props["data-t"]
-            ? getTierColor(props["data-t"])
-            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-        , props["data-dm"] ? 0 : 0.75)};
+  background-color: ${props => 
+          rgbaHex(props["data-bc"] 
+                          ? props["data-bc"] 
+                          : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
+                  , props["data-dm"] ? 0 : 0.75)};
   
-  border-color: ${props =>
-    rgbaHex(props["data-t"]
-            ? getTierColor(props["data-t"])
-            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-        , 0.5)};
+  border-color: ${props => 
+          rgbaHex(props["data-bc"] 
+                          ? props["data-bc"] 
+                          : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
+                  , 0.5)};
   
   &:hover {
-    background-color: ${props =>
-    rgbaHex(props["data-t"]
-            ? getTierColor(props["data-t"])
-            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-        , props["data-dm"] ? 0.05 : 1)};
+    background-color: ${props => 
+            rgbaHex(props["data-bc"] 
+                            ? props["data-bc"] 
+                            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
+                    , props["data-dm"] ? 0.05 : 1)};
     
-    border-color: ${props => props["data-t"]
-    ? getTierColor(props["data-t"])
-    : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
+    border-color: ${props => props["data-bc"] 
+            ? props["data-bc"] 
+            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
   }
 `;
 
@@ -162,7 +162,7 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
                             ))}
                             <FooterContainer>
                                 {patchData.start !== -1 ? (<>{!progress.isLoading && (
-                                        <LoadButton onClick={handleFetch} data-t={tier} data-dm={darkMode} variant={darkMode ? "outlined" : "contained"}>
+                                        <LoadButton onClick={handleFetch} data-bc={borderColor} data-dm={darkMode} variant={darkMode ? "outlined" : "contained"}>
                                             <TowerText variant={mobile ? "subtitle1" : "h6"}>
                                                 Load More
                                             </TowerText>
