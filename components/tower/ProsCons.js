@@ -12,7 +12,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 const ProsConsContainer = styled(Grid, globalOptions)`
   min-height: ${props => props["data-m"] ? "250px" : "125px"};
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 `;
 
 const SpacedGrid = styled(Grid, globalOptions)`
