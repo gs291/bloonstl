@@ -5,11 +5,15 @@ import {useEffect, useState} from "react";
 import Patch from "./Patch";
 import PatchDate from "./PatchDate";
 import PatchSelect from "./PatchSelect";
+import TowerText from "../tower/TowerText";
 import FetchErrors from "../api/FetchErrors";
 import FetchLoading from "../api/FetchLoading";
-import {getDarkMode} from "../../lib/redux/selectors";
-import {patchVersions} from "../../lib/utils/patches";
+import DefaultButton from "../button/DefaultButton";
+import siteColors from "../../lib/utils/siteColors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
+import {latest, latestMajor} from "../../lib/utils/patches";
 import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
 import TableOfContents from "../table-of-contents/TableOfContents";
 
@@ -21,29 +25,44 @@ const PageContainer = styled("div")`
   width: 100%;
 `;
 
-const Select = styled(PatchSelect)`
+const DefaultContainer = styled("div", globalOptions)`
+  display: flex;
+  flex-direction: ${props => props["data-m"] ? "column" : "row"};
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   margin-bottom: 50px;
 `;
 
+const Select = styled(PatchSelect)`
+  margin-bottom: 15px;
+`;
+
 const Date = styled(PatchDate)`
-  margin-top: 50px;
+  margin-top: 15px;
+  margin-bottom: 40px;
+  text-align: center;
+`;
+
+const Title = styled(TowerText)`
+  margin-top: 10px;
+  text-align: center;
 `;
 
 
 export default function PatchNotesPage({ patch }) {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     const [toc, setToc] = useState([]);
-    const [patchVersion, setPatchVersion] = useState(patchVersions[0]);
-    const [patchData, setPatchData] = useState({[patchVersions[0]]: patch});
+    const [patchVersion, setPatchVersion] = useState(latestMajor);
+    const [patchData, setPatchData] = useState({[latestMajor]: patch});
 
     const [progress, setProgress] = useState({
         isLoading: false,
         isError: false,
         errorMessages: []
     });
-
-
 
     const handlePatchSelect = (e) => {
         if (!patchData[e.target.value]) {
@@ -97,14 +116,50 @@ export default function PatchNotesPage({ patch }) {
                 }
             });
             setToc(tags);
+            if (progress.isError) {
+                setProgress(prg => ({
+                    ...prg,
+                    isError: false,
+                    errorMessages: []
+                }));
+            }
         }
-    }, [patchData])
+    }, [patchData]);
 
 
     return (
         <>
             <PageContainer>
                 <Select patch={patchVersion} handlePatchSelect={handlePatchSelect} />
+                <DefaultContainer data-m={mobile}>
+                    <DefaultButton
+                        onClick={() => handlePatchSelect({target: {value: latest}})}
+                        variant={darkMode ? "outlined" : "contained"}
+                        data-bc={darkMode ? siteColors.patch.button.dark : siteColors.patch.button.light}
+                    >
+                        <TowerText variant="subtitle1">
+                            Most Recent Update (v {latest})
+                        </TowerText>
+                    </DefaultButton>
+                    <DefaultButton
+                        onClick={() => handlePatchSelect({target: {value: latestMajor}})}
+                        variant={darkMode ? "outlined" : "contained"}
+                        data-bc={darkMode ? siteColors.patch.button.dark : siteColors.patch.button.light}
+                    >
+                        <TowerText variant="subtitle1">
+                            Last Major Update (v {latestMajor})
+                        </TowerText>
+                    </DefaultButton>
+                </DefaultContainer>
+
+                {!progress.isLoading && !progress.isError && (
+                    <>
+                        <Title variant={mobile ? "h4" : "h3"}>
+                            Patch Version:&nbsp;&nbsp;{patchVersion}
+                        </Title>
+                        <Date date={patchData[patchVersion].release} />
+                    </>
+                )}
 
                 {progress.isLoading && (
                     <FetchLoading />
@@ -115,7 +170,6 @@ export default function PatchNotesPage({ patch }) {
                 {!progress.isLoading && !progress.isError && (
                     <>
                         <TableOfContents tags={toc} />
-                        <Date date={patchData[patchVersion].release} />
                         <Patch patch={patchData[patchVersion]} tags={toc}/>
                     </>
                 )}

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import {Button} from "@mui/material";
+
 import {useSelector} from "react-redux";
 import {useEffect, useRef, useState} from "react";
 
@@ -9,6 +9,7 @@ import PatchItems from "./PatchItems";
 import TowerText from "../tower/TowerText";
 import FetchErrors from "../api/FetchErrors";
 import FetchLoading from "../api/FetchLoading";
+import DefaultButton from "../button/DefaultButton";
 import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
@@ -51,36 +52,6 @@ const PatchFlex = styled("div")`
   justify-content: center;
   align-items: center;
   gap: 20px 0;
-`;
-
-const LoadButton = styled(Button, globalOptions)`
-    color: ${props => props["data-bc"] 
-            ? props["data-bc"] 
-            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
-
-  background-color: ${props => 
-          rgbaHex(props["data-bc"] 
-                          ? props["data-bc"] 
-                          : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-                  , props["data-dm"] ? 0 : 0.75)};
-  
-  border-color: ${props => 
-          rgbaHex(props["data-bc"] 
-                          ? props["data-bc"] 
-                          : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-                  , 0.5)};
-  
-  &:hover {
-    background-color: ${props => 
-            rgbaHex(props["data-bc"] 
-                            ? props["data-bc"] 
-                            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-                    , props["data-dm"] ? 0.05 : 1)};
-    
-    border-color: ${props => props["data-bc"] 
-            ? props["data-bc"] 
-            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
-  }
 `;
 
 const FooterContainer = styled("div")`
@@ -162,11 +133,11 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
                             ))}
                             <FooterContainer>
                                 {patchData.start !== -1 ? (<>{!progress.isLoading && (
-                                        <LoadButton onClick={handleFetch} data-bc={borderColor} data-dm={darkMode} variant={darkMode ? "outlined" : "contained"}>
+                                        <DefaultButton onClick={handleFetch} data-bc={borderColor} data-dm={darkMode} variant={darkMode ? "outlined" : "contained"}>
                                             <TowerText variant={mobile ? "subtitle1" : "h6"}>
                                                 Load More
                                             </TowerText>
-                                        </LoadButton>
+                                        </DefaultButton>
                                 )}</>) : (
                                     <TowerText variant={mobile ? "subtitle2" : "subtitle1"} font={true}>
                                         No more data can be fetched

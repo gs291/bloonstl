@@ -1,6 +1,6 @@
 import Header from "../components/page/Header";
 import PageTitle from "../components/page/PageTitle";
-import patches, {patchVersions} from "../lib/utils/patches";
+import patches, {latestMajor} from "../lib/utils/patches";
 import MainContainer from "../components/page/MainContainer";
 import HorizontalAD from "../components/advertisment/HorizontalAD";
 import PatchNotesPage from "../components/patch-notes/PatchNotesPage";
@@ -25,7 +25,7 @@ export async function getStaticProps(context) {
 
     return {
         props: {
-            latestPatch: JSON.stringify(patches[patchVersions[0]])
+            latestPatch: JSON.stringify(patches[latestMajor])
         }
     };
 }
