@@ -18,6 +18,7 @@ import AbilityPathSelection from "../ability/AbilityPathSelection";
 import ConsecutiveSnackbars from "../snackbar/ConsecutiveSnackbars";
 import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
 import {checkIfValidPath, getInitialTowerStats, getMonkeyColor} from "../../lib/utils/utils";
+import TowerPatchUpdates from "../patch-notes/TowerPatchUpdates";
 
 
 const AbilitiesText = styled(TowerText)`
@@ -38,6 +39,12 @@ const FilterDiff = styled(FilterDifficulty)`
 const Title = styled(TowerText)`
   margin-top: 10px;
   margin-bottom: 30px;
+  text-align: center;
+  cursor: default;
+`;
+
+const PatchText = styled(TowerText)`
+  margin-top: 20px;
   text-align: center;
   cursor: default;
 `;
@@ -152,6 +159,14 @@ export default function MonkeyPage({ monkey }) {
                 Tower Pros / Cons
             </Title>
             <ProsCons pros={path.pros} cons={path.cons} backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+            <PatchText variant={mobile ? "h4" : "h3"}>
+                Latest
+            </PatchText>
+            <Title variant={mobile ? "h4" : "h3"}>
+                Patch Updates
+            </Title>
+            <TowerPatchUpdates name={monkey.name} borderColor={dividerBackgroundColor} />
             <ConsecutiveSnackbars
                 snackPack={snackPack} setSnackPack={setSnackPack}
                 open={openSnackbar} setOpen={setOpenSnackbar}

@@ -1,13 +1,12 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {CircularProgress} from "@mui/material";
 
 import Patch from "./Patch";
 import PatchDate from "./PatchDate";
 import PatchSelect from "./PatchSelect";
-import TowerText from "../tower/TowerText";
-import siteColors from "../../lib/utils/siteColors";
+import FetchErrors from "../api/FetchErrors";
+import FetchLoading from "../api/FetchLoading";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {patchVersions} from "../../lib/utils/patches";
 import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
@@ -30,21 +29,6 @@ const Date = styled(PatchDate)`
   margin-top: 50px;
 `;
 
-const Loading = styled("div")`
-  margin-top: 30px;
-  margin-bottom: 30px;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-`;
-
-const ErrorContainer = styled("div")`
-  margin-top: 30px;
-  margin-bottom: 30px;
-`;
 
 export default function PatchNotesPage({ patch }) {
     const darkMode = useSelector(getDarkMode);
@@ -123,35 +107,10 @@ export default function PatchNotesPage({ patch }) {
                 <Select patch={patchVersion} handlePatchSelect={handlePatchSelect} />
 
                 {progress.isLoading && (
-                    <Loading>
-                        <TowerText variant="h4">
-                            Loading
-                        </TowerText>
-                        <CircularProgress />
-                    </Loading>
+                    <FetchLoading />
                 )}
                 {(progress.isError || progress.errorMessages.length > 0) && (
-                    <ErrorContainer>
-                        <TowerText
-                            variant="h4"
-                            textColor={darkMode ? siteColors.error.dark : siteColors.error.light }
-                        >
-                            {progress.errorMessages && progress.errorMessages.length > 1 ? (
-                                "Errors have Occurred"
-                            ) : (
-                                "An Error Has Occurred"
-                            )}
-                        </TowerText>
-                        {progress.errorMessages && progress.errorMessages.map(err => (
-                            <TowerText
-                                variant="h6"
-                                font={true}
-                                key={err.message}
-                            >
-                                {err.message}
-                            </TowerText>
-                        ))}
-                    </ErrorContainer>
+                    <FetchErrors errorMessages={progress.errorMessages} />
                 )}
                 {!progress.isLoading && !progress.isError && (
                     <>
