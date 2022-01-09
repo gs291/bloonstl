@@ -1,6 +1,6 @@
-import {useEffect, useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {useEffect, useState} from "react";
 
 import Counter from "../tower/Counter";
 import Stats from "../statistics/Stats";
@@ -14,11 +14,11 @@ import HorizontalAD from "../advertisment/HorizontalAD";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
+import TowerPatchUpdates from "../patch-notes/TowerPatchUpdates";
 import AbilityPathSelection from "../ability/AbilityPathSelection";
 import ConsecutiveSnackbars from "../snackbar/ConsecutiveSnackbars";
 import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
 import {checkIfValidPath, getInitialTowerStats, getMonkeyColor} from "../../lib/utils/utils";
-import TowerPatchUpdates from "../patch-notes/TowerPatchUpdates";
 
 
 const AbilitiesText = styled(TowerText)`
