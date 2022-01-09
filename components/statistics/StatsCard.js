@@ -92,6 +92,11 @@ const TitleContainer = styled("div")`
   text-align: center;
 `;
 
+const Description = styled(TowerText)`
+  padding-left: 5px;
+  padding-right: 5px;
+`;
+
 const statCodeParser = (code) => {
     const codes = {
         "damage": "Damage", "pierce": "Pierce", "range": "Range", "attack_speed": "Atk Spd", "damage_type": "Type",
@@ -153,9 +158,9 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                                 {getStatAttributeText(key)}
                             </TowerText>
                             {stats[key].description !== "" && (
-                                <TowerText variant={level === 1 ? "subtitle2" : "caption"} font={true}>
+                                <Description variant={level === 1 ? "subtitle2" : "caption"} font={true}>
                                     {stats[key].description}
-                                </TowerText>
+                                </Description>
                             )}
                         </TitleContainer>
                         <CardContent data-bc={gridColor} data-dm={darkMode} data-m={mobile} data-l={level} >
