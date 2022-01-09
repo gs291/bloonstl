@@ -2,10 +2,10 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import TowerText from "../tower/TowerText";
-import {getDarkMode} from "../../lib/redux/selectors";
-import {globalOptions} from "../../lib/utils/emotionStyled";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
+import {getDarkMode} from "../../lib/redux/selectors";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 
 const LegendContainer = styled("div")`
   display: flex;
