@@ -252,13 +252,13 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 2, 4, 'Icicle Im
 INSERT INTO `AbilityTiers` VALUES (NULL, @tower_ice_monkey, 's', 2, 0, 5);
 SELECT id INTO @ability_tiers_ice_monkey_s FROM AbilityTiers WHERE tower_id=@tower_ice_monkey AND tier='s';
 
-INSERT INTO `AbilityTiersInfo` VALUES (NULL, @ability_tiers_ice_monkey_s, 'blimp,solo,cc', 'camo,lead');
+INSERT INTO `AbilityTiersInfo` VALUES (NULL, @ability_tiers_ice_monkey_s, 'blimp,solo,cc', '');
 
 --          Ability Tiers - A
 INSERT INTO `AbilityTiers` VALUES (NULL, @tower_ice_monkey, 'a', 5, 0, 2);
 SELECT id INTO @ability_tiers_ice_monkey_a FROM AbilityTiers WHERE tower_id=@tower_ice_monkey AND tier='a';
 
-INSERT INTO `AbilityTiersInfo` VALUES (NULL, @ability_tiers_ice_monkey_a, 'supp,camo,bln,blimp', '');
+INSERT INTO `AbilityTiersInfo` VALUES (NULL, @ability_tiers_ice_monkey_a, 'supp,camo,bln,blimp', 'chep');
 
 --          Ability Tiers - B
 INSERT INTO `AbilityTiers` VALUES (NULL, @tower_ice_monkey, 'b', 0, 5, 2);
