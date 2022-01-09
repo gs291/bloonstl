@@ -54,6 +54,8 @@ CREATE TABLE `Abilities` (
     `cost_gold` MEDIUMINT(6) NOT NULL,
     `cost_xp` MEDIUMINT(6) NOT NULL,
     `modifiers` VARCHAR(511) NULL DEFAULT '',
+    `pros` VARCHAR(255) NULL DEFAULT '',
+    `cons` VARCHAR(255) NULL DEFAULT '',
     PRIMARY KEY (`id`),
     CONSTRAINT `ab_fk_1` FOREIGN KEY (`tower_id`) REFERENCES `Towers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
