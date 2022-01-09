@@ -132,7 +132,7 @@ export default function MonkeyPage({ monkey }) {
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
             <HorizontalAD />
-            <Stats stats={stats} type={monkey.type} />
+            <Stats stats={stats} path={path} type={monkey.type} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>

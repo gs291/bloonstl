@@ -79,7 +79,7 @@ export default function HeroPage({ hero }) {
         <>
             <TowerImgInfo tower={hero} towerType="hero" />
             <HorizontalAD />
-            <Stats stats={stats} type={hero.name} towerType="hero" />
+            <Stats stats={stats} path={path} type={hero.name} towerType="hero" />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>

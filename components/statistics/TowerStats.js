@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
-import StatsTargets from "./StatsTargets";
 import StatsContainer from "./StatsContainer";
 import StatItemWrapper from "./StatItemWrapper";
 import {getMobile} from "../../lib/redux/selectors";

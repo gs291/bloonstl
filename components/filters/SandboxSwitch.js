@@ -162,11 +162,11 @@ export default function SandboxSwitch({sandbox, setSandbox, handleReset, tier, p
                                 <TowerText variant={mobile ? "subtitle2" : "subtitle1"} font={true}>
                                     {pauseSandbox ? (
                                         <>
-                                            Sandbox selection mode is currently paused!
+                                            Unpause sandbox selection mode
                                         </>
                                     ) : (
                                         <>
-                                            Pause sandbox selection mode.
+                                            Pause sandbox selection mode
                                         </>
                                     )}
 
