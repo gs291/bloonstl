@@ -32,9 +32,6 @@ export default function TowerStats({stats, defaults, type, towerType, targets, .
                     <StatItemWrapper text="Proj" value={stats.projectile_count} prevValue={defaults.projectile_count} data-s={color} />
                     <StatItemWrapper text="Type" value={stats.damage_type} prevValue={defaults.damage_type} data-s={color} />
                 </ItemsContainer>
-                <ItemsContainer>
-                    <StatsTargets targets={targets} />
-                </ItemsContainer>
             </StatsContainer>
         </>
     );

@@ -68,7 +68,6 @@ export default function Stats({stats, type, towerType = "monkey", ...rest}) {
                             "pierce": stats.defaults.pierce, "projectile_count": stats.defaults.projectile_count,
                             "damage": stats.defaults.damage, "damage_type": stats.defaults.damage_type
                         }}
-                        targets={stats.targets}
                         type={type}
                         towerType={towerType}
                     />

@@ -26,10 +26,10 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 0, 4, 'Ultra-Ju
 
 --          Middle Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 0, 'Quick Shots', 'Shoots 15% faster.', 100, 80, '*85%s', DEFAULT, DEFAULT);
-INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 1, 'Very Quick Shots', 'Shoots 33% faster!', 190, 400, '*78.82%s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 1, 'Very Quick Shots', 'Shoots 33% faster!', 190, 400, '*78.82%s', 'atksp', DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 1, 2, 'Triple Shot', 'Throws 3 darts at a time instead of 1.', 400, 2000, '+2j', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, true, 1, 3, 'Super Monkey Fan Club', 'Super Monkey Fan Club ability: Converts up to 10 nearby Dart Monkeys including himself into Super Monkeys for 15 seconds. Regular attack speed also increased.', 8000, 9500, '*75%s,abil:super_monkey_fan_club:50clt;15dur;desc:Transform monkeys into superfans;attack:superfans:1d=2p=40r=0.06s=type:sharp=desc:Transformed Dart Monkey;note:(0-4-0) Transforms 10 nearest dart monkeys (with upgrades up to 2-4-2) into superfans', DEFAULT, DEFAULT);
-INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, true, 1, 4, 'Plasma Monkey Fan Club', 'Elite membership of this club grants the Dart Monkeys even more power!', 50000, 30000, 'abil:super_monkey_fan_club:50clt;15dur;attack:superfans:2d=5p=40r=0.03s=type:plasma;note:(0-5-0) transforms 20 nearest dart monkeys (with upgrades up to 2-5-2) into plasmafans;note:upgrades such as 1-X-X are inherited', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, true, 1, 4, 'Plasma Monkey Fan Club', 'Elite membership of this club grants the Dart Monkeys even more power!', 50000, 30000, 'abil:super_monkey_fan_club:50clt;15dur;attack:superfans:2d=5p=40r=0.03s=type:plasma;note:(0-5-0) transforms 20 nearest dart monkeys (with upgrades up to 2-5-2) into plasmafans;note:upgrades such as 1-X-X are inherited', DEFAULT, 'chep');
 
 --          Bottom Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 0, 'Long Range Darts', 'Makes the Dart Monkey shoot further than normal.', 90, 100, '+8r', DEFAULT, DEFAULT);
@@ -1167,28 +1167,28 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_quincy, 'b');
 --          Statistics      --  (  id,      tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,      fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
 INSERT INTO `TowerStats` VALUES (NULL, @tower_quincy, 50, 3, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.95, DEFAULT, DEFAULT, NULL,  7, 'U', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 0, '', 'Quincy\'s arrows bounce to 3 different targets.', 0, 0, 'note:(Lvl 1) Basic attack jumps to nearby targets (50 units)');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 1, '', 'Base attack bounces up to 4 targets.', 0, 180, '+1p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, true, 0, 2, 'Rapid Shot', 'Triple attack speed for a short time.', 0, 460, 'abil:rapid_shot:desc:Gain increased attack speed;60clt;3.5dur;*33.33%s;note:duration increases 0.5 seconds per level');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 3, '', 'Slightly longer range.', 0, 1000, '+2r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 4, '', 'Allows Quincy to detect Camo Bloons.', 0, 1860, '+camo');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 5, '', 'Allows Quincy to fire two arrows.', 0, 3280, '+1j');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 6, '', 'Quincy shoots an exploding arrow every 3rd shot.', 0, 5180, 'attack:bomb_arrow:desc:Replaces every third basic attack;1d;10p;25.7r;type:explosion');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 7, '', 'Arrows deal triple damage to MOAB-class bloons.', 0, 8320, '+2md');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 8, '', 'Base attack bounces up to 6 targets.', 0, 9380, '+2p,attack:bomb_arrow:+2p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, true, 0, 9, 'Storm of Arrows', 'Covers a large area in a deadly rain of arrows.', 0, 13620, 'abil:storm_of_arrows:desc:Shower the screen with arrows;70clt;3dur;6d;6md;-1p;100r;0.05s;type:sharp');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 10, '', 'Increased attack speed.', 0, 16380, '0.6s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 11, '', 'Each arrow gets more popping power.', 0, 14400, '+1p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 12, '', 'Small range increase.', 0, 16650, '+2r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 13, '', 'Arrows do quad damage to MOAB-Class Bloons.', 0, 14940, '+1md');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 14, '', 'Rapid shot becomes 4x attack speed and cooldown is reduced.', 0, 16380, 'abil:rapid_shot:45clt;*25%s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 15, '', 'More increased attack speed.', 0, 17820, '0.4s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 16, '', 'Arrows last 25% longer.', 0, 19260, '+25%dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 17, '', 'Quincy attacks faster and Storm of Arrows has reduced cooldown and 50% more arrows.', 0, 20700, '0.25s,abil:storm_of_arrows:55clt');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 18, '', 'Each arrow gets even more popping power.', 0, 16470, '+2p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 19, '', 'Storm of Arrows increased damage per arrows and even more arrows.', 0, 17280, '0.2s,abil:storm_of_arrows:+4d;+4md');
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 0, '', 'Quincy\'s arrows bounce to 3 different targets.', 0, 0, 'note:(Lvl 1) Basic attack jumps to nearby targets (50 units)', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 1, '', 'Base attack bounces up to 4 targets.', 0, 180, '+1p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, true, 0, 2, 'Rapid Shot', 'Triple attack speed for a short time.', 0, 460, 'abil:rapid_shot:desc:Gain increased attack speed;60clt;3.5dur;*33.33%s;note:duration increases 0.5 seconds per level', 'abil', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 3, '', 'Slightly longer range.', 0, 1000, '+2r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 4, '', 'Allows Quincy to detect Camo Bloons.', 0, 1860, '+camo', 'camo', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 5, '', 'Allows Quincy to fire two arrows.', 0, 3280, '+1j', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 6, '', 'Quincy shoots an exploding arrow every 3rd shot.', 0, 5180, 'attack:bomb_arrow:desc:Replaces every third basic attack;1d;10p;25.7r;type:explosion', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 7, '', 'Arrows deal triple damage to MOAB-class bloons.', 0, 8320, '+2md', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 8, '', 'Base attack bounces up to 6 targets.', 0, 9380, '+2p,attack:bomb_arrow:+2p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, true, 0, 9, 'Storm of Arrows', 'Covers a large area in a deadly rain of arrows.', 0, 13620, 'abil:storm_of_arrows:desc:Shower the screen with arrows;70clt;3dur;6d;6md;-1p;100r;0.05s;type:sharp', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 10, '', 'Increased attack speed.', 0, 16380, '0.6s', 'atksp', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 11, '', 'Each arrow gets more popping power.', 0, 14400, '+1p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 12, '', 'Small range increase.', 0, 16650, '+2r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 13, '', 'Arrows do quad damage to MOAB-Class Bloons.', 0, 14940, '+1md', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 14, '', 'Rapid shot becomes 4x attack speed and cooldown is reduced.', 0, 16380, 'abil:rapid_shot:45clt;*25%s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 15, '', 'More increased attack speed.', 0, 17820, '0.4s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 16, '', 'Arrows last 25% longer.', 0, 19260, '+25%dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 17, '', 'Quincy attacks faster and Storm of Arrows has reduced cooldown and 50% more arrows.', 0, 20700, '0.25s,abil:storm_of_arrows:55clt', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 18, '', 'Each arrow gets even more popping power.', 0, 16470, '+2p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 19, '', 'Storm of Arrows increased damage per arrows and even more arrows.', 0, 17280, '0.2s,abil:storm_of_arrows:+4d;+4md', 'dps', DEFAULT);
 
-INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_quincy, 'blnc,chep,mg,lg,dps,moab', 'eg,xp');
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_quincy, 'blnc,chep,eg,mg,dps,blimp', 'lg');
 
 
 --      Hero - Gwendolin
@@ -1202,28 +1202,28 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_gwendolin, 'b');
 --          Statistics      --  (  id,         tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,     dt,     clt,      co,     del)
 INSERT INTO `TowerStats` VALUES (NULL, @tower_gwendolin, 38, 3, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.5, DEFAULT, DEFAULT, NULL,  7, 'U', 'fire', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 0, '', 'Blasts Bloons with fire from her pyro gun.', 0, 0, '');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 1, '', 'Slightly increases popping power per shot.', 0, 180, '+1p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, true, 0, 2, 'Cocktail of Fire', 'Hurls a flask of flammable liquid, burning bloons that pass through the fire.', 0, 460, 'abil:cocktail_of_fire:desc:Places wall of fire on the track;attack:wall_of_fire:desc:Burning wall of fire;1d=40p=15r=0.2s=12dur=type:fire=+camo=note:can see past obstacles');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 3, '', 'Heat it up - Every few seconds creates a powerful blast wave of fire that pops Bloons and adds fire to nearby Monkeys\' attacks.', 0, 1000, 'attack:heat_it_up:desc:Powerful blast wave of fire;3d;-1p;38r;type:fire;buff:heat_it_up:8dur=+1p=+1ld=+lead=desc:Gain increased pierce');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 4, '', 'Increased popping power.', 0, 1860, '+2p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 5, '', 'Attacks can cause a burn effect on target bloon.', 0, 3280, 'status:burn:1d;1.5s;type:fire;3.05dur;desc:Applied by basic attack');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 6, '', 'Heat it up has increased radius.', 0, 5180, 'attack:heat_it_up:+5r;abil:cocktail_of_fire:attack:wall_of_fire:0.1s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 7, '', 'Shoots 2 blasts of fire per shot.', 0, 8320, '+1j');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 8, '', 'Initial hit for per blast pops 1 extra layer.', 0, 9380, '+1d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, true, 0, 9, 'Firestorm', 'Sets the whole screen alight, burning all Bloons and granting the Heat It Up buff to all Monkeys.', 0, 13620, 'abil:firestorm:desc:Sets the whole screen alight;60clt;2d;-1p;-1r;type:fire;status:burn:desc:Burns all bloons=1d=0.5s=5md=8.05dur=type:fire');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 10, '', 'Increased attack range.', 0, 16380, '+3r,attack:heat_it_up:+3r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 11, '', 'Increased attack speed.', 0, 14400, '0.4s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 12, '', 'Greatly increased popping power, plus projectiles move faster and last longer.', 0, 16650, '+3p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 13, '', 'Cocktail of Fire does extra damage and sets MOAB class Bloons alight.', 0, 14940, 'abil:cocktail_of_fire:attack:wall_of_fire:+1d=note:(Lvl 14) burn applies to blimps');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 14, '', 'Increased attack speed.', 0, 16380, '0.3s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 15, '', 'Firestorm has increased duration. Purple Bloons are no longer immune to Gwendolin\'s attacks.', 0, 17820, 'type:normal,abil:firestorm:status:burn:10.05dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 16, '', 'Heat It Up empowers affected monkeys to pop 1 extra layer, and do +2 damage to Lead Bloons.', 0, 19260, 'attack:heat_it_up:+1d;+1ld');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 17, '', 'Increased attack speed.', 0, 20700, '0.15s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 18, '', 'Shoots 3 blasts of fire per shot.', 0, 16470, '+1j');
-INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 19, '', 'Firestorm does hugely increased damage.', 0, 17280, 'abil:firestorm:+3d;status:burn:+1d;+7.5md');
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 0, '', 'Blasts Bloons with fire from her pyro gun.', 0, 0, '', 'lead', 'purp');
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 1, '', 'Slightly increases popping power per shot.', 0, 180, '+1p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, true, 0, 2, 'Cocktail of Fire', 'Hurls a flask of flammable liquid, burning bloons that pass through the fire.', 0, 460, 'abil:cocktail_of_fire:desc:Places wall of fire on the track;attack:wall_of_fire:desc:Burning wall of fire;1d=40p=15r=0.2s=12dur=type:fire=+camo=note:can see past obstacles', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 3, '', 'Heat it up - Every few seconds creates a powerful blast wave of fire that pops Bloons and adds fire to nearby Monkeys\' attacks.', 0, 1000, 'attack:heat_it_up:desc:Powerful blast wave of fire;3d;-1p;38r;type:fire;buff:heat_it_up:8dur=+1p=+1ld=+lead=desc:Gain increased pierce', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 4, '', 'Increased popping power.', 0, 1860, '+2p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 5, '', 'Attacks can cause a burn effect on target bloon.', 0, 3280, 'status:burn:1d;1.5s;type:fire;3.05dur;desc:Applied by basic attack', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 6, '', 'Heat it up has increased radius.', 0, 5180, 'attack:heat_it_up:+5r;abil:cocktail_of_fire:attack:wall_of_fire:0.1s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 7, '', 'Shoots 2 blasts of fire per shot.', 0, 8320, '+1j', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 8, '', 'Initial hit for per blast pops 1 extra layer.', 0, 9380, '+1d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, true, 0, 9, 'Firestorm', 'Sets the whole screen alight, burning all Bloons and granting the Heat It Up buff to all Monkeys.', 0, 13620, 'abil:firestorm:desc:Sets the whole screen alight;60clt;2d;-1p;-1r;type:fire;status:burn:desc:Burns all bloons=1d=0.5s=5md=8.05dur=type:fire', 'abil', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 10, '', 'Increased attack range.', 0, 16380, '+3r,attack:heat_it_up:+3r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 11, '', 'Increased attack speed.', 0, 14400, '0.4s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 12, '', 'Greatly increased popping power, plus projectiles move faster and last longer.', 0, 16650, '+3p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 13, '', 'Cocktail of Fire does extra damage and sets MOAB class Bloons alight.', 0, 14940, 'abil:cocktail_of_fire:attack:wall_of_fire:+1d=note:(Lvl 14) burn applies to blimps', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 14, '', 'Increased attack speed.', 0, 16380, '0.3s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 15, '', 'Firestorm has increased duration. Purple Bloons are no longer immune to Gwendolin\'s attacks.', 0, 17820, 'type:normal,abil:firestorm:status:burn:10.05dur', 'purp', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 16, '', 'Heat It Up empowers affected monkeys to pop 1 extra layer, and do +2 damage to Lead Bloons.', 0, 19260, 'attack:heat_it_up:+1d;+1ld', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 17, '', 'Increased attack speed.', 0, 20700, '0.15s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 18, '', 'Shoots 3 blasts of fire per shot.', 0, 16470, '+1j', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 19, '', 'Firestorm does hugely increased damage.', 0, 17280, 'abil:firestorm:+3d;status:burn:+1d;+7.5md', 'dps', DEFAULT);
 
-INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_gwendolin, 'lead,eg,mg,tbf,cm', 'prup,camo');
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_gwendolin, 'eg,mg,tbf,cm', 'camo');
 
 
 --      Hero - Striker Jones
@@ -1237,28 +1237,28 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_striker_jones, 'b');
 --          Statistics      --  (  id,             tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,          dt,     clt,      co,     del)
 INSERT INTO `TowerStats` VALUES (NULL, @tower_striker_jones, 55, 10, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.2, DEFAULT, DEFAULT, NULL,  7, 'U', 'explosion', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 0, '', 'Striker Jones shoots a powerful bazooka to explode Bloons.', 0, 0, '');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 1, '', 'Increased blast radius.', 0, 180, '+4r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, true, 0, 2, 'Concussive Shell', 'Shoots a guided shell to the largest Bloon on screen, stunning it.', 0, 460, 'abil:concussive_shell:desc:Shoots a guided shell to the larges Bloon;16clt;-1r;2d;48p;type:normal;status:stun:1dur;note:can see past obstacles');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 3, '', 'All Bomb Shooters and Mortar Monkeys on screen shoot 10% faster.', 0, 1000, 'buff:explosive_expert:*90%s;desc:Gain increased attack speed;note:affects all bomb and mortar towers');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 4, '', 'Makes Black Bloons less resistant to explosive attacks.', 0, 1860, 'status:blast_weakness:desc:Weakens bloons to explosions;note:(Lvl 5) black property has a 50% chance of being ignored by explosions');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 5, '', 'Blast radius and popping power for Jones''s normal attacks increase greatly.', 0, 3280, '+10p,+50%r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 6, '', 'Pops 2 layers per shot and Mortar Monkeys blast radius increased by 10%.', 0, 5180, '+1d,buff:mortar_expert:desc:Gain increased radius;note:+10% blast radius;note:affects all mortars');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 7, '', 'All Bomb Shooters near Jones get +5% range and +25% piercing power.', 0, 8320, 'buff:bomb_expert:desc:Gain increased pierce and range;+25%p;+5%r;note:affects bomb towers in range');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 8, '', 'Increased attack speed and increased Concussive Shell pierce, damage, and stun.', 0, 9380, '0.9s,abil:concussive_shell:+10d;+10p;status:stun:5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, true, 0, 9, 'Artillery Command', 'Resets cooldown on all Bomb Shooters and Mortar Monkeys.', 0, 13620, 'abil:artillery_command:80clt;desc:Cooldown reset;note:Every bomb and mortar ability is immediately ready to use');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 10, '', 'Increased attack speed.', 0, 16380, '0.65s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 11, '', 'Slightly increased range and extra layer pop.', 0, 14400, '+1d,+3r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 12, '', 'Increased attack speed.', 0, 16650, '0.65s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 13, '', 'Concussive Shell affects a larger area for a longer duration.', 0, 14940, 'abil:concussive_shell:+50%r;status:stun:+50%dur=note:(Lvl 14) 7.5 seconds on bloons. 4.5 seconds on blimps)');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 14, '', 'Concussive Shell''s cooldown is reduced to 11 seconds.', 0, 16380, 'abil:concussive_shell:11clt');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 15, '', 'Increased attack speed.', 0, 17820, '0.35s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 16, '', 'Increased range and pops 4 layers per shot.', 0, 19260, '+1d,+2r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 17, '', 'All Bomb Shooters and Mortar Monkeys get +10% attacking speed.', 0, 20700, 'buff:explosive_expert:*80%s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 18, '', 'Increased attack speed and makes all Black Bloons vulnerable to explosive damage.', 0, 16470, '0.2s,status:blast_weakness:note:(Lvl 19) black property is always ignored by explosions');
-INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 19, '', 'Artillery Command also gives double damage and popping power to all Bomb Shooters and Mortar Monkeys for 10 seconds.', 0, 17280, 'abil:artillery_command:note:(Lvl 20) for the next 10s every bomb and mortar has double damage and double pierce');
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 0, '', 'Striker Jones shoots a powerful bazooka to explode Bloons.', 0, 0, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 1, '', 'Increased blast radius.', 0, 180, '+4r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, true, 0, 2, 'Concussive Shell', 'Shoots a guided shell to the largest Bloon on screen, stunning it.', 0, 460, 'abil:concussive_shell:desc:Shoots a guided shell to the larges Bloon;16clt;-1r;2d;48p;type:normal;status:stun:1dur;note:can see past obstacles', 'abil,stnb', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 3, '', 'All Bomb Shooters and Mortar Monkeys on screen shoot 10% faster.', 0, 1000, 'buff:explosive_expert:*90%s;desc:Gain increased attack speed;note:affects all bomb and mortar towers', 'tbf', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 4, '', 'Makes Black Bloons less resistant to explosive attacks.', 0, 1860, 'status:blast_weakness:desc:Weakens bloons to explosions;note:(Lvl 5) black property has a 50% chance of being ignored by explosions', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 5, '', 'Blast radius and popping power for Jones''s normal attacks increase greatly.', 0, 3280, '+10p,+50%r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 6, '', 'Pops 2 layers per shot and Mortar Monkeys blast radius increased by 10%.', 0, 5180, '+1d,buff:mortar_expert:desc:Gain increased radius;note:+10% blast radius;note:affects all mortars', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 7, '', 'All Bomb Shooters near Jones get +5% range and +25% piercing power.', 0, 8320, 'buff:bomb_expert:desc:Gain increased pierce and range;+25%p;+5%r;note:affects bomb towers in range', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 8, '', 'Increased attack speed and increased Concussive Shell pierce, damage, and stun.', 0, 9380, '0.9s,abil:concussive_shell:+10d;+10p;status:stun:5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, true, 0, 9, 'Artillery Command', 'Resets cooldown on all Bomb Shooters and Mortar Monkeys.', 0, 13620, 'abil:artillery_command:80clt;desc:Cooldown reset;note:Every bomb and mortar ability is immediately ready to use', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 10, '', 'Increased attack speed.', 0, 16380, '0.65s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 11, '', 'Slightly increased range and extra layer pop.', 0, 14400, '+1d,+3r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 12, '', 'Increased attack speed.', 0, 16650, '0.65s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 13, '', 'Concussive Shell affects a larger area for a longer duration.', 0, 14940, 'abil:concussive_shell:+50%r;status:stun:+50%dur=note:(Lvl 14) 7.5 seconds on bloons. 4.5 seconds on blimps)', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 14, '', 'Concussive Shell''s cooldown is reduced to 11 seconds.', 0, 16380, 'abil:concussive_shell:11clt', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 15, '', 'Increased attack speed.', 0, 17820, '0.35s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 16, '', 'Increased range and pops 4 layers per shot.', 0, 19260, '+1d,+2r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 17, '', 'All Bomb Shooters and Mortar Monkeys get +10% attacking speed.', 0, 20700, 'buff:explosive_expert:*80%s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 18, '', 'Increased attack speed and makes all Black Bloons vulnerable to explosive damage.', 0, 16470, '0.2s,status:blast_weakness:note:(Lvl 19) black property is always ignored by explosions', 'black', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 19, '', 'Artillery Command also gives double damage and popping power to all Bomb Shooters and Mortar Monkeys for 10 seconds.', 0, 17280, 'abil:artillery_command:note:(Lvl 20) for the next 10s every bomb and mortar has double damage and double pierce', 'dps', DEFAULT);
 
-INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_striker_jones, 'stnb,supp,tbf', 'camo,trkp');
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_striker_jones, 'supp', 'camo,trkp');
 
 
 --      Hero - Obyn Greenfoot
@@ -1272,28 +1272,28 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_obyn_greenfoot, 'c');
 --          Statistics      --  (  id,              tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,     dur, note, fp,  hk,       dt,     clt,      co,     del)
 INSERT INTO `TowerStats` VALUES (NULL, @tower_obyn_greenfoot, 43, 4, 2, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.35, DEFAULT, DEFAULT, NULL,  7, 'U', 'plasma', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 0, '', 'Sends wolf spirits to attack the Bloons.', 0, 0, 'note:moderate homing');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 1, '', 'Nature\'s Wrath: All Druids in range get +1 pierce.', 0, 180, 'buff:natures_wrath:desc:Gain increased pierce;+1p;note:affects all druids in range');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, true, 0, 2, 'Brambles', 'Creates a spiked bush on the track that can pop 50 bloons.', 0, 460, 'abil:brambles:desc:Spiked bush placed on track;35clt;1d;50p;type:sharp;120dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 3, '', 'Every 18 seconds creates a totem that slows all bloons near the totem by 30%. Less effective vs MOAB-class Bloons.', 0, 1000, 'attack:natures_ward:desc:Passively creates a slowing totem;18s;32r;15dur;30%slow;note:(Lvl 4) 30% slow for bloons. 15% for blimps');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 4, '', 'Increased attack speed.', 0, 1860, '1.1s,buff:jungle_support:desc:Gain increased range to druids;+20%r;note:affects all X-3-X+ druids');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 5, '', 'Increased popping power and projectiles move faster.', 0, 3280, '+5p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 6, '', 'Brambles can pop 100 bloons.', 0, 5180, 'abil:brambles:+50p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 7, '', 'Nature\'s ward totems slow down bloons by 40%.', 0, 8320, 'attack:natures_ward:note:(Lvl 8) 40% slow for bloons. 20% for blimps');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 8, '', 'Attack pops extra layers.', 0, 9380, '+2d,buff:storm_support:desc:Gain increased moab damage;+1md;note:affects all 3-X-X+ druids');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, true, 0, 9, 'Wall of Trees', 'Summons a wall of trees across the track that destroy all Bloons that enter. When full, the tress burst into money.', 0, 13620, 'abil:wall_of_trees:desc:Summons a wall of trees across the track;90clt;3000p;note:pops anything up to its pierce limit with a +1 cash modifier but stores this cash until the pierce is entirely used up');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 10, '', 'Nature\'s Clarity — all Magic Monkeys in range get an additional +5 range and +2 pierce, and Druids get an additional +1 pierce.', 0, 16380, 'buff:natures_wrath:+2p;note:(Lvl 11) affects magic towers in range;note:(Lvl 11) stacks with the existing +1p for druids,buff:natures_clarity:desc:Gains increased range;+5r;note:Affects magic towers in range;note:applies after all other buffs so is not affected by multipliers');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 11, '', 'Increased attack speed.', 0, 14400, '0.8s,buff:natures_energy:desc:Gain lower cooldown times;note:-5% ability cooldown times;note:Affects all magic towers');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 12, '', 'Further increased popping power and projectile speed.', 0, 16650, '+5p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 13, '', 'Attack pops extra layers.', 0, 14940, '+2d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 14, '', 'Nature''s Ward slows Bloons by 60%, and has reduced cooldown.', 0, 16380, 'attack:natures_ward:12s;note:(Lvl 15) 60% slow for bloons. 30% for blimps');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 15, '', 'Brambles pop 500 Bloons each and can damage all Bloon type.', 0, 17820, 'abil:brambles:+400p;type:normal');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 16, '', 'Increased attack speed.', 0, 19260, '0.5s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 17, '', 'Improved Wrath — all Druid of Wrath pops start each round at 200.', 0, 20700, 'buff:wrath_support:desc:Druid popper;note:whenever a round starts wrath counter is set to the maximum 200 pops for +100% speed;note:affects all X-X-3+ druids');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 18, '', 'Attack pops extra layers.', 0, 16470, '+2d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 19, '', 'Wall of Trees can hold a lot more Bloons.', 0, 17280, 'abil:wall_of_trees:+2000p');
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 0, '', 'Sends wolf spirits to attack the Bloons.', 0, 0, 'note:moderate homing', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 1, '', 'Nature\'s Wrath: All Druids in range get +1 pierce.', 0, 180, 'buff:natures_wrath:desc:Gain increased pierce;+1p;note:affects all druids in range', 'tbf', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, true, 0, 2, 'Brambles', 'Creates a spiked bush on the track that can pop 50 bloons.', 0, 460, 'abil:brambles:desc:Spiked bush placed on track;35clt;1d;50p;type:sharp;120dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 3, '', 'Every 18 seconds creates a totem that slows all bloons near the totem by 30%. Less effective vs MOAB-class Bloons.', 0, 1000, 'attack:natures_ward:desc:Passively creates a slowing totem;18s;32r;15dur;30%slow;note:(Lvl 4) 30% slow for bloons. 15% for blimps', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 4, '', 'Increased attack speed.', 0, 1860, '1.1s,buff:jungle_support:desc:Gain increased range to druids;+20%r;note:affects all X-3-X+ druids', 'cc', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 5, '', 'Increased popping power and projectiles move faster.', 0, 3280, '+5p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 6, '', 'Brambles can pop 100 bloons.', 0, 5180, 'abil:brambles:+50p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 7, '', 'Nature\'s ward totems slow down bloons by 40%.', 0, 8320, 'attack:natures_ward:note:(Lvl 8) 40% slow for bloons. 20% for blimps', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 8, '', 'Attack pops extra layers.', 0, 9380, '+2d,buff:storm_support:desc:Gain increased moab damage;+1md;note:affects all 3-X-X+ druids', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, true, 0, 9, 'Wall of Trees', 'Summons a wall of trees across the track that destroy all Bloons that enter. When full, the tress burst into money.', 0, 13620, 'abil:wall_of_trees:desc:Summons a wall of trees across the track;90clt;3000p;note:pops anything up to its pierce limit with a +1 cash modifier but stores this cash until the pierce is entirely used up', 'abil', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 10, '', 'Nature\'s Clarity — all Magic Monkeys in range get an additional +5 range and +2 pierce, and Druids get an additional +1 pierce.', 0, 16380, 'buff:natures_wrath:+2p;note:(Lvl 11) affects magic towers in range;note:(Lvl 11) stacks with the existing +1p for druids,buff:natures_clarity:desc:Gains increased range;+5r;note:Affects magic towers in range;note:applies after all other buffs so is not affected by multipliers', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 11, '', 'Increased attack speed.', 0, 14400, '0.8s,buff:natures_energy:desc:Gain lower cooldown times;note:-5% ability cooldown times;note:Affects all magic towers', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 12, '', 'Further increased popping power and projectile speed.', 0, 16650, '+5p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 13, '', 'Attack pops extra layers.', 0, 14940, '+2d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 14, '', 'Nature''s Ward slows Bloons by 60%, and has reduced cooldown.', 0, 16380, 'attack:natures_ward:12s;note:(Lvl 15) 60% slow for bloons. 30% for blimps', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 15, '', 'Brambles pop 500 Bloons each and can damage all Bloon type.', 0, 17820, 'abil:brambles:+400p;type:normal', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 16, '', 'Increased attack speed.', 0, 19260, '0.5s', 'atksp', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 17, '', 'Improved Wrath — all Druid of Wrath pops start each round at 200.', 0, 20700, 'buff:wrath_support:desc:Druid popper;note:whenever a round starts wrath counter is set to the maximum 200 pops for +100% speed;note:affects all X-X-3+ druids', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 18, '', 'Attack pops extra layers.', 0, 16470, '+2d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 19, '', 'Wall of Trees can hold a lot more Bloons.', 0, 17280, 'abil:wall_of_trees:+2000p', 'dps', DEFAULT);
 
-INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_obyn_greenfoot, 'lead,tbf,eg', 'camo,purp,supp');
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_obyn_greenfoot, 'lead,eg', 'camo,purp,supp');
 
 
 --      Hero - Captain Churchill
@@ -1307,28 +1307,28 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_captain_churchill, 'b');
 --          Statistics      --  (  id,                 tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,          dt,     clt,      co,     del)
 INSERT INTO `TowerStats` VALUES (NULL, @tower_captain_churchill, 63, 15, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.7, DEFAULT, DEFAULT, NULL,  8, 'U', 'explosion', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 0, '', 'Piercing bombs shot from the tank can explode up to 3 times.', 0, 0, '');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 1, '', 'Increased popping power per shot.', 0, 308, '+3p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, true, 0, 2, 'Armor Piercing Shells', 'Shots can pop Black Bloons and do extra damage to Ceramic Bloons. Duration increases as Churchill levels.', 0, 787, 'abil:armor_piercing_shells:desc:Buffs all attacks;90clt;9dur;+3cd;+3md;type:normal;note:All tower attacks have normal as its type');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 3, '', 'Increased attack range.', 0, 1710, '+3r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 4, '', 'Adds a fast firing machine gun to the tank.', 0, 3181, 'attack:machine_gun:desc:Attack gained by Lvl 5;1d;1p;66r;0.1s;type:sharp');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 5, '', 'Binoculars allow Churchill to pop Camo Bloons.', 0, 5609, '+camo');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 6, '', 'Shells deal more damage and can explode 4 times instead of 3.', 0, 8858, '+1d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 7, '', 'Increased attack speed.', 0, 14227, '0.5s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 8, '', 'Shells can explode 5 times.', 0, 16040, '');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, true, 0, 9, 'MOAB Barrage', 'Launches a barrage of shells at up to 10 MOAB-Class Bloons on screen, dealing massive damage each time.', 0, 23290, 'abil:moab_barrage:desc:Barrage of shells launched to Blimps;60clt;8dur;200d;0.5s;type:normal;note:Attacks up to 16 times or until target pops;note:gains up to 10 barrage attacks. one for each of the 10 strongest blimps');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 10, '', 'Increased popping power per shell.', 0, 28010, '+5p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 11, '', 'Shells get additional increased damage and can explode 6 times.', 0, 24624, '+1d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 12, '', 'Armor Piercing Shells pop 2 layers of Bloon and do extra damage to Ceramic and higher.', 0, 28472, 'abil:armor_piercing_shells:+1d;+7cd;+7md');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 13, '', 'Machine Gun and Main Gun can pop 1 additional layer per shot.', 0, 25547, '+1d,attack:machine_gun:+1d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 14, '', 'All attacks do extra damage vs Fortified Bloons.', 0, 28010, '+1d,attack:machine_gun:+1d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 15, '', 'Increased attack speed.', 0, 30472, '0.3s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 16, '', 'Armor Piercing Shells do even more damage.', 0, 32935, 'abil:armor_piercing_shells:+2d;+11cd;+11md');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 17, '', 'All shells pop an extra layer of Bloon.', 0, 35397, '+1d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 18, '', 'Shells can explode 7 times.', 0, 28164, '');
-INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 19, '', 'MOAB Barrage and Main Gun do massively increased damage per hit.', 0, 29549, 'abil:moab_barrage:30clt;+300d;note:(Lvl 20) Churchill +3 damage;note:(Lvl 20) Up to 8000 damage total per blimp)');
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 0, '', 'Piercing bombs shot from the tank can explode up to 3 times.', 0, 0, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 1, '', 'Increased popping power per shot.', 0, 308, '+3p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, true, 0, 2, 'Armor Piercing Shells', 'Shots can pop Black Bloons and do extra damage to Ceramic Bloons. Duration increases as Churchill levels.', 0, 787, 'abil:armor_piercing_shells:desc:Buffs all attacks;90clt;9dur;+3cd;+3md;type:normal;note:All tower attacks have normal as its type', 'abil,cm,black', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 3, '', 'Increased attack range.', 0, 1710, '+3r,abil:armor_piercing_shells:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 4, '', 'Adds a fast firing machine gun to the tank.', 0, 3181, 'attack:machine_gun:desc:Attack gained by Lvl 5;1d;1p;66r;0.1s;type:sharp,abil:armor_piercing_shells:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 5, '', 'Binoculars allow Churchill to pop Camo Bloons.', 0, 5609, '+camo,abil:armor_piercing_shells:+0.5dur', 'camo', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 6, '', 'Shells deal more damage and can explode 4 times instead of 3.', 0, 8858, '+1d,abil:armor_piercing_shells:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 7, '', 'Increased attack speed.', 0, 14227, '0.5s,abil:armor_piercing_shells:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 8, '', 'Shells can explode 5 times.', 0, 16040, 'abil:armor_piercing_shells:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, true, 0, 9, 'MOAB Barrage', 'Launches a barrage of shells at up to 10 MOAB-Class Bloons on screen, dealing massive damage each time.', 0, 23290, 'abil:moab_barrage:desc:Barrage of shells launched to Blimps;60clt;8dur;200d;0.5s;type:normal;note:Attacks up to 16 times or until target pops;note:gains up to 10 barrage attacks. one for each of the 10 strongest blimps,abil:armor_piercing_shells:+0.5dur', 'blimp', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 10, '', 'Increased popping power per shell.', 0, 28010, '+5p,abil:armor_piercing_shells:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 11, '', 'Shells get additional increased damage and can explode 6 times.', 0, 24624, '+1d,abil:armor_piercing_shells:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 12, '', 'Armor Piercing Shells pop 2 layers of Bloon and do extra damage to Ceramic and higher.', 0, 28472, 'abil:armor_piercing_shells:+1d;+7cd;+7md;+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 13, '', 'Machine Gun and Main Gun can pop 1 additional layer per shot.', 0, 25547, '+1d,attack:machine_gun:+1d,abil:armor_piercing_shells:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 14, '', 'All attacks do extra damage vs Fortified Bloons.', 0, 28010, '+1fd,attack:machine_gun:+1fd,abil:armor_piercing_shells:+0.5dur', 'fbl', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 15, '', 'Increased attack speed.', 0, 30472, '0.3s,abil:armor_piercing_shells:+0.5dur', 'atksp', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 16, '', 'Armor Piercing Shells do even more damage.', 0, 32935, 'abil:armor_piercing_shells:+2d;+11cd;+11md;+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 17, '', 'All shells pop an extra layer of Bloon.', 0, 35397, '+1d,abil:armor_piercing_shells:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 18, '', 'Shells can explode 7 times.', 0, 28164, 'abil:armor_piercing_shells:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 19, '', 'MOAB Barrage and Main Gun do massively increased damage per hit.', 0, 29549, 'abil:moab_barrage:30clt;+300d;note:(Lvl 20) Churchill +3 damage;note:(Lvl 20) Up to 8000 damage total per blimp,abil:armor_piercing_shells:+0.5dur', DEFAULT, DEFAULT);
 
-INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_captain_churchill, 'cm,camo,moab,fbl,dps', 'chep,ddt,xp');
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_captain_churchill, 'dps', 'chep,ddt,xp');
 
 
 --      Hero - Benjamin
@@ -1342,28 +1342,28 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_benjamin, 'a');
 --          Statistics      --  (  id,        tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s, mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
 INSERT INTO `TowerStats` VALUES (NULL, @tower_benjamin, 20, 0, 0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0, 100, DEFAULT, NULL,  7, 'U', 'hacks', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 0, '', 'Hacks in income of $100 every round.', 0, 0, '100mon');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 1, '', 'Generates $150 per round instead of $100', 0, 270, '+50mon');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, true, 0, 2, 'Biohack', '4 closest Monkeys pop an extra layer per attack for 6 seconds. Affected Monkeys can\'t attack for 2 seconds after effect ends.', 0, 690, 'abil:biohack:desc:Buffs nearest towers;30clt;6dur;+1d;note:Cannot attack for 2 seconds after buff expires;note:(Lvl 3) Applies buff to 4 nearest attacking towers');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 3, '', 'Skimming - Earns +$1 for every new Bloon spawned.', 0, 1500, 'attack:skimming:+1mon;note:(Lvl 4) $1 income for each new bloon spawned');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 4, '', 'Bank Hack - All banks earn +5% income.', 0, 2790, 'note:(Lvl 5) affects all X-3-X+ farms');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 5, '', 'Cyber Security - Restores 5 lives at the end of each round up to maximum.', 0, 4920, '');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 6, '', 'Bloon Trojan - Every few seconds sends a Trojan software virus to random Bloon. Affected Bloon spawns no children when destroyed and produces 2x cash.', 0, 7770, 'attack:bloon_trojan:desc:Attack gained by Lvl 7;-1r;5s;note:targets a random bloon from pink to moab;status:corrupted:desc:Spawns no children=note:Cash bonus applied on bloon');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 7, '', 'Income increased to $250 per round.', 0, 12480, '+100mon');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 8, '', 'Bank hack increased to 12%.', 0, 14070, '');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, true, 0, 9, 'Syphon Funding', 'Downgrades most newly spawned Bloons by 1 tier. Cash per pop from affected Bloons is double. Lasts 10 seconds.', 0, 20430, 'abil:syphon_funding:desc:Spawn smaller bloons;65clt;10dur;-ddt;-bad;note:(Lvl 10) Any new spawns other than a DDT or BAD will be one rank lower and give double cash');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 10, '', 'Income increased to $300 per round.', 0, 24570, '+50mon');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 11, '', 'Skimming increased to $2 per Bloon.', 0, 21600, 'attack:skimming:note:(Lvl 12) Now a $2 income');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 12, '', 'Biohack increases bonus damage and affects 6 monkeys for 8 seconds.', 0, 24975, 'abil:biohack:+2d;8s;note:(Lvl 13) Applies buff to 6 nearest attacking towers');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 13, '', 'Cyber Security adds 10 lives per round and can go up to 100 over starting lives.', 0, 22410, 'note:(Lvl 14) increased starting lives not available in impoppable or chimps');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 14, '', 'Income increased to $500 per round.', 0, 24570, '+200mon');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 15, '', 'Bloon Trojan is sent more often and earns more cash.', 0, 26730, 'attack:bloon_trojan:3s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 16, '', 'Income increased to $800.', 0, 28890, '+300mon');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 17, '', 'Bloon Trojan can affect BFBs and DDTs Bloons.', 0, 31050, '+camo,attack:bloon_trojan:+bfb;+ddt');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 18, '', 'Biohack lasts 9 seconds and affected Monkeys pop 3 extra layers instead of 2.', 0, 24705, 'abil:biohack:+3d;9dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 19, '', 'Syphon Funding lasts 20 seconds and cash per pop is tripled for affected Bloons.', 0, 25920, 'abil:syphon_funding:20dur;note:(Lvl 20) affected bloons now give triple cash');
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 0, '', 'Hacks in income of $100 every round.', 0, 0, '100mon', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 1, '', 'Generates $150 per round instead of $100', 0, 270, '+50mon', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, true, 0, 2, 'Biohack', '4 closest Monkeys pop an extra layer per attack for 6 seconds. Affected Monkeys can\'t attack for 2 seconds after effect ends.', 0, 690, 'abil:biohack:desc:Buffs nearest towers;30clt;6dur;+1d;note:Cannot attack for 2 seconds after buff expires;note:(Lvl 3) Applies buff to 4 nearest attacking towers', 'abil', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 3, '', 'Skimming - Earns +$1 for every new Bloon spawned.', 0, 1500, 'attack:skimming:+1mon;note:(Lvl 4) $1 income for each new bloon spawned', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 4, '', 'Bank Hack - All banks earn +5% income.', 0, 2790, 'note:(Lvl 5) affects all X-3-X+ farms', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 5, '', 'Cyber Security - Restores 5 lives at the end of each round up to maximum.', 0, 4920, '', 'hlth', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 6, '', 'Bloon Trojan - Every few seconds sends a Trojan software virus to random Bloon. Affected Bloon spawns no children when destroyed and produces 2x cash.', 0, 7770, 'attack:bloon_trojan:desc:Attack gained by Lvl 7;-1r;5s;note:targets a random bloon from pink to moab;status:corrupted:desc:Spawns no children=note:Cash bonus applied on bloon', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 7, '', 'Income increased to $250 per round.', 0, 12480, '+100mon', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 8, '', 'Bank hack increased to 12%.', 0, 14070, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, true, 0, 9, 'Syphon Funding', 'Downgrades most newly spawned Bloons by 1 tier. Cash per pop from affected Bloons is double. Lasts 10 seconds.', 0, 20430, 'abil:syphon_funding:desc:Spawn smaller bloons;65clt;10dur;-ddt;-bad;note:(Lvl 10) Any new spawns other than a DDT or BAD will be one rank lower and give double cash', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 10, '', 'Income increased to $300 per round.', 0, 24570, '+50mon', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 11, '', 'Skimming increased to $2 per Bloon.', 0, 21600, 'attack:skimming:note:(Lvl 12) Now a $2 income', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 12, '', 'Biohack increases bonus damage and affects 6 monkeys for 8 seconds.', 0, 24975, 'abil:biohack:+2d;8s;note:(Lvl 13) Applies buff to 6 nearest attacking towers', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 13, '', 'Cyber Security adds 10 lives per round and can go up to 100 over starting lives.', 0, 22410, 'note:(Lvl 14) increased starting lives not available in impoppable or chimps', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 14, '', 'Income increased to $500 per round.', 0, 24570, '+200mon', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 15, '', 'Bloon Trojan is sent more often and earns more cash.', 0, 26730, 'attack:bloon_trojan:3s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 16, '', 'Income increased to $800.', 0, 28890, '+300mon', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 17, '', 'Bloon Trojan can affect BFBs and DDTs Bloons.', 0, 31050, '+camo,attack:bloon_trojan:+bfb;+ddt', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 18, '', 'Biohack lasts 9 seconds and affected Monkeys pop 3 extra layers instead of 2.', 0, 24705, 'abil:biohack:+3d;9dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 19, '', 'Syphon Funding lasts 20 seconds and cash per pop is tripled for affected Bloons.', 0, 25920, 'abil:syphon_funding:20dur;note:(Lvl 20) affected bloons now give triple cash', DEFAULT, DEFAULT);
 
-INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_benjamin, 'mny,supp,hlth,moab,eg', 'chmp');
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_benjamin, 'mny,supp,hlth,eg,mg', 'chmp');
 
 
 --      Hero - Ezili
@@ -1377,28 +1377,28 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_ezili, 'c');
 --          Statistics      --  (  id,     tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,       dt,     clt,      co,     del)
 INSERT INTO `TowerStats` VALUES (NULL, @tower_ezili, 40, 5, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.2, DEFAULT, DEFAULT, NULL,  7, 'U', 'plasma', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 0, '', 'Ezili curses Bloons with dark voodoo power.', 0, 0, '+camo,attack:splash:desc:Deals damage on basic attack contact;1d;5p;8r;type:plasma,status:cursed:desc:Applied by basic attack;1d;2.5s;2.6dur;note:if the target is already cursed its duration is refreshed');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 1, '', 'Increased attack range.', 0, 256, '+3r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, true, 0, 2, 'Heartstopper', 'Prevents any Regrow from happening for 6 seconds.', 0, 655, 'abil:heartstopper:desc:Prevents any Regrow;60clt;6dur;-1r;-1p;0.1s;+degrow');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 3, '', 'Ezili\'s main attack now curses multiple bloons.', 0, 1425, 'attack:splash:note:(Lvl4) Applies cursed status');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 4, '', 'Increases attack speed.', 0, 2650, '1s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 5, '', 'Damage over time lasts longer and damages faster.', 0, 4674, 'status:cursed:1.8s;5.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, true, 0, 6, 'Sacrificial Totem', 'A totem that gives Camo detection, extra pierce, attack range, attack speed, and projectile speed to nearby Monkeys. Drains 10 lives.', 0, 7381, 'abil:sacrificial_totem:90clt;desc:Places a totem that buffs towers;78r;30dur;note:(Lvl 7) costs 10 lives;buff:support:desc:Buffs towers=+1p=+20%r=86%s=+camo=note:affects all towers in range');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 7, '', 'Ezili\'s attack does far more damage to MOAB-Class Bloons.', 0, 11856, '+19md;status:cursed:+1d;+19md');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 8, '', 'Ezili\'s attack strips off Camo, Regrow and Fortified properties from non-MOAB Class Bloons.', 0, 13366, '+degrow,+defortify,+decamo,attack:splash:+degrow;+defortify;+decamo,note:(Lvl 9) Degrow defortify and decamo not applied to blimps');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, true, 0, 9, 'MOAB Hex', 'places a curse on a MOAB-Class Bloon, it takes damage every second until annihilated.', 0, 19408, 'abil:moab_hex:desc:Place a curse on a Blimp until its destroyed;60clt;25dur;-bad;note:transfers to the next target if it pops with time remaining;note:Spawns no children');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 10, '', 'Increased attack range. Increases pierce of reanimated Bloons by 50%.', 0, 23341, '+2r;note:(Lvl 11)gains buff for all X-X-4+ wizards: zombloon +1 pierce zmoab +10 pierce');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 11, '', 'Heartstopper reduced cooldown and increased duration.', 0, 20520, '+10md,attack:splash:+10md,abil:heartstopper:45clt;15dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 12, '', 'Base attack larger splash radius and increased pierce.', 0, 23726, 'attack:splash:+10p;+3r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 13, '', 'Faster damage over time.', 0, 21289, 'status:cursed:4.05dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 14, '', 'Increased range.', 0, 23341, '+2r,status:cursed:6.05dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 15, '', 'Sacrificial Totem lasts longer and only costs 1 life to use.', 0, 25393, 'abil:sacrificial_totem:60dur;note:(Lvl 16) costs 1 life');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 16, '', 'Base attack has an even larger splash radius and increased pierce.', 0, 27445, 'attack:splash:+10p,+2r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 17, '', 'Increased attack speed.', 0, 29497, '0.8s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 18, '', 'Each damage tick from base attack pop 2 layers.', 0, 23469, 'status:cursed:+1d;+10md;1s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 19, '', 'MOAB Hex works faster and can destroy BAD Bloons.', 0, 24624, '+20md,attack:splash:+20md,abil:moab_hex:40clt;+bad');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 0, '', 'Ezili curses Bloons with dark voodoo power.', 0, 0, '+camo,attack:splash:desc:Deals damage on basic attack contact;1d;5p;8r;type:plasma,status:cursed:desc:Applied by basic attack;1d;2.5s;2.6dur;note:if the target is already cursed its duration is refreshed', 'camo', 'purp');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 1, '', 'Increased attack range.', 0, 256, '+3r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, true, 0, 2, 'Heartstopper', 'Prevents any Regrow from happening for 6 seconds.', 0, 655, 'abil:heartstopper:desc:Prevents any Regrow;60clt;6dur;-1r;-1p;0.1s;+degrow', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 3, '', 'Ezili\'s main attack now curses multiple bloons.', 0, 1425, 'attack:splash:note:(Lvl4) Applies cursed status', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 4, '', 'Increases attack speed.', 0, 2650, '1s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 5, '', 'Damage over time lasts longer and damages faster.', 0, 4674, 'status:cursed:1.8s;5.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, true, 0, 6, 'Sacrificial Totem', 'A totem that gives Camo detection, extra pierce, attack range, attack speed, and projectile speed to nearby Monkeys. Drains 10 lives.', 0, 7381, 'abil:sacrificial_totem:90clt;desc:Places a totem that buffs towers;78r;30dur;note:(Lvl 7) costs 10 lives;buff:support:desc:Buffs towers=+1p=+20%r=86%s=+camo=note:affects all towers in range', 'abil,tbf', 'hlth');
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 7, '', 'Ezili\'s attack does far more damage to MOAB-Class Bloons.', 0, 11856, '+19md;status:cursed:+1d;+19md', 'blimp', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 8, '', 'Ezili\'s attack strips off Camo, Regrow and Fortified properties from non-MOAB Class Bloons.', 0, 13366, '+degrow,+defortify,+decamo,attack:splash:+degrow;+defortify;+decamo,note:(Lvl 9) Degrow defortify and decamo not applied to blimps', 'degrow,defortify,decamo', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, true, 0, 9, 'MOAB Hex', 'places a curse on a MOAB-Class Bloon, it takes damage every second until annihilated.', 0, 19408, 'abil:moab_hex:desc:Place a curse on a Blimp until its destroyed;60clt;25dur;-bad;note:transfers to the next target if it pops with time remaining;note:Spawns no children', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 10, '', 'Increased attack range. Increases pierce of reanimated Bloons by 50%.', 0, 23341, '+2r;note:(Lvl 11)gains buff for all X-X-4+ wizards: zombloon +1 pierce zmoab +10 pierce', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 11, '', 'Heartstopper reduced cooldown and increased duration.', 0, 20520, '+10md,attack:splash:+10md,abil:heartstopper:45clt;15dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 12, '', 'Base attack larger splash radius and increased pierce.', 0, 23726, 'attack:splash:+10p;+3r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 13, '', 'Faster damage over time.', 0, 21289, 'status:cursed:4.05dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 14, '', 'Increased range.', 0, 23341, '+2r,status:cursed:6.05dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 15, '', 'Sacrificial Totem lasts longer and only costs 1 life to use.', 0, 25393, 'abil:sacrificial_totem:60dur;note:(Lvl 16) costs 1 life', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 16, '', 'Base attack has an even larger splash radius and increased pierce.', 0, 27445, 'attack:splash:+10p,+2r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 17, '', 'Increased attack speed.', 0, 29497, '0.8s', 'atksp', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 18, '', 'Each damage tick from base attack pop 2 layers.', 0, 23469, 'status:cursed:+1d;+10md;1s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 19, '', 'MOAB Hex works faster and can destroy BAD Bloons.', 0, 24624, '+20md,attack:splash:+20md,abil:moab_hex:40clt;+bad', 'dps', DEFAULT);
 
-INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_ezili, 'camo,lead,tbf,moab,bln,fbl,scm,chep', 'purp,hlth,eg,grpb');
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_ezili, 'lead,bln,fbl,scm,chep', 'eg,grpb');
 
 
 --      Hero - Pat Fusty
@@ -1412,28 +1412,28 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_pat_fusty, 's');
 --          Statistics      --  (  id,         tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd, cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,       dt,     clt,      co,     del)
 INSERT INTO `TowerStats` VALUES (NULL, @tower_pat_fusty, 24, 5, 3, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT,  2, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.1, DEFAULT, DEFAULT, NULL,  7, 'U', 'normal', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 0, '', 'Pat slams Bloons into the ground.', 0, 0, 'attack:aoe:2d;2cd;10p;8r;type:normal;desc:Deals damage on basic attack contact');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 1, '', 'Increased radius of Pat\'s slam attack.', 0, 256, 'attack:aoe:+5r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, true, 0, 2, 'Rallying Roar', 'All nearby Monkeys can pop +1 layer for a short time.', 0, 655, 'abil:rallying_roar:desc:Gain increased damage buff;45clt;8dur;30r;+1d;note:includes self');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 3, '', 'Increased attack speed.', 0, 1425, '0.9s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 4, '', 'Pat sometimes does a slap attack that pushes Bloons back a considerable distance.', 0, 2650, 'attack:slap:desc:Replaces every 5th basic attack;10p;-bfb;-zomg;-ddt;-bad;status:knockback:desc:Knockback bloons=1dur=note:move backwards at 3x normal speed. Also applies aoe on contact');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 5, '', 'Bloons hit by Pat are stunned for a short time.', 0, 4674, 'attack:aoe:status:stun:desc:Stun bloons in aoe;0.3dur;+7r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 6, '', 'Increased popping power.', 0, 7381, '+1d,attack:aoe:+1d;+10p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 7, '', 'Increased attack speed.', 0, 11856, '0.75s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 8, '', 'Increased range.', 0, 13366, '+3r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, true, 0, 9, 'Big Squeeze', 'Grabs a MOAB, BFB, ZOMG, or DDT (if granted camo detection) and crushes it over 5 seconds.', 0, 19408, 'abil:big_squeeze:desc:Squeezes biggest blimp to annihilation;20clt;5dur;35r;+moab;+bfb;+zomg;+ddt;-bad;note:stuns children for 2 seconds;note:cannot use any other attack for the duration of this ability');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 10, '', 'Pops more layers per attack.', 0, 23341, '+1d,attack:aoe:+1d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 11, '', 'Increased attack speed.', 0, 20520, '0.65s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 12, '', 'Attacks stun Bloons for longer and can stun MOAB-Class Bloons briefly.', 0, 23726, 'attack:aoe:status:stun:note:(Lvl 13) 0.5 seconds for bloons. 0.2 seconds for blimps');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 13, '', 'Rallying Roar has increased range and duration and increased damage of rallied monkeys.', 0, 21289, 'abil:rallying_roar:10dur;+10r;+3d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 14, '', 'Slap attacks affect more Bloons.', 0, 23341, '+10p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 15, '', 'Increased range.', 0, 25393, '+5cd,+2r,attack:aoe:+6cd');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 16, '', 'Increased attack speed.', 0, 27445, '0.55s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 17, '', 'Increased popping power.', 0, 29497, 'attack:aoe:+10p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 18, '', 'Attack pops more layers.', 0, 23469, '+5d,attack:aoe:+5d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 19, '', 'Big Squeeze can grab several big Bloons at once.', 0, 24624, 'abil:big_squeeze:note:(Lvl 20) affects up to 4 blimps');
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 0, '', 'Pat slams Bloons into the ground.', 0, 0, 'attack:aoe:2d;2cd;10p;8r;type:normal;desc:Deals damage on basic attack contact', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 1, '', 'Increased radius of Pat\'s slam attack.', 0, 256, 'attack:aoe:+5r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, true, 0, 2, 'Rallying Roar', 'All nearby Monkeys can pop +1 layer for a short time.', 0, 655, 'abil:rallying_roar:desc:Gain increased damage buff;45clt;8dur;30r;+1d;note:includes self', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 3, '', 'Increased attack speed.', 0, 1425, '0.9s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 4, '', 'Pat sometimes does a slap attack that pushes Bloons back a considerable distance.', 0, 2650, 'attack:slap:desc:Replaces every 5th basic attack;10p;-bfb;-zomg;-ddt;-bad;status:knockback:desc:Knockback bloons=1dur=note:move backwards at 3x normal speed. Also applies aoe on contact', 'kb,cc', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 5, '', 'Bloons hit by Pat are stunned for a short time.', 0, 4674, 'attack:aoe:status:stun:desc:Stun bloons in aoe;0.3dur;+7r', 'stnb', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 6, '', 'Increased popping power.', 0, 7381, '+1d,attack:aoe:+1d;+10p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 7, '', 'Increased attack speed.', 0, 11856, '0.75s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 8, '', 'Increased range.', 0, 13366, '+3r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, true, 0, 9, 'Big Squeeze', 'Grabs a MOAB, BFB, ZOMG, or DDT (if granted camo detection) and crushes it over 5 seconds.', 0, 19408, 'abil:big_squeeze:desc:Squeezes biggest blimp to annihilation;20clt;5dur;35r;+moab;+bfb;+zomg;+ddt;-bad;note:stuns children for 2 seconds;note:cannot use any other attack for the duration of this ability', 'abil', 'bad');
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 10, '', 'Pops more layers per attack.', 0, 23341, '+1d,attack:aoe:+1d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 11, '', 'Increased attack speed.', 0, 20520, '0.65s', 'atksp', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 12, '', 'Attacks stun Bloons for longer and can stun MOAB-Class Bloons briefly.', 0, 23726, 'attack:aoe:status:stun:note:(Lvl 13) 0.5 seconds for bloons. 0.2 seconds for blimps', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 13, '', 'Rallying Roar has increased range and duration and increased damage of rallied monkeys.', 0, 21289, 'abil:rallying_roar:10dur;+10r;+3d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 14, '', 'Slap attacks affect more Bloons.', 0, 23341, '+10p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 15, '', 'Increased range.', 0, 25393, '+5cd,+2r,attack:aoe:+6cd', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 16, '', 'Increased attack speed.', 0, 27445, '0.55s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 17, '', 'Increased popping power.', 0, 29497, 'attack:aoe:+10p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 18, '', 'Attack pops more layers.', 0, 23469, '+5d,attack:aoe:+5d', 'dps', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 19, '', 'Big Squeeze can grab several big Bloons at once.', 0, 24624, 'abil:big_squeeze:note:(Lvl 20) affects up to 4 blimps', DEFAULT, DEFAULT);
 
-INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_pat_fusty, 'lead,moab,cc,stnb,bln,chmp,kb', 'camo,trkp,time');
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_pat_fusty, 'bln,chmp', 'camo,trkp,time');
 
 
 --      Hero - Adora
@@ -1447,26 +1447,26 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_adora, 'b');
 --          Statistics      --  (  id,     tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,     dur, note, fp,  hk,       dt,     clt,      co,     del)
 INSERT INTO `TowerStats` VALUES (NULL, @tower_adora, 45, 5, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1, DEFAULT, DEFAULT, NULL,  7, 'U', 'plasma', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 0, '', 'Divine Bolt seeks out and destroys Bloons.', 0, 0, '');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 1, '', 'Increased attack range.', 0, 308, '+4r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, true, 0, 2, 'The Long Arm of Light', 'Greatly increases attack range and power for a short time & damages all Bloon Types.', 0, 787, 'abil:long_arm_of_light:desc:Gain increased pierce range and damage;45clt;10dur;note:main attack pierce and range are doubled and damage type is normal');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 3, '', 'Shoots double Divine Bolts.', 0, 1710, '+1j');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 4, '', 'Divine bolts pierce through more Bloons.', 0, 3181, '+3p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 5, '', 'Shoots 3 Divine Bolts at a time.', 0, 5609, '+1j');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, true, 0, 6, 'Blood Sacrifice', 'Sacrifice a targeted Tower to grant Adora large amounts of XP and boost her attack range and rate of fire for a short time.', 0, 8858, 'abil:blood_sacrifice:desc:Sacrifice a tower for increased stats;10clt;10dur;buff:sacrifice:desc:Gain increased range and attack speed;note:+(10+x)%r (90-x)%s where x = amount sacrificed / 100 (capped at 15)=note:affects self and 3-X-X+ Super Monkeys in range;note:sacrifices a chosen tower to gain 4x the amount spent on it as XP');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 7, '', 'Shoots 4 Divine Bolts at a time.', 0, 14227, '+1j');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 8, '', 'Increased attack range.', 0, 16040, '+5r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, true, 0, 9, 'Ball of Light', 'Brings forth a powerful ball of energy to strike down the Bloons.', 0, 23290, 'abil:ball_of_light:desc:Ball of energy dealing tons of damage;60clt;12dur;3d;8p;-1r;0.05s;type:plasma;note:can see past obstacles');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 10, '', 'Adora increases attack speed.', 0, 28010, '0.8s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 11, '', 'Shoots 5 Divine Bolts at a time.', 0, 24624, '+1j');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 12, '', 'Divine Bolts pierce through more Bloons.', 0, 28472, '+5p,abil:ball_of_light:+5p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 13, '', 'Shoots 6 Divine Bolts at a time.', 0, 25547, '+1j');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 14, '', 'Divine Bolts burn through an extra Bloon layer.', 0, 28010, '+1d,abil:ball_of_light:+1d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 15, '', 'The Long Arm of Light becomes even more deadly.', 0, 30472, 'abil:long_arm_of_light:15dur;+2');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 16, '', 'Adora increases attack speed even more.', 0, 32935, '0.6s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 17, '', 'Shoots 8 Divine Bolts at a time.', 0, 35397, '+2j');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 18, '', 'Increased attack range.', 0, 28164, '+5r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 19, '', 'Ball of Light is greatly improved.', 0, 29549, 'abil:blood_sacrifice:60dur;note:(Lvl 20)+(10+x)%r (90-x)%s where x = amount sacrificed / 50 (capped at 40),abil:ball_of_light:20dur;20d;type:normal,note:(Lvl 20) if a super monkey is upgraded to 5-X-X with Adora in range she transforms into sun-form (+8 damage, +30 pierce)');
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 0, '', 'Divine Bolt seeks out and destroys Bloons.', 0, 0, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 1, '', 'Increased attack range.', 0, 308, '+4r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, true, 0, 2, 'The Long Arm of Light', 'Greatly increases attack range and power for a short time & damages all Bloon Types.', 0, 787, 'abil:long_arm_of_light:desc:Gain increased pierce range and damage;45clt;10dur;note:main attack pierce and range are doubled and damage type is normal', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 3, '', 'Shoots double Divine Bolts.', 0, 1710, '+1j', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 4, '', 'Divine bolts pierce through more Bloons.', 0, 3181, '+3p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 5, '', 'Shoots 3 Divine Bolts at a time.', 0, 5609, '+1j', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, true, 0, 6, 'Blood Sacrifice', 'Sacrifice a targeted Tower to grant Adora large amounts of XP and boost her attack range and rate of fire for a short time.', 0, 8858, 'abil:blood_sacrifice:desc:Sacrifice a tower for increased stats;10clt;10dur;buff:sacrifice:desc:Gain increased range and attack speed;note:+(10+x)%r (90-x)%s where x = amount sacrificed / 100 (capped at 15)=note:affects self and 3-X-X+ Super Monkeys in range;note:sacrifices a chosen tower to gain 4x the amount spent on it as XP', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 7, '', 'Shoots 4 Divine Bolts at a time.', 0, 14227, '+1j', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 8, '', 'Increased attack range.', 0, 16040, '+5r', 'rang', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, true, 0, 9, 'Ball of Light', 'Brings forth a powerful ball of energy to strike down the Bloons.', 0, 23290, 'abil:ball_of_light:desc:Ball of energy dealing tons of damage;60clt;12dur;3d;8p;-1r;0.05s;type:plasma;note:can see past obstacles', 'abil', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 10, '', 'Adora increases attack speed.', 0, 28010, '0.8s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 11, '', 'Shoots 5 Divine Bolts at a time.', 0, 24624, '+1j', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 12, '', 'Divine Bolts pierce through more Bloons.', 0, 28472, '+5p,abil:ball_of_light:+5p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 13, '', 'Shoots 6 Divine Bolts at a time.', 0, 25547, '+1j', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 14, '', 'Divine Bolts burn through an extra Bloon layer.', 0, 28010, '+1d,abil:ball_of_light:+1d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 15, '', 'The Long Arm of Light becomes even more deadly.', 0, 30472, 'abil:long_arm_of_light:15dur;+2d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 16, '', 'Adora increases attack speed even more.', 0, 32935, '0.6s', 'atksp', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 17, '', 'Shoots 8 Divine Bolts at a time.', 0, 35397, '+2j', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 18, '', 'Increased attack range.', 0, 28164, '+5r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 19, '', 'Ball of Light is greatly improved.', 0, 29549, 'abil:blood_sacrifice:60dur;note:(Lvl 20)+(10+x)%r (90-x)%s where x = amount sacrificed / 50 (capped at 40),abil:ball_of_light:20dur;20d;type:normal,note:(Lvl 20) if a super monkey is upgraded to 5-X-X with Adora in range she transforms into sun-form (+8 damage, +30 pierce)', DEFAULT, DEFAULT);
 
 INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_adora, 'lead,dps,bln,eg,buff', 'camo,purp,supp,chimp,mg');
 
@@ -1482,28 +1482,28 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_admiral_brickell, 'c');
 --          Statistics      --  (  id,                tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
 INSERT INTO `TowerStats` VALUES (NULL, @tower_admiral_brickell, 50, 1, 3, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.8, DEFAULT, DEFAULT, NULL,  7, 'U', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 0, '', 'Drops powerful sea mines that seek and destroy Bloons.', 0, 0, 'attack:mine:desc:Passively places mines randomly in water;1d;20p;25r;type:explosion;120dur;3s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 1, '', 'Increased attack speed.', 0, 256, '0.7s,attack:mine:2.8s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, true, 0, 2, 'Naval Tactics', 'Greatly increases attack speed of nearby water-based Monkeys for a short time.', 0, 655, 'abil:naval_tactics:desc:Gain increased attack speed;50clt;9dur;*50%s;note:buffs water towers in range including self');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 3, '', 'More popping power for Sea Mines.', 0, 1425, 'attack:mine:+8p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 4, '', 'Naval Tactics increases popping power and allows affected Monkeys to hit all Bloon types except Camo.', 0, 2650, 'abil:naval_tactics:type:normal;+1p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 5, '', 'Increases the damage of Sea Mines and Pistol attacks.', 0, 4674, '+2d,attack:mine:+1d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 6, '', 'Increased attack range and Camo Bloon detection.', 0, 7381, '+8r,+camo');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 7, '', 'Naval Tactics allows affected monkeys to hit Camo Bloons.', 0, 11856, 'abil:naval_tactics:+camo');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 8, '', 'Sea Mines do extra damage.', 0, 13366, 'attack:mine:+5d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, true, 0, 9, 'Mega Mine', 'Deploys to any water area a devastating Mine that triggers on MOABs and stuns nearby Bloons. Mega Mines last 3 rounds.', 0, 19408, 'abil:mega_mine:desc:Places anti-blimp mine in selected location;60clt;4000d;100p;100r;type:normal;180dur;status:stun:5dur=desc:Stuns on mega mine contact;note:Homes in on blimps when near enough');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 10, '', 'Faster deploy speed and deploy rate for Sea Mines.', 0, 23341, 'attack:mine:2.5s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 11, '', 'Pistol attack increased speed and damage, Sea Mines increased damage.', 0, 20520, '+2d,0.4s,attack:mine:+5d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 12, '', 'Mega Mine cooldown reduced.', 0, 23726, 'abil:mega_mine:50clt');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 13, '', 'Naval Tactics duration increased.', 0, 21289, 'abil:naval_tactics:12dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 14, '', 'Enhanced Sea Mines have a larger explosion, can damage Black Bloons and can remove Camo.', 0, 23341, 'attack:mine:+10r;type:normal;+decamo');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 15, '', 'Attack and Sea Mine deploy range increased slightly.', 0, 25393, '+4r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 16, '', 'Sea Mines do greatly increased damage.', 0, 27445, 'attack:mine:+10d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 17, '', 'Mega Mine cooldown reduced even further.', 0, 29497, 'abil:mega_mine:40clt');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 18, '', 'Naval Tactics affects all water-based towers everywhere.', 0, 23469, 'abil:naval_tactics:note:(Lvl 19) globally affects all water towers');
-INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 19, '', 'Mega Mine does massively increased damage and longer stun.', 0, 24624, 'abil:mega_mine:+11000d;+20r;status:stun:+5dur');
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 0, '', 'Drops powerful sea mines that seek and destroy Bloons.', 0, 0, 'attack:mine:desc:Passively places mines randomly in water;1d;20p;25r;type:explosion;120dur;3s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 1, '', 'Increased attack speed.', 0, 256, '0.7s,attack:mine:2.8s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, true, 0, 2, 'Naval Tactics', 'Greatly increases attack speed of nearby water-based Monkeys for a short time.', 0, 655, 'abil:naval_tactics:desc:Gain increased attack speed;50clt;9dur;*50%s;note:buffs water towers in range including self', 'tbf,abil', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 3, '', 'More popping power for Sea Mines.', 0, 1425, 'attack:mine:+8p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 4, '', 'Naval Tactics increases popping power and allows affected Monkeys to hit all Bloon types except Camo.', 0, 2650, 'abil:naval_tactics:type:normal;+1p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 5, '', 'Increases the damage of Sea Mines and Pistol attacks.', 0, 4674, '+2d,attack:mine:+1d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 6, '', 'Increased attack range and Camo Bloon detection.', 0, 7381, '+8r,+camo', 'camo,rang', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 7, '', 'Naval Tactics allows affected monkeys to hit Camo Bloons.', 0, 11856, 'abil:naval_tactics:+camo', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 8, '', 'Sea Mines do extra damage.', 0, 13366, 'attack:mine:+5d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, true, 0, 9, 'Mega Mine', 'Deploys to any water area a devastating Mine that triggers on MOABs and stuns nearby Bloons. Mega Mines last 3 rounds.', 0, 19408, 'abil:mega_mine:desc:Places anti-blimp mine in selected location;60clt;4000d;100p;100r;type:normal;180dur;status:stun:5dur=desc:Stuns on mega mine contact;note:Homes in on blimps when near enough', 'blimp', 'time');
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 10, '', 'Faster deploy speed and deploy rate for Sea Mines.', 0, 23341, 'attack:mine:2.5s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 11, '', 'Pistol attack increased speed and damage, Sea Mines increased damage.', 0, 20520, '+2d,0.4s,attack:mine:+5d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 12, '', 'Mega Mine cooldown reduced.', 0, 23726, 'abil:mega_mine:50clt', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 13, '', 'Naval Tactics duration increased.', 0, 21289, 'abil:naval_tactics:12dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 14, '', 'Enhanced Sea Mines have a larger explosion, can damage Black Bloons and can remove Camo.', 0, 23341, 'attack:mine:+10r;type:normal;+decamo', 'black,decamo', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 15, '', 'Attack and Sea Mine deploy range increased slightly.', 0, 25393, '+4r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 16, '', 'Sea Mines do greatly increased damage.', 0, 27445, 'attack:mine:+10d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 17, '', 'Mega Mine cooldown reduced even further.', 0, 29497, 'abil:mega_mine:40clt', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 18, '', 'Naval Tactics affects all water-based towers everywhere.', 0, 23469, 'abil:naval_tactics:note:(Lvl 19) globally affects all water towers', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 19, '', 'Mega Mine does massively increased damage and longer stun.', 0, 24624, 'abil:mega_mine:+11000d;+20r;status:stun:+5dur', 'dps', DEFAULT);
 
-INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_admiral_brickell, 'tbf,camo,eg,moab', 'wtrp,map,camo,time');
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_admiral_brickell, 'camo,eg', 'wtrp,map,camo');
 
 
 --      Hero - Etienne
@@ -1517,28 +1517,28 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_etienne, 's');
 --          Statistics      --  (  id,       tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
 INSERT INTO `TowerStats` VALUES (NULL, @tower_etienne, 55, 2, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.7, DEFAULT, DEFAULT, NULL,  7, 'U', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 0, '', 'Flies a deadly little drone around to shoot at the Bloons.', 0, 0, 'note:drone targeting is indicated by a small light on the drone - blue = first green = last yellow = strong purple = close');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 1, '', 'Etienne\'s range increased.', 0, 180, '+5r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, true, 0, 2, 'Drone Swarm', 'Etienne launches 4 more temporary drones to wreak some Bloon popping havoc.', 0, 460, 'abil:drone_swarm:desc:Spawn extra drones;70clt;18.5dur;note:spawns 4 extra drones (1 blue 1 green 2 yellow)');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 3, '', 'Drones increase in popping power.', 0, 1000, '+1p,abil:drone_swarm:+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 4, '', 'Drone increased attack speed and infra red camera allows shooting of Camo Bloons.', 0, 1860, '+camo,0.55s,abil:drone_swarm:+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 5, '', 'Drone Swarm ability cooldown reduced.', 0, 3280, 'abil:drone_swarm:55clt;+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 6, '', 'Etienne now controls 2 drones at once.', 0, 5180, '+1j,note:(Lvl 7) gains targeting option "divide and conquer" that is a mix of yellow and blue drones,abil:drone_swarm:+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 7, '', 'UAV: all Monkeys gain Camo Bloon detection.', 0, 8320, 'note:(Lvl 8) Grants permanent UAV subtower,note:(Lvl 8) camo detection applied to all towers,abil:drone_swarm:+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 8, '', 'Drones pop an extra Bloon layer.', 0, 9380, '+1d,abil:drone_swarm:+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, true, 0, 9, 'UCAV', 'high altitude surveillance drone becomes devastating combat drone for a short time.', 0, 13620, 'abil:ucav:desc:UAV becomes devastating combat drone;90clt;18dur;10j;-1r;0.6s;2d;25p;type:explosion,abil:drone_swarm:+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 10, '', 'Etienne gains a third drone to control.', 0, 16380, '+1j,note:(Lvl 11) gains targeting option "zone defense" that is all different blue yellow and green drones,abil:drone_swarm:+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 11, '', 'Drone upgrades! Increased popping power and flight speed.', 0, 14400, '+3p,abil:drone_swarm:+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 12, '', 'UCAV ability cooldown reduced.', 0, 16650, 'abil:ucav:75clt,abil:drone_swarm:+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 13, '', 'Drone damage increased greatly.', 0, 14940, '+1d,abil:drone_swarm:+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 14, '', 'UCAV damage output and duration greatly increased.', 0, 16380, 'abil:ucav:20dur;+2d;+5p,abil:drone_swarm:+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 15, '', 'Etienne\'s range, drone popping power, and Drone Swarm ability cooldown all improved.', 0, 17820, '+3p,+20r,abil:drone_swarm:50clt;+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 16, '', 'UCAV damage output greatly increased again!', 0, 19260, 'abil:ucav:+3d,abil:drone_swarm:+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 17, '', 'Drone damage increased.', 0, 20700, '+1d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 18, '', 'Etienne now controls four drones all the time!', 0, 16470, '+1j,abil:drone_swarm:+0.5dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 19, '', 'Perma-UCAV: Surveillance drone becomes permanent UCAV. When activated becomes more powerful for a short time and can pop all Bloon types.', 0, 17280, 'abil:ucav:+8d;+5p;type:normal,abil:drone_swarm:+0.5dur');
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 0, '', 'Flies a deadly little drone around to shoot at the Bloons.', 0, 0, 'note:drone targeting is indicated by a small light on the drone - blue = first green = last yellow = strong purple = close', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 1, '', 'Etienne\'s range increased.', 0, 180, '+5r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, true, 0, 2, 'Drone Swarm', 'Etienne launches 4 more temporary drones to wreak some Bloon popping havoc.', 0, 460, 'abil:drone_swarm:desc:Spawn extra drones;70clt;18.5dur;note:spawns 4 extra drones (1 blue 1 green 2 yellow)', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 3, '', 'Drones increase in popping power.', 0, 1000, '+1p,abil:drone_swarm:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 4, '', 'Drone increased attack speed and infra red camera allows shooting of Camo Bloons.', 0, 1860, '+camo,0.55s,abil:drone_swarm:+0.5dur', 'camo,atksp', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 5, '', 'Drone Swarm ability cooldown reduced.', 0, 3280, 'abil:drone_swarm:55clt;+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 6, '', 'Etienne now controls 2 drones at once.', 0, 5180, '+1j,note:(Lvl 7) gains targeting option "divide and conquer" that is a mix of yellow and blue drones,abil:drone_swarm:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 7, '', 'UAV: all Monkeys gain Camo Bloon detection.', 0, 8320, 'note:(Lvl 8) Grants permanent UAV subtower,note:(Lvl 8) camo detection applied to all towers,abil:drone_swarm:+0.5dur', 'tbg,supp', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 8, '', 'Drones pop an extra Bloon layer.', 0, 9380, '+1d,abil:drone_swarm:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, true, 0, 9, 'UCAV', 'high altitude surveillance drone becomes devastating combat drone for a short time.', 0, 13620, 'abil:ucav:desc:UAV becomes devastating combat drone;90clt;18dur;10j;-1r;0.6s;2d;25p;type:explosion,abil:drone_swarm:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 10, '', 'Etienne gains a third drone to control.', 0, 16380, '+1j,note:(Lvl 11) gains targeting option "zone defense" that is all different blue yellow and green drones,abil:drone_swarm:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 11, '', 'Drone upgrades! Increased popping power and flight speed.', 0, 14400, '+3p,abil:drone_swarm:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 12, '', 'UCAV ability cooldown reduced.', 0, 16650, 'abil:ucav:75clt,abil:drone_swarm:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 13, '', 'Drone damage increased greatly.', 0, 14940, '+1d,abil:drone_swarm:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 14, '', 'UCAV damage output and duration greatly increased.', 0, 16380, 'abil:ucav:20dur;+2d;+5p,abil:drone_swarm:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 15, '', 'Etienne\'s range, drone popping power, and Drone Swarm ability cooldown all improved.', 0, 17820, '+3p,+20r,abil:drone_swarm:50clt;+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 16, '', 'UCAV damage output greatly increased again!', 0, 19260, 'abil:ucav:+3d,abil:drone_swarm:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 17, '', 'Drone damage increased.', 0, 20700, '+1d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 18, '', 'Etienne now controls four drones all the time!', 0, 16470, '+1j,abil:drone_swarm:+0.5dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 19, '', 'Perma-UCAV: Surveillance drone becomes permanent UCAV. When activated becomes more powerful for a short time and can pop all Bloon types.', 0, 17280, 'abil:ucav:+8d;+5p;type:normal,abil:drone_swarm:+0.5dur', 'dps', DEFAULT);
 
-INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_etienne, 'rang,camo,dps,blnc,mg,lg,vis', 'trg,eg,cd');
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_etienne, 'rang,dps,blnc,mg,lg,vis', 'trg,eg,cd');
 
 
 --      Hero - Sauda
@@ -1552,26 +1552,26 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_sauda, 's');
 --          Statistics      --  (  id,     tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,  md,    fmd, cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
 INSERT INTO `TowerStats` VALUES (NULL, @tower_sauda, 23, 4, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT,  1, DEFAULT,  1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.4, DEFAULT, DEFAULT, NULL,  7, 'U', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 0, '', 'Slashes with both swords at nearby Bloons', 0, 0, '');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 1, '', 'Pops more Bloons per attack.', 0, 256, '+2p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, true, 0, 2, 'Leaping Sword Attack', 'Sauda\'s dramatic leap attack slams down on her targeted Bloons.', 0, 655, 'abil:leaping_sword:desc:Leaping slam attack;30clt;20d;80md;20p;15r;type:normal;note:leaps to any bloon according to current targeting');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 3, '', 'Sauda\'s swords slice through 2 layers of Bloons.', 0, 1425, '+1d,+1cd,+1md');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 4, '', 'Sauda attacks faster.', 0, 2650, '0.32s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 5, '', 'Increased attack range and popping power.', 0, 4674, '+2p,+3r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 6, '', 'Sauda preys on the Bloons\' weakness, doing extra damage if they are stunned, and she can now pop frozen Bloons.', 0, 11856, 'type:shatter,+2d,note:(Lvl 7) +20 moab damage to stunned targets');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 7, '', 'Sauda attacks even faster.', 0, 7381, '0.25s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 8, '', 'Bloon Bleed: Sauda pops through 3 layers of Bloon with each strike, and causes a slow damage over time effect.', 0, 13366, '+1d,+1cd,+1md,status:bleed:desc:Applied by basic attack damage;1d;20md;2s;4.05dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, true, 0, 9, 'Sword Charge', 'Sauda slides along the whole track, devastating Bloons as she goes.', 0, 19408, 'abil:sword_charge:desc:Charge and damage along the whole path;45clt;20d;400p;type:normal;note:Can rehit;note:charges backwards along each path');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 10, '', 'Sauda inflicts extra damage to any Bloon slowed, immobilized, or taking damage over time from other monkeys.', 0, 23341, '+2d,note:(Lvl 11) +10 moab damage to targets with any status other than stun or bleed');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 11, '', 'Leaping Sword Attack increases greatly in power.', 0, 20520, 'abil:leaping_sword:+50d;+50md;+20p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 12, '', 'Enchanted blades do more damage and allow Sauda to damage all Bloons.', 0, 23726, 'type:normal,note:(Lvl 13) +1 damage to stunned targets');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 13, '', 'Sauda attacks even faster.', 0, 21289, '0.16s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 14, '', 'Increased attack range and popping power, and Bloon Bleed deals more damage.', 0, 23341, '+2p,+3r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 15, '', 'Sword Charge greatly increased damage.', 0, 25393, 'abil:sword_charge:+100d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 16, '', 'Sauda\'s sword attacks slice through many Bloon layers at once.', 0, 27445, '+1d,+1cd,+1md,note:(Lvl 17) +1 damage to targets with a status other than bleed,status:bleed:+9d;+30md;6dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 17, '', 'Sauda\'s swords attack with a blur of speed.', 0, 29497, '0.1s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 18, '', 'Enchanted Blades do extra damage to Regrow, Fortified, and Camo Bloons.', 0, 23469, '+2d;note:(Lvl 19) +10 moab damage to targets with camo or regrow or fortified');
-INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 19, '', 'Sword Charge sweeps all track paths three times!', 0, 24624, 'abil:leaping_sword:+500d;+20p,abil:sword_charge:+100d;+1000p;note:(Lvl 20) charges along each path 3 times in a row');
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 0, '', 'Slashes with both swords at nearby Bloons', 0, 0, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 1, '', 'Pops more Bloons per attack.', 0, 256, '+2p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, true, 0, 2, 'Leaping Sword Attack', 'Sauda\'s dramatic leap attack slams down on her targeted Bloons.', 0, 655, 'abil:leaping_sword:desc:Leaping slam attack;30clt;20d;80md;20p;15r;type:normal;note:leaps to any bloon according to current targeting', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 3, '', 'Sauda\'s swords slice through 2 layers of Bloons.', 0, 1425, '+1d,+1cd,+1md', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 4, '', 'Sauda attacks faster.', 0, 2650, '0.32s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 5, '', 'Increased attack range and popping power.', 0, 4674, '+2p,+3r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 6, '', 'Sauda preys on the Bloons\' weakness, doing extra damage if they are stunned, and she can now pop frozen Bloons.', 0, 11856, 'type:shatter,+2d,note:(Lvl 7) +20 moab damage to stunned targets', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 7, '', 'Sauda attacks even faster.', 0, 7381, '0.25s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 8, '', 'Bloon Bleed: Sauda pops through 3 layers of Bloon with each strike, and causes a slow damage over time effect.', 0, 13366, '+1d,+1cd,+1md,status:bleed:desc:Applied by basic attack damage;1d;20md;2s;4.05dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, true, 0, 9, 'Sword Charge', 'Sauda slides along the whole track, devastating Bloons as she goes.', 0, 19408, 'abil:sword_charge:desc:Charge and damage along the whole path;45clt;20d;400p;type:normal;note:Can rehit;note:charges backwards along each path', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 10, '', 'Sauda inflicts extra damage to any Bloon slowed, immobilized, or taking damage over time from other monkeys.', 0, 23341, '+2d,note:(Lvl 11) +10 moab damage to targets with any status other than stun or bleed', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 11, '', 'Leaping Sword Attack increases greatly in power.', 0, 20520, 'abil:leaping_sword:+50d;+50md;+20p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 12, '', 'Enchanted blades do more damage and allow Sauda to damage all Bloons.', 0, 23726, 'type:normal,note:(Lvl 13) +1 damage to stunned targets', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 13, '', 'Sauda attacks even faster.', 0, 21289, '0.16s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 14, '', 'Increased attack range and popping power, and Bloon Bleed deals more damage.', 0, 23341, '+2p,+3r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 15, '', 'Sword Charge greatly increased damage.', 0, 25393, 'abil:sword_charge:+100d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 16, '', 'Sauda\'s sword attacks slice through many Bloon layers at once.', 0, 27445, '+1d,+1cd,+1md,note:(Lvl 17) +1 damage to targets with a status other than bleed,status:bleed:+9d;+30md;6dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 17, '', 'Sauda\'s swords attack with a blur of speed.', 0, 29497, '0.1s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 18, '', 'Enchanted Blades do extra damage to Regrow, Fortified, and Camo Bloons.', 0, 23469, '+2d;note:(Lvl 19) +10 moab damage to targets with camo or regrow or fortified', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 19, '', 'Sword Charge sweeps all track paths three times!', 0, 24624, 'abil:leaping_sword:+500d;+20p,abil:sword_charge:+100d;+1000p;note:(Lvl 20) charges along each path 3 times in a row', DEFAULT, DEFAULT);
 
 INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_sauda, 'dps,camo,atksp,bln,chep', 'rang,map,trkp');
 
@@ -1587,26 +1587,26 @@ INSERT INTO `TowerTiers` VALUES (NULL, @tower_psi, 'a');
 --          Statistics      --  (  id,   tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,     dur, note, fp,  hk,        dt,     clt,      co,     del)
 INSERT INTO `TowerStats` VALUES (NULL, @tower_psi, 20, 0, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1, DEFAULT, DEFAULT, NULL,  7, 'U', 'psychic', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 0, '', 'Over any range or obstacle, Psi sets up deadly vibrations that completely destroy one Bloon at a time. Can target Camo.', 0, 0, 'status:vibrating:desc:Applied by basic attack damage;1d;0.2s;15dur;note:Continues until fully popped,+camo,-purple,-lead,-ceramic,-blimp');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 1, '', 'Attacks slightly faster.', 0, 270, '0.85s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, true, 0, 2, 'Psychic Blast', 'Psi unleashes a wave of power that stuns nearby Bloons for a long time.', 0, 690, 'abil:psychic_blast:desc:Unleash a wave of power that stuns;40clt;50p;60r;1s;1dur;status:stun:desc:Stuns bllons and blimps=6s=note:(Lvl 3) bloons 6.0 seconds and blimps 1.5 seconds');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 3, '', 'Psi\'s attack can hit another Bloon if very close to the targeted Bloon', 0, 1500, '+1p,attack:splash:desc:Attack gained by Lvl 4;1p;6r;note:Applies vibrating status');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 4, '', 'The psionic vibrations destroy Bloons faster than normal.', 0, 2790, 'status:vibrating:0.15s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 5, '', 'Psi\'s powerful mind can penetrate through Lead Bloons.', 0, 4920, '+lead,attack:splash:+1p');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 6, '', 'Psychic Blast pulses twice. Psi can now destroy Ceramic Bloons.', 0, 7770, '+ceramic,abil:psychic_blast:+50p;2s;2dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 7, '', 'Destructive Resonance causes Bloons destroyed by Psi\'s main attack to damage other Bloons nearby.', 0, 12480, 'status:vibrating:attack:vibrating_explosion:1d=10p=20r=type:plasma=desc:Vibrating status creates an explosion');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 8, '', 'Split the Mind. Psi can now target two different Bloons at once.', 0, 14070, '+1j,note:(Lvl 9) copy of main attack that uses elite targeting');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, true, 0, 9, 'Psionic Scream', 'Psi unleashes a silent scream that throws the Bloons into utter chaos.', 0, 20430, 'abil:psionic_scream:desc:Unleashes a silent scream;60clt;2000p;-1r;note:50% chance to apply vibrating status. otherwise the target is sent back 50-300 units;-purple;-blimp');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 10, '', 'The psionic vibrations destroy Bloons even faster.', 0, 24570, 'status:vibrating:0.1s');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 11, '', 'Psychic Blast pulses three times.', 0, 21600, 'abil:psychic_blast:4dur');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 12, '', 'Not even Purple Bloons can resist the power of Psi\'s mind attacks.', 0, 24975, '+purple,abil:psionic_scream:+purple');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 13, '', 'Psi\'s immense psychic power allows targeting and destruction of MOABs.', 0, 22410, 'status:vibrating:+3d,+moab');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 14, '', 'Destructive Resonance is more destructive.', 0, 24570, 'status:vibrating:attack:vibrating_explosion:+2d');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 15, '', 'The psionic vibrations destroy Bloons very fast. Psi can now target BFBs.', 0, 26730, 'status:vibrating:0.075s,+bfb');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 16, '', 'Split the Mind. Psi can now target three different Bloons at once.', 0, 28890, '+1j');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 17, '', 'Psi\'s attacks affect Bloons within a larger radius of the target Bloon.', 0, 31050, 'attack:splash:+3p;+9r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 18, '', 'Destructive Resonance is much much more destructive.', 0, 24705, 'status:vibrating:attack:vibrating_explosion:+7d=+10r');
-INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 19, '', 'Psionic Scream holds and damages all Bloons on screen. Psi can now target DDTs and ZOMGs.', 0, 25920, '+zomg,+ddt,abil:psionic_scream:+zomg;+ddt;note:(Lvl 20) chance of applying vibrating increased to 100%');
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 0, '', 'Over any range or obstacle, Psi sets up deadly vibrations that completely destroy one Bloon at a time. Can target Camo.', 0, 0, 'status:vibrating:desc:Applied by basic attack damage;1d;0.2s;15dur;note:Continues until fully popped,+camo,-purple,-lead,-ceramic,-blimp', 'camo', 'purp,lead,cm,blimp');
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 1, '', 'Attacks slightly faster.', 0, 270, '0.85s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, true, 0, 2, 'Psychic Blast', 'Psi unleashes a wave of power that stuns nearby Bloons for a long time.', 0, 690, 'abil:psychic_blast:desc:Unleash a wave of power that stuns;40clt;50p;60r;1s;1dur;status:stun:desc:Stuns bllons and blimps=6s=note:(Lvl 3) bloons 6.0 seconds and blimps 1.5 seconds', 'stnb,abil', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 3, '', 'Psi\'s attack can hit another Bloon if very close to the targeted Bloon', 0, 1500, '+1p,attack:splash:desc:Attack gained by Lvl 4;1p;6r;note:Applies vibrating status', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 4, '', 'The psionic vibrations destroy Bloons faster than normal.', 0, 2790, 'status:vibrating:0.15s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 5, '', 'Psi\'s powerful mind can penetrate through Lead Bloons.', 0, 4920, '+lead,attack:splash:+1p', 'lead', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 6, '', 'Psychic Blast pulses twice. Psi can now destroy Ceramic Bloons.', 0, 7770, '+ceramic,abil:psychic_blast:+50p;2s;2dur', 'cm', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 7, '', 'Destructive Resonance causes Bloons destroyed by Psi\'s main attack to damage other Bloons nearby.', 0, 12480, 'status:vibrating:attack:vibrating_explosion:1d=10p=20r=type:plasma=desc:Vibrating status creates an explosion', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 8, '', 'Split the Mind. Psi can now target two different Bloons at once.', 0, 14070, '+1j,note:(Lvl 9) copy of main attack that uses elite targeting', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, true, 0, 9, 'Psionic Scream', 'Psi unleashes a silent scream that throws the Bloons into utter chaos.', 0, 20430, 'abil:psionic_scream:desc:Unleashes a silent scream;60clt;2000p;-1r;note:50% chance to apply vibrating status. otherwise the target is sent back 50-300 units;-purple;-blimp', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 10, '', 'The psionic vibrations destroy Bloons even faster.', 0, 24570, 'status:vibrating:0.1s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 11, '', 'Psychic Blast pulses three times.', 0, 21600, 'abil:psychic_blast:4dur', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 12, '', 'Not even Purple Bloons can resist the power of Psi\'s mind attacks.', 0, 24975, '+purple,abil:psionic_scream:+purple', 'purp', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 13, '', 'Psi\'s immense psychic power allows targeting and destruction of MOABs.', 0, 22410, 'status:vibrating:+3d,+moab', 'moab', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 14, '', 'Destructive Resonance is more destructive.', 0, 24570, 'status:vibrating:attack:vibrating_explosion:+2d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 15, '', 'The psionic vibrations destroy Bloons very fast. Psi can now target BFBs.', 0, 26730, 'status:vibrating:0.075s,+bfb', 'bfb', DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 16, '', 'Split the Mind. Psi can now target three different Bloons at once.', 0, 28890, '+1j', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 17, '', 'Psi\'s attacks affect Bloons within a larger radius of the target Bloon.', 0, 31050, 'attack:splash:+3p;+9r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 18, '', 'Destructive Resonance is much much more destructive.', 0, 24705, 'status:vibrating:attack:vibrating_explosion:+7d=+10r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 19, '', 'Psionic Scream holds and damages all Bloons on screen. Psi can now target DDTs and ZOMGs.', 0, 25920, '+zomg,+ddt,abil:psionic_scream:+zomg;+ddt;note:(Lvl 20) chance of applying vibrating increased to 100%', 'zomg,ddt', DEFAULT);
 
-INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_psi, 'camo,stnb,eg,mg,lg,lead,cm,moab,supp', 'purp,lead,cm,xp');
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_psi, 'eg,mg,lg,supp', 'xp');
 

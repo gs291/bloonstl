@@ -17,6 +17,12 @@ const TargetsContainer = styled("div")`
   gap: 10px 20px;
 `;
 
+const conversion = {
+    "bloon": "bln",
+    "purple": "purp",
+    "ceramic": "cm"
+}
+
 export default function StatsTargets({targets}) {
 
     return (
@@ -24,7 +30,10 @@ export default function StatsTargets({targets}) {
             {targets.length > 0 && (
                 <TargetsContainer>
                     {targets.map(({isPro, code}, idx) => {
-                        const proConChipInfo = siteProsCons.__stats[code];
+                        if (conversion[code]) {
+                            code = conversion[code];
+                        }
+                        const proConChipInfo = siteProsCons[code];
 
                         if (proConChipInfo) {
                             return (

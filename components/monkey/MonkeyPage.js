@@ -82,7 +82,7 @@ export default function MonkeyPage({ monkey }) {
     const [ path, setPath ] = useState(monkey.tiers[tier][page-1]);
     const [ sandbox, setSandbox ] = useState(false);
     const [ pauseSandbox, setPauseSandbox ] = useState(false);
-    const [ stats, setStats ] = useState(getInitialTowerStats(monkey.stats));
+    const [ stats, setStats ] = useState(getInitialTowerStats(monkey.stats, {pros: path.pros, cons: path.cons}));
 
     const [snackPack, setSnackPack] = useState([]);
     const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -158,7 +158,7 @@ export default function MonkeyPage({ monkey }) {
             <Title variant={mobile ? "h4" : "h3"}>
                 Tower Pros / Cons
             </Title>
-            <ProsCons pros={path.pros} cons={path.cons} backgroundColor={dividerBackgroundColor}/>
+            <ProsCons pros={stats.pros} cons={stats.cons} backgroundColor={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <PatchText variant={mobile ? "h4" : "h3"}>
                 Latest

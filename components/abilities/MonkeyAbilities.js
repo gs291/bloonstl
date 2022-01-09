@@ -5,6 +5,8 @@ import styled from "@emotion/styled";
 import AbilityContainer from "../ability/AbilityContainer";
 import ShowAllAbilityModifiers from "./ShowAllAbilityModifiers";
 import {
+    checkDuplicateProsCons,
+    concatToStringIfMissing,
     getInitialTowerStats,
     getMonkeyAbilityParseOrder,
     parseAbilityModifiers
@@ -48,7 +50,8 @@ export default class MonkeyAbilities extends PureComponent {
 
         const order = getMonkeyAbilityParseOrder(path);
 
-        const tempStats = getInitialTowerStats(stats);
+        const proCons = {pros: path.pros, cons: path.cons}
+        const tempStats = getInitialTowerStats(stats, proCons);
 
         // This loop takes advantage of the sorted abilities obtained from the database
         // All abilities are, first, sorted by ascending ability path then ascending ability tier
@@ -62,10 +65,16 @@ export default class MonkeyAbilities extends PureComponent {
                 if (abilities[j].upgrade_tier < path[pathOrder]) {
                     tempStats.cost = tempStats.cost + abilities[j].cost_gold;
                     tempStats.xp = tempStats.xp + abilities[j].cost_xp;
+                    tempStats.pros = concatToStringIfMissing(tempStats.pros, abilities[j].pros);
+                    tempStats.cons = concatToStringIfMissing(tempStats.cons, abilities[j].cons);
                     parseAbilityModifiers(abilities[j].modifiers, path, tempStats);
                 }
             }
         }
+
+        const {pros, cons} = checkDuplicateProsCons(tempStats.pros, tempStats.cons);
+        tempStats.pros = pros;
+        tempStats.cons = cons;
 
         return { ...tempStats };
     }
