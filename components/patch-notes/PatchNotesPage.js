@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 
 import Patch from "./Patch";
 import PatchDate from "./PatchDate";
@@ -8,14 +8,16 @@ import PatchSelect from "./PatchSelect";
 import TowerText from "../tower/TowerText";
 import FetchErrors from "../api/FetchErrors";
 import FetchLoading from "../api/FetchLoading";
+import {updatePage} from "../../lib/redux/actions";
 import DefaultButton from "../button/DefaultButton";
 import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {latest, latestMajor} from "../../lib/utils/patches";
 import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
 import TableOfContents from "../table-of-contents/TableOfContents";
+import {getDarkMode, getMobile, getPageData} from "../../lib/redux/selectors";
+
 
 const PageContainer = styled("div")`
   display: flex;
@@ -51,12 +53,17 @@ const Title = styled(TowerText)`
 
 
 export default function PatchNotesPage({ patch }) {
+    const dispatch = useDispatch();
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
+    const reduxPageName = `patches`;
+
     const [toc, setToc] = useState([]);
     const [patchVersion, setPatchVersion] = useState(latestMajor);
-    const [patchData, setPatchData] = useState({[latestMajor]: patch});
+    const pageData = useSelector(state => getPageData(state, reduxPageName));
+
+    const [patchData, setPatchData] = useState((Object.keys(pageData).length > 0) ? pageData : {[latestMajor]: patch});
 
     const [progress, setProgress] = useState({
         isLoading: false,
@@ -116,6 +123,7 @@ export default function PatchNotesPage({ patch }) {
                 }
             });
             setToc(tags);
+            dispatch(updatePage(reduxPageName, patchData));
             if (progress.isError) {
                 setProgress(prg => ({
                     ...prg,

@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
-
-import {useSelector} from "react-redux";
 import {useEffect, useRef, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 
 import useVisible from "../../lib/utils/hooks";
 
@@ -9,12 +8,13 @@ import PatchItems from "./PatchItems";
 import TowerText from "../tower/TowerText";
 import FetchErrors from "../api/FetchErrors";
 import FetchLoading from "../api/FetchLoading";
+import {updatePage} from "../../lib/redux/actions";
 import DefaultButton from "../button/DefaultButton";
 import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
-import {fetchAPI, getTierColor, rgbaHex} from "../../lib/utils/utils";
+import {getDarkMode, getMobile, getPageData} from "../../lib/redux/selectors";
+import {fetchAPI, getTierColor, getTowerLink, rgbaHex} from "../../lib/utils/utils";
 
 
 const PatchContainer = styled("div", globalOptions)`
@@ -64,11 +64,15 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
     const elemRef = useRef();
     const isVisible = useVisible(elemRef);
 
+    const dispatch = useDispatch();
+    const reduxPageName = `tower-patch-${getTowerLink(name)}`;
+    const pageData = useSelector(state => getPageData(state, reduxPageName));
+
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     const [fetch, setFetch] = useState(false);
-    const [patchData, setPatchData] = useState({start: 0, patchData: []});
+    const [patchData, setPatchData] = useState((Object.keys(pageData).length > 0) ? pageData :  {start: 0, patchData: []});
     const [progress, setProgress] = useState({
         isLoading: false,
         isError: false,
@@ -110,6 +114,10 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
             ignore.ignore = true;
         };
     }, [fetch]);
+
+    useEffect(() => {
+        dispatch(updatePage(reduxPageName, patchData));
+    }, [patchData]);
 
     const handleFetch = () => {
         setFetch(prevFetch => !prevFetch);
