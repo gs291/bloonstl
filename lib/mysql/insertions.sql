@@ -197,6 +197,8 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 2, 'Tack Sp
 INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 3, 'Overdrive', 'Shoots incredibly fast.', 3200, 8750, '+1p,*33.33%s', 'atksp', DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 4, 'The Tack Zone', 'Many, many tacks.', 24000, 26500, '+1d,+16j,+2p,+7r,*75%s', 'dps', DEFAULT);
 
+INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 3, 0, 'Apex Plasma Master', '', 350000, 0, '+camo,attack:triple_jugg:20d;30cd;80bd;3j;200p;85r;0.3s;type:normal;attack:juggernauts:20d=30cd=80bd=6j=200p=type:normal=desc:Spawned at 50% pierce and 100% pierce', DEFAULT, DEFAULT);
+
 --          Ability Tiers - S
 INSERT INTO `AbilityTiers` VALUES (NULL, @tower_tack_shooter, 's', 2, 0, 5);
 SELECT id INTO @ability_tiers_tack_shooter_s FROM AbilityTiers WHERE tower_id=@tower_tack_shooter AND tier='s';
