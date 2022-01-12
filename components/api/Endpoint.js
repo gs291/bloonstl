@@ -92,7 +92,7 @@ export default function Endpoint({item}) {
        <>
            <EndpointContainer>
                <MethodName>
-                   <TowerText textColor={"#2DABE8"} variant="h3">
+                   <TowerText textColor={"#2DABE8"} variant="h4">
                        {item.request.method}
                    </TowerText>
                    <Name variant="h4" font={true}>
