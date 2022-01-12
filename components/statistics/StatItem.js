@@ -89,7 +89,7 @@ const FullItem = ({text, value, prevValue, counter = true, size = "medium", deci
                 <StatCounter cost={value} data-d={value - prevValue} data-dm={darkMode} decimals={decimals ? decimals : 0} gold={false}/>
             ) : (
                 <StatText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true} data-d={prevValue} data-dm={darkMode}>
-                    {value}
+                    {decimals ? value.toFixed(decimals) : value}
                 </StatText>
             )}
             {suffix && (<TowerText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true} dangerouslySetInnerHTML={{__html: suffix}} />)}

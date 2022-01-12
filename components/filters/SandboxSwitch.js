@@ -8,6 +8,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getTierColor, rgbaHex} from "../../lib/utils/utils";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import ColorChangingDivider from "../divider/ColorChangingDivider";
+import DefaultButton from "../button/DefaultButton";
 
 const Group = styled(FormGroup)`
   align-items: center;
@@ -64,40 +65,6 @@ const StyledSwitch = styled(Switch, globalOptions)`
   }
 `;
 
-const ResetButton = styled(Button, globalOptions)`
-  color: ${props => props["data-t"]
-          ? getTierColor(props["data-t"])
-          : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
-
-  background-color: ${props =>
-          rgbaHex(props["data-t"]
-                          ? getTierColor(props["data-t"])
-                          : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-                  , props["data-dm"] ? 0 : 0.75)};
-  
-  border-color: ${props => 
-          rgbaHex(props["data-t"] 
-                          ? getTierColor(props["data-t"]) 
-                          : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-                  , 0.5)};
-  
-  &:hover {
-    background-color: ${props =>
-            rgbaHex(props["data-t"]
-                            ? getTierColor(props["data-t"])
-                            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-                    , props["data-dm"] ? 0.05 : 1)};
-    
-    border-color: ${props => props["data-t"]
-            ? getTierColor(props["data-t"])
-            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
-  }
-`;
-
-const TopReset = styled(ResetButton, globalOptions)`
-  margin-top: ${props => props["data-tow"] === "hero" ? 0 : 20}px;
-`;
-
 const SmallTitle = styled(TowerText)`
   margin-top: 20px;
   text-align: center;
@@ -139,19 +106,15 @@ export default function SandboxSwitch({sandbox, setSandbox, handleReset, tier, p
         <>
             <Group {...rest}>
                 {sandbox && (
-                    <>
-                        <TopReset
-                            onClick={handleReset}
-                            data-dm={darkMode}
-                            data-tow={towerType}
-                            data-t={tier}
-                            variant={darkMode ? "outlined" : "contained"}
-                        >
-                            <TowerText variant="subtitle2" font={true}>
-                                Reset Path
-                            </TowerText>
-                        </TopReset>
-                    </>
+                    <DefaultButton
+                        onClick={handleReset}
+                        data-bc={getTierColor(tier)}
+                        variant={darkMode ? "outlined" : "contained"}
+                    >
+                        <TowerText variant="subtitle2" font={true}>
+                            Reset Path
+                        </TowerText>
+                    </DefaultButton>
                 )}
                 <div>
                     <SmallTitle variant={mobile ? "h6" : "h5"} data-s={sandbox}>
@@ -199,11 +162,11 @@ export default function SandboxSwitch({sandbox, setSandbox, handleReset, tier, p
                                 <TowerText variant={mobile ? "subtitle2" : "subtitle1"} font={true}>
                                     {pauseSandbox ? (
                                         <>
-                                            Sandbox selection mode is currently paused!
+                                            Unpause sandbox selection mode
                                         </>
                                     ) : (
                                         <>
-                                            Pause sandbox selection mode.
+                                            Pause sandbox selection mode
                                         </>
                                     )}
 
@@ -231,16 +194,15 @@ export default function SandboxSwitch({sandbox, setSandbox, handleReset, tier, p
                 )}
 
                 {sandbox && (
-                    <ResetButton
+                    <DefaultButton
                         onClick={handleReset}
-                        data-dm={darkMode}
-                        data-t={tier}
+                        data-bc={getTierColor(tier)}
                         variant={darkMode ? "outlined" : "contained"}
                     >
                         <TowerText variant="subtitle2" font={true}>
                             Reset Path
                         </TowerText>
-                    </ResetButton>
+                    </DefaultButton>
                 )}
             </Group>
         </>

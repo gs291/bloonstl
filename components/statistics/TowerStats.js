@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
-import StatsTargets from "./StatsTargets";
 import StatsContainer from "./StatsContainer";
 import StatItemWrapper from "./StatItemWrapper";
 import {getMobile} from "../../lib/redux/selectors";
@@ -31,9 +30,6 @@ export default function TowerStats({stats, defaults, type, towerType, targets, .
                     <StatItemWrapper text="Atk Spd" value={stats.attack_speed} prevValue={defaults.attack_speed} data-s={color} />
                     <StatItemWrapper text="Proj" value={stats.projectile_count} prevValue={defaults.projectile_count} data-s={color} />
                     <StatItemWrapper text="Type" value={stats.damage_type} prevValue={defaults.damage_type} data-s={color} />
-                </ItemsContainer>
-                <ItemsContainer>
-                    <StatsTargets targets={targets} />
                 </ItemsContainer>
             </StatsContainer>
         </>

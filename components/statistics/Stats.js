@@ -10,6 +10,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
+import StatsLegend from "./StatsLegend";
 
 const AllModifiersAndNotes = styled("div", globalOptions)`
   margin-top: 25px;
@@ -49,13 +50,14 @@ const MoreContainer = styled(ModifierContainer)`
   width: ${props => props["data-m"] ? 100 : 30}%;
 `;
 
-export default function Stats({stats, type, towerType = "monkey", ...rest}) {
+export default function Stats({stats, type, path, towerType = "monkey", ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <AllModifiersAndNotes data-m={mobile}>
+                <StatsLegend path={path} towerType={towerType} />
                 <ModifierContainer data-dm={darkMode} data-t={type} data-tow={towerType}>
                     <TowerStats
                         stats={{
@@ -68,7 +70,6 @@ export default function Stats({stats, type, towerType = "monkey", ...rest}) {
                             "pierce": stats.defaults.pierce, "projectile_count": stats.defaults.projectile_count,
                             "damage": stats.defaults.damage, "damage_type": stats.defaults.damage_type
                         }}
-                        targets={stats.targets}
                         type={type}
                         towerType={towerType}
                     />

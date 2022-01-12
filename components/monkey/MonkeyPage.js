@@ -1,6 +1,6 @@
-import {useEffect, useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {useEffect, useState} from "react";
 
 import Counter from "../tower/Counter";
 import Stats from "../statistics/Stats";
@@ -14,6 +14,7 @@ import HorizontalAD from "../advertisment/HorizontalAD";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
+import TowerPatchUpdates from "../patch-notes/TowerPatchUpdates";
 import AbilityPathSelection from "../ability/AbilityPathSelection";
 import ConsecutiveSnackbars from "../snackbar/ConsecutiveSnackbars";
 import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
@@ -26,6 +27,10 @@ const AbilitiesText = styled(TowerText)`
   cursor: default;
 `;
 
+const PathCost = styled(TowerText)`
+  margin-bottom: 20px;
+`;
+
 const FilterDiff = styled(FilterDifficulty)`
   margin-top: 10px;
   margin-bottom: 10px;
@@ -34,6 +39,12 @@ const FilterDiff = styled(FilterDifficulty)`
 const Title = styled(TowerText)`
   margin-top: 10px;
   margin-bottom: 30px;
+  text-align: center;
+  cursor: default;
+`;
+
+const PatchText = styled(TowerText)`
+  margin-top: 20px;
   text-align: center;
   cursor: default;
 `;
@@ -71,7 +82,7 @@ export default function MonkeyPage({ monkey }) {
     const [ path, setPath ] = useState(monkey.tiers[tier][page-1]);
     const [ sandbox, setSandbox ] = useState(false);
     const [ pauseSandbox, setPauseSandbox ] = useState(false);
-    const [ stats, setStats ] = useState(getInitialTowerStats(monkey.stats));
+    const [ stats, setStats ] = useState(getInitialTowerStats(monkey.stats, {pros: path.pros, cons: path.cons}));
 
     const [snackPack, setSnackPack] = useState([]);
     const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -121,7 +132,7 @@ export default function MonkeyPage({ monkey }) {
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
             <HorizontalAD />
-            <Stats stats={stats} type={monkey.type} />
+            <Stats stats={stats} path={path} type={monkey.type} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
@@ -130,9 +141,9 @@ export default function MonkeyPage({ monkey }) {
             <AbilitiesText variant={mobile ? "h4" : "h3"}>
                 Tower Abilities
             </AbilitiesText>
-            <TowerText variant={mobile ? "h6" : "h4"}>
+            <PathCost variant={mobile ? "h6" : "h4"}>
                 Path Cost: $<Counter cost={stats.cost} />
-            </TowerText>
+            </PathCost>
             <MonkeyAbilities
                 abilities={monkey.abilities}
                 monkeyFile={monkey.filename}
@@ -147,7 +158,15 @@ export default function MonkeyPage({ monkey }) {
             <Title variant={mobile ? "h4" : "h3"}>
                 Tower Pros / Cons
             </Title>
-            <ProsCons pros={path.pros} cons={path.cons} backgroundColor={dividerBackgroundColor}/>
+            <ProsCons pros={stats.pros} cons={stats.cons} backgroundColor={dividerBackgroundColor}/>
+            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+            <PatchText variant={mobile ? "h4" : "h3"}>
+                Latest
+            </PatchText>
+            <Title variant={mobile ? "h4" : "h3"}>
+                Patch Updates
+            </Title>
+            <TowerPatchUpdates name={monkey.name} borderColor={dividerBackgroundColor} />
             <ConsecutiveSnackbars
                 snackPack={snackPack} setSnackPack={setSnackPack}
                 open={openSnackbar} setOpen={setOpenSnackbar}

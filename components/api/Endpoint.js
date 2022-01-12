@@ -1,11 +1,14 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+
 
 const EndpointContainer = styled("div")`
   width: 100%;
@@ -19,6 +22,8 @@ const MethodName = styled("div")`
 
 const Name = styled(TowerText)`
   margin-left: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const Description = styled(TowerText)`
@@ -59,6 +64,27 @@ const LanguageType = styled("div", globalOptions)`
   transition: 0.3s;
 `;
 
+const Expander = styled(Accordion, globalOptions)`
+  background-color: unset;
+  border: 1px solid ${rgbaHex("#CCCCCC", 0.1)};
+`;
+
+const ExpandMore = styled(ExpandMoreIcon, globalOptions)`
+  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+`;
+
+const ExpanderSummary = styled(AccordionSummary, globalOptions)`
+  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+`;
+
+const ExpandedDetails = styled(AccordionDetails, globalOptions)`
+  flex-direction: column;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+`;
+
 export default function Endpoint({item}) {
     const darkMode = useSelector(getDarkMode);
 
@@ -76,10 +102,9 @@ export default function Endpoint({item}) {
                <Description variant="body1" font={true}>
                    {item.description}
                </Description>
-
                <div>
                    <BoldText variant="body1" font={true}>
-                       QUERY
+                       SCHEMA DEFINITION
                    </BoldText>
                    <CodeContainer>
                        <LanguageType data-dm={darkMode}>
@@ -88,27 +113,51 @@ export default function Endpoint({item}) {
                            </BoldText>
                        </LanguageType>
                        <Code>
-                           <CodeText variant="body2" font={true}>
-                               {item.request.body.query}
-                           </CodeText>
+                           <CodeText variant="body2" font={true} dangerouslySetInnerHTML={{__html: item.request["def"]}} />
                        </Code>
                    </CodeContainer>
 
-                   <BoldText variant="body1" font={true}>
-                       VARIABLES
-                   </BoldText>
-                   <CodeContainer>
-                       <LanguageType data-dm={darkMode}>
-                           <BoldText variant="body2" font={true}>
-                               json
+                   <Expander data-dm={darkMode}>
+                       <ExpanderSummary
+                           expandIcon={<ExpandMore data-dm={darkMode} />}
+                           data-dm={darkMode}
+                       >
+                           <TowerText variant="subtitle2">QUERY EXAMPLE</TowerText>
+                       </ExpanderSummary>
+                       <ExpandedDetails data-dm={darkMode}>
+                           <BoldText variant="body1" font={true}>
+                               QUERY
                            </BoldText>
-                       </LanguageType>
-                       <Code>
-                           <CodeText variant="body2" font={true}>
-                               {item.request.body.variables}
-                           </CodeText>
-                       </Code>
-                   </CodeContainer>
+                           <CodeContainer>
+                               <LanguageType data-dm={darkMode}>
+                                   <BoldText variant="body2" font={true}>
+                                       graphql
+                                   </BoldText>
+                               </LanguageType>
+                               <Code>
+                                   <CodeText variant="body2" font={true}>
+                                       {item.request.body.query}
+                                   </CodeText>
+                               </Code>
+                           </CodeContainer>
+
+                           <BoldText variant="body1" font={true}>
+                               VARIABLES
+                           </BoldText>
+                           <CodeContainer>
+                               <LanguageType data-dm={darkMode}>
+                                   <BoldText variant="body2" font={true}>
+                                       json
+                                   </BoldText>
+                               </LanguageType>
+                               <Code>
+                                   <CodeText variant="body2" font={true}>
+                                       {item.request.body.variables}
+                                   </CodeText>
+                               </Code>
+                           </CodeContainer>
+                       </ExpandedDetails>
+                   </Expander>
                </div>
            </EndpointContainer>
        </>

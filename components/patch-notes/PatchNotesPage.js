@@ -1,18 +1,23 @@
 import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {CircularProgress} from "@mui/material";
+import {useDispatch, useSelector} from "react-redux";
 
 import Patch from "./Patch";
 import PatchDate from "./PatchDate";
 import PatchSelect from "./PatchSelect";
 import TowerText from "../tower/TowerText";
+import FetchErrors from "../api/FetchErrors";
+import FetchLoading from "../api/FetchLoading";
+import {updatePage} from "../../lib/redux/actions";
+import DefaultButton from "../button/DefaultButton";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
-import {patchVersions} from "../../lib/utils/patches";
+import {globalOptions} from "../../lib/utils/emotionStyled";
+import {latest, latestMajor} from "../../lib/utils/patches";
 import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
 import TableOfContents from "../table-of-contents/TableOfContents";
+import {getDarkMode, getMobile, getPageData} from "../../lib/redux/selectors";
+
 
 const PageContainer = styled("div")`
   display: flex;
@@ -22,44 +27,49 @@ const PageContainer = styled("div")`
   width: 100%;
 `;
 
-const Select = styled(PatchSelect)`
+const DefaultContainer = styled("div", globalOptions)`
+  display: flex;
+  flex-direction: ${props => props["data-m"] ? "column" : "row"};
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   margin-bottom: 50px;
 `;
 
-const Date = styled(PatchDate)`
-  margin-top: 50px;
+const Select = styled(PatchSelect)`
+  margin-bottom: 15px;
 `;
 
-const Loading = styled("div")`
-  margin-top: 30px;
-  margin-bottom: 30px;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+const Date = styled(PatchDate)`
+  margin-top: 15px;
+  margin-bottom: 40px;
   text-align: center;
 `;
 
-const ErrorContainer = styled("div")`
-  margin-top: 30px;
-  margin-bottom: 30px;
+const Title = styled(TowerText)`
+  margin-top: 10px;
+  text-align: center;
 `;
 
+
 export default function PatchNotesPage({ patch }) {
+    const dispatch = useDispatch();
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
+    const reduxPageName = `patches`;
+
     const [toc, setToc] = useState([]);
-    const [patchVersion, setPatchVersion] = useState(patchVersions[0]);
-    const [patchData, setPatchData] = useState({[patchVersions[0]]: patch});
+    const [patchVersion, setPatchVersion] = useState(latestMajor);
+    const pageData = useSelector(state => getPageData(state, reduxPageName));
+
+    const [patchData, setPatchData] = useState((Object.keys(pageData).length > 0) ? pageData : {[latestMajor]: patch});
 
     const [progress, setProgress] = useState({
         isLoading: false,
         isError: false,
         errorMessages: []
     });
-
-
 
     const handlePatchSelect = (e) => {
         if (!patchData[e.target.value]) {
@@ -113,50 +123,61 @@ export default function PatchNotesPage({ patch }) {
                 }
             });
             setToc(tags);
+            dispatch(updatePage(reduxPageName, patchData));
+            if (progress.isError) {
+                setProgress(prg => ({
+                    ...prg,
+                    isError: false,
+                    errorMessages: []
+                }));
+            }
         }
-    }, [patchData])
+    }, [patchData]);
 
 
     return (
         <>
             <PageContainer>
                 <Select patch={patchVersion} handlePatchSelect={handlePatchSelect} />
+                <DefaultContainer data-m={mobile}>
+                    <DefaultButton
+                        onClick={() => handlePatchSelect({target: {value: latest}})}
+                        variant={darkMode ? "outlined" : "contained"}
+                        data-bc={darkMode ? siteColors.patch.button.dark : siteColors.patch.button.light}
+                    >
+                        <TowerText variant="subtitle1">
+                            Most Recent Update (v {latest})
+                        </TowerText>
+                    </DefaultButton>
+                    <DefaultButton
+                        onClick={() => handlePatchSelect({target: {value: latestMajor}})}
+                        variant={darkMode ? "outlined" : "contained"}
+                        data-bc={darkMode ? siteColors.patch.button.dark : siteColors.patch.button.light}
+                    >
+                        <TowerText variant="subtitle1">
+                            Last Major Update (v {latestMajor})
+                        </TowerText>
+                    </DefaultButton>
+                </DefaultContainer>
+
+                {!progress.isLoading && !progress.isError && (
+                    <>
+                        <Title variant={mobile ? "h4" : "h3"}>
+                            Patch Version:&nbsp;&nbsp;{patchVersion}
+                        </Title>
+                        <Date date={patchData[patchVersion].release} />
+                    </>
+                )}
 
                 {progress.isLoading && (
-                    <Loading>
-                        <TowerText variant="h4">
-                            Loading
-                        </TowerText>
-                        <CircularProgress />
-                    </Loading>
+                    <FetchLoading />
                 )}
                 {(progress.isError || progress.errorMessages.length > 0) && (
-                    <ErrorContainer>
-                        <TowerText
-                            variant="h4"
-                            textColor={darkMode ? siteColors.error.dark : siteColors.error.light }
-                        >
-                            {progress.errorMessages && progress.errorMessages.length > 1 ? (
-                                "Errors have Occurred"
-                            ) : (
-                                "An Error Has Occurred"
-                            )}
-                        </TowerText>
-                        {progress.errorMessages && progress.errorMessages.map(err => (
-                            <TowerText
-                                variant="h6"
-                                font={true}
-                                key={err.message}
-                            >
-                                {err.message}
-                            </TowerText>
-                        ))}
-                    </ErrorContainer>
+                    <FetchErrors errorMessages={progress.errorMessages} />
                 )}
                 {!progress.isLoading && !progress.isError && (
                     <>
                         <TableOfContents tags={toc} />
-                        <Date date={patchData[patchVersion].release} />
                         <Patch patch={patchData[patchVersion]} tags={toc}/>
                     </>
                 )}

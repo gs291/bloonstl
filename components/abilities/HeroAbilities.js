@@ -4,14 +4,25 @@ import { PureComponent } from "react";
 
 import AbilityContainer from "../ability/AbilityContainer";
 import ShowAllAbilityModifiers from "./ShowAllAbilityModifiers";
-import {getInitialTowerStats, parseAbilityModifiers} from "../../lib/utils/utils";
+import {
+    checkDuplicateProsCons,
+    concatToStringIfMissing,
+    getInitialTowerStats,
+    parseAbilityModifiers
+} from "../../lib/utils/utils";
+
+const AbilitiesContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const GridContainer = styled(Grid)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
 `;
 
 const GridItem = styled(Grid)`
@@ -36,15 +47,24 @@ export default class HeroAbilities extends PureComponent {
     }
 
     getAbilityStats() {
-        const {abilities, path, defaultStats} = this.props;
+        const {abilities, path, initialPros, initialCons, defaultStats} = this.props;
 
-        const tempStats = getInitialTowerStats(defaultStats);
+        const proCons = {pros: initialPros, cons: initialCons}
+        const tempStats = getInitialTowerStats(defaultStats, proCons);
 
+        console.log(tempStats);
         abilities.forEach(ability => {
             if (ability.upgrade_tier < path + 1) {
+                tempStats.xp = tempStats.xp + ability.cost_xp;
+                tempStats.pros = concatToStringIfMissing(tempStats.pros, ability.pros);
+                tempStats.cons = concatToStringIfMissing(tempStats.cons, ability.cons);
                 parseAbilityModifiers(ability.modifiers, null, tempStats);
             }
         })
+
+        const {pros, cons} = checkDuplicateProsCons(tempStats.pros, tempStats.cons);
+        tempStats.pros = pros;
+        tempStats.cons = cons;
 
         return { ...tempStats }
     }
@@ -85,21 +105,23 @@ export default class HeroAbilities extends PureComponent {
 
         return (
             <>
-                <ShowAllAbilityModifiers tier={tier} />
-                <GridContainer container spacing={2} className={className}>
-                    <GridItem item>
-                        { firstFiveAbilities }
-                    </GridItem>
-                    <GridItem item>
-                        { secondFiveAbilities }
-                    </GridItem>
-                    <GridItem item>
-                        { thirdFiveAbilities }
-                    </GridItem>
-                    <GridItem item>
-                        { fourthFiveAbilities }
-                    </GridItem>
-                </GridContainer>
+                <AbilitiesContainer className={className}>
+                    <GridContainer container spacing={2}>
+                        <GridItem item>
+                            { firstFiveAbilities }
+                        </GridItem>
+                        <GridItem item>
+                            { secondFiveAbilities }
+                        </GridItem>
+                        <GridItem item>
+                            { thirdFiveAbilities }
+                        </GridItem>
+                        <GridItem item>
+                            { fourthFiveAbilities }
+                        </GridItem>
+                    </GridContainer>
+                    <ShowAllAbilityModifiers tier={tier} />
+                </AbilitiesContainer>
             </>
         );
     }

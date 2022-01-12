@@ -22,12 +22,14 @@ const InfoContainer = styled("div", globalOptions)`
   width: 100%;
   display: flex;
   flex-direction: ${props => props["data-m"] ? "row" : "column"};
-  justify-content: ${props => props["data-m"] ? "center" : "start"};
-  align-items: ${props => props["data-m"] ? "center" : "start"}
+  justify-content: ${props => props["data-m"] ? "center" : "center"};
+  align-items: ${props => props["data-m"] ? "center" : "center"};
+  text-align: center;
 `;
 
 const FullContainer = styled("div")`
   width: 100%;
+  text-align: center;
 `;
 
 const Image = styled("div", globalOptions)`
@@ -62,7 +64,7 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                     <FullContainer>
                         {towerType === "hero" && (
                             <TowerText
-                                variant="h5"
+                                variant={mobile ? "h5" : "h4"}
                                 textColor={
                                     selected
                                         ? getTierColor(tier)
@@ -74,7 +76,7 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                         )}
                         { ability.name !== "" && (
                             <TowerText
-                                variant="h5"
+                                variant={mobile ? "h5" : "h4"}
                                 textColor={
                                     (selected && towerType !== "hero")
                                         ? getTierColor(tier)
@@ -90,6 +92,12 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                                 ${getThousandsNumber(goldCost(ability.cost_gold, difficulty))}
                             </TowerText>
                         )}
+                        <TowerText variant="body1" textColor={darkMode ? siteColors.tower.xp.dark : siteColors.tower.xp.light}>
+                            {towerType === "hero"
+                                ? (<>In-game XP Unlock:&nbsp;&nbsp;{ability.cost_xp === 0 ? "FREE" : getThousandsNumber(ability.cost_xp)}</>)
+                                : (<>XP Unlock Cost:&nbsp;&nbsp;{ability.cost_xp === 0 ? "FREE" : getThousandsNumber(ability.cost_xp)}</>)
+                            }
+                        </TowerText>
                     </FullContainer>
                     {(mobile && ability.name !== "" ) && (
                         <>
@@ -107,6 +115,7 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                     { !mobile && (
                         <TowerText
                             variant="body2"
+                            component="div"
                             textColor={darkMode ? siteColors.tower.description.dark : siteColors.tower.description.light}
                             font={true}>
                             {ability.description}
@@ -134,12 +143,15 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
             )}
 
             { mobile && (
-                <TowerText
-                    variant="body2"
-                    textColor={darkMode ? siteColors.tower.description.dark : siteColors.tower.description.light}
-                    font={true}>
-                    {ability.description}
-                </TowerText>
+                <FullContainer>
+                    <TowerText
+                        variant="body2"
+                        component="div"
+                        textColor={darkMode ? siteColors.tower.description.dark : siteColors.tower.description.light}
+                        font={true}>
+                        {ability.description}
+                    </TowerText>
+                </FullContainer>
             )}
         </>
     );
