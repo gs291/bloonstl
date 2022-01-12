@@ -7,8 +7,8 @@ import StatsTargets from "./StatsTargets";
 import TowerText from "../tower/TowerText";
 import StatItemWrapper from "./StatItemWrapper";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getHeroColor, getMonkeyColor, getStatAttributeText, rgbaHex} from "../../lib/utils/utils";
 
 
