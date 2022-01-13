@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
+import TierText from "../tower/TierText";
 import TowerText from "../tower/TowerText";
 import FilterTiers from "../filters/FilterTiers";
 import TierPathText from "../tower/TierPathText";
@@ -43,6 +44,9 @@ export default function AbilityPathSelection({ tier, tiers, handleTier, sandbox 
                 <AbilityTier data-m={mobile}>
                     {!sandbox && (
                         <FilterTiers tier={tier} handleTier={handleTier} />
+                    )}
+                    {sandbox && (
+                        <TierText tier={tier} text="Tower Tier" showText />
                     )}
                     <TierPathText tier={tier} tiers={tiers}/>
                 </AbilityTier>
