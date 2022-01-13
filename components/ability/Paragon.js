@@ -85,7 +85,9 @@ const SidewaysText = styled(TowerText)`
   opacity: ${props => props["data-dm"] ? 0.15 : 0.4};
 `;
 
-
+// There is a bug with this in mobile. On a mobile device (not where mobile is just set = true) if this is clicked
+// then waiting for the timeout causes it to close. if no other clicks were made in that time. attempting to reopen
+// the paragon tooltip will not work. I (gs291) was unable to figure out what mouse/touch event needed to be added
 export default function Paragon({ability, fileName, tier, towerType, selected, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
@@ -93,29 +95,26 @@ export default function Paragon({ability, fileName, tier, towerType, selected, .
     const [open, setOpen] = useState(false);
     const [touchTimeout, setTouchTimeout] = useState(false);
 
-    const handleTouch = () => {setTouchTimeout(true); setOpen(true);};
-    const handleClick = () => {setOpen(prevOpen => !prevOpen);};
+    const handleTimeout = () => {setTouchTimeout(true );};
     const handleEnter = () => {setOpen(true);};
-    const handleExit = () => {setOpen(false);};
+    const handleExit = () => {setOpen(false); setTouchTimeout(false);};
 
     useEffect(() => {
-        if (touchTimeout) {
-            const timer = setTimeout(() => {
-                setOpen(false);
-                setTouchTimeout(false);
-            }, 7000); //leaveTouchDelay from Tooltip
+        const timer = touchTimeout && setTimeout(() => {
+            setOpen(false);
+            setTouchTimeout(false);
+        }, 7000); //leaveTouchDelay from Tooltip
 
-            return () => clearTimeout(timer)
-        }
+        return () => clearTimeout(timer);
     }, [touchTimeout]);
 
     return (
         <>
             <ParagonContainer
+                onClick={handleEnter}
                 onMouseEnter={handleEnter}
                 onMouseLeave={handleExit}
-                onClick={handleClick}
-                onTouchStart={handleTouch}
+                onTouchEnd={handleTimeout}
                 data-m={mobile} data-dm={darkMode}
                 {...rest}
             >
