@@ -74,10 +74,23 @@ class MonkeyAbilities extends PureComponent {
                 if (abilities[j].upgrade_tier < path[pathOrder]) {
                     tempStats.cost = tempStats.cost + abilities[j].cost_gold;
                     tempStats.xp = tempStats.xp + abilities[j].cost_xp;
-                    tempStats.pros = concatToStringIfMissing(tempStats.pros, abilities[j].pros);
-                    tempStats.cons = concatToStringIfMissing(tempStats.cons, abilities[j].cons);
-                    parseAbilityModifiers(abilities[j].modifiers, path, tempStats);
+                    if (!(path.top_path === 5 && path.middle_path === 5 && path.bottom_path === 5)) {
+                        tempStats.pros = concatToStringIfMissing(tempStats.pros, abilities[j].pros);
+                        tempStats.cons = concatToStringIfMissing(tempStats.cons, abilities[j].cons);
+                        parseAbilityModifiers(abilities[j].modifiers, path, tempStats);
+                    }
                 }
+            }
+        }
+
+        const paragon = 15;
+        if (abilities.length > paragon && path.top_path === 5 && path.middle_path === 5 && path.bottom_path === 5) {
+            if (abilities[paragon]) {
+                tempStats.cost = tempStats.cost + abilities[paragon].cost_gold;
+                tempStats.xp = tempStats.xp + abilities[paragon].cost_xp;
+                tempStats.pros = concatToStringIfMissing(tempStats.pros, abilities[paragon].pros);
+                tempStats.cons = concatToStringIfMissing(tempStats.cons, abilities[paragon].cons);
+                parseAbilityModifiers(abilities[paragon].modifiers, path, tempStats);
             }
         }
 
