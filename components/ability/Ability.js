@@ -93,7 +93,7 @@ export default function Ability({className, ability, fileName, tier, towerType, 
                             ? getTierColor(tier)
                             : null
                     }
-
+                    placement={mobile ? "bottom" : "right"}
                     active={ability.active}
                 >
                     <CardContainer data-s={selected} tier={tier} data-dm={darkMode}>

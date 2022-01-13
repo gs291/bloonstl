@@ -7,11 +7,11 @@ import Stats from "../statistics/Stats";
 import ProsCons from "../tower/ProsCons";
 import TierText from "../tower/TierText";
 import TowerText from "../tower/TowerText";
+import SandboxMode from "../filters/SandboxMode";
 import TierPathText from "../tower/TierPathText";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
-import SandboxSwitch from "../filters/SandboxSwitch";
 import HeroAbilities from "../abilities/HeroAbilities";
 import HorizontalAD from "../advertisment/HorizontalAD";
 import FilterDifficulty from "../filters/FilterDifficulty";
@@ -39,7 +39,7 @@ const SmallTitle = styled(TowerText)`
   cursor: default;
 `;
 
-const SandboxMode = styled(SandboxSwitch)`
+const Sandbox = styled(SandboxMode)`
   margin-top: ${props => props.sandbox ? 0 : 40}px;
   margin-bottom: 15px;
 `;
@@ -114,7 +114,7 @@ export default function HeroPage({ hero }) {
                 defaultStats={hero.stats} setStats={setStats} tier={hero.tier}
                 path={path} initialPros={hero.info.pros} initialCons={hero.info.cons} setPath={sandbox && !pauseSandbox && setPath}
             />
-            <SandboxMode sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={hero.tier} handleReset={handlePathReset} towerType="hero"/>
+            <Sandbox sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={hero.tier} handleReset={handlePathReset} towerType="hero"/>
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="hero" type={hero.name} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h4" : "h3"}>
