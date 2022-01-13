@@ -30,9 +30,11 @@ const SandboxButton = styled(DefaultButton)`
   margin-bottom: 20px;
 `;
 
+const PauseClickingButton = styled(DefaultButton)`
+  margin-bottom: 15px;
+`;
 
 const HelperText = styled("div")`
-  margin-top: 20px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
@@ -41,7 +43,6 @@ const HelperText = styled("div")`
 `;
 
 const CaptionText = styled(HelperText)`
-  margin-top: 0;
   margin-bottom: 20px;
 `;
 
@@ -89,22 +90,12 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                     variant={darkMode ? "outlined" : "contained"}
                 >
                     <TowerText variant="subtitle2" font={true}>
-                        {sandbox ? "Disable" : "Enable"}
+                        {sandbox ? "Disable" : "Enable"} Sandbox
                     </TowerText>
                 </SandboxButton>
 
                 {sandbox && (
                     <>
-                        <DefaultButton
-                            onClick={handlePauseChange}
-                            data-bc={getTierColor(tier)}
-                            variant={darkMode ? "outlined" : "contained"}
-                        >
-                            <TowerText variant="subtitle2" font={true}>
-                                {pauseSandbox ? "Unpause selection mode" : "Pause selection mode"}
-                            </TowerText>
-                        </DefaultButton>
-
                         <HelperText>
                             <TowerText variant={mobile ? "subtitle1" : "h6"} font={true}>
                                 Click on an ability to change the path!{towerType === "monkey" && ('*')}
@@ -121,6 +112,15 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                                 </TowerText>
                             </CaptionText>
                         )}
+                        <PauseClickingButton
+                            onClick={handlePauseChange}
+                            data-bc={getTierColor(tier)}
+                            variant={darkMode ? "outlined" : "contained"}
+                        >
+                            <TowerText variant="subtitle2" font={true}>
+                                {pauseSandbox ? "Unpause" : "Pause"} ability clicking
+                            </TowerText>
+                        </PauseClickingButton>
                     </>
                 )}
 

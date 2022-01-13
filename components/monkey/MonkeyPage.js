@@ -114,15 +114,13 @@ export default function MonkeyPage({ monkey }) {
 
     useEffect(() => {
         if (sandbox) {
-            setPath(prevPath => {
-                return {
-                    "top_path": prevPath.top_path,
-                    "middle_path": prevPath.middle_path,
-                    "bottom_path": prevPath.bottom_path,
+            setPath({
+                    "top_path": 0,
+                    "middle_path": 0,
+                    "bottom_path": 0,
                     "pros": "",
                     "cons": ""
-                };
-            })
+                });
         } else {
             setPath(monkey.tiers[tier][page-1]);
         }
