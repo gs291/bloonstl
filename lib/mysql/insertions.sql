@@ -38,6 +38,9 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 2, 'Crossbow
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 3, 'Sharp Shooter', 'Sharp Shooter does powerful Crit Shots every few seconds that do a lot more damage.', 2000, 12000, '+3d,0.75s,50dc,8~12co', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 2, 4, 'Crossbow Master', 'Crossbow Master shoots really fast and devastates most Bloon types with ease.', 25000, 35000, '+7p,+20r,0.16s,type:normal,4~8co', 'atksp,lead,frzn', DEFAULT);
 
+--          Paragon
+INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 3, 0, 'Apex Plasma Master', 'Fill the area with Bloon shredding plasma juggernaut balls, leaving nothing behind...', 350000, 500000, '+camo,20d,30cd,80bd,3j,200p,85r,0.3s,type:normal,attack:juggernauts:20d;30cd;80bd;6j;200p;type:normal;desc:Spawned at 50% pierce and 100% pierce from basic attack', DEFAULT, DEFAULT);
+
 --          Ability Tiers - S
 INSERT INTO `AbilityTiers` VALUES (NULL, @tower_dart_monkey, 's', 0, 2, 3);
 SELECT id INTO @ability_tiers_dart_monkey_s FROM AbilityTiers WHERE tower_id=@tower_dart_monkey AND tier='s';
@@ -89,6 +92,9 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 2, 1, 'Red
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 2, 2, 'Kylie Boomerang', 'Throws heavy Kylie boomerangs that follow a straight path instead of curved.', 1300, 3000, '+14p,type:normal,note:(0-0-3) Can rehit bloons after 0.3s', 'rehit', DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 2, 3, 'MOAB Press', 'Heavy Kylie boomerang hits MOAB-Class Bloons multiple times per throw and sometimes knocks them back a short way along the path.', 2200, 9500, 'attack:press:1d;4md;200p;49.45r;10s;type:normal;note:(0-0-4) Can rehit bloons after 0.1s;note:(0-0-4) Knocks back blimps;-bad;desc:Extra attacked gained by 0-0-4', 'kb', 'bad');
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 2, 4, 'MOAB Domination', 'Special knockback kylies trigger more often and do lots of extra damage.', 60000, 28000, '+10d,*50%s,attack:press:+20md;+100p;+50.55r;*50%s;+bad;attack:press_explosion:desc:Deals damage after attack press expires or 100% pierce=100d=40p=50r=type:normal=note:Also applies a burn status for (50 damage per 1 second lasting 4 seconds)', 'bad,blimp,vis,stnb', DEFAULT);
+
+--          Paragon
+INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 3, 0, 'Glaive Dominus', 'The Bloons will look upon my Glaives, and they will know fear.', 350000, 500000, '+camo,20d,60bd,100p,75r,0.04s,type:normal,status:shred:desc:Applied by first basic attack hit;750md;1s;15.1dur,attack:orbital_glaive:desc:Extra paragon attack;42d;20cd;20md;2fd;160bd;1000p;60r;0.1s;type:normal,attack:press:desc:Extra paragon attack;1d;19md;300p;100r;2.5s;type:normal;-bln;+blimp;note:knocks back blimps;status:stun:desc:Stun applied by press=0.25dur;attack:press_explosion:desc:Explode on expire or 100% pierce=2500d=5000bd=20p=50r=type:normal=status:burn:desc:Applied after explosion@500d@1s@4dur', 'dps,solo,jump,rehit,cc,kb,blimp,bln,lg', 'chep');
 
 --          Ability Tiers - S
 INSERT INTO `AbilityTiers` VALUES (NULL, @tower_boomerang_monkey, 's', 2, 5, 0);
@@ -197,7 +203,6 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 2, 'Tack Sp
 INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 3, 'Overdrive', 'Shoots incredibly fast.', 3200, 8750, '+1p,*33.33%s', 'atksp', DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 2, 4, 'The Tack Zone', 'Many, many tacks.', 24000, 26500, '+1d,+16j,+2p,+7r,*75%s', 'dps', DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 3, 0, 'Apex Plasma Master', '', 350000, 0, '+camo,attack:triple_jugg:20d;30cd;80bd;3j;200p;85r;0.3s;type:normal;attack:juggernauts:20d=30cd=80bd=6j=200p=type:normal=desc:Spawned at 50% pierce and 100% pierce', DEFAULT, DEFAULT);
 
 --          Ability Tiers - S
 INSERT INTO `AbilityTiers` VALUES (NULL, @tower_tack_shooter, 's', 2, 0, 5);
@@ -458,6 +463,9 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 2, 1, 'Cro
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 2, 2, 'Merchantman', 'Generates cash each round automatically.', 2300, 3100, '+200mon', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 2, 3, 'Favored Trades', 'Attacks faster and generates lots of money per round. Monkeys in radius have increased sell value and can stack up to 3 Favored Trades for 95% max sell value.', 5500, 10000, '+300mon,*50%s,buff:cashback:desc:Increases sellback price;note:increases sellback price by 10% of anything in range including self', 'tbf,atksp', DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 2, 4, 'Trade Empire', 'Generates more cash per round, increases cash earned by up to 20 other Merchantmen by the number of Merchantmen, and boosts all Merchantmen damage.', 23000, 4000, '+300mon,+1d,+1cd,+1md,buff:trade:desc:Buccaneer damage and money buff;+1d;+1cd;+1md;note:trade buff affects up to 2-0 X-X-3 or X-X-4 buccaneers;note:+$20 * n income where n is the number of buffed towers', 'mny', DEFAULT);
+
+--          Paragon
+INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 3, 0, 'Navarch of the Seas', 'The greatest thing ever to float on water.', 500000, 500000, '+camo,attack:cannon:desc:Gains 6 independent cannon attacks;3j;60r;0.429s;attack:cannon_explosion:desc:On contact explosion=60d=60md=60bd=28p=40r=type:normal,attack:grape:Gains 6 independent grape attacks;25d;30md;30bd;10j;10p;60r;0.429s;type:normal,abil:grapple:desc:Harpoons a MOAB class Bloon and brings it down;10clt;-1r;1s;note:cooldown starts once 10 hooks have been used;note:either uses 2 hooks to take down a ZOMG or 1 hook to take down a smaller blimp,abil:bad_takedown:desc:Removes strongest blimp from the map;20clt;2mpr;note:targets the strongest blimp and immediately removes it,3200mon,buff:flagship:desc:Water and air buff;85%s;note:affects all water towers and aces,buff:cashback:desc:Increased sellback price;note:+10% sellback price,note:affects anything in range including self,buff:trade:desc:Buccaneer buff;+10d;+10cd;+10md;note:affects up to 20 X-X-3 or X-X-4 buccaneers;note:+$20 * n income (n is the number of buffed towers);note:stacks with the same buff from X-X-5 buccaneer,attack:forward_dart:desc:Attack from three permanent plane subtowers;44d;44bd;14p;-1r;0.15s;type:normal,attack:moab_missile:desc:Attack from three permanent plane subtowers;4j;-1r;1.5s;-bln;+blimp;attack:explosion:desc:Missile explosion=200d=200bd=10p=30r=type:normal,note:has 2 small platforms that can be used to place towers,note:towers on a platform should see over most obstacles', DEFAULT, DEFAULT);
 
 --          Ability Tiers - S
 INSERT INTO `AbilityTiers` VALUES (NULL, @tower_monkey_buccaneer, 's', 5, 2, 0);
@@ -815,6 +823,9 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 1, 'Caltrop
 INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 2, 'Flash Bomb', 'Throws a flash bomb that stuns multiple Bloons.', 2750, 2500, 'attack:flash_bomb:1d;60p;40r;desc:Attack substituted for basic attacks;type:normal;status:stun:1s=desc:Stun applied to bloons;note:replaces every 4th basic attack', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 3, 'Sticky Bomb', 'Throws powerful timed charges at MOAB-Class Bloons.', 4500, 15500, 'attack:sticky_bomb:60r;5s;-bloon;desc:Attack gained by 0-0-4;attack:bombed:3dur=500d;attack:bombed_explosion:100d=10p=40r=type:normal', 'blimp', DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 2, 4, 'Master Bomber', 'One Monkey MOAB demolition Machine.', 40000, 37500, 'attack:flash_bomb:+9d;status:stun:0.25dur,attack:sticky_bomb:-1r;*40%s;status:stun:1dur;attack:bombed:+500d;attack:bombed_explosion:+200d', 'cc', DEFAULT);
+
+--          Paragon
+INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 3, 0, 'Ascended Shadow', 'The complete assassin package for dealing with any Bloon threat.', 600000, 1000000, '32d,32bd,8j,4p,70r,0.217s,type:normal,+decamo,note:All attacks (except sabotage) have a 15% chance to send bloons 10-300 units back,attack:flash_bomb:desc:Paragon attack;5j;70r;1.5s;attack:bomb_explosion:desc:Bomb on contact explosion=96d=96bd=50p=40r=type:normal=+decamo=status:stun:desc:Applied by explosion@3dur@note:3s duration for bloons 1s for blimps;attack:mini_shuriken:desc:Bomb on contact attack=80d=80bd=3j=20p=type:normal=+decamo,attack:sticky_bomb:desc:Paragon attack;-1r;5.5s;-bln;+blimps;note:Can only affect blimps;status:bombed:desc:Status applied to blimp=3dur=16000d=32000bd=attack:explosion:desc:Bombed on expired@3500d@1400bd@10p@40r@type:normal,attack:sabotage:desc:Paragon slow attack;-1p;-1r;50%slow', DEFAULT, DEFAULT);
 
 --          Ability Tiers - S
 INSERT INTO `AbilityTiers` VALUES (NULL, @tower_ninja_monkey, 's', 5, 0, 2);

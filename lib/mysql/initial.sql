@@ -53,7 +53,7 @@ CREATE TABLE `Abilities` (
     `description` VARCHAR(255) NOT NULL,
     `cost_gold` MEDIUMINT(6) NOT NULL,
     `cost_xp` MEDIUMINT(6) NOT NULL,
-    `modifiers` VARCHAR(511) NULL DEFAULT '',
+    `modifiers` VARCHAR(1532) NULL DEFAULT '', # (2^9 - 1) + (2^8 - 1) - (2 byte length)
     `pros` VARCHAR(255) NULL DEFAULT '',
     `cons` VARCHAR(255) NULL DEFAULT '',
     PRIMARY KEY (`id`),
@@ -119,7 +119,7 @@ CREATE TABLE `TowerStats` (
     `attack_speed` DECIMAL(9,6) NOT NULL,
     `income` INT(11) NULL DEFAULT 0,
     `duration` INT(11) NULL DEFAULT 0,
-    `note` VARCHAR(511) NULL DEFAULT '',
+    `note` VARCHAR(510) NULL DEFAULT '',
     `footprint` INT(11) NOT NULL,
     `hotkey` VARCHAR(32) NOT NULL,
     `damage_type` VARCHAR(31) NOT NULL,
