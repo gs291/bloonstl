@@ -20,9 +20,13 @@ const ParagonContainer = styled("div", globalOptions)`
   align-items: center;
   
   transition: 0.3s;
-  border: 4px solid ${props => props["data-dm"] ? siteColors.paragon.dark : siteColors.paragon.light };
-  background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.paragon.dark : siteColors.paragon.light, 0.5) };
+  border: 4px solid ${props => props["data-s"] 
+          ? props["data-dm"] ? siteColors.paragon.dark : siteColors.paragon.light
+          : "transparent"
+  };
+  background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.paragon.dark : siteColors.paragon.light, props["data-dm"] ? 0.5 : 0.75) };
   border-radius: 10px;
+  box-shadow: 0 0 10px 2px ${props => props["data-dm"] ? "#2A526A" : "#000000"};
   
   position: relative;
   
@@ -62,16 +66,10 @@ const SplitText = styled("div")`
   height: ${props => props["data-m"] ? 100 : 35}%;
 `;
 
-const LeftText = styled(SplitText)`
+const InfoText = styled(SplitText)`
   display: flex;
-  justify-content: ${props => props["data-m"] ? "end" : "center"};
-  align-items: ${props => props["data-m"] ? "center" : "center"};
-`;
-
-const RightText = styled(SplitText)`
-  display: flex;
-  justify-content: ${props => props["data-m"] ? "start" : "center"};
-  align-items: ${props => props["data-m"] ? "center" : "center"};
+  justify-content: center;
+  align-items: center;
 `;
 
 const MiddleFiller = styled("div")`
@@ -79,10 +77,12 @@ const MiddleFiller = styled("div")`
   height: ${props => props["data-m"] ? 100 : 30}%;
 `;
 
-const SidewaysText = styled(TowerText)`
-  text-orientation: mixed;
-  writing-mode: ${props => props["data-m"] ? "initial" : "vertical-rl"};
-  opacity: ${props => props["data-dm"] ? 0.15 : 0.4};
+const DegreeContainer = styled("div")`
+  display: flex;
+  flex-direction: ${props => props["data-m"] ? "row" : "column"};
+  justify-content: center;
+  align-items: center;
+  gap: 0 5px;
 `;
 
 // There is a bug with this in mobile. On a mobile device (not where mobile is just set = true) if this is clicked
@@ -116,21 +116,27 @@ export default function Paragon({ability, fileName, tier, towerType, selected, .
                 onMouseLeave={handleExit}
                 onTouchEnd={handleTimeout}
                 data-m={mobile} data-dm={darkMode}
+                data-s={selected}
                 {...rest}
             >
                 <BackgroundContainer>
                     <BackgroundText data-m={mobile}>
-                        <LeftText data-m={mobile}>
-                            <SidewaysText variant="h4" data-m={mobile} data-dm={darkMode}>
-                                PARA
-                            </SidewaysText>
-                        </LeftText>
+                        <InfoText data-m={mobile}>
+                            <TowerText variant={mobile ? "subtitle2" : "caption"} data-m={mobile} data-dm={darkMode}>
+                                PARAGON
+                            </TowerText>
+                        </InfoText>
                         <MiddleFiller data-m={mobile} />
-                        <RightText data-m={mobile}>
-                            <SidewaysText variant="h4" data-m={mobile} data-dm={darkMode}>
-                                GON
-                            </SidewaysText>
-                        </RightText>
+                        <InfoText data-m={mobile}>
+                            <DegreeContainer data-m={mobile}>
+                                <TowerText variant="subtitle2" data-m={mobile} data-dm={darkMode}>
+                                    DEGREE
+                                </TowerText>
+                                <TowerText variant={mobile ? "subtitle2" : "subtitle1"} data-m={mobile} data-dm={darkMode}>
+                                    {mobile && (<>&nbsp;</>)}1
+                                </TowerText>
+                            </DegreeContainer>
+                        </InfoText>
                     </BackgroundText>
                 </BackgroundContainer>
                 <AbilityContainer>

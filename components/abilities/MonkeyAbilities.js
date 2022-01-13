@@ -165,7 +165,7 @@ class MonkeyAbilities extends PureComponent {
                             {...paragon}
                         )}
                     </AllAbilities>
-                    <ShowAllAbilityModifiers tier={tier} />
+                    <ShowAllAbilityModifiers tier={tier} paragon={paragon ? true : false}/>
                 </AbilitiesContainer>
             </>
         );
