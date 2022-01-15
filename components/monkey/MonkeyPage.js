@@ -6,10 +6,10 @@ import Counter from "../tower/Counter";
 import Stats from "../statistics/Stats";
 import ProsCons from "../tower/ProsCons";
 import TowerText from "../tower/TowerText";
+import SandboxMode from "../filters/SandboxMode";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
-import SandboxSwitch from "../filters/SandboxSwitch";
 import HorizontalAD from "../advertisment/HorizontalAD";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
@@ -49,7 +49,7 @@ const PatchText = styled(TowerText)`
   cursor: default;
 `;
 
-const SandboxMode = styled(SandboxSwitch)`
+const Sandbox = styled(SandboxMode)`
   margin-bottom: 15px;
 `;
 
@@ -114,15 +114,13 @@ export default function MonkeyPage({ monkey }) {
 
     useEffect(() => {
         if (sandbox) {
-            setPath(prevPath => {
-                return {
-                    "top_path": prevPath.top_path,
-                    "middle_path": prevPath.middle_path,
-                    "bottom_path": prevPath.bottom_path,
+            setPath({
+                    "top_path": 0,
+                    "middle_path": 0,
+                    "bottom_path": 0,
                     "pros": "",
                     "cons": ""
-                };
-            })
+                });
         } else {
             setPath(monkey.tiers[tier][page-1]);
         }
@@ -152,7 +150,7 @@ export default function MonkeyPage({ monkey }) {
                 stats={monkey.stats} setStats={setStats} setSnackPack={setSnackPack}
             />
             {!sandbox && (<FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />)}
-            <SandboxMode sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={sandbox ? monkey.tier : tier} handleReset={handlePathReset} towerType="monkey"/>
+            <Sandbox sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={sandbox ? monkey.tier : tier} handleReset={handlePathReset} towerType="monkey"/>
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="monkey" type={monkey.type}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h4" : "h3"}>

@@ -13,7 +13,10 @@ import {getDarkMode, getMobile, getShowTooltipModifiers} from "../../lib/redux/s
 const Group = styled(FormGroup, globalOptions)`
   align-self: end;
   margin-top: 5px;
-  margin-right: ${props => props["data-m"] ? 15 : 20}px;
+  margin-right: ${props => 
+          props["data-m"] 
+                  ? 15 
+                  : props["data-w"] ? 25 : 20}px;
 `;
 
 const Label = styled(FormControlLabel)`
@@ -42,7 +45,7 @@ const StyledCheckbox = styled(Checkbox, globalOptions)`
   }
 `;
 
-export default function ShowAllAbilityModifiers({tier, ...rest}) {
+export default function ShowAllAbilityModifiers({tier, paragon = false, ...rest}) {
     const dispatch = useDispatch();
 
     const mobile = useSelector(getMobile);
@@ -53,7 +56,7 @@ export default function ShowAllAbilityModifiers({tier, ...rest}) {
 
     return (
         <>
-            <Group data-m={mobile} {...rest}>
+            <Group data-m={mobile} data-w={paragon} {...rest}>
                 <Label
                     labelPlacement="start"
                     control={(

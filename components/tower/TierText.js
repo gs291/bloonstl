@@ -24,7 +24,7 @@ const TierLabel = styled(Tier)`
   margin-left: 10px;
 `;
 
-export default function TierText ({ className, tier, showText }) {
+export default function TierText ({ className, tier, showText, text="Tier" }) {
     const darkMode = useSelector(getDarkMode);
 
     return (
@@ -35,7 +35,7 @@ export default function TierText ({ className, tier, showText }) {
                 </Tier>
                 {showText && (
                     <TierLabel variant="h4" component="div" name={tier} data-dm={darkMode}>
-                        Tier
+                        {text}
                     </TierLabel>
                 )}
             </TierContainer>

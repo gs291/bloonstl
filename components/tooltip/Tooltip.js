@@ -46,7 +46,7 @@ const TooltipContainer = styled("div")``;
 
 const ContentContainer = styled("div")``;
 
-export default function Tooltip({children, title, borderColor, forceWidth=true, ...rest}) {
+export default function Tooltip({children, title, borderColor, forceWidth=true, placement="top", ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
     const [open, setOpen] = useState(false);
@@ -70,7 +70,7 @@ export default function Tooltip({children, title, borderColor, forceWidth=true, 
                         title={title}
                         leaveDelay={100}
                         leaveTouchDelay={7000}
-                        placement="top"
+                        placement={placement}
                         data-bc={borderColor}
                         data-m={mobile}
                         data-dm={darkMode}

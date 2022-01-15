@@ -70,7 +70,7 @@ const ActivatedAbility = styled(OfflineBoltIcon, globalOptions)`
   }
 `;
 
-export default function Ability({className, ability, fileName, tier, towerType, selected, ...rest}) {
+export default function Ability({className, ability, fileName, tier, towerType, selected, open = null, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
@@ -78,6 +78,7 @@ export default function Ability({className, ability, fileName, tier, towerType, 
         <>
             <AbilityContainer className={className} {...rest}>
                 <Tooltip
+                    {...(open ? {open: open} : null)}
                     title={
                         <AbilityTooltip
                             ability={ability}
@@ -92,7 +93,7 @@ export default function Ability({className, ability, fileName, tier, towerType, 
                             ? getTierColor(tier)
                             : null
                     }
-
+                    placement={mobile ? "bottom" : "right"}
                     active={ability.active}
                 >
                     <CardContainer data-s={selected} tier={tier} data-dm={darkMode}>

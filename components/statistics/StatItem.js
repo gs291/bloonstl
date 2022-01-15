@@ -5,6 +5,7 @@ import Counter from "../tower/Counter";
 import Tooltip from "../tooltip/Tooltip";
 import TowerText from "../tower/TowerText";
 import siteColors from "../../lib/utils/siteColors";
+import {MAX_STAT_VALUE} from "../../lib/utils/utils";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
@@ -47,8 +48,8 @@ const ItemContainer = styled("div", globalOptions)`
   }
 `;
 
-const getStatColor = (difference, darkMode, decimals) => {
-    if (decimals > 0) {
+const getStatColor = (difference, darkMode, lowerIsBuff) => {
+    if (lowerIsBuff) {
         if (difference < 0) {
             return darkMode ? siteColors.stats.pros.dark : siteColors.stats.pros.light;
         } else if (difference > 0) {
@@ -68,15 +69,23 @@ const getStatColor = (difference, darkMode, decimals) => {
 }
 
 const StatCounter = styled(Counter)`
-  color: ${props => getStatColor(props["data-d"], props["data-dm"], props["decimals"])};
+  color: ${props => getStatColor(props["data-d"], props["data-dm"], props["data-l"])};
 `;
 
 const StatText = styled(TowerText)`
-  color: ${props => getStatColor(props["data-d"], props["data-dm"], props["decimals"])};
+  color: ${props => getStatColor(props["data-d"], props["data-dm"], props["data-l"])};
 `;
 
+//Checks to see if it should show decimals (when it would have otherwise not shown)
+const getDecimals = (num, decimals) => {
+    let right = Math.floor(num);
+    right = right === 0 ? 1 : right;
+    const rem = num % right;
+    return (rem <= 1 && rem >= -1 && rem !== 0 && decimals === 0) ? 1 : decimals
+};
 
-const FullItem = ({text, value, prevValue, counter = true, size = "medium", decimals, prefix, suffix, darkMode, ...rest}) => (
+
+const FullItem = ({text, value, prevValue, prefix, suffix, darkMode, counter = true, size="medium", decimals=0, lowerIsBuff=false, ...rest}) => (
     <ItemContainer data-dm={darkMode} size={size} { ...rest }>
         <Item>
             <ItemText variant={size === "medium" ? "subtitle1" : "subtitle2"} component="div" >
@@ -85,11 +94,14 @@ const FullItem = ({text, value, prevValue, counter = true, size = "medium", deci
         </Item>
         <Value variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true}>
             {prefix && (<TowerText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true} dangerouslySetInnerHTML={{__html: prefix}} />)}
-            {(counter === true && typeof value === "number") ? (
-                <StatCounter cost={value} data-d={value - prevValue} data-dm={darkMode} decimals={decimals ? decimals : 0} gold={false}/>
+            {(counter === true && typeof value === "number" && value < MAX_STAT_VALUE) ? (
+                <StatCounter cost={value} data-d={value - prevValue} data-dm={darkMode} data-l={lowerIsBuff} decimals={getDecimals(value, decimals)} gold={false}/>
             ) : (
-                <StatText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true} data-d={prevValue} data-dm={darkMode}>
-                    {decimals ? value.toFixed(decimals) : value}
+                <StatText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true} data-l={lowerIsBuff} data-d={typeof value === "number" ? (value - prevValue) : prevValue} data-dm={darkMode}>
+                    {(typeof value === "number"
+                        ? value >= MAX_STAT_VALUE ? '∞' : value.toFixed(getDecimals(value, decimals))
+                        : value
+                    )}
                 </StatText>
             )}
             {suffix && (<TowerText variant={size === "medium" ? "h6" : "subtitle1"} component="div" font={true} dangerouslySetInnerHTML={{__html: suffix}} />)}
