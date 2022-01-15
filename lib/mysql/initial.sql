@@ -101,7 +101,7 @@ CREATE TABLE `TowerTiersInfo` (
 CREATE TABLE `TowerStats` (
     `id` INT(11) AUTO_INCREMENT NOT NULL,
     `tower_id` INT(11) NOT NULL,
-    `range` DECIMAL(7,4) NOT NULL,
+    `range` DECIMAL(14,4) NOT NULL,
     `pierce` INT(11) NOT NULL,
     `damage` INT(11) NOT NULL,
     `boss_damage` INT(11) NULL DEFAULT 0,
