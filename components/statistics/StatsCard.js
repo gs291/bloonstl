@@ -212,7 +212,6 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                                         if (stats[key].modifiers[mod] > 0) {
                                             const modExtraDamage = mod === "fortified_lead_damage" ? stats[key].modifiers.lead_damage : stats[key].modifiers.moab_damage;
                                             const defExtraDamage = mod === "fortified_lead_damage" ? stats[key].defaults.lead_damage : stats[key].defaults.moab_damage;
-
                                             return (
                                                 <ModifierContainer key={mod}>
                                                     <StatItemWrapper
