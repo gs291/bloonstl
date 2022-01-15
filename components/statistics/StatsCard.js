@@ -97,6 +97,18 @@ const Description = styled(TowerText)`
   padding-right: 5px;
 `;
 
+const statWithPrev = {
+    "damage": true, "pierce": true, "range": true, "attack_speed": true, "damage_type": true, "projectile_count": true,
+    "duration": true, "delay": true, "income": true, "cooldown": true, "slow": true, "pierce_impact": true, "max_per_round": true
+};
+
+const statDamage = {
+    "camo_damage": true, "ceramic_damage": true, "crit_damage": true, "boss_damage": true,
+    "lead_damage": true, "moab_damage": true, "fortified_damage": true, "status_damage": true, "stun_damage": true,
+};
+
+const statExtraDamage = { "fortified_lead_damage": true, "fortified_moab_damage": true };
+
 const statCodeParser = (code) => {
     const codes = {
         "damage": "Damage", "pierce": "Pierce", "range": "Range", "attack_speed": "Atk Spd", "damage_type": "Type",
@@ -166,14 +178,73 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                         <CardContent data-bc={gridColor} data-dm={darkMode} data-m={mobile} data-l={level} >
                             <Modifiers>
                                 {Object.keys(stats[key].modifiers).map(mod => {
-                                    if (((stats[key].modifiers[mod] > 0 && mod !== "projectile_count")
-                                        || (mod === "damage_type" && stats[key].modifiers[mod] !== "")
-                                        || (mod === "projectile_count" && stats[key].modifiers[mod] > 1))) {
-                                        return (
-                                            <ModifierContainer key={mod}>
-                                                <StatItemWrapper text={statCodeParser(mod)} value={stats[key].modifiers[mod]} size="small" counter={false} data-s={titleColor}/>
-                                            </ModifierContainer>
-                                        );
+                                    if (statWithPrev[mod]) {
+                                        if (stats[key].modifiers[mod] > 0 && mod !== "projectile_count"
+                                            || (mod === "damage_type" && stats[key].modifiers[mod] !== "")
+                                            || (mod === "projectile_count" && stats[key].modifiers[mod] > 1)) {
+                                            return (
+                                                <ModifierContainer key={mod}>
+                                                    <StatItemWrapper
+                                                        text={statCodeParser(mod)}
+                                                        value={stats[key].modifiers[mod]}
+                                                        prevValue={stats[key].defaults[mod]}
+                                                        size="small" data-s={titleColor}
+                                                    />
+                                                </ModifierContainer>
+                                            );
+                                        }
+                                    } else if (statDamage[mod]) {
+                                        if (stats[key].modifiers[mod] > 0) {
+                                            return (
+                                                <ModifierContainer key={mod}>
+                                                    <StatItemWrapper
+                                                        text={statCodeParser(mod)}
+                                                        value={stats[key].modifiers[mod] + stats[key].modifiers.damage}
+                                                        prevValue={stats[key].defaults[mod] + stats[key].defaults.damage}
+                                                        initialDamage={stats[key].modifiers[mod]}
+                                                        baseDamage={stats[key].modifiers.damage}
+                                                        size="small" data-s={titleColor}
+                                                    />
+                                                </ModifierContainer>
+                                            );
+                                        }
+                                    } else if (statExtraDamage[mod]) {
+                                        if (stats[key].modifiers[mod] > 0) {
+                                            const modExtraDamage = mod === "fortified_lead_damage" ? stats[key].modifiers.lead_damage : stats[key].modifiers.moab_damage;
+                                            const defExtraDamage = mod === "fortified_lead_damage" ? stats[key].defaults.lead_damage : stats[key].defaults.moab_damage;
+
+                                            return (
+                                                <ModifierContainer key={mod}>
+                                                    <StatItemWrapper
+                                                        text={statCodeParser(mod)}
+                                                        value={stats[key].modifiers[mod] + modExtraDamage + stats[key].modifiers.damage}
+                                                        prevValue={stats[key].defaults[mod] + defExtraDamage + stats[key].defaults.damage}
+                                                        initialDamage={stats[key].modifiers[mod]}
+                                                        baseDamage={stats[key].modifiers.damage}
+                                                        extraDamage={modExtraDamage}
+                                                        size="small" data-s={titleColor}
+                                                    />
+                                                </ModifierContainer>
+                                            );
+                                        }
+                                    } else {
+                                        if (stats[key].modifiers[mod] > 0 || (typeof stats[key].modifiers[mod] === "string" && stats[key].modifiers[mod] !== "")) {
+                                            if (mod === "crit_occurance") {
+                                                if (stats[key].modifiers[mod] !== "0~0") {
+                                                    return (
+                                                        <ModifierContainer key={mod}>
+                                                            <StatItemWrapper text={statCodeParser(mod)} value={stats[key].modifiers[mod]} prevValue={stats[key].modifiers[mod] !== "0~0" ? 1 : 0} size="small" data-s={titleColor}/>
+                                                        </ModifierContainer>
+                                                    );
+                                                }
+                                            } else {
+                                                return (
+                                                    <ModifierContainer key={mod}>
+                                                        <StatItemWrapper text={statCodeParser(mod)} value={stats[key].modifiers[mod]} size="small" data-s={titleColor}/>
+                                                    </ModifierContainer>
+                                                );
+                                            }
+                                        }
                                     }
                                 })}
                             </Modifiers>

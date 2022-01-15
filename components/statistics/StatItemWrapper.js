@@ -8,7 +8,7 @@ const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, e
         case "Damage": return {"tooltip": <TextTooltip title="Damage" text={`Damage is the amount of health a single hit of an attack removes.`} value={value} prevValue={prevValue} />};
         case "Pierce": return {"tooltip": <TextTooltip title="Pierce" text={`Pierce (a.k.a Popping Power) is the number of different targets a single projectile can hit.`} value={value} prevValue={prevValue} />};
         case "Range": return {"tooltip": <TextTooltip title="Range" text={`Range is the radius of the targetable area.`} value={value} prevValue={prevValue} />};
-        case "Atk Spd": return {"decimals": 3,"tooltip": <TextTooltip title="Attack Speed" text={`Attack Speed (a.k.a Reload time) is the number of seconds between attacks.`} value={value} prevValue={prevValue} />, "suffix": "&nbsp;s"};
+        case "Atk Spd": return {"lowerIsBuff": true, "decimals": 3,"tooltip": <TextTooltip title="Attack Speed" text={`Attack Speed (a.k.a Reload time) is the number of seconds between attacks.`} value={value} prevValue={prevValue} />, "suffix": "&nbsp;s"};
         case "Proj": return {"tooltip": <TextTooltip title="Projectiles" text={`Projectile count is the number of projectiles emitted at once.`} value={value} prevValue={prevValue} />};
         case "Type": return {"counter": false, "tooltip": <TypesTooltip type={value} prevType={prevValue} />};
         case "Camo": return {"tooltip": <DamageTooltip type="Camo" typeDamage={initialDamage} baseDamage={baseDamage} />};
@@ -25,13 +25,13 @@ const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, e
         case "Hotkey": return {"counter": false, "tooltip": <TextTooltip title="Default Hotkey" text={`Default keyboard hotkey keybind: ${value}`} />};
         case "Duration": return {"tooltip": <TextTooltip title="Duration" text={`Duration the tower base attack lasts in seconds. (e.g. Banana Farm passive bananas)`} value={value} prevValue={prevValue} />, "suffix": "&nbsp;s"};
         case "Footprint": return {"counter": false, "tooltip": <TextTooltip title="Map Footprint" text={`Size the tower takes up on the map: ${value}`} />};
-        case "Delay": return {"tooltip": <TextTooltip title="Delay" text={`Delay until the attack occurs in seconds`} value={value} prevValue={prevValue} />, "suffix": "&nbsp;s"};
+        case "Delay": return {"lowerIsBuff": true, "tooltip": <TextTooltip title="Delay" text={`Delay until the attack occurs in seconds`} value={value} prevValue={prevValue} />, "suffix": "&nbsp;s"};
         case "Income": return {"prefix": "+&nbsp;$", "tooltip": <TextTooltip title="Income" text={`Money generated per/each round`} value={value} prevValue={prevValue} />};
         case "Crit Rate": return {"counter": false, "tooltip": <TextTooltip title="Critical Occurrence" text={`Critical damage occurs every ${value} shots (where '~' is referred as 'to') `} />};
-        case "Cooldown": return {"tooltip": <TextTooltip title="Cooldown" text={`Cooldown timer: ${value} seconds`} />};
-        case "P Impact": return {"tooltip": <TextTooltip title="Pierce Impact" text={`Pierce Impact: ${value}`} />};
-        case "Slow": return {"tooltip": <TextTooltip title="Slow" text={`Slow is a applied to all bloons: ${value * 100}%`} />};
-        case "Max/Round": return {"tooltip": <TextTooltip title="Max per Round" text={`Max uses per round: ${value}`} />};
+        case "Cooldown": return {"lowerIsBuff": true, "tooltip": <TextTooltip title="Cooldown" text={`Cooldown timer: ${value} seconds`} value={value} prevValue={prevValue} />};
+        case "P Impact": return {"tooltip": <TextTooltip title="Pierce Impact" text={`Pierce Impact: ${value}`} value={value} prevValue={prevValue}/>};
+        case "Slow": return {"tooltip": <TextTooltip title="Slow" text={`Slow is a applied to all bloons: ${value * 100}%`} value={value} prevValue={prevValue} />};
+        case "Max/Round": return {"tooltip": <TextTooltip title="Max per Round" text={`Max uses per round: ${value}`} value={value} prevValue={prevValue} />};
         default: return {"tooltip": <TextTooltip text={`Error: ${code} : ${value}`} />};
     }
 };
@@ -46,11 +46,7 @@ export default function StatItemWrapper({text, value, prevValue, initialDamage, 
                 text={text}
                 value={value}
                 prevValue={prevValue}
-                tooltip={codeValue.tooltip}
-                counter={codeValue.counter}
-                prefix={codeValue.prefix}
-                suffix={codeValue.suffix}
-                decimals={codeValue.decimals}
+                {...codeValue}
                 {...rest}
             />
         </>

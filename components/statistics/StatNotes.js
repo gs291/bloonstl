@@ -10,6 +10,7 @@ const NoteContainer = styled("ul", globalOptions)`
   width: 100%;
 
   padding-left: ${props => props["data-s"] === "medium" ? 40 : 25}px;
+  padding-right: ${props => props["data-s"] === "medium" ? 40 : 25}px;
 `;
 
 const ListItem = styled("li", globalOptions)`
