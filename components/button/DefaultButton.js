@@ -10,32 +10,31 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 const StyledButton = styled(Button, globalOptions)`
     color: ${props => props["data-bc"]
     ? props["data-bc"]
-    : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
+    : props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   
-  border-color: ${props =>
-          rgbaHex(props["data-bc"]
-                          ? props["data-bc"]
-                          : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-                  , 0.5)};
+  transition: 0.3s;
+  border-color: ${props => 
+          props["data-bc"] 
+                  ? props["data-bc"]
+                  : props["data-dm"] ? siteColors.button.dark : siteColors.button.light
+  };
   
-  ${props => props["variant"] !== "outlined" && `
-  background-color: ${rgbaHex(
+  ${props => props["variant"] !== "outlined" && `background-color: ${rgbaHex(
       props["data-bc"] 
               ? props["data-bc"] 
-              : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-          , props["data-dm"] ? 0 : 0.75)};
-  `}
+              : props["data-dm"] ? siteColors.button.dark : siteColors.button.light
+          , props["data-dm"] ? 0 : 0.75)};`}
   
   &:hover {
     background-color: ${props =>
     rgbaHex(props["data-bc"]
             ? props["data-bc"]
-            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
+            : props["data-dm"] ? siteColors.button.dark : siteColors.button.light
         , props["data-dm"] ? 0.1 : 0.5)};
     
     border-color: ${props => props["data-bc"]
     ? props["data-bc"]
-    : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
+    : props["data-dm"] ? siteColors.button.dark : siteColors.button.light};
   }
 `;
 

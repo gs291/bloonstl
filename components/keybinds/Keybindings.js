@@ -1,11 +1,11 @@
 import {useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {FormControl, FormControlLabel, Switch} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 import ImageFill from "../image/ImageFill";
 import siteColors from "../../lib/utils/siteColors";
+import DefaultButton from "../button/DefaultButton";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
@@ -31,29 +31,11 @@ const Description = styled(TowerText)`
   margin-top: 20px;
 `;
 
-const SliderContainer = styled(FormControl, globalOptions)`
+const ButtonContainer = styled("div", globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   transition: 0.3s;
   margin-top: 20px;
   margin-bottom: 20px;
-`;
-
-const Label = styled(FormControlLabel)`
-  color: inherit;
-  
-  & .MuiFormControlLabel-label {
-    font-size: 1.5em;
-  }
-`;
-
-const Slider = styled(Switch, globalOptions)`
-    & .MuiSwitch-switchBase.Mui-checked {
-      color: ${props => props["data-dm"] ? siteColors.switch.dark : siteColors.switch.light};
-    }
-
-  & .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track{
-    background-color: ${props => props["data-dm"] ? siteColors.switch.dark : siteColors.switch.light};
-  }
 `;
 
 const ImgContainer = styled("a")`
@@ -80,8 +62,8 @@ export default function Keybindings({ className, tag }) {
         "true": "resources/hotkeys-icons.png"
     };
 
-    const handleChange = (e) => {
-        setShow(e.target.checked);
+    const handleClick = () => {
+        setShow(prevShow => !prevShow);
     };
 
     return (
@@ -92,18 +74,15 @@ export default function Keybindings({ className, tag }) {
                 </Title>
                 <Description variant="h6" font={true}>
                     Below is a useful visual representation of the default in-game keybindings.
-                    Toggle the slider below to switch between keyboard keys and icons. Click on the image to view the full image.
+                   Click the button below to switch between keyboard keys and icons. Click on the image to view the full image.
                 </Description>
-                <SliderContainer data-dm={darkMode}>
-                    <Label
-                        control={<Slider
-                            checked={show}
-                            onChange={handleChange}
-                            data-dm={darkMode}
-                        />}
-                        label="Replace keys with icons"
-                    />
-                </SliderContainer>
+                <ButtonContainer data-dm={darkMode}>
+                    <DefaultButton variant={darkMode ? "outlined" : "contained"} onClick={handleClick}>
+                        <TowerText variant="h6">
+                            REPLACE {show ? "ICONS WITH KEYS" : "KEYS WITH ICONS"}
+                        </TowerText>
+                    </DefaultButton>
+                </ButtonContainer>
 
                 <ImgContainer href={`https://res.cloudinary.com/bloons/image/upload/q_100/${src[show]}`}>
                     <ImageFill src={src[show]} alt="Hotkey image helper" quality={100} />
