@@ -8,6 +8,7 @@ import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
 import NavDrawer from "../navbar/NavDrawer";
 import ReturnToTop from "../return/ReturnToTop";
+import {initializeGA} from "../../lib/utils/ga4";
 import siteColors from "../../lib/utils/siteColors";
 import { updateMobile } from "../../lib/redux/actions";
 import ConsentToast from "../legal/consent/ConsentToast";
@@ -69,6 +70,10 @@ export default function Page(props) {
         background-color: ${darkMode ? siteColors.scroll.hover.dark : siteColors.scroll.hover.light};
       }
     `;
+
+    useEffect(() => {
+        initializeGA();
+    }, []);
 
     return (
         <>
