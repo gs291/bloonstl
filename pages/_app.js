@@ -36,7 +36,6 @@ const globals = css`
     padding: 0;
     margin: 0;
     font-family: ${font_family};
-    scroll-behavior: smooth;
   }
   
   a {
