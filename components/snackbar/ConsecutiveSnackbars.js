@@ -77,7 +77,7 @@ export default function ConsecutiveSnackbars({snackPack, setSnackPack, open, set
             <Snackbar
                 key={messageInfo ? messageInfo.key : undefined}
                 open={open}
-                autoHideDuration={6000}
+                autoHideDuration={3000}
                 anchorOrigin={{
                     vertical: "bottom",
                     horizontal: "center"

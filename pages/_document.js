@@ -9,9 +9,6 @@ export default class MyDocument extends Document {
                 <Head >
                     <link rel="icon" href="/favicon.ico" />
 
-                    {/* Responsive Meta Tag */}
-                    <meta name="viewport" content="initial-scale=1, width=device-width" />
-
                     {/*// <!-- Global site tag (gtag.js) - Google Analytics --> */}
                     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERWW6617M8" />
                     <script
