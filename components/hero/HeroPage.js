@@ -110,7 +110,7 @@ export default function HeroPage({ hero }) {
                 Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} />
             </PathXPCost>
             <Abilities
-                abilities={ hero.abilities } heroFile={ hero.filename }
+                abilities={hero.abilities} heroName={hero.name} heroFile={hero.filename}
                 defaultStats={hero.stats} setStats={setStats} tier={hero.tier}
                 path={path} initialPros={hero.info.pros} initialCons={hero.info.cons} setPath={sandbox && !pauseSandbox && setPath}
             />

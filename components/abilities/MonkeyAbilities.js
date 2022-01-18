@@ -14,6 +14,7 @@ import {
     getMonkeyAbilityParseOrder,
     parseAbilityModifiers
 } from "../../lib/utils/utils";
+import {ga4SendAbilityClick} from "../../lib/utils/ga4";
 
 const AbilitiesContainer = styled("div")`
   display: flex;
@@ -102,36 +103,47 @@ class MonkeyAbilities extends PureComponent {
     }
 
     getAbilities() {
-        const { abilities, monkeyFile, tier, path, setPath, handlePathChange, setSnackPack } = this.props;
+        const { abilities, monkeyName, monkeyFile, tier, path, setPath, handlePathChange, setSnackPack } = this.props;
 
         let pathTop = [], pathMiddle = [], pathBottom = [], paragon = null;
 
         abilities.forEach(ability => {
             if (ability.upgrade_path === 0) {
+                const onClick = handlePathChange
+                    ? () => {handlePathChange({"top_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}); ga4SendAbilityClick({...path, "top_path": ability.upgrade_tier + 1}, ability, monkeyName, true, "monkey");}
+                    : () => ga4SendAbilityClick(null, ability, monkeyName, false, "monkey");
                 pathTop.push(
-                    <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
-                                      onClick={handlePathChange ? () => handlePathChange({"top_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
-                                      selected={ability.upgrade_tier < path.top_path} key={ability.id}
-                    />);
-
+                    <AbilityContainer
+                        ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
+                        onClick={onClick} selected={ability.upgrade_tier < path.top_path} key={ability.id} />
+                );
             } else if (ability.upgrade_path === 1) {
+                const onClick = handlePathChange
+                    ? () => {handlePathChange({"middle_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}); ga4SendAbilityClick({...path, "middle_path": ability.upgrade_tier + 1}, ability, monkeyName, true, "monkey");}
+                    : () => ga4SendAbilityClick(null, ability, monkeyName, false, "monkey");
                 pathMiddle.push(
-                    <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
-                                      onClick={handlePathChange ? () => handlePathChange({"middle_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
-                                      selected={ability.upgrade_tier < path.middle_path} key={ability.id}
-                    />);
+                    <AbilityContainer
+                        ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
+                        onClick={onClick} selected={ability.upgrade_tier < path.middle_path} key={ability.id} />
+                );
             } else if (ability.upgrade_path === 2) {
+                const onClick = handlePathChange
+                    ? () => {handlePathChange({"bottom_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}); ga4SendAbilityClick({...path, "bottom_path": ability.upgrade_tier + 1}, ability, monkeyName, true, "monkey");}
+                    : () => ga4SendAbilityClick(null, ability, monkeyName, false, "monkey");
                 pathBottom.push(
-                    <AbilityContainer ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
-                                      onClick={handlePathChange ? () => handlePathChange({"bottom_path": ability.upgrade_tier + 1}, {setPath, setSnackPack}) : () => {}}
-                                      selected={ability.upgrade_tier < path.bottom_path} key={ability.id}
-                    />);
+                    <AbilityContainer
+                        ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
+                        onClick={onClick} selected={ability.upgrade_tier < path.bottom_path} key={ability.id} />
+                );
             } else if (ability.upgrade_path === 3) {
+                const onClick = handlePathChange
+                    ? () => {handlePathChange({"top_path": 5, "middle_path": 5, "bottom_path": 5}, {setPath, setSnackPack}); ga4SendAbilityClick({"top_path": 5, "middle_path": 5, "bottom_path": 5}, ability, monkeyName, true, "monkey");}
+                    : () => ga4SendAbilityClick(null, ability, monkeyName, false, "monkey");
                 paragon = (
                     <Paragon
-                        ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
-                        onClick={handlePathChange ? () => handlePathChange({"top_path": 5, "middle_path": 5, "bottom_path": 5}, {setPath, setSnackPack}) : () => {}}
-                        selected={path.top_path === 5 && path.middle_path === 5 && path.bottom_path === 5} />);
+                        ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey" onClick={onClick}
+                        selected={path.top_path === 5 && path.middle_path === 5 && path.bottom_path === 5} key={ability.id} />
+                );
             }
         });
         return {
@@ -165,7 +177,7 @@ class MonkeyAbilities extends PureComponent {
                             {...paragon}
                         )}
                     </AllAbilities>
-                    <ShowAllAbilityModifiers tier={tier} paragon={paragon ? true : false}/>
+                    <ShowAllAbilityModifiers tier={tier} paragon={paragon !== null}/>
                 </AbilitiesContainer>
             </>
         );

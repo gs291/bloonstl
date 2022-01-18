@@ -144,7 +144,7 @@ export default function MonkeyPage({ monkey }) {
             </PathCost>
             <MonkeyAbilities
                 abilities={monkey.abilities}
-                monkeyFile={monkey.filename}
+                monkeyName={monkey.name} monkeyFile={monkey.filename}
                 tier={sandbox ? monkey.tier : tier}
                 path={path} setPath={setPath} handlePathChange={sandbox && !pauseSandbox && handlePathChange}
                 stats={monkey.stats} setStats={setStats} setSnackPack={setSnackPack}

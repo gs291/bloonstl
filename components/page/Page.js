@@ -8,8 +8,8 @@ import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
 import NavDrawer from "../navbar/NavDrawer";
 import ReturnToTop from "../return/ReturnToTop";
-import {initializeGA} from "../../lib/utils/ga4";
 import siteColors from "../../lib/utils/siteColors";
+import {ga4SendPageView} from "../../lib/utils/ga4";
 import { updateMobile } from "../../lib/redux/actions";
 import ConsentToast from "../legal/consent/ConsentToast";
 import {globalOptions} from "../../lib/utils/emotionStyled";
@@ -72,7 +72,7 @@ export default function Page(props) {
     `;
 
     useEffect(() => {
-        initializeGA();
+        ga4SendPageView();
     }, []);
 
     return (
