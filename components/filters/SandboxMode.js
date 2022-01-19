@@ -7,6 +7,7 @@ import {getTierColor} from "../../lib/utils/utils";
 import DefaultButton from "../button/DefaultButton";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import ColorChangingDivider from "../divider/ColorChangingDivider";
+import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 const Group = styled(FormGroup)`
   align-items: center;
@@ -46,17 +47,37 @@ const CaptionText = styled(HelperText)`
   margin-bottom: 20px;
 `;
 
+const GA4_SANDBOX_MODE_ID = "SANDBOX_MODE";
+const GA4_SANDBOX_MODE_PAUSE_ID = `${GA4_SANDBOX_MODE_ID}_PAUSE`;
+const GA4_SANDBOX_MODE_RESET_ID = `${GA4_SANDBOX_MODE_ID}_RESET`;
 export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pauseSandbox, setPauseSandbox, towerType, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
+    const handleResetButton = () => {
+        handleReset();
+        ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_SANDBOX_MODE_RESET_ID}`});
+    }
+
     const handleSandboxChange = () => {
-        setSandbox(prevSandbox => !prevSandbox);
+        setSandbox(prevSandbox => {
+            ga4SendSelectContent(SELECT_CONTENT_BUTTON, {
+                item_id: `${BUTTON_PREFIX}${GA4_SANDBOX_MODE_ID}`,
+                item_checked: !prevSandbox
+            });
+            return !prevSandbox;
+        });
         setPauseSandbox(false);
     };
 
     const handlePauseChange = () => {
-        setPauseSandbox(prevPause => !prevPause);
+        setPauseSandbox(prevPause => {
+            ga4SendSelectContent(SELECT_CONTENT_BUTTON, {
+                item_id: `${BUTTON_PREFIX}${GA4_SANDBOX_MODE_PAUSE_ID}`,
+                item_checked: !prevPause
+            });
+            return !prevPause;
+        });
     };
 
     return (
@@ -64,7 +85,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
             <Group {...rest}>
                 {sandbox && (
                     <DefaultButton
-                        onClick={handleReset}
+                        onClick={handleResetButton}
                         data-bc={getTierColor(tier)}
                         variant={darkMode ? "outlined" : "contained"}
                     >
@@ -126,7 +147,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
 
                 {sandbox && (
                     <DefaultButton
-                        onClick={handleReset}
+                        onClick={handleResetButton}
                         data-bc={getTierColor(tier)}
                         variant={darkMode ? "outlined" : "contained"}
                     >

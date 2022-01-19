@@ -1,9 +1,7 @@
 import {Grid} from "@mui/material";
 import styled from "@emotion/styled";
-import { PureComponent } from "react";
+import {PureComponent} from "react";
 
-import AbilityContainer from "../ability/AbilityContainer";
-import ShowAllAbilityModifiers from "./ShowAllAbilityModifiers";
 import {
     checkDuplicateProsCons,
     concatToStringIfMissing,
@@ -11,6 +9,8 @@ import {
     parseAbilityModifiers
 } from "../../lib/utils/utils";
 import {ga4SendAbilityClick} from "../../lib/utils/ga4";
+import AbilityContainer from "../ability/AbilityContainer";
+import ShowAllAbilityModifiers from "./ShowAllAbilityModifiers";
 
 const AbilitiesContainer = styled("div")`
   display: flex;

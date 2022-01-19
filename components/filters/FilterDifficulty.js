@@ -43,15 +43,15 @@ export default function FilterDifficulty({ className, color }) {
 
     const easyMed = (
         <>
-            <DifficultyButton difficulty={"easy"} selected={difficulty === "easy"} color={color} handleChange={handleDifficulty} />
-            <DifficultyButton difficulty={"medium"} selected={difficulty === "medium"} color={color} handleChange={handleDifficulty} />
+            <DifficultyButton difficulty="easy" selected={difficulty === "easy"} color={color} handleChange={handleDifficulty} />
+            <DifficultyButton difficulty="medium" selected={difficulty === "medium"} color={color} handleChange={handleDifficulty} />
         </>
     );
 
     const hardImp = (
         <>
-            <DifficultyButton difficulty={"hard"} selected={difficulty === "hard"} color={color} handleChange={handleDifficulty} />
-            <DifficultyButton difficulty={"impoppable"} selected={difficulty === "impoppable"} color={color} handleChange={handleDifficulty} />
+            <DifficultyButton difficulty="hard" selected={difficulty === "hard"} color={color} handleChange={handleDifficulty} />
+            <DifficultyButton difficulty="impoppable" selected={difficulty === "impoppable"} color={color} handleChange={handleDifficulty} />
         </>
     )
 

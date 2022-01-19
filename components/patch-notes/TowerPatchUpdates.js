@@ -15,6 +15,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
 import {getDarkMode, getMobile, getPageData} from "../../lib/redux/selectors";
+import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
 
 
 const PatchContainer = styled("div", globalOptions)`
@@ -60,6 +61,7 @@ const FooterContainer = styled("div")`
 `;
 
 
+const GA4_LOAD_MORE_BUTTON_ID = "PATCH_LOAD_MORE";
 export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
     const elemRef = useRef();
     const isVisible = useVisible(elemRef);
@@ -121,6 +123,7 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
 
     const handleFetch = () => {
         setFetch(prevFetch => !prevFetch);
+        ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_LOAD_MORE_BUTTON_ID}`});
     }
 
     return (

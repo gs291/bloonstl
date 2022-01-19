@@ -8,6 +8,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getTierColor, rgbaHex} from "../../lib/utils/utils";
 import {TOGGLE_TOOLTIP_MODIFIERS, updateFilter} from "../../lib/redux/actions";
 import {getDarkMode, getMobile, getShowTooltipModifiers} from "../../lib/redux/selectors";
+import {CHECKBOX_PREFIX, SELECT_CONTENT_CHECKBOX, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
 const Group = styled(FormGroup, globalOptions)`
@@ -45,6 +46,8 @@ const StyledCheckbox = styled(Checkbox, globalOptions)`
   }
 `;
 
+
+const GA4_SHOW_ALL_ABILITY_MODIFIERS_ID = "MODIFIERS";
 export default function ShowAllAbilityModifiers({tier, paragon = false, ...rest}) {
     const dispatch = useDispatch();
 
@@ -52,7 +55,13 @@ export default function ShowAllAbilityModifiers({tier, paragon = false, ...rest}
     const darkMode = useSelector(getDarkMode);
     const showAllModifiers = useSelector(getShowTooltipModifiers);
 
-    const handleShowAllModifiers = (event) => dispatch(updateFilter(TOGGLE_TOOLTIP_MODIFIERS, event.target.checked));
+    const handleShowAllModifiers = (event) => {
+        dispatch(updateFilter(TOGGLE_TOOLTIP_MODIFIERS, event.target.checked));
+        ga4SendSelectContent(SELECT_CONTENT_CHECKBOX, {
+            item_id: `${CHECKBOX_PREFIX}${GA4_SHOW_ALL_ABILITY_MODIFIERS_ID}`,
+            item_checked: event.target.checked
+        });
+    }
 
     return (
         <>

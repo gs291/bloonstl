@@ -3,10 +3,6 @@ import {connect} from "react-redux";
 import {PureComponent} from "react";
 import styled from "@emotion/styled";
 
-import Paragon from "../ability/Paragon";
-import AbilityContainer from "../ability/AbilityContainer";
-import {globalOptions} from "../../lib/utils/emotionStyled";
-import ShowAllAbilityModifiers from "./ShowAllAbilityModifiers";
 import {
     checkDuplicateProsCons,
     concatToStringIfMissing,
@@ -14,7 +10,11 @@ import {
     getMonkeyAbilityParseOrder,
     parseAbilityModifiers
 } from "../../lib/utils/utils";
+import Paragon from "../ability/Paragon";
 import {ga4SendAbilityClick} from "../../lib/utils/ga4";
+import AbilityContainer from "../ability/AbilityContainer";
+import {globalOptions} from "../../lib/utils/emotionStyled";
+import ShowAllAbilityModifiers from "./ShowAllAbilityModifiers";
 
 const AbilitiesContainer = styled("div")`
   display: flex;
