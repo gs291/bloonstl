@@ -53,6 +53,7 @@ export default function GridProsCons({ className, isPro, proCons}) {
                                             isPro={isPro}
                                             title={pc.title}
                                             text={isPro ? pc.pro : pc.con}
+                                            chipType="main"
                                         />
                                     </ChipItem>
                                 )

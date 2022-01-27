@@ -49,7 +49,7 @@ export default function Legal({  }) {
     return (
         <>
             <LegalText variant="h4" font={true}>
-                Site Directory for the Legal pages:
+                Site directory for the legal pages
             </LegalText>
             <LegalLinks>
                 <FullLink href="cookie-policy" title="Cookie Policy" />

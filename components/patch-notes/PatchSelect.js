@@ -9,6 +9,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {patchVersions} from "../../lib/utils/patches";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
 const useStyles = makeStyles({
@@ -65,9 +66,24 @@ const SelectItemText = styled(TowerText)`
   }
 `;
 
+
+const GA4_PATCH_SELECT_ID = "PATCH_SELECT";
 export default function PatchSelect({ className, patch, handlePatchSelect }) {
     const darkMode = useSelector(getDarkMode);
     const classes = useStyles({darkMode});
+
+    const handleOpen = () => ga4SendSelectContent(SELECT_CONTENT_BUTTON, {
+        item_id: `${BUTTON_PREFIX}${GA4_PATCH_SELECT_ID}`,
+        version: "open"
+    });
+
+    const handleChange = (e) => {
+        handlePatchSelect(e);
+        ga4SendSelectContent(SELECT_CONTENT_BUTTON, {
+            item_id: `${BUTTON_PREFIX}${GA4_PATCH_SELECT_ID}`,
+            version: e.target.value
+        });
+    };
 
     return (
         <>
@@ -77,7 +93,8 @@ export default function PatchSelect({ className, patch, handlePatchSelect }) {
                     <VersionSelect
                         labelId="patch-select-label"
                         value={patch}
-                        onChange={handlePatchSelect}
+                        onOpen={handleOpen}
+                        onChange={handleChange}
                         data-dm={darkMode}
                         MenuProps={{
                             classes: { paper: classes.menuPaper },

@@ -8,6 +8,7 @@ import siteColors from "../../lib/utils/siteColors";
 import DefaultButton from "../button/DefaultButton";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 const KeybindContainer = styled("div")`
   width: 100%;
@@ -54,6 +55,8 @@ const TextLink = styled("a")`
   text-decoration: underline;
 `;
 
+
+const GA4_KEYBINDINGS_ID = "KEYBINDINGS";
 export default function Keybindings({ className, tag }) {
     const darkMode = useSelector(getDarkMode);
     const [show, setShow] = useState(false);
@@ -64,6 +67,7 @@ export default function Keybindings({ className, tag }) {
 
     const handleClick = () => {
         setShow(prevShow => !prevShow);
+        ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_KEYBINDINGS_ID}`});
     };
 
     return (

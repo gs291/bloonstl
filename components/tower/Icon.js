@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 import ImageFill from "../image/ImageFill";
-import { getImageUrl } from "../../lib/utils/utils";
+import {getImageUrl} from "../../lib/utils/utils";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
 const IconContainer  = styled("div", globalOptions)`
@@ -21,7 +21,7 @@ const ImgContainer = styled("div", globalOptions)`
   max-height: ${props => props["data-t"] === "monkey" ? 300 : props["data-t"] === "hero" ? 300 : 150}px;
 `;
 
-export default function Icon({ className, tower, towerType, detailed }) {
+export default function Icon({ className, tower, towerType, detailed, priority }) {
     return (
         <>
             <IconContainer data-d={detailed} className={className}>
@@ -30,6 +30,7 @@ export default function Icon({ className, tower, towerType, detailed }) {
                         src={getImageUrl(tower.filename)}
                         quality={100}
                         alt={tower.name}
+                        priority={priority}
                     />
                 </ImgContainer>
             </IconContainer>

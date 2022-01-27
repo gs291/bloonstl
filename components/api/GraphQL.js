@@ -11,6 +11,7 @@ import FixedDivider from "../divider/FixedDivider";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import {EXPAND_PREFIX, SELECT_CONTENT_EXPAND, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 const GraphQLContainer = styled("div")`
   width: 100%;
@@ -77,6 +78,8 @@ const ExpandedDetails = styled(AccordionDetails, globalOptions)`
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
 `;
 
+
+const GA4_GRAPHQL_EXPAND_ID = "GRAPHQL_EXPAND";
 export default function GraphQL({ className, api, tag}) {
     const darkMode = useSelector(getDarkMode);
     const [path, setPath] = useState("");
@@ -86,6 +89,11 @@ export default function GraphQL({ className, api, tag}) {
             setPath(`${window.location.protocol}//${window.location.host}/api/graphql`)
         }
     }, [])
+
+    const handleClick = () =>  ga4SendSelectContent(SELECT_CONTENT_EXPAND, {
+        item_id: `${EXPAND_PREFIX}${GA4_GRAPHQL_EXPAND_ID}`,
+        expand: "main"
+    });
 
     return (
         <>
@@ -111,7 +119,7 @@ export default function GraphQL({ className, api, tag}) {
                     <Expander data-dm={darkMode}>
                         <ExpanderSummary
                             expandIcon={<ExpandMore data-dm={darkMode} />}
-                            data-dm={darkMode}
+                            onClick={handleClick} data-dm={darkMode}
                         >
                             <TowerText variant="h5">Queries and Objects</TowerText>
                         </ExpanderSummary>

@@ -7,6 +7,7 @@ import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import {ga4SendSelectContent, LINK_PREFIX, SELECT_CONTENT_LINK} from "../../lib/utils/ga4";
 
 const TocContainer = styled("div")`
   display: flex;
@@ -74,8 +75,14 @@ const TocText = styled(TowerText)`
   padding-left: 10px;
 `;
 
+const GA4_TABLE_OF_CONTENTS_ID = "TABLE_OF_CONTENTS";
 export default function TableOfContents({ tags, className }) {
     const darkMode = useSelector(getDarkMode);
+
+    const handleClick = (href) => ga4SendSelectContent(SELECT_CONTENT_LINK, {
+        item_id: `${LINK_PREFIX}${GA4_TABLE_OF_CONTENTS_ID}`,
+        href: href,
+    });
 
     return (
         <>
@@ -88,10 +95,10 @@ export default function TableOfContents({ tags, className }) {
                 <TocWrapper data-dm={darkMode}>
                     <TocList>
                         {tags.map(tag => (
-                            <TocItem key={tag.href} data-dm={darkMode}>
+                            <TocItem key={tag.href} data-dm={darkMode} onClick={() => handleClick(`#${tag.href}`)}>
                                 <Link href={`#${tag.href}`}>
                                     <TocLink data-dm={darkMode}>
-                                        <TocText variant="h6">
+                                        <TocText variant="h6" data-h={`#${tag.href}`}>
                                             {tag.title}
                                         </TocText>
                                     </TocLink>

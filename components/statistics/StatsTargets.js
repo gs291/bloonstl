@@ -23,7 +23,7 @@ const conversion = {
     "ceramic": "cm"
 }
 
-export default function StatsTargets({targets}) {
+export default function StatsTargets({targets, statType}) {
 
     return (
         <>
@@ -42,6 +42,7 @@ export default function StatsTargets({targets}) {
                                     isPro={isPro}
                                     text={isPro ? proConChipInfo.pro : proConChipInfo.con}
                                     title={proConChipInfo.title}
+                                    chipType={statType}
                                 />
                             )
                         } else {

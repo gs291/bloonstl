@@ -2,7 +2,6 @@ import StatItem from "./StatItem";
 import TextTooltip from "../tooltip/TextTooltip";
 import TypesTooltip from "../tooltip/TypesTooltip";
 import DamageTooltip from "../tooltip/DamageTooltip";
-import {SELECT_CONTENT_STAT, STAT_PREFIX, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, extraDamage = 0) => {
     switch(code) {
@@ -17,7 +16,7 @@ const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, e
         case "Crit": return {"tooltip": <DamageTooltip type="Critical" typeDamage={initialDamage} baseDamage={baseDamage} />};
         case "Boss": return {"tooltip": <DamageTooltip type="Boss" typeDamage={initialDamage} baseDamage={baseDamage} />};
         case "Lead": return {"tooltip": <DamageTooltip type="Lead" typeDamage={initialDamage} baseDamage={baseDamage} />};
-        case "Moab": return {"tooltip": <DamageTooltip type="Moab" typeDamage={initialDamage} baseDamage={baseDamage} />};
+        case "MOAB": return {"tooltip": <DamageTooltip type="MOAB" typeDamage={initialDamage} baseDamage={baseDamage} />};
         case "Fortified": return {"tooltip": <DamageTooltip type="Fortified" typeDamage={initialDamage} baseDamage={baseDamage} />};
         case "F Lead": return {"tooltip": <DamageTooltip type="Fortified Lead" typeDamage={initialDamage} baseDamage={baseDamage} extraDamage={extraDamage} />};
         case "F MOAB": return {"tooltip": <DamageTooltip type="Fortified MOAB" typeDamage={initialDamage} baseDamage={baseDamage} extraDamage={extraDamage} />};
@@ -38,15 +37,10 @@ const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, e
 };
 
 
-const GA4_STAT_ITEM_ID = "STAT_ITEM";
+
 export default function StatItemWrapper({text, value, prevValue, initialDamage, baseDamage, extraDamage, ...rest}) {
 
     const codeValue = codeParser(text, value, prevValue, initialDamage, baseDamage, extraDamage);
-
-    const handleClick = () => ga4SendSelectContent(SELECT_CONTENT_STAT, {
-        item_id: `${STAT_PREFIX}${GA4_STAT_ITEM_ID}`,
-        stat: text
-    });
 
     return (
         <>
