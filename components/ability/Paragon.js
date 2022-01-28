@@ -95,8 +95,9 @@ export default function Paragon({ability, fileName, tier, towerType, selected, .
     const [open, setOpen] = useState(false);
     const [touchTimeout, setTouchTimeout] = useState(false);
 
-    const handleTimeout = () => {setTouchTimeout(true );};
     const handleEnter = () => {setOpen(true);};
+    const handleTimeout = () => {setOpen(true); setTouchTimeout(true);};
+
     const handleExit = () => {setOpen(false); setTouchTimeout(false);};
 
     useEffect(() => {
@@ -112,8 +113,11 @@ export default function Paragon({ability, fileName, tier, towerType, selected, .
         <>
             <ParagonContainer
                 onClick={handleEnter}
+                onBlur={handleExit}
+                onFocus={handleEnter}
                 onMouseEnter={handleEnter}
                 onMouseLeave={handleExit}
+                onTouchStart={handleExit}
                 onTouchEnd={handleTimeout}
                 data-m={mobile} data-dm={darkMode}
                 data-s={selected}
