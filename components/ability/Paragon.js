@@ -85,9 +85,7 @@ const DegreeContainer = styled("div")`
   gap: 0 5px;
 `;
 
-// There is a bug with this in mobile. On a mobile device (not where mobile is just set = true) if this is clicked
-// then waiting for the timeout causes it to close. if no other clicks were made in that time. attempting to reopen
-// the paragon tooltip will not work. I (gs291) was unable to figure out what mouse/touch event needed to be added
+
 export default function Paragon({ability, fileName, tier, towerType, selected, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
