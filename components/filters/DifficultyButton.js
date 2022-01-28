@@ -53,7 +53,7 @@ const DifficultyText = styled(Typography, globalOptions)`
   width: 150px;
 `;
 
-const GA4_DIFFICULTY_FILTER_ID = "FILTER_BUTTON";
+const GA4_DIFFICULTY_FILTER_ID = "FILTER_DIFFICULTY";
 export default function DifficultyButton({ className, difficulty, selected, color, handleChange }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
