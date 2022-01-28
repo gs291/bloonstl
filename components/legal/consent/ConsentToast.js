@@ -41,7 +41,7 @@ export default function ConsentToast({}) {
 
     const checkConsent = (clicked) => {
         const cookies = new Cookies();
-        const consent_cookie = cookies.get('eu_cookie_consent');
+        const consent_cookie = cookies.get('cookie_consent');
 
         if (consent_cookie && consent_cookie === "accepted") {
             closeBanner();

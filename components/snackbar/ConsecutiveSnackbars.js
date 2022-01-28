@@ -8,6 +8,7 @@ import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
 
 const PageAlert = styled(Alert, globalOptions)`
   width: ${props => props["data-m"] ? 90 : 100}%;
@@ -44,6 +45,8 @@ const PageAlert = styled(Alert, globalOptions)`
   }
 `;
 
+
+const GA4_SNACKBAR_CLOSE_ID = "SNACKBAR_CLOSE";
 // https://mui.com/components/snackbars/ example: Transitions -> Consecutive Snackbars
 export default function ConsecutiveSnackbars({snackPack, setSnackPack, open, setOpen, messageInfo, setMessageInfo}) {
     const mobile = useSelector(getMobile);
@@ -66,6 +69,8 @@ export default function ConsecutiveSnackbars({snackPack, setSnackPack, open, set
             return;
         }
         setOpen(false);
+
+        ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_SNACKBAR_CLOSE_ID}`})
     };
 
     const handleExited = () => {
