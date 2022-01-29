@@ -9,9 +9,15 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 //https://stackoverflow.com/questions/59934683/style-material-ui-tooltip-using-emotion-styled
+// Media is used for a specific case with ability tooltips causing page overflow x
 const StyledTooltip = styled(({ className, ...other }) => (
     <MUITooltip classes={{ tooltip: className }} {...other} />
 ), globalOptions)`
+  @media only screen and (min-width: 901px) and (max-width: 955px) {
+    min-width:${props => props["data-fw"] ? 400 : 0 }px;
+    max-width: 400px;
+  }
+  
   background-color: ${props => props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
   min-width:${props => props["data-fw"] 
           ? props["data-m"] ? 300 : 450
