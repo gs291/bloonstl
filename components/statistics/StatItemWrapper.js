@@ -16,7 +16,7 @@ const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, e
         case "Crit": return {"tooltip": <DamageTooltip type="Critical" typeDamage={initialDamage} baseDamage={baseDamage} />};
         case "Boss": return {"tooltip": <DamageTooltip type="Boss" typeDamage={initialDamage} baseDamage={baseDamage} />};
         case "Lead": return {"tooltip": <DamageTooltip type="Lead" typeDamage={initialDamage} baseDamage={baseDamage} />};
-        case "Moab": return {"tooltip": <DamageTooltip type="Moab" typeDamage={initialDamage} baseDamage={baseDamage} />};
+        case "MOAB": return {"tooltip": <DamageTooltip type="MOAB" typeDamage={initialDamage} baseDamage={baseDamage} />};
         case "Fortified": return {"tooltip": <DamageTooltip type="Fortified" typeDamage={initialDamage} baseDamage={baseDamage} />};
         case "F Lead": return {"tooltip": <DamageTooltip type="Fortified Lead" typeDamage={initialDamage} baseDamage={baseDamage} extraDamage={extraDamage} />};
         case "F MOAB": return {"tooltip": <DamageTooltip type="Fortified MOAB" typeDamage={initialDamage} baseDamage={baseDamage} extraDamage={extraDamage} />};
@@ -35,6 +35,8 @@ const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, e
         default: return {"tooltip": <TextTooltip text={`Error: ${code} : ${value}`} />};
     }
 };
+
+
 
 export default function StatItemWrapper({text, value, prevValue, initialDamage, baseDamage, extraDamage, ...rest}) {
 

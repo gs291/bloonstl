@@ -29,14 +29,15 @@ export default function TowerImgInfo({tower, towerType}) {
 
     return (
         <>
-            <TowerContainer container
-                            spacing={2}
-                            justifyContent="center"
-                            direction={mobile ? "column" : "row"}
-                            alignItems="center"
+            <TowerContainer
+                container
+                spacing={2}
+                justifyContent="center"
+                direction={mobile ? "column" : "row"}
+                alignItems="center"
             >
                 <Grid item xs={gridSpacing}>
-                    <Icon tower={tower} towerType={towerType} />
+                    <Icon tower={tower} towerType={towerType} priority={true} />
                 </Grid>
                 { !mobile && (<VerticalDivider backgroundColor={backgroundColor} />)}
                 <Grid item xs={gridSpacing}>

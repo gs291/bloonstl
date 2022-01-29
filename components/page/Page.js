@@ -9,6 +9,7 @@ import Navbar from "../navbar/Navbar";
 import NavDrawer from "../navbar/NavDrawer";
 import ReturnToTop from "../return/ReturnToTop";
 import siteColors from "../../lib/utils/siteColors";
+import {ga4SendPageView} from "../../lib/utils/ga4";
 import { updateMobile } from "../../lib/redux/actions";
 import ConsentToast from "../legal/consent/ConsentToast";
 import {globalOptions} from "../../lib/utils/emotionStyled";
@@ -69,6 +70,10 @@ export default function Page(props) {
         background-color: ${darkMode ? siteColors.scroll.hover.dark : siteColors.scroll.hover.light};
       }
     `;
+
+    useEffect(() => {
+        ga4SendPageView();
+    }, []);
 
     return (
         <>

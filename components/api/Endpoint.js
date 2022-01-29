@@ -8,6 +8,7 @@ import {rgbaHex} from "../../lib/utils/utils";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import {EXPAND_PREFIX, SELECT_CONTENT_EXPAND, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
 const EndpointContainer = styled("div")`
@@ -80,13 +81,20 @@ const ExpanderSummary = styled(AccordionSummary, globalOptions)`
 const ExpandedDetails = styled(AccordionDetails, globalOptions)`
   flex-direction: column;
 
-  padding-top: 20px;
+  padding-top: 20px;  
   padding-bottom: 20px;
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
 `;
 
+
+const GA4_GRAPHQL_ENDPOINT_EXPAND_ID = "GRAPHQL_EXPAND";
 export default function Endpoint({item}) {
     const darkMode = useSelector(getDarkMode);
+
+    const handleClick = () =>  ga4SendSelectContent(SELECT_CONTENT_EXPAND, {
+        item_id: `${EXPAND_PREFIX}${GA4_GRAPHQL_ENDPOINT_EXPAND_ID}`,
+        expand: item.name
+    });
 
     return (
        <>
@@ -120,7 +128,7 @@ export default function Endpoint({item}) {
                    <Expander data-dm={darkMode}>
                        <ExpanderSummary
                            expandIcon={<ExpandMore data-dm={darkMode} />}
-                           data-dm={darkMode}
+                           onClick={handleClick} data-dm={darkMode}
                        >
                            <TowerText variant="subtitle2">QUERY EXAMPLE</TowerText>
                        </ExpanderSummary>

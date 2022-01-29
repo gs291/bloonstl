@@ -8,6 +8,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {MAX_STAT_VALUE} from "../../lib/utils/utils";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import {ga4SendSelectContent, SELECT_CONTENT_STAT, STAT_PREFIX, textToGA4Text} from "../../lib/utils/ga4";
 
 const Item = styled("div")`
   display: flex;
@@ -109,17 +110,25 @@ const FullItem = ({text, value, prevValue, prefix, suffix, darkMode, counter = t
     </ItemContainer>
 );
 
-export default function StatItem({tooltip, ...rest}) {
+
+const GA4_STAT_ITEM_ID = "STAT_ITEM";
+export default function StatItem({tooltip, text, statType="main", ...rest}) {
     const darkMode = useSelector(getDarkMode);
+
+    const handleClick = () => ga4SendSelectContent(SELECT_CONTENT_STAT, {
+        item_id: `${STAT_PREFIX}${GA4_STAT_ITEM_ID}`,
+        type: statType,
+        name: text
+    });
 
     return (
         <>
             {tooltip ? (
-                <Tooltip title={tooltip}>
-                    <FullItem {...rest} darkMode={darkMode}/>
+                <Tooltip title={tooltip} ga4ID={`STAT_ITEM_${textToGA4Text(statType)}_${textToGA4Text(text)}`}>
+                    <FullItem text={text} onClick={handleClick} darkMode={darkMode} {...rest}/>
                 </Tooltip>
             ) : (
-                <FullItem {...rest} darkMode={darkMode}/>
+                <FullItem text={text} onClick={handleClick} darkMode={darkMode} {...rest} />
             )}
         </>
     );

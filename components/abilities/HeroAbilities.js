@@ -1,15 +1,16 @@
 import {Grid} from "@mui/material";
 import styled from "@emotion/styled";
-import { PureComponent } from "react";
+import {PureComponent} from "react";
 
-import AbilityContainer from "../ability/AbilityContainer";
-import ShowAllAbilityModifiers from "./ShowAllAbilityModifiers";
 import {
     checkDuplicateProsCons,
     concatToStringIfMissing,
     getInitialTowerStats,
     parseAbilityModifiers
 } from "../../lib/utils/utils";
+import {ga4SendAbilityClick} from "../../lib/utils/ga4";
+import AbilityContainer from "../ability/AbilityContainer";
+import ShowAllAbilityModifiers from "./ShowAllAbilityModifiers";
 
 const AbilitiesContainer = styled("div")`
   display: flex;
@@ -70,11 +71,14 @@ export default class HeroAbilities extends PureComponent {
     }
 
     getAbilities() {
-        const {abilities, tier, path, setPath, heroFile} = this.props;
+        const {abilities, tier, path, setPath, heroName, heroFile} = this.props;
 
         let dividedAbilities = [ [], [], [], [], [] ];
 
         abilities.forEach(ability => {
+            const onClick = setPath
+                ? () => {setPath(ability.upgrade_tier); ga4SendAbilityClick({"level_path": ability.upgrade_tier + 1}, ability, heroName, true, "hero");}
+                : () => ga4SendAbilityClick(null, ability, heroName, false, "hero");
             dividedAbilities[Math.floor(ability.upgrade_tier / 5)]
                 .push((
                     <AbilityContainer
@@ -84,7 +88,7 @@ export default class HeroAbilities extends PureComponent {
                         key={ability.id}
                         tier={tier}
                         selected={path + 1 > ability.upgrade_tier}
-                        onClick={setPath ? () => setPath(ability.upgrade_tier) : () => {}}
+                        onClick={onClick}
                     />
                 ));
         });

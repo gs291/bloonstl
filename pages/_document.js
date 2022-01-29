@@ -1,6 +1,6 @@
 import React from "react";
-import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@mui/styles";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
 export default class MyDocument extends Document {
     render() {
@@ -8,14 +8,6 @@ export default class MyDocument extends Document {
             <Html>
                 <Head >
                     <link rel="icon" href="/favicon.ico" />
-
-                    {/*// <!-- Global site tag (gtag.js) - Google Analytics --> */}
-                    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERWW6617M8" />
-                    <script
-                        dangerouslySetInnerHTML={{ __html:
-                                `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-ERWW6617M8');`
-                        }}
-                    />
 
                     {/*// <!-- Google AdSense --> */}
                     <script

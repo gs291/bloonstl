@@ -10,6 +10,7 @@ import {StyledEngineProvider, ThemeProvider} from "@mui/material/styles";
 
 import Page from "../components/page/Page";
 import {font_family} from "../lib/utils/utils";
+import {ga4Initialize} from "../lib/utils/ga4";
 import configureStore from "../lib/redux/store";
 import siteColors from "../lib/utils/siteColors";
 
@@ -36,7 +37,6 @@ const globals = css`
     padding: 0;
     margin: 0;
     font-family: ${font_family};
-    scroll-behavior: smooth;
   }
   
   a {
@@ -100,6 +100,8 @@ export default function App({ Component, pageProps }) {
         Router.events.on('routeChangeStart', progressStart);
         Router.events.on('routeChangeComplete', progressEnd);
         Router.events.on('routeChangeError', progressEnd);
+
+        ga4Initialize();
 
         return () => {
             Router.events.off('routeChangeStart', progressStart)

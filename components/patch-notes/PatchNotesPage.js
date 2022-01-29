@@ -17,6 +17,7 @@ import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
 import TableOfContents from "../table-of-contents/TableOfContents";
 import {getDarkMode, getMobile, getPageData} from "../../lib/redux/selectors";
+import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
 const PageContainer = styled("div")`
@@ -52,6 +53,7 @@ const Title = styled(TowerText)`
 `;
 
 
+const GA4_PATCH_BUTTON_ID = "PATCH_BUTTON";
 export default function PatchNotesPage({ patch }) {
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);
@@ -76,6 +78,14 @@ export default function PatchNotesPage({ patch }) {
             setPatchData(prevState => ({...prevState, [e.target.value]: {"release": "", "items": []}}));
         }
         setPatchVersion(e.target.value);
+    };
+
+    const handleButtonClick = (e) => {
+        handlePatchSelect(e);
+        ga4SendSelectContent(SELECT_CONTENT_BUTTON, {
+            item_id: `${BUTTON_PREFIX}${GA4_PATCH_BUTTON_ID}`,
+            version: e.target.type
+        })
     }
 
     useEffect( () => {
@@ -141,7 +151,7 @@ export default function PatchNotesPage({ patch }) {
                 <Select patch={patchVersion} handlePatchSelect={handlePatchSelect} />
                 <DefaultContainer data-m={mobile}>
                     <DefaultButton
-                        onClick={() => handlePatchSelect({target: {value: latest}})}
+                        onClick={() => handleButtonClick({target: {value: latest, type: "latest"}})}
                         variant={darkMode ? "outlined" : "contained"}
                         data-bc={darkMode ? siteColors.patch.button.dark : siteColors.patch.button.light}
                     >
@@ -150,7 +160,7 @@ export default function PatchNotesPage({ patch }) {
                         </TowerText>
                     </DefaultButton>
                     <DefaultButton
-                        onClick={() => handlePatchSelect({target: {value: latestMajor}})}
+                        onClick={() => handleButtonClick({target: {value: latestMajor, type: "latestMajor"}})}
                         variant={darkMode ? "outlined" : "contained"}
                         data-bc={darkMode ? siteColors.patch.button.dark : siteColors.patch.button.light}
                     >

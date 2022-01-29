@@ -93,6 +93,7 @@ export default function Ability({className, ability, fileName, tier, towerType, 
                             ? getTierColor(tier)
                             : null
                     }
+                    ga4ID={`ABILITY_${ability.upgrade_path}_${ability.upgrade_tier}_${ability.id}`}
                     placement={mobile ? "bottom" : "right"}
                     active={ability.active}
                 >

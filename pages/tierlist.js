@@ -2,7 +2,6 @@ import {dataSources} from "../lib/mysql/db";
 import Header from "../components/page/Header";
 import PageTitle from "../components/page/PageTitle";
 import MainContainer from "../components/page/MainContainer";
-import HorizontalAD from "../components/advertisment/HorizontalAD";
 import TierListGrid from "../components/tierlist-grid/TierListGrid";
 
 export default function TierList({s, a, b, c}) {
@@ -23,9 +22,7 @@ export default function TierList({s, a, b, c}) {
             <Header title="Tier List" />
             <MainContainer>
                 <PageTitle title="Tier List" />
-                <HorizontalAD />
                 <TierListGrid tiers={tiers}/>
-                <HorizontalAD />
             </MainContainer>
         </>
     );

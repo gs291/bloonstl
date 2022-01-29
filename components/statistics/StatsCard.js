@@ -113,7 +113,7 @@ const statCodeParser = (code) => {
     const codes = {
         "damage": "Damage", "pierce": "Pierce", "range": "Range", "attack_speed": "Atk Spd", "damage_type": "Type",
         "camo_damage": "Camo", "ceramic_damage": "Ceramic", "crit_damage": "Crit", "boss_damage": "Boss", "pierce_impact": "P Impact",
-        "lead_damage": "Lead", "moab_damage": "Moab", "fortified_damage": "Fortified", "delay": "Delay", "max_per_round": "Max/Round",
+        "lead_damage": "Lead", "moab_damage": "MOAB", "fortified_damage": "Fortified", "delay": "Delay", "max_per_round": "Max/Round",
         "fortified_lead_damage": "F Lead", "fortified_moab_damage": "F Moab", "status_damage": "Status",
         "stun_damage": "Stun", "hotkey": "Hotkey", "footprint": "Footprint", "income": "Income", "slow": "Slow",
         "projectile_count": "Proj", "duration": "Duration", "cooldown": "Cooldown", "crit_occurance": "Crit Rate",
@@ -188,7 +188,7 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                                                         text={statCodeParser(mod)}
                                                         value={stats[key].modifiers[mod]}
                                                         prevValue={stats[key].defaults[mod]}
-                                                        size="small" data-s={titleColor}
+                                                        size="small" data-s={titleColor} statType={cardType}
                                                     />
                                                 </ModifierContainer>
                                             );
@@ -203,7 +203,7 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                                                         prevValue={stats[key].defaults[mod] + stats[key].defaults.damage}
                                                         initialDamage={stats[key].modifiers[mod]}
                                                         baseDamage={stats[key].modifiers.damage}
-                                                        size="small" data-s={titleColor}
+                                                        size="small" data-s={titleColor} statType={cardType}
                                                     />
                                                 </ModifierContainer>
                                             );
@@ -221,7 +221,7 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                                                         initialDamage={stats[key].modifiers[mod]}
                                                         baseDamage={stats[key].modifiers.damage}
                                                         extraDamage={modExtraDamage}
-                                                        size="small" data-s={titleColor}
+                                                        size="small" data-s={titleColor} statType={cardType}
                                                     />
                                                 </ModifierContainer>
                                             );
@@ -232,14 +232,14 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                                                 if (stats[key].modifiers[mod] !== "0~0") {
                                                     return (
                                                         <ModifierContainer key={mod}>
-                                                            <StatItemWrapper text={statCodeParser(mod)} value={stats[key].modifiers[mod]} prevValue={stats[key].modifiers[mod] !== "0~0" ? 1 : 0} size="small" data-s={titleColor}/>
+                                                            <StatItemWrapper text={statCodeParser(mod)} value={stats[key].modifiers[mod]} prevValue={stats[key].modifiers[mod] !== "0~0" ? 1 : 0} size="small" data-s={titleColor} statType={cardType}/>
                                                         </ModifierContainer>
                                                     );
                                                 }
                                             } else {
                                                 return (
                                                     <ModifierContainer key={mod}>
-                                                        <StatItemWrapper text={statCodeParser(mod)} value={stats[key].modifiers[mod]} size="small" data-s={titleColor}/>
+                                                        <StatItemWrapper text={statCodeParser(mod)} value={stats[key].modifiers[mod]} size="small" data-s={titleColor} statType={cardType}/>
                                                     </ModifierContainer>
                                                 );
                                             }
@@ -247,7 +247,7 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                                     }
                                 })}
                             </Modifiers>
-                            <StatsTargets targets={stats[key].targets} />
+                            <StatsTargets targets={stats[key].targets} statType={cardType} />
                             {stats[key].notes.length > 0 && (
                                 <StatNotes notes={stats[key].notes} size="small"/>
                             )}

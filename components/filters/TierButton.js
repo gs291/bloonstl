@@ -6,6 +6,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getTierColor, rgbaHex} from "../../lib/utils/utils";
+import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
 
 
 const Button = styled("div", globalOptions)`
@@ -40,13 +41,19 @@ const TierText = styled(Typography, globalOptions)`
   text-align: center;
 `;
 
+const GA4_TIER_BUTTON_ID = "FILTER_TIER";
 export default function TierButton({ className, tier, selected, handleTier }) {
     const darkMode = useSelector(getDarkMode);
+
+    const handleClick = (e) => {
+        handleTier(e, tier);
+        ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_TIER_BUTTON_ID}_${tier.toUpperCase()}`});
+    };
 
     return (
         <>
             <Button
-                onClick={(e) => handleTier(e, tier)}
+                onClick={handleClick}
                 data-t={tier}
                 data-s={selected}
                 data-dm={darkMode}

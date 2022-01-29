@@ -11,6 +11,7 @@ import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 const NavExpandText = styled("div")`
   line-height: 20px;
@@ -65,17 +66,23 @@ const NavExpandItem = styled(MenuItem)`
   align-items: center;
 `;
 
+const GA4_NAV_COLLAPSE_ID = "NAV_COLLAPSE";
 export default function NavCollapse({links, expanderRef, anchorEl, handleExpand, handleClose}){
     const [isHover, setIsHover] = useState(false);
 
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
+    const handleClick = () => {
+        handleExpand();
+        ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_NAV_COLLAPSE_ID}`});
+    }
+
     return (
         <>
-            <Tooltip title={(<TowerText variant="h6" font={true}>More</TowerText>)} forceWidth={false} open={!anchorEl && isHover}>
+            <Tooltip title={(<TowerText variant="h6" font={true}>More</TowerText>)} forceWidth={false} open={!anchorEl && isHover} ga4ID="NAV_COLLAPSE" >
                 <NavExpand
-                    onClick={handleExpand}
+                    onClick={handleClick}
                     ref={expanderRef}
                     data-m={mobile}
                     data-dm={darkMode}

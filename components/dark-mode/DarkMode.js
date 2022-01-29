@@ -7,6 +7,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {toggleDarkMode} from "../../lib/redux/actions";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
 
 const Switch = styled("input")`
   --size: 2rem;
@@ -59,12 +60,17 @@ const DarkModeContainer = styled("div", globalOptions)`
   }
 `;
 
+
+const GA4_DARK_MODE_ID = "DARK_MODE";
 export default function DarkMode({className}){
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
-    const changeDarkMode = () => dispatch(toggleDarkMode());
+    const changeDarkMode = () => {
+        dispatch(toggleDarkMode());
+        ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_DARK_MODE_ID}`});
+    }
 
     return (
         <>

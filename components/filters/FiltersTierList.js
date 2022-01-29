@@ -12,6 +12,7 @@ import {rgbaHex} from "../../lib/utils/utils";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 import {TOGGLE_BORDER, TOGGLE_HEROES, TOGGLE_MONKEYS, updateFilter} from "../../lib/redux/actions";
 import {getBorder, getDarkMode, getHeroState, getMonkeyState, getMobile} from "../../lib/redux/selectors";
 
@@ -92,6 +93,10 @@ const FilterIcon = styled("div", globalOptions)`
 `;
 
 
+const GA4_TIER_LIST_FILTERS_ID = "TIER_LIST_FILTERS";
+const GA4_TIER_LIST_FILTERS_BORDER_ID = "BORDER";
+const GA4_TIER_LIST_FILTERS_MONKEYS_ID = "MONKEYS";
+const GA4_TIER_LIST_FILTERS_HEROES_ID = "HEROES";
 export default function FiltersTierList({className}) {
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);
@@ -100,9 +105,11 @@ export default function FiltersTierList({className}) {
     const darkMode = useSelector(getDarkMode);
     const monkeys = useSelector(getMonkeyState);
 
-    const handleBorder = () => dispatch(updateFilter(TOGGLE_BORDER));
-    const handleHeroes = () => dispatch(updateFilter(TOGGLE_HEROES));
-    const handleMonkeys = () => dispatch(updateFilter(TOGGLE_MONKEYS));
+    const sendAnalytics = (id) => ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_TIER_LIST_FILTERS_ID}_${id}`});
+
+    const handleBorder = () => {dispatch(updateFilter(TOGGLE_BORDER)); sendAnalytics(GA4_TIER_LIST_FILTERS_BORDER_ID)};
+    const handleHeroes = () => {dispatch(updateFilter(TOGGLE_HEROES)); sendAnalytics(GA4_TIER_LIST_FILTERS_HEROES_ID)};
+    const handleMonkeys = () => {dispatch(updateFilter(TOGGLE_MONKEYS)); sendAnalytics(GA4_TIER_LIST_FILTERS_MONKEYS_ID)};
 
     return (
         <>
@@ -115,7 +122,7 @@ export default function FiltersTierList({className}) {
                         <TowerText variant="caption">
                             Borders
                         </TowerText>
-                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Borders</TowerText>)} forceWidth={false} placement="bottom" >
+                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Borders</TowerText>)} forceWidth={false} placement="bottom" ga4ID="FILTER_TIER_LIST_BORDERS" >
                             <FilterIcon data-dm={darkMode} onClick={handleBorder}>
                                 {border ? (
                                     <BorderOutlined />
@@ -129,7 +136,7 @@ export default function FiltersTierList({className}) {
                         <TowerText variant="caption">
                             Monkeys
                         </TowerText>
-                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Monkeys</TowerText>)} forceWidth={false} placement="bottom" >
+                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Monkeys</TowerText>)} forceWidth={false} placement="bottom" ga4ID="FILTER_TIER_LIST_MONKEYS" >
                             <FilterIcon data-dm={darkMode} onClick={handleMonkeys}>
                                 <Monkey data-s={monkeys} data-dm={darkMode}/>
                             </FilterIcon>
@@ -139,7 +146,7 @@ export default function FiltersTierList({className}) {
                         <TowerText variant="caption">
                             Heroes
                         </TowerText>
-                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Heroes</TowerText>)} forceWidth={false} placement="bottom" >
+                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Heroes</TowerText>)} forceWidth={false} placement="bottom" ga4ID="FILTER_TIER_LIST_HEROES" >
                             <FilterIcon data-dm={darkMode} onClick={handleHeroes}>
                                 <Hero data-s={heroes} data-dm={darkMode}/>
                             </FilterIcon>

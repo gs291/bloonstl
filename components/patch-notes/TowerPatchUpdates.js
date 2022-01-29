@@ -12,9 +12,10 @@ import {updatePage} from "../../lib/redux/actions";
 import DefaultButton from "../button/DefaultButton";
 import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
 import {getDarkMode, getMobile, getPageData} from "../../lib/redux/selectors";
-import {fetchAPI, getTierColor, getTowerLink, rgbaHex} from "../../lib/utils/utils";
+import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
 
 
 const PatchContainer = styled("div", globalOptions)`
@@ -60,6 +61,7 @@ const FooterContainer = styled("div")`
 `;
 
 
+const GA4_LOAD_MORE_BUTTON_ID = "PATCH_LOAD_MORE";
 export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
     const elemRef = useRef();
     const isVisible = useVisible(elemRef);
@@ -72,7 +74,7 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
     const darkMode = useSelector(getDarkMode);
 
     const [fetch, setFetch] = useState(false);
-    const [patchData, setPatchData] = useState((Object.keys(pageData).length > 0) ? pageData :  {start: 0, patchData: []});
+    const [patchData, setPatchData] = useState((Object.keys(pageData).length > 0) ? pageData :  {start: 0, items: []});
     const [progress, setProgress] = useState({
         isLoading: false,
         isError: false,
@@ -99,7 +101,7 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
                 if (!responseBody.errors && responseBody.data && responseBody.data.latestThreePatchUpdatesByTowerName) {
                     setPatchData(prevState => ({
                         "start": responseBody.data.latestThreePatchUpdatesByTowerName.start,
-                        "patchData": [ ...prevState.patchData, ...responseBody.data.latestThreePatchUpdatesByTowerName.items ]
+                        "items": [ ...prevState.items, ...responseBody.data.latestThreePatchUpdatesByTowerName.items ]
                     }));
                 }
             }
@@ -121,15 +123,16 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
 
     const handleFetch = () => {
         setFetch(prevFetch => !prevFetch);
+        ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_LOAD_MORE_BUTTON_ID}`});
     }
 
     return (
         <>
             <PatchContainer data-m={mobile} ref={elemRef} {...rest}>
-                {patchData.patchData.length > 0 && (
+                {patchData.items.length > 0 && (
                     <PatchItemsContainer data-bc={borderColor} data-m={mobile} data-dm={darkMode}>
                         <PatchFlex>
-                            {patchData.patchData.map(patchUpdate => (
+                            {patchData.items.map(patchUpdate => (
                                 <PatchUpdateItem key={patchUpdate.release}>
                                     <TowerText variant={mobile ? "h5" : "h4"}>
                                         Patch Version {patchUpdate.release}
@@ -158,7 +161,7 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
                         </PatchFlex>
                     </PatchItemsContainer>
                 )}
-                {progress.isLoading && !patchData.patchData.length && (
+                {progress.isLoading && !patchData.items.length && (
                     <FetchLoading />
                 )}
                 {(progress.isError || progress.errorMessages.length > 0) && (

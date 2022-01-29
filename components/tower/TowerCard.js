@@ -8,6 +8,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getBorder, getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getTowerLink, getMonkeyColor, getHeroColor, rgbaHex} from "../../lib/utils/utils";
+import {CARD_PREFIX, ga4SendSelectContent, SELECT_CONTENT_CARD} from "../../lib/utils/ga4";
 
 const CardContainer = styled(Card, globalOptions)`
   @keyframes popup {
@@ -65,6 +66,8 @@ const TowerName = styled(Typography, globalOptions)`
   text-overflow: ellipsis;
 `;
 
+
+const GA4_TOWER_CARD_ID = "TOWER";
 export default function TowerCard({tower, towerType, tier, ignoreFilter}) {
     const mobile = useSelector(getMobile);
     const border = useSelector(getBorder);
@@ -88,11 +91,18 @@ export default function TowerCard({tower, towerType, tier, ignoreFilter}) {
         borderColor = backgroundColor;
     }
 
+    const handleClick = (e) => ga4SendSelectContent(SELECT_CONTENT_CARD, {
+        item_id: `${CARD_PREFIX}${GA4_TOWER_CARD_ID}`,
+        tower: tower.name,
+        tower_type: towerType
+    });
+
+
     return (
         <>
             <Link href={href} passHref>
                 <MLink>
-                    <CardContainer data-brc={borderColor} data-bc={backgroundColor} data-hbc={hoverBackgroundColor}>
+                    <CardContainer onClick={handleClick} data-brc={borderColor} data-bc={backgroundColor} data-hbc={hoverBackgroundColor}>
                         <CardContent>
                             <Icon tower={tower}/>
                             <TowerName variant={mobile ? "body1" : "h5"} data-dm={darkMode}>

@@ -43,7 +43,7 @@ export default function DamageStats({stats, defaults, type, towerType, ...rest})
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <StatItemWrapper text="Crit" value={stats.crit_damage + stats.damage} prevValue={defaults.crit_damage + defaults.damage} initialDamage={stats.crit_damage} baseDamage={stats.damage} data-s={color} />
-                            <StatItemWrapper text="Moab" value={stats.moab_damage + stats.damage} prevValue={defaults.moab_damage + defaults.damage} initialDamage={stats.moab_damage} baseDamage={stats.damage} data-s={color} />
+                            <StatItemWrapper text="MOAB" value={stats.moab_damage + stats.damage} prevValue={defaults.moab_damage + defaults.damage} initialDamage={stats.moab_damage} baseDamage={stats.damage} data-s={color} />
                             <StatItemWrapper text="F MOAB" value={stats.fortified_moab_damage + stats.moab_damage + stats.damage} prevValue={defaults.fortified_moab_damage + defaults.moab_damage + defaults.damage} initialDamage={stats.fortified_moab_damage} baseDamage={stats.damage} extraDamage={stats.moab_damage} data-s={color} />
                         </ItemsContainer>
                     </>
@@ -61,7 +61,7 @@ export default function DamageStats({stats, defaults, type, towerType, ...rest})
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>
                             <StatItemWrapper text="Crit" value={stats.crit_damage + stats.damage} prevValue={defaults.crit_damage + defaults.damage} initialDamage={stats.crit_damage} baseDamage={stats.damage} data-s={color} />
-                            <StatItemWrapper text="Moab" value={stats.moab_damage + stats.damage} prevValue={defaults.moab_damage + defaults.damage} initialDamage={stats.moab_damage} baseDamage={stats.damage} data-s={color} />
+                            <StatItemWrapper text="MOAB" value={stats.moab_damage + stats.damage} prevValue={defaults.moab_damage + defaults.damage} initialDamage={stats.moab_damage} baseDamage={stats.damage} data-s={color} />
                             <StatItemWrapper text="F MOAB" value={stats.fortified_moab_damage + stats.moab_damage + stats.damage} prevValue={defaults.fortified_moab_damage + defaults.moab_damage + defaults.damage} initialDamage={stats.fortified_moab_damage} baseDamage={stats.damage} extraDamage={stats.moab_damage} data-s={color}/>
                         </ItemsContainer>
                         <ItemsContainer data-m={mobile}>

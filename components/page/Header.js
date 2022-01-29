@@ -3,6 +3,7 @@ import {useSelector} from "react-redux";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
+import React from "react";
 
 export default function Header({ title }) {
     const darkMode = useSelector(getDarkMode);
@@ -13,6 +14,9 @@ export default function Header({ title }) {
         <>
             <Head>
                 <title>{ title && `${title} - ` }Bloons</title>
+
+                {/* Responsive Meta Tag */}
+                <meta name="viewport" content="initial-scale=1, width=device-width" />
 
                 {/*// <!-- Chrome, Firefox OS and Opera -->*/}
                 <meta name="theme-color" content={barColor} />

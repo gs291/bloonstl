@@ -8,6 +8,7 @@ import TowerText from "../../tower/TowerText";
 import siteColors from "../../../lib/utils/siteColors";
 import {getDarkMode} from "../../../lib/redux/selectors";
 import {globalOptions} from "../../../lib/utils/emotionStyled";
+import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../../lib/utils/ga4";
 
 const Header = styled("div", globalOptions)`
   display: flex;
@@ -53,6 +54,7 @@ const CancelIcon = styled(CancelOutlinedIcon, globalOptions)`
 `;
 
 
+const GA4_COOKIE_CONSENT_ID = "COOKIE_CONSENT";
 export default function ConsentHeader({checkConsent, error}) {
     const darkMode = useSelector(getDarkMode);
 
@@ -64,13 +66,15 @@ export default function ConsentHeader({checkConsent, error}) {
         nextYear.setFullYear(current.getFullYear() + 1);
 
         try {
-            cookies.set("eu_cookie_consent", "accepted", { path: '/', expires: nextYear });
+            cookies.set("cookie_consent", "accepted", { path: '/', expires: nextYear });
         } catch (e) {
             console.log(e);
         }
 
         const clicked = true;
         checkConsent(clicked);
+
+        ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_COOKIE_CONSENT_ID}`})
     };
 
     return (

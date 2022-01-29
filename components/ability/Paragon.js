@@ -72,6 +72,10 @@ const InfoText = styled(SplitText)`
   align-items: center;
 `;
 
+const UnSelectableText = styled(TowerText)`
+  user-select: none;
+`;
+
 const MiddleFiller = styled("div")`
   width: ${props => props["data-m"] ? 20 : 100}%;
   height: ${props => props["data-m"] ? 100 : 30}%;
@@ -85,9 +89,7 @@ const DegreeContainer = styled("div")`
   gap: 0 5px;
 `;
 
-// There is a bug with this in mobile. On a mobile device (not where mobile is just set = true) if this is clicked
-// then waiting for the timeout causes it to close. if no other clicks were made in that time. attempting to reopen
-// the paragon tooltip will not work. I (gs291) was unable to figure out what mouse/touch event needed to be added
+
 export default function Paragon({ability, fileName, tier, towerType, selected, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
@@ -95,8 +97,9 @@ export default function Paragon({ability, fileName, tier, towerType, selected, .
     const [open, setOpen] = useState(false);
     const [touchTimeout, setTouchTimeout] = useState(false);
 
-    const handleTimeout = () => {setTouchTimeout(true );};
     const handleEnter = () => {setOpen(true);};
+    const handleTimeout = () => {setOpen(true); setTouchTimeout(true);};
+
     const handleExit = () => {setOpen(false); setTouchTimeout(false);};
 
     useEffect(() => {
@@ -112,8 +115,11 @@ export default function Paragon({ability, fileName, tier, towerType, selected, .
         <>
             <ParagonContainer
                 onClick={handleEnter}
+                onBlur={handleExit}
+                onFocus={handleEnter}
                 onMouseEnter={handleEnter}
                 onMouseLeave={handleExit}
+                onTouchStart={handleExit}
                 onTouchEnd={handleTimeout}
                 data-m={mobile} data-dm={darkMode}
                 data-s={selected}
@@ -122,19 +128,19 @@ export default function Paragon({ability, fileName, tier, towerType, selected, .
                 <BackgroundContainer>
                     <BackgroundText data-m={mobile}>
                         <InfoText data-m={mobile}>
-                            <TowerText variant={mobile ? "subtitle2" : "caption"} data-m={mobile} data-dm={darkMode}>
+                            <UnSelectableText variant={mobile ? "subtitle2" : "caption"} data-m={mobile} data-dm={darkMode}>
                                 PARAGON
-                            </TowerText>
+                            </UnSelectableText>
                         </InfoText>
                         <MiddleFiller data-m={mobile} />
                         <InfoText data-m={mobile}>
                             <DegreeContainer data-m={mobile}>
-                                <TowerText variant="subtitle2" data-m={mobile} data-dm={darkMode}>
+                                <UnSelectableText variant="subtitle2" data-m={mobile} data-dm={darkMode}>
                                     DEGREE
-                                </TowerText>
-                                <TowerText variant={mobile ? "subtitle2" : "subtitle1"} data-m={mobile} data-dm={darkMode}>
+                                </UnSelectableText>
+                                <UnSelectableText variant={mobile ? "subtitle2" : "subtitle1"} data-m={mobile} data-dm={darkMode}>
                                     {mobile && (<>&nbsp;</>)}1
-                                </TowerText>
+                                </UnSelectableText>
                             </DegreeContainer>
                         </InfoText>
                     </BackgroundText>

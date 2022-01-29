@@ -6,6 +6,7 @@ import ImageFill from "../image/ImageFill";
 import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
 
 
 const Button = styled("div", globalOptions)`
@@ -52,14 +53,20 @@ const DifficultyText = styled(Typography, globalOptions)`
   width: 150px;
 `;
 
+const GA4_DIFFICULTY_FILTER_ID = "FILTER_DIFFICULTY";
 export default function DifficultyButton({ className, difficulty, selected, color, handleChange }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
+    const handleClick = (e) => {
+        handleChange(e, difficulty);
+        ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_DIFFICULTY_FILTER_ID}_${difficulty.toUpperCase()}`});
+    }
+
     return (
         <>
             <Button
-                onClick={e => handleChange(e, difficulty)}
+                onClick={handleClick}
                 data-s={selected}
                 data-c={color}
                 data-dm={darkMode}
