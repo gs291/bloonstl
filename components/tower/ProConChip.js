@@ -5,7 +5,7 @@ import Tooltip from "../tooltip/Tooltip";
 import ChipTooltip from "../tooltip/ChipTooltip";
 import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {CHIP_PREFIX, SELECT_CONTENT_CHIP, ga4SendSelectContent} from "../../lib/utils/ga4";
+import {CHIP_PREFIX, SELECT_CONTENT_CHIP, ga4SendSelectContent, textToGA4Text} from "../../lib/utils/ga4";
 
 const StyledChip = styled(Chip, globalOptions)`
   @keyframes popup {
@@ -60,6 +60,7 @@ export default function ProConChip({title, text, isPro, chipType}) {
                         title={title}
                         text={text}
                     />}
+                ga4ID={`PRO_CON_${textToGA4Text(chipType)}_${textToGA4Text(title)}`}
             >
                 <div onClick={handleClick}>
                     <StyledChip label={title} data-pro={isPro} />

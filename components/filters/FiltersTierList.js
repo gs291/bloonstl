@@ -122,7 +122,7 @@ export default function FiltersTierList({className}) {
                         <TowerText variant="caption">
                             Borders
                         </TowerText>
-                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Borders</TowerText>)} forceWidth={false} placement="bottom" >
+                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Borders</TowerText>)} forceWidth={false} placement="bottom" ga4ID="FILTER_TIER_LIST_BORDERS" >
                             <FilterIcon data-dm={darkMode} onClick={handleBorder}>
                                 {border ? (
                                     <BorderOutlined />
@@ -136,7 +136,7 @@ export default function FiltersTierList({className}) {
                         <TowerText variant="caption">
                             Monkeys
                         </TowerText>
-                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Monkeys</TowerText>)} forceWidth={false} placement="bottom" >
+                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Monkeys</TowerText>)} forceWidth={false} placement="bottom" ga4ID="FILTER_TIER_LIST_MONKEYS" >
                             <FilterIcon data-dm={darkMode} onClick={handleMonkeys}>
                                 <Monkey data-s={monkeys} data-dm={darkMode}/>
                             </FilterIcon>
@@ -146,7 +146,7 @@ export default function FiltersTierList({className}) {
                         <TowerText variant="caption">
                             Heroes
                         </TowerText>
-                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Heroes</TowerText>)} forceWidth={false} placement="bottom" >
+                        <Tooltip title={(<TowerText variant="h6" font={true}>Toggle Heroes</TowerText>)} forceWidth={false} placement="bottom" ga4ID="FILTER_TIER_LIST_HEROES" >
                             <FilterIcon data-dm={darkMode} onClick={handleHeroes}>
                                 <Hero data-s={heroes} data-dm={darkMode}/>
                             </FilterIcon>

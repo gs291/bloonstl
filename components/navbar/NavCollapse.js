@@ -80,7 +80,7 @@ export default function NavCollapse({links, expanderRef, anchorEl, handleExpand,
 
     return (
         <>
-            <Tooltip title={(<TowerText variant="h6" font={true}>More</TowerText>)} forceWidth={false} open={!anchorEl && isHover}>
+            <Tooltip title={(<TowerText variant="h6" font={true}>More</TowerText>)} forceWidth={false} open={!anchorEl && isHover} ga4ID="NAV_COLLAPSE" >
                 <NavExpand
                     onClick={handleClick}
                     ref={expanderRef}

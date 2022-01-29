@@ -1,9 +1,10 @@
-import {useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {useEffect, useState} from "react";
 import {Tooltip as MUITooltip, ClickAwayListener} from "@mui/material";
 
 import siteColors from "../../lib/utils/siteColors";
+import {ga4SendTooltipHover, TOOLTIP_PREFIX} from "../../lib/utils/ga4";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
@@ -46,7 +47,7 @@ const TooltipContainer = styled("div")``;
 
 const ContentContainer = styled("div")``;
 
-export default function Tooltip({children, title, borderColor, forceWidth=true, placement="top", ...rest}) {
+export default function Tooltip({children, title, borderColor, ga4ID, forceWidth=true, placement="top", ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
     const [open, setOpen] = useState(false);
@@ -58,6 +59,20 @@ export default function Tooltip({children, title, borderColor, forceWidth=true, 
     const handleTooltipOpen = () => {
         setOpen(true);
     };
+
+    useEffect(() => {
+        const openState = rest.open !== undefined ? rest.open : open;
+
+        // If the user hovers over and opens the tooltip, send an event to GA4 after 1 second
+        const timer = openState && setTimeout(() => {
+            const wasTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints
+            if (!wasTouch) {
+                ga4SendTooltipHover({item_id: `${TOOLTIP_PREFIX}${ga4ID}`});
+            }
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, [open, rest.open])
 
     return (
         <>

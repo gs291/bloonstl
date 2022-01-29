@@ -8,7 +8,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {MAX_STAT_VALUE} from "../../lib/utils/utils";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {ga4SendSelectContent, SELECT_CONTENT_STAT, STAT_PREFIX} from "../../lib/utils/ga4";
+import {ga4SendSelectContent, SELECT_CONTENT_STAT, STAT_PREFIX, textToGA4Text} from "../../lib/utils/ga4";
 
 const Item = styled("div")`
   display: flex;
@@ -124,7 +124,7 @@ export default function StatItem({tooltip, text, statType="main", ...rest}) {
     return (
         <>
             {tooltip ? (
-                <Tooltip title={tooltip}>
+                <Tooltip title={tooltip} ga4ID={`STAT_ITEM_${textToGA4Text(statType)}_${textToGA4Text(text)}`}>
                     <FullItem text={text} onClick={handleClick} darkMode={darkMode} {...rest}/>
                 </Tooltip>
             ) : (

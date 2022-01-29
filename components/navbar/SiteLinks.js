@@ -83,7 +83,7 @@ export default function SiteLinks() {
             <SmallNavSection>
                 <NavContainer>
                     {!mobile && (
-                        <Tooltip title={(<TowerText variant="h6" font={true} >{`Toggle ${darkMode ? "Light" : "Dark"} Mode`}</TowerText>)} forceWidth={false}>
+                        <Tooltip title={(<TowerText variant="h6" font={true} >{`Toggle ${darkMode ? "Light" : "Dark"} Mode`}</TowerText>)} forceWidth={false} ga4ID="DARK_MODE">
                             <DarkMode />
                         </Tooltip>
                     )}
