@@ -4,9 +4,9 @@ import {useEffect, useState} from "react";
 import {Tooltip as MUITooltip, ClickAwayListener} from "@mui/material";
 
 import siteColors from "../../lib/utils/siteColors";
-import {ga4SendTooltipHover, TOOLTIP_PREFIX} from "../../lib/utils/ga4";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {TOOLTIP_PREFIX, ga4SendTooltipHover} from "../../lib/utils/ga4";
 
 //https://stackoverflow.com/questions/59934683/style-material-ui-tooltip-using-emotion-styled
 // Media is used for a specific case with ability tooltips causing page overflow x
