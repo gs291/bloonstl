@@ -72,6 +72,10 @@ const InfoText = styled(SplitText)`
   align-items: center;
 `;
 
+const UnSelectableText = styled(TowerText)`
+  user-select: none;
+`;
+
 const MiddleFiller = styled("div")`
   width: ${props => props["data-m"] ? 20 : 100}%;
   height: ${props => props["data-m"] ? 100 : 30}%;
@@ -124,19 +128,19 @@ export default function Paragon({ability, fileName, tier, towerType, selected, .
                 <BackgroundContainer>
                     <BackgroundText data-m={mobile}>
                         <InfoText data-m={mobile}>
-                            <TowerText variant={mobile ? "subtitle2" : "caption"} data-m={mobile} data-dm={darkMode}>
+                            <UnSelectableText variant={mobile ? "subtitle2" : "caption"} data-m={mobile} data-dm={darkMode}>
                                 PARAGON
-                            </TowerText>
+                            </UnSelectableText>
                         </InfoText>
                         <MiddleFiller data-m={mobile} />
                         <InfoText data-m={mobile}>
                             <DegreeContainer data-m={mobile}>
-                                <TowerText variant="subtitle2" data-m={mobile} data-dm={darkMode}>
+                                <UnSelectableText variant="subtitle2" data-m={mobile} data-dm={darkMode}>
                                     DEGREE
-                                </TowerText>
-                                <TowerText variant={mobile ? "subtitle2" : "subtitle1"} data-m={mobile} data-dm={darkMode}>
+                                </UnSelectableText>
+                                <UnSelectableText variant={mobile ? "subtitle2" : "subtitle1"} data-m={mobile} data-dm={darkMode}>
                                     {mobile && (<>&nbsp;</>)}1
-                                </TowerText>
+                                </UnSelectableText>
                             </DegreeContainer>
                         </InfoText>
                     </BackgroundText>
