@@ -69,11 +69,11 @@ const AbilityImage = ({ability, fileName, towerType, darkMode, mobile}) => (
             </Image>
             {towerType === "monkey" && (
                 <PathText variant="h5" data-dm={darkMode} >
-                    {ability.upgrade_path === 0 ? ability.upgrade_tier : ability.upgrade_path === 3 ? "5" : "0"}
+                    {ability.upgrade_path === 0 ? ability.upgrade_tier + 1 : ability.upgrade_path === 3 ? "5" : "0"}
                     &nbsp;-&nbsp;
-                    {ability.upgrade_path === 1 ? ability.upgrade_tier : ability.upgrade_path === 3 ? "5" : "0"}
+                    {ability.upgrade_path === 1 ? ability.upgrade_tier + 1 : ability.upgrade_path === 3 ? "5" : "0"}
                     &nbsp;-&nbsp;
-                    {ability.upgrade_path === 2 ? ability.upgrade_tier : ability.upgrade_path === 3 ? "5" : "0"}
+                    {ability.upgrade_path === 2 ? ability.upgrade_tier + 1 : ability.upgrade_path === 3 ? "5" : "0"}
                 </PathText>
             )}
         </ImageWrapper>
