@@ -13,7 +13,12 @@ import {TOOLTIP_PREFIX, ga4SendTooltipHover} from "../../lib/utils/ga4";
 const StyledTooltip = styled(({ className, ...other }) => (
     <MUITooltip classes={{ tooltip: className }} {...other} />
 ), globalOptions)`
-  @media only screen and (min-width: 901px) and (max-width: 955px) {
+  @media only screen and (min-width: 901px) and (max-width: 950px) {
+    min-width:${props => props["data-fw"] ? 375 : 0 }px;
+    max-width: 375px;
+  }
+
+  @media only screen and (min-width: 951px) and (max-width: 1025px) {
     min-width:${props => props["data-fw"] ? 400 : 0 }px;
     max-width: 400px;
   }
