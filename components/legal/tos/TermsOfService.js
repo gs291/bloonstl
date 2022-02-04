@@ -3,10 +3,10 @@ import styled from "@emotion/styled";
 import UserData from "./UserData";
 import ContactUs from "./ContactUs";
 import Disclaimer from "./Disclaimer";
+import LegalTitle from "../LegalTitle";
 import Advertisers from "./Advertisers";
 import GoverningLaw from "./GoverningLaw";
 import Miscellaneous from "./Miscellaneous";
-import TowerText from "../../tower/TowerText";
 import Indemnification from "./Indemnification";
 import AgreementToTerms from "./AgreementToTerms";
 import TermAndTermination from "./TermAndTermination";
@@ -18,8 +18,6 @@ import TableOfContents from "../../table-of-contents/TableOfContents";
 import ThirdPartWebsiteAndContent from "./ThirdPartWebsiteAndContent";
 import UserGeneratedContributions from "./UserGeneratedContributions";
 import CaliforniaUsersAndResidents from "./CaliforniaUsersAndResidents";
-import LegalText from "../LegalText";
-import LegalTitle from "../LegalTitle";
 
 const ToSContainer = styled("div")`
   width: 100%;
@@ -74,9 +72,6 @@ export default function TermsOfService({}) {
                 <CaliforniaUsersAndResidents    tag={tags[13]} />
                 <Miscellaneous                  tag={tags[14]} />
                 <ContactUs                      tag={tags[15]} />
-                <LegalText variant="caption" font={true}>
-                    This terms of service was created using Termly's Terms and Conditions Generator.
-                </LegalText>
             </ToSContainer>
         </>
     );

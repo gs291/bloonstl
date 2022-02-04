@@ -102,9 +102,6 @@ export default function Privacy({}) {
                 <Updates                    tag={tags[10]}/>
                 <ContactUs                  tag={tags[11]}/>
                 <ReviewUpdateDeleteData     tag={tags[12]}/>
-                <LegalText variant="caption" font={true}>
-                    This privacy policy was created using Termly's Privacy Policy Generator.
-                </LegalText>
             </PrivacyContainer>
         </>
     );

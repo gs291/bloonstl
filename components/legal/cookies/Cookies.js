@@ -66,9 +66,6 @@ export default function Cookies({}) {
                 <TargetedAdvertising    tag={tags[7]}/>
                 <UpdateFrequency        tag={tags[8]}/>
                 <ContactUs              tag={tags[9]}/>
-                <LegalText variant="caption" font={true}>
-                    This privacy policy was created using Termly's Cookie Consent Generator.
-                </LegalText>
             </CookieContainer>
         </>
     );
