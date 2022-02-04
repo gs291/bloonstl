@@ -1,5 +1,11 @@
+import styled from "@emotion/styled";
+
 import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
+
+const Link = styled("a")`
+  text-decoration: underline;
+`;
 
 export default function ControllingCookies({tag}) {
 
@@ -15,14 +21,51 @@ export default function ControllingCookies({tag}) {
                 If you disable cookies, please be aware that some of the features of our service may not function correctly.
                 To find out more on how to manage and delete cookies, visit your web browser's help page or read your web browser's user manual.
                 For more details on your choices regarding use of your web browsing activity for
-                interest-based advertising visit youronlinechoices.eu (EU based) or optout.aboutads.info (US based).
+                interest-based advertising visit
+                &nbsp;
+                <Link
+                    href="https://youronlinechoices.eu/"
+                    target="_blank"
+                >
+                    https://youronlinechoices.eu/
+                </Link>
+                &nbsp;
+                (EU based) or
+                &nbsp;
+                <Link
+                    href="https://optout.aboutads.info"
+                    target="_blank"
+                >
+                    https://optout.aboutads.info
+                </Link>
+                &nbsp;
+                (US based).
                 On a mobile device, you may also be to adjust your settings to limit ad tracking.
                 You can opt out of Google Analytics by installing Google’s opt-out browser add-on.
             </LegalText>
             <LegalText variant="body1" font={true}>
                 In addition, most advertising networks offer you a way to opt out of targeted
                 advertising. If you would like to find out more information, please
-                visit http://www.aboutads.info/choices/ or http://www.youronlinechoices.com.
+                visit
+                &nbsp;
+                <Link
+                    href="http://www.aboutads.info/choices/"
+                    target="_blank"
+                >
+                    http://www.aboutads.info/choices/
+                </Link>
+
+                &nbsp;
+                or
+                &nbsp;
+                <Link
+                    href="http://www.youronlinechoices.com"
+                    target="_blank"
+                >
+                    http://www.youronlinechoices.com
+                </Link>
+
+                .
                 The specific types of first and third party cookies served through our Websites and
                 the purposes they perform are described in the table below (please note that the
                 specific cookies served may vary depending on the specific Online Properties you
