@@ -14,7 +14,7 @@ export default function ReviewUpdateDeleteData({tag}) {
                 Based on the applicable laws of your country, you may have the right to request
                 access to the personal information we collect from you, change that information, or
                 delete it in some circumstances. To request to review, update, or delete your
-                personal information, please submit a request form here: https://app.termly.io/notify/b0023f57-e253-40b7-add7-a09cdf8af03e.
+                personal information, please contact us at bloonstl@gmail.com.
             </LegalText>
         </>
     );

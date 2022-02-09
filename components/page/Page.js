@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import styled from "@emotion/styled";
 import {Global, css} from "@emotion/react";
-import { useMediaQuery } from "@mui/material";
+import {useMediaQuery} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 
 import Footer from "../footer/Footer";
@@ -10,7 +10,7 @@ import NavDrawer from "../navbar/NavDrawer";
 import ReturnToTop from "../return/ReturnToTop";
 import siteColors from "../../lib/utils/siteColors";
 import {ga4SendPageView} from "../../lib/utils/ga4";
-import { updateMobile } from "../../lib/redux/actions";
+import {updateMobile} from "../../lib/redux/actions";
 import ConsentToast from "../legal/consent/ConsentToast";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";

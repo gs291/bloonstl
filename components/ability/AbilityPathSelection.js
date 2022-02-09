@@ -14,7 +14,7 @@ const AbilityTier = styled("div", globalOptions)`
   width: 100%;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 10px;
 `;
 
@@ -40,6 +40,12 @@ export default function AbilityPathSelection({ tier, tiers, handleTier, sandbox 
             <Selection data-m={mobile}>
                 <Label variant={mobile ? "h4" : "h3"}>
                     Ability Path{!sandbox && " Tiers"}
+                </Label>
+                <Label variant="subtitle2" font={true}>
+                    {sandbox
+                        ? "Click on an ability to change the path!"
+                        : "Click on a tier to change the path!"
+                    }
                 </Label>
                 <AbilityTier data-m={mobile}>
                     {!sandbox && (

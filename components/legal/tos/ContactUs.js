@@ -10,7 +10,7 @@ export default function ContactUs({tag}) {
             </LegalTitle>
             <LegalText variant="body1" font={true}>
                 In order to resolve a complaint regarding the Site or to receive further information
-                regarding use of the Site, please contact us at: bloonstl@gmail.com
+                regarding use of the Site, please contact us at: bloonstl@gmail.com with the email subject starting with [TOS].
             </LegalText>
         </>
     );

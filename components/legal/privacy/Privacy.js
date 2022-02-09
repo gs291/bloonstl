@@ -52,8 +52,8 @@ const tags = [
     { "title": "CONTROLS FOR DO-NOT-TRACK FEATURES", "href": "control-do-not-track" },
     { "title": "DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?", "href": "california-residents" },
     { "title": "DO WE MAKE UPDATES TO THIS NOTICE?", "href": "updates-to-notice" },
-    { "title": "HOW CAN YOU CONTACT US ABOUT THIS NOTICE?", "href": "contact-us" },
-    { "title": "HOW CAN YOU REVIEW, UPDATE OR DELETE THE DATA WE COLLECT FROM YOU?", "href": "review-update-or-delete-data" }
+    { "title": "HOW CAN YOU REVIEW, UPDATE OR DELETE THE DATA WE COLLECT FROM YOU?", "href": "review-update-or-delete-data" },
+    { "title": "HOW CAN YOU CONTACT US ABOUT THIS NOTICE?", "href": "contact-us" }
 ];
 
 export default function Privacy({}) {
@@ -100,11 +100,8 @@ export default function Privacy({}) {
                 <Controls                   tag={tags[8]}/>
                 <CaliforniaResidents        tag={tags[9]}/>
                 <Updates                    tag={tags[10]}/>
-                <ContactUs                  tag={tags[11]}/>
-                <ReviewUpdateDeleteData     tag={tags[12]}/>
-                <LegalText variant="caption" font={true}>
-                    This privacy policy was created using Termly's Privacy Policy Generator.
-                </LegalText>
+                <ReviewUpdateDeleteData     tag={tags[11]}/>
+                <ContactUs                  tag={tags[12]}/>
             </PrivacyContainer>
         </>
     );

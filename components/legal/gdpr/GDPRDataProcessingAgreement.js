@@ -70,7 +70,8 @@ export default function GDPRDataProcessingAgreement({}) {
                 <GeneralTerms                               tag={tags[11]}/>
                 <GoverningLawAndJurisdiction                tag={tags[12]}/>
                 <TowerText variant="caption" font={true}>
-                    If your company requires this DPA signed by bloonstl or have any questions, please email us at bloonstl@gmail.com.
+                    If your company requires this DPA signed by bloonstl or have any questions,
+                    please email us at bloonstl@gmail.com with the email subject starting with [GDPR].
                 </TowerText>
             </GDPRContainer>
         </>

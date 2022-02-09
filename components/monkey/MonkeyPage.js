@@ -133,11 +133,12 @@ export default function MonkeyPage({ monkey }) {
             <Stats stats={stats} path={path} type={monkey.type} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
+            <HorizontalAD />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <AbilityPathSelection tier={sandbox ? monkey.tier : tier} tiers={path} handleTier={handleTier} sandbox={sandbox} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <AbilitiesText variant={mobile ? "h4" : "h3"}>
-                Tower Abilities
+                Monkey Abilities
             </AbilitiesText>
             <PathCost variant={mobile ? "h6" : "h4"}>
                 Path Cost: $<Counter cost={stats.cost} />
@@ -170,7 +171,6 @@ export default function MonkeyPage({ monkey }) {
                 open={openSnackbar} setOpen={setOpenSnackbar}
                 messageInfo={messageInfo} setMessageInfo={setMessageInfo}
             />
-            <HorizontalAD />
         </>
     );
 }

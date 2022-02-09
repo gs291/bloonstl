@@ -32,6 +32,13 @@ const FullContainer = styled("div")`
   text-align: center;
 `;
 
+const ImageWrapper = styled("div")`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Image = styled("div", globalOptions)`
   width: ${props => props["data-m"] ? 50 : 75}px;
 `;
@@ -44,6 +51,35 @@ const ImageContainer = styled("div", globalOptions)`
   max-width: ${props => props["data-m"] ? 50 : 75}px;
   max-height: ${props => props["data-m"] ? 50 : 75}px;
 `;
+
+const PathText = styled(TowerText)``;
+
+const AbilityImage = ({ability, fileName, towerType, darkMode, mobile}) => (
+    <>
+        <VerticalDivider backgroundColor={darkMode ? siteColors.text.dark : siteColors.text.light} />
+
+        <ImageWrapper>
+            <Image data-m={mobile}>
+                <ImageContainer data-m={mobile}>
+                    <ImageFill
+                        src={ getImageUrl(fileName, ability.upgrade_path, ability.upgrade_tier) }
+                        alt={ ability.name }
+                    />
+                </ImageContainer>
+            </Image>
+            {towerType === "monkey" && (
+                <PathText variant={mobile ? "subtitle1" : "h5"} data-dm={darkMode} >
+                    {ability.upgrade_path === 0 ? ability.upgrade_tier + 1 : ability.upgrade_path === 3 ? "5" : "0"}
+                    &nbsp;-&nbsp;
+                    {ability.upgrade_path === 1 ? ability.upgrade_tier + 1 : ability.upgrade_path === 3 ? "5" : "0"}
+                    &nbsp;-&nbsp;
+                    {ability.upgrade_path === 2 ? ability.upgrade_tier + 1 : ability.upgrade_path === 3 ? "5" : "0"}
+                </PathText>
+            )}
+        </ImageWrapper>
+    </>
+);
+
 
 // Currently has a bug that I (gs291) did not know how to fix
 //   with rendering an Image in a Tooltip. Switching different (Monkey/Hero)Page states and
@@ -78,7 +114,7 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                             <TowerText
                                 variant={mobile ? "h5" : "h4"}
                                 textColor={
-                                    (selected && towerType !== "hero")
+                                    selected
                                         ? getTierColor(tier)
                                         : darkMode ? siteColors.text.dark : siteColors.text.light
                                 }
@@ -100,17 +136,7 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                         </TowerText>
                     </FullContainer>
                     {(mobile && ability.name !== "" ) && (
-                        <>
-                            <VerticalDivider backgroundColor={darkMode ? siteColors.text.dark : siteColors.text.light} />
-                            <Image data-m={mobile}>
-                                <ImageContainer data-m={mobile}>
-                                    <ImageFill
-                                        src={ getImageUrl(fileName, ability.upgrade_path, ability.upgrade_tier) }
-                                        alt={ ability.name }
-                                    />
-                                </ImageContainer>
-                            </Image>
-                        </>
+                        <AbilityImage ability={ability} fileName={fileName} towerType={towerType} darkMode={darkMode} mobile={mobile} />
                     )}
                     { !mobile && (
                         <TowerText
@@ -124,17 +150,7 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                 </InfoContainer>
 
                 {(!mobile && ability.name !== "" ) && (
-                    <>
-                        <VerticalDivider backgroundColor={darkMode ? siteColors.text.dark : siteColors.text.light} />
-                        <Image data-m={mobile}>
-                            <ImageContainer data-m={mobile}>
-                                <ImageFill
-                                    src={ getImageUrl(fileName, ability.upgrade_path, ability.upgrade_tier) }
-                                    alt={ ability.name }
-                                />
-                            </ImageContainer>
-                        </Image>
-                    </>
+                    <AbilityImage ability={ability} fileName={fileName} towerType={towerType} darkMode={darkMode} mobile={mobile} />
                 )}
             </TitleContainer>
 

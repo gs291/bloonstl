@@ -15,7 +15,7 @@ const DifficultyContainer = styled("div")`
 `;
 
 const ButtonContainer = styled("div")`
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 10px;
 `;
 
@@ -60,6 +60,9 @@ export default function FilterDifficulty({ className, color }) {
             <DifficultyContainer className={className}>
                 <Label variant={mobile ? "h4" : "h3"}>
                     Difficulty Prices
+                </Label>
+                <Label variant="subtitle2" font={true}>
+                    Click on a difficulty to change the in-game gold costs!
                 </Label>
                 <ButtonContainer>
                     { !mobile && (

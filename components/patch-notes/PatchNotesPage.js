@@ -65,7 +65,7 @@ export default function PatchNotesPage({ patch }) {
     const [patchVersion, setPatchVersion] = useState(latestMajor);
     const pageData = useSelector(state => getPageData(state, reduxPageName));
 
-    const [patchData, setPatchData] = useState((Object.keys(pageData).length > 0) ? pageData : {[latestMajor]: patch});
+    const [patchData, setPatchData] = useState((Object.keys(pageData).length > 0 && pageData[patchVersion] !== undefined) ? pageData : {[patchVersion]: patch});
 
     const [progress, setProgress] = useState({
         isLoading: false,

@@ -1,5 +1,11 @@
+import styled from "@emotion/styled";
+
 import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
+
+const Link = styled("a")`
+  text-decoration: underline;
+`;
 
 export default function PrivacyRights({tag}) {
 
@@ -14,12 +20,23 @@ export default function PrivacyRights({tag}) {
             <LegalText variant="body1" font={true}>
                 If you are a resident in the EEA or UK and you believe we are unlawfully processing
                 your personal information, you also have the right to complain to your local data
-                protection supervisory authority. You can find their contact details here:
-                https://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm.
+                protection supervisory authority. You can find their contact details here:&nbsp;
+                <Link
+                    href="https://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm"
+                    target="_blank"
+                >
+                    European Commission - National Data Protection Authorities
+                </Link>
             </LegalText>
             <LegalText variant="body1" font={true}>
                 If you are a resident in Switzerland, the contact details for the data protection
-                authorities are available here: https://www.edoeb.admin.ch/edoeb/en/home.html.
+                authorities are available here:&nbsp;
+                <Link
+                    href="https://www.edoeb.admin.ch/edoeb/en/home.html"
+                    target="_blank"
+                >
+                    Switzerland - Federal Data Protection and Information Commissioner
+                </Link>
             </LegalText>
             <LegalTitle variant="h6" font={true}>
                 <strong>Account Information</strong>
