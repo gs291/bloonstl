@@ -45,7 +45,7 @@ export default function HorizontalAD({}) {
 
     return (
         <>
-            <ADContainer key={windowWidth}>
+            <ADContainer key={`${mobile}-${windowWidth}`}>
                 <StyledAD
                     className="adsbygoogle"
                     style={{ display: "block", minHeight: (mobile ? "280px" : "100px") }}

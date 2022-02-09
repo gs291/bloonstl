@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import useVisible from "../../lib/utils/hooks";
 
+import Refresh from "./Refresh";
 import PatchItems from "./PatchItems";
 import TowerText from "../tower/TowerText";
 import FetchErrors from "../api/FetchErrors";
@@ -15,7 +16,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
 import {getDarkMode, getMobile, getPageData} from "../../lib/redux/selectors";
-import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
+import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
 const PatchContainer = styled("div", globalOptions)`
@@ -27,6 +28,7 @@ const PatchContainer = styled("div", globalOptions)`
 `;
 
 const PatchItemsContainer = styled("div", globalOptions)`
+  position: relative;
   padding:  ${props => props["data-m"] ? 0.5 : 1}em;
   
   border-radius: 20px;
@@ -61,6 +63,7 @@ const FooterContainer = styled("div")`
 `;
 
 
+const GA4_RESET_BUTTON_ID = "PATCH_RESET";
 const GA4_LOAD_MORE_BUTTON_ID = "PATCH_LOAD_MORE";
 export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
     const elemRef = useRef();
@@ -121,8 +124,14 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
         dispatch(updatePage(reduxPageName, patchData));
     }, [patchData]);
 
+    const handleReset = () => {
+        setPatchData({start: 0, items: []});
+        setFetch(true);
+        ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_RESET_BUTTON_ID}`});
+    }
+
     const handleFetch = () => {
-        setFetch(prevFetch => !prevFetch);
+        setFetch(true);
         ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_LOAD_MORE_BUTTON_ID}`});
     }
 
@@ -131,6 +140,9 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
             <PatchContainer data-m={mobile} ref={elemRef} {...rest}>
                 {patchData.items.length > 0 && (
                     <PatchItemsContainer data-bc={borderColor} data-m={mobile} data-dm={darkMode}>
+                        {!progress.isLoading && (
+                            <Refresh onClick={handleReset} borderColor={borderColor} />
+                        )}
                         <PatchFlex>
                             {patchData.items.map(patchUpdate => (
                                 <PatchUpdateItem key={patchUpdate.release}>
