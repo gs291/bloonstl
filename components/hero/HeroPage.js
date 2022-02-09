@@ -94,6 +94,7 @@ export default function HeroPage({ hero }) {
             <Stats stats={stats} path={path} type={hero.name} towerType="hero" />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
+            <HorizontalAD />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <SmallTitle variant={mobile ? "h4" : "h3"}>
                 Ability Path Level
@@ -129,7 +130,6 @@ export default function HeroPage({ hero }) {
                 Patch Updates
             </Title>
             <TowerPatchUpdates name={hero.name} borderColor={dividerBackgroundColor} />
-            <HorizontalAD />
         </>
     );
 }

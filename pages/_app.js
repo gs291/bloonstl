@@ -30,8 +30,6 @@ const theme = createTheme({
 });
 
 const globals = css`
-  @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
-  
   html, 
   body {
     padding: 0;
