@@ -32,7 +32,7 @@ export default function HorizontalAD({}) {
 
     useEffect(() => {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }, [windowWidth])
+    }, [windowWidth, mobile])
 
     useEffect(() => {
         handleResize();
