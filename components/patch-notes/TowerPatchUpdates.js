@@ -2,13 +2,12 @@ import styled from "@emotion/styled";
 import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-import useVisible from "../../lib/utils/hooks";
-
 import Refresh from "./Refresh";
 import PatchItems from "./PatchItems";
 import TowerText from "../tower/TowerText";
 import FetchErrors from "../api/FetchErrors";
 import FetchLoading from "../api/FetchLoading";
+import useVisible from "../../lib/utils/hooks";
 import {updatePage} from "../../lib/redux/actions";
 import DefaultButton from "../button/DefaultButton";
 import siteColors from "../../lib/utils/siteColors";
