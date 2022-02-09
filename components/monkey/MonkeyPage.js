@@ -138,7 +138,7 @@ export default function MonkeyPage({ monkey }) {
             <AbilityPathSelection tier={sandbox ? monkey.tier : tier} tiers={path} handleTier={handleTier} sandbox={sandbox} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <AbilitiesText variant={mobile ? "h4" : "h3"}>
-                Tower Abilities
+                Monkey Abilities
             </AbilitiesText>
             <PathCost variant={mobile ? "h6" : "h4"}>
                 Path Cost: $<Counter cost={stats.cost} />

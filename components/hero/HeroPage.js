@@ -77,7 +77,7 @@ export default function HeroPage({ hero }) {
     const mobile = useSelector(getMobile);
     const dividerBackgroundColor = getHeroColor(hero.name);
 
-    const [ path, setPath ] = useState(0);
+    const [ path, setPath ] = useState(9);
     const [ sandbox, setSandbox ] = useState(false);
     const [ pauseSandbox, setPauseSandbox ] = useState(false);
     const [ stats, setStats ] = useState(getInitialTowerStats(hero.stats, {pros: hero.info.pros, cons: hero.info.cons}));
@@ -99,16 +99,22 @@ export default function HeroPage({ hero }) {
             <SmallTitle variant={mobile ? "h4" : "h3"}>
                 Ability Path Level
             </SmallTitle>
+            <TowerText variant="subtitle2" font={true}>
+                {sandbox
+                    ? "Click on an ability to change the path!"
+                    : "View the selected hero ability level below"
+                }
+            </TowerText>
             <HeroTier data-m={mobile}>
                 <TierText tier={hero.tier} text="Tower Tier" showText />
                 <TierPText tier={hero.tier} tiers={{"top_path": path + 1}} towerType="hero" />
             </HeroTier>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h4" : "h3"}>
-                Hero Level Abilities
+                Hero Abilities
             </Title>
             <PathXPCost variant={mobile ? "h6" : "h4"}>
-                Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} />
+                Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} gold={false}/>
             </PathXPCost>
             <Abilities
                 abilities={hero.abilities} heroName={hero.name} heroFile={hero.filename}
