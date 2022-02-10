@@ -31,6 +31,10 @@ const LegalLinks = styled("div")`
   text-align: center;
 `;
 
+const DirectoryText = styled(LegalText)`
+  text-align: center;
+`;
+
 export default function Legal({  }) {
     const darkMode = useSelector(getDarkMode);
 
@@ -48,9 +52,9 @@ export default function Legal({  }) {
 
     return (
         <>
-            <LegalText variant="h4" font={true}>
+            <DirectoryText variant="h4" font={true}>
                 Site directory for the legal pages
-            </LegalText>
+            </DirectoryText>
             <LegalLinks>
                 <FullLink href="cookie-policy" title="Cookie Policy" />
                 <FullLink href="privacy-policy" title="Privacy Policy" />

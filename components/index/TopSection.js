@@ -34,7 +34,7 @@ const AboveCenter = styled(Grid)`
 `;
 
 const TextContainer = styled("div")`
-  margin-bottom: 150px;
+  margin-bottom: 15%;
 `;
 
 const BackgroundContainer = styled("div")`
@@ -79,14 +79,14 @@ export default function TopSection({className, scrollTo}) {
                 <AboveCenter item>
                     <TextContainer>
                         <Typography variant="h2">
-                            Bloons.GG
+                            BLOONS TL
                         </Typography>
                         <br />
                         <SansSerifText variant="h4">
-                            The Community Driven
+                            The Tier List Website
                         </SansSerifText>
                         <SansSerifText variant="h4">
-                            Tier List for Bloons TD 6
+                            For Bloons TD 6
                         </SansSerifText>
                     </TextContainer>
                 </AboveCenter>
