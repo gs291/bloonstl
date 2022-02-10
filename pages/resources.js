@@ -1,5 +1,6 @@
 import Header from "../components/page/Header";
 import PageTitle from "../components/page/PageTitle";
+import Feedback from "../components/feedback/Feedback";
 import apiDescription from "../lib/graphql/apiDescription";
 import MainContainer from "../components/page/MainContainer";
 import ResourcesPage from "../components/resources/ResourcePage";
@@ -14,6 +15,7 @@ export default function Resources({ api }) {
                 <PageTitle title="Resources" />
                 <ResourcesPage api={api}/>
             </MainContainer>
+            <Feedback />
         </>
     );
 }
