@@ -19,6 +19,7 @@ import ThirdPartWebsiteAndContent from "./ThirdPartWebsiteAndContent";
 import UserGeneratedContributions from "./UserGeneratedContributions";
 import CaliforniaUsersAndResidents from "./CaliforniaUsersAndResidents";
 
+
 const ToSContainer = styled("div")`
   width: 100%;
   margin-top: 50px;
@@ -43,7 +44,10 @@ const tags = [
     { "title": "CONTACT US", "href": "contact-us" },
 ];
 
-export default function TermsOfService({}) {
+/**
+ * Legal Terms of Service page
+ */
+export default function TermsOfService() {
 
     return (
         <>

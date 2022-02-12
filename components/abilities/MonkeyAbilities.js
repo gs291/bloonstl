@@ -41,6 +41,10 @@ const AllAbilities = styled("div", globalOptions)`
   gap: 10px 20px;
 `;
 
+/**
+ * Class representing monkey abilities.
+ * @extends PureComponent
+ */
 class MonkeyAbilities extends PureComponent {
     constructor(props){
         super(props);
@@ -55,6 +59,10 @@ class MonkeyAbilities extends PureComponent {
         this.props.setStats(this.getAbilityStats());
     }
 
+    /**
+     * Get the ability statistics from the selected ability path.
+     * @return {Object} The statistic values.
+     */
     getAbilityStats() {
         const { abilities, stats, path } = this.props;
 
@@ -102,6 +110,10 @@ class MonkeyAbilities extends PureComponent {
         return { ...tempStats };
     }
 
+    /**
+     * Get the abilities seperated in lists of five.
+     * @return {Object} The seperated abilities.
+     */
     getAbilities() {
         const { abilities, monkeyName, monkeyFile, tier, path, setPath, handlePathChange, setSnackPack } = this.props;
 
@@ -192,6 +204,12 @@ class MonkeyAbilities extends PureComponent {
     }
 }
 
+/**
+ * Returns the redux state to attach to a class component
+ *
+ * @param {Object} state The redux state
+ * @return {Object} Smaller state object with the redux darkMode and mobile state
+ */
 const mapStateToProps = (state) => {
     return {
         darkMode: state.darkMode,

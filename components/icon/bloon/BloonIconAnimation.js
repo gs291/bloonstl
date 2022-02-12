@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 
 import bloons from "../../../lib/utils/bloons";
 
+
 const BloonAnimation = props =>
     css`
       @keyframes bloon-path {
@@ -124,7 +125,11 @@ const getNewAnimation = (first) => {
 
 const checkIfAnimExist = (animation, newAnimation) => animation.name === newAnimation.name || animation.delay === newAnimation.delay;
 
-export default function BloonIconAnimation({}) {
+/**
+ * Bloon or Blimp SVG icon that animate around the BloonIcon.
+ *   The icons randomly spawn and respawn after looping through the BloonIcon
+ */
+export default function BloonIconAnimation() {
     const [animation, setAnimation] = useState({});
     const [reset, setReset] = useState(false);
     const [supportsOffset, setSupport] = useState(false);

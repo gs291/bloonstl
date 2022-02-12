@@ -7,6 +7,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {CHIP_PREFIX, SELECT_CONTENT_CHIP, ga4SendSelectContent, textToGA4Text} from "../../lib/utils/ga4";
 
+
 const StyledChip = styled(Chip, globalOptions)`
   @keyframes popup {
     0% {
@@ -42,6 +43,16 @@ const StyledChip = styled(Chip, globalOptions)`
 `;
 
 const GA4_PRO_CON_CHIP_ID = "PRO_CON";
+
+/**
+ * Pro or Con chip component
+ *
+ * @param {Object} props Component props
+ * @param {boolean} props.isPro Shows if the chip is a pro or con
+ * @param {string} props.title The title for the chip
+ * @param {string} props.text The text for the chip
+ * @param {string} props.chipType Shows what chip it is
+ */
 export default function ProConChip({title, text, isPro, chipType}) {
 
     const handleClick = () => ga4SendSelectContent(SELECT_CONTENT_CHIP, {

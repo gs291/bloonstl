@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
-import Refresh from "./Refresh";
 import PatchItems from "./PatchItems";
 import TowerText from "../tower/TowerText";
 import FetchErrors from "../api/FetchErrors";
@@ -13,6 +12,7 @@ import DefaultButton from "../button/DefaultButton";
 import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
+import PatchRefreshButton from "../button/PatchRefreshButton";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
 import {getDarkMode, getMobile, getPageData} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
@@ -61,9 +61,17 @@ const FooterContainer = styled("div")`
   margin-bottom: 50px;
 `;
 
-
 const GA4_RESET_BUTTON_ID = "PATCH_RESET";
 const GA4_LOAD_MORE_BUTTON_ID = "PATCH_LOAD_MORE";
+
+/**
+ * Patch notes for an individual tower
+ *
+ * @param {Object} props Component props
+ * @param {string} props.name The tower name
+ * @param {string} props.name The tower/ability path tier
+ * @param {string} props.name The color to apply to the patch updates border[s]
+ */
 export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
     const elemRef = useRef();
     const isVisible = useVisible(elemRef);
@@ -140,7 +148,7 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
                 {patchData.items.length > 0 && (
                     <PatchItemsContainer data-bc={borderColor} data-m={mobile} data-dm={darkMode}>
                         {!progress.isLoading && (
-                            <Refresh onClick={handleReset} borderColor={borderColor} />
+                            <PatchRefreshButton onClick={handleReset} borderColor={borderColor} />
                         )}
                         <PatchFlex>
                             {patchData.items.map(patchUpdate => (

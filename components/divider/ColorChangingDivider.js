@@ -5,6 +5,7 @@ import FixedDivider from "./FixedDivider";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 
+
 const ColorDivider = styled(FixedDivider)`
   @keyframes rainbow {
     0%{background-position:0% 82%}
@@ -22,6 +23,14 @@ const ColorDivider = styled(FixedDivider)`
 `;
 
 
+/**
+ * Divider with a rainbow background
+ *
+ * @param {Object} props Component props
+ * @param {string} props.width Width of the divider
+ * @param {string} props.height Height of the divider
+ * @param {string} [props.colors] Comma (and space) seperated list of HEX color codes
+ */
 export default function ColorChangingDivider({width, height, colors = "#FF2400, #E81D1D, #E8B71D, #E3E81D, #1DE840, #1DDDE8, #2B1dE8, #DD00F3, #DD00F3" }) {
     const darkMode = useSelector(getDarkMode);
     return (

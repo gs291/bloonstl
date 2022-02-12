@@ -34,6 +34,16 @@ const Pages = styled(Pagination, globalOptions)`
 
 
 const GA4_PAGINATION_ID = "FILTER_PAGINATION";
+
+/**
+ * Pagination component
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {number} props.pageCount The amount of pages available
+ * @param {string} props.page The currently selected page
+ * @param {function} props.handlePage The function to run when a page is selected/changed
+ */
 export default function FilterPagination({ className, pageCount, page, handlePage }) {
     const darkMode = useSelector(getDarkMode);
 

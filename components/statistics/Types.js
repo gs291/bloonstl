@@ -9,6 +9,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
+
 const PaddedCell = styled(TableCell, globalOptions)`
   padding: 0 3px;
   border-bottom: 1px solid ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
@@ -57,6 +58,12 @@ const rows = [
     createData("Fire", true, true, false, true, true)
 ];
 
+/**
+ * The tower damage type table
+ *
+ * @param {Object} props Component props
+ * @param {string} props.type The tower damage type
+ */
 export default function Types({type}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

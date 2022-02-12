@@ -8,6 +8,7 @@ import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
+
 const IndicatorContainer = styled("div")`
   position: relative;
   width: 30px;
@@ -29,6 +30,13 @@ const ClickContainer = styled("div", globalOptions)`
 `;
 
 const GA4_SCROLL_INDICATOR_ID = "SCROLL_INDICATOR";
+
+/**
+ * Home page sections below the top background/introduction
+ *
+ * @param {Object} props Component props
+ * @param {RefObject<HTMLDivElement>|null} props.scrollTo React reference to the top of the home page sections
+ */
 export default function ScrollIndicator({scrollTo}) {
     const darkMode = useSelector(getDarkMode);
 

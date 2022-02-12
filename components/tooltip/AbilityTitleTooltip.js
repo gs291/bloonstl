@@ -10,6 +10,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getDifficulty, getMobile} from "../../lib/redux/selectors";
 import {getImageUrl, getThousandsNumber, getTierColor, goldCost} from "../../lib/utils/utils";
 
+
 const TitleContainer = styled("div")`
   display: flex;
   flex-direction: row;
@@ -54,6 +55,16 @@ const ImageContainer = styled("div", globalOptions)`
 
 const PathText = styled(TowerText)``;
 
+/**
+ * Ability image for the tooltip
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.ability The database ability object
+ * @param {string} props.fileName The filename for the tower
+ * @param {string} props.towerType Shows if the tower is a monkey or hero
+ * @param {boolean} props.darkMode Shows if darkMode is enabled or disabled
+ * @param {boolean} props.mobile Shows if mobile is enabled or disabled
+ */
 const AbilityImage = ({ability, fileName, towerType, darkMode, mobile}) => (
     <>
         <VerticalDivider backgroundColor={darkMode ? siteColors.text.dark : siteColors.text.light} />
@@ -80,14 +91,16 @@ const AbilityImage = ({ability, fileName, towerType, darkMode, mobile}) => (
     </>
 );
 
-
-// Currently has a bug that I (gs291) did not know how to fix
-//   with rendering an Image in a Tooltip. Switching different (Monkey/Hero)Page states and
-//   switching between different tooltips at the same times causes warning messages to appear that shouldn't be there. For example:
-//   `Image with src "dart-monkey/dart-monkey23.png" may not render properly with a parent using position:"". Consider changing the parent style to position:"relative" with a width and height.`
-//   This shouldn't be here because ImageContainer has both position and width/height, right!?
-//   It has to most likely do with tooltip transition exiting/entering and its component mount timings but idk
-
+/**
+ * Ability title/header tooltip component
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.ability The database ability object
+ * @param {string} props.fileName The filename for the tower
+ * @param {string} props.tier The currently selected tier or tower tier
+ * @param {string} props.towerType Shows if the tower is a monkey or hero
+ * @param {boolean} props.selected Shows if the ability is currently selected
+ */
 export default function AbilityTitleTooltip({ ability, tier, selected, fileName, towerType, ...rest }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

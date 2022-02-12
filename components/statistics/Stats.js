@@ -5,12 +5,13 @@ import StatNotes from "./StatNotes";
 import MoreStats from "./MoreStats";
 import TowerStats from "./TowerStats";
 import DamageStats from "./DamageStats";
+import StatsLegend from "./StatsLegend";
 import StatsContainer from "./StatsContainer";
 import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
-import StatsLegend from "./StatsLegend";
+
 
 const AllModifiersAndNotes = styled("div", globalOptions)`
   margin-top: 25px;
@@ -50,6 +51,16 @@ const MoreContainer = styled(ModifierContainer)`
   width: ${props => props["data-m"] ? 100 : 30}%;
 `;
 
+/**
+ * The tower stats component
+ *  - Shows the statistics for the tower
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.stats Object containing ALL the stats of the tower
+ * @param {string} props.type Shows the Hero name or monkey type
+ * @param {Object|number} props.path Shows the current ability/level path
+ * @param {string} [props.towerType="monkey"] Shows if the tower is a monkey or hero
+ */
 export default function Stats({stats, type, path, towerType = "monkey", ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

@@ -10,6 +10,7 @@ import {font_family, rgbaHex} from "../../lib/utils/utils";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
+
 const FooterContainer = styled("footer")`
   display: flex;
   flex-direction: column;
@@ -75,6 +76,12 @@ const links = [
     { "text": "Cookie", "path": "/legal/cookie-policy" }
 ]
 
+/**
+ * Footer for the website
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ */
 export default function Footer({ className }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

@@ -2,7 +2,11 @@ import LegalOList from "../LegalOList";
 import LegalListItem from "../LegalListItem";
 import TowerText from "../../tower/TowerText";
 
-export default function Whereas({}) {
+
+/**
+ * Legal GDPR "whereas" section
+ */
+export default function Whereas() {
 
     return (
         <>

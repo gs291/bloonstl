@@ -97,6 +97,13 @@ const GA4_TIER_LIST_FILTERS_ID = "TIER_LIST_FILTERS";
 const GA4_TIER_LIST_FILTERS_BORDER_ID = "BORDER";
 const GA4_TIER_LIST_FILTERS_MONKEYS_ID = "MONKEYS";
 const GA4_TIER_LIST_FILTERS_HEROES_ID = "HEROES";
+
+/**
+ * Tier list filters
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ */
 export default function FiltersTierList({className}) {
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);

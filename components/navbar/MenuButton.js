@@ -10,6 +10,7 @@ import {toggleDrawer} from "../../lib/redux/actions";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getDrawer} from "../../lib/redux/selectors";
 
+
 const Menu = styled(Button, globalOptions)`
   transition: 0.3s;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
@@ -17,6 +18,9 @@ const Menu = styled(Button, globalOptions)`
   width: 100px;
 `;
 
+/**
+ * Menu button displayed in the navbar in mobile mode
+ */
 export default function MenuButton() {
     const dispatch = useDispatch();
     const drawer = useSelector(getDrawer);

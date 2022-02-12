@@ -8,6 +8,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 import {parseAbilityModifiers, rgbaHex} from "../../lib/utils/utils";
 import {getDarkMode, getShowTooltipModifiers} from "../../lib/redux/selectors";
 
+
 const ModifierWrapper = styled("div")`
   width: 100%;
   position: relative;
@@ -40,6 +41,12 @@ const ListItem = styled("li", globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light}
 `;
 
+/**
+ * Tooltip Ability modifiers list
+ *
+ * @param {Object} props Component props
+ * @param {string} props.modifiers Modifiers for a specific ability
+ */
 export default function AbilityModifiersTooltip({modifiers, ...rest}) {
     const darkMode = useSelector(getDarkMode);
     const showAllModifiers = useSelector(getShowTooltipModifiers);

@@ -18,6 +18,7 @@ import ProcessingOfCompanyPersonalData from "./ProcessingOfCompanyPersonalData";
 import DeletionOrReturnOfCompanyPersonalData from "./DeletionOrReturnOfCompanyPersonalData";
 import DataProtectionImpactAssessmentAndPriorConsultation from "./DataProtectionImpactAssessmentAndPriorConsultation";
 
+
 const GDPRContainer = styled("div")`
   width: 100%;
   margin-top: 50px;
@@ -39,7 +40,10 @@ const tags = [
     { "title": "Governing Law and Jurisdiction", "href": "governing-law-and-jurisdiction" }
 ];
 
-export default function GDPRDataProcessingAgreement({}) {
+/**
+ * Legal GDPR Processing Agreement page
+ */
+export default function GDPRDataProcessingAgreement() {
 
     return (
         <>

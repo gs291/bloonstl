@@ -12,6 +12,7 @@ import siteLinks from "../../lib/utils/siteLinks";
 import {closeDrawer} from "../../lib/redux/actions";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
+
 const NavSection = styled("div")`
   flex: 0.5;
 `;
@@ -27,8 +28,9 @@ const NavContainer = styled("div")`
   align-items: center;
 `;
 
-
-
+/**
+ * Site links displayed in the navbar
+ */
 export default function SiteLinks() {
     const expanderRef = useRef();
     const dispatch = useDispatch();

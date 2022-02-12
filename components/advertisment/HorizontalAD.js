@@ -18,7 +18,11 @@ const StyledAD = styled("ins")`
   max-width: 952px;
 `;
 
-export default function HorizontalAD({}) {
+
+/**
+ * Google AdSense rectangle/horizontal display unit advertisement
+ */
+export default function HorizontalAD() {
     const mobile = useSelector(getMobile);
     const [windowWidth, setWindowWidth] = useState(0);
 

@@ -3,9 +3,15 @@ import {useSelector} from "react-redux";
 
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
-import React from "react";
 
-export default function Header({ title }) {
+
+/**
+ * Website header
+ *
+ * @param {Object} props Component props
+ * @param {string} props.title Title to display for the website (in the tab name)
+ */
+export default function Header({title}) {
     const darkMode = useSelector(getDarkMode);
 
     const barColor = darkMode ? siteColors.page.dark : siteColors.page.light;

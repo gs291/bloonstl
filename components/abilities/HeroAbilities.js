@@ -31,6 +31,10 @@ const GridItem = styled(Grid)`
   flex-direction: row;
 `;
 
+/**
+ * Class representing hero abilities.
+ * @extends PureComponent
+ */
 export default class HeroAbilities extends PureComponent {
 
     constructor(props){
@@ -47,6 +51,10 @@ export default class HeroAbilities extends PureComponent {
         this.props.setStats(this.getAbilityStats());
     }
 
+    /**
+     * Get the ability statistics from the selected ability path.
+     * @return {Object} The statistic values.
+     */
     getAbilityStats() {
         const {abilities, path, initialPros, initialCons, defaultStats} = this.props;
 
@@ -70,6 +78,10 @@ export default class HeroAbilities extends PureComponent {
         return { ...tempStats }
     }
 
+    /**
+     * Get the abilities seperated in lists of five.
+     * @return {Object} The seperated abilities.
+     */
     getAbilities() {
         const {abilities, tier, path, setPath, heroName, heroFile} = this.props;
 

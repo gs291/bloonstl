@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 
+
 export const ListItem = styled("li")`
   display: block;
   margin-bottom: 20px;
@@ -15,6 +16,12 @@ export const ListItem = styled("li")`
   }
 `;
 
+/**
+ * Legal list item  (<li>)
+ *
+ * @param {Object} props Component props
+ * @param {any} props.children Children supplied to the list item
+ */
 export default function LegalListItem({children, ...rest}) {
 
     return (

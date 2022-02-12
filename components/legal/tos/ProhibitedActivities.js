@@ -2,6 +2,13 @@ import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
 import LegalUList from "../LegalUList";
 
+
+/**
+ * Legal ToS "prohibited activities" section
+ *
+ * @param {Object} props Component props
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
 export default function ProhibitedActivities({tag}) {
 
     return (

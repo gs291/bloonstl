@@ -4,6 +4,7 @@ import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
 import LegalTable from "../LegalTable";
 
+
 const head = [
     "Cookie",
     "Purpose"
@@ -12,11 +13,18 @@ const head = [
 const rows = [
     { "name": "cookie_consent", "columns": ["Remembers the state of user acceptance to the cookie banner. Only set when the user clicks Accept, Agree, Ok or close box (X)."]}
 ];
+
 const CookieTable = styled(LegalTable)`
   margin-top: 30px;
   margin-bottom: 30px;
 `;
 
+/**
+ * Legal cookies "essential cookies" section
+ *
+ * @param {Object} props Component props
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
 export default function EssentialCookies({tag}) {
 
     return (

@@ -9,6 +9,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
 
+
 const Switch = styled("input")`
   --size: 2rem;
 
@@ -62,6 +63,13 @@ const DarkModeContainer = styled("div", globalOptions)`
 
 
 const GA4_DARK_MODE_ID = "DARK_MODE";
+
+/**
+ * Dark mode full component
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ */
 export default function DarkMode({className}){
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);

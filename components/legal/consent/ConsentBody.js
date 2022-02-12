@@ -41,6 +41,12 @@ const ErrorIcon = styled(ErrorOutlineIcon, globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.toast.error.alert.dark : siteColors.toast.error.alert.light};
 `;
 
+/**
+ * Consent toast body component
+ *
+ * @param {Object} props Component props
+ * @param {boolean} props.error Shows if there was an error with accepting the cookie toast
+ */
 export default function ConsentBody({error}) {
     const darkMode = useSelector(getDarkMode);
 

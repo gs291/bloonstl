@@ -7,7 +7,8 @@ import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
+import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
+
 
 const TopContainer = styled("div", globalOptions)`
   position: fixed;
@@ -31,7 +32,11 @@ const TopContainer = styled("div", globalOptions)`
 `;
 
 const GA4_RETURN_TOP_ID = "RETURN_TOP";
-export default function ReturnToTop({}) {
+
+/**
+ * Fixed return to top of page button
+ */
+export default function ReturnToTop() {
     const darkMode = useSelector(getDarkMode);
     const [show, setShow] = useState(false);
 

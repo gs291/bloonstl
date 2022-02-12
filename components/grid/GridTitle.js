@@ -7,6 +7,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const Title = styled(Grid, globalOptions)`
   padding-top: 20px;
   padding-bottom: 20px;
@@ -19,6 +20,14 @@ const Title = styled(Grid, globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
+/**
+ * Title component for a grid
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {any} props.children Children supplied to the title
+ * @param {string} props.backgroundColor Color to be applied to the title
+ */
 export default function GridTitle({ className, children, backgroundColor}) {
     const darkMode = useSelector(getDarkMode);
 

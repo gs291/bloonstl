@@ -1,6 +1,13 @@
 import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
 
+
+/**
+ * Legal cookies "flash cookies" section
+ *
+ * @param {Object} props Component props
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
 export default function FlashCookies({tag}) {
 
     return (

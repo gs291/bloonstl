@@ -15,7 +15,10 @@ const Loading = styled("div")`
   text-align: center;
 `;
 
-export default function FetchLoading({}) {
+/**
+ * Loading progress circle with text
+ */
+export default function FetchLoading() {
 
     return (
         <>

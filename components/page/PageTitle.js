@@ -6,6 +6,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
+
 const Title = styled(Typography, globalOptions)`
   width: 100%;
   text-align: center;
@@ -17,6 +18,12 @@ const Title = styled(Typography, globalOptions)`
   overflow: hidden;
 `;
 
+/**
+ * Website title for a page
+ *
+ * @param {Object} props Component props
+ * @param {string} props.title Title to be displayed in the page
+ */
 export default function PageTitle({title}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

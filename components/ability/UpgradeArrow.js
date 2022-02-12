@@ -7,11 +7,11 @@ import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
+
 const UpgradeArrowContainer = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 `;
 
 const Arrow = styled(DoubleArrow, globalOptions)`
@@ -23,9 +23,19 @@ const Arrow = styled(DoubleArrow, globalOptions)`
   ${props => props["data-m"] ? "width: 15px;" : ""}
 `;
 
+
+/**
+ * Upgrade arrow in-between abilities
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {string} props.tier The currently selected tier or tower tier
+ * @param {boolean} props.selected Shows if the ability is currently selected
+ */
 export default function UpgradeArrow({ className, tier, selected }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
+
     return (
         <>
             <UpgradeArrowContainer className={className}>

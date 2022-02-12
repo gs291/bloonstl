@@ -8,7 +8,8 @@ import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getBorder, getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getTowerLink, getMonkeyColor, getHeroColor, rgbaHex} from "../../lib/utils/utils";
-import {CARD_PREFIX, ga4SendSelectContent, SELECT_CONTENT_CARD} from "../../lib/utils/ga4";
+import {CARD_PREFIX, SELECT_CONTENT_CARD, ga4SendSelectContent} from "../../lib/utils/ga4";
+
 
 const CardContainer = styled(Card, globalOptions)`
   @keyframes popup {
@@ -68,6 +69,16 @@ const TowerName = styled(Typography, globalOptions)`
 
 
 const GA4_TOWER_CARD_ID = "TOWER";
+
+/**
+ * Full tower card
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.tower Object containing the tower
+ * @param {string} props.tier The tower tier
+ * @param {string} props.towerType Shows if the tower is a monkey or hero
+ * @param {boolean} props.ignoreFilter Shows if the card should ignore any filters
+ */
 export default function TowerCard({tower, towerType, tier, ignoreFilter}) {
     const mobile = useSelector(getMobile);
     const border = useSelector(getBorder);

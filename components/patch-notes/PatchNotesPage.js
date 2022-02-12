@@ -54,6 +54,13 @@ const Title = styled(TowerText)`
 
 
 const GA4_PATCH_BUTTON_ID = "PATCH_BUTTON";
+
+/**
+ * Patch notes page
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.patch Object containing data on the initially fetched patch
+ */
 export default function PatchNotesPage({ patch }) {
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);

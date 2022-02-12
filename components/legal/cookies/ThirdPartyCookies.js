@@ -4,6 +4,7 @@ import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
 import LegalTable from "../LegalTable";
 
+
 const head = [
     "Partner",
     "Cookie Info"
@@ -19,6 +20,13 @@ const CookieTable = styled(LegalTable)`
   margin-bottom: 30px;
 `;
 
+
+/**
+ * Legal cookies "targeted advertising" section
+ *
+ * @param {Object} props Component props
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
 export default function ThirdPartyCookies({tag}) {
 
     return (

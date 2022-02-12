@@ -16,7 +16,17 @@ const TowerGrid = styled(Grid, globalOptions)`
   box-shadow: 10px 10px 10px ${props => props["data-bc"]};
 `;
 
-
+/**
+ * Grid to show the supplied towers
+ *
+ * @param {Object} props Component props
+ * @param {Array<Object>} props.towers Array list of the towers to be applied in the grid
+ * @param {string} props.title Text to be set in the title
+ * @param {string} props.tier The currently selected tier
+ * @param {string} props.backgroundColor Color to be applied to the grid
+ * @param {string} props.titleColor Color to be applied to the title
+ * @param {number} props.ignoreFilter Shows if the filters should be ignored
+ */
 export default function GridTowerContainer({towers, title, tier, backgroundColor, titleColor, ignoreFilter, }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

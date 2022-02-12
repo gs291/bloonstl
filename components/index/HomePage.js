@@ -9,6 +9,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const delay = 7500;
 
 const OddSection = styled("div", globalOptions)`
@@ -37,6 +38,13 @@ const getNewIndex = (idx, length) => {
     return newIdx;
 }
 
+/**
+ * Home page sections below the top background/introduction
+ *
+ * @param {Object} props Component props
+ * @param {RefObject<HTMLDivElement>|null} props.scrollTo React reference to the top of the home page sections
+ * @param {Array<Object>} props.monkeys Array list of monkeys to display on the home page sections
+ */
 export default function HomePage({scrollTo, monkeys}) {
     const length = monkeys.length;
     const darkMode = useSelector(getDarkMode);

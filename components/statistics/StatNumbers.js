@@ -5,6 +5,7 @@ import TowerText from "../tower/TowerText";
 import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const Number = styled("div", globalOptions)`
   margin-top: ${props => props["data-e"] ? 7.5 : 0}px;
   margin-bottom: ${props => props["data-m"] ? 0 : 5}px;
@@ -33,6 +34,15 @@ const TotalNumber = styled(TowerText)`
   width: ${props => props["data-w"]}%;
 `;
 
+/**
+ * The stat numbers component
+ *  - Shows the row of numbers side by side
+ *
+ * @param {Object} props Component props
+ * @param {Array<Object<{title: string, text: string}>>} props.rows Array list of numbers
+ * @param {number} [props.widthLeft=50] How much width the left title should be
+ * @param {number} [props.widthRight=50] How much width the right text should be
+ */
 export default function StatNumbers({rows, widthLeft = 50, widthRight = 50}) {
     const mobile = useSelector(getMobile);
 

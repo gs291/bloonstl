@@ -6,6 +6,7 @@ import TowerText from "../tower/TowerText";
 import ProConChip from "../tower/ProConChip";
 import {getMobile} from "../../lib/redux/selectors";
 
+
 const GridContainer = styled(Grid)`
   width: 100%;
 `;
@@ -24,7 +25,14 @@ const Title = styled(TowerText)`
   margin-bottom: 5px;
 `;
 
-
+/**
+ * Grid of pros or cons
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {boolean} props.isPro Shows if the grid will be pros or cons
+ * @param {Array<{title: string, pro: string, con: string}>} props.proCons Array list of the pros or cons
+ */
 export default function GridProsCons({ className, isPro, proCons}) {
     const mobile = useSelector(getMobile);
 

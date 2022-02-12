@@ -70,13 +70,25 @@ const ActivatedAbility = styled(OfflineBoltIcon, globalOptions)`
   }
 `;
 
-export default function Ability({className, ability, fileName, tier, towerType, selected, open = null, ...rest}) {
+
+/**
+ * Full Individual Ability Component
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.ability The database ability object
+ * @param {string} props.fileName The filename for the tower
+ * @param {string} props.tier The currently selected tier or tower tier
+ * @param {string} props.towerType Shows if the tower is a monkey or hero
+ * @param {boolean} props.selected Shows if the ability is currently selected
+ * @param {boolean|null} [props.open=null] Shows if the default ability tooltip open functionality will be overridden
+ */
+export default function Ability({ability, fileName, tier, towerType, selected, open = null, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <AbilityContainer className={className} {...rest}>
+            <AbilityContainer {...rest}>
                 <Tooltip
                     {...(open ? {open: open} : null)}
                     title={

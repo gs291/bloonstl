@@ -11,6 +11,7 @@ import {toggleDrawer} from "../../lib/redux/actions";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getDrawer} from "../../lib/redux/selectors";
 
+
 const TopDrawer = styled(Drawer)`
   .MuiDrawer-paper {
     height: 100%;
@@ -40,6 +41,9 @@ const DrawerDarkMode = styled(DarkMode)`
   flex: 1;
 `;
 
+/**
+ * Navbar mobile drawer
+ */
 export default function NavDrawer() {
     const dispatch = useDispatch();
     const drawer = useSelector(getDrawer);

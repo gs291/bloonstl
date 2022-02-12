@@ -1,3 +1,9 @@
+/**
+ * Monkey icon used in filters
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ */
 export default function MonkeyIcon({className}) {
 
     return (

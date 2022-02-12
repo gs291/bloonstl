@@ -10,6 +10,7 @@ import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
+
 const KeybindContainer = styled("div")`
   width: 100%;
   
@@ -57,6 +58,14 @@ const TextLink = styled("a")`
 
 
 const GA4_KEYBINDINGS_ID = "KEYBINDINGS";
+
+/**
+ * Resource page keybinding component with image
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
 export default function Keybindings({ className, tag }) {
     const darkMode = useSelector(getDarkMode);
     const [show, setShow] = useState(false);

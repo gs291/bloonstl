@@ -9,6 +9,7 @@ import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import ScrollIndicator from "../scroll-indicator/ScrollIndicator";
 
+
 const TitleContainer = styled(Grid, globalOptions)`
   height: calc(100vh - ${siteSizes.nav.height});
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
@@ -60,6 +61,13 @@ const ScrollContainer = styled("div")`
 `;
 
 
+/**
+ * Home page top introduction
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {RefObject<HTMLDivElement>|null} props.scrollTo React reference to the top of the home page sections
+ */
 export default function TopSection({className, scrollTo}) {
     const darkMode = useSelector(getDarkMode);
 

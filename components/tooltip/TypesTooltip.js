@@ -7,6 +7,7 @@ import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const TooltipContainer = styled("div", globalOptions)`
   padding: ${props => props["data-m"] ? 0 : 1}em;
 `;
@@ -26,6 +27,13 @@ const InitialTypeText = styled(TowerText)`
   text-align: center;
 `;
 
+/**
+ * Damage Types tooltip component
+ *
+ * @param {Object} props Component props
+ * @param {string} props.type The tower damage type
+ * @param {string|null} [props.prevType] The previous tower damage type
+ */
 export default function TypesTooltip({type, prevType}) {
     const mobile = useSelector(getMobile);
 

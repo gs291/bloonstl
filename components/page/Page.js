@@ -15,6 +15,7 @@ import ConsentToast from "../legal/consent/ConsentToast";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
+
 const PageContainer = styled("div")`
   display: flex;
   min-height: 100vh;
@@ -40,6 +41,11 @@ const Foot = styled(Footer, globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
+/**
+ * Website page layout
+ *
+ * @param {Object} props Page props
+ */
 export default function Page(props) {
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);

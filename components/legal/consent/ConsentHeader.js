@@ -10,6 +10,7 @@ import {getDarkMode} from "../../../lib/redux/selectors";
 import {globalOptions} from "../../../lib/utils/emotionStyled";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../../lib/utils/ga4";
 
+
 const Header = styled("div", globalOptions)`
   display: flex;
   align-items: center;
@@ -55,6 +56,14 @@ const CancelIcon = styled(CancelOutlinedIcon, globalOptions)`
 
 
 const GA4_COOKIE_CONSENT_ID = "COOKIE_CONSENT";
+
+/**
+ * Consent toast header component
+ *
+ * @param {Object} props Component props
+ * @param {boolean} props.error Shows if there was an error with accepting the cookie toast
+ * @param {function} props.checkConsent Function to check if the cookie consent was set properly
+ */
 export default function ConsentHeader({checkConsent, error}) {
     const darkMode = useSelector(getDarkMode);
 

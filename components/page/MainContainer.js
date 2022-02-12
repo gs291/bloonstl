@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import {Container} from "@mui/material";
 
+
 const Main = styled(Container)`
   display: flex;
   flex-direction: column;
@@ -10,6 +11,12 @@ const Main = styled(Container)`
   padding-bottom: 50px;
 `;
 
+/**
+ * Website main container
+ *
+ * @param {Object} props Component props
+ * @param {any} props.children Children supplied to the main container
+ */
 export default function MainContainer({children}) {
 
     return (

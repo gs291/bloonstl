@@ -3,9 +3,10 @@ import {useDispatch, useSelector} from "react-redux";
 
 
 import TowerText from "../tower/TowerText";
-import DifficultyButton from "./DifficultyButton";
+import DifficultyButton from "../button/DifficultyButton";
 import {getDifficulty, getMobile} from "../../lib/redux/selectors";
 import {UPDATE_DIFFICULTY, updateFilter} from "../../lib/redux/actions";
+
 
 const DifficultyContainer = styled("div")`
   display: flex;
@@ -32,6 +33,14 @@ const Label = styled(TowerText)`
   text-align: center;
 `;
 
+
+/**
+ * Difficulty filter and wrapper for all difficulty buttons
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {string} props.color Color for the difficulty button
+ */
 export default function FilterDifficulty({ className, color }) {
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);

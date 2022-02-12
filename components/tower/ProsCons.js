@@ -9,6 +9,7 @@ import {getMobile} from "../../lib/redux/selectors";
 import VerticalDivider from "../divider/VerticalDivider";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const ProsConsContainer = styled(Grid, globalOptions)`
   min-height: ${props => props["data-m"] ? "250px" : "125px"};
   margin-top: 10px;
@@ -20,6 +21,15 @@ const SpacedGrid = styled(Grid, globalOptions)`
   width: ${props => props["data-m"] ? 100 : 90}%;
 `;
 
+/**
+ * Pros and Cons component
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the icon
+ * @param {string|null} props.pros Comma-Delimited string of pros
+ * @param {string|null} props.cons Comma-Delimited string of cons
+ * @param {string} props.backgroundColor Color for the dividers
+ */
 export default function ProsCons({ className, pros, cons, backgroundColor }) {
     const mobile = useSelector(getMobile);
     if (!pros) { pros = ""; }
@@ -29,12 +39,13 @@ export default function ProsCons({ className, pros, cons, backgroundColor }) {
 
     return (
         <>
-            <ProsConsContainer container
-                               spacing={2}
-                               justifyContent="center"
-                               direction={mobile ? "column" : "row"}
-                               alignItems={mobile ? "center" : "stretch"}
-                               data-m={mobile}
+            <ProsConsContainer
+                container
+                spacing={2}
+                justifyContent="center"
+                direction={mobile ? "column" : "row"}
+                alignItems={mobile ? "center" : "stretch"}
+                data-m={mobile}
             >
                 <SpacedGrid data-m={mobile} item>
                     <GridProsCons isPro={true} proCons={pros}/>

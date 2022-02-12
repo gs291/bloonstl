@@ -31,6 +31,16 @@ const Label = styled(TowerText)`
   text-align: center;
 `;
 
+/**
+ * Monkey Ability Path Selection Component.
+ *   Allows selection from different tiers
+ *
+ * @param {Object} props Component props
+ * @param {string} props.tier The currently selected tier
+ * @param {Object} props.tiers The tiers object containing the ability path
+ * @param {function} props.handleTier The function to run when a tier is selected
+ * @param {boolean} props.sandbox Shows if sandbox mode is enabled or disabled
+ */
 export default function AbilityPathSelection({ tier, tiers, handleTier, sandbox }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

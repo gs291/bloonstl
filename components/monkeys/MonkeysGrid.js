@@ -7,7 +7,16 @@ import GridTowerContainer from "../grid/GridTowerContainer";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
-export default function MonkeysGrid({ primary, military, magic, support }) {
+/**
+ * Grid to display all the monkeys
+ *
+ * @param {Object} props Component props
+ * @param {Array<Object>} props.primary Array list of all the primary monkeys
+ * @param {Array<Object>} props.military Array list of all the military monkeys
+ * @param {Array<Object>} props.magic Array list of all the magic monkeys
+ * @param {Array<Object>} props.support Array list of all the support monkeys
+ */
+export default function MonkeysGrid({primary, military, magic, support}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 

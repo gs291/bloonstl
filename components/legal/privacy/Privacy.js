@@ -17,23 +17,6 @@ import InformationCollection from "./InformationCollection";
 import ReviewUpdateDeleteData from "./ReviewUpdateDeleteData";
 import TableOfContents from "../../table-of-contents/TableOfContents";
 
-export const GDPRList = styled("ol")`
-  counter-reset: item ${props => props.start};
-`;
-
-export const GDPRItem = styled("li")`
-  display: block;
-  
-  &:before {
-    content: counters(item, ".") " ";
-    counter-increment: item
-  }
-  
-  & > p {
-    display: inline;
-    margin-left: 10px;
-  }
-`;
 
 const PrivacyContainer = styled("div")`
   width: 100%;
@@ -56,7 +39,10 @@ const tags = [
     { "title": "HOW CAN YOU CONTACT US ABOUT THIS NOTICE?", "href": "contact-us" }
 ];
 
-export default function Privacy({}) {
+/**
+ * Legal privacy page
+ */
+export default function Privacy() {
 
     return (
         <>

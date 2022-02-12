@@ -46,8 +46,15 @@ const StyledCheckbox = styled(Checkbox, globalOptions)`
   }
 `;
 
-
 const GA4_SHOW_ALL_ABILITY_MODIFIERS_ID = "MODIFIERS";
+
+/**
+ * Checkbox for showing/hiding ability tooltip modifiers
+ *
+ * @param {Object} props Component props
+ * @param {string} props.tier The tower tier
+ * @param {boolean} [props.paragon=false] Shows if the Tower contains a paragon
+ */
 export default function ShowAllAbilityModifiers({tier, paragon = false, ...rest}) {
     const dispatch = useDispatch();
 

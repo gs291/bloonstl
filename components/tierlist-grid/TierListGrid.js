@@ -9,6 +9,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getTierColor, getTowerType} from "../../lib/utils/utils";
 import {getDarkMode, getHeroState, getMobile, getMonkeyState} from "../../lib/redux/selectors";
 
+
 const FilterContainer = styled("div", globalOptions)`
   margin-bottom: 50px;
   border-radius: 20px;
@@ -18,6 +19,14 @@ const FilterContainer = styled("div", globalOptions)`
   transition: 0.3s;
 `;
 
+/**
+ * Tier list page grid
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {Object<{s: Array<Object>,a: Array<Object>, b: Array<Object>, c: Array<Object>}>} props.tiers
+ *   Monkeys/Heroes split into their respective tier
+ */
 export default function TierListGrid({ className, tiers }) {
     const mobile = useSelector(getMobile);
     const heroes = useSelector(getHeroState);

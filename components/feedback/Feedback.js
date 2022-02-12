@@ -38,6 +38,10 @@ const OutBound = styled(OutboundIcon, globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 
+
+/**
+ * Bottom right fixed feedback button
+ */
 export default function Feedback() {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

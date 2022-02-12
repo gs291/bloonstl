@@ -6,6 +6,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const Stats = styled("div", globalOptions)`
   display: flex;
   flex-direction: ${props => props["data-d"]};
@@ -31,6 +32,16 @@ const Stats = styled("div", globalOptions)`
   border-bottom-right-radius: 3px;
 `;
 
+/**
+ * The stat wrapper for specific statistics
+ *
+ * @param {Object} props Component props
+ * @param {any} props.children Children supplied to the stats container
+ * @param {string} props.title The title for the stats container
+ * @param {string} [props.direction="row] Shows how to display the children
+ * @param {string} props.type Shows the Hero name or monkey type
+ * @param {string} props.towerType Shows if the tower is a monkey or hero
+ */
 export default function StatsContainer({children, title, direction = "row", type, towerType, ...rest}) {
     const darkMode = useSelector(getDarkMode);
 

@@ -7,6 +7,7 @@ import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getHeroColor, getMonkeyColor} from "../../lib/utils/utils";
 
+
 const ItemsContainer = styled("div", globalOptions)`
   width: ${props => props["data-m"] ? 100 : 100}%;
   display: flex;
@@ -16,7 +17,16 @@ const ItemsContainer = styled("div", globalOptions)`
   align-items: center;
 `;
 
-export default function TowerStats({stats, defaults, type, towerType, targets, ...rest}) {
+/**
+ * The main tower stats component
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.stats Object containing ALL the stats of the tower
+ * @param {Object} props.defaults Object containing ALL the default stats of the tower
+ * @param {string} props.type Shows the Hero name or monkey type
+ * @param {string} props.towerType Shows if the tower is a monkey or hero
+ */
+export default function TowerStats({stats, defaults, type, towerType, ...rest}) {
     const mobile = useSelector(getMobile);
     const color = towerType === "hero" ? getHeroColor(type) : getMonkeyColor(type);
 

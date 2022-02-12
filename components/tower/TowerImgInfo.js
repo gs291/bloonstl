@@ -8,11 +8,19 @@ import {getMobile} from "../../lib/redux/selectors";
 import VerticalDivider from "../divider/VerticalDivider";
 import {getHeroColor, getMonkeyColor} from "../../lib/utils/utils";
 
+
 const TowerContainer = styled(Grid)`
   margin-top: 10px;
   margin-bottom: 10px;
 `;
 
+/**
+ * Individual tower image and information component
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.tower Object containing the tower
+ * @param {string} props.towerType Shows if the tower is a monkey or hero
+ */
 export default function TowerImgInfo({tower, towerType}) {
     const mobile = useSelector(getMobile);
     let backgroundColor, gridSpacing = 5;

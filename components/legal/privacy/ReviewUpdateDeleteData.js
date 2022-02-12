@@ -2,12 +2,18 @@ import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
 
 
+/**
+ * Legal privacy "review, update or delete data" section
+ *
+ * @param {Object} props Component props
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
 export default function ReviewUpdateDeleteData({tag}) {
 
     return (
         <>
             <LegalTitle variant="h4" id={tag.href}>
-                HOW CAN YOU REVIEW, UPDATE, OR DELETE THE
+                HOW CAN YOU REVIEW, UPDATE OR DELETE THE
                 DATA WE COLLECT FROM YOU?
             </LegalTitle>
             <LegalText variant="body1" font={true}>

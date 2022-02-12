@@ -7,6 +7,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const LegendContainer = styled("div")`
   display: flex;
   flex-direction: column;
@@ -43,6 +44,13 @@ const ColorLegend = styled("div", globalOptions)`
 `;
 
 
+/**
+ * The small use case stat wrapper for specific statistics
+ *
+ * @param {Object} props Component props
+ * @param {Object|number} props.path Shows the current ability/level path
+ * @param {string} props.towerType Shows if the tower is a monkey or hero
+ */
 export default function StatsLegend({path, towerType}) {
     const darkMode = useSelector(getDarkMode);
 
