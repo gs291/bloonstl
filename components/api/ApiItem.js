@@ -4,6 +4,7 @@ import Endpoint from "./Endpoint";
 import FieldTable from "./FieldTable";
 import TowerText from "../tower/TowerText";
 
+
 const TitleDescContainer = styled("div")`
   display: flex;
   flex-direction: column;
@@ -18,6 +19,13 @@ const Title = styled(TowerText)`
 `;
 
 
+/**
+ * GraphQL API Item
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.api Object containing information about the API item
+ * @param {string} props.type Shows which API endpoint type it is (object or query)
+ */
 export default function ApiItem({ api, type }) {
 
     return (

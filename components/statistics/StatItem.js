@@ -10,6 +10,7 @@ import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {ga4SendSelectContent, SELECT_CONTENT_STAT, STAT_PREFIX, textToGA4Text} from "../../lib/utils/ga4";
 
+
 const Item = styled("div")`
   display: flex;
   justify-content: center;
@@ -49,6 +50,15 @@ const ItemContainer = styled("div", globalOptions)`
   }
 `;
 
+/**
+ * Get statistic color
+ *
+ * @param {number} difference Statistics difference between the modified and default statistic
+ * @param {boolean} darkMode Shows if darkMode is enabled or disabled
+ * @param {boolean} lowerIsBuff Shows if a negative difference is a buff
+ *
+ * @return {string} The HEX color code for the statistic
+ */
 const getStatColor = (difference, darkMode, lowerIsBuff) => {
     if (lowerIsBuff) {
         if (difference < 0) {
@@ -77,7 +87,14 @@ const StatText = styled(TowerText)`
   color: ${props => getStatColor(props["data-d"], props["data-dm"], props["data-l"])};
 `;
 
-//Checks to see if it should show decimals (when it would have otherwise not shown)
+/**
+ * Checks to see if it should show decimals (when it would have otherwise not shown)
+ *
+ * @param {number} num The number to check if decimals are needed
+ * @param {number} decimals The amount of decimals to show
+ *
+ * @return {number} The amount of decimals to show if the number should display it
+ */
 const getDecimals = (num, decimals) => {
     let right = Math.floor(num);
     right = right === 0 ? 1 : right;
@@ -86,6 +103,21 @@ const getDecimals = (num, decimals) => {
 };
 
 
+/**
+ * The true statistics item component
+ *
+ * @param {Object} props Component props
+ * @param {string} props.text Text/Title for the stat item
+ * @param {number|string} props.value The number or string for the statistics
+ * @param {number} props.prevValue The previous value number to compare to {props.value}
+ * @param {string|null} props.prefix The prefix to attach to the statistics value
+ * @param {string|null} props.suffix The suffix to attach to the statistics value
+ * @param {boolean} props.darkMode Shows if darkMode is enabled or disabled
+ * @param {boolean} [props.counter=true] Shows if the statistics value should be shown in a counter
+ * @param {string} [props.size="medium"] Shows how big the stat item should be
+ * @param {number} [props.decimals=0] Shows how many decimals should be shown if needed
+ * @param {boolean} [props.lowerIsBuff=false] Shows if a negative value difference is a buff
+ */
 const FullItem = ({text, value, prevValue, prefix, suffix, darkMode, counter = true, size="medium", decimals=0, lowerIsBuff=false, ...rest}) => (
     <ItemContainer data-dm={darkMode} size={size} { ...rest }>
         <Item>
@@ -112,6 +144,15 @@ const FullItem = ({text, value, prevValue, prefix, suffix, darkMode, counter = t
 
 
 const GA4_STAT_ITEM_ID = "STAT_ITEM";
+
+/**
+ * Statistics item
+ *
+ * @param {Object} props Component props
+ * @param {HTMLElement|string} props.tooltip HTML element or string to display in the tooltip
+ * @param {string} props.text Text/Title for the stat item
+ * @param {string} [props.statType="main"] Shows where the stat item is located (E.g. main is for the tower statistics)
+ */
 export default function StatItem({tooltip, text, statType="main", ...rest}) {
     const darkMode = useSelector(getDarkMode);
 

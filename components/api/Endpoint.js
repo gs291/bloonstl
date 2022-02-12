@@ -88,6 +88,13 @@ const ExpandedDetails = styled(AccordionDetails, globalOptions)`
 
 
 const GA4_GRAPHQL_ENDPOINT_EXPAND_ID = "GRAPHQL_EXPAND";
+
+/**
+ * GraphQL API Item
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.item Object containing information about the API endpoint
+ */
 export default function Endpoint({item}) {
     const darkMode = useSelector(getDarkMode);
 

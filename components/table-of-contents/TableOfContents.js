@@ -9,6 +9,7 @@ import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {ga4SendSelectContent, LINK_PREFIX, SELECT_CONTENT_LINK} from "../../lib/utils/ga4";
 
+
 const TocContainer = styled("div")`
   display: flex;
   flex-direction: column;
@@ -76,6 +77,14 @@ const TocText = styled(TowerText)`
 `;
 
 const GA4_TABLE_OF_CONTENTS_ID = "TABLE_OF_CONTENTS";
+
+/**
+ * Table of Contents component
+ *
+ * @param {Object} props Component props
+ * @param {Array<Object<{href: string, title: string}>>} props.tags Tags used for table of contents
+ * @param {string} [props.className] class to apply to the component
+ */
 export default function TableOfContents({ tags, className }) {
     const darkMode = useSelector(getDarkMode);
 

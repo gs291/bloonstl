@@ -8,6 +8,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getThousandsNumber, rgbaHex} from "../../lib/utils/utils";
 
+
 const TowerTextContainer = styled("div")`
   display: flex;
   flex-direction: column;
@@ -32,6 +33,12 @@ const TowerCosts = styled("div")`
   flex: 66%;
 `;
 
+/**
+ * Full individual tower information component
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.tower Object containing the tower
+ */
 export default function TowerInfo({tower}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

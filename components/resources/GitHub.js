@@ -1,6 +1,7 @@
 import TowerText from "../tower/TowerText";
 import styled from "@emotion/styled";
 
+
 const GitHubContainer = styled("div")`
   width: 100%;
 
@@ -28,6 +29,13 @@ const Text = styled(TowerText)`
   margin-bottom: 7.5px;
 `;
 
+/**
+ * Resources page GitHub section
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
 export default function GitHub({className, tag}) {
 
     return (

@@ -6,6 +6,12 @@ import {getDarkMode} from "../../lib/redux/selectors";
 import GridTowerContainer from "../grid/GridTowerContainer";
 
 
+/**
+ * Grid to display all the heroes
+ *
+ * @param {Object} props Component props
+ * @param {Array<Object>} props.heroes Array list of all the heroes
+ */
 export default function HeroesGrid({ heroes }) {
     const darkMode = useSelector(getDarkMode);
 

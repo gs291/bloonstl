@@ -6,6 +6,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const AnimatedChevron = styled("div", globalOptions)`
   position: absolute;
   width: 28px;
@@ -56,6 +57,12 @@ const AnimatedChevron = styled("div", globalOptions)`
     }
 `;
 
+/**
+ * Chevron that animates down then disappears
+ *
+ * @param {Object} props Component props
+ * @param {number} props.delay Number to delay the chevron
+ */
 export default function Chevron({delay}) {
     const darkMode = useSelector(getDarkMode);
 

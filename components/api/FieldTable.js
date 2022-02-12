@@ -3,6 +3,7 @@ import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "
 
 import TowerText from "../tower/TowerText";
 
+
 const FieldContainer = styled("div")`
   width: 100%;
   margin-bottom: 40px;
@@ -25,6 +26,14 @@ const Type = styled(TowerText)`
     font-weight: bold;
 `;
 
+
+/**
+ * GraphQL API object table item
+ *
+ * @param {Object} props Component props
+ * @param {Object<{name: string, fields: Array<{key: string, type: string, text: string}>}>} props.row
+ *   Row for an API Object item
+ */
 export default function FieldTable({row}) {
 
     return (

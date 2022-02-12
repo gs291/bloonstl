@@ -53,7 +53,7 @@ const Sandbox = styled(SandboxMode)`
   margin-bottom: 15px;
 `;
 
-// In order to fix an infinite re rendering issue from path being set back and forth components
+// In order to fix an infinite re-rendering issue from path being set back and forth components
 // this function had to be placed outside the component so its never "re-rendered"
 // This unfortunately forces having to pass state sets into the function down the component tree
 const handlePathChange = (changes, {setPath, setSnackPack}) => {
@@ -75,7 +75,13 @@ const handlePathChange = (changes, {setPath, setSnackPack}) => {
     })
 };
 
-export default function MonkeyPage({ monkey }) {
+/**
+ * Individual monkey Page
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.monkey Object containing all the monkey data
+ */
+export default function MonkeyPage({monkey}) {
     const mobile = useSelector(getMobile);
     const [ page, setPage ] = useState(1);
     const [ tier, setTier ] = useState("s");
@@ -84,9 +90,9 @@ export default function MonkeyPage({ monkey }) {
     const [ pauseSandbox, setPauseSandbox ] = useState(false);
     const [ stats, setStats ] = useState(getInitialTowerStats(monkey.stats, {pros: path.pros, cons: path.cons}));
 
-    const [snackPack, setSnackPack] = useState([]);
-    const [openSnackbar, setOpenSnackbar] = useState(false);
-    const [messageInfo, setMessageInfo] = useState(undefined);
+    const [ snackPack, setSnackPack ] = useState([]);
+    const [ openSnackbar, setOpenSnackbar ] = useState(false);
+    const [ messageInfo, setMessageInfo ] = useState(undefined);
 
     const handleTier = (_, r) => {
         setPage(1);
@@ -174,4 +180,3 @@ export default function MonkeyPage({ monkey }) {
         </>
     );
 }
-

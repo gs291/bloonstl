@@ -11,8 +11,6 @@ const ADContainer = styled("div")`
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: 5px;
-
-  overflow-x: hidden;
 `;
 
 const StyledAD = styled("ins")`
@@ -20,7 +18,11 @@ const StyledAD = styled("ins")`
   max-width: 952px;
 `;
 
-export default function HorizontalAD({}) {
+
+/**
+ * Google AdSense rectangle/horizontal display unit advertisement
+ */
+export default function HorizontalAD() {
     const mobile = useSelector(getMobile);
     const [windowWidth, setWindowWidth] = useState(0);
 

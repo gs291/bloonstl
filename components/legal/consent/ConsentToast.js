@@ -9,6 +9,7 @@ import siteColors from "../../../lib/utils/siteColors";
 import {getDarkMode} from "../../../lib/redux/selectors";
 import {globalOptions} from "../../../lib/utils/emotionStyled";
 
+
 const Toast = styled("div", globalOptions)`
   width: 20rem;
   position: fixed;
@@ -28,7 +29,10 @@ const Toast = styled("div", globalOptions)`
   };
 `;
 
-export default function ConsentToast({}) {
+/**
+ * Cookie consent toast popup
+ */
+export default function ConsentToast() {
     const darkMode = useSelector(getDarkMode);
 
     const [show, setShow] = useState(true);
@@ -41,7 +45,7 @@ export default function ConsentToast({}) {
 
     const checkConsent = (clicked) => {
         const cookies = new Cookies();
-        const consent_cookie = cookies.get('cookie_consent');
+        const consent_cookie = cookies.get("cookie_consent");
 
         if (consent_cookie && consent_cookie === "accepted") {
             closeBanner();

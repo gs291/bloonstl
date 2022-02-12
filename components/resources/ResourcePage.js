@@ -7,6 +7,7 @@ import FixedDivider from "../divider/FixedDivider";
 import {getTowerLink} from "../../lib/utils/utils";
 import TableOfContents from "../table-of-contents/TableOfContents";
 
+
 const KeybindingsComponent = styled(Keybindings)`
   margin-top: 50px;
   margin-bottom: 50px;
@@ -21,8 +22,13 @@ const GitHubComponent = styled(GitHub)`
   margin-top: 50px;
 `;
 
-
-export default function ResourcesPage({ api }) {
+/**
+ * Resources page
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.api Object containing all the information about the GraphQL API
+ */
+export default function ResourcesPage({api}) {
     const toc = [
         {
             "href": getTowerLink("Keybindings"),

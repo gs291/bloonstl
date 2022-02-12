@@ -6,6 +6,7 @@ import siteColors from "../../../lib/utils/siteColors";
 import {getDarkMode} from "../../../lib/redux/selectors";
 import {globalOptions} from "../../../lib/utils/emotionStyled";
 
+
 const Svg = styled("svg")`
   padding: 5px;
   overflow: hidden;
@@ -30,6 +31,12 @@ const InnerPath = styled("path", globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light}
 `;
 
+/**
+ * Bloon SVG Icon used in the home page background
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ */
 export default function BloonIcon({className}) {
     const darkMode = useSelector(getDarkMode);
 

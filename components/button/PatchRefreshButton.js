@@ -3,10 +3,11 @@ import {useSelector} from "react-redux";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
 import TowerText from "../tower/TowerText";
-import DefaultButton from "../button/DefaultButton";
+import DefaultButton from "./DefaultButton";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+
 
 const RefreshContainer = styled("div", globalOptions)`
   position: ${props => props["data-m"] ? "relative" : "absolute"};
@@ -29,8 +30,13 @@ const CenteredComponents = styled("div", globalOptions)`
   align-items: center;
 `;
 
-
-export default function Refresh({borderColor, ...rest}) {
+/**
+ * Patch notes refresh button
+ *
+ * @param {Object} props Component props
+ * @param {string} props.borderColor The color for the button
+ */
+export default function PatchRefreshButton({borderColor, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 

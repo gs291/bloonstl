@@ -6,6 +6,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const VDivider = styled(Divider, globalOptions)`
   margin-left: 10px;
   margin-right: 10px;
@@ -24,6 +25,14 @@ const VDivider = styled(Divider, globalOptions)`
   transition: 0.3s;
 `;
 
+
+/**
+ * Vertical Divider
+ *
+ * @param {Object} props Component props
+ * @param {string} props.width Width of the divider
+ * @param {string} props.backgroundColor Color for the divider
+ */
 export default function VerticalDivider({ width, backgroundColor }) {
     const darkMode = useSelector(getDarkMode);
 

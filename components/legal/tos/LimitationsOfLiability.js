@@ -1,6 +1,13 @@
 import LegalText from "../LegalTitle";
 import LegalTitle from "../LegalTitle";
 
+
+/**
+ * Legal ToS "limitations of liability" section
+ *
+ * @param {Object} props Component props
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
 export default function LimitationsOfLiability({tag}) {
 
     return (

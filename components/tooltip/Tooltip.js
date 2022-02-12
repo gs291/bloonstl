@@ -8,6 +8,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {TOOLTIP_PREFIX, ga4SendTooltipHover} from "../../lib/utils/ga4";
 
+
 //https://stackoverflow.com/questions/59934683/style-material-ui-tooltip-using-emotion-styled
 // Media is used for a specific case with ability tooltips causing page overflow x
 const StyledTooltip = styled(({ className, ...other }) => (
@@ -58,6 +59,17 @@ const TooltipContainer = styled("div")``;
 
 const ContentContainer = styled("div")``;
 
+/**
+ * The re-usable tooltip component
+ *
+ * @param {Object} props Component props
+ * @param {any} props.children Children supplied to the tooltip
+ * @param {any} props.title The component for the tooltip
+ * @param {string} props.borderColor The border color for the tooltip
+ * @param {string} props.ga4ID The Google Analytics 4 ID to send
+ * @param {boolean} props.forceWidth Shows if the tooltip's width should be forced or not
+ * @param {string} [props.placement=top] The tooltip placement location
+ */
 export default function Tooltip({children, title, borderColor, ga4ID, forceWidth=true, placement="top", ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

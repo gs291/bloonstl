@@ -3,6 +3,19 @@ import TextTooltip from "../tooltip/TextTooltip";
 import TypesTooltip from "../tooltip/TypesTooltip";
 import DamageTooltip from "../tooltip/DamageTooltip";
 
+
+/**
+ * Get an object containing all the necessary data about the statistic
+ *
+ * @param {string} code Component props
+ * @param {number|string} value The number or string for the statistics
+ * @param {number} prevValue The previous value number to compare to {value}
+ * @param {number} [initialDamage=0] The initial damage done by the statistic
+ * @param {number} [baseDamage=0] The base damage done by the statistic
+ * @param {number} [extraDamage=0] The extra damage done by the statistic
+ *
+ * @return {Object} An object containing all the necessary data about the statistic
+ */
 const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, extraDamage = 0) => {
     switch(code) {
         case "Damage": return {"tooltip": <TextTooltip title="Damage" text={`Damage is the amount of health a single hit of an attack removes.`} value={value} prevValue={prevValue} />};
@@ -37,7 +50,17 @@ const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, e
 };
 
 
-
+/**
+ * The stat item component wrapper
+ *
+ * @param {Object} props Component props
+ * @param {string} props.text Text/Title for the stat item
+ * @param {number|string} props.value The number or string for the statistics
+ * @param {number} props.prevValue The previous value number to compare to {props.value}
+ * @param {number|null} [props.initialDamage=0] The initial damage done by the statistic
+ * @param {number|null} [props.baseDamage=0] The base damage done by the statistic
+ * @param {number|null} [props.extraDamage=0] The extra damage done by the statistic
+ */
 export default function StatItemWrapper({text, value, prevValue, initialDamage, baseDamage, extraDamage, ...rest}) {
 
     const codeValue = codeParser(text, value, prevValue, initialDamage, baseDamage, extraDamage);

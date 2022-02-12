@@ -10,6 +10,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
 
+
 const PageAlert = styled(Alert, globalOptions)`
   width: ${props => props["data-m"] ? 90 : 100}%;
   align-items: center;
@@ -47,7 +48,19 @@ const PageAlert = styled(Alert, globalOptions)`
 
 
 const GA4_SNACKBAR_CLOSE_ID = "SNACKBAR_CLOSE";
-// https://mui.com/components/snackbars/ example: Transitions -> Consecutive Snackbars
+
+/**
+ * Snackbar alert system to display information in a popup.
+ *   - {@link https://mui.com/components/snackbars/ MUI Snackbar} Example: Transitions -> Consecutive Snackbars
+ *
+ * @param {Object} props Component props
+ * @param {Array<Object<{message: string, variant: string, key: number}>>} props.snackPack class to apply to the component
+ * @param {function} props.setSnackPack Function to set the snack pack
+ * @param {boolean} props.open Shows if the snackbar is open or closed
+ * @param {function} props.setOpen Function to open/close the snackbar
+ * @param {Object<{message: string, variant: string, key: number}>|undefined} props.messageInfo The current message to display in the snackbar
+ * @param {function} props.setMessageInfo Function to set the snackbar message
+ */
 export default function ConsecutiveSnackbars({snackPack, setSnackPack, open, setOpen, messageInfo, setMessageInfo}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

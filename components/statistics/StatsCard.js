@@ -122,6 +122,16 @@ const statCodeParser = (code) => {
     return codes[code];
 }
 
+/**
+ * The stats card full component
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.stats Object containing the stats for the card
+ * @param {string} props.type Shows the Hero name or monkey type
+ * @param {number} [props.level=1] Shows how deep the stat card (recursive) level is
+ * @param {string} props.cardType Shows what card it is
+ * @param {string|null} props.parentBackgroundColor The color of the parent stat card
+ */
 export default function StatsCard({stats, type, level = 1, towerType, cardType, parentBackgroundColor, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

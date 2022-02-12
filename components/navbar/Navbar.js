@@ -7,6 +7,7 @@ import siteSizes from "../../lib/utils/siteSizes";
 import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const Nav = styled(AppBar, globalOptions)`
   display: flex;
   flex-direction: row;
@@ -16,12 +17,18 @@ const Nav = styled(AppBar, globalOptions)`
   justify-content: ${props => props["data-m"] ? "flex-start" : "center"};
 `;
 
-export default function Navbar({ className }) {
+/**
+ * Navigation bar
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ */
+export default function Navbar({className}) {
     const mobile = useSelector(getMobile);
 
     return (
       <>
-          <Nav position="static" className={ className } data-m={mobile}>
+          <Nav position="static" className={className} data-m={mobile}>
               <SiteLinks />
           </Nav>
       </>

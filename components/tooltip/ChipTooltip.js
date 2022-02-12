@@ -10,6 +10,15 @@ const TooltipContainer = styled("div")`
   padding: 1em;
 `;
 
+/**
+ * Chip tooltip component
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {boolean} props.isPro Shows if the chip tooltip is a pro or con
+ * @param {string} props.title The title for the chip tooltip
+ * @param {string} props.text The text for the chip tooltip
+ */
 export default function ChipTooltip({className, isPro, title, text}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

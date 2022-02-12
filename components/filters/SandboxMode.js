@@ -9,6 +9,7 @@ import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import ColorChangingDivider from "../divider/ColorChangingDivider";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
+
 const Group = styled(FormGroup)`
   align-items: center;
 `;
@@ -47,9 +48,23 @@ const CaptionText = styled(HelperText)`
   margin-bottom: 20px;
 `;
 
+
 const GA4_SANDBOX_MODE_ID = "SANDBOX_MODE";
 const GA4_SANDBOX_MODE_PAUSE_ID = `${GA4_SANDBOX_MODE_ID}_PAUSE`;
 const GA4_SANDBOX_MODE_RESET_ID = `${GA4_SANDBOX_MODE_ID}_RESET`;
+
+/**
+ * Sandbox Mode component
+ *
+ * @param {Object} props Component props
+ * @param {boolean} props.sandbox Shows if sandbox mode is enabled or disabled
+ * @param {function} props.setSandbox Function to set the sandbox mode
+ * @param {function} props.handleReset Function to reset the ability/level path
+ * @param {string} props.tier The selected tier
+ * @param {boolean} props.pauseSandbox Shows if the sandbox mode is paused or not
+ * @param {function} props.setPauseSandbox The function set the pause sandbox mode
+ * @param {string} props.towerType Shows if the tower is a monkey or hero
+ */
 export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pauseSandbox, setPauseSandbox, towerType, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

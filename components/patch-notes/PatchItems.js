@@ -7,6 +7,7 @@ import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
 
+
 const Items = styled("ul")`
   padding-left: 20px;
 `;
@@ -23,12 +24,19 @@ const TowerTitle = styled(TowerText, globalOptions)`
   ${props => props["data-bc"] ? `text-shadow: 0 5px 20px ${props["data-bc"]};` : ''}
 `;
 
-export default function PatchItems({ className, items }) {
+/**
+ * Recursively generated component of patch items
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {Array<Object>} props.items Array list of items/notes for the patch
+ */
+export default function PatchItems({className, items}) {
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <Items>
+            <Items className={className}>
                 {items.map((item, idx) => (
                     <ItemList key={idx} data-dm={darkMode}>
                         <TowerTitle

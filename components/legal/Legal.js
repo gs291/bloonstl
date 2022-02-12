@@ -9,6 +9,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const MLink = styled(MUILink, globalOptions)`
   text-decoration: none;
   &:hover {
@@ -31,7 +32,14 @@ const LegalLinks = styled("div")`
   text-align: center;
 `;
 
-export default function Legal({  }) {
+const DirectoryText = styled(LegalText)`
+  text-align: center;
+`;
+
+/**
+ * Legal page site directory
+ */
+export default function Legal() {
     const darkMode = useSelector(getDarkMode);
 
     const FullLink = ({href, title}) => (
@@ -48,9 +56,9 @@ export default function Legal({  }) {
 
     return (
         <>
-            <LegalText variant="h4" font={true}>
+            <DirectoryText variant="h4" font={true}>
                 Site directory for the legal pages
-            </LegalText>
+            </DirectoryText>
             <LegalLinks>
                 <FullLink href="cookie-policy" title="Cookie Policy" />
                 <FullLink href="privacy-policy" title="Privacy Policy" />

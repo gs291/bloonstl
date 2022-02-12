@@ -6,6 +6,7 @@ import StatsAbilities from "./StatsAbilities";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
 
+
 const Title = styled(TowerText)`
   margin-top: 10px;
   margin-bottom: 30px;
@@ -19,6 +20,15 @@ const TitleOnTop = styled(TowerText)`
   cursor: default;
 `;
 
+/**
+ * Ability statistics wrapper
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.stats Object containing data on all the statistics for a tower
+ * @param {string} props.type Shows the Hero name or monkey type
+ * @param {string} props.towerType Shows if the tower is a monkey or hero
+ * @param {string} props.dividerBackgroundColor Color to set the divider
+ */
 export default function StatAbilitiesWrapper({stats, towerType, type, dividerBackgroundColor}) {
     const mobile = useSelector(getMobile);
 

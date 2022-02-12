@@ -3,10 +3,17 @@ import styled from "@emotion/styled";
 import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
 
+
 const Link = styled("a")`
   text-decoration: underline;
 `;
 
+/**
+ * Legal cookies "controlling cookies" section
+ *
+ * @param {Object} props Component props
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
 export default function ControllingCookies({tag}) {
 
     return (

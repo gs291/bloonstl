@@ -7,6 +7,7 @@ import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
 
+
 const TitleContainer = styled("div", globalOptions)`
   width: 100%;
   padding: 0.6em;
@@ -31,6 +32,14 @@ const Title = styled(TowerText)`
   
 `;
 
+/**
+ * The title for a stats container
+ *
+ * @param {Object} props Component props
+ * @param {string} props.title The title for the stats container
+ * @param {string} props.type Shows the Hero name or monkey type
+ * @param {string} props.towerType Shows if the tower is a monkey or hero
+ */
 export default function StatsTitle({title, type, towerType, ...rest}) {
     const darkMode = useSelector(getDarkMode);
 

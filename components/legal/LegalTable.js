@@ -2,6 +2,14 @@ import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "
 
 import TowerText from "../tower/TowerText";
 
+
+/**
+ * Legal table
+ *
+ * @param {Object} props Component props
+ * @param {Array<string>} props.head Table head columns
+ * @param {Array<Object<{name: string, columns: Array<string>}>>} props.rows Table rows
+ */
 export default function LegalTable({head, rows, ...rest}) {
 
     return (

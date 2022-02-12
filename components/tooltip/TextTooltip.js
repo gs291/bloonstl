@@ -7,6 +7,7 @@ import StatNumbers from "../statistics/StatNumbers";
 import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const TooltipContainer = styled("div", globalOptions)`
   padding: ${props => props["data-m"] ? 1 : 2}em 1em;
   
@@ -25,8 +26,15 @@ const Text = styled(TowerText)`
   text-align: center;
 `;
 
-
-
+/**
+ * Text tooltip component
+ *
+ * @param {Object} props Component props
+ * @param {string} props.text Text to display
+ * @param {string} props.title Title for the text
+ * @param {number|string} props.value The value
+ * @param {number|string} props.prevValue The previous value
+ */
 export default function TextTooltip({text, title, variant="body1", value, prevValue, ...rest}) {
     const mobile = useSelector(getMobile);
 

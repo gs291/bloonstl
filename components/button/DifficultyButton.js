@@ -53,7 +53,19 @@ const DifficultyText = styled(Typography, globalOptions)`
   width: 150px;
 `;
 
+
 const GA4_DIFFICULTY_FILTER_ID = "FILTER_DIFFICULTY";
+
+/**
+ * Round difficulty button
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {string} props.difficulty In-game difficulty
+ * @param {boolean} props.selected Shows if the difficulty is currently selected
+ * @param {string} props.color Color for the difficulty button
+ * @param {function} props.handleChange The function to run when a difficulty is selected
+ */
 export default function DifficultyButton({ className, difficulty, selected, color, handleChange }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

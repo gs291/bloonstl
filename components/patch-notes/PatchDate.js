@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 
 import TowerText from "../tower/TowerText";
 
+
 const DateContainer = styled("div")`
   display: flex;
 `;
@@ -11,6 +12,13 @@ const DateText = styled(TowerText)`
   margin-left: 7px;
 `;
 
+/**
+ * Release date for a patch
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {string} props.date Release date for the patch
+ */
 export default function PatchDate({ className, date }) {
     const [dateString, setDateString] = useState("");
 

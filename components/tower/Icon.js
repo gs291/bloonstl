@@ -4,6 +4,7 @@ import ImageFill from "../image/ImageFill";
 import {getImageUrl} from "../../lib/utils/utils";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const IconContainer  = styled("div", globalOptions)`
   margin-right: 10px;
   display: flex;
@@ -21,7 +22,16 @@ const ImgContainer = styled("div", globalOptions)`
   max-height: ${props => props["data-t"] === "monkey" ? 300 : props["data-t"] === "hero" ? 300 : 150}px;
 `;
 
-export default function Icon({ className, tower, towerType, detailed, priority }) {
+/**
+ * Tower Icon
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the icon
+ * @param {Object} props.tower Object containing the tower
+ * @param {boolean} props.detailed Shows icon width should not be set
+ * @param {boolean} props.priority Shows if the image should have priority loading
+ */
+export default function Icon({className, tower, towerType, detailed, priority}) {
     return (
         <>
             <IconContainer data-d={detailed} className={className}>

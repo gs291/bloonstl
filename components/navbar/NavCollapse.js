@@ -13,6 +13,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
+
 const NavExpandText = styled("div")`
   line-height: 20px;
   display: flex;
@@ -67,6 +68,17 @@ const NavExpandItem = styled(MenuItem)`
 `;
 
 const GA4_NAV_COLLAPSE_ID = "NAV_COLLAPSE";
+
+/**
+ * Navbar collapse for (...)
+ *
+ * @param {Object} props Component props
+ * @param {Array<Object>} props.links Array list of links to display in the collapsed container
+ * @param {RefObject<HTMLDivElement>|null} props.expanderRef React reference to the navbar expander (...)
+ * @param {RefObject<HTMLDivElement>|null} props.anchorEl React reference anchor to the navbar expander (...)
+ * @param {function} props.handleExpand Function to expand/show the collapse container
+ * @param {function} props.handleClose Function to close the collapse container
+ */
 export default function NavCollapse({links, expanderRef, anchorEl, handleExpand, handleClose}){
     const [isHover, setIsHover] = useState(false);
 

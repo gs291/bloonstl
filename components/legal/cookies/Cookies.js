@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 
-
 import Tracking from "./Tracking";
 import ContactUs from "./ContactUs";
 import LegalText from "../LegalText";
@@ -10,10 +9,11 @@ import WhatAreCookies from "./WhatAreCookies";
 import WhyWeUseCookies from "./WhyWeUseCookies";
 import UpdateFrequency from "./UpdateFrequency";
 import EssentialCookies from "./EssentialCookies";
+import ThirdPartyCookies from "./ThirdPartyCookies";
 import ControllingCookies from "./ControllingCookies";
 import TargetedAdvertising from "./TargetedAdvertising";
 import TableOfContents from "../../table-of-contents/TableOfContents";
-import ThirdPartyCookies from "./ThirdPartyCookies";
+
 
 const CookieContainer = styled("div")`
   width: 100%;
@@ -33,7 +33,11 @@ const tags = [
     { "title": "Where can I get further information?", "href": "contact-us" }
 ];
 
-export default function Cookies({}) {
+
+/**
+ * Legal cookies page
+ */
+export default function Cookies() {
 
     return (
         <>

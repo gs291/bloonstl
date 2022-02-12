@@ -1,6 +1,13 @@
 import LegalText from "../LegalText";
 import LegalTitle from "../LegalTitle";
 
+
+/**
+ * Legal ToS "contribution license" section
+ *
+ * @param {Object} props Component props
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
 export default function ContributionLicense({tag}) {
 
     return (

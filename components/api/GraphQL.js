@@ -13,6 +13,7 @@ import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {EXPAND_PREFIX, SELECT_CONTENT_EXPAND, ga4SendSelectContent} from "../../lib/utils/ga4";
 
+
 const GraphQLContainer = styled("div")`
   width: 100%;
 
@@ -80,7 +81,16 @@ const ExpandedDetails = styled(AccordionDetails, globalOptions)`
 
 
 const GA4_GRAPHQL_EXPAND_ID = "GRAPHQL_EXPAND";
-export default function GraphQL({ className, api, tag}) {
+
+/**
+ * GraphQL API object table item
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {Object<{queries: Object, objects: Object}>} props.api All data about the GraphQL API
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
+export default function GraphQL({className, api, tag}) {
     const darkMode = useSelector(getDarkMode);
     const [path, setPath] = useState("");
 

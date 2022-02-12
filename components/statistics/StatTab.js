@@ -6,6 +6,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const TabContainer = styled("div")`
   width: 100%;
   height: 30px;
@@ -61,6 +62,16 @@ const TabTitle = styled("div", globalOptions)`
   
 `;
 
+/**
+ * The stats card tab attached to the top of the card
+ *
+ * @param {Object} props Component props
+ * @param {string} props.cardType Shows what card it is
+ * @param {string} props.title The title for the stats card tab
+ * @param {number} props.level Shows how deep the stat card (recursive) level is
+ * @param {string} props.backgroundColor The color of the stat card tab
+ * @param {string|null} props.parentBackgroundColor The color of the parent stat card
+ */
 export default function StatTab({cardType, title, level, backgroundColor, parentBackgroundColor}) {
     const darkMode = useSelector(getDarkMode);
 

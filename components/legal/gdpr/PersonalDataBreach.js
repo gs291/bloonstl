@@ -2,6 +2,13 @@ import LegalOList from "../LegalOList";
 import LegalListItem from "../LegalListItem";
 import TowerText from "../../tower/TowerText";
 
+
+/**
+ * Legal GDPR "personal data breach" section
+ *
+ * @param {Object} props Component props
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
 export default function PersonalDataBreach({tag}) {
 
     return (

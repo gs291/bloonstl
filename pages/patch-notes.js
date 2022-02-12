@@ -1,5 +1,6 @@
 import Header from "../components/page/Header";
 import PageTitle from "../components/page/PageTitle";
+import Feedback from "../components/feedback/Feedback";
 import patches, {latestMajor} from "../lib/utils/patches";
 import MainContainer from "../components/page/MainContainer";
 import HorizontalAD from "../components/advertisment/HorizontalAD";
@@ -17,6 +18,7 @@ export default function PatchNotes({ latestPatch }) {
                 <PatchNotesPage patch={latestPatch}/>
                 <HorizontalAD />
             </MainContainer>
+            <Feedback />
         </>
     );
 }

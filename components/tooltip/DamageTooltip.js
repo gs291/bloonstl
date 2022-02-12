@@ -7,6 +7,7 @@ import StatNumbers from "../statistics/StatNumbers";
 import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const TooltipContainer = styled("div", globalOptions)`
   padding: ${props => props["data-m"] ? 1 : 2}em 1em;
 `;
@@ -20,6 +21,15 @@ const TallDivider = styled(FixedDivider)`
   margin-bottom: ${props => props["data-m"] ? 1 : 1.5}em;
 `;
 
+/**
+ * Damage tooltip component
+ *
+ * @param {Object} props Component props
+ * @param {string} props.type The damage type
+ * @param {number} props.typeDamage The initial damage done by the statistic
+ * @param {number} props.baseDamage The base damage done by the statistic
+ * @param {number} [props.extraDamage=0] The extra damage done by the statistic
+ */
 export default function DamageTooltip({type, typeDamage, baseDamage, extraDamage = 0} ) {
     const mobile = useSelector(getMobile);
 

@@ -6,6 +6,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const FDivider = styled(Divider, globalOptions)`
   width: ${props => props["data-w"]}%;
   margin-top: 10px;
@@ -24,8 +25,18 @@ const FDivider = styled(Divider, globalOptions)`
   transition: 0.3s;
 `;
 
-export default function FixedDivider({width, backgroundColor, height, ...rest}) {
+
+/**
+ * Horizontal Divider (not position: fixed)
+ *
+ * @param {Object} props Component props
+ * @param {number} props.width Width of the divider
+ * @param {number} props.height Height of the divider
+ * @param {string} props.backgroundColor Color for the divider
+ */
+export default function FixedDivider({width, height, backgroundColor, ...rest}) {
     const darkMode = useSelector(getDarkMode);
+
     return (
       <>
           <FDivider data-w={width} data-bc={backgroundColor} data-dm={darkMode} data-h={height} {...rest}/>

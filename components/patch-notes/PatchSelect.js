@@ -68,6 +68,15 @@ const SelectItemText = styled(TowerText)`
 
 
 const GA4_PATCH_SELECT_ID = "PATCH_SELECT";
+
+/**
+ * Release date for a patch
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {string} props.patch The patch version
+ * @param {function} props.handlePatchSelect Function to handle which patch was selected
+ */
 export default function PatchSelect({ className, patch, handlePatchSelect }) {
     const darkMode = useSelector(getDarkMode);
     const classes = useStyles({darkMode});

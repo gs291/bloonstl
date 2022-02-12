@@ -7,6 +7,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const Tier = styled(Typography, globalOptions)`
   color: ${props => getTierColor(props.name)};
   cursor: default;
@@ -22,6 +23,15 @@ const TierContainer = styled("div")`
 `;
 
 
+/**
+ * Ability Path or Level text
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {string} props.tier The currently selected tier
+ * @param {Object} props.tiers The tiers object containing the ability path
+ * @param {string} props.towerType Shows if the tower is a monkey or hero
+ */
 export default function TierPathText ({ className, tier, tiers, towerType}) {
     const darkMode = useSelector(getDarkMode);
 

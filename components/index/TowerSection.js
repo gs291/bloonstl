@@ -7,6 +7,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
+
 const TitleContainer = styled(Grid, globalOptions)`
   min-height: 375px;
   padding: 3em;
@@ -23,6 +24,13 @@ const SansSerifText = styled(Typography)`
   font-family: sans-serif;
 `;
 
+/**
+ * Home page tower section
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {Object} props.monkey The current monkey in rotation
+ */
 export default function TowerSection({ className, monkey }) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);

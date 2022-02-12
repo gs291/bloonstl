@@ -7,6 +7,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
+
 const Tier = styled(Typography, globalOptions)`
   color: ${props => getTierColor(props.name)};
   ${props => !props["data-dm"] && `text-shadow: 5px 5px 10px ${siteColors.text.light}`};
@@ -24,14 +25,23 @@ const TierLabel = styled(Tier)`
   margin-left: 10px;
 `;
 
-export default function TierText ({ className, tier, showText, text="Tier" }) {
+/**
+ * Tier text component
+ *
+ * @param {Object} props Component props
+ * @param {string} [props.className] class to apply to the component
+ * @param {string} props.tier The currently selected tier
+ * @param {boolean} props.showText Shows if the tier should display a text alongside the tier
+ * @param {string} [props.text="Tier"] The text to show if applicable
+ */
+export default function TierText ({className, tier, showText, text="Tier"}) {
     const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <TierContainer className={className}>
                 <Tier variant="h2" name={tier} data-dm={darkMode}>
-                    { tier }
+                    {tier}
                 </Tier>
                 {showText && (
                     <TierLabel variant="h4" component="div" name={tier} data-dm={darkMode}>

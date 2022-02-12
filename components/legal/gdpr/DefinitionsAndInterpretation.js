@@ -3,6 +3,12 @@ import LegalListItem from "../LegalListItem";
 import TowerText from "../../tower/TowerText";
 
 
+/**
+ * Legal GDPR "definitions and interpretation" section
+ *
+ * @param {Object} props Component props
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
 export default function DefinitionsAndInterpretation({tag}) {
 
     return (

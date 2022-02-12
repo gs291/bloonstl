@@ -3,6 +3,12 @@ import LegalListItem from "../LegalListItem";
 import TowerText from "../../tower/TowerText";
 
 
+/**
+ * Legal GDPR "security" section
+ *
+ * @param {Object} props Component props
+ * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
+ */
 export default function Security({tag}) {
 
     return (

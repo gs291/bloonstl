@@ -73,6 +73,12 @@ const HeroTier = styled("div", globalOptions)`
   margin-bottom: 10px;
 `;
 
+/**
+ * Individual Hero Page
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.hero Object containing all the hero data
+ */
 export default function HeroPage({ hero }) {
     const mobile = useSelector(getMobile);
     const dividerBackgroundColor = getHeroColor(hero.name);
