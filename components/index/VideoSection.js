@@ -24,6 +24,9 @@ const Video = styled("iframe")`
   position: absolute;
 `;
 
+/**
+ * Home page introduction video section
+ */
 export default function VideoSection() {
 
     return (
