@@ -45,7 +45,7 @@ export default function TemplesParagons({ className, tag }) {
                 <Title variant="h2">
                     {tag.title}
                 </Title>
-                <Description variant="h6" font={true}>
+                <Description variant="h5" font={true}>
                     Temples and Paragons are an amazing feature to help get to higher rounds!
                 </Description>
                 <Description variant="h6" font={true}>
@@ -59,7 +59,7 @@ export default function TemplesParagons({ className, tag }) {
                 <Description variant="h6" font={true}>
                     Paragon towers refer to Monkeys that have an ability path of 5-5-5.
                     For example, Dart Monkey has a Paragon tower called Apex Plasma Master.
-                    A Paragon upgrade becomes available when all three tier 5s (5-X-X | X-5-X | X-X-5) of a tower are on the map at once.
+                    A Paragon upgrade becomes available when all three tier 5s (5-X-X & X-5-X & X-X-5) of a tower are on the map at once.
                     Paragons have different Degrees that contribute power to the tower.
                     To view and understand how Paragons are created/calculated visit the informative Paragon Popology page on&nbsp;
                     <TextLink href="https://www.reddit.com/r/btd6/comments/qk3c09/advanced_popology_vol_7_paragons/">Reddit</TextLink>!
