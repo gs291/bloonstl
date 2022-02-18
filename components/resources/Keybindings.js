@@ -83,7 +83,7 @@ export default function Keybindings({ className, tag }) {
         <>
             <KeybindContainer className={className} id={tag.href}>
                 <Title variant="h2">
-                    Keybindings
+                    {tag.title}
                 </Title>
                 <Description variant="h6" font={true}>
                     Below is a useful visual representation of the default in-game keybindings.
@@ -98,7 +98,7 @@ export default function Keybindings({ className, tag }) {
                 </ButtonContainer>
 
                 <ImgContainer href={`https://res.cloudinary.com/bloons/image/upload/q_100/${src[show]}`}>
-                    <ImageFill src={src[show]} alt="Hotkey image helper" quality={100} />
+                    <ImageFill src={src[show]} alt="Hotkey image helper" quality={100} priority={true} />
                 </ImgContainer>
                 <Author>
                     <TowerText variant="body1">
