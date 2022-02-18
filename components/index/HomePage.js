@@ -8,6 +8,7 @@ import ProConSection from "./ProConSection";
 import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import VideoSection from "./VideoSection";
 
 
 const delay = 7500;
@@ -65,6 +66,7 @@ export default function HomePage({scrollTo, monkeys}) {
 
     return (
         <>
+            <VideoSection />
             <OddSection data-dm={darkMode} ref={scrollTo}>
                 <TierSection monkey={monkey}/>
             </OddSection>

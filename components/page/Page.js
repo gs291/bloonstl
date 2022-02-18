@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
 import NavDrawer from "../navbar/NavDrawer";
-import ReturnToTop from "../return/ReturnToTop";
+import ReturnToTop from "../button/ReturnToTop";
 import siteColors from "../../lib/utils/siteColors";
 import {ga4SendPageView} from "../../lib/utils/ga4";
 import {updateMobile} from "../../lib/redux/actions";

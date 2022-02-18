@@ -1,7 +1,7 @@
 {
   "name": "bloonstl",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.28.0",
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
