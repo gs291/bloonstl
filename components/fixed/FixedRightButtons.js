@@ -20,7 +20,9 @@ const DonateButton = styled(SideButton)`
   margin-left: 35px;
 `;
 
-
+/**
+ * Buttons placed vertically along a bottom right side of the viewport
+ */
 export default function FixedRightButtons() {
 
     return (
