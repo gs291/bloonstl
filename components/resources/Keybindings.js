@@ -88,7 +88,7 @@ export default function Keybindings({ className, tag }) {
                     {tag.title}
                 </Title>
                 <Description variant="h6" font={true}>
-                    Below is a useful visual representation of the default in-game keybindings.
+                   Below is a useful visual representation of the default in-game keybinds.
                    Click the button below to switch between keyboard keys and icons. Click on the image to view the full image.
                 </Description>
                 <ButtonContainer data-dm={darkMode}>

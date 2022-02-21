@@ -41,8 +41,8 @@ export default function ResourcesPage({api}) {
             "title": "Temples / Paragons"
         },
         {
-            "href": getTowerLink("Keybindings"),
-            "title": "Keybindings Helper"
+            "href": getTowerLink("Keybind Helper"),
+            "title": "Keybind Helper"
         },
         {
             "href": getTowerLink("GraphQL"),
