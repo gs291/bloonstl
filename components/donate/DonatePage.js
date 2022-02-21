@@ -30,8 +30,11 @@ export default function DonatePage() {
             <DonationText variant="h4" font={true}>
                 Consider donating to help keep this website running!
             </DonationText>
-            <DonationDescription variant="h6" font={true}>
+            <DonationText variant="h6" font={true}>
                 The services it will help: Netlify hosting, GraphQL API requests, Cloudinary image processing and running a remote MySQL database
+            </DonationText>
+            <DonationDescription variant="h6" font={true}>
+                It will also help secure a domain for the website!
             </DonationDescription>
             <DonationLinks>
                 <DonateLink
