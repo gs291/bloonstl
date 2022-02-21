@@ -30,7 +30,9 @@ const OddSection = styled("div", globalOptions)`
 `;
 
 const ProgressBar = styled(LinearProgress, globalOptions)`
+  height: 6px;
   width: 100%;
+  background-color: ${props => props["data-dm"] ? siteColors.progress.dark : siteColors.progress.light};
   
   & .MuiLinearProgress-bar1Indeterminate {
     background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.75)};

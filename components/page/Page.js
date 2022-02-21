@@ -57,6 +57,10 @@ export default function Page(props) {
     }, [screen]);
 
     const globals = css`
+      body {
+        background-color: ${darkMode ? siteColors.page.dark : siteColors.page.light}
+      }
+      
       ::-webkit-scrollbar {
         width: 10px;
         background: ${darkMode ? siteColors.scroll.dark : siteColors.scroll.light};
