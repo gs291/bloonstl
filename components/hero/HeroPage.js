@@ -13,7 +13,6 @@ import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
 import HeroAbilities from "../abilities/HeroAbilities";
-import HorizontalAD from "../advertisment/HorizontalAD";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import TowerPatchUpdates from "../patch-notes/TowerPatchUpdates";
@@ -96,11 +95,9 @@ export default function HeroPage({ hero }) {
     return (
         <>
             <TowerImgInfo tower={hero} towerType="hero" />
-            <HorizontalAD />
             <Stats stats={stats} path={path} type={hero.name} towerType="hero" />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
-            <HorizontalAD />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <SmallTitle variant={mobile ? "h4" : "h3"}>
                 Ability Path Level

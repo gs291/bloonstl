@@ -11,7 +11,6 @@ const head = [
 ];
 
 const rows = [
-    { "name": "Google AdSense", "columns": ["https://policies.google.com/technologies/ads"]},
     { "name": "Google Analytics", "columns": ["https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage"]}
 ];
 

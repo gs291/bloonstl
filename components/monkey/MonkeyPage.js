@@ -10,7 +10,6 @@ import SandboxMode from "../filters/SandboxMode";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
-import HorizontalAD from "../advertisment/HorizontalAD";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
@@ -135,11 +134,9 @@ export default function MonkeyPage({monkey}) {
     return (
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
-            <HorizontalAD />
             <Stats stats={stats} path={path} type={monkey.type} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
-            <HorizontalAD />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <AbilityPathSelection tier={sandbox ? monkey.tier : tier} tiers={path} handleTier={handleTier} sandbox={sandbox} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
