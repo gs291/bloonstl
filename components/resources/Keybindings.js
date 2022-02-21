@@ -44,8 +44,10 @@ const ImgContainer = styled("a")`
   position: relative;
   width: 100%;
   max-width: 100%;
-  height: 515px;
-  max-height: 515px;
+  height: 100%;
+  max-height: 100%;
+  
+  padding-bottom: 57%;
 `;
 
 const Author = styled("div")`
