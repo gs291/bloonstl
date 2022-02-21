@@ -6,7 +6,7 @@ import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getTierColor, rgbaHex} from "../../lib/utils/utils";
-import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
+import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
 const Button = styled("div", globalOptions)`
@@ -42,6 +42,16 @@ const TierText = styled(Typography, globalOptions)`
 `;
 
 const GA4_TIER_BUTTON_ID = "FILTER_TIER";
+
+/**
+ * Round tier button
+ *
+ * @param {Object} props Component props
+ * @param {string} props.className class to apply to the component
+ * @param {string} props.tier The selected tier
+ * @param {boolean} props.selected Shows if the button is currently selected
+ * @param {function} props.handleTier The function to run when a tier is selected
+ */
 export default function TierButton({ className, tier, selected, handleTier }) {
     const darkMode = useSelector(getDarkMode);
 

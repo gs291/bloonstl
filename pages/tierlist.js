@@ -1,9 +1,9 @@
 import {dataSources} from "../lib/mysql/db";
 import Header from "../components/page/Header";
 import PageTitle from "../components/page/PageTitle";
-import Feedback from "../components/feedback/Feedback";
 import MainContainer from "../components/page/MainContainer";
 import TierListGrid from "../components/tierlist-grid/TierListGrid";
+import FixedRightButtons from "../components/fixed/FixedRightButtons";
 
 export default function TierList({s, a, b, c}) {
     s = JSON.parse(s);
@@ -25,7 +25,7 @@ export default function TierList({s, a, b, c}) {
                 <PageTitle title="Tier List" />
                 <TierListGrid tiers={tiers}/>
             </MainContainer>
-            <Feedback />
+            <FixedRightButtons />
         </>
     );
 }
