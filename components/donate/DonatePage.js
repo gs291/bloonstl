@@ -38,7 +38,7 @@ export default function DonatePage() {
             </DonationDescription>
             <DonationLinks>
                 <DonateLink
-                    href="https://www.paypal.com/paypalme/sanchegr"
+                    href="https://www.paypal.me/sanchegr"
                     title="PAYPAL"
                     text="@sanchegr"
                 />
