@@ -1,9 +1,7 @@
-import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 
 import TowerSection from "./TowerSection";
 import VideoSection from "./VideoSection";
-import {getDarkMode} from "../../lib/redux/selectors";
 
 
 const delay = 7500;
