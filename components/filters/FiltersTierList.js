@@ -20,7 +20,7 @@ import {getBorder, getDarkMode, getHeroState, getMonkeyState, getMobile} from ".
 const iconSize = siteSizes.icon.filter.height;
 
 const FilterContainer = styled(FormControl)`
-  padding: 20px;
+  padding: 10px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,7 @@ const FilterContainer = styled(FormControl)`
 `;
 
 const FilterTitle = styled(TowerText)`
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 `;
 
 const FilterArea = styled("div")`
@@ -80,7 +80,7 @@ const FilterIcon = styled("div", globalOptions)`
   
   margin-left: 5px;
   margin-right: 5px;
-  padding: 1.5em 1.5em;
+  padding: 1em 1em;
   transition: 0.3s;
   border-radius: 50%;
   
