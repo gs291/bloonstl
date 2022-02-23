@@ -1,47 +1,12 @@
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {LinearProgress} from "@mui/material";
 
-import TierSection from "./TierSection";
 import TowerSection from "./TowerSection";
 import VideoSection from "./VideoSection";
-import ProConSection from "./ProConSection";
-import {rgbaHex} from "../../lib/utils/utils";
-import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
-import {globalOptions} from "../../lib/utils/emotionStyled";
 
 
 const delay = 7500;
-
-const OddSection = styled("div", globalOptions)`
-  width: 100%;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  transition: 0.3s;
-  background-color: ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
-  border-radius: 20px;
-  overflow-x: auto;
-`;
-
-const ProgressBar = styled(LinearProgress, globalOptions)`
-  height: 6px;
-  width: 100%;
-  background-color: ${props => props["data-dm"] ? siteColors.progress.dark : siteColors.progress.light};
-  
-  & .MuiLinearProgress-bar1Indeterminate {
-    background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.75)};
-  }
-
-  & .MuiLinearProgress-bar2Indeterminate {
-    background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.75)};
-  }
-`;
 
 const getNewRandomIdx = (length) => Math.floor(Math.random() * length);
 
@@ -64,7 +29,6 @@ const getNewIndex = (idx, length) => {
  */
 export default function HomePage({scrollTo, monkeys}) {
     const length = monkeys.length;
-    const darkMode = useSelector(getDarkMode);
     const [idx, setIdx] = useState(0);
 
     useEffect(() => {
@@ -76,21 +40,14 @@ export default function HomePage({scrollTo, monkeys}) {
         return () => {
             clearInterval(nextTimer);
         }
-    }, [])
+    }, []);
 
     const monkey = monkeys[idx];
 
     return (
         <>
             <VideoSection />
-            <OddSection data-dm={darkMode} ref={scrollTo}>
-                <TierSection monkey={monkey}/>
-                <ProgressBar data-dm={darkMode}/>
-            </OddSection>
-            <TowerSection monkey={monkey}/>
-            <OddSection data-dm={darkMode}>
-                <ProConSection monkey={monkey}/>
-            </OddSection>
+            <TowerSection monkey={monkey} scrollTo={scrollTo}/>
         </>
     );
 }
