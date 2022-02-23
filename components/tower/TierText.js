@@ -40,11 +40,11 @@ export default function TierText ({className, tier, showText, text="Tier"}) {
     return (
         <>
             <TierContainer className={className}>
-                <Tier variant="h2" name={tier} data-dm={darkMode}>
+                <Tier variant="h2" name={tier} data-dm={darkMode} component="h4">
                     {tier}
                 </Tier>
                 {showText && (
-                    <TierLabel variant="h4" component="div" name={tier} data-dm={darkMode}>
+                    <TierLabel variant="h4" component="p" name={tier} data-dm={darkMode}>
                         {text}
                     </TierLabel>
                 )}

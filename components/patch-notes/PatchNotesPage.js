@@ -179,7 +179,7 @@ export default function PatchNotesPage({ patch }) {
 
                 {!progress.isLoading && !progress.isError && (
                     <>
-                        <Title variant={mobile ? "h4" : "h3"}>
+                        <Title variant={mobile ? "h4" : "h3"} component="h2">
                             Patch Version:&nbsp;&nbsp;{patchVersion}
                         </Title>
                         <Date date={patchData[patchVersion].release} />

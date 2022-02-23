@@ -23,7 +23,7 @@ const TopContainer = styled("div", globalOptions)`
   
   transition-duration: 0.3s;
   opacity: ${props => props["data-s"] ? 1 : 0};
-  z-index: ${props => props["data-s"] ? 3 : -1};
+  z-index: ${props => props["data-s"] ? 10 : -1};
   
   &:hover {
     cursor: pointer;

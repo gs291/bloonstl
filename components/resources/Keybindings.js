@@ -6,8 +6,8 @@ import TowerText from "../tower/TowerText";
 import ImageFill from "../image/ImageFill";
 import siteColors from "../../lib/utils/siteColors";
 import DefaultButton from "../button/DefaultButton";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -69,6 +69,7 @@ const GA4_KEYBINDINGS_ID = "KEYBINDINGS";
  * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
  */
 export default function Keybindings({ className, tag }) {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
     const [show, setShow] = useState(false);
     const src = {
@@ -84,7 +85,7 @@ export default function Keybindings({ className, tag }) {
     return (
         <>
             <KeybindContainer className={className} id={tag.href}>
-                <Title variant="h2">
+                <Title variant={mobile ? "h3" : "h2"} component="h2">
                     {tag.title}
                 </Title>
                 <Description variant="h6" font={true}>

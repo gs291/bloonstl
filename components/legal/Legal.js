@@ -56,7 +56,7 @@ export default function Legal() {
 
     return (
         <>
-            <DirectoryText variant="h4" font={true}>
+            <DirectoryText variant="h4" font={true} component="h2">
                 Site directory for the legal pages
             </DirectoryText>
             <LegalLinks>

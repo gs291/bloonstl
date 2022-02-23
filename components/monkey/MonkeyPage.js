@@ -24,6 +24,7 @@ const AbilitiesText = styled(TowerText)`
   margin-top: 10px;
   margin-bottom: 20px;
   cursor: default;
+  text-align: center;
 `;
 
 const PathCost = styled(TowerText)`
