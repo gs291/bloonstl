@@ -1,9 +1,18 @@
+import styled from "@emotion/styled";
+
 import {dataSources} from "../lib/mysql/db";
 import Header from "../components/page/Header";
+import TowerText from "../components/tower/TowerText";
 import PageTitle from "../components/page/PageTitle";
 import MainContainer from "../components/page/MainContainer";
 import TierListGrid from "../components/tierlist-grid/TierListGrid";
 import FixedRightButtons from "../components/fixed/FixedRightButtons";
+
+
+const NoMoreTiers = styled(TowerText)`
+  margin-top: 1.5em;
+  text-align: center;
+`;
 
 export default function TierList({s, a, b, c}) {
     s = JSON.parse(s);
@@ -24,6 +33,10 @@ export default function TierList({s, a, b, c}) {
             <MainContainer>
                 <PageTitle title="Tier List" />
                 <TierListGrid tiers={tiers}/>
+                <NoMoreTiers variant="h4" font={true}>
+                    No more tiers?
+                    Since most towers are unique and good in their own ways its only reasonable to place towers within four tiers and not any more!
+                </NoMoreTiers>
             </MainContainer>
             <FixedRightButtons />
         </>
