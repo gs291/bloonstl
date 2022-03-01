@@ -11,7 +11,6 @@ import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const HoverLink = styled("div", globalOptions)`
-  transition: 0.1s;
   text-align: center;
   padding: 0 2em;
   height: ${props => props["data-m"] ? "100%" : siteSizes.nav.height};
@@ -27,7 +26,6 @@ const HoverLink = styled("div", globalOptions)`
 `;
 
 const MLink = styled(MUILink, globalOptions)`
-  transition: 0.3s;
   height: ${props => props["data-m"] ? "" : siteSizes.nav.height};
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   ${props => props["data-m"] ? "width: 100%;" : ""}
@@ -45,6 +43,7 @@ const A = styled("div", globalOptions)`
   min-width: 100px;
   font-size: ${props => props["data-m"] ? 2 : 1.5 }em;
   line-height: ${siteSizes.nav.height};
+  transition: 0.2s;
 `;
 
 /**

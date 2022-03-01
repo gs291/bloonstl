@@ -61,8 +61,6 @@ const LanguageType = styled("div", globalOptions)`
   border-radius: 5px;
   background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.6)};
   text-align: center;
-  
-  transition: 0.3s;
 `;
 
 const Expander = styled(Accordion, globalOptions)`

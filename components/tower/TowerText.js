@@ -9,7 +9,6 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 
 
 const TowerDetail = styled(Typography, globalOptions)`
-  transition: 0.3s;
   ${props => props["data-f"] ? `font-family: ${font_family_default};` : "" }
   color: ${props => 
           props["data-tc"] 

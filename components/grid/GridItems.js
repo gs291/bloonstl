@@ -14,7 +14,6 @@ const GridItem = styled(Grid, globalOptions)`
   
   padding: 3em ${props => props["data-m"] ? 0.25 : 2}em;
 
-  transition: 0.3s;
   background-color: ${props => props["data-bc"]};
   color: ${props => props["data-dm"] ? siteColors.text.gridTitle.dark : siteColors.text.gridTitle.light};
   border-bottom-left-radius: 13px;

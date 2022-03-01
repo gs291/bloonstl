@@ -22,7 +22,6 @@ const FDivider = styled(Divider, globalOptions)`
           props["data-bc"] 
                   ? props["data-bc"] 
                   : props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-  transition: 0.3s;
 `;
 
 

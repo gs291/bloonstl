@@ -25,7 +25,6 @@ const Header = styled("div", globalOptions)`
 
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  transition-duration: 0.3s;
 `;
 
 const Title = styled("div")`
@@ -40,7 +39,6 @@ const TitleText = styled(TowerText)`
 `;
 
 const InfoIcon = styled(InfoOutlinedIcon, globalOptions)`
-  transition: 0.3s;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
 

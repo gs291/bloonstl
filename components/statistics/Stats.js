@@ -32,7 +32,6 @@ const ExtraStats = styled("div", globalOptions)`
 const ModifierContainer = styled("div", globalOptions)`
   width: 100%;
   border-radius: 10px;
-  transition: 0.3s;
   border: 6px solid ${props =>
           props["data-t"]
                   ? rgbaHex(props["data-tow"] === "hero" 

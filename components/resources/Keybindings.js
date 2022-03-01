@@ -35,7 +35,6 @@ const Description = styled(TowerText)`
 
 const ButtonContainer = styled("div", globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-  transition: 0.3s;
   margin-top: 20px;
   margin-bottom: 20px;
 `;

@@ -16,7 +16,6 @@ const TitleContainer = styled(Grid, globalOptions)`
   padding: ${props => props["data-m"] ? 1 : 3}em;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   text-align: center;
-  transition: 0.3s;
 `;
 
 const CenteredText = styled(TowerText)`

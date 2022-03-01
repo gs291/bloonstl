@@ -11,7 +11,6 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 const Tier = styled(Typography, globalOptions)`
   color: ${props => getTierColor(props.name)};
   ${props => !props["data-dm"] && `text-shadow: 5px 5px 10px ${siteColors.text.light}`};
-  transition: 0.3s;
 `;
 
 const TierContainer = styled("div")`

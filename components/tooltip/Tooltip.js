@@ -31,7 +31,6 @@ const StyledTooltip = styled(({ className, ...other }) => (
   ${props => props["data-fw"] ? `min-width: ${props => props["data-m"] ? 200 : 450}px;` : ""} 
   max-width: ${props => props["data-m"] ? 300 : 450}px;
   
-  transition: 0.3s;
   padding: 4px 6px;
   
   margin-left: 15px;

@@ -20,7 +20,6 @@ const TocContainer = styled("div")`
   margin-top: 15px;
   margin-bottom: 15px;
   border-radius: 20px;
-  transition: 0.3s;
 `;
 
 const TocWrapper = styled("div", globalOptions)`
@@ -33,7 +32,6 @@ const TocWrapper = styled("div", globalOptions)`
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.25)};
-  transition: 0.3s;
 `;
 
 const TitleContainer = styled("div", globalOptions)`
@@ -47,7 +45,6 @@ const TitleContainer = styled("div", globalOptions)`
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.5)};
-  transition: 0.3s;
 `;
 
 const TocList = styled("ul")`
@@ -59,7 +56,6 @@ const TocItem = styled("li", globalOptions)`
   list-style-type: lower-roman;
   
   &::marker {
-    transition: 0.3s;
     color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   }
 `;

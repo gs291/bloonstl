@@ -24,7 +24,6 @@ const DrawerContainer = styled("div", globalOptions)`
   padding-bottom: 5%;
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   color: ${props => props["data-dm"] ?  siteColors.text.dark : siteColors.text.light};
-  transition: 0.3s;
   
   display: flex;
   flex-direction: column;

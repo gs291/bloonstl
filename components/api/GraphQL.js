@@ -45,7 +45,6 @@ const Description = styled(TowerText)`
 
 const Link = styled('a', globalOptions)`
   font-family: monospace;
-  transition: 0.3s;
   font-size: 1.25rem;
   line-break: anywhere;
   text-decoration: underline;

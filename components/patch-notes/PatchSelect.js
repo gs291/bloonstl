@@ -34,7 +34,6 @@ const SelectLabel = styled(InputLabel, globalOptions)`
 
 const VersionSelect = styled(Select, globalOptions)`
   width: 115px;
-  transition: 0.3s;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 
   &:before {
@@ -61,6 +60,7 @@ const Item = styled(MenuItem)`
 `;
 
 const SelectItemText = styled(TowerText)`
+  transition: 0.3s;
   &:hover {
     color: ${props => props["data-dm"] ? siteColors.text.navLink.dark : siteColors.text.navLink.light};
   }

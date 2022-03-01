@@ -14,7 +14,6 @@ const TitleContainer = styled(Grid, globalOptions)`
   height: calc(100vh - ${siteSizes.nav.height});
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   text-align: center;
-  transition: 0.3s;
   
   position: relative;
 `;

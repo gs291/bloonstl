@@ -11,6 +11,10 @@ const DLink = styled(Link)`
   text-align: center;
   margin-bottom: 50px;
   
+  & h3 {
+    transition: 0.3s;
+  }
+  
   &:hover h3 {
     color: ${props => props["data-dm"] ? siteColors.text.navLink.dark : siteColors.text.navLink.light};
   }

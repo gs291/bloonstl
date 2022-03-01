@@ -30,7 +30,6 @@ const Button = styled("div", globalOptions)`
 `;
 
 const TierText = styled(Typography, globalOptions)`
-  transition: 0.3s;
   color: ${props => props["data-s"] 
           ? props["data-dm"] ? siteColors.page.dark : siteColors.page.light 
           : getTierColor(props["data-t"])};

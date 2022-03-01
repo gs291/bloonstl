@@ -9,7 +9,6 @@ import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../
 
 
 const Pages = styled(Pagination, globalOptions)`
-  transition: 0.3s;
   margin-bottom: 10px;
   & .MuiPaginationItem-root {
     color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};

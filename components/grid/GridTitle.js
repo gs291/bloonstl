@@ -13,7 +13,6 @@ const Title = styled(Grid, globalOptions)`
   padding-bottom: 20px;
   
   text-align: center;
-  transition: 0.3s;
   background-color: ${props => rgbaHex(props["data-bc"], props["data-dm"] ? 0.75 : 1)};
   border-top-left-radius: 13px;
   border-top-right-radius: 13px;
