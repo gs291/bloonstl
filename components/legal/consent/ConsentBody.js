@@ -64,7 +64,7 @@ export default function ConsentBody({error}) {
                 <TowerText variant="body1" font={true}>
                     We use cookies to enhance your user experience.
                     By continuing using this website,
-                    you agree to the use of cookies · <Link href="/legal/cookie-policy" prefetch={false}><ATag>Learn more</ATag></Link>
+                    you agree to the use of cookies · <Link href="/legal/cookie-policy" prefetch={false} passHref><ATag>Learn more</ATag></Link>
                 </TowerText>
             </Body>
         </>

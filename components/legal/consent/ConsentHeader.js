@@ -77,7 +77,7 @@ export default function ConsentHeader({checkConsent, error}) {
         try {
             cookies.set("cookie_consent", "accepted", { path: '/', expires: nextYear });
         } catch (e) {
-            console.log(e);
+            console.error("Unable to set consent cookie:", e);
         }
 
         const clicked = true;
