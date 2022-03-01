@@ -53,7 +53,10 @@ const Monkey = styled(MonkeyIcon)`
   height: ${iconSize};
   fill: currentColor;
 
-  border-bottom: 3px solid ${props => props["data-s"] ? siteColors.pros.dark : siteColors.cons.dark};
+  border-bottom: 3px solid ${props => 
+          props["data-s"] 
+                  ? props["data-dm"] ? siteColors.filters.tierlist.on.dark : siteColors.filters.tierlist.on.light
+                  : props["data-dm"] ? siteColors.filters.tierlist.off.dark : siteColors.filters.tierlist.off.light};
 `;
 
 const Hero = styled(HeroIcon)`
@@ -62,7 +65,10 @@ const Hero = styled(HeroIcon)`
   padding: 3px 0;
   fill: currentColor;
   
-  border-bottom: 3px solid ${props => props["data-s"] ? siteColors.pros.dark : siteColors.cons.dark};
+  border-bottom: 3px solid ${props =>
+          props["data-s"]
+                  ? props["data-dm"] ? siteColors.filters.tierlist.on.dark : siteColors.filters.tierlist.on.light
+                  : props["data-dm"] ? siteColors.filters.tierlist.off.dark : siteColors.filters.tierlist.off.light};
 `;
 
 
