@@ -9,8 +9,8 @@ import ApiItem from "../api/ApiItem";
 import TowerText from "../tower/TowerText";
 import FixedDivider from "../divider/FixedDivider";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {EXPAND_PREFIX, SELECT_CONTENT_EXPAND, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -40,12 +40,11 @@ const Title = styled(TowerText)`
 `;
 
 const Description = styled(TowerText)`
-  
+  text-align: center;
 `;
 
 const Link = styled('a', globalOptions)`
   font-family: monospace;
-  transition: 0.3s;
   font-size: 1.25rem;
   line-break: anywhere;
   text-decoration: underline;
@@ -91,6 +90,7 @@ const GA4_GRAPHQL_EXPAND_ID = "GRAPHQL_EXPAND";
  * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
  */
 export default function GraphQL({className, api, tag}) {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
     const [path, setPath] = useState("");
 
@@ -109,10 +109,10 @@ export default function GraphQL({className, api, tag}) {
         <>
             <GraphQLContainer className={className} id={tag.href}>
                 <Information>
-                    <Title variant="h2">
+                    <Title variant={mobile ? "h3" : "h2"} component="h2">
                         GraphQL API
                     </Title>
-                    <Title variant="h2">
+                    <Title variant={mobile ? "h3" : "h2"} component="h2">
                         Documentation
                     </Title>
                 </Information>

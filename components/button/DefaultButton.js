@@ -13,7 +13,6 @@ const StyledButton = styled(Button, globalOptions)`
     ? props["data-bc"]
     : props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   
-  transition: 0.3s;
   border-color: ${props => 
           props["data-bc"] 
                   ? props["data-bc"]

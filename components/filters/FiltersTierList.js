@@ -20,7 +20,7 @@ import {getBorder, getDarkMode, getHeroState, getMonkeyState, getMobile} from ".
 const iconSize = siteSizes.icon.filter.height;
 
 const FilterContainer = styled(FormControl)`
-  padding: 20px;
+  padding: 10px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,7 @@ const FilterContainer = styled(FormControl)`
 `;
 
 const FilterTitle = styled(TowerText)`
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 `;
 
 const FilterArea = styled("div")`
@@ -53,7 +53,10 @@ const Monkey = styled(MonkeyIcon)`
   height: ${iconSize};
   fill: currentColor;
 
-  border-bottom: 3px solid ${props => props["data-s"] ? siteColors.pros.dark : siteColors.cons.dark};
+  border-bottom: 3px solid ${props => 
+          props["data-s"] 
+                  ? props["data-dm"] ? siteColors.filters.tierlist.on.dark : siteColors.filters.tierlist.on.light
+                  : props["data-dm"] ? siteColors.filters.tierlist.off.dark : siteColors.filters.tierlist.off.light};
 `;
 
 const Hero = styled(HeroIcon)`
@@ -62,7 +65,10 @@ const Hero = styled(HeroIcon)`
   padding: 3px 0;
   fill: currentColor;
   
-  border-bottom: 3px solid ${props => props["data-s"] ? siteColors.pros.dark : siteColors.cons.dark};
+  border-bottom: 3px solid ${props =>
+          props["data-s"]
+                  ? props["data-dm"] ? siteColors.filters.tierlist.on.dark : siteColors.filters.tierlist.on.light
+                  : props["data-dm"] ? siteColors.filters.tierlist.off.dark : siteColors.filters.tierlist.off.light};
 `;
 
 
@@ -80,7 +86,7 @@ const FilterIcon = styled("div", globalOptions)`
   
   margin-left: 5px;
   margin-right: 5px;
-  padding: 1.5em 1.5em;
+  padding: 1em 1em;
   transition: 0.3s;
   border-radius: 50%;
   

@@ -21,9 +21,9 @@ export default function WhatAreCookies({tag}) {
                 websites work, or to work more efficiently, as well as to provide reporting information.
             </LegalText>
             <LegalText variant="body1" font={true}>
-                Cookies set by the website owner (in this case, bloonstl) are called "first party
-                cookies". Cookies set by parties other than the website owner are called "third party
-                cookies". Third party cookies enable third party features or functionality to be
+                Cookies set by the website owner (in this case, bloonstl) are called &quot;first party
+                cookies&quot;. Cookies set by parties other than the website owner are called &quot;third party
+                cookies&quot;. Third party cookies enable third party features or functionality to be
                 provided on or through the website (e.g. like advertising, interactive content and
                 analytics). The parties that set these third party cookies can recognize your computer
                 both when it visits the website in question and also when it visits certain other

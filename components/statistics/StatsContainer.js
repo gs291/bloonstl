@@ -17,8 +17,7 @@ const Stats = styled("div", globalOptions)`
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
-
-  transition: 0.3s;
+  
   background-color: ${props =>
           props["data-t"] 
                   ? props["data-tow"] === "hero" 

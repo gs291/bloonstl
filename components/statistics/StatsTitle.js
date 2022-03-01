@@ -47,7 +47,7 @@ export default function StatsTitle({title, type, towerType, ...rest}) {
         <>
             <TitleContainer data-t={type} data-dm={darkMode} data-tow={towerType} {...rest}>
                 <TitleWrapper>
-                    <Title variant="h5">
+                    <Title variant="h4">
                         {title}
                     </Title>
                 </TitleWrapper>

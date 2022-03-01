@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 const VideoSectionContainer = styled("div")`
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 5em;
 `;
 
 const VideoContainer = styled("div")`

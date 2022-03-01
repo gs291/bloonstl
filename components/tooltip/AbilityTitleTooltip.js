@@ -70,6 +70,7 @@ const AbilityImage = ({ability, fileName, towerType, darkMode, mobile}) => (
         <VerticalDivider backgroundColor={darkMode ? siteColors.text.dark : siteColors.text.light} />
 
         <ImageWrapper>
+            {/* eslint-disable-next-line jsx-a11y/alt-text */}
             <Image data-m={mobile}>
                 <ImageContainer data-m={mobile}>
                     <ImageFill

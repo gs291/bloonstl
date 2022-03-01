@@ -46,10 +46,10 @@ export default function TowerInfo({tower}) {
     return (
         <>
             <TowerTextContainer>
-                <TowerText variant={mobile ? "h3" : "h2"}>
+                <TowerText variant={mobile ? "h3" : "h2"} component="h1">
                     {tower.name}
                 </TowerText>
-                <TowerText variant="subtitle1" textColor={rgbaHex(darkMode ? siteColors.text.dark: siteColors.text.light, 0.5)} font={1}>
+                <TowerText variant="subtitle1" textColor={rgbaHex(darkMode ? siteColors.text.dark: siteColors.text.light, 0.5)} font={true}  component="h2">
                     {tower.description}
                 </TowerText>
                 <TierCostContainer data-m={mobile}>

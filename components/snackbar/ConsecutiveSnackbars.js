@@ -75,6 +75,7 @@ export default function ConsecutiveSnackbars({snackPack, setSnackPack, open, set
             // Close an active snack when a new one is added
             setOpen(false);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [snackPack, messageInfo, open]);
 
     const handleClose = (event, reason) => {

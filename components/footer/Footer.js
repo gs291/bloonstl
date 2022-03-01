@@ -50,6 +50,7 @@ const FooterLink = styled('a', globalOptions)`
 `;
 
 const MLink = styled(MUILink, globalOptions)`
+  transition: 0.3s;
   margin-left: ${props => props["data-m"] ? 5 : 10}px;
   margin-right: ${props => props["data-m"] ? 5 : 10}px;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};

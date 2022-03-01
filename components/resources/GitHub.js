@@ -1,5 +1,8 @@
-import TowerText from "../tower/TowerText";
 import styled from "@emotion/styled";
+import {useSelector} from "react-redux";
+
+import TowerText from "../tower/TowerText";
+import {getMobile} from "../../lib/redux/selectors";
 
 
 const GitHubContainer = styled("div")`
@@ -37,11 +40,12 @@ const Text = styled(TowerText)`
  * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
  */
 export default function GitHub({className, tag}) {
+    const mobile = useSelector(getMobile);
 
     return (
         <>
             <GitHubContainer className={className} id={tag.href}>
-                <Title variant="h2">
+                <Title variant={mobile ? "h3" : "h2"} component="h2">
                     {tag.title}
                 </Title>
 

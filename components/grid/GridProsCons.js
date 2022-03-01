@@ -47,7 +47,7 @@ export default function GridProsCons({ className, isPro, proCons}) {
                   className={className}
             >
                 <GridContainer item>
-                    <Title variant="h5">
+                    <Title variant={mobile ? "h5" : "h4"}>
                         {isPro ? "Pros" : "Cons"}
                     </Title>
                 </GridContainer>

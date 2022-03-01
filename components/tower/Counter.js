@@ -27,6 +27,7 @@ export default function Counter({cost, gold = true, ...rest}){
     useEffect(() => {
         setPrevCost(currCost);
         setCurrCost(gold ? goldCost(cost, difficulty) : cost);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [difficulty, cost]);
 
     return (

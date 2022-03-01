@@ -16,7 +16,6 @@ const FilterContainer = styled("div", globalOptions)`
   width: 100%;
   background-color: ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-  transition: 0.3s;
 `;
 
 /**

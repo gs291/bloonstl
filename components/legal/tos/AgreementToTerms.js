@@ -17,7 +17,7 @@ export default function AgreementToTerms({tag}) {
             </LegalTitle>
             <LegalText  variant="body1" font={true}>
                 These Terms of Service constitute a legally binding agreement made between you,
-                whether personally or on behalf of an entity (“you”) and bloonstl (“we," “us," or “our”),
+                whether personally or on behalf of an entity (&quot;you&quot;) and bloonstl (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;),
                 concerning your access to and use of the https://bloonstl.netlify.app/ website as well as any other media form,
                 media channel, mobile website or mobile application related, linked, or otherwise connected thereto
                 (collectively, the “Site”). You agree that by accessing the Site, you have read,

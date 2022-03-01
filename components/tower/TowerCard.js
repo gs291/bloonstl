@@ -60,7 +60,6 @@ const MLink = styled(MUILink)`
 
 const TowerName = styled(Typography, globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-  transition: 0.3s;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;

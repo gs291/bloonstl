@@ -19,7 +19,6 @@ const Toast = styled("div", globalOptions)`
   
   box-shadow: -5px 5px 5px 0 rgb(0 0 0 / 30%);
   border-radius: 15px;
-  transition: 0.3s;
   
   border: 1px solid ${props => props["data-dm"] ? siteColors.accent.light : siteColors.accent.dark};
   background-color: ${
@@ -56,6 +55,7 @@ export default function ConsentToast() {
 
     useEffect(() => {
         checkConsent();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

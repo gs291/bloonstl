@@ -4,18 +4,18 @@ import TowerText from "../components/tower/TowerText";
 import MainContainer from "../components/page/MainContainer";
 
 
-export default function Custom404({  }) {
+export default function Custom500({  }) {
 
     return (
         <>
-            <Header title="Page Not Found" />
+            <Header title="Internal Server Error" />
             <MainContainer>
                 <TowerText variant="h1">
-                    404
+                    500
                 </TowerText>
-                <PageTitle title="Page Not Found" />
+                <PageTitle title="Server Error" />
                 <TowerText variant="h4" font={true}>
-                    The resource you are looking for does not exist.
+                    An internal server error has occurred.
                 </TowerText>
             </MainContainer>
         </>

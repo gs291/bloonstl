@@ -61,7 +61,6 @@ export default class HeroAbilities extends PureComponent {
         const proCons = {pros: initialPros, cons: initialCons}
         const tempStats = getInitialTowerStats(defaultStats, proCons);
 
-        console.log(tempStats);
         abilities.forEach(ability => {
             if (ability.upgrade_tier < path + 1) {
                 tempStats.xp = tempStats.xp + ability.cost_xp;

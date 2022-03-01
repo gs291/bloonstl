@@ -2,6 +2,7 @@ import React from "react";
 import {ServerStyleSheets} from "@mui/styles";
 import Document, {Html, Head, Main, NextScript} from "next/document";
 
+
 export default class MyDocument extends Document {
     render() {
         return (
@@ -10,13 +11,6 @@ export default class MyDocument extends Document {
                     <link rel="icon" href="/favicon.ico" />
 
                     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet" type="text/css" />
-
-                    {/*// <!-- Google AdSense --> */}
-                    <script
-                        async
-                        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4102574682241123"
-                        crossOrigin="anonymous"
-                    />
 
                     {/*// <!-- Google Search Console Verification --> */}
                     <meta name="google-site-verification" content="xdbV4aYKSCsp9idnlAXq_nxbcHSQggDBC2zy-3gqPJg" />

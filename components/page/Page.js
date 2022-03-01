@@ -23,20 +23,17 @@ const PageContainer = styled("div")`
 `;
 
 const Nav = styled(Navbar, globalOptions)`
-  transition: 0.3s;
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   box-shadow: none;
 `;
 
 const Main = styled("main", globalOptions)`
   flex: 1;
-  transition: 0.3s;
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   padding-bottom: 30px;
 `;
 
 const Foot = styled(Footer, globalOptions)`
-  transition: 0.3s;
   background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
 `;
@@ -54,9 +51,14 @@ export default function Page(props) {
     const screen = useMediaQuery("(max-width: 900px)");
     useEffect(() => {
         dispatch(updateMobile(screen));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [screen]);
 
     const globals = css`
+      body {
+        background-color: ${darkMode ? siteColors.page.dark : siteColors.page.light}
+      }
+      
       ::-webkit-scrollbar {
         width: 10px;
         background: ${darkMode ? siteColors.scroll.dark : siteColors.scroll.light};

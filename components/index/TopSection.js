@@ -5,8 +5,8 @@ import {Grid, Typography} from "@mui/material";
 import TopBackground from "./TopBackground";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import ScrollIndicator from "../scroll-indicator/ScrollIndicator";
 
 
@@ -14,7 +14,6 @@ const TitleContainer = styled(Grid, globalOptions)`
   height: calc(100vh - ${siteSizes.nav.height});
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   text-align: center;
-  transition: 0.3s;
   
   position: relative;
 `;
@@ -69,6 +68,7 @@ const ScrollContainer = styled("div")`
  * @param {RefObject<HTMLDivElement>|null} props.scrollTo React reference to the top of the home page sections
  */
 export default function TopSection({className, scrollTo}) {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
     return (
@@ -86,14 +86,14 @@ export default function TopSection({className, scrollTo}) {
                 </BackgroundContainer>
                 <AboveCenter item>
                     <TextContainer>
-                        <Typography variant="h2">
+                        <Typography variant={mobile ? "h2" : "h1"} component="h1">
                             BLOONS TL
                         </Typography>
                         <br />
-                        <SansSerifText variant="h4">
+                        <SansSerifText variant="h4" component="h2">
                             The Tier List Website
                         </SansSerifText>
-                        <SansSerifText variant="h4">
+                        <SansSerifText variant="h4" component="h2">
                             For Bloons TD 6
                         </SansSerifText>
                     </TextContainer>

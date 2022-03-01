@@ -29,7 +29,6 @@ const LeftSideOuter = styled("div", globalOptions)`
   width: 100%;
 
   position: relative;
-  transition: 0.3s;
   background-color: ${props => props["data-bc"]};
   border-bottom-right-radius: 8px;
   z-index: 1;
@@ -44,7 +43,6 @@ const LeftSideInner = styled("div", globalOptions)`
   right: 0;
   z-index: 0;
   
-  transition: 0.3s;
   background: ${props => props["data-bc"]};
 `;
 

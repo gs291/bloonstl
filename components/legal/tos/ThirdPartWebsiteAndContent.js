@@ -16,9 +16,9 @@ export default function ThirdPartWebsiteAndContent({tag}) {
                 {tag.title}
             </LegalTitle>
             <LegalText variant="body1" font={true}>
-                The Site may contain (or you may be sent via the Site) links to other websites ("ThirdParty Websites") as well as articles, photographs, text, graphics, pictures, designs,
+                The Site may contain (or you may be sent via the Site) links to other websites (&quot;ThirdParty Websites&quot;) as well as articles, photographs, text, graphics, pictures, designs,
                 music, sound, video, information, applications, software, and other content or items
-                belonging to or originating from third parties ("Third-Party Content"). Such Third-Party Websites and Third-Party Content are not investigated, monitored, or checked for
+                belonging to or originating from third parties (&quot;Third-Party Content&quot;). Such Third-Party Websites and Third-Party Content are not investigated, monitored, or checked for
                 accuracy, appropriateness, or completeness by us, and we are not responsible for
                 any Third-Party Websites accessed through the Site or any Third-Party Content
                 posted on, available through, or installed from the Site, including the content,

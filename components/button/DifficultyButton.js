@@ -38,7 +38,6 @@ const DifficultyImageContainer = styled("div", globalOptions)`
 `;
 
 const DifficultyText = styled(Typography, globalOptions)`
-  transition: 0.3s;
   color: ${props => props["data-s"] 
           ? props["data-c"] 
           : props["data-dm"] ? siteColors.text.dark : siteColors.text.light};

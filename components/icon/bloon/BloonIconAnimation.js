@@ -144,9 +144,21 @@ export default function BloonIconAnimation() {
 
 
     useEffect(() => {
+        const handleAnimationEnd = () => {
+            let newAnimation = getNewAnimation();
+
+            while (checkIfAnimExist(animation, newAnimation)) {
+                newAnimation = getNewAnimation();
+            }
+
+            setAnimation(newAnimation);
+        }
+
         if (reset) {
             handleAnimationEnd();
         }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reset]);
 
     useEffect(() => {
@@ -155,16 +167,6 @@ export default function BloonIconAnimation() {
 
     const updateAnimation = () => {
         setReset(true);
-    }
-
-    const handleAnimationEnd = () => {
-        let newAnimation = getNewAnimation();
-
-        while (checkIfAnimExist(animation, newAnimation)) {
-            newAnimation = getNewAnimation();
-        }
-
-        setAnimation(newAnimation);
     }
 
     return (

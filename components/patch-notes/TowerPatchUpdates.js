@@ -125,10 +125,12 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
             controller.abort();
             ignore.ignore = true;
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [fetch]);
 
     useEffect(() => {
         dispatch(updatePage(reduxPageName, patchData));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [patchData]);
 
     const handleReset = () => {

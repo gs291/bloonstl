@@ -6,8 +6,8 @@ import TowerText from "../tower/TowerText";
 import ImageFill from "../image/ImageFill";
 import siteColors from "../../lib/utils/siteColors";
 import DefaultButton from "../button/DefaultButton";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -35,7 +35,6 @@ const Description = styled(TowerText)`
 
 const ButtonContainer = styled("div", globalOptions)`
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-  transition: 0.3s;
   margin-top: 20px;
   margin-bottom: 20px;
 `;
@@ -44,8 +43,10 @@ const ImgContainer = styled("a")`
   position: relative;
   width: 100%;
   max-width: 100%;
-  height: 515px;
-  max-height: 515px;
+  height: 100%;
+  max-height: 100%;
+  
+  padding-bottom: 57%;
 `;
 
 const Author = styled("div")`
@@ -67,6 +68,7 @@ const GA4_KEYBINDINGS_ID = "KEYBINDINGS";
  * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
  */
 export default function Keybindings({ className, tag }) {
+    const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
     const [show, setShow] = useState(false);
     const src = {
@@ -82,11 +84,11 @@ export default function Keybindings({ className, tag }) {
     return (
         <>
             <KeybindContainer className={className} id={tag.href}>
-                <Title variant="h2">
+                <Title variant={mobile ? "h3" : "h2"} component="h2">
                     {tag.title}
                 </Title>
                 <Description variant="h6" font={true}>
-                    Below is a useful visual representation of the default in-game keybindings.
+                   Below is a useful visual representation of the default in-game keybinds.
                    Click the button below to switch between keyboard keys and icons. Click on the image to view the full image.
                 </Description>
                 <ButtonContainer data-dm={darkMode}>

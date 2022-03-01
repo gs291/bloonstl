@@ -12,7 +12,6 @@ import {getDarkMode, getDrawer} from "../../lib/redux/selectors";
 
 
 const Menu = styled(Button, globalOptions)`
-  transition: 0.3s;
   color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
   height: ${siteSizes.nav.height};
   width: 100px;

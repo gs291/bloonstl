@@ -56,14 +56,13 @@ export default function Legal() {
 
     return (
         <>
-            <DirectoryText variant="h4" font={true}>
+            <DirectoryText variant="h4" font={true} component="h2">
                 Site directory for the legal pages
             </DirectoryText>
             <LegalLinks>
                 <FullLink href="cookie-policy" title="Cookie Policy" />
                 <FullLink href="privacy-policy" title="Privacy Policy" />
                 <FullLink href="terms-of-service" title="Terms of Service" />
-                <FullLink href="data-processing-agreement" title="Data Processing Agreement" />
             </LegalLinks>
         </>
     );
