@@ -4,7 +4,7 @@ import TowerText from "../components/tower/TowerText";
 import MainContainer from "../components/page/MainContainer";
 
 
-export default function TOS({  }) {
+export default function Custom404({  }) {
 
     return (
         <>
