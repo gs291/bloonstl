@@ -38,11 +38,6 @@ export default function DonatePage() {
             </DonationDescription>
             <DonationLinks>
                 <DonateLink
-                    href="https://www.paypal.me/sanchegr"
-                    title="PAYPAL"
-                    text="@sanchegr"
-                />
-                <DonateLink
                     href="https://cash.app/$gs291"
                     title="CASH APP"
                     text="$gs291"
@@ -51,6 +46,11 @@ export default function DonatePage() {
                     href="https://venmo.com/u/gs291"
                     title="VENMO"
                     text="@gs291"
+                />
+                <DonateLink
+                    href="https://www.paypal.me/sanchegr"
+                    title="PAYPAL"
+                    text="@sanchegr"
                 />
             </DonationLinks>
         </>
