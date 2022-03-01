@@ -21,7 +21,7 @@ export default function UserGeneratedContributions({tag}) {
                 opportunity to create, submit, post, display, transmit, perform, publish, distribute, or
                 broadcast content and materials to us or on the Site, including but not limited to text,
                 writings, video, audio, photographs, graphics, comments, suggestions, or personal
-                information or other material (collectively, "Contributions"). Contributions may be
+                information or other material (collectively, &quot;Contributions&quot;). Contributions may be
                 viewable by other users of the Site and through third-party websites. As such, any
                 Contributions you transmit may be treated in accordance with the Site Privacy Policy.
                 When you create or make available any Contributions, you thereby represent and warrant that:
@@ -114,7 +114,7 @@ export default function UserGeneratedContributions({tag}) {
                 <li>
                     <LegalText variant="body1" font={true}>
                         You acknowledge and agree that any questions, comments, suggestions, ideas,
-                        feedback, or other information regarding the Site ("Submissions" or "Contributions") provided by you to
+                        feedback, or other information regarding the Site (&quot;Submissions&quot; or &quot;Contributions&quot;) provided by you to
                         us are non-confidential and shall become our sole property. We shall own exclusive
                         rights, including all intellectual property rights, and shall be entitled to the unrestricted
                         use and dissemination of these Submissions for any lawful purpose, commercial or

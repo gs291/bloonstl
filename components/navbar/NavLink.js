@@ -57,7 +57,7 @@ const A = styled("div", globalOptions)`
  * @param {boolean} props.prefetch Shows if the link should be prefetched out not
  * @param {function} props.closeDrawer Function to close the mobile drawer
  */
-export default function NavLink({className, path, text, prefetch, closeDrawer}) {
+export default function NavLink({className, path, text, prefetch, closeDrawer, ...rest}) {
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
@@ -73,6 +73,7 @@ export default function NavLink({className, path, text, prefetch, closeDrawer}) 
                         data-m={mobile}
                         data-dm={darkMode}
                         data-a={router.pathname === path}
+                        {...rest}
                     >
                         <HoverLink onClick={closeDrawer} data-m={mobile} data-dm={darkMode}>
                             <A data-m={mobile}>{text}</A>
@@ -87,6 +88,7 @@ export default function NavLink({className, path, text, prefetch, closeDrawer}) 
                         data-m={mobile}
                         data-dm={darkMode}
                         data-a={router.pathname === path}
+                        {...rest}
                     >
                         <HoverLink onClick={closeDrawer} data-m={mobile} data-dm={darkMode}>
                             <A data-m={mobile}>{text}</A>

@@ -54,6 +54,7 @@ export default function Page(props) {
     const screen = useMediaQuery("(max-width: 900px)");
     useEffect(() => {
         dispatch(updateMobile(screen));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [screen]);
 
     const globals = css`

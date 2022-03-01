@@ -6,6 +6,8 @@ import TowerText from "../tower/TowerText";
 export const Title = styled(TowerText)`
   margin-top: 30px;
   margin-bottom: 30px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 /**

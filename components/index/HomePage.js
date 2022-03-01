@@ -38,6 +38,7 @@ export default function HomePage({scrollTo, monkeys}) {
         return () => {
             clearInterval(nextTimer);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const monkey = monkeys[idx];

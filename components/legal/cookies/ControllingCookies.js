@@ -26,7 +26,7 @@ export default function ControllingCookies({tag}) {
                 Most browsers provide for ways to control cookie behavior such as the length of time they are stored –
                 either through built-in functionality or by utilizing third party plugins.
                 If you disable cookies, please be aware that some of the features of our service may not function correctly.
-                To find out more on how to manage and delete cookies, visit your web browser's help page or read your web browser's user manual.
+                To find out more on how to manage and delete cookies, visit your web browser&apos;s help page or read your web browser&apos;s user manual.
                 For more details on your choices regarding use of your web browsing activity for
                 interest-based advertising visit
                 &nbsp;

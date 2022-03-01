@@ -33,6 +33,7 @@ const TierButtons = styled("div")`
 export default function FilterTiers({ className, tier, handleTier }) {
     const darkMode = useSelector(getDarkMode);
 
+    // eslint-disable-next-line react/display-name
     if (!handleTier){ handleTier = (_, __) => <></>; }
     return (
         <>

@@ -62,8 +62,8 @@ export default function NavDrawer() {
                 transitionDuration={350}
             >
                 <DrawerContainer data-dm={darkMode}>
-                    { siteLinks.middle.links.map(mid => <DrawerLink {...mid} closeDrawer={closeDrawer}/>) }
-                    { siteLinks.middle.collapse.map(mid => <DrawerLink {...mid} closeDrawer={closeDrawer}/>) }
+                    { siteLinks.middle.links.map(mid => <DrawerLink key={mid.key} {...mid} closeDrawer={closeDrawer}/>) }
+                    { siteLinks.middle.collapse.map(mid => <DrawerLink key={mid.key} {...mid} closeDrawer={closeDrawer}/>) }
                     <DrawerDarkMode />
                 </DrawerContainer>
             </TopDrawer>

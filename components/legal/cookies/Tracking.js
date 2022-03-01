@@ -18,7 +18,7 @@ export default function Tracking({tag}) {
             <LegalText variant="body1" font={true}>
                 Cookies are not the only way to recognize or track visitors to a website. We may use
                 other, similar technologies from time to time, like web beacons (sometimes called
-                "tracking pixels" or "clear gifs"). These are tiny graphics files that contain a unique
+                &quot;tracking pixels&quot; or &quot;clear gifs&quot;). These are tiny graphics files that contain a unique
                 identifier that enable us to recognize when someone has visited our Websites or
                 opened an e-mail including them. This allows us, for example, to monitor the traffic
                 patterns of users from one page within a website to another, to deliver or

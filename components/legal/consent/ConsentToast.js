@@ -56,6 +56,7 @@ export default function ConsentToast() {
 
     useEffect(() => {
         checkConsent();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

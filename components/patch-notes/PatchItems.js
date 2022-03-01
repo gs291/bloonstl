@@ -54,7 +54,7 @@ export default function PatchItems({className, items}) {
                         </TowerTitle>
                         {item.description && (
                             <TowerText variant="body1" font={true} textColor={rgbaHex(darkMode ? siteColors.text.dark : siteColors.text.light, 0.5)}>
-                                "{item.description}"
+                                &quot;{item.description}&quot;
                             </TowerText>
                         )}
                         {item.items && (<PatchItems items={item.items} />)}

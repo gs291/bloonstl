@@ -16,8 +16,8 @@ export default function FlashCookies({tag}) {
                 {tag.title}
             </LegalTitle>
             <LegalText variant="body1" font={true}>
-                Websites may also use so-called "Flash Cookies" (also known as Local Shared
-                Objects or "LSOs") to, among other things, collect and store information about your
+                Websites may also use so-called &quot;Flash Cookies&quot; (also known as Local Shared
+                Objects or &quot;LSOs&quot;) to, among other things, collect and store information about your
                 use of our services, fraud prevention and for other site operations.
             </LegalText>
             <LegalText variant="body1" font={true}>
@@ -26,7 +26,7 @@ export default function FlashCookies({tag}) {
                 contained in the Website Storage Settings Panel. You can also control Flash Cookies
                 by going to the Global Storage Settings Panel and following the instructions (which
                 may include instructions that explain, for example, how to delete existing Flash
-                Cookies (referred to "information" on the Macromedia site), how to prevent Flash
+                Cookies (referred to &quot;information&quot; on the Macromedia site), how to prevent Flash
                 LSOs from being placed on your computer without your being asked, and (for Flash
                 Player 8 and later) how to block Flash Cookies that are not being delivered by the
                 operator of the page you are on at the time).

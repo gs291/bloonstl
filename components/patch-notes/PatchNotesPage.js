@@ -129,6 +129,7 @@ export default function PatchNotesPage({ patch }) {
             controller.abort();
             ignore.ignore = true;
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [patchVersion])
 
     useEffect(() => {
@@ -149,6 +150,7 @@ export default function PatchNotesPage({ patch }) {
                 }));
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [patchData]);
 
 

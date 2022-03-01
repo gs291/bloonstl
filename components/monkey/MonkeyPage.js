@@ -116,6 +116,7 @@ export default function MonkeyPage({monkey}) {
 
     useEffect(() => {
         setPath(monkey.tiers[tier][page-1]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tier, page]);
 
     useEffect(() => {
@@ -130,6 +131,7 @@ export default function MonkeyPage({monkey}) {
         } else {
             setPath(monkey.tiers[tier][page-1]);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sandbox]);
 
     return (

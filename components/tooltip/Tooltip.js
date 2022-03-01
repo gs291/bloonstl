@@ -95,6 +95,7 @@ export default function Tooltip({children, title, borderColor, ga4ID, forceWidth
         }, 1000);
 
         return () => clearTimeout(timer);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open, rest.open])
 
     return (

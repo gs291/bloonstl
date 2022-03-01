@@ -105,7 +105,7 @@ export default function TableOfContents({ tags, className }) {
                     <TocList>
                         {tags.map(tag => (
                             <TocItem key={tag.href} data-dm={darkMode} onClick={() => handleClick(`#${tag.href}`)}>
-                                <Link href={`#${tag.href}`}>
+                                <Link href={`#${tag.href}`} passHref>
                                     <TocLink data-dm={darkMode}>
                                         <TocText variant="h6" data-h={`#${tag.href}`}>
                                             {tag.title}

@@ -20,7 +20,7 @@ export default function CaliforniaResidents({tag}) {
                 regarding access to your personal information.
             </LegalText>
             <LegalText variant="body1" font={true}>
-                California Civil Code Section 1798.83, also known as the "Shine The Light" law,
+                California Civil Code Section 1798.83, also known as the &quot;Shine The Light&quot; law,
                 permits our users who are California residents to request and obtain from us, once a
                 year and free of charge, information about categories of personal information (if any)
                 we disclosed to third parties for direct marketing purposes and the names and

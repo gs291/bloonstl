@@ -17,7 +17,7 @@ export default function Controls({tag}) {
             </LegalTitle>
             <LegalText variant="body1" font={true}>
                 Most web browsers and some mobile operating systems and mobile applications
-                include a Do-Not-Track ("DNT") feature or setting you can activate to signal your
+                include a Do-Not-Track (&quot;DNT&quot;) feature or setting you can activate to signal your
                 privacy preference not to have data about your online browsing activities monitored
                 and collected. At this stage no uniform technology standard for recognizing and
                 implementing DNT signals has been finalized. As such, we do not currently respond
