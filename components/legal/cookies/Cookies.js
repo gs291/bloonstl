@@ -53,7 +53,7 @@ export default function Cookies() {
                 <LegalText variant="body1" font={true}>
                     This Cookie Policy explains how bloonstl (&quot;we&quot;, &quot;us&quot;, and &quot;our&quot;)
                     uses cookies and similar technologies to recognize you when you visit our websites
-                    at https://bloonstl.netlify.app/, (&quot;Websites&quot;). It explains what these technologies are
+                    at https://bloons.gg/, (&quot;Websites&quot;). It explains what these technologies are
                     and why we use them, as well as your rights to control our use of them.
                 </LegalText>
                 <LegalText variant="body1" font={true}>
