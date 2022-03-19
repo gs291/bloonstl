@@ -4,16 +4,16 @@
 
 A new and intuitive way to view a tier list and statistics for Bloons Tower Defense 6.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/bbbaa464-3e21-4740-8997-5cc829ab4f20/deploy-status)](https://bloonstl.netlify.app)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bbbaa464-3e21-4740-8997-5cc829ab4f20/deploy-status)](https://bloons.gg)
 
-View the website [here](https://bloonstl.netlify.app).
+View the website [here](https://bloons.gg).
 
 ## GraphQL API
 
 The project contains a GraphQL API endpoint for fetching data from the database. 
-The API endpoint can be found [here](https://bloonstl.netlify.app/api/graphql).
+The API endpoint can be found [here](https://bloons.gg/api/graphql).
 
-The GraphQL documentation can be found on the [website](https://bloonstl.netlify.app/resources#graphql). 
+The GraphQL documentation can be found on the [website](https://bloons.gg/resources#graphql). 
 
 ## Feedback
 
