@@ -36,7 +36,7 @@ export default function VideoSection() {
                     <Video
                         width="1280"
                         height="720"
-                        src="https://www.youtube.com/embed/EqboAI-Vk-U"
+                        src="https://www.youtube.com/embed/TJUhtuGizX8"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
