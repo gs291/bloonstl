@@ -106,7 +106,7 @@ export default function Footer({ className }) {
                 </LinkContainer>
                 <FooterText component="span" variant="body1" font={true}>
                     Written and maintained by
-                    <FooterLink href="https://gregsanchez.info/" data-dm={darkMode}>
+                    <FooterLink href="https://gregsanchez.netlify.app/" data-dm={darkMode}>
                         Gregory Sanchez
                     </FooterLink>
                 </FooterText>
