@@ -1617,8 +1617,8 @@ SELECT id INTO @tower_psi FROM Towers WHERE hero_id=@psi;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_psi, 'a');
 
---          Statistics      --  (  id,   tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,     dur, note, fp,  hk,        dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_psi, 20, 0, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1, DEFAULT, DEFAULT, NULL,  7, 'U', 'psychic', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,   tower_id,         r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,     dur, note, fp,  hk,        dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_psi, 110000000, 0, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1, DEFAULT, DEFAULT, NULL,  7, 'U', 'psychic', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 0, '', 'Over any range or obstacle, Psi sets up deadly vibrations that completely destroy one Bloon at a time. Can target Camo.', 0, 0, 'status:vibrating:desc:Applied by basic attack damage;|1d;|0.2s;|15dur;note:Continues until fully popped,+camo,-purple,-lead,-ceramic,-blimp', 'camo', 'purp,lead,cm,blimp');
 INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 1, '', 'Attacks slightly faster.', 0, 270, '0.85s', DEFAULT, DEFAULT);

@@ -16,10 +16,6 @@ const FixedContainer = styled("div")`
   align-items: center;
 `;
 
-const DonateButton = styled(SideButton)`
-  margin-left: 35px;
-`;
-
 /**
  * Buttons placed vertically along a bottom right side of the viewport
  */
@@ -29,7 +25,6 @@ export default function FixedRightButtons() {
         <>
             <FixedContainer>
                 <SideButton href="https://forms.gle/YXY4qyXdgfxcFcpH7" text="FEEDBACK" target="_blank" outbound />
-                <DonateButton href="/donate" text="DONATE" />
             </FixedContainer>
         </>
     );
