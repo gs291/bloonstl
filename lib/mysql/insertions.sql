@@ -1643,3 +1643,38 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 19, '', 'Psionic Scr
 
 INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_psi, 'eg,mg,lg,supp', 'xp');
 
+
+--      Hero - Geraldo
+INSERT INTO `Heroes` VALUES (NULL, 'Geraldo', 'Mystic Shopkeeper', 'Geraldo the shopkeeper sells a selection of useful items and zaps Bloons with his lightning attack.', 600, 5000, 'geraldo.png');
+SELECT id INTO @geraldo FROM Heroes WHERE name='Geraldo';
+INSERT INTO `Towers` VALUES (NULL, @geraldo, NULL);
+SELECT id INTO @tower_geraldo FROM Towers WHERE hero_id=@geraldo;
+
+INSERT INTO `TowerTiers` VALUES (NULL, @tower_geraldo, 'b');
+
+--          Statistics      --  (  id,   tower_id,      r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_geraldo, 40, 5, 2, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.1, DEFAULT, DEFAULT, NULL,  7, 'U', 'energy', DEFAULT, DEFAULT, DEFAULT);
+
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 0, '', 'Available Items! Shooty Turret, Stack of Old Nails, Creepy Idol, Jar of Pickles. Geraldo also has a short range magical attack.', 0, 0, 'note:(Lvl 1) Geraldo owns a shop containing multiple items in stock at a limited supply accessed using the ability button. Can restock some items after a certain number of rounds. Geraldo begins with the following items in his store: Shooty Turret. Stack of Old Nails. Creepy Idol. Jar of Pickles.', '', '');
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 1, '', 'New Item! Rare Quincy Action Figure - increases in value the longer you possess it!', 0, 180, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 2, '', 'New Item! See Invisibility Potion - grants short term camo detection to a Monkey Tower or Hero. Geraldo\'s attack range increases.', 0, 460, '+5r', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 3, '', 'New Item! Tube of Amaz-o-Glue - can be placed on the track to slow Bloons down.', 0, 1000, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 4, '', 'New Item! Sharpening Stone - boosts the pierce of a Monkey Tower or Hero when doing sharp-type damage.', 0, 1860, '1s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 5, '', 'New Item! Worn Hero\'s Cape - turns a tier 2 or lower Dart Monkey into a Super Monkey! These converted Super Monkeys can only be upgraded to Tier 3.', 0, 3280, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 6, '', 'New Item! Blade Trap - when a visible Bloon touches the trap, a Blade Maelstrom goes off. Geraldo\'s main attack increases in damage and pierce.', 0, 5180, '+1d,+5p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 7, '', 'New Item! Bottle of \'Gerry\'s Fire\' - 2.8 million Bloonville units of pure hot sauce fire! Gives a Monkey, Hero, or minion a fiery attack for 10 rounds.', 0, 8320, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 8, '', 'New Item! Fertilizer - targeted Banana Farms that produce visible bananas increase production and get a cash bonus over several rounds. Geraldo\'s main attack blast radius increases.', 0, 9380, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 9, '', 'New Item! Pet Rabbit - aww what a cute widdle bunny wabbit!', 0, 13620, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 10, '', 'New Item! Rejuv Potion - resets all Monkey Tower and Hero cooldowns, restores 50 lives. Geraldo\'s main attack pierce increases, and Jar of Pickles grants bonus damages vs. Fortified Bloons.', 0, 16380, '+10p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 11, '', 'New Item! Genie Bottle - summons a plasma-powered Genie Monkey that lasts for 3 rounds. Creepy Idol can now apply an occasional short stun to passive visible MOAB-class Bloons.', 0, 14400, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 12, '', 'Shooty Turret fires faster with increased damage, and Stack of Old Nails do more damage.', 0, 16650, '0.8s', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 13, '', 'See Invisibility Potion grants additional range and lasts longer.', 0, 14940, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 14, '', 'Sharpening Stone now increases damage in addition to pierce, and Blade Trap creates a more powerful effect when triggered.', 0, 16380, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 15, '', 'Stack of Old Nails becomes a Nail Mine, Jar of Pickles grants additional bonus damage vs. Fortified Bloons, and Gerry\'s Fire gains bonus burny damage.', 0, 17820, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 16, '', 'Geraldo\'s main attack does more damage and Amaz-o-Glue now has a small effect on MOAB-class Bloons.', 0, 19260, '+1d', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 17, '', 'Genie gains a second close-target attack and does bonus damage to MOAB-class Bloons and Creepy Idol applies a Mystical Shroud to MOAB-class Bloons that causes big damage nearby when they are popped.', 0, 20700, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 18, '', 'Geraldo\'s main attack is faster, has a longer range, and does more damage and See Invisibility Potion gains bonus damage to Camo Bloons.', 0, 16470, '', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 19, '', 'New Item! Paragon Power Totem - adds paragon power to the next paragon created. Geraldo\'s main attack does more damage.', 0, 17280, '+5d,note:(Lvl 20) Fully restocks all items upon reaching level 20', DEFAULT, DEFAULT);
+
+INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_geraldo, 'eg,mg,lg,supp', 'xp');
+
