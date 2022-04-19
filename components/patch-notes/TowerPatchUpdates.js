@@ -29,6 +29,7 @@ const PatchContainer = styled("div", globalOptions)`
 const PatchItemsContainer = styled("div", globalOptions)`
   position: relative;
   padding:  ${props => props["data-m"] ? 0.5 : 1}em;
+  min-height: 75px;
   
   border-radius: 20px;
   border: 2px solid ${props => 
@@ -147,41 +148,43 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
     return (
         <>
             <PatchContainer data-m={mobile} ref={elemRef} {...rest}>
-                {patchData.items.length > 0 && (
                     <PatchItemsContainer data-bc={borderColor} data-m={mobile} data-dm={darkMode}>
                         {!progress.isLoading && (
                             <PatchRefreshButton onClick={handleReset} borderColor={borderColor} />
                         )}
-                        <PatchFlex>
-                            {patchData.items.map(patchUpdate => (
-                                <PatchUpdateItem key={patchUpdate.release}>
-                                    <TowerText variant={mobile ? "h5" : "h4"}>
-                                        Patch Version {patchUpdate.release}
-                                    </TowerText>
-                                    <PatchItemsWrapper data-m={mobile}>
-                                        <PatchItems items={patchUpdate.items} />
-                                    </PatchItemsWrapper>
-                                </PatchUpdateItem>
-                            ))}
-                            <FooterContainer>
-                                {patchData.start !== -1 ? (<>{!progress.isLoading && (
-                                        <DefaultButton onClick={handleFetch} data-bc={borderColor} data-dm={darkMode} variant={darkMode ? "outlined" : "contained"}>
-                                            <TowerText variant={mobile ? "subtitle1" : "h6"}>
-                                                Load More
+                        {patchData.items.length > 0 && (
+                            <>
+                                <PatchFlex>
+                                    {patchData.items.map(patchUpdate => (
+                                        <PatchUpdateItem key={patchUpdate.release}>
+                                            <TowerText variant={mobile ? "h5" : "h4"}>
+                                                Patch Version {patchUpdate.release}
                                             </TowerText>
-                                        </DefaultButton>
-                                )}</>) : (
-                                    <TowerText variant={mobile ? "subtitle2" : "subtitle1"} font={true}>
-                                        No more data can be fetched
-                                    </TowerText>
-                                )}
-                                {progress.isLoading && (
-                                    <FetchLoading />
-                                )}
-                            </FooterContainer>
-                        </PatchFlex>
+                                            <PatchItemsWrapper data-m={mobile}>
+                                                <PatchItems items={patchUpdate.items} />
+                                            </PatchItemsWrapper>
+                                        </PatchUpdateItem>
+                                    ))}
+                                    <FooterContainer>
+                                        {patchData.start !== -1 ? (<>{!progress.isLoading && (
+                                            <DefaultButton onClick={handleFetch} data-bc={borderColor} data-dm={darkMode} variant={darkMode ? "outlined" : "contained"}>
+                                                <TowerText variant={mobile ? "subtitle1" : "h6"}>
+                                                    Load More
+                                                </TowerText>
+                                            </DefaultButton>
+                                        )}</>) : (
+                                            <TowerText variant={mobile ? "subtitle2" : "subtitle1"} font={true}>
+                                                No more data can be fetched
+                                            </TowerText>
+                                        )}
+                                        {progress.isLoading && (
+                                            <FetchLoading />
+                                        )}
+                                    </FooterContainer>
+                                </PatchFlex>
+                            </>
+                        )}
                     </PatchItemsContainer>
-                )}
                 {progress.isLoading && !patchData.items.length && (
                     <FetchLoading />
                 )}
