@@ -1,12 +1,8 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 import TowerText from "../../tower/TowerText";
-import siteColors from "../../../lib/utils/siteColors";
-import {getDarkMode} from "../../../lib/redux/selectors";
-import {globalOptions} from "../../../lib/utils/emotionStyled";
 
 
 const Body = styled("div")`
@@ -37,8 +33,8 @@ const ATag = styled("a")`
   }
 `;
 
-const ErrorIcon = styled(ErrorOutlineIcon, globalOptions)`
-  color: ${props => props["data-dm"] ? siteColors.toast.error.alert.dark : siteColors.toast.error.alert.light};
+const ErrorIcon = styled(ErrorOutlineIcon)`
+  color: ${props => props.theme.palette.toast.error.alert};
 `;
 
 /**
@@ -48,14 +44,13 @@ const ErrorIcon = styled(ErrorOutlineIcon, globalOptions)`
  * @param {boolean} props.error Shows if there was an error with accepting the cookie toast
  */
 export default function ConsentBody({error}) {
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <Body>
                 {error && (
                     <Error>
-                        <ErrorIcon fontSize="large" data-dm={darkMode}/>
+                        <ErrorIcon fontSize="large" />
                         <ErrorText variant="h6" font={true}>
                             An error occurred trying to accept cookie usage!
                         </ErrorText>

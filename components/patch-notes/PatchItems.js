@@ -12,11 +12,11 @@ const Items = styled("ul")`
   padding-left: 20px;
 `;
 
-const ItemList = styled("li", globalOptions)`
+const ItemList = styled("li")`
   margin-top: 20px;
   
   &::marker {
-    color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+    color: ${props => props.theme.palette.text.primary};
   }
 `;
 
@@ -38,7 +38,7 @@ export default function PatchItems({className, items}) {
         <>
             <Items className={className}>
                 {items.map((item, idx) => (
-                    <ItemList key={idx} data-dm={darkMode}>
+                    <ItemList key={idx}>
                         <TowerTitle
                             variant={item.text ? "body1" : "h6"}
                             font={!!item.text}

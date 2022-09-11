@@ -1,11 +1,7 @@
 import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
 
 import Chevron from "./Cheveron";
 import {rgbaHex} from "../../lib/utils/utils";
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
-import {globalOptions} from "../../lib/utils/emotionStyled";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -15,7 +11,7 @@ const IndicatorContainer = styled("div")`
   height: 45px;
 `;
 
-const ClickContainer = styled("div", globalOptions)`
+const ClickContainer = styled("div")`
   width: 100%;
   display: flex;
   height: 75px;
@@ -24,7 +20,7 @@ const ClickContainer = styled("div", globalOptions)`
   padding-top: 50px;
   padding-bottom: 100px;
   &:hover {
-    background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.25)};
+    background-color: ${props => rgbaHex(props.theme.palette.primary.main, 0.25)};
     cursor: pointer;
   }
 `;
@@ -38,7 +34,6 @@ const GA4_SCROLL_INDICATOR_ID = "SCROLL_INDICATOR";
  * @param {RefObject<HTMLDivElement>|null} props.scrollTo React reference to the top of the home page sections
  */
 export default function ScrollIndicator({scrollTo}) {
-    const darkMode = useSelector(getDarkMode);
 
     const handleScroll = () => {
         scrollTo.current.scrollIntoView();
@@ -47,7 +42,7 @@ export default function ScrollIndicator({scrollTo}) {
 
     return (
         <>
-            <ClickContainer onClick={handleScroll} data-dm={darkMode}>
+            <ClickContainer onClick={handleScroll}>
                 <IndicatorContainer >
                     <Chevron delay={0}/>
                     <Chevron delay={4}/>

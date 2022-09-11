@@ -5,7 +5,6 @@ import {Alert, Snackbar} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
-import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
@@ -15,26 +14,20 @@ const PageAlert = styled(Alert, globalOptions)`
   width: ${props => props["data-m"] ? 90 : 100}%;
   align-items: center;
   
-  color: ${props => props["severity"] ? 
-          props["data-dm"] ? siteColors[props["severity"]].dark : siteColors[props["severity"]].light 
-          : props["data-dm"] ? siteColors.text.dark : siteColors.text.light };
+  color: ${props => props["severity"] ? props.theme.palette.informational[props["severity"]] : props.theme.palette.text.primary};
   
-  border: 2px solid ${props => props["severity"] ?
-          props["data-dm"] ? siteColors[props["severity"]].dark : siteColors[props["severity"]].light
-          : props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  border: 2px solid ${props => props["severity"] ? props.theme.palette.informational[props["severity"]] : props.theme.palette.text.primary};
   
-  background-color: ${props => props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
+  background-color: ${props => props.theme.palette.informational[props["severity"]] };
   box-shadow: -5px 5px 5px 1px ${props => rgbaHex(props["severity"] ?
-          props["data-dm"] ? siteColors[props["severity"]].dark : siteColors[props["severity"]].light
-          : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
+                  props.theme.palette.background.tooltip
+                  : props.theme.palette.primary.main
           , props["data-dm"] ? 0.6 : 1)};
   
   & .MuiAlert-icon {
     font-size: ${props => props["data-m"] ? 35 : 35}px;
     
-    color: ${props => props["severity"] ?
-            props["data-dm"] ? siteColors[props["severity"]].dark : siteColors[props["severity"]].light
-            : props["data-dm"] ? siteColors.text.dark : siteColors.text.light };
+    color: ${props => props["severity"] ? props.theme.palette.informational[props["severity"]] : props.theme.palette.text.primary };
   }
 
   & .MuiAlert-action {

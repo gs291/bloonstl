@@ -3,7 +3,6 @@ import {useSelector} from "react-redux";
 import {Grid, Typography} from "@mui/material";
 
 import {rgbaHex} from "../../lib/utils/utils";
-import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
@@ -16,7 +15,7 @@ const Title = styled(Grid, globalOptions)`
   background-color: ${props => rgbaHex(props["data-bc"], props["data-dm"] ? 0.75 : 1)};
   border-top-left-radius: 13px;
   border-top-right-radius: 13px;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
 `;
 
 /**

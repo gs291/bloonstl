@@ -3,9 +3,8 @@ import {useSelector} from "react-redux";
 import {Typography} from "@mui/material";
 
 import ImageFill from "../image/ImageFill";
-import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
 
 
@@ -38,9 +37,7 @@ const DifficultyImageContainer = styled("div", globalOptions)`
 `;
 
 const DifficultyText = styled(Typography, globalOptions)`
-  color: ${props => props["data-s"] 
-          ? props["data-c"] 
-          : props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props["data-s"] ? props["data-c"] : props.theme.palette.text.primary};
   
   user-select: none;
   height: 30px;
@@ -67,7 +64,6 @@ const GA4_DIFFICULTY_FILTER_ID = "FILTER_DIFFICULTY";
  */
 export default function DifficultyButton({ className, difficulty, selected, color, handleChange }) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const handleClick = (e) => {
         handleChange(e, difficulty);
@@ -80,7 +76,6 @@ export default function DifficultyButton({ className, difficulty, selected, colo
                 onClick={handleClick}
                 data-s={selected}
                 data-c={color}
-                data-dm={darkMode}
                 data-m={mobile}
                 className={className}
             >
@@ -89,7 +84,6 @@ export default function DifficultyButton({ className, difficulty, selected, colo
                 </DifficultyImageContainer>
                 <DifficultyText
                     variant="h5"
-                    data-dm={darkMode}
                     data-c={color}
                     data-s={selected}
                 >

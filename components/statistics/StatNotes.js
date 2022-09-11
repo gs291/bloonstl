@@ -2,9 +2,8 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import TowerText from "../tower/TowerText";
-import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const NoteContainer = styled("ul", globalOptions)`
@@ -14,8 +13,8 @@ const NoteContainer = styled("ul", globalOptions)`
   padding-right: ${props => props["data-s"] === "medium" ? 40 : 25}px;
 `;
 
-const ListItem = styled("li", globalOptions)`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+const ListItem = styled("li")`
+  color: ${props => props.theme.palette.text.primary};
 `;
 
 /**
@@ -27,7 +26,6 @@ const ListItem = styled("li", globalOptions)`
  */
 export default function StatNotes({notes, size = "medium", ...rest}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     if (mobile) {
         size = "small";
@@ -36,7 +34,7 @@ export default function StatNotes({notes, size = "medium", ...rest}) {
         <>
             <NoteContainer data-s={size}>
                 {notes.map(note => (
-                    <ListItem key={note} data-dm={darkMode}>
+                    <ListItem key={note}>
                         <TowerText variant={size === "medium" ? "body2" : "caption"} font={true} key={note}>
                             {note}
                         </TowerText>

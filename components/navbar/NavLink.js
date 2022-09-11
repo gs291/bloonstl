@@ -5,9 +5,8 @@ import {useSelector} from "react-redux";
 import {Link as MUILink} from "@mui/material";
 
 import siteSizes from "../../lib/utils/siteSizes";
-import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const HoverLink = styled("div", globalOptions)`
@@ -21,20 +20,18 @@ const HoverLink = styled("div", globalOptions)`
 
   &:hover {
     cursor: pointer;
-    color: ${props => props["data-dm"] ? siteColors.text.navLink.dark : siteColors.text.navLink.light};
+    color: ${props => props.theme.palette.text.navLink};
   }
 `;
 
 const MLink = styled(MUILink, globalOptions)`
   height: ${props => props["data-m"] ? "" : siteSizes.nav.height};
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
   ${props => props["data-m"] ? "width: 100%;" : ""}
   border-bottom: 5px solid ${props => 
           props["data-m"] 
-              ? props["data-dm"] ? siteColors.page.dark : siteColors.page.light
-              : props["data-dm"]
-                  ? props["data-a"] ? siteColors.accent.dark : "transparent"
-                  : props["data-a"] ? siteColors.accent.light : "transparent"
+              ? props.theme.palette.background.default 
+              : props["data-a"] ? props.theme.palette.primary.main : "transparent"
   };
 `;
 
@@ -58,7 +55,6 @@ const A = styled("div", globalOptions)`
  */
 export default function NavLink({className, path, text, prefetch, closeDrawer, ...rest}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const router = useRouter();
 
@@ -70,11 +66,10 @@ export default function NavLink({className, path, text, prefetch, closeDrawer, .
                         className={className}
                         underline="none"
                         data-m={mobile}
-                        data-dm={darkMode}
                         data-a={router.pathname === path}
                         {...rest}
                     >
-                        <HoverLink onClick={closeDrawer} data-m={mobile} data-dm={darkMode}>
+                        <HoverLink onClick={closeDrawer} data-m={mobile}>
                             <A data-m={mobile}>{text}</A>
                         </HoverLink>
                     </MLink>
@@ -85,11 +80,10 @@ export default function NavLink({className, path, text, prefetch, closeDrawer, .
                         className={className}
                         underline="none"
                         data-m={mobile}
-                        data-dm={darkMode}
                         data-a={router.pathname === path}
                         {...rest}
                     >
-                        <HoverLink onClick={closeDrawer} data-m={mobile} data-dm={darkMode}>
+                        <HoverLink onClick={closeDrawer} data-m={mobile}>
                             <A data-m={mobile}>{text}</A>
                         </HoverLink>
                     </MLink>

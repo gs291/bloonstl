@@ -4,9 +4,7 @@ import {useSelector} from "react-redux";
 
 import TowerText from "../tower/TowerText";
 import ImageFill from "../image/ImageFill";
-import siteColors from "../../lib/utils/siteColors";
 import DefaultButton from "../button/DefaultButton";
-import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
@@ -33,8 +31,8 @@ const Description = styled(TowerText)`
   margin-top: 20px;
 `;
 
-const ButtonContainer = styled("div", globalOptions)`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+const ButtonContainer = styled("div")`
+  color: ${props => props.theme.palette.text.primary};
   margin-top: 20px;
   margin-bottom: 20px;
 `;
@@ -91,7 +89,7 @@ export default function Keybindings({ className, tag }) {
                    Below is a useful visual representation of the default in-game keybinds.
                    Click the button below to switch between keyboard keys and icons. Click on the image to view the full image.
                 </Description>
-                <ButtonContainer data-dm={darkMode}>
+                <ButtonContainer>
                     <DefaultButton variant={darkMode ? "outlined" : "contained"} onClick={handleClick}>
                         <TowerText variant="h6">
                             REPLACE {show ? "ICONS WITH KEYS" : "KEYS WITH ICONS"}

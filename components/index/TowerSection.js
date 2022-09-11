@@ -6,15 +6,14 @@ import ProsCons from "../tower/ProsCons";
 import TowerCard from "../tower/TowerCard";
 import TowerText from "../tower/TowerText";
 import TierPathText from "../tower/TierPathText";
-import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const TitleContainer = styled(Grid, globalOptions)`
   min-height: 375px;
   padding: ${props => props["data-m"] ? 1 : 3}em;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
   text-align: center;
 `;
 
@@ -44,7 +43,6 @@ const SansSerifText = styled(Typography)`
  */
 export default function TowerSection({className, monkey, scrollTo}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -68,7 +66,6 @@ export default function TowerSection({className, monkey, scrollTo}) {
                 columns={16}
                 className={className}
                 data-m={mobile}
-                data-dm={darkMode}
             >
                 <Grid item xs={6}>
                     <TowerCard tower={monkey} towerType={"monkey"} />

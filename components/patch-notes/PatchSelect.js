@@ -1,21 +1,17 @@
 import styled from "@emotion/styled";
 import {makeStyles} from "@mui/styles";
-import {useSelector} from "react-redux";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {patchVersions} from "../../lib/utils/patches";
-import {globalOptions} from "../../lib/utils/emotionStyled";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
 const useStyles = makeStyles({
     menuPaper: {
         maxHeight: "400px",
-        backgroundColor: (props) => props.darkMode ? siteColors.select.dark : siteColors.select.light,
+        backgroundColor: (props) => props.theme.palette.button.select,
     }
 });
 
@@ -24,33 +20,33 @@ const SelectContainer = styled("div")`
   justify-content: center;
 `;
 
-const SelectLabel = styled(InputLabel, globalOptions)`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+const SelectLabel = styled(InputLabel)`
+  color: ${props => props.theme.palette.text.primary};
   
   &.Mui-focused {
-    color: ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
+    color: ${props => props.theme.palette.primary.main};
   }
 `;
 
-const VersionSelect = styled(Select, globalOptions)`
+const VersionSelect = styled(Select)`
   width: 115px;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
 
   &:before {
-    border-bottom: 1px solid ${props => rgbaHex(props["data-dm"] ? siteColors.text.dark : siteColors.text.light, 0.42)};
+    border-bottom: 1px solid ${props => rgbaHex(props.theme.palette.text.primary, 0.42)};
   }
 
   &:hover:not(.Mui-disabled):before {
-    border-bottom: 2px solid ${props => rgbaHex(props["data-dm"] ? siteColors.text.dark : siteColors.text.light, 0.87)};
+    border-bottom: 2px solid ${props => rgbaHex(props.theme.palette.text.primary, 0.87)};
   }
   
   &:after {
-    border-bottom: 1px solid ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
+    border-bottom: 1px solid ${props => props.theme.palette.primary.main};
   }
   
   .MuiSelect-icon {
     transition: 0.3s;
-    color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+    color: ${props => props.theme.palette.text.primary};
   }
 `;
 
@@ -62,7 +58,7 @@ const Item = styled(MenuItem)`
 const SelectItemText = styled(TowerText)`
   transition: 0.3s;
   &:hover {
-    color: ${props => props["data-dm"] ? siteColors.text.navLink.dark : siteColors.text.navLink.light};
+    color: ${props => props.theme.palette.text.navLink};
   }
 `;
 
@@ -78,8 +74,7 @@ const GA4_PATCH_SELECT_ID = "PATCH_SELECT";
  * @param {function} props.handlePatchSelect Function to handle which patch was selected
  */
 export default function PatchSelect({ className, patch, handlePatchSelect }) {
-    const darkMode = useSelector(getDarkMode);
-    const classes = useStyles({darkMode});
+    const classes = useStyles();
 
     const handleOpen = () => ga4SendSelectContent(SELECT_CONTENT_BUTTON, {
         item_id: `${BUTTON_PREFIX}${GA4_PATCH_SELECT_ID}`,
@@ -98,13 +93,12 @@ export default function PatchSelect({ className, patch, handlePatchSelect }) {
         <>
             <SelectContainer className={className}>
                 <FormControl variant="standard">
-                    <SelectLabel id="patch-select-label" data-dm={darkMode} sx={{ fontSize: "1.3em" }}>Patch Version</SelectLabel>
+                    <SelectLabel id="patch-select-label" sx={{ fontSize: "1.3em" }}>Patch Version</SelectLabel>
                     <VersionSelect
                         labelId="patch-select-label"
                         value={patch}
                         onOpen={handleOpen}
                         onChange={handleChange}
-                        data-dm={darkMode}
                         MenuProps={{
                             classes: { paper: classes.menuPaper },
                             anchorOrigin: {
@@ -119,7 +113,7 @@ export default function PatchSelect({ className, patch, handlePatchSelect }) {
                     >
                         {patchVersions.map(patch => (
                             <Item value={patch} key={patch}>
-                                <SelectItemText variant="h4" data-dm={darkMode}>
+                                <SelectItemText variant="h4">
                                     v {patch}
                                 </SelectItemText>
                             </Item>

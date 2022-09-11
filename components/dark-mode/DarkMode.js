@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {rgbaHex} from "../../lib/utils/utils";
 import siteSizes from "../../lib/utils/siteSizes";
-import siteColors from "../../lib/utils/siteColors";
 import {toggleDarkMode} from "../../lib/redux/actions";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
@@ -21,7 +20,7 @@ const Switch = styled("input")`
   height: var(--size);
   box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
   border-radius: 999px;
-  color: ${siteColors.text.dark};
+  color: ${props => props.theme.palette.text.primary};
 
   transition: all 500ms;
 
@@ -57,7 +56,7 @@ const DarkModeContainer = styled("div", globalOptions)`
   
   &:hover {
     cursor: pointer;
-    background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.5)};
+    background-color: ${props => rgbaHex(props.theme.palette.primary.main, 0.5)};
   }
 `;
 
@@ -84,7 +83,6 @@ export default function DarkMode({className}){
         <>
             <DarkModeContainer
                 onClick={changeDarkMode}
-                data-dm={darkMode}
                 data-m={mobile}
                 className={className}
             >

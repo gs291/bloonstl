@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 
 import TowerText from "../tower/TowerText";
-import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
@@ -19,7 +18,7 @@ const TitleContainer = styled("div", globalOptions)`
                           ? props["data-tow"] === "hero" 
                                   ? getHeroColor(props["data-t"]) 
                                   :  getMonkeyColor(props["data-t"])
-                          : props["data-dm"] ? siteColors.page.dark : siteColors.page.light
+                          : props.theme.palette.background.default
                   , props["data-dm"] ? 0.65 : 1)};
 `;
 

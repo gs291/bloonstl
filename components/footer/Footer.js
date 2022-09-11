@@ -5,10 +5,9 @@ import {Link as MUILink} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 import siteSizes from "../../lib/utils/siteSizes";
-import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {font_family, rgbaHex} from "../../lib/utils/utils";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const FooterContainer = styled("footer")`
@@ -33,10 +32,10 @@ const FooterText = styled(TowerText)`
   text-align: center;
 `;
 
-const FooterLink = styled('a', globalOptions)`
+const FooterLink = styled('a')`
   font-family: ${font_family};
   transition: 0.3s;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
   height: calc(${siteSizes.footer.height} / 2);
 
   display: flex;
@@ -45,7 +44,7 @@ const FooterLink = styled('a', globalOptions)`
   margin-left: 5px;
   
   &:hover{
-    text-shadow: 5px 5px 5px ${props => rgbaHex(props["data-dm"] ? siteColors.text.navLink.dark : siteColors.text.navLink.light, 0.75)};
+    text-shadow: 5px 5px 5px ${props => rgbaHex(props.theme.palette.text.navLink, 0.75)};
   }
 `;
 
@@ -53,22 +52,22 @@ const MLink = styled(MUILink, globalOptions)`
   transition: 0.3s;
   margin-left: ${props => props["data-m"] ? 5 : 10}px;
   margin-right: ${props => props["data-m"] ? 5 : 10}px;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
   font-size: 1.25em;
 
   &:hover {
     cursor: pointer;
-    color: ${props => props["data-dm"] ? siteColors.text.navLink.dark : siteColors.text.navLink.light};
+    color: ${props => props.theme.palette.text.navLink};
   }
 `;
 
-const Dot = styled("div", globalOptions)`
+const Dot = styled("div")`
   width: 5px; 
   height: 5px; 
   border-radius: 5px; 
   margin-left: 8px; 
   margin-right: 8px; 
-  background-color: ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};;
+  background-color: ${props => props.theme.palette.primary.main};
 `;
 
 const links = [
@@ -85,7 +84,6 @@ const links = [
  */
 export default function Footer({ className }) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -94,19 +92,19 @@ export default function Footer({ className }) {
                     {links.map(link => (
                         <LinkContainer key={link.text}>
                             <Link href={link.path} prefetch={false} passHref>
-                                <MLink underline="none" data-dm={darkMode} data-m={mobile}>
+                                <MLink underline="none" data-m={mobile}>
                                     {link.text}
                                 </MLink>
                             </Link>
                             {link.dot && (
-                                <Dot data-dm={darkMode}/>
+                                <Dot />
                             )}
                         </LinkContainer>
                     ))}
                 </LinkContainer>
                 <FooterText component="span" variant="body1" font={true}>
                     Written and maintained by
-                    <FooterLink href="https://gregsanchez.info/" data-dm={darkMode}>
+                    <FooterLink href="https://gregsanchez.info/">
                         Gregory Sanchez
                     </FooterLink>
                 </FooterText>

@@ -1,13 +1,9 @@
 import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
-import {globalOptions} from "../../lib/utils/emotionStyled";
 import {EXPAND_PREFIX, SELECT_CONTENT_EXPAND, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -53,35 +49,35 @@ const CodeText = styled(TowerText)`
   font-family: monospace;
 `;
 
-const LanguageType = styled("div", globalOptions)`
+const LanguageType = styled("div")`
   max-width: 85px;
   margin-bottom: 10px;
   padding: 0.5em;
   
   border-radius: 5px;
-  background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.6)};
+  background-color: ${props => rgbaHex(props.theme.palette.primary.main, 0.6)};
   text-align: center;
 `;
 
-const Expander = styled(Accordion, globalOptions)`
+const Expander = styled(Accordion)`
   background-color: unset;
   border: 1px solid ${rgbaHex("#CCCCCC", 0.1)};
 `;
 
-const ExpandMore = styled(ExpandMoreIcon, globalOptions)`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+const ExpandMore = styled(ExpandMoreIcon)`
+  color: ${props => props.theme.palette.text.primary};
 `;
 
-const ExpanderSummary = styled(AccordionSummary, globalOptions)`
-  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+const ExpanderSummary = styled(AccordionSummary)`
+  background-color: ${props => props.theme.palette.background.default};
 `;
 
-const ExpandedDetails = styled(AccordionDetails, globalOptions)`
+const ExpandedDetails = styled(AccordionDetails)`
   flex-direction: column;
 
   padding-top: 20px;  
   padding-bottom: 20px;
-  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+  background-color: ${props => props.theme.palette.background.default};
 `;
 
 
@@ -94,8 +90,6 @@ const GA4_GRAPHQL_ENDPOINT_EXPAND_ID = "GRAPHQL_EXPAND";
  * @param {Object} props.item Object containing information about the API endpoint
  */
 export default function Endpoint({item}) {
-    const darkMode = useSelector(getDarkMode);
-
     const handleClick = () =>  ga4SendSelectContent(SELECT_CONTENT_EXPAND, {
         item_id: `${EXPAND_PREFIX}${GA4_GRAPHQL_ENDPOINT_EXPAND_ID}`,
         expand: item.name
@@ -120,7 +114,7 @@ export default function Endpoint({item}) {
                        SCHEMA DEFINITION
                    </BoldText>
                    <CodeContainer>
-                       <LanguageType data-dm={darkMode}>
+                       <LanguageType>
                            <BoldText variant="body2" font={true}>
                                graphql
                            </BoldText>
@@ -130,19 +124,19 @@ export default function Endpoint({item}) {
                        </Code>
                    </CodeContainer>
 
-                   <Expander data-dm={darkMode}>
+                   <Expander>
                        <ExpanderSummary
-                           expandIcon={<ExpandMore data-dm={darkMode} />}
-                           onClick={handleClick} data-dm={darkMode}
+                           expandIcon={<ExpandMore />}
+                           onClick={handleClick}
                        >
                            <TowerText variant="subtitle2">QUERY EXAMPLE</TowerText>
                        </ExpanderSummary>
-                       <ExpandedDetails data-dm={darkMode}>
+                       <ExpandedDetails>
                            <BoldText variant="body1" font={true}>
                                QUERY
                            </BoldText>
                            <CodeContainer>
-                               <LanguageType data-dm={darkMode}>
+                               <LanguageType>
                                    <BoldText variant="body2" font={true}>
                                        graphql
                                    </BoldText>
@@ -158,7 +152,7 @@ export default function Endpoint({item}) {
                                VARIABLES
                            </BoldText>
                            <CodeContainer>
-                               <LanguageType data-dm={darkMode}>
+                               <LanguageType>
                                    <BoldText variant="body2" font={true}>
                                        json
                                    </BoldText>

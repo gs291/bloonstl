@@ -5,17 +5,16 @@ import {useSelector} from "react-redux";
 import siteColors from "../../lib/utils/siteColors";
 import FiltersTierList from "../filters/FiltersTierList";
 import GridTowerContainer from "../grid/GridTowerContainer";
-import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getTierColor, getTowerType} from "../../lib/utils/utils";
 import {getDarkMode, getHeroState, getMobile, getMonkeyState} from "../../lib/redux/selectors";
 
 
-const FilterContainer = styled("div", globalOptions)`
+const FilterContainer = styled("div")`
   margin-bottom: 50px;
   border-radius: 20px;
   width: 100%;
-  background-color: ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  background-color: ${props => props.theme.palette.primary.main};
+  color: ${props => props.theme.palette.text.primary};
 `;
 
 /**
@@ -64,7 +63,7 @@ export default function TierListGrid({ className, tiers }) {
 
     return (
         <>
-            <FilterContainer data-dm={darkMode} className={className}>
+            <FilterContainer className={className}>
                 <FiltersTierList />
             </FilterContainer>
             <Grid container spacing={gridSpacing} direction="column">

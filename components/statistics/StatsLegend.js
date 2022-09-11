@@ -38,9 +38,7 @@ const ColorLegend = styled("div", globalOptions)`
   width: 7.5px;
   height: 7.5px;
   border-radius: 50%;
-  background-color: ${props => props["data-t"] === "green"
-          ? props["data-dm"] ? siteColors.stats.pros.dark : siteColors.stats.pros.light 
-          : props["data-dm"] ? siteColors.stats.cons.dark : siteColors.stats.cons.light };
+  background-color: ${props => props["data-t"] === "green" ? props.theme.palette.stats.pros : props.theme.palette.stats.cons };
 `;
 
 
@@ -69,13 +67,13 @@ export default function StatsLegend({path, towerType}) {
                 </div>
                 <ColorContainer>
                     <ColorItem>
-                        <ColorLegend data-t="green" data-dm={darkMode} />
+                        <ColorLegend data-t="green" />
                         <ColorText variant="caption" font={true} textColor={rgbaHex(darkMode ? siteColors.text.dark : siteColors.text.light, 0.5)} >
                             = Stat Upgraded
                         </ColorText>
                     </ColorItem>
                     <ColorItem>
-                        <ColorLegend data-t="red" data-dm={darkMode} />
+                        <ColorLegend data-t="red" />
                         <ColorText variant="caption" font={true} textColor={rgbaHex(darkMode ? siteColors.text.dark : siteColors.text.light, 0.5)} >
                             = Stat Downgraded
                         </ColorText>

@@ -5,9 +5,8 @@ import {Link as MUILink} from "@mui/material";
 import OutboundIcon from "@mui/icons-material/Outbound";
 
 import TowerText from "../tower/TowerText";
-import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const SideContainer = styled("div", globalOptions)`
@@ -18,7 +17,7 @@ const SideContainer = styled("div", globalOptions)`
   
   margin-top: 8px;
   padding: ${props => props["data-m"] ? "4px 7.5px" : "6px 10px"};
-  background-color: ${props => props["data-dm"] ? siteColors.button.dark : siteColors.button.light};
+  background-color: ${props => props.theme.palette.button.primary};
   
   &:hover {
     margin-top: 0;
@@ -29,7 +28,7 @@ const SideContainer = styled("div", globalOptions)`
 const OutBound = styled(OutboundIcon, globalOptions)`
   margin-left: 5px;
   font-size: ${props => props["data-m"] ? 1 : 1.25}rem;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
 `;
 
 /**
@@ -42,7 +41,6 @@ const OutBound = styled(OutboundIcon, globalOptions)`
  */
 export default function SideButton({href, text, outbound=false, ...rest}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -54,12 +52,12 @@ export default function SideButton({href, text, outbound=false, ...rest}) {
                     underline="none"
                     {...rest}
                 >
-                    <SideContainer data-dm={darkMode} data-m={mobile}>
+                    <SideContainer data-m={mobile}>
                         <TowerText variant={mobile ? "body1" : "h6"}>
                             {text}
                         </TowerText>
                         {outbound && (
-                            <OutBound data-dm={darkMode} data-m={mobile} fontSize={mobile ? "small" : "medium"}/>
+                            <OutBound data-m={mobile} fontSize={mobile ? "small" : "medium"}/>
                         )}
                     </SideContainer>
                 </MUILink>

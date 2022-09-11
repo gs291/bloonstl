@@ -5,7 +5,6 @@ import {useEffect, useState} from "react";
 import Ability from "./Ability";
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
-import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
@@ -20,13 +19,10 @@ const ParagonContainer = styled("div", globalOptions)`
   align-items: center;
   
   transition: 0.3s;
-  border: 4px solid ${props => props["data-s"] 
-          ? props["data-dm"] ? siteColors.paragon.dark : siteColors.paragon.light
-          : "transparent"
-  };
-  background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.paragon.dark : siteColors.paragon.light, props["data-dm"] ? 0.5 : 0.75) };
+  border: 4px solid ${props => props["data-s"] ? props.theme.palette.ability.paragon : "transparent"};
+  background-color: ${props => rgbaHex(props.theme.palette.ability.paragon, props["data-dm"] ? 0.5 : 0.75) };
   border-radius: 10px;
-  box-shadow: 0 0 10px 2px ${props => props["data-dm"] ? "#2A526A" : "#000000"};
+  box-shadow: 0 0 10px 2px ${props => props.theme.palette.ability.shadow};
   
   position: relative;
   
@@ -43,7 +39,7 @@ const AbilityContainer = styled("div")`
   height: 100%;
 `;
 
-const BackgroundContainer = styled("div", globalOptions)`
+const BackgroundContainer = styled("div")`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -51,7 +47,7 @@ const BackgroundContainer = styled("div", globalOptions)`
   right: 0;
 `;
 
-const BackgroundText = styled("div")`
+const BackgroundText = styled("div", globalOptions)`
   width: 100%;
   height: 100%;
   
@@ -61,7 +57,7 @@ const BackgroundText = styled("div")`
   align-items: center;
 `;
 
-const SplitText = styled("div")`
+const SplitText = styled("div", globalOptions)`
   width: ${props => props["data-m"] ? 40 : 100}%;
   height: ${props => props["data-m"] ? 100 : 35}%;
 `;
@@ -76,12 +72,12 @@ const UnSelectableText = styled(TowerText)`
   user-select: none;
 `;
 
-const MiddleFiller = styled("div")`
+const MiddleFiller = styled("div", globalOptions)`
   width: ${props => props["data-m"] ? 20 : 100}%;
   height: ${props => props["data-m"] ? 100 : 30}%;
 `;
 
-const DegreeContainer = styled("div")`
+const DegreeContainer = styled("div", globalOptions)`
   display: flex;
   flex-direction: ${props => props["data-m"] ? "row" : "column"};
   justify-content: center;

@@ -12,7 +12,6 @@ import siteColors from "../../lib/utils/siteColors";
 import {ga4SendPageView} from "../../lib/utils/ga4";
 import {updateMobile} from "../../lib/redux/actions";
 import ConsentToast from "../legal/consent/ConsentToast";
-import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
@@ -22,20 +21,20 @@ const PageContainer = styled("div")`
   flex-direction: column;  
 `;
 
-const Nav = styled(Navbar, globalOptions)`
-  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+const Nav = styled(Navbar)`
+  background-color: ${props => props.theme.palette.background.default};
   box-shadow: none;
 `;
 
-const Main = styled("main", globalOptions)`
+const Main = styled("main")`
   flex: 1;
-  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+  background-color: ${props => props.theme.palette.background.default};
   padding-bottom: 30px;
 `;
 
-const Foot = styled(Footer, globalOptions)`
-  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+const Foot = styled(Footer)`
+  background-color: ${props => props.theme.palette.background.main};
+  color: ${props => props.theme.palette.text.primary};
 `;
 
 /**
@@ -87,16 +86,16 @@ export default function Page(props) {
         <>
             <Global styles={globals} />
             <PageContainer>
-                <Nav data-dm={darkMode}/>
+                <Nav/>
                 { mobile && (
                     <NavDrawer />
                 )}
 
-                <Main data-m={mobile} data-dm={darkMode}>
+                <Main data-m={mobile}>
                     { props.children }
                 </Main>
 
-                <Foot data-dm={darkMode}/>
+                <Foot />
                 <ReturnToTop />
                 <ConsentToast />
             </PageContainer>

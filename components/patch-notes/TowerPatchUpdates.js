@@ -9,7 +9,6 @@ import FetchLoading from "../api/FetchLoading";
 import useVisible from "../../lib/utils/hooks";
 import {updatePage} from "../../lib/redux/actions";
 import DefaultButton from "../button/DefaultButton";
-import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
 import PatchRefreshButton from "../button/PatchRefreshButton";
@@ -32,11 +31,7 @@ const PatchItemsContainer = styled("div", globalOptions)`
   min-height: 75px;
   
   border-radius: 20px;
-  border: 2px solid ${props => 
-          props["data-bc"] 
-                  ? props["data-bc"]
-                  : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-  };
+  border: 2px solid ${props => props["data-bc"] ? props["data-bc"] : props.theme.palette.primary.main};
 `;
 
 const PatchItemsWrapper = styled("div", globalOptions)`
@@ -148,7 +143,7 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
     return (
         <>
             <PatchContainer data-m={mobile} ref={elemRef} {...rest}>
-                    <PatchItemsContainer data-bc={borderColor} data-m={mobile} data-dm={darkMode}>
+                    <PatchItemsContainer data-bc={borderColor} data-m={mobile}>
                         {!progress.isLoading && (
                             <PatchRefreshButton onClick={handleReset} borderColor={borderColor} />
                         )}
@@ -167,7 +162,7 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
                                     ))}
                                     <FooterContainer>
                                         {patchData.start !== -1 ? (<>{!progress.isLoading && (
-                                            <DefaultButton onClick={handleFetch} data-bc={borderColor} data-dm={darkMode} variant={darkMode ? "outlined" : "contained"}>
+                                            <DefaultButton onClick={handleFetch} data-bc={borderColor} variant={darkMode ? "outlined" : "contained"}>
                                                 <TowerText variant={mobile ? "subtitle1" : "h6"}>
                                                     Load More
                                                 </TowerText>

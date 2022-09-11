@@ -8,7 +8,6 @@ import ImageFill from "../image/ImageFill";
 import siteSizes from "../../lib/utils/siteSizes";
 import siteColors from "../../lib/utils/siteColors";
 import {getMobile} from "../../lib/redux/selectors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import AbilityTooltip from "../tooltip/AbilityTooltip";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getImageUrl, getTierColor} from "../../lib/utils/utils";
@@ -22,10 +21,10 @@ const AbilityContainer = styled("div")`
 
 const CardContainer = styled(Card, globalOptions)`
   border-radius: 50%;
-  background-color: ${props => props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
-  border: 4px solid ${props => props["data-s"] ? getTierColor(props.tier) : props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
+  background-color: ${props => props.theme.palette.ability.card};
+  border: 4px solid ${props => props["data-s"] ? getTierColor(props.tier) : props.theme.palette.ability.card};
   transition: 0.3s;
-  box-shadow: 0 0 10px 2px ${props => props["data-dm"] ? "#2A526A" : "#000000"};
+  box-shadow: 0 0 10px 2px ${props => props.theme.palette.ability.shadow};
   
   &:hover {
     cursor: pointer;
@@ -50,19 +49,19 @@ const CardContentContainer = styled(CardContent, globalOptions)`
   }
 `;
 
-const AbilityLevel = styled("div", globalOptions)`
+const AbilityLevel = styled("div")`
   text-align: center;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
 `;
 
-const ActivatedAbility = styled(OfflineBoltIcon, globalOptions)`
+const ActivatedAbility = styled(OfflineBoltIcon)`
   position: absolute;
   top: -5px;
   left: 30px;
 
-  color: ${siteColors.ability.activated};
+  color: ${props => props.theme.palette.ability.activated};
   border-radius: 50%;
-  background-color: ${props => props["data-dm"] ? siteColors.ability.card.dark : siteColors.ability.card.light};
+  background-color: ${props => props.theme.palette.ability.card};
   transition: 0.3s;
   
   &:hover {
@@ -84,7 +83,6 @@ const ActivatedAbility = styled(OfflineBoltIcon, globalOptions)`
  */
 export default function Ability({ability, fileName, tier, towerType, selected, open = null, ...rest}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -109,7 +107,7 @@ export default function Ability({ability, fileName, tier, towerType, selected, o
                     placement={mobile ? "bottom" : "right"}
                     active={ability.active}
                 >
-                    <CardContainer data-s={selected} tier={tier} data-dm={darkMode}>
+                    <CardContainer data-s={selected} tier={tier}>
                         <CardContentContainer data-m={mobile}>
                             { towerType === "monkey" && (
                                 <ImageFill
@@ -126,13 +124,13 @@ export default function Ability({ability, fileName, tier, towerType, selected, o
                                 )
                                 :
                                 (
-                                    <AbilityLevel data-dm={darkMode}>
+                                    <AbilityLevel>
                                         {ability.upgrade_tier + 1}
                                     </AbilityLevel>
                                 ))}
                         </CardContentContainer>
                     </CardContainer>
-                    { ability.active === 1 && (<ActivatedAbility data-dm={darkMode}/>) }
+                    { ability.active === 1 && (<ActivatedAbility/>) }
                 </Tooltip>
             </AbilityContainer>
         </>

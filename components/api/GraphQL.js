@@ -8,7 +8,6 @@ import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
 import ApiItem from "../api/ApiItem";
 import TowerText from "../tower/TowerText";
 import FixedDivider from "../divider/FixedDivider";
-import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {EXPAND_PREFIX, SELECT_CONTENT_EXPAND, ga4SendSelectContent} from "../../lib/utils/ga4";
@@ -43,12 +42,12 @@ const Description = styled(TowerText)`
   text-align: center;
 `;
 
-const Link = styled('a', globalOptions)`
+const Link = styled('a')`
   font-family: monospace;
   font-size: 1.25rem;
   line-break: anywhere;
   text-decoration: underline;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
 `;
 
 const ExpanderContainer = styled("div")`
@@ -62,20 +61,20 @@ const Expander = styled(Accordion, globalOptions)`
   }}
 `;
 
-const ExpandMore = styled(ExpandMoreIcon, globalOptions)`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+const ExpandMore = styled(ExpandMoreIcon)`
+  color: ${props => props.theme.palette.text.primary};
 `;
 
-const ExpanderSummary = styled(AccordionSummary, globalOptions)`
-  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+const ExpanderSummary = styled(AccordionSummary)`
+  background-color: ${props => props.theme.palette.text.primary};
 `;
 
-const ExpandedDetails = styled(AccordionDetails, globalOptions)`
+const ExpandedDetails = styled(AccordionDetails)`
   flex-direction: column;
 
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+  background-color: ${props => props.theme.palette.text.primary};
 `;
 
 
@@ -120,7 +119,7 @@ export default function GraphQL({className, api, tag}) {
                     <Description variant="h6" font={true}>
                         Expand below to get information on the GraphQL API endpoint located at:
                     </Description>
-                    <Link href={path} data-dm={darkMode}>
+                    <Link href={path}>
                         {path}
                     </Link>
                 </Information>
@@ -128,12 +127,12 @@ export default function GraphQL({className, api, tag}) {
                 <ExpanderContainer>
                     <Expander data-dm={darkMode}>
                         <ExpanderSummary
-                            expandIcon={<ExpandMore data-dm={darkMode} />}
-                            onClick={handleClick} data-dm={darkMode}
+                            expandIcon={<ExpandMore />}
+                            onClick={handleClick}
                         >
                             <TowerText variant="h5">Queries and Objects</TowerText>
                         </ExpanderSummary>
-                        <ExpandedDetails data-dm={darkMode}>
+                        <ExpandedDetails>
                             <ApiItem api={api.queries} type="queries"/>
                             <FixedDivider width={100} />
                             <ApiItem api={api.objects} type="obj"/>

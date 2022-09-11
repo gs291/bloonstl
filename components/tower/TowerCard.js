@@ -4,7 +4,6 @@ import {useSelector} from "react-redux";
 import {Card, CardContent, Link as MUILink, Typography} from "@mui/material";
 
 import Icon from "../tower/Icon";
-import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getBorder, getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getTowerLink, getMonkeyColor, getHeroColor, rgbaHex} from "../../lib/utils/utils";
@@ -58,8 +57,8 @@ const MLink = styled(MUILink)`
   }
 `;
 
-const TowerName = styled(Typography, globalOptions)`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+const TowerName = styled(Typography)`
+  color: ${props => props.theme.palette.text.primary};
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -115,7 +114,7 @@ export default function TowerCard({tower, towerType, tier, ignoreFilter}) {
                     <CardContainer onClick={handleClick} data-brc={borderColor} data-bc={backgroundColor} data-hbc={hoverBackgroundColor}>
                         <CardContent>
                             <Icon tower={tower}/>
-                            <TowerName variant={mobile ? "body1" : "h5"} data-dm={darkMode}>
+                            <TowerName variant={mobile ? "body1" : "h5"}>
                                 {tower.name}
                             </TowerName>
                         </CardContent>

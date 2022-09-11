@@ -4,8 +4,8 @@ import {useEffect, useState} from "react";
 import {Tooltip as MUITooltip, ClickAwayListener} from "@mui/material";
 
 import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {TOOLTIP_PREFIX, ga4SendTooltipHover} from "../../lib/utils/ga4";
 
 
@@ -24,7 +24,7 @@ const StyledTooltip = styled(({ className, ...other }) => (
     max-width: 400px;
   }
   
-  background-color: ${props => props["data-dm"] ? siteColors.tooltip.dark : siteColors.tooltip.light};
+  background-color: ${props => props.theme.palette.background.tooltip};
   min-width:${props => props["data-fw"] 
           ? props["data-m"] ? 300 : 450
           : 0 }px;
@@ -40,7 +40,7 @@ const StyledTooltip = styled(({ className, ...other }) => (
   border: 2px solid ${props =>
           props["data-bc"]
                   ? props["data-bc"]
-                  : props["data-dm"] ? siteColors.tooltip.light : siteColors.tooltip.dark};
+                  : props.theme.palette.background.tooltip};
 
   .MuiTooltip-arrow {
     color: ${siteColors.tooltip.dark};
@@ -50,7 +50,7 @@ const StyledTooltip = styled(({ className, ...other }) => (
     border: 2px solid ${props => 
             props["data-bc"] 
                     ? props["data-bc"]
-                    : props["data-dm"] ? siteColors.tooltip.light : siteColors.tooltip.dark};
+                    : props.theme.palette.background.tooltip};
   }
 `;
 
@@ -71,7 +71,6 @@ const ContentContainer = styled("div")``;
  */
 export default function Tooltip({children, title, borderColor, ga4ID, forceWidth=true, placement="top", ...rest}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
     const [open, setOpen] = useState(false);
 
     const handleTooltipClose = () => {
@@ -111,7 +110,6 @@ export default function Tooltip({children, title, borderColor, ga4ID, forceWidth
                         placement={placement}
                         data-bc={borderColor}
                         data-m={mobile}
-                        data-dm={darkMode}
                         data-fw={forceWidth}
                         arrow
                         disableInteractive

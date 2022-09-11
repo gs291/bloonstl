@@ -42,11 +42,7 @@ const ItemContainer = styled("div", globalOptions)`
 
   &:hover  {
     cursor: pointer;
-    box-shadow: 0 0 5px 4px ${props => 
-            props["data-s"] 
-                    ? props["data-s"] 
-                    :  props["data-dm"] ? siteColors.stats.hover.dark : siteColors.stats.hover.light
-    };
+    box-shadow: 0 0 5px 4px ${props => props["data-s"] ? props["data-s"] : props.theme.palette.stats.hover};
   }
 `;
 
@@ -119,7 +115,7 @@ const getDecimals = (num, decimals) => {
  * @param {boolean} [props.lowerIsBuff=false] Shows if a negative value difference is a buff
  */
 const FullItem = ({text, value, prevValue, prefix, suffix, darkMode, counter = true, size="medium", decimals=0, lowerIsBuff=false, ...rest}) => (
-    <ItemContainer data-dm={darkMode} size={size} { ...rest }>
+    <ItemContainer size={size} { ...rest }>
         <Item>
             <ItemText variant={size === "medium" ? "subtitle1" : "subtitle2"} component="div" >
                 {text}

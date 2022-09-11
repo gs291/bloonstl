@@ -4,7 +4,6 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 
 import TowerText from "../tower/TowerText";
 import DefaultButton from "./DefaultButton";
-import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
@@ -18,9 +17,9 @@ const RefreshContainer = styled("div", globalOptions)`
   justify-content: center;
 `;
 
-const RefreshI = styled(RefreshIcon, globalOptions)`
+const RefreshI = styled(RefreshIcon)`
   margin-left: 5px;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props =>props.theme.palette.text.primary};
 `;
 
 const CenteredComponents = styled("div", globalOptions)`
@@ -48,8 +47,8 @@ export default function PatchRefreshButton({borderColor, ...rest}) {
                         <TowerText variant="subtitle2" font={true}>
                             Reset Patch Data
                         </TowerText>
-                        </CenteredComponents>
-                        <RefreshI data-dm={darkMode}/>
+                    </CenteredComponents>
+                    <RefreshI />
                 </DefaultButton>
             </RefreshContainer>
         </>

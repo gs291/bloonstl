@@ -1,12 +1,9 @@
 import styled from "@emotion/styled";
 import Cookies from "universal-cookie";
-import {useSelector} from "react-redux";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
 import TowerText from "../../tower/TowerText";
-import siteColors from "../../../lib/utils/siteColors";
-import {getDarkMode} from "../../../lib/redux/selectors";
 import {globalOptions} from "../../../lib/utils/emotionStyled";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../../lib/utils/ga4";
 
@@ -17,11 +14,7 @@ const Header = styled("div", globalOptions)`
   justify-content: space-between;
   
   padding: 0.86rem 1.4rem;
-  background-color: ${
-    props => props["data-e"] 
-            ? props["data-dm"] ? siteColors.toast.error.header.dark : siteColors.toast.error.header.light
-            : props["data-dm"] ? siteColors.toast.header.dark : siteColors.toast.header.light 
-  };
+  background-color: ${props => props["data-e"] ? props.theme.palette.toast.error.header : props.theme.palette.toast.header};
 
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -38,13 +31,13 @@ const TitleText = styled(TowerText)`
   margin-left: 10px;
 `;
 
-const InfoIcon = styled(InfoOutlinedIcon, globalOptions)`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+const InfoIcon = styled(InfoOutlinedIcon)`
+  color: ${props => props.theme.palette.text.primary};
 `;
 
-const CancelIcon = styled(CancelOutlinedIcon, globalOptions)`
+const CancelIcon = styled(CancelOutlinedIcon)`
   transition: 0.3s;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
   
   &:hover {
     cursor: pointer;
@@ -63,7 +56,6 @@ const GA4_COOKIE_CONSENT_ID = "COOKIE_CONSENT";
  * @param {function} props.checkConsent Function to check if the cookie consent was set properly
  */
 export default function ConsentHeader({checkConsent, error}) {
-    const darkMode = useSelector(getDarkMode);
 
     const acceptConsent = () => {
         const cookies = new Cookies();
@@ -86,14 +78,14 @@ export default function ConsentHeader({checkConsent, error}) {
 
     return (
         <>
-            <Header data-dm={darkMode} data-e={error}>
+            <Header data-e={error}>
                 <Title>
-                    <InfoIcon data-dm={darkMode}/>
+                    <InfoIcon />
                     <TitleText variant="h6">
                         Cookies
                     </TitleText>
                 </Title>
-                <CancelIcon data-dm={darkMode} onClick={acceptConsent}/>
+                <CancelIcon onClick={acceptConsent}/>
             </Header>
         </>
     );

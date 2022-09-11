@@ -4,15 +4,13 @@ import {Grid, Typography} from "@mui/material";
 
 import TopBackground from "./TopBackground";
 import siteSizes from "../../lib/utils/siteSizes";
-import siteColors from "../../lib/utils/siteColors";
-import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getMobile} from "../../lib/redux/selectors";
 import ScrollIndicator from "../scroll-indicator/ScrollIndicator";
 
 
-const TitleContainer = styled(Grid, globalOptions)`
+const TitleContainer = styled(Grid)`
   height: calc(100vh - ${siteSizes.nav.height});
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
   text-align: center;
   
   position: relative;
@@ -69,7 +67,6 @@ const ScrollContainer = styled("div")`
  */
 export default function TopSection({className, scrollTo}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -78,7 +75,6 @@ export default function TopSection({className, scrollTo}) {
                 direction="column"
                 alignItems="center"
                 justifyContent="space-between"
-                data-dm={darkMode}
                 className={className}
             >
                 <BackgroundContainer>
