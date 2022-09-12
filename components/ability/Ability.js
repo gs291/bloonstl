@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {useTheme} from '@mui/material/styles';
+import {useTheme} from "@mui/material/styles";
 import {Card, CardContent} from "@mui/material";
 import OfflineBoltIcon from "@mui/icons-material/OfflineBolt";
 

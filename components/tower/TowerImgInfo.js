@@ -1,7 +1,7 @@
 import {Grid} from "@mui/material";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {useTheme} from '@mui/material/styles';
+import {useTheme} from "@mui/material/styles";
 
 import Icon from "../tower/Icon";
 import TowerInfo from "./TowerInfo";

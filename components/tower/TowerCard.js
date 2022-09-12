@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {useTheme} from '@mui/material/styles';
+import {useTheme} from "@mui/material/styles";
 import {Card, CardContent, Link as MUILink, Typography} from "@mui/material";
 
 import Icon from "../tower/Icon";

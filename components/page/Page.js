@@ -2,7 +2,7 @@ import {useEffect} from "react";
 import styled from "@emotion/styled";
 import {Global, css} from "@emotion/react";
 import {useMediaQuery} from "@mui/material";
-import {useTheme} from '@mui/material/styles';
+import {useTheme} from "@mui/material/styles";
 import {useDispatch, useSelector} from "react-redux";
 
 import Footer from "../footer/Footer";

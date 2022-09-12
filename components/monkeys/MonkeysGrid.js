@@ -1,6 +1,6 @@
 import {Grid} from "@mui/material";
 import {useSelector} from "react-redux";
-import {useTheme} from '@mui/material/styles';
+import {useTheme} from "@mui/material/styles";
 
 import {getMobile} from "../../lib/redux/selectors";
 import {getMonkeyColor} from "../../lib/utils/utils";

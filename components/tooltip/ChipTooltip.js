@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import {useTheme} from '@mui/material/styles';
+import {useTheme} from "@mui/material/styles";
 
 import TowerText from "../tower/TowerText";
 

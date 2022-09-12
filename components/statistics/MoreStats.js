@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
-import {useTheme} from '@mui/material/styles';
+import {useTheme} from "@mui/material/styles";
 
 import StatsContainer from "./StatsContainer";
 import StatItemWrapper from "./StatItemWrapper";

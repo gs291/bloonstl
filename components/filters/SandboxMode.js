@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {FormGroup} from "@mui/material";
-import {useTheme} from '@mui/material/styles';
+import {useTheme} from "@mui/material/styles";
 
 import TowerText from "../tower/TowerText";
 import {getTierColor} from "../../lib/utils/utils";

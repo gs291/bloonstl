@@ -1,5 +1,5 @@
 import {Grid} from "@mui/material";
-import {useTheme} from '@mui/material/styles';
+import {useTheme} from "@mui/material/styles";
 
 import GridTowerContainer from "../grid/GridTowerContainer";
 
