@@ -1,6 +1,6 @@
 import {css} from "@emotion/react";
-import styled from "@emotion/styled";
 import {useEffect, useState} from "react";
+import {styled} from "@mui/material/styles";
 
 import bloons from "../../../lib/utils/bloons";
 

@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+import {styled} from "@mui/material/styles";
 import {Tooltip as MUITooltip, ClickAwayListener} from "@mui/material";
 
 import {getMobile} from "../../lib/redux/selectors";

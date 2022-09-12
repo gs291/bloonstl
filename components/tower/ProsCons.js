@@ -1,6 +1,6 @@
 import {Grid} from "@mui/material";
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 
 import GridProsCons from "../grid/GridProsCons";
 import FixedDivider from "../divider/FixedDivider";

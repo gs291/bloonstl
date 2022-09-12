@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
 

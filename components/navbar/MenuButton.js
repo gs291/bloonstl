@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import {Button} from "@mui/material";
+import {styled} from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import ClearIcon from "@mui/icons-material/Clear";
 import {useDispatch, useSelector} from "react-redux";

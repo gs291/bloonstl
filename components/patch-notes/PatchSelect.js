@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import {makeStyles} from "@mui/styles";
+import {styled} from "@mui/material/styles";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 
 import TowerText from "../tower/TowerText";

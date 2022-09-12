@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 
 import ProConChip from "../tower/ProConChip";
 import siteProsCons from "../../lib/utils/siteProsCons";

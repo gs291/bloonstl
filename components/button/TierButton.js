@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import {Typography} from "@mui/material";
+import {styled} from "@mui/material/styles";
 
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getTierColor, rgbaHex} from "../../lib/utils/utils";

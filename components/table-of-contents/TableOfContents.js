@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";

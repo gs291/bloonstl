@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import {Grid} from "@mui/material";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 
 import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";

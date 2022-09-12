@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import {Grid} from "@mui/material";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 
 import GridTitle from "./GridTitle";
 import GridItems from "./GridItems";

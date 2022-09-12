@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 
 import StatNotes from "./StatNotes";
 import MoreStats from "./MoreStats";

@@ -1,7 +1,7 @@
 import {Grid} from "@mui/material";
 import {connect} from "react-redux";
 import {PureComponent} from "react";
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 
 import {
     checkDuplicateProsCons,

@@ -1,5 +1,5 @@
 import {Chip} from "@mui/material";
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 
 import Tooltip from "../tooltip/Tooltip";
 import ChipTooltip from "../tooltip/ChipTooltip";

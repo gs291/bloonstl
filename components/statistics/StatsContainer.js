@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 
 import StatsTitle from "./StatsTitle";
 import {globalOptions} from "../../lib/utils/emotionStyled";

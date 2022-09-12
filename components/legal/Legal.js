@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 import {Link as MUILink} from "@mui/material";
 
 import LegalText from "./LegalText";

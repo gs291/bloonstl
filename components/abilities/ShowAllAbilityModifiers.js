@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 import {useDispatch, useSelector} from "react-redux";
 import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
 

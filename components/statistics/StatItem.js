@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 
 import Counter from "../tower/Counter";
 import Tooltip from "../tooltip/Tooltip";

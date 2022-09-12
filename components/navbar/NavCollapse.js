@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import {useState} from "react";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 import {ClickAwayListener, MenuItem, Popover} from "@mui/material";
 
 import NavLink from "./NavLink";

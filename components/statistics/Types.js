@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 

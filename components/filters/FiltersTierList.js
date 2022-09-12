@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import {FormControl} from "@mui/material";
+import {styled} from "@mui/material/styles";
 import {useDispatch, useSelector} from "react-redux";
 import BorderClearIcon from '@mui/icons-material/BorderClear';
 import BorderOuterIcon from '@mui/icons-material/BorderOuter';

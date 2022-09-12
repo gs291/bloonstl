@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import Cookies from "universal-cookie";
 import {useEffect, useState} from "react";
+import {styled} from "@mui/material/styles";
 
 import ConsentBody from "./ConsentBody";
 import ConsentHeader from "./ConsentHeader";

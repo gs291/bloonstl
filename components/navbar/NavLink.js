@@ -1,7 +1,7 @@
 import Link from "next/link";
-import styled from "@emotion/styled";
 import {useRouter} from "next/router";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 import {Link as MUILink} from "@mui/material";
 
 import siteSizes from "../../lib/utils/siteSizes";

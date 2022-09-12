@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import {Pagination} from "@mui/material";
+import {styled} from "@mui/material/styles";
 
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";

@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {Typography} from "@mui/material";
+import {styled} from "@mui/material/styles";
 
 import ImageFill from "../image/ImageFill";
 import {getMobile} from "../../lib/redux/selectors";

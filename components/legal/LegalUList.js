@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 
 import {getDarkMode} from "../../lib/redux/selectors";
 

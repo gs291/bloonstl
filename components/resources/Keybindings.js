@@ -1,6 +1,6 @@
 import {useState} from "react";
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 
 import TowerText from "../tower/TowerText";
 import ImageFill from "../image/ImageFill";

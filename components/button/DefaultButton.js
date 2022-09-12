@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import {Button} from "@mui/material";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 
 import {rgbaHex} from "../../lib/utils/utils";
 import {getDarkMode} from "../../lib/redux/selectors";

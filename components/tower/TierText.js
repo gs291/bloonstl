@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {Typography} from "@mui/material";
+import {styled} from "@mui/material/styles";
 
 import {getTierColor} from "../../lib/utils/utils";
 import {getDarkMode} from "../../lib/redux/selectors";

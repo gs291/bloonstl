@@ -1,6 +1,6 @@
 import {useEffect} from "react";
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 import {Alert, Snackbar} from "@mui/material";
 
 import TowerText from "../tower/TowerText";

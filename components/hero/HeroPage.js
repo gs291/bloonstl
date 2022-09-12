@@ -1,6 +1,6 @@
 import {useState} from "react";
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 import {useTheme} from "@mui/material/styles";
 
 import Counter from "../tower/Counter";

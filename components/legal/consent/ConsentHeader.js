@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import Cookies from "universal-cookie";
+import {styled} from "@mui/material/styles";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 

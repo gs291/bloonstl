@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
 import TowerText from "../../tower/TowerText";

@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 
 import Tracking from "./Tracking";
 import ContactUs from "./ContactUs";

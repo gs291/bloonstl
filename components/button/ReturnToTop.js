@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import {useEffect, useState} from "react";
+import {styled} from "@mui/material/styles";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 import siteSizes from "../../lib/utils/siteSizes";
