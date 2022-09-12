@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {useTheme} from '@mui/material/styles';
 
 import StatTab from "./StatTab";
 import StatNotes from "./StatNotes";
 import StatsTargets from "./StatsTargets";
 import TowerText from "../tower/TowerText";
 import StatItemWrapper from "./StatItemWrapper";
-import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getHeroColor, getMonkeyColor, getStatAttributeText, rgbaHex} from "../../lib/utils/utils";
@@ -133,6 +133,7 @@ const statCodeParser = (code) => {
  * @param {string|null} props.parentBackgroundColor The color of the parent stat card
  */
 export default function StatsCard({stats, type, level = 1, towerType, cardType, parentBackgroundColor, ...rest}) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
@@ -148,9 +149,9 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
     const titleColor =
         rgbaHex(type
                 ? towerType === "hero"
-                    ? getHeroColor(type)
-                    :  getMonkeyColor(type)
-                : darkMode ? siteColors.page.dark : siteColors.page.light
+                    ? getHeroColor(type, theme)
+                    :  getMonkeyColor(type, theme)
+                : theme.palette.background.default
             , darkMode ? 0.5 : 1);
 
     const towerVar =
@@ -161,13 +162,9 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
     const gridColor =
         type
             ? towerType === "hero"
-                ? darkMode
-                    ? siteColors.hero[towerVar].grid.dark
-                    : siteColors.hero[towerVar].grid.light
-                : darkMode
-                    ? siteColors.monkeyType[towerVar].grid.dark
-                    : siteColors.monkeyType[towerVar].grid.light
-            : darkMode ? siteColors.page.dark : siteColors.page.light;
+                ? theme.palette.tower.hero[towerVar].grid
+                : theme.palette.tower.type[towerVar].grid
+            : theme.palette.background.default;
 
     return (
         <>

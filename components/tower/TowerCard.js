@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {useTheme} from '@mui/material/styles';
 import {Card, CardContent, Link as MUILink, Typography} from "@mui/material";
 
 import Icon from "../tower/Icon";
@@ -78,6 +79,7 @@ const GA4_TOWER_CARD_ID = "TOWER";
  * @param {boolean} props.ignoreFilter Shows if the card should ignore any filters
  */
 export default function TowerCard({tower, towerType, tier, ignoreFilter}) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
     const border = useSelector(getBorder);
     const darkMode = useSelector(getDarkMode);
@@ -86,14 +88,14 @@ export default function TowerCard({tower, towerType, tier, ignoreFilter}) {
 
     if (towerType === "monkey") {
         href = `/monkey/${getTowerLink(tower.name)}`;
-        borderColor = getMonkeyColor(tower.type, darkMode);
-        backgroundColor = getMonkeyColor(tower.type, darkMode,  tier, true);
-        hoverBackgroundColor = getMonkeyColor(tower.type, darkMode, tier, true, true);
+        borderColor = getMonkeyColor(tower.type, theme);
+        backgroundColor = getMonkeyColor(tower.type, theme,  tier, true);
+        hoverBackgroundColor = getMonkeyColor(tower.type, theme, tier, true, true);
     } else if (towerType === "hero") {
         href = `/hero/${getTowerLink(tower.name)}`;
-        borderColor = getHeroColor(tower.name, darkMode);
-        backgroundColor = getHeroColor(tower.name, darkMode, tier, true, false);
-        hoverBackgroundColor = getHeroColor(tower.name, darkMode, tier, true, true);
+        borderColor = getHeroColor(tower.name, theme);
+        backgroundColor = getHeroColor(tower.name, theme, tier, true, false);
+        hoverBackgroundColor = getHeroColor(tower.name, theme, tier, true, true);
     }
 
     if (!border && ignoreFilter === 0) {

@@ -14,7 +14,7 @@ const UpgradeArrowContainer = styled("div")`
 `;
 
 const Arrow = styled(DoubleArrow, globalOptions)`
-  color: ${props => props["data-s"] ? getTierColor(props.tier) : props.theme.palette.text.primary};
+  color: ${props => props["data-s"] ? getTierColor(props.tier, props.theme) : props.theme.palette.text.primary};
   transition: 0.3s;
   ${props => props["data-m"] ? "width: 15px;" : ""}
 `;

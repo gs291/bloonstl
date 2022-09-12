@@ -1,6 +1,7 @@
 import {useState} from "react";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {useTheme} from '@mui/material/styles';
 
 import Counter from "../tower/Counter";
 import Stats from "../statistics/Stats";
@@ -79,8 +80,9 @@ const HeroTier = styled("div", globalOptions)`
  * @param {Object} props.hero Object containing all the hero data
  */
 export default function HeroPage({ hero }) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const dividerBackgroundColor = getHeroColor(hero.name);
+    const dividerBackgroundColor = getHeroColor(hero.name, theme);
 
     const [ path, setPath ] = useState(9);
     const [ sandbox, setSandbox ] = useState(false);

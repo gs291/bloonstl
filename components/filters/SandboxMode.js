@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {FormGroup} from "@mui/material";
+import {useTheme} from '@mui/material/styles';
 
 import TowerText from "../tower/TowerText";
 import {getTierColor} from "../../lib/utils/utils";
@@ -66,6 +67,7 @@ const GA4_SANDBOX_MODE_RESET_ID = `${GA4_SANDBOX_MODE_ID}_RESET`;
  * @param {string} props.towerType Shows if the tower is a monkey or hero
  */
 export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pauseSandbox, setPauseSandbox, towerType, ...rest}) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
@@ -101,7 +103,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                 {sandbox && (
                     <DefaultButton
                         onClick={handleResetButton}
-                        data-bc={getTierColor(tier)}
+                        data-bc={getTierColor(tier, theme)}
                         variant={darkMode ? "outlined" : "contained"}
                     >
                         <TowerText variant="subtitle2" font={true}>
@@ -121,7 +123,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                 </TitleContainer>
                 <SandboxButton
                     onClick={handleSandboxChange}
-                    data-bc={getTierColor(tier)}
+                    data-bc={getTierColor(tier, theme)}
                     data-s={sandbox}
                     variant={darkMode ? "outlined" : "contained"}
                 >
@@ -150,7 +152,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                         )}
                         <PauseClickingButton
                             onClick={handlePauseChange}
-                            data-bc={getTierColor(tier)}
+                            data-bc={getTierColor(tier, theme)}
                             variant={darkMode ? "outlined" : "contained"}
                         >
                             <TowerText variant="subtitle2" font={true}>
@@ -163,7 +165,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                 {sandbox && (
                     <DefaultButton
                         onClick={handleResetButton}
-                        data-bc={getTierColor(tier)}
+                        data-bc={getTierColor(tier, theme)}
                         variant={darkMode ? "outlined" : "contained"}
                     >
                         <TowerText variant="subtitle2" font={true}>

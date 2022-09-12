@@ -11,20 +11,20 @@ const Button = styled("div", globalOptions)`
   margin-right: 0.5rem;
   padding: 5px 5px;
   border-radius: 50%;
-  background-color: ${props => props["data-s"] ? getTierColor(props["data-t"]) : "none"};
+  background-color: ${props => props["data-s"] ? getTierColor(props["data-t"], props.theme) : "none"};
   border: 5px solid transparent;
   transition: 0.3s;
   
   &:hover {
     cursor: pointer;
     transform: scale(1.2);
-    box-shadow: 5px 5px 7.5px 0 ${props => props["data-t"] ? rgbaHex(getTierColor(props["data-t"]), 0.5) : props.theme.palette.primary.mainOpposite};
-    border: 5px solid ${props => getTierColor(props["data-t"])};
+    box-shadow: 5px 5px 7.5px 0 ${props => props["data-t"] ? rgbaHex(getTierColor(props["data-t"], props.theme), 0.5) : props.theme.palette.primary.mainOpposite};
+    border: 5px solid ${props => getTierColor(props["data-t"], props.theme)};
   }
 `;
 
 const TierText = styled(Typography, globalOptions)`
-  color: ${props => props["data-s"] ? props.theme.palette.primary.main : getTierColor(props["data-t"])};
+  color: ${props => props["data-s"] ? props.theme.palette.primary.main : getTierColor(props["data-t"], props.theme)};
   
   user-select: none;
   width: 55px;

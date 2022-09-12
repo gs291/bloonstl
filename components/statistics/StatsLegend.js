@@ -1,10 +1,8 @@
 import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
+import {useTheme} from '@mui/material/styles';
 
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
 
@@ -50,13 +48,13 @@ const ColorLegend = styled("div", globalOptions)`
  * @param {string} props.towerType Shows if the tower is a monkey or hero
  */
 export default function StatsLegend({path, towerType}) {
-    const darkMode = useSelector(getDarkMode);
+    const theme = useTheme();
 
     return (
         <>
             <LegendContainer>
                 <div>
-                    <TowerText variant="caption" font={true} textColor={rgbaHex(darkMode ? siteColors.text.dark : siteColors.text.light, 0.5)} >
+                    <TowerText variant="caption" font={true} textColor={rgbaHex(theme.palette.text.primary, 0.5)} >
                         *Stats modified by
                         {towerType === "hero" ? " path level" : " ability path"}
                         :
@@ -68,13 +66,13 @@ export default function StatsLegend({path, towerType}) {
                 <ColorContainer>
                     <ColorItem>
                         <ColorLegend data-t="green" />
-                        <ColorText variant="caption" font={true} textColor={rgbaHex(darkMode ? siteColors.text.dark : siteColors.text.light, 0.5)} >
+                        <ColorText variant="caption" font={true} textColor={rgbaHex(theme.palette.text.primary, 0.5)} >
                             = Stat Upgraded
                         </ColorText>
                     </ColorItem>
                     <ColorItem>
                         <ColorLegend data-t="red" />
-                        <ColorText variant="caption" font={true} textColor={rgbaHex(darkMode ? siteColors.text.dark : siteColors.text.light, 0.5)} >
+                        <ColorText variant="caption" font={true} textColor={rgbaHex(theme.palette.text.primary, 0.5)} >
                             = Stat Downgraded
                         </ColorText>
                     </ColorItem>

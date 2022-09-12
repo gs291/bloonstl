@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {useTheme} from '@mui/material/styles';
 import {Card, CardContent} from "@mui/material";
 import OfflineBoltIcon from "@mui/icons-material/OfflineBolt";
 
 import Tooltip from "../tooltip/Tooltip";
 import ImageFill from "../image/ImageFill";
 import siteSizes from "../../lib/utils/siteSizes";
-import siteColors from "../../lib/utils/siteColors";
 import {getMobile} from "../../lib/redux/selectors";
 import AbilityTooltip from "../tooltip/AbilityTooltip";
 import {globalOptions} from "../../lib/utils/emotionStyled";
@@ -22,7 +22,7 @@ const AbilityContainer = styled("div")`
 const CardContainer = styled(Card, globalOptions)`
   border-radius: 50%;
   background-color: ${props => props.theme.palette.ability.card};
-  border: 4px solid ${props => props["data-s"] ? getTierColor(props.tier) : props.theme.palette.ability.card};
+  border: 4px solid ${props => props["data-s"] ? getTierColor(props.tier, props.theme) : props.theme.palette.ability.card};
   transition: 0.3s;
   box-shadow: 0 0 10px 2px ${props => props.theme.palette.ability.shadow};
   
@@ -82,6 +82,7 @@ const ActivatedAbility = styled(OfflineBoltIcon)`
  * @param {boolean|null} [props.open=null] Shows if the default ability tooltip open functionality will be overridden
  */
 export default function Ability({ability, fileName, tier, towerType, selected, open = null, ...rest}) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
 
     return (
@@ -98,9 +99,9 @@ export default function Ability({ability, fileName, tier, towerType, selected, o
                             fileName={fileName}
                         />}
                     borderColor={ability.active
-                        ? siteColors.ability.activated
+                        ? theme.palette.ability.activated
                         : selected
-                            ? getTierColor(tier)
+                            ? getTierColor(tier, theme)
                             : null
                     }
                     ga4ID={`ABILITY_${ability.upgrade_path}_${ability.upgrade_tier}_${ability.id}`}

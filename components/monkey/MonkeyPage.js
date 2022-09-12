@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+import {useTheme} from '@mui/material/styles';
 
 import Counter from "../tower/Counter";
 import Stats from "../statistics/Stats";
@@ -82,6 +83,7 @@ const handlePathChange = (changes, {setPath, setSnackPack}) => {
  * @param {Object} props.monkey Object containing all the monkey data
  */
 export default function MonkeyPage({monkey}) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
     const [ page, setPage ] = useState(1);
     const [ tier, setTier ] = useState("s");
@@ -112,7 +114,7 @@ export default function MonkeyPage({monkey}) {
         });
     }
 
-    const dividerBackgroundColor = getMonkeyColor(monkey.type);
+    const dividerBackgroundColor = getMonkeyColor(monkey.type, theme);
 
     useEffect(() => {
         setPath(monkey.tiers[tier][page-1]);

@@ -34,8 +34,8 @@ const ModifierContainer = styled("div", globalOptions)`
   border: 6px solid ${props =>
           props["data-t"]
                   ? rgbaHex(props["data-tow"] === "hero" 
-                          ? getHeroColor(props["data-t"]) 
-                          :  getMonkeyColor(props["data-t"])
+                          ? getHeroColor(props["data-t"], props.theme) 
+                          :  getMonkeyColor(props["data-t"], props.theme)
                           , props["data-dm"] ? 0.65 : 1)
                   : props.theme.palette.stats.primary
   };

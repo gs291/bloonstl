@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
+import {useTheme} from '@mui/material/styles';
 
 import TowerText from "../tower/TowerText";
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
 
@@ -71,25 +69,22 @@ const TabTitle = styled("div", globalOptions)`
  * @param {string|null} props.parentBackgroundColor The color of the parent stat card
  */
 export default function StatTab({cardType, title, level, backgroundColor, parentBackgroundColor}) {
-    const darkMode = useSelector(getDarkMode);
+    const theme = useTheme();
 
-    const gradient = `linear-gradient(180deg, ${darkMode ? siteColors.stats[cardType].dark : siteColors.stats[cardType].light}, ${backgroundColor})`
+    const gradient = `linear-gradient(180deg, ${theme.palette.stats[cardType].primary}, ${backgroundColor})`
 
     return (
         <>
             <TabContainer>
                 <TabLeftSide>
                     <LeftSideOuter
-                        data-dm={darkMode}
-                        data-bc={parentBackgroundColor
-                            ? parentBackgroundColor
-                            : darkMode ? siteColors.page.dark : siteColors.page.light}
+                        data-bc={parentBackgroundColor ? parentBackgroundColor : theme.palette.background.default}
                     />
-                    <LeftSideInner data-dm={darkMode} data-bc={gradient} />
+                    <LeftSideInner data-bc={gradient} />
                 </TabLeftSide>
 
                 <TabRightSide>
-                    <TabTitle data-dm={darkMode} data-bc={gradient} >
+                    <TabTitle data-bc={gradient} >
                         <TowerText variant={level === 1 ? "h6" : "subtitle1"} font={true} >
                             {title}
                         </TowerText>

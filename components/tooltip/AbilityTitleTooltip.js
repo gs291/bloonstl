@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {useTheme} from '@mui/material/styles';
 
 import TowerText from "../tower/TowerText";
 import ImageFill from "../image/ImageFill";
 import FixedDivider from "../divider/FixedDivider";
-import siteColors from "../../lib/utils/siteColors";
 import VerticalDivider from "../divider/VerticalDivider";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getDifficulty, getMobile} from "../../lib/redux/selectors";
+import {getDifficulty, getMobile} from "../../lib/redux/selectors";
 import {getImageUrl, getThousandsNumber, getTierColor, goldCost} from "../../lib/utils/utils";
 
 
@@ -62,12 +62,12 @@ const PathText = styled(TowerText)``;
  * @param {Object} props.ability The database ability object
  * @param {string} props.fileName The filename for the tower
  * @param {string} props.towerType Shows if the tower is a monkey or hero
- * @param {boolean} props.darkMode Shows if darkMode is enabled or disabled
+ * @param {Object} props.theme MUI 5 theme for the project
  * @param {boolean} props.mobile Shows if mobile is enabled or disabled
  */
-const AbilityImage = ({ability, fileName, towerType, darkMode, mobile}) => (
+const AbilityImage = ({ability, fileName, towerType, theme, mobile}) => (
     <>
-        <VerticalDivider backgroundColor={darkMode ? siteColors.text.dark : siteColors.text.light} />
+        <VerticalDivider backgroundColor={theme.palette.text.primary} />
 
         <ImageWrapper>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
@@ -80,7 +80,7 @@ const AbilityImage = ({ability, fileName, towerType, darkMode, mobile}) => (
                 </ImageContainer>
             </Image>
             {towerType === "monkey" && (
-                <PathText variant={mobile ? "subtitle1" : "h5"} data-dm={darkMode} >
+                <PathText variant={mobile ? "subtitle1" : "h5"}>
                     {ability.upgrade_path === 0 ? ability.upgrade_tier + 1 : ability.upgrade_path === 3 ? "5" : "0"}
                     &nbsp;-&nbsp;
                     {ability.upgrade_path === 1 ? ability.upgrade_tier + 1 : ability.upgrade_path === 3 ? "5" : "0"}
@@ -103,8 +103,8 @@ const AbilityImage = ({ability, fileName, towerType, darkMode, mobile}) => (
  * @param {boolean} props.selected Shows if the ability is currently selected
  */
 export default function AbilityTitleTooltip({ ability, tier, selected, fileName, towerType, ...rest }) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
     const difficulty = useSelector(getDifficulty);
 
     return (
@@ -115,11 +115,7 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                         {towerType === "hero" && (
                             <TowerText
                                 variant={mobile ? "h5" : "h4"}
-                                textColor={
-                                    selected
-                                        ? getTierColor(tier)
-                                        : darkMode ? siteColors.text.dark : siteColors.text.light
-                                }
+                                textColor={selected ? getTierColor(tier, theme) : theme.palette.text.primary}
                             >
                                 Level {ability.upgrade_tier + 1}
                             </TowerText>
@@ -127,22 +123,18 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                         { ability.name !== "" && (
                             <TowerText
                                 variant={mobile ? "h5" : "h4"}
-                                textColor={
-                                    selected
-                                        ? getTierColor(tier)
-                                        : darkMode ? siteColors.text.dark : siteColors.text.light
-                                }
+                                textColor={selected ? getTierColor(tier, theme) : theme.palette.text.primary}
                             >
                                 {ability.name}
                             </TowerText>
                         )}
                         {towerType === "monkey" && (
-                            <TowerText variant="body1" textColor={darkMode ? siteColors.tower.gold.dark : siteColors.tower.gold.light}>
+                            <TowerText variant="body1" textColor={theme.palette.text.gold}>
                                 In-game cost:&nbsp;
                                 ${getThousandsNumber(goldCost(ability.cost_gold, difficulty))}
                             </TowerText>
                         )}
-                        <TowerText variant="body1" textColor={darkMode ? siteColors.tower.xp.dark : siteColors.tower.xp.light}>
+                        <TowerText variant="body1" textColor={theme.palette.text.xp}>
                             {towerType === "hero"
                                 ? (<>In-game XP Unlock:&nbsp;&nbsp;{ability.cost_xp === 0 ? "FREE" : getThousandsNumber(ability.cost_xp)}</>)
                                 : (<>XP Unlock Cost:&nbsp;&nbsp;{ability.cost_xp === 0 ? "FREE" : getThousandsNumber(ability.cost_xp)}</>)
@@ -150,13 +142,13 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                         </TowerText>
                     </FullContainer>
                     {(mobile && ability.name !== "" ) && (
-                        <AbilityImage ability={ability} fileName={fileName} towerType={towerType} darkMode={darkMode} mobile={mobile} />
+                        <AbilityImage ability={ability} fileName={fileName} towerType={towerType} theme={theme} mobile={mobile} />
                     )}
                     { !mobile && (
                         <TowerText
                             variant="body2"
                             component="div"
-                            textColor={darkMode ? siteColors.tower.description.dark : siteColors.tower.description.light}
+                            textColor={theme.palette.text.description}
                             font={true}>
                             {ability.description}
                         </TowerText>
@@ -164,7 +156,7 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                 </InfoContainer>
 
                 {(!mobile && ability.name !== "" ) && (
-                    <AbilityImage ability={ability} fileName={fileName} towerType={towerType} darkMode={darkMode} mobile={mobile} />
+                    <AbilityImage ability={ability} fileName={fileName} towerType={towerType} theme={theme} mobile={mobile} />
                 )}
             </TitleContainer>
 
@@ -177,7 +169,7 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                     <TowerText
                         variant="body2"
                         component="div"
-                        textColor={darkMode ? siteColors.tower.description.dark : siteColors.tower.description.light}
+                        textColor={theme.palette.text.description}
                         font={true}>
                         {ability.description}
                     </TowerText>

@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
+import {useTheme} from '@mui/material/styles';
 
 import TowerText from "../tower/TowerText";
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
 
@@ -32,7 +30,7 @@ const TowerTitle = styled(TowerText, globalOptions)`
  * @param {Array<Object>} props.items Array list of items/notes for the patch
  */
 export default function PatchItems({className, items}) {
-    const darkMode = useSelector(getDarkMode);
+    const theme = useTheme();
 
     return (
         <>
@@ -44,7 +42,7 @@ export default function PatchItems({className, items}) {
                             font={!!item.text}
                             data-bc={
                                 item.tower ?
-                                    item.type ? getMonkeyColor(item.type) : getHeroColor(item.tower)
+                                    item.type ? getMonkeyColor(item.type, theme) : getHeroColor(item.tower, theme)
                                     : null
                             }
                         >
@@ -53,7 +51,7 @@ export default function PatchItems({className, items}) {
                                 : item.tower ? item.tower : item.title}
                         </TowerTitle>
                         {item.description && (
-                            <TowerText variant="body1" font={true} textColor={rgbaHex(darkMode ? siteColors.text.dark : siteColors.text.light, 0.5)}>
+                            <TowerText variant="body1" font={true} textColor={rgbaHex(theme.palette.text.primary, 0.5)}>
                                 &quot;{item.description}&quot;
                             </TowerText>
                         )}

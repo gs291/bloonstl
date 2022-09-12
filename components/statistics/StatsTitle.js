@@ -16,8 +16,8 @@ const TitleContainer = styled("div", globalOptions)`
   background-color: ${props =>
           rgbaHex(props["data-t"] 
                           ? props["data-tow"] === "hero" 
-                                  ? getHeroColor(props["data-t"]) 
-                                  :  getMonkeyColor(props["data-t"])
+                                  ? getHeroColor(props["data-t"], props.theme) 
+                                  :  getMonkeyColor(props["data-t"], props.theme)
                           : props.theme.palette.background.default
                   , props["data-dm"] ? 0.65 : 1)};
 `;

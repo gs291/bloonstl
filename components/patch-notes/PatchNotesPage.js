@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import {useEffect, useState} from "react";
+import {useTheme} from '@mui/material/styles';
 import {useDispatch, useSelector} from "react-redux";
 
 import Patch from "./Patch";
@@ -10,7 +11,6 @@ import FetchErrors from "../api/FetchErrors";
 import FetchLoading from "../api/FetchLoading";
 import {updatePage} from "../../lib/redux/actions";
 import DefaultButton from "../button/DefaultButton";
-import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {latest, latestMajor} from "../../lib/utils/patches";
 import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
@@ -63,6 +63,7 @@ const GA4_PATCH_BUTTON_ID = "PATCH_BUTTON";
  */
 export default function PatchNotesPage({ patch }) {
     const dispatch = useDispatch();
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
     const darkMode = useSelector(getDarkMode);
 
@@ -162,7 +163,7 @@ export default function PatchNotesPage({ patch }) {
                     <DefaultButton
                         onClick={() => handleButtonClick({target: {value: latest, type: "latest"}})}
                         variant={darkMode ? "outlined" : "contained"}
-                        data-bc={darkMode ? siteColors.patch.button.dark : siteColors.patch.button.light}
+                        data-bc={theme.palette.button.patch}
                     >
                         <TowerText variant="subtitle1">
                             Most Recent Update (v {latest})
@@ -171,7 +172,7 @@ export default function PatchNotesPage({ patch }) {
                     <DefaultButton
                         onClick={() => handleButtonClick({target: {value: latestMajor, type: "latestMajor"}})}
                         variant={darkMode ? "outlined" : "contained"}
-                        data-bc={darkMode ? siteColors.patch.button.dark : siteColors.patch.button.light}
+                        data-bc={theme.palette.button.patch}
                     >
                         <TowerText variant="subtitle1">
                             Last Major Update (v {latestMajor})

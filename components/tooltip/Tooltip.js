@@ -3,7 +3,6 @@ import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {Tooltip as MUITooltip, ClickAwayListener} from "@mui/material";
 
-import siteColors from "../../lib/utils/siteColors";
 import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {TOOLTIP_PREFIX, ga4SendTooltipHover} from "../../lib/utils/ga4";
@@ -43,7 +42,7 @@ const StyledTooltip = styled(({ className, ...other }) => (
                   : props.theme.palette.background.tooltip};
 
   .MuiTooltip-arrow {
-    color: ${siteColors.tooltip.dark};
+    color: ${props => props.theme.palette.background.tooltip};
   }
   
   .MuiTooltip-arrow::before {

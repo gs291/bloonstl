@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {useTheme} from '@mui/material/styles';
 
 import StatsContainer from "./StatsContainer";
 import StatItemWrapper from "./StatItemWrapper";
@@ -30,8 +31,9 @@ const ItemsContainer = styled("div", globalOptions)`
  * @param {string} props.towerType Shows if the tower is a monkey or hero
  */
 export default function MoreStats({stats, defaults, type, towerType, ...rest}) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const color = towerType === "hero" ? getHeroColor(type) : getMonkeyColor(type);
+    const color = towerType === "hero" ? getHeroColor(type, theme) : getMonkeyColor(type, theme);
 
 
     return (

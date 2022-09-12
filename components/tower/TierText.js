@@ -3,14 +3,13 @@ import {useSelector} from "react-redux";
 import {Typography} from "@mui/material";
 
 import {getTierColor} from "../../lib/utils/utils";
-import siteColors from "../../lib/utils/siteColors";
 import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
 
 const Tier = styled(Typography, globalOptions)`
-  color: ${props => getTierColor(props.name)};
-  ${props => !props["data-dm"] && `text-shadow: 5px 5px 10px ${siteColors.text.light}`};
+  color: ${props => getTierColor(props.name, props.theme)};
+  ${props => !props["data-dm"] && `text-shadow: 5px 5px 10px ${props.theme.palette.text.primary}`};
 `;
 
 const TierContainer = styled("div")`

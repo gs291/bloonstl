@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
-import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getTierColor, rgbaHex} from "../../lib/utils/utils";
 import {TOGGLE_TOOLTIP_MODIFIERS, updateFilter} from "../../lib/redux/actions";
@@ -26,22 +25,22 @@ const Label = styled(FormControlLabel)`
 
 const StyledCheckbox = styled(Checkbox, globalOptions)`
   color: ${props => props["data-t"] 
-          ? getTierColor(props["data-t"]) 
-          : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
+          ? getTierColor(props["data-t"], props.theme) 
+          : props.theme.palette.primary.main
   };
 
   &:hover {
     background-color: ${props =>
             rgbaHex(props["data-t"]
-                            ? getTierColor(props["data-t"])
-                            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
+                            ? getTierColor(props["data-t"], props.theme)
+                            : props.theme.palette.primary.main
                     , props["data-dm"] ? 0.075 : 0.3)};
   }
   
   &.Mui-checked {
     color: ${props => props["data-t"] 
-            ? getTierColor(props["data-t"]) 
-            : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
+            ? getTierColor(props["data-t"], props.theme) 
+            : props.theme.palette.primary.main
     };
   }
 `;

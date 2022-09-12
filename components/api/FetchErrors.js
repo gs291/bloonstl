@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
+import {useTheme} from '@mui/material/styles';
 
 import TowerText from "../tower/TowerText";
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 
 
 const ErrorContainer = styled("div")`
@@ -19,14 +17,14 @@ const ErrorContainer = styled("div")`
  * @param {Array<{message: string}>|null} props.errorMessages Array list containing potential error messages
  */
 export default function FetchErrors({errorMessages}) {
-    const darkMode = useSelector(getDarkMode);
+    const theme = useTheme();
 
     return (
         <>
             <ErrorContainer>
                 <TowerText
                     variant="h4"
-                    textColor={darkMode ? siteColors.error.dark : siteColors.error.light }
+                    textColor={theme.palette.informational.error}
                 >
                     {errorMessages && errorMessages.length > 1 ? (
                         "Errors have Occurred"

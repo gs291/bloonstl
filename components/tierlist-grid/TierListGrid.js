@@ -1,12 +1,12 @@
 import {Grid} from "@mui/material";
 import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {useTheme} from '@mui/material/styles';
 
-import siteColors from "../../lib/utils/siteColors";
 import FiltersTierList from "../filters/FiltersTierList";
 import GridTowerContainer from "../grid/GridTowerContainer";
 import {getTierColor, getTowerType} from "../../lib/utils/utils";
-import {getDarkMode, getHeroState, getMobile, getMonkeyState} from "../../lib/redux/selectors";
+import {getHeroState, getMobile, getMonkeyState} from "../../lib/redux/selectors";
 
 
 const FilterContainer = styled("div")`
@@ -26,16 +26,16 @@ const FilterContainer = styled("div")`
  *   Monkeys/Heroes split into their respective tier
  */
 export default function TierListGrid({ className, tiers }) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
     const heroes = useSelector(getHeroState);
-    const darkMode = useSelector(getDarkMode);
     const monkeys = useSelector(getMonkeyState);
 
     const colors = {
-        "s": getTierColor("s"),
-        "a": getTierColor("a"),
-        "b": getTierColor("b"),
-        "c": getTierColor("c")
+        "s": getTierColor("s", theme),
+        "a": getTierColor("a", theme),
+        "b": getTierColor("b", theme),
+        "c": getTierColor("c", theme)
     }
 
     let gridSpacing = 6;
@@ -72,7 +72,7 @@ export default function TierListGrid({ className, tiers }) {
                         towers={filteredTiers["s"]}
                         title="S Tier"
                         tier="s"
-                        backgroundColor={darkMode ? siteColors.tier.s.grid.dark : siteColors.tier.s.grid.light}
+                        backgroundColor={theme.palette.tier.s.grid}
                         titleColor={colors.s}
                         ignoreFilter={0}
                     />
@@ -82,7 +82,7 @@ export default function TierListGrid({ className, tiers }) {
                         towers={filteredTiers["a"]}
                         title="A Tier"
                         tier="a"
-                        backgroundColor={darkMode ? siteColors.tier.a.grid.dark : siteColors.tier.a.grid.light}
+                        backgroundColor={theme.palette.tier.a.grid}
                         titleColor={colors.a}
                         ignoreFilter={0}
                     />
@@ -92,7 +92,7 @@ export default function TierListGrid({ className, tiers }) {
                         towers={filteredTiers["b"]}
                         title="B Tier"
                         tier="b"
-                        backgroundColor={darkMode ? siteColors.tier.b.grid.dark : siteColors.tier.b.grid.light}
+                        backgroundColor={theme.palette.tier.b.grid}
                         titleColor={colors.b}
                         ignoreFilter={0}
                     />
@@ -102,7 +102,7 @@ export default function TierListGrid({ className, tiers }) {
                         towers={filteredTiers["c"]}
                         title="C Tier"
                         tier="c"
-                        backgroundColor={darkMode ? siteColors.tier.c.grid.dark : siteColors.tier.c.grid.light}
+                        backgroundColor={theme.palette.tier.c.grid}
                         titleColor={colors.c}
                         ignoreFilter={0}
                     />
