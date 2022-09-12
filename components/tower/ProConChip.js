@@ -32,6 +32,7 @@ const StyledChip = styled(Chip, globalOptions)`
   animation-timing-function: ease-in-out;
   
   width: 100px;
+  color: #000000;
   background-color: ${props => props["data-pro"] ? props.theme.palette.informational.pros : props.theme.palette.informational.cons};
 
   &:hover {

@@ -62,13 +62,10 @@ const PathText = styled(TowerText)``;
  * @param {Object} props.ability The database ability object
  * @param {string} props.fileName The filename for the tower
  * @param {string} props.towerType Shows if the tower is a monkey or hero
- * @param {Object} props.theme MUI 5 theme for the project
  * @param {boolean} props.mobile Shows if mobile is enabled or disabled
  */
-const AbilityImage = ({ability, fileName, towerType, theme, mobile}) => (
+const AbilityImage = ({ability, fileName, towerType, mobile}) => (
     <>
-        <VerticalDivider backgroundColor={theme.palette.text.primary} />
-
         <ImageWrapper>
             {/* eslint-disable-next-line jsx-a11y/alt-text */}
             <Image data-m={mobile}>
@@ -142,7 +139,10 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                         </TowerText>
                     </FullContainer>
                     {(mobile && ability.name !== "" ) && (
-                        <AbilityImage ability={ability} fileName={fileName} towerType={towerType} theme={theme} mobile={mobile} />
+                        <>
+                            <VerticalDivider backgroundColor={selected ? getTierColor(tier, theme) : theme.palette.text.primary} />
+                            <AbilityImage ability={ability} fileName={fileName} towerType={towerType} mobile={mobile} />
+                        </>
                     )}
                     { !mobile && (
                         <TowerText
@@ -156,12 +156,15 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                 </InfoContainer>
 
                 {(!mobile && ability.name !== "" ) && (
-                    <AbilityImage ability={ability} fileName={fileName} towerType={towerType} theme={theme} mobile={mobile} />
+                    <>
+                        <VerticalDivider backgroundColor={selected ? getTierColor(tier, theme) : theme.palette.text.primary} />
+                        <AbilityImage ability={ability} fileName={fileName} towerType={towerType} mobile={mobile} />
+                    </>
                 )}
             </TitleContainer>
 
             {mobile && (
-                <FixedDivider width={100} />
+                <FixedDivider width={100} backgroundColor={selected ? getTierColor(tier, theme) : theme.palette.text.primary}/>
             )}
 
             { mobile && (

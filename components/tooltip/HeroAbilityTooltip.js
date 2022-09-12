@@ -16,7 +16,7 @@ export default function HeroAbilityTooltip({ ability, fileName, tier, selected, 
     return (
         <>
             <AbilityTitleTooltip ability={ability} tier={tier} fileName={fileName} selected={selected} towerType="hero" />
-            <AbilityModifiersTooltip modifiers={ability.modifiers} />
+            <AbilityModifiersTooltip modifiers={ability.modifiers} tier={tier} selected={selected}/>
         </>
     );
 }

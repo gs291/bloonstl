@@ -1,5 +1,5 @@
 import {makeStyles} from "@mui/styles";
-import {styled} from "@mui/material/styles";
+import {styled, useTheme} from "@mui/material/styles";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
@@ -7,13 +7,6 @@ import {rgbaHex} from "../../lib/utils/utils";
 import {patchVersions} from "../../lib/utils/patches";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
-
-const useStyles = makeStyles({
-    menuPaper: {
-        maxHeight: "400px",
-        backgroundColor: (props) => props.theme.palette.button.select,
-    }
-});
 
 const SelectContainer = styled("div")`
   display: flex;
@@ -74,6 +67,13 @@ const GA4_PATCH_SELECT_ID = "PATCH_SELECT";
  * @param {function} props.handlePatchSelect Function to handle which patch was selected
  */
 export default function PatchSelect({ className, patch, handlePatchSelect }) {
+    const theme = useTheme();
+    const useStyles = makeStyles({
+        menuPaper: {
+            maxHeight: "400px",
+            backgroundColor: theme.palette.button.select,
+        }
+    });
     const classes = useStyles();
 
     const handleOpen = () => ga4SendSelectContent(SELECT_CONTENT_BUTTON, {

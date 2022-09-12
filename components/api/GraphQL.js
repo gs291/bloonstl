@@ -55,6 +55,7 @@ const ExpanderContainer = styled("div")`
 `;
 
 const Expander = styled(Accordion, globalOptions)`
+  background-color: ${props => props.theme.palette.background.default};
   ${props => {
       const rgb = props["data-dm"] ? '255 255 255' : '0 0 0';
       return `box-shadow: 0px 2px 10px -1px rgb(${rgb} / 20%), 0px 1px 3px 0px rgb(${rgb} / 14%), 0px 1px 3px 0px rgb(${rgb} / 12%);`;
@@ -65,16 +66,14 @@ const ExpandMore = styled(ExpandMoreIcon)`
   color: ${props => props.theme.palette.text.primary};
 `;
 
-const ExpanderSummary = styled(AccordionSummary)`
-  background-color: ${props => props.theme.palette.text.primary};
-`;
+const ExpanderSummary = styled(AccordionSummary)``;
 
 const ExpandedDetails = styled(AccordionDetails)`
   flex-direction: column;
 
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: ${props => props.theme.palette.text.primary};
+  background-color: ${props => props.theme.palette.background.default};
 `;
 
 

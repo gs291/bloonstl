@@ -1,7 +1,11 @@
+import {styled} from "@mui/material/styles";
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 
+const TableItem = styled(TableCell)`
+  border-bottom: 1px solid ${props => props.theme.palette.text.primary}
+`;
 
 /**
  * Legal table
@@ -19,28 +23,28 @@ export default function LegalTable({head, rows, ...rest}) {
                     <TableHead>
                         <TableRow>
                             {head.map((h, idx) => (
-                                <TableCell key={idx}>
+                                <TableItem key={idx}>
                                     <TowerText variant="h6">
                                         {h}
                                     </TowerText>
-                                </TableCell>
+                                </TableItem>
                             ))}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {rows.map((row, idx) => (
                             <TableRow key={idx}>
-                                <TableCell component="th" scope="row">
+                                <TableItem component="th" scope="row">
                                     <TowerText variant="body1" font={true}>
                                         {row.name}
                                     </TowerText>
-                                </TableCell>
+                                </TableItem>
                                 {row.columns.map((col, idx) => (
-                                    <TableCell key={idx}>
+                                    <TableItem key={idx}>
                                         <TowerText variant="body1" font={true}>
                                             {col}
                                         </TowerText>
-                                    </TableCell>
+                                    </TableItem>
                                 ))}
                             </TableRow>
                         ))}

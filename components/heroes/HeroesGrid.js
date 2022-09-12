@@ -20,8 +20,8 @@ export default function HeroesGrid({ heroes }) {
                     <GridTowerContainer
                         towers={heroes}
                         title="Towers"
-                        backgroundColor={theme.palette.tower.heroes.grid}
-                        titleColor={theme.palette.tower.heroes.color}
+                        backgroundColor={theme.palette.tower.type.heroes.grid}
+                        titleColor={theme.palette.tower.type.heroes.color}
                         ignoreFilter={1}
                     />
                 </Grid>

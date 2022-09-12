@@ -87,7 +87,7 @@ const FilterIcon = styled("div", globalOptions)`
   
   &:hover {
     cursor: pointer;
-    background-color: ${props => rgbaHex(props.theme.palette.primary.main, 0.5)};
+    background-color: ${props => rgbaHex(props.theme.palette.primary.mainOpposite, 0.5)};
   }
 `;
 

@@ -14,9 +14,9 @@ const TopContainer = styled("div", globalOptions)`
   padding: 0.4em 0.83em;
   border-radius: 10px;
   
-  color: ${props => props.theme.palette.primary.main};
+  color: ${props => props.theme.palette.primary.mainOpposite};
   background-color: ${props => props.theme.palette.button.returnTop.primary};
-  border: 2px solid ${props => props.theme.palette.primary.main};
+  border: 2px solid ${props => props.theme.palette.primary.mainOpposite};
   
   transition-duration: 0.3s;
   opacity: ${props => props["data-s"] ? 1 : 0};

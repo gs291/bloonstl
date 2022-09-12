@@ -39,7 +39,7 @@ const StyledTooltip = styled(({ className, ...other }) => (
   border: 2px solid ${props =>
           props["data-bc"]
                   ? props["data-bc"]
-                  : props.theme.palette.background.tooltip};
+                  : props.theme.palette.border.tooltip};
 
   .MuiTooltip-arrow {
     color: ${props => props.theme.palette.background.tooltip};
@@ -49,7 +49,7 @@ const StyledTooltip = styled(({ className, ...other }) => (
     border: 2px solid ${props => 
             props["data-bc"] 
                     ? props["data-bc"]
-                    : props.theme.palette.background.tooltip};
+                    : props.theme.palette.border.tooltip};
   }
 `;
 

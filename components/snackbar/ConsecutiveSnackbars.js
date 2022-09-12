@@ -18,7 +18,7 @@ const PageAlert = styled(Alert, globalOptions)`
   
   border: 2px solid ${props => props["severity"] ? props.theme.palette.informational[props["severity"]] : props.theme.palette.text.primary};
   
-  background-color: ${props => props.theme.palette.informational[props["severity"]] };
+  background-color: ${props => props.theme.palette.background.tooltip };
   box-shadow: -5px 5px 5px 1px ${props => rgbaHex(props["severity"] ?
                   props.theme.palette.background.tooltip
                   : props.theme.palette.primary.main

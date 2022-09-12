@@ -16,7 +16,7 @@ export default function MonkeyAbilityTooltip({ ability, tier, selected, fileName
     return (
         <>
             <AbilityTitleTooltip ability={ability} tier={tier} fileName={fileName} selected={selected} towerType="monkey" />
-            <AbilityModifiersTooltip modifiers={ability.modifiers} />
+            <AbilityModifiersTooltip modifiers={ability.modifiers} tier={tier} selected={selected}/>
         </>
     );
 }

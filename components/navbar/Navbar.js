@@ -28,7 +28,7 @@ export default function Navbar({className}) {
 
     return (
       <>
-          <Nav position="static" className={className} data-m={mobile}>
+          <Nav color="transparent" position="static" className={className} data-m={mobile}>
               <SiteLinks />
           </Nav>
       </>

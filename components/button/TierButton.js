@@ -24,7 +24,7 @@ const Button = styled("div", globalOptions)`
 `;
 
 const TierText = styled(Typography, globalOptions)`
-  color: ${props => props["data-s"] ? props.theme.palette.primary.main : getTierColor(props["data-t"], props.theme)};
+  color: ${props => props["data-s"] ? props.theme.palette.background.default : getTierColor(props["data-t"], props.theme)};
   
   user-select: none;
   width: 55px;
