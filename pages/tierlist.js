@@ -6,7 +6,6 @@ import PageTitle from "../components/page/PageTitle";
 import TowerText from "../components/tower/TowerText";
 import MainContainer from "../components/page/MainContainer";
 import TierListGrid from "../components/tierlist-grid/TierListGrid";
-import FixedRightButtons from "../components/fixed/FixedRightButtons";
 
 
 const NoMoreTiers = styled(TowerText)`
@@ -38,7 +37,6 @@ export default function TierList({s, a, b, c}) {
                     Since most towers are unique and good in their own ways its only reasonable to place towers within four tiers and not any more!
                 </NoMoreTiers>
             </MainContainer>
-            <FixedRightButtons />
         </>
     );
 }

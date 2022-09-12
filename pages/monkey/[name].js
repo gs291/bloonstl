@@ -3,7 +3,6 @@ import Header from "../../components/page/Header";
 import MonkeyPage from "../../components/monkey/MonkeyPage";
 import MainContainer from "../../components/page/MainContainer";
 import {getTowerLink, parseTowerLink} from "../../lib/utils/utils";
-import FixedRightButtons from "../../components/fixed/FixedRightButtons";
 
 
 export default function Monkey({ monkey }) {
@@ -15,7 +14,6 @@ export default function Monkey({ monkey }) {
             <MainContainer>
                 <MonkeyPage monkey={monkey}/>
             </MainContainer>
-            <FixedRightButtons />
         </>
     );
 }
