@@ -2,38 +2,20 @@ import {useEffect} from "react";
 import Router from "next/router";
 import NProgress from "nprogress";
 import {Provider} from "react-redux";
-import {createTheme} from "@mui/material";
 import {Global, css} from "@emotion/react";
-import CssBaseline from "@mui/material/CssBaseline";
+import {StyledEngineProvider} from "@mui/material/styles";
 import {PersistGate} from "redux-persist/integration/react";
-import {StyledEngineProvider, ThemeProvider} from "@mui/material/styles";
 
-import Page from "../components/page/Page";
-import {font_family} from "../lib/utils/utils";
 import {ga4Initialize} from "../lib/utils/ga4";
 import configureStore from "../lib/redux/store";
+import AppContainer from "../components/page/AppContainer";
 
-const theme = createTheme({
-    typography: {
-        fontFamily: font_family,
-    },
-    breakpoints: {
-        values: {
-            xs: 0,
-            sm: 600,
-            md: 1000,
-            lg: 1200,
-            xl: 1536,
-        }
-    }
-});
 
 const globals = css`
   html, 
   body {
     padding: 0;
     margin: 0;
-    font-family: ${font_family};
   }
   
   a {
@@ -80,12 +62,7 @@ export default function App({ Component, pageProps }) {
             <PersistGate loading={null} persistor={store.__PERSISTOR}>
                 <Global styles={globals} />
                 <StyledEngineProvider injectFirst>
-                    <ThemeProvider theme={theme}>
-                        <CssBaseline />
-                        <Page>
-                            <Component {...pageProps} />
-                        </Page>
-                    </ThemeProvider>
+                    <AppContainer pageProps={pageProps} Component={Component} />
                 </StyledEngineProvider>
             </PersistGate>
         </Provider>
