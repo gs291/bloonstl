@@ -5,8 +5,8 @@ import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
 import TowerText from "../tower/TowerText";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getTierColor, rgbaHex} from "../../lib/utils/utils";
+import {getMobile, getShowTooltipModifiers} from "../../lib/redux/selectors";
 import {TOGGLE_TOOLTIP_MODIFIERS, updateFilter} from "../../lib/redux/actions";
-import {getDarkMode, getMobile, getShowTooltipModifiers} from "../../lib/redux/selectors";
 import {CHECKBOX_PREFIX, SELECT_CONTENT_CHECKBOX, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -34,7 +34,7 @@ const StyledCheckbox = styled(Checkbox, globalOptions)`
             rgbaHex(props["data-t"]
                             ? getTierColor(props["data-t"], props.theme)
                             : props.theme.palette.primary.main
-                    , props["data-dm"] ? 0.075 : 0.3)};
+                    , props.theme.palette.mode === "dark" ? 0.075 : 0.3)};
   }
   
   &.Mui-checked {
@@ -58,7 +58,6 @@ export default function ShowAllAbilityModifiers({tier, paragon = false, ...rest}
     const dispatch = useDispatch();
 
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
     const showAllModifiers = useSelector(getShowTooltipModifiers);
 
     const handleShowAllModifiers = (event) => {
@@ -78,7 +77,6 @@ export default function ShowAllAbilityModifiers({tier, paragon = false, ...rest}
                         <StyledCheckbox
                             checked={showAllModifiers}
                             onChange={handleShowAllModifiers}
-                            data-dm={darkMode}
                             data-t={tier}
                         />
                     )}

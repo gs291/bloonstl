@@ -7,8 +7,8 @@ import StatNotes from "./StatNotes";
 import StatsTargets from "./StatsTargets";
 import TowerText from "../tower/TowerText";
 import StatItemWrapper from "./StatItemWrapper";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getHeroColor, getMonkeyColor, getStatAttributeText, rgbaHex} from "../../lib/utils/utils";
 
 
@@ -135,7 +135,6 @@ const statCodeParser = (code) => {
 export default function StatsCard({stats, type, level = 1, towerType, cardType, parentBackgroundColor, ...rest}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const getTitle = (key) => {
         switch (key) {
@@ -152,7 +151,7 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                     ? getHeroColor(type, theme)
                     :  getMonkeyColor(type, theme)
                 : theme.palette.background.default
-            , darkMode ? 0.5 : 1);
+            , theme.palette.mode === "dark" ? 0.5 : 1);
 
     const towerVar =
         towerType === "hero"
@@ -171,7 +170,7 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
             {Object.keys(stats).map(key => (
                 <CardContainer key={key} data-m={mobile}>
                     <StatTab cardType={cardType} title={getTitle(cardType)} level={level} backgroundColor={titleColor} parentBackgroundColor={parentBackgroundColor}/>
-                    <Card data-bc={titleColor} data-dm={darkMode} data-m={mobile}>
+                    <Card data-bc={titleColor} data-m={mobile}>
                         <TitleContainer>
                             <TowerText variant={level === 1 ? "h5" : "h6"}>
                                 {getStatAttributeText(key)}
@@ -182,7 +181,7 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                                 </Description>
                             )}
                         </TitleContainer>
-                        <CardContent data-bc={gridColor} data-dm={darkMode} data-m={mobile} data-l={level} >
+                        <CardContent data-bc={gridColor} data-m={mobile} data-l={level} >
                             <Modifiers>
                                 {Object.keys(stats[key].modifiers).map(mod => {
                                     if (statWithPrev[mod]) {

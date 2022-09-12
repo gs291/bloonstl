@@ -1,16 +1,13 @@
-import {useSelector} from "react-redux";
 import {Typography} from "@mui/material";
 import {styled} from "@mui/material/styles";
 
 import {getTierColor} from "../../lib/utils/utils";
-import {getDarkMode} from "../../lib/redux/selectors";
-import {globalOptions} from "../../lib/utils/emotionStyled";
 
 
-const Tier = styled(Typography, globalOptions)`
+const Tier = styled(Typography)`
   color: ${props => getTierColor(props.name, props.theme)};
   cursor: default;
-  ${props => !props["data-dm"] && `text-shadow: 5px 5px 10px ${props.theme.palette.text.primary}`};
+  ${props => !(props.theme.palette.mode === "dark") && `text-shadow: 5px 5px 10px ${props.theme.palette.text.primary}`};
 `;
 
 const TierContainer = styled("div")`
@@ -31,17 +28,16 @@ const TierContainer = styled("div")`
  * @param {string} props.towerType Shows if the tower is a monkey or hero
  */
 export default function TierPathText ({ className, tier, tiers, towerType}) {
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <TierContainer className={className}>
                 {towerType === "hero" ? (
-                    <Tier variant="h3" component="h2" name={tier} data-dm={darkMode}>
+                    <Tier variant="h3" component="h2" name={tier}>
                         Level {tiers.top_path}
                     </Tier>
                 ) : (
-                    <Tier variant="h3" component="h2" name={tier} data-dm={darkMode}>
+                    <Tier variant="h3" component="h2" name={tier}>
                         { tiers.top_path }
                         &nbsp;-&nbsp;
                         { tiers.middle_path }

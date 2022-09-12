@@ -5,8 +5,8 @@ import {Alert, Snackbar} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
 
 
@@ -22,7 +22,7 @@ const PageAlert = styled(Alert, globalOptions)`
   box-shadow: -5px 5px 5px 1px ${props => rgbaHex(props["severity"] ?
                   props.theme.palette.background.tooltip
                   : props.theme.palette.primary.main
-          , props["data-dm"] ? 0.6 : 1)};
+          , props.theme.palette.mode === "dark" ? 0.6 : 1)};
   
   & .MuiAlert-icon {
     font-size: ${props => props["data-m"] ? 35 : 35}px;
@@ -56,7 +56,6 @@ const GA4_SNACKBAR_CLOSE_ID = "SNACKBAR_CLOSE";
  */
 export default function ConsecutiveSnackbars({snackPack, setSnackPack, open, setOpen, messageInfo, setMessageInfo}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     useEffect(() => {
         if (snackPack.length && !messageInfo) {
@@ -100,7 +99,6 @@ export default function ConsecutiveSnackbars({snackPack, setSnackPack, open, set
             >
                 <PageAlert
                     onClose={handleClose}
-                    data-dm={darkMode}
                     data-m={mobile}
                     severity={messageInfo ? messageInfo.variant ? messageInfo.variant : "info" : "info"}
                 >

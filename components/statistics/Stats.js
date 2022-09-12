@@ -7,8 +7,8 @@ import TowerStats from "./TowerStats";
 import DamageStats from "./DamageStats";
 import StatsLegend from "./StatsLegend";
 import StatsContainer from "./StatsContainer";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getHeroColor, getMonkeyColor, rgbaHex} from "../../lib/utils/utils";
 
 
@@ -36,7 +36,7 @@ const ModifierContainer = styled("div", globalOptions)`
                   ? rgbaHex(props["data-tow"] === "hero" 
                           ? getHeroColor(props["data-t"], props.theme) 
                           :  getMonkeyColor(props["data-t"], props.theme)
-                          , props["data-dm"] ? 0.65 : 1)
+                          , props.theme.palette.mode === "dark" ? 0.65 : 1)
                   : props.theme.palette.stats.primary
   };
 `;
@@ -61,13 +61,12 @@ const MoreContainer = styled(ModifierContainer)`
  */
 export default function Stats({stats, type, path, towerType = "monkey", ...rest}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <AllModifiersAndNotes data-m={mobile}>
                 <StatsLegend path={path} towerType={towerType} />
-                <ModifierContainer data-t={type} data-tow={towerType} data-dm={darkMode}>
+                <ModifierContainer data-t={type} data-tow={towerType}>
                     <TowerStats
                         stats={{
                             "attack_speed": stats.modifiers.attack_speed, "range": stats.modifiers.range,
@@ -85,7 +84,7 @@ export default function Stats({stats, type, path, towerType = "monkey", ...rest}
                 </ModifierContainer>
 
                 <ExtraStats data-m={mobile}>
-                    <DamageContainer data-m={mobile} data-t={type} data-tow={towerType} data-dm={darkMode}>
+                    <DamageContainer data-m={mobile} data-t={type} data-tow={towerType}>
                         <DamageStats
                             stats={{
                                 "damage": stats.modifiers.damage,
@@ -106,7 +105,7 @@ export default function Stats({stats, type, path, towerType = "monkey", ...rest}
                         />
                     </DamageContainer>
 
-                    <MoreContainer data-m={mobile} data-t={type} data-tow={towerType} data-dm={darkMode}>
+                    <MoreContainer data-m={mobile} data-t={type} data-tow={towerType}>
                         <MoreStats
                             stats={{
                                 "footprint": stats.modifiers.footprint, "hotkey": stats.modifiers.hotkey, "duration": stats.modifiers.duration,
@@ -125,7 +124,7 @@ export default function Stats({stats, type, path, towerType = "monkey", ...rest}
                 </ExtraStats>
 
                 {stats.notes.length > 0 && (
-                    <ModifierContainer data-t={type} data-tow={towerType} data-dm={darkMode}>
+                    <ModifierContainer data-t={type} data-tow={towerType}>
                         <StatsContainer title="Notes" direction="column" type={type} towerType={towerType}>
                             <StatNotes notes={stats.notes} />
                         </StatsContainer>

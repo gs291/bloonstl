@@ -1,9 +1,7 @@
-import {useSelector} from "react-redux";
 import {styled} from "@mui/material/styles";
 import {Grid, Typography} from "@mui/material";
 
 import {rgbaHex} from "../../lib/utils/utils";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
 
@@ -12,7 +10,7 @@ const Title = styled(Grid, globalOptions)`
   padding-bottom: 20px;
   
   text-align: center;
-  background-color: ${props => rgbaHex(props["data-bc"], props["data-dm"] ? 0.75 : 1)};
+  background-color: ${props => rgbaHex(props["data-bc"], props.theme.palette.mode === "dark" ? 0.75 : 1)};
   border-top-left-radius: 13px;
   border-top-right-radius: 13px;
   color: ${props => props.theme.palette.text.primary};
@@ -27,11 +25,10 @@ const Title = styled(Grid, globalOptions)`
  * @param {string} props.backgroundColor Color to be applied to the title
  */
 export default function GridTitle({ className, children, backgroundColor}) {
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <Title className={className} data-bc={backgroundColor} data-dm={darkMode} item>
+            <Title className={className} data-bc={backgroundColor} item>
                 <Typography variant="h2">
                     { children }
                 </Typography>

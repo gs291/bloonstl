@@ -3,8 +3,8 @@ import {styled} from "@mui/material/styles";
 import {DoubleArrow} from "@mui/icons-material";
 
 import {getTierColor} from "../../lib/utils/utils";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const UpgradeArrowContainer = styled("div")`
@@ -30,12 +30,11 @@ const Arrow = styled(DoubleArrow, globalOptions)`
  */
 export default function UpgradeArrow({ className, tier, selected }) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <UpgradeArrowContainer className={className}>
-                <Arrow data-s={selected} tier={tier} data-dm={darkMode} data-m={mobile}/>
+                <Arrow data-s={selected} tier={tier} data-m={mobile}/>
             </UpgradeArrowContainer>
         </>
     );

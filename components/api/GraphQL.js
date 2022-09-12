@@ -8,8 +8,7 @@ import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
 import ApiItem from "../api/ApiItem";
 import TowerText from "../tower/TowerText";
 import FixedDivider from "../divider/FixedDivider";
-import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getMobile} from "../../lib/redux/selectors";
 import {EXPAND_PREFIX, SELECT_CONTENT_EXPAND, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -54,10 +53,10 @@ const ExpanderContainer = styled("div")`
   width: 100%;
 `;
 
-const Expander = styled(Accordion, globalOptions)`
+const Expander = styled(Accordion)`
   background-color: ${props => props.theme.palette.background.default};
   ${props => {
-      const rgb = props["data-dm"] ? '255 255 255' : '0 0 0';
+      const rgb = props.theme.palette.mode === "dark" ? '255 255 255' : '0 0 0';
       return `box-shadow: 0px 2px 10px -1px rgb(${rgb} / 20%), 0px 1px 3px 0px rgb(${rgb} / 14%), 0px 1px 3px 0px rgb(${rgb} / 12%);`;
   }}
 `;
@@ -89,7 +88,6 @@ const GA4_GRAPHQL_EXPAND_ID = "GRAPHQL_EXPAND";
  */
 export default function GraphQL({className, api, tag}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
     const [path, setPath] = useState("");
 
     useEffect(() => {
@@ -124,7 +122,7 @@ export default function GraphQL({className, api, tag}) {
                 </Information>
 
                 <ExpanderContainer>
-                    <Expander data-dm={darkMode}>
+                    <Expander>
                         <ExpanderSummary
                             expandIcon={<ExpandMore />}
                             onClick={handleClick}

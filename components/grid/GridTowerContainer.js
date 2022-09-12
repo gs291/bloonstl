@@ -6,13 +6,13 @@ import GridTitle from "./GridTitle";
 import GridItems from "./GridItems";
 import TowerCard from "../tower/TowerCard";
 import {rgbaHex} from "../../lib/utils/utils";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const TowerGrid = styled(Grid, globalOptions)`
   border-radius: 20px;
-  border: 6px solid ${props => rgbaHex(props["data-tc"], props["data-dm"] ? 0.75 : 1)};
+  border: 6px solid ${props => rgbaHex(props["data-tc"], props.theme.palette.mode === "dark" ? 0.75 : 1)};
   box-shadow: 10px 10px 10px ${props => props["data-bc"]};
 `;
 
@@ -29,7 +29,6 @@ const TowerGrid = styled(Grid, globalOptions)`
  */
 export default function GridTowerContainer({towers, title, tier, backgroundColor, titleColor, ignoreFilter, }) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     let gridSpacing = 4;
     if (mobile) {
@@ -38,7 +37,7 @@ export default function GridTowerContainer({towers, title, tier, backgroundColor
 
     return (
         <>
-            <TowerGrid container direction="column" data-tc={titleColor} data-bc={backgroundColor} data-dm={darkMode}>
+            <TowerGrid container direction="column" data-tc={titleColor} data-bc={backgroundColor}>
                 <GridTitle backgroundColor={titleColor}>
                     {title}
                 </GridTitle>

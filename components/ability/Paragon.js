@@ -5,8 +5,8 @@ import {styled} from "@mui/material/styles";
 import Ability from "./Ability";
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const ParagonContainer = styled("div", globalOptions)`
@@ -20,7 +20,7 @@ const ParagonContainer = styled("div", globalOptions)`
   
   transition: 0.3s;
   border: 4px solid ${props => props["data-s"] ? props.theme.palette.ability.paragon : "transparent"};
-  background-color: ${props => rgbaHex(props.theme.palette.ability.paragon, props["data-dm"] ? 0.5 : 0.75) };
+  background-color: ${props => rgbaHex(props.theme.palette.ability.paragon, props.theme.palette.mode === "dark" ? 0.5 : 0.75) };
   border-radius: 10px;
   box-shadow: 0 0 10px 2px ${props => props.theme.palette.ability.shadow};
   
@@ -98,7 +98,6 @@ const DegreeContainer = styled("div", globalOptions)`
  */
 export default function Paragon({ability, fileName, tier, towerType, selected, ...rest}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const [open, setOpen] = useState(false);
     const [touchTimeout, setTouchTimeout] = useState(false);
@@ -127,24 +126,24 @@ export default function Paragon({ability, fileName, tier, towerType, selected, .
                 onMouseLeave={handleExit}
                 onTouchStart={handleExit}
                 onTouchEnd={handleTimeout}
-                data-m={mobile} data-dm={darkMode}
+                data-m={mobile}
                 data-s={selected}
                 {...rest}
             >
                 <BackgroundContainer>
                     <BackgroundText data-m={mobile}>
                         <InfoText data-m={mobile}>
-                            <UnSelectableText variant={mobile ? "subtitle2" : "caption"} data-m={mobile} data-dm={darkMode}>
+                            <UnSelectableText variant={mobile ? "subtitle2" : "caption"} data-m={mobile}>
                                 PARAGON
                             </UnSelectableText>
                         </InfoText>
                         <MiddleFiller data-m={mobile} />
                         <InfoText data-m={mobile}>
                             <DegreeContainer data-m={mobile}>
-                                <UnSelectableText variant="subtitle2" data-m={mobile} data-dm={darkMode}>
+                                <UnSelectableText variant="subtitle2" data-m={mobile}>
                                     DEGREE
                                 </UnSelectableText>
-                                <UnSelectableText variant={mobile ? "subtitle2" : "subtitle1"} data-m={mobile} data-dm={darkMode}>
+                                <UnSelectableText variant={mobile ? "subtitle2" : "subtitle1"} data-m={mobile}>
                                     {mobile && (<>&nbsp;</>)}1
                                 </UnSelectableText>
                             </DegreeContainer>
