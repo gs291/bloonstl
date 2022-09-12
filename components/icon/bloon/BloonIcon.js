@@ -1,8 +1,6 @@
-import {useSelector} from "react-redux";
 import {styled} from "@mui/material/styles";
 
 import BloonIconAnimator from "./BloonIconAnimator";
-import {getDarkMode} from "../../../lib/redux/selectors";
 import {globalOptions} from "../../../lib/utils/emotionStyled";
 
 
@@ -35,7 +33,6 @@ const InnerPath = styled("path", globalOptions)`
  * @param {string} [props.className] class to apply to the component
  */
 export default function BloonIcon({className}) {
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>

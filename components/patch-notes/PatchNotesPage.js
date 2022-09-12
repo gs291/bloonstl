@@ -14,9 +14,9 @@ import DefaultButton from "../button/DefaultButton";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {latest, latestMajor} from "../../lib/utils/patches";
 import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
+import {getMobile, getPageData} from "../../lib/redux/selectors";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
 import TableOfContents from "../table-of-contents/TableOfContents";
-import {getDarkMode, getMobile, getPageData} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -65,7 +65,6 @@ export default function PatchNotesPage({ patch }) {
     const dispatch = useDispatch();
     const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const reduxPageName = `patches`;
 
@@ -162,7 +161,7 @@ export default function PatchNotesPage({ patch }) {
                 <DefaultContainer data-m={mobile}>
                     <DefaultButton
                         onClick={() => handleButtonClick({target: {value: latest, type: "latest"}})}
-                        variant={darkMode ? "outlined" : "contained"}
+                        variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
                         data-bc={theme.palette.button.patch}
                     >
                         <TowerText variant="subtitle1">
@@ -171,7 +170,7 @@ export default function PatchNotesPage({ patch }) {
                     </DefaultButton>
                     <DefaultButton
                         onClick={() => handleButtonClick({target: {value: latestMajor, type: "latestMajor"}})}
-                        variant={darkMode ? "outlined" : "contained"}
+                        variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
                         data-bc={theme.palette.button.patch}
                     >
                         <TowerText variant="subtitle1">

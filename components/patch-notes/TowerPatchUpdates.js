@@ -1,6 +1,6 @@
-import {styled} from "@mui/material/styles";
 import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {styled, useTheme} from "@mui/material/styles";
 
 import PatchItems from "./PatchItems";
 import TowerText from "../tower/TowerText";
@@ -12,8 +12,8 @@ import DefaultButton from "../button/DefaultButton";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
 import PatchRefreshButton from "../button/PatchRefreshButton";
+import {getMobile, getPageData} from "../../lib/redux/selectors";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
-import {getDarkMode, getMobile, getPageData} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -69,6 +69,7 @@ const GA4_LOAD_MORE_BUTTON_ID = "PATCH_LOAD_MORE";
  * @param {string} props.name The color to apply to the patch updates border[s]
  */
 export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
+    const theme = useTheme();
     const elemRef = useRef();
     const isVisible = useVisible(elemRef);
 
@@ -77,7 +78,6 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
     const pageData = useSelector(state => getPageData(state, reduxPageName));
 
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const [fetch, setFetch] = useState(false);
     const [patchData, setPatchData] = useState((Object.keys(pageData).length > 0) ? pageData :  {start: 0, items: []});
@@ -162,7 +162,7 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
                                     ))}
                                     <FooterContainer>
                                         {patchData.start !== -1 ? (<>{!progress.isLoading && (
-                                            <DefaultButton onClick={handleFetch} data-bc={borderColor} variant={darkMode ? "outlined" : "contained"}>
+                                            <DefaultButton onClick={handleFetch} data-bc={borderColor} variant={theme.palette.mode === "dark" ? "outlined" : "contained"}>
                                                 <TowerText variant={mobile ? "subtitle1" : "h6"}>
                                                     Load More
                                                 </TowerText>

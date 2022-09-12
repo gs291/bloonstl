@@ -5,8 +5,8 @@ import TierText from "../tower/TierText";
 import TowerText from "../tower/TowerText";
 import FilterTiers from "../filters/FilterTiers";
 import TierPathText from "../tower/TierPathText";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 const AbilityTier = styled("div", globalOptions)`
   display: flex;
@@ -43,7 +43,6 @@ const Label = styled(TowerText)`
  */
 export default function AbilityPathSelection({ tier, tiers, handleTier, sandbox }) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>

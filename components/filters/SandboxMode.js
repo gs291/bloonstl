@@ -6,7 +6,7 @@ import {useTheme} from "@mui/material/styles";
 import TowerText from "../tower/TowerText";
 import {getTierColor} from "../../lib/utils/utils";
 import DefaultButton from "../button/DefaultButton";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getMobile} from "../../lib/redux/selectors";
 import ColorChangingDivider from "../divider/ColorChangingDivider";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
@@ -69,7 +69,6 @@ const GA4_SANDBOX_MODE_RESET_ID = `${GA4_SANDBOX_MODE_ID}_RESET`;
 export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pauseSandbox, setPauseSandbox, towerType, ...rest}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const handleResetButton = () => {
         handleReset();
@@ -104,7 +103,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                     <DefaultButton
                         onClick={handleResetButton}
                         data-bc={getTierColor(tier, theme)}
-                        variant={darkMode ? "outlined" : "contained"}
+                        variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
                     >
                         <TowerText variant="subtitle2" font={true}>
                             Reset Path
@@ -125,7 +124,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                     onClick={handleSandboxChange}
                     data-bc={getTierColor(tier, theme)}
                     data-s={sandbox}
-                    variant={darkMode ? "outlined" : "contained"}
+                    variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
                 >
                     <TowerText variant="subtitle2" font={true}>
                         {sandbox ? "Disable" : "Enable"} Sandbox
@@ -153,7 +152,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                         <PauseClickingButton
                             onClick={handlePauseChange}
                             data-bc={getTierColor(tier, theme)}
-                            variant={darkMode ? "outlined" : "contained"}
+                            variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
                         >
                             <TowerText variant="subtitle2" font={true}>
                                 {pauseSandbox ? "Unpause" : "Pause"} ability clicking
@@ -166,7 +165,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                     <DefaultButton
                         onClick={handleResetButton}
                         data-bc={getTierColor(tier, theme)}
-                        variant={darkMode ? "outlined" : "contained"}
+                        variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
                     >
                         <TowerText variant="subtitle2" font={true}>
                             Reset Path

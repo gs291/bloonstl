@@ -1,11 +1,11 @@
 import {useState} from "react";
 import {useSelector} from "react-redux";
-import {styled} from "@mui/material/styles";
+import {styled, useTheme} from "@mui/material/styles";
 
 import TowerText from "../tower/TowerText";
 import ImageFill from "../image/ImageFill";
 import DefaultButton from "../button/DefaultButton";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getMobile} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -66,8 +66,8 @@ const GA4_KEYBINDINGS_ID = "KEYBINDINGS";
  * @param {Object<{href: string, title: string}>} props.tag Tag used for table of contents
  */
 export default function Keybindings({ className, tag }) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
     const [show, setShow] = useState(false);
     const src = {
         "false": "resources/hotkeys.png",
@@ -90,7 +90,7 @@ export default function Keybindings({ className, tag }) {
                    Click the button below to switch between keyboard keys and icons. Click on the image to view the full image.
                 </Description>
                 <ButtonContainer>
-                    <DefaultButton variant={darkMode ? "outlined" : "contained"} onClick={handleClick}>
+                    <DefaultButton variant={theme.palette.mode === "dark" ? "outlined" : "contained"} onClick={handleClick}>
                         <TowerText variant="h6">
                             REPLACE {show ? "ICONS WITH KEYS" : "KEYS WITH ICONS"}
                         </TowerText>

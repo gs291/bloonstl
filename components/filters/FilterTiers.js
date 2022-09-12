@@ -1,8 +1,6 @@
-import {useSelector} from "react-redux";
 import {styled} from "@mui/material/styles";
 
 import TierButton from "../button/TierButton";
-import {getDarkMode} from "../../lib/redux/selectors";
 
 
 const FilterContainer = styled("div")`
@@ -31,7 +29,6 @@ const TierButtons = styled("div")`
  * @param {function} props.handleTier The function to run when a tier is selected
  */
 export default function FilterTiers({ className, tier, handleTier }) {
-    const darkMode = useSelector(getDarkMode);
 
     // eslint-disable-next-line react/display-name
     if (!handleTier){ handleTier = (_, __) => <></>; }

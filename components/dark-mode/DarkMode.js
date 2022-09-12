@@ -1,11 +1,11 @@
-import {styled} from "@mui/material/styles";
 import {useDispatch, useSelector} from "react-redux";
+import {styled, useTheme} from "@mui/material/styles";
 
 import {rgbaHex} from "../../lib/utils/utils";
 import siteSizes from "../../lib/utils/siteSizes";
+import {getMobile} from "../../lib/redux/selectors";
 import {toggleDarkMode} from "../../lib/redux/actions";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, ga4SendSelectContent, SELECT_CONTENT_BUTTON} from "../../lib/utils/ga4";
 
 
@@ -70,9 +70,9 @@ const GA4_DARK_MODE_ID = "DARK_MODE";
  * @param {string} [props.className] class to apply to the component
  */
 export default function DarkMode({className}){
+    const theme = useTheme();
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const changeDarkMode = () => {
         dispatch(toggleDarkMode());
@@ -87,7 +87,7 @@ export default function DarkMode({className}){
                 className={className}
             >
                 <Switch
-                    checked={!darkMode}
+                    checked={!(theme.palette.mode === "dark")}
                     type="checkbox"
                     readOnly
                 />

@@ -6,7 +6,7 @@ import {Card, CardContent, Link as MUILink, Typography} from "@mui/material";
 
 import Icon from "../tower/Icon";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getBorder, getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getBorder, getMobile} from "../../lib/redux/selectors";
 import {getTowerLink, getMonkeyColor, getHeroColor, rgbaHex} from "../../lib/utils/utils";
 import {CARD_PREFIX, SELECT_CONTENT_CARD, ga4SendSelectContent} from "../../lib/utils/ga4";
 
@@ -82,7 +82,6 @@ export default function TowerCard({tower, towerType, tier, ignoreFilter}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
     const border = useSelector(getBorder);
-    const darkMode = useSelector(getDarkMode);
 
     let href, borderColor, backgroundColor, hoverBackgroundColor;
 

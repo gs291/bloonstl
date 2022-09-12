@@ -1,7 +1,4 @@
-import {useSelector} from "react-redux";
 import {styled} from "@mui/material/styles";
-
-import {getDarkMode} from "../../lib/redux/selectors";
 
 
 export const List = styled("ul")`
@@ -15,7 +12,6 @@ export const List = styled("ul")`
  * @param {any} props.children Children supplied to the unordered list item
  */
 export default function LegalUList({children, ...rest}) {
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
