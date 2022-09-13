@@ -50,10 +50,6 @@ const PatchText = styled(TowerText)`
   cursor: default;
 `;
 
-const Sandbox = styled(SandboxMode)`
-  margin-bottom: 15px;
-`;
-
 // In order to fix an infinite re-rendering issue from path being set back and forth components
 // this function had to be placed outside the component so its never "re-rendered"
 // This unfortunately forces having to pass state sets into the function down the component tree
@@ -150,7 +146,7 @@ export default function MonkeyPage({monkey}) {
             <PathCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
                 Path Cost: $<Counter cost={stats.cost} />
             </PathCost>
-            <Sandbox
+            <SandboxMode
                 sandbox={sandbox} setSnackPack={setSnackPack}
                 setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox}
                 tier={sandbox ? monkey.tier : tier} handleReset={handlePathReset} towerType="monkey"

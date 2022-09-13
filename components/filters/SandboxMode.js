@@ -15,6 +15,7 @@ import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../
 const Group = styled(FormGroup, globalOptions)`
   align-items: center;
   width: ${props => props["data-m"] ? 100 : 50}%;
+  margin-bottom: ${props => props["data-m"] ? 30 : 45}px;
 `;
 
 const SmallTitle = styled(TowerText)`

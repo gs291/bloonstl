@@ -33,16 +33,6 @@ const Title = styled(TowerText)`
   cursor: default;
 `;
 
-const SmallTitle = styled(TowerText)`
-  margin-top: 10px;
-  text-align: center;
-  cursor: default;
-`;
-
-const Sandbox = styled(SandboxMode)`
-  margin-bottom: 15px;
-`;
-
 const PatchText = styled(TowerText)`
   margin-top: 20px;
   text-align: center;
@@ -111,7 +101,7 @@ export default function HeroPage({ hero }) {
             <PathXPCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
                 Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} gold={false}/>
             </PathXPCost>
-            <Sandbox
+            <SandboxMode
                 sandbox={sandbox} setSnackPack={setSnackPack}
                 setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox}
                 tier={hero.tier} handleReset={handlePathReset} towerType="hero"
