@@ -9,13 +9,13 @@ import ProsCons from "../tower/ProsCons";
 import TowerText from "../tower/TowerText";
 import SandboxMode from "../filters/SandboxMode";
 import TowerImgInfo from "../tower/TowerImgInfo";
+import TierPathText from "../tower/TierPathText";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
 import TowerPatchUpdates from "../patch-notes/TowerPatchUpdates";
-import AbilityPathSelection from "../ability/AbilityPathSelection";
 import ConsecutiveSnackbars from "../snackbar/ConsecutiveSnackbars";
 import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
 import {checkIfValidPath, getInitialTowerStats, getMonkeyColor} from "../../lib/utils/utils";
@@ -143,14 +143,14 @@ export default function MonkeyPage({monkey}) {
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <AbilityPathSelection tier={sandbox ? monkey.tier : tier} tiers={path} handleTier={handleTier} sandbox={sandbox} />
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <AbilitiesText variant={mobile ? "h4" : "h3"}>
                 Monkey Abilities
             </AbilitiesText>
+            <TierPathText tier={monkey.tier} tiers={monkey.tiers[tier][0]} towerName={monkey.type}/>
             <PathCost variant={mobile ? "h6" : "h4"}>
                 Path Cost: $<Counter cost={stats.cost} />
             </PathCost>
+            <Sandbox sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={sandbox ? monkey.tier : tier} handleReset={handlePathReset} towerType="monkey"/>
             <MonkeyAbilities
                 abilities={monkey.abilities}
                 monkeyName={monkey.name} monkeyFile={monkey.filename}
@@ -159,7 +159,6 @@ export default function MonkeyPage({monkey}) {
                 stats={monkey.stats} setStats={setStats} setSnackPack={setSnackPack}
             />
             {!sandbox && (<FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />)}
-            <Sandbox sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={sandbox ? monkey.tier : tier} handleReset={handlePathReset} towerType="monkey"/>
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="monkey" type={monkey.type}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h4" : "h3"}>

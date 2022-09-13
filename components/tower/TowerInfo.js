@@ -3,7 +3,6 @@ import {styled} from "@mui/material/styles";
 import {useTheme} from "@mui/material/styles";
 
 import Counter from "./Counter";
-import TierText from "./TierText";
 import TowerText from "./TowerText";
 import {getMobile} from "../../lib/redux/selectors";
 import {getThousandsNumber, rgbaHex} from "../../lib/utils/utils";
@@ -24,11 +23,8 @@ const TierCostContainer = styled("div")`
   align-items: center;
 `;
 
-const TowerTier = styled(TierText)`
-  flex: 33%;
-`;
-
 const TowerCosts = styled("div")`
+  margin-top:  ${props => props["data-m"] ? 10 : 20}px;
   margin-left: ${props => props["data-m"] ? 0 : "20px"};
   flex: 66%;
 `;
@@ -53,13 +49,12 @@ export default function TowerInfo({tower}) {
                     {tower.description}
                 </TowerText>
                 <TierCostContainer data-m={mobile}>
-                    <TowerTier tier={tower.tier} showText={true}/>
                     <TowerCosts data-m={mobile}>
-                        <TowerText variant="subtitle1" textColor={theme.palette.text.gold}>
+                        <TowerText variant={mobile ? "h5" : "h6"} textColor={theme.palette.text.gold}>
                             In-game cost:&nbsp;$<Counter cost={tower.cost_gold} />
                         </TowerText>
                         { typeof tower.cost_cash === "number" && (
-                            <TowerText variant="subtitle1" textColor={theme.palette.text.cash}>
+                            <TowerText variant={mobile ? "h5" : "h6"} textColor={theme.palette.text.cash}>
                                 Cash cost: {tower.cost_cash > 0 ? `\$${getThousandsNumber(tower.cost_cash)}` : "FREE"}
                             </TowerText>
                         )}

@@ -6,7 +6,6 @@ import {useTheme} from "@mui/material/styles";
 import Counter from "../tower/Counter";
 import Stats from "../statistics/Stats";
 import ProsCons from "../tower/ProsCons";
-import TierText from "../tower/TierText";
 import TowerText from "../tower/TowerText";
 import SandboxMode from "../filters/SandboxMode";
 import TierPathText from "../tower/TierPathText";
@@ -40,7 +39,6 @@ const SmallTitle = styled(TowerText)`
 `;
 
 const Sandbox = styled(SandboxMode)`
-  margin-top: ${props => props.sandbox ? 0 : 40}px;
   margin-bottom: 15px;
 `;
 
@@ -101,32 +99,19 @@ export default function HeroPage({ hero }) {
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <SmallTitle variant={mobile ? "h4" : "h3"}>
-                Ability Path Level
-            </SmallTitle>
-            <TowerText variant="subtitle2" font={true}>
-                {sandbox
-                    ? "Click on an ability to change the path!"
-                    : "View the selected hero ability level below"
-                }
-            </TowerText>
-            <HeroTier data-m={mobile}>
-                <TierText tier={hero.tier} text="Tower Tier" showText />
-                <TierPText tier={hero.tier} tiers={{"top_path": path + 1}} towerType="hero" />
-            </HeroTier>
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h4" : "h3"}>
                 Hero Abilities
             </Title>
+            <TierPText tiers={{"top_path": path + 1}} towerType="hero" towerName={hero.name} />
             <PathXPCost variant={mobile ? "h6" : "h4"}>
                 Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} gold={false}/>
             </PathXPCost>
+            <Sandbox sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={hero.tier} handleReset={handlePathReset} towerType="hero"/>
             <Abilities
                 abilities={hero.abilities} heroName={hero.name} heroFile={hero.filename}
                 defaultStats={hero.stats} setStats={setStats} tier={hero.tier}
                 path={path} initialPros={hero.info.pros} initialCons={hero.info.cons} setPath={sandbox && !pauseSandbox && setPath}
             />
-            <Sandbox sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={hero.tier} handleReset={handlePathReset} towerType="hero"/>
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="hero" type={hero.name} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h4" : "h3"}>

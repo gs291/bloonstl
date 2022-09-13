@@ -7,16 +7,16 @@ import TowerText from "../tower/TowerText";
 import {getTierColor} from "../../lib/utils/utils";
 import DefaultButton from "../button/DefaultButton";
 import {getMobile} from "../../lib/redux/selectors";
-import ColorChangingDivider from "../divider/ColorChangingDivider";
+import {globalOptions} from "../../lib/utils/emotionStyled";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
-const Group = styled(FormGroup)`
+const Group = styled(FormGroup, globalOptions)`
   align-items: center;
+  width: ${props => props["data-m"] ? 100 : 50}%;
 `;
 
 const SmallTitle = styled(TowerText)`
-  margin-top: 20px;
   text-align: center;
   cursor: default;
 `;
@@ -28,14 +28,24 @@ const TitleContainer = styled("div")`
   align-items: center;
 `;
 
+const SandboxUtils = styled("div")`
+  width: 100%;
+  
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  
+  & > button {
+    flex: 1
+  }
+`;
+
 const SandboxButton = styled(DefaultButton)`
-  margin-top: ${props => props["data-s"] ? 30 : 20}px;
+  margin-top: 30px;
   margin-bottom: 20px;
 `;
 
-const PauseClickingButton = styled(DefaultButton)`
-  margin-bottom: 15px;
-`;
+const PauseClickingButton = styled(DefaultButton)``;
 
 const HelperText = styled("div")`
   margin-bottom: 10px;
@@ -98,32 +108,18 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
 
     return (
         <>
-            <Group {...rest}>
-                {sandbox && (
-                    <DefaultButton
-                        onClick={handleResetButton}
-                        data-bc={getTierColor(tier, theme)}
-                        variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
-                    >
-                        <TowerText variant="subtitle2" font={true}>
-                            Reset Path
-                        </TowerText>
-                    </DefaultButton>
-                )}
+            <Group data-m={mobile} {...rest}>
                 <TitleContainer>
                     <SmallTitle variant={mobile ? "h6" : "h5"} data-s={sandbox}>
                         Sandbox Mode
                     </SmallTitle>
-                    {sandbox ? (<ColorChangingDivider />) : (
-                        <TowerText variant="subtitle2" font>
-                            Set your own path!
-                        </TowerText>
-                    )}
+                    <TowerText variant="subtitle2" font>
+                        {sandbox ? `Click on an ability to change the path!${towerType === "monkey" ? '*' : ''}` : "Set your own path!"}
+                    </TowerText>
                 </TitleContainer>
                 <SandboxButton
                     onClick={handleSandboxChange}
                     data-bc={getTierColor(tier, theme)}
-                    data-s={sandbox}
                     variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
                 >
                     <TowerText variant="subtitle2" font={true}>
@@ -133,12 +129,6 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
 
                 {sandbox && (
                     <>
-                        <HelperText>
-                            <TowerText variant={mobile ? "subtitle1" : "h6"} font={true}>
-                                Click on an ability to change the path!{towerType === "monkey" && ('*')}
-                            </TowerText>
-                            <ColorChangingDivider height={3}/>
-                        </HelperText>
                         {towerType === "monkey" && (
                             <CaptionText>
                                 <TowerText variant={mobile ? "caption" : "caption"} font={true}>
@@ -149,28 +139,32 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                                 </TowerText>
                             </CaptionText>
                         )}
-                        <PauseClickingButton
-                            onClick={handlePauseChange}
-                            data-bc={getTierColor(tier, theme)}
-                            variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
-                        >
-                            <TowerText variant="subtitle2" font={true}>
-                                {pauseSandbox ? "Unpause" : "Pause"} ability clicking
-                            </TowerText>
-                        </PauseClickingButton>
                     </>
                 )}
 
                 {sandbox && (
-                    <DefaultButton
-                        onClick={handleResetButton}
-                        data-bc={getTierColor(tier, theme)}
-                        variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
-                    >
-                        <TowerText variant="subtitle2" font={true}>
-                            Reset Path
-                        </TowerText>
-                    </DefaultButton>
+                    <>
+                        <SandboxUtils>
+                            <PauseClickingButton
+                                onClick={handlePauseChange}
+                                data-bc={getTierColor(tier, theme)}
+                                variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
+                            >
+                                <TowerText variant="subtitle2" font={true}>
+                                    {pauseSandbox ? "Unpause" : "Pause"} Selections
+                                </TowerText>
+                            </PauseClickingButton>
+                            <DefaultButton
+                                onClick={handleResetButton}
+                                data-bc={getTierColor(tier, theme)}
+                                variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
+                            >
+                                <TowerText variant="subtitle2" font={true}>
+                                    Reset Path
+                                </TowerText>
+                            </DefaultButton>
+                        </SandboxUtils>
+                    </>
                 )}
             </Group>
         </>
