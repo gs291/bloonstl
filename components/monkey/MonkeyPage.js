@@ -146,11 +146,15 @@ export default function MonkeyPage({monkey}) {
             <AbilitiesText variant={mobile ? "h4" : "h3"}>
                 Monkey Abilities
             </AbilitiesText>
-            <TierPathText tier={monkey.tier} tiers={monkey.tiers[tier][0]} towerName={monkey.type}/>
-            <PathCost variant={mobile ? "h6" : "h4"}>
+            <TierPathText tiers={path} textColor={dividerBackgroundColor}/>
+            <PathCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
                 Path Cost: $<Counter cost={stats.cost} />
             </PathCost>
-            <Sandbox sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={sandbox ? monkey.tier : tier} handleReset={handlePathReset} towerType="monkey"/>
+            <Sandbox
+                sandbox={sandbox} setSnackPack={setSnackPack}
+                setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox}
+                tier={sandbox ? monkey.tier : tier} handleReset={handlePathReset} towerType="monkey"
+            />
             <MonkeyAbilities
                 abilities={monkey.abilities}
                 monkeyName={monkey.name} monkeyFile={monkey.filename}

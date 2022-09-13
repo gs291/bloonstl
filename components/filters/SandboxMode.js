@@ -8,6 +8,7 @@ import {getTierColor} from "../../lib/utils/utils";
 import DefaultButton from "../button/DefaultButton";
 import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
+import ColorChangingDivider from "../divider/ColorChangingDivider";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -41,8 +42,7 @@ const SandboxUtils = styled("div")`
 `;
 
 const SandboxButton = styled(DefaultButton)`
-  margin-top: 30px;
-  margin-bottom: 20px;
+  margin-top: 10px;
 `;
 
 const PauseClickingButton = styled(DefaultButton)``;
@@ -56,7 +56,8 @@ const HelperText = styled("div")`
 `;
 
 const CaptionText = styled(HelperText)`
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 `;
 
 
@@ -74,14 +75,16 @@ const GA4_SANDBOX_MODE_RESET_ID = `${GA4_SANDBOX_MODE_ID}_RESET`;
  * @param {string} props.tier The selected tier
  * @param {boolean} props.pauseSandbox Shows if the sandbox mode is paused or not
  * @param {function} props.setPauseSandbox The function set the pause sandbox mode
+ * @param {function} props.setSnackPack The function to set the next consecutive snackbar
  * @param {string} props.towerType Shows if the tower is a monkey or hero
  */
-export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pauseSandbox, setPauseSandbox, towerType, ...rest}) {
+export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pauseSandbox, setPauseSandbox, setSnackPack, towerType, ...rest}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
 
     const handleResetButton = () => {
         handleReset();
+        setSnackPack((prev) => [...prev, { message: "Sandbox Path Reset", variant: "info", key: new Date().getTime() }])
         ga4SendSelectContent(SELECT_CONTENT_BUTTON, {item_id: `${BUTTON_PREFIX}${GA4_SANDBOX_MODE_RESET_ID}`});
     }
 
@@ -91,6 +94,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                 item_id: `${BUTTON_PREFIX}${GA4_SANDBOX_MODE_ID}`,
                 item_checked: !prevSandbox
             });
+            setSnackPack((prev) => [...prev, { message: `Sandbox ${!prevSandbox ? "Enabled" : "Disabled"}`, variant: "info", key: new Date().getTime() }])
             return !prevSandbox;
         });
         setPauseSandbox(false);
@@ -102,6 +106,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                 item_id: `${BUTTON_PREFIX}${GA4_SANDBOX_MODE_PAUSE_ID}`,
                 item_checked: !prevPause
             });
+            setSnackPack((prev) => [...prev, { message: `Sandbox Ability Selection ${!prevPause ? "Paused" : "Unpaused"}`, variant: "info", key: new Date().getTime() }])
             return !prevPause;
         });
     };
@@ -110,13 +115,14 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
         <>
             <Group data-m={mobile} {...rest}>
                 <TitleContainer>
-                    <SmallTitle variant={mobile ? "h6" : "h5"} data-s={sandbox}>
+                    <SmallTitle variant={mobile ? "h4" : "h3"} data-s={sandbox}>
                         Sandbox Mode
                     </SmallTitle>
-                    <TowerText variant="subtitle2" font>
+                    <TowerText variant="h5" font>
                         {sandbox ? `Click on an ability to change the path!${towerType === "monkey" ? '*' : ''}` : "Set your own path!"}
                     </TowerText>
                 </TitleContainer>
+                <ColorChangingDivider width={70}/>
                 <SandboxButton
                     onClick={handleSandboxChange}
                     data-bc={getTierColor(tier, theme)}
@@ -129,7 +135,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
 
                 {sandbox && (
                     <>
-                        {towerType === "monkey" && (
+                        {towerType === "monkey" ? (
                             <CaptionText>
                                 <TowerText variant={mobile ? "caption" : "caption"} font={true}>
                                     * Sandbox mode follows BTD 6 Path Rules!
@@ -138,6 +144,8 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                                     * (e.g. 2-0-5 or 2-2-0 are valid while 1-1-1 or 5-3-0 are not)
                                 </TowerText>
                             </CaptionText>
+                        ) : (
+                            <br />
                         )}
                     </>
                 )}

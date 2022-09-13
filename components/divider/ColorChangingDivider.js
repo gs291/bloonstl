@@ -10,7 +10,7 @@ const ColorDivider = styled(FixedDivider)`
     100%{background-position:0% 82%}
   }
   
-  width: 100%;
+  width: ${props => props["data-w"] ? props["data-w"] : 100}%;
   height: ${props => props["data-h"] ? props["data-h"] : 4}px;
   border: none;
   border-radius: 10px;
@@ -24,7 +24,7 @@ const ColorDivider = styled(FixedDivider)`
  * Divider with a rainbow background
  *
  * @param {Object} props Component props
- * @param {string} props.width Width of the divider
+ * @param {number} props.width Width of the divider
  * @param {string} props.height Height of the divider
  * @param {string} [props.colors] Comma (and space) seperated list of HEX color codes
  */

@@ -18,6 +18,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 import TowerPatchUpdates from "../patch-notes/TowerPatchUpdates";
 import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
 import {getHeroColor, getInitialTowerStats} from "../../lib/utils/utils";
+import ConsecutiveSnackbars from "../snackbar/ConsecutiveSnackbars";
 
 
 const FilterDiff = styled(FilterDifficulty)`
@@ -87,6 +88,10 @@ export default function HeroPage({ hero }) {
     const [ pauseSandbox, setPauseSandbox ] = useState(false);
     const [ stats, setStats ] = useState(getInitialTowerStats(hero.stats, {pros: hero.info.pros, cons: hero.info.cons}));
 
+    const [ snackPack, setSnackPack ] = useState([]);
+    const [ openSnackbar, setOpenSnackbar ] = useState(false);
+    const [ messageInfo, setMessageInfo ] = useState(undefined);
+
     const handlePathReset = () => {
         setPath(0);
     };
@@ -102,11 +107,15 @@ export default function HeroPage({ hero }) {
             <Title variant={mobile ? "h4" : "h3"}>
                 Hero Abilities
             </Title>
-            <TierPText tiers={{"top_path": path + 1}} towerType="hero" towerName={hero.name} />
-            <PathXPCost variant={mobile ? "h6" : "h4"}>
+            <TierPText tiers={{"top_path": path + 1}} towerType="hero" textColor={dividerBackgroundColor} />
+            <PathXPCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
                 Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} gold={false}/>
             </PathXPCost>
-            <Sandbox sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={hero.tier} handleReset={handlePathReset} towerType="hero"/>
+            <Sandbox
+                sandbox={sandbox} setSnackPack={setSnackPack}
+                setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox}
+                tier={hero.tier} handleReset={handlePathReset} towerType="hero"
+            />
             <Abilities
                 abilities={hero.abilities} heroName={hero.name} heroFile={hero.filename}
                 defaultStats={hero.stats} setStats={setStats} tier={hero.tier}
@@ -126,6 +135,11 @@ export default function HeroPage({ hero }) {
                 Patch Updates
             </Title>
             <TowerPatchUpdates name={hero.name} borderColor={dividerBackgroundColor} />
+            <ConsecutiveSnackbars
+                snackPack={snackPack} setSnackPack={setSnackPack}
+                open={openSnackbar} setOpen={setOpenSnackbar}
+                messageInfo={messageInfo} setMessageInfo={setMessageInfo}
+            />
         </>
     );
 }
