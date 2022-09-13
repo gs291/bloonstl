@@ -32,6 +32,7 @@ const TitleContainer = styled("div")`
 
 const SandboxUtils = styled("div")`
   width: 100%;
+  margin-top: 15px;
   
   display: flex;
   flex-direction: row;
@@ -43,7 +44,7 @@ const SandboxUtils = styled("div")`
 `;
 
 const SandboxButton = styled(DefaultButton)`
-  margin-top: 10px;
+  margin-top: 20px;
 `;
 
 const PauseClickingButton = styled(DefaultButton)``;
@@ -119,11 +120,11 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                     <SmallTitle variant={mobile ? "h4" : "h3"} data-s={sandbox}>
                         Sandbox Mode
                     </SmallTitle>
+                    <ColorChangingDivider />
                     <TowerText variant="h5" font>
                         {sandbox ? `Click on an ability to change the path!${towerType === "monkey" ? '*' : ''}` : "Set your own path!"}
                     </TowerText>
                 </TitleContainer>
-                <ColorChangingDivider width={70}/>
                 <SandboxButton
                     onClick={handleSandboxChange}
                     data-bc={getTierColor(tier, theme)}
@@ -136,7 +137,7 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
 
                 {sandbox && (
                     <>
-                        {towerType === "monkey" ? (
+                        {towerType === "monkey" && (
                             <CaptionText>
                                 <TowerText variant={mobile ? "caption" : "caption"} font={true}>
                                     * Sandbox mode follows BTD 6 Path Rules!
@@ -145,8 +146,6 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, tier, pau
                                     * (e.g. 2-0-5 or 2-2-0 are valid while 1-1-1 or 5-3-0 are not)
                                 </TowerText>
                             </CaptionText>
-                        ) : (
-                            <br />
                         )}
                     </>
                 )}
