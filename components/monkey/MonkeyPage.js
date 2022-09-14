@@ -30,6 +30,7 @@ const AbilitiesText = styled(TowerText)`
 
 const PathCost = styled(TowerText)`
   margin-bottom: 20px;
+  cursor: default;
 `;
 
 const FilterDiff = styled(FilterDifficulty)`

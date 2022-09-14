@@ -75,6 +75,13 @@ const SandboxEnabled = styled(CircularProgress)`
   color: ${props => props["data-c"] ? props["data-c"] : props.theme.palette.text.primary};
 `;
 
+const SandboxEnabledText = styled(TowerText)`
+  position: absolute;
+  right: 8px;
+  cursor: default;
+  color: ${props => props["data-s"] ? props.theme.palette.filters.on : props.theme.palette.filters.off};
+`;
+
 const PauseClickingButton = styled(DefaultButton)`
   width: 100%;
 `;
@@ -171,6 +178,9 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, color, pa
                         </TowerText>
                     </SandboxButton>
                     {sandbox && (<SandboxEnabled data-c={color}/>)}
+                    <SandboxEnabledText data-s={sandbox} variant="h6">
+                        SB
+                    </SandboxEnabledText>
                 </SandboxButtonContainer>
 
                 {(towerType === "monkey" && sandbox) && (

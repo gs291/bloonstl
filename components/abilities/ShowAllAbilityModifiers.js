@@ -24,7 +24,7 @@ const Label = styled(FormControlLabel)`
   margin-left: 0;
 
   padding: 5px 15px;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 1px solid transparent;
   transition: 0.3s;
   

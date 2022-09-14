@@ -49,6 +49,7 @@ const Abilities = styled(HeroAbilities)`
 
 const PathXPCost = styled(TowerText)`
   margin-bottom: 20px;
+  cursor: default;
 `;
 
 /**
