@@ -27,9 +27,14 @@ const FilterDiff = styled(FilterDifficulty)`
 
 const Title = styled(TowerText)`
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
   cursor: default;
+`;
+
+const AbilitiesCaptionText = styled(TowerText)`
+  text-align: center;
+  margin-bottom: 40px;
 `;
 
 const PatchText = styled(TowerText)`
@@ -39,7 +44,6 @@ const PatchText = styled(TowerText)`
 `;
 
 const AbilityPText = styled(AbilityPathText)`
-  margin-top: 10px;
   margin-bottom: 15px;
 `;
 
@@ -48,7 +52,7 @@ const Abilities = styled(HeroAbilities)`
 `;
 
 const PathXPCost = styled(TowerText)`
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   cursor: default;
 `;
 
@@ -87,6 +91,9 @@ export default function HeroPage({ hero }) {
             <Title variant={mobile ? "h4" : "h3"}>
                 Hero Abilities
             </Title>
+            <AbilitiesCaptionText variant={mobile ? "h6" : "h5"} sx={{maxWidth: mobile ? "100%" : "55%"}} font>
+                View highly rated ability paths or set your own path and view its changes! (via Sandbox Mode)
+            </AbilitiesCaptionText>
             <AbilityPText path={{"top_path": path + 1}} towerType="hero" textColor={dividerBackgroundColor} />
             <PathXPCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
                 Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} gold={false}/>
