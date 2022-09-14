@@ -153,7 +153,7 @@ export default function MonkeyPage({monkey}) {
                 path={path} setPath={setPath} handlePathChange={sandbox && !pauseSandbox && handlePathChange}
                 stats={monkey.stats} setStats={setStats} setSnackPack={setSnackPack}
             />
-            {!sandbox && (<FilterPagination pageCount={monkey.tiers.length} page={page} handlePage={handlePage} />)}
+            {!sandbox && (<FilterPagination pageCount={monkey.tiers.length} page={page} handlePage={handlePage} color={dividerBackgroundColor} />)}
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="monkey" type={monkey.type}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h4" : "h3"}>
