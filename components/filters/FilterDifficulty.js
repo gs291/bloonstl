@@ -33,6 +33,10 @@ const Label = styled(TowerText)`
   text-align: center;
 `;
 
+const LabelCaption = styled(TowerText)`
+  text-align: center;
+`;
+
 
 /**
  * Difficulty filter and wrapper for all difficulty buttons
@@ -70,9 +74,9 @@ export default function FilterDifficulty({ className, color }) {
                 <Label variant={mobile ? "h4" : "h3"}>
                     Difficulty Prices
                 </Label>
-                <Label variant="subtitle2" font={true}>
+                <LabelCaption variant={mobile ? "h6" : "h5"} font={true}>
                     Click on a difficulty to change the in-game gold costs!
-                </Label>
+                </LabelCaption>
                 <ButtonContainer>
                     { !mobile && (
                         <Row>
