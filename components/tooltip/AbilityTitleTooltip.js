@@ -8,7 +8,7 @@ import FixedDivider from "../divider/FixedDivider";
 import VerticalDivider from "../divider/VerticalDivider";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getDifficulty, getMobile} from "../../lib/redux/selectors";
-import {getImageUrl, getThousandsNumber, getTierColor, goldCost} from "../../lib/utils/utils";
+import {getImageUrl, getThousandsNumber, goldCost} from "../../lib/utils/utils";
 
 
 const TitleContainer = styled("div")`
@@ -95,11 +95,11 @@ const AbilityImage = ({ability, fileName, towerType, mobile}) => (
  * @param {Object} props Component props
  * @param {Object} props.ability The database ability object
  * @param {string} props.fileName The filename for the tower
- * @param {string} props.tier The currently selected tier or tower tier
+ * @param {string} props.color The color of the tower
  * @param {string} props.towerType Shows if the tower is a monkey or hero
  * @param {boolean} props.selected Shows if the ability is currently selected
  */
-export default function AbilityTitleTooltip({ ability, tier, selected, fileName, towerType, ...rest }) {
+export default function AbilityTitleTooltip({ ability, color, selected, fileName, towerType, ...rest }) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
     const difficulty = useSelector(getDifficulty);
@@ -112,7 +112,7 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                         {towerType === "hero" && (
                             <TowerText
                                 variant={mobile ? "h5" : "h4"}
-                                textColor={selected ? getTierColor(tier, theme) : theme.palette.text.primary}
+                                textColor={selected ? color : theme.palette.text.primary}
                             >
                                 Level {ability.upgrade_tier + 1}
                             </TowerText>
@@ -120,7 +120,7 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                         { ability.name !== "" && (
                             <TowerText
                                 variant={mobile ? "h5" : "h4"}
-                                textColor={selected ? getTierColor(tier, theme) : theme.palette.text.primary}
+                                textColor={selected ? color : theme.palette.text.primary}
                             >
                                 {ability.name}
                             </TowerText>
@@ -140,7 +140,7 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
                     </FullContainer>
                     {(mobile && ability.name !== "" ) && (
                         <>
-                            <VerticalDivider backgroundColor={selected ? getTierColor(tier, theme) : theme.palette.text.primary} />
+                            <VerticalDivider backgroundColor={selected ? color : theme.palette.text.primary} />
                             <AbilityImage ability={ability} fileName={fileName} towerType={towerType} mobile={mobile} />
                         </>
                     )}
@@ -157,14 +157,14 @@ export default function AbilityTitleTooltip({ ability, tier, selected, fileName,
 
                 {(!mobile && ability.name !== "" ) && (
                     <>
-                        <VerticalDivider backgroundColor={selected ? getTierColor(tier, theme) : theme.palette.text.primary} />
+                        <VerticalDivider backgroundColor={selected ? color : theme.palette.text.primary} />
                         <AbilityImage ability={ability} fileName={fileName} towerType={towerType} mobile={mobile} />
                     </>
                 )}
             </TitleContainer>
 
             {mobile && (
-                <FixedDivider width={100} backgroundColor={selected ? getTierColor(tier, theme) : theme.palette.text.primary}/>
+                <FixedDivider width={100} backgroundColor={selected ? color : theme.palette.text.primary}/>
             )}
 
             { mobile && (

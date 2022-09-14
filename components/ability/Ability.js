@@ -7,10 +7,10 @@ import OfflineBoltIcon from "@mui/icons-material/OfflineBolt";
 import Tooltip from "../tooltip/Tooltip";
 import ImageFill from "../image/ImageFill";
 import siteSizes from "../../lib/utils/siteSizes";
+import {getImageUrl} from "../../lib/utils/utils";
 import {getMobile} from "../../lib/redux/selectors";
 import AbilityTooltip from "../tooltip/AbilityTooltip";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getImageUrl, getTierColor} from "../../lib/utils/utils";
 
 
 const AbilityContainer = styled("div")`
@@ -22,7 +22,7 @@ const AbilityContainer = styled("div")`
 const CardContainer = styled(Card, globalOptions)`
   border-radius: 50%;
   background-color: ${props => props.theme.palette.ability.card};
-  border: 4px solid ${props => props["data-s"] ? getTierColor(props.tier, props.theme) : props.theme.palette.ability.card};
+  border: 4px solid ${props => props["data-s"] ? props["data-c"] : props.theme.palette.ability.card};
   transition: 0.3s;
   box-shadow: 0 0 10px 2px ${props => props.theme.palette.ability.shadow};
   
@@ -76,12 +76,12 @@ const ActivatedAbility = styled(OfflineBoltIcon)`
  * @param {Object} props Component props
  * @param {Object} props.ability The database ability object
  * @param {string} props.fileName The filename for the tower
- * @param {string} props.tier The currently selected tier or tower tier
+ * @param {string} props.color The color of the tower
  * @param {string} props.towerType Shows if the tower is a monkey or hero
  * @param {boolean} props.selected Shows if the ability is currently selected
  * @param {boolean|null} [props.open=null] Shows if the default ability tooltip open functionality will be overridden
  */
-export default function Ability({ability, fileName, tier, towerType, selected, open = null, ...rest}) {
+export default function Ability({ability, fileName, color, towerType, selected, open = null, ...rest}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
 
@@ -93,7 +93,7 @@ export default function Ability({ability, fileName, tier, towerType, selected, o
                     title={
                         <AbilityTooltip
                             ability={ability}
-                            tier={tier}
+                            color={color}
                             towerType={towerType}
                             selected={selected}
                             fileName={fileName}
@@ -101,14 +101,13 @@ export default function Ability({ability, fileName, tier, towerType, selected, o
                     borderColor={ability.active
                         ? theme.palette.ability.activated
                         : selected
-                            ? getTierColor(tier, theme)
-                            : null
+                            ? color : null
                     }
                     ga4ID={`ABILITY_${ability.upgrade_path}_${ability.upgrade_tier}_${ability.id}`}
                     placement={mobile ? "bottom" : "right"}
                     active={ability.active}
                 >
-                    <CardContainer data-s={selected} tier={tier}>
+                    <CardContainer data-s={selected} data-c={color}>
                         <CardContentContainer data-m={mobile}>
                             { towerType === "monkey" && (
                                 <ImageFill

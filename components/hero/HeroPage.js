@@ -104,11 +104,11 @@ export default function HeroPage({ hero }) {
             <SandboxMode
                 sandbox={sandbox} setSnackPack={setSnackPack}
                 setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox}
-                tier={hero.tier} handleReset={handlePathReset} towerType="hero"
+                color={dividerBackgroundColor} handleReset={handlePathReset} towerType="hero"
             />
             <Abilities
                 abilities={hero.abilities} heroName={hero.name} heroFile={hero.filename}
-                defaultStats={hero.stats} setStats={setStats} tier={hero.tier}
+                defaultStats={hero.stats} setStats={setStats} color={dividerBackgroundColor}
                 path={path} initialPros={hero.info.pros} initialCons={hero.info.cons} setPath={sandbox && !pauseSandbox && setPath}
             />
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="hero" type={hero.name} />

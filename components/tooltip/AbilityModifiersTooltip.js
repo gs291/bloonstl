@@ -5,7 +5,7 @@ import TowerText from "../tower/TowerText";
 import FixedDivider from "../divider/FixedDivider";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getShowTooltipModifiers} from "../../lib/redux/selectors";
-import {getTierColor, parseAbilityModifiers, rgbaHex} from "../../lib/utils/utils";
+import {parseAbilityModifiers, rgbaHex} from "../../lib/utils/utils";
 
 
 const ModifierWrapper = styled("div")`
@@ -45,10 +45,10 @@ const ListItem = styled("li", globalOptions)`
  *
  * @param {Object} props Component props
  * @param {string} props.modifiers Modifiers for a specific ability
- * @param {string} props.tier The currently selected tier or tower tier
+ * @param {string} props.color The color of the tower
  * @param {boolean} props.selected Shows if the ability is currently selected
  */
-export default function AbilityModifiersTooltip({modifiers, tier, selected, ...rest}) {
+export default function AbilityModifiersTooltip({modifiers, color, selected, ...rest}) {
     const theme = useTheme();
     const showAllModifiers = useSelector(getShowTooltipModifiers);
 
@@ -56,7 +56,7 @@ export default function AbilityModifiersTooltip({modifiers, tier, selected, ...r
         <>
             {modifiers !== "" && (
                 <>
-                    <FixedDivider backgroundColor={selected ? getTierColor(tier, theme) : theme.palette.text.primary}/>
+                    <FixedDivider backgroundColor={selected ? color : theme.palette.text.primary}/>
                     <TowerText variant="h6" >
                         Modifiers
                     </TowerText>

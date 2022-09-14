@@ -65,10 +65,9 @@ const GA4_LOAD_MORE_BUTTON_ID = "PATCH_LOAD_MORE";
  *
  * @param {Object} props Component props
  * @param {string} props.name The tower name
- * @param {string} props.name The tower/ability path tier
- * @param {string} props.name The color to apply to the patch updates border[s]
+ * @param {string} props.borderColor The color to apply to the patch updates border[s]
  */
-export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
+export default function TowerPatchUpdates({name, borderColor, ...rest}){
     const theme = useTheme();
     const elemRef = useRef();
     const isVisible = useVisible(elemRef);

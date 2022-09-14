@@ -149,12 +149,12 @@ export default function MonkeyPage({monkey}) {
             <SandboxMode
                 sandbox={sandbox} setSnackPack={setSnackPack}
                 setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox}
-                tier={sandbox ? monkey.tier : tier} handleReset={handlePathReset} towerType="monkey"
+                color={dividerBackgroundColor} handleReset={handlePathReset} towerType="monkey"
             />
             <MonkeyAbilities
                 abilities={monkey.abilities}
                 monkeyName={monkey.name} monkeyFile={monkey.filename}
-                tier={sandbox ? monkey.tier : tier}
+                color={dividerBackgroundColor}
                 path={path} setPath={setPath} handlePathChange={sandbox && !pauseSandbox && handlePathChange}
                 stats={monkey.stats} setStats={setStats} setSnackPack={setSnackPack}
             />

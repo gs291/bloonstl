@@ -82,7 +82,7 @@ export default class HeroAbilities extends PureComponent {
      * @return {Object} The seperated abilities.
      */
     getAbilities() {
-        const {abilities, tier, path, setPath, heroName, heroFile} = this.props;
+        const {abilities, color, path, setPath, heroName, heroFile} = this.props;
 
         let dividedAbilities = [ [], [], [], [], [] ];
 
@@ -97,7 +97,7 @@ export default class HeroAbilities extends PureComponent {
                         fileName={heroFile}
                         towerType="hero"
                         key={ability.id}
-                        tier={tier}
+                        color={color}
                         selected={path + 1 > ability.upgrade_tier}
                         onClick={onClick}
                     />
