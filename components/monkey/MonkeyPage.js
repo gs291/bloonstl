@@ -142,7 +142,7 @@ export default function MonkeyPage({monkey}) {
             <AbilitiesText variant={mobile ? "h4" : "h3"}>
                 Monkey Abilities
             </AbilitiesText>
-            <AbilityPathText tiers={path} textColor={dividerBackgroundColor}/>
+            <AbilityPathText path={path} textColor={dividerBackgroundColor}/>
             <PathCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
                 Path Cost: $<Counter cost={stats.cost} />
             </PathCost>

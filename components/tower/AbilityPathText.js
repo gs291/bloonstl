@@ -21,26 +21,26 @@ const TierContainer = styled("div")`
  *
  * @param {Object} props Component props
  * @param {string} [props.className] class to apply to the component
- * @param {Object} props.tiers The tiers object containing the ability path
+ * @param {Object} props.path The object containing the ability path
  * @param {string} props.towerType Shows if the tower is a monkey or hero
  * @param {string} props.textColor Color to set the text
  */
-export default function AbilityPathText ({ className,tiers, towerType, textColor}) {
+export default function AbilityPathText ({ className,path, towerType, textColor}) {
 
     return (
         <>
             <TierContainer className={className}>
                 {towerType === "hero" ? (
                     <Tier variant="h3" component="h2" data-tc={textColor}>
-                        Level {tiers.top_path}
+                        Level {path.top_path}
                     </Tier>
                 ) : (
                     <Tier variant="h3" component="h2" data-tc={textColor}>
-                        { tiers.top_path }
+                        { path.top_path }
                         &nbsp;-&nbsp;
-                        { tiers.middle_path }
+                        { path.middle_path }
                         &nbsp;-&nbsp;
-                        { tiers.bottom_path }
+                        { path.bottom_path }
                     </Tier>
                 )}
 

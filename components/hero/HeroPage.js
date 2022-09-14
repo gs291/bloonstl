@@ -97,7 +97,7 @@ export default function HeroPage({ hero }) {
             <Title variant={mobile ? "h4" : "h3"}>
                 Hero Abilities
             </Title>
-            <AbilityPText tiers={{"top_path": path + 1}} towerType="hero" textColor={dividerBackgroundColor} />
+            <AbilityPText path={{"top_path": path + 1}} towerType="hero" textColor={dividerBackgroundColor} />
             <PathXPCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
                 Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} gold={false}/>
             </PathXPCost>
