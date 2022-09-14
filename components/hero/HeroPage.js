@@ -8,11 +8,11 @@ import Stats from "../statistics/Stats";
 import ProsCons from "../tower/ProsCons";
 import TowerText from "../tower/TowerText";
 import SandboxMode from "../filters/SandboxMode";
-import TierPathText from "../tower/TierPathText";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
 import HeroAbilities from "../abilities/HeroAbilities";
+import AbilityPathText from "../tower/AbilityPathText";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import TowerPatchUpdates from "../patch-notes/TowerPatchUpdates";
@@ -39,7 +39,7 @@ const PatchText = styled(TowerText)`
   cursor: default;
 `;
 
-const TierPText = styled(TierPathText)`
+const AbilityPText = styled(AbilityPathText)`
   margin-top: 10px;
   margin-bottom: 15px;
 `;
@@ -97,7 +97,7 @@ export default function HeroPage({ hero }) {
             <Title variant={mobile ? "h4" : "h3"}>
                 Hero Abilities
             </Title>
-            <TierPText tiers={{"top_path": path + 1}} towerType="hero" textColor={dividerBackgroundColor} />
+            <AbilityPText tiers={{"top_path": path + 1}} towerType="hero" textColor={dividerBackgroundColor} />
             <PathXPCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
                 Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} gold={false}/>
             </PathXPCost>

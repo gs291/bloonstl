@@ -9,9 +9,9 @@ import ProsCons from "../tower/ProsCons";
 import TowerText from "../tower/TowerText";
 import SandboxMode from "../filters/SandboxMode";
 import TowerImgInfo from "../tower/TowerImgInfo";
-import TierPathText from "../tower/TierPathText";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
+import AbilityPathText from "../tower/AbilityPathText";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
@@ -142,7 +142,7 @@ export default function MonkeyPage({monkey}) {
             <AbilitiesText variant={mobile ? "h4" : "h3"}>
                 Monkey Abilities
             </AbilitiesText>
-            <TierPathText tiers={path} textColor={dividerBackgroundColor}/>
+            <AbilityPathText tiers={path} textColor={dividerBackgroundColor}/>
             <PathCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
                 Path Cost: $<Counter cost={stats.cost} />
             </PathCost>

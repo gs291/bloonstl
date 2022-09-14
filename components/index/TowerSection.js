@@ -5,8 +5,8 @@ import {Grid, Typography} from "@mui/material";
 import ProsCons from "../tower/ProsCons";
 import TowerCard from "../tower/TowerCard";
 import TowerText from "../tower/TowerText";
-import TierPathText from "../tower/TierPathText";
 import {getMobile} from "../../lib/redux/selectors";
+import AbilityPathText from "../tower/AbilityPathText";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
 
@@ -74,7 +74,7 @@ export default function TowerSection({className, monkey, scrollTo}) {
                     <PathText variant={mobile ? "h5" : "h4"}>
                         S Tier Ability Path:
                     </PathText>
-                    <TierPathText tier="s" tiers={monkey} />
+                    <AbilityPathText tier="s" tiers={monkey} />
                 </Grid>
             </TitleContainer>
             <ProConContainer>

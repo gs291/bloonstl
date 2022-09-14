@@ -25,7 +25,7 @@ const TierContainer = styled("div")`
  * @param {string} props.towerType Shows if the tower is a monkey or hero
  * @param {string} props.textColor Color to set the text
  */
-export default function TierPathText ({ className,tiers, towerType, textColor}) {
+export default function AbilityPathText ({ className,tiers, towerType, textColor}) {
 
     return (
         <>
