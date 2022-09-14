@@ -21,16 +21,17 @@ const TierCostContainer = styled("div")`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top:  ${props => props["data-m"] ? 10 : 20}px;
 `;
 
-const TowerCosts = styled("div")`
-  margin-top:  ${props => props["data-m"] ? 10 : 20}px;
-  margin-left: ${props => props["data-m"] ? 0 : "20px"};
-  flex: 66%;
-`;
+const TowerCosts = styled("div")``;
 
 const DefaultText = styled(TowerText)`
   cursor: default;
+`;
+
+const NameText = styled(DefaultText)`
+  margin-bottom: 10px;
 `;
 
 /**
@@ -46,19 +47,19 @@ export default function TowerInfo({tower}) {
     return (
         <>
             <TowerTextContainer>
-                <DefaultText variant={mobile ? "h3" : "h2"} component="h1">
+                <NameText variant={mobile ? "h3" : "h2"} component="h1">
                     {tower.name}
-                </DefaultText>
-                <TowerText variant="subtitle1" textColor={rgbaHex(theme.palette.text.primary, 0.5)} font={true}  component="h2">
+                </NameText>
+                <TowerText variant={mobile ? "h6" : "h5"} textColor={rgbaHex(theme.palette.text.primary, 0.5)} font={true}  component="h2">
                     {tower.description}
                 </TowerText>
                 <TierCostContainer data-m={mobile}>
                     <TowerCosts data-m={mobile}>
-                        <DefaultText variant={mobile ? "h5" : "h6"} textColor={theme.palette.text.gold}>
+                        <DefaultText variant={mobile ? "h6" : "h5"} textColor={theme.palette.text.gold}>
                             In-game cost:&nbsp;$<Counter cost={tower.cost_gold} />
                         </DefaultText>
                         { typeof tower.cost_cash === "number" && (
-                            <DefaultText variant={mobile ? "h5" : "h6"} textColor={theme.palette.text.cash}>
+                            <DefaultText variant={mobile ? "h6" : "h5"} textColor={theme.palette.text.cash}>
                                 Cash cost: {tower.cost_cash > 0 ? `\$${getThousandsNumber(tower.cost_cash)}` : "FREE"}
                             </DefaultText>
                         )}

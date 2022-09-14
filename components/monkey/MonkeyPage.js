@@ -140,7 +140,7 @@ export default function MonkeyPage({monkey}) {
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <AbilitiesText variant={mobile ? "h4" : "h3"}>
+            <AbilitiesText variant={mobile ? "h3" : "h2"}>
                 Monkey Abilities
             </AbilitiesText>
             <AbilitiesCaptionText variant={mobile ? "h6" : "h5"} sx={{maxWidth: mobile ? "100%" : "55%"}} font>
@@ -165,15 +165,15 @@ export default function MonkeyPage({monkey}) {
             {!sandbox && (<FilterPagination pageCount={monkey.tiers.length} page={page} handlePage={handlePage} color={dividerBackgroundColor} />)}
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="monkey" type={monkey.type}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <Title variant={mobile ? "h4" : "h3"}>
+            <Title variant={mobile ? "h3" : "h2"}>
                 Tower Pros / Cons
             </Title>
             <ProsCons pros={stats.pros} cons={stats.cons} backgroundColor={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <PatchText variant={mobile ? "h4" : "h3"}>
+            <PatchText variant={mobile ? "h3" : "h2"}>
                 Latest
             </PatchText>
-            <Title variant={mobile ? "h4" : "h3"}>
+            <Title variant={mobile ? "h3" : "h2"}>
                 Patch Updates
             </Title>
             <TowerPatchUpdates name={monkey.name} borderColor={dividerBackgroundColor} />

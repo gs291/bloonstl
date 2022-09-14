@@ -88,7 +88,7 @@ export default function HeroPage({ hero }) {
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <Title variant={mobile ? "h4" : "h3"}>
+            <Title variant={mobile ? "h3" : "h2"}>
                 Hero Abilities
             </Title>
             <AbilitiesCaptionText variant={mobile ? "h6" : "h5"} sx={{maxWidth: mobile ? "100%" : "55%"}} font>
@@ -110,7 +110,7 @@ export default function HeroPage({ hero }) {
             />
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="hero" type={hero.name} />
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <Title variant={mobile ? "h4" : "h3"}>
+            <Title variant={mobile ? "h3" : "h2"}>
                 Tower Pros / Cons
             </Title>
             <ProsCons pros={stats.pros} cons={stats.cons} backgroundColor={dividerBackgroundColor}/>
@@ -118,7 +118,7 @@ export default function HeroPage({ hero }) {
             <PatchText variant={mobile ? "h4" : "h3"}>
                 Latest
             </PatchText>
-            <Title variant={mobile ? "h4" : "h3"}>
+            <Title variant={mobile ? "h3" : "h2"}>
                 Patch Updates
             </Title>
             <TowerPatchUpdates name={hero.name} borderColor={dividerBackgroundColor} />
