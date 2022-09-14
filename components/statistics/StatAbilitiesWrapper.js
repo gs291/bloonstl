@@ -38,7 +38,6 @@ export default function StatAbilitiesWrapper({stats, towerType, type, dividerBac
                 || Object.keys(stats.buffs).length > 0
                 || Object.keys(stats.statuses).length > 0)) && (
                 <>
-                    <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
                     <TitleOnTop variant={mobile ? "h3" : "h2"}>
                         Ability Path
                     </TitleOnTop>

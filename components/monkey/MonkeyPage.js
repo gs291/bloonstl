@@ -22,7 +22,6 @@ import {checkIfValidPath, getInitialTowerStats, getMonkeyColor} from "../../lib/
 
 
 const AbilitiesText = styled(TowerText)`
-  margin-top: 10px;
   margin-bottom: 20px;
   cursor: default;
   text-align: center;
@@ -54,6 +53,11 @@ const PatchText = styled(TowerText)`
   margin-top: 20px;
   text-align: center;
   cursor: default;
+`;
+
+const Border = styled(FixedDivider)`
+  margin-top: 50px;
+  margin-bottom: 50px;
 `;
 
 // In order to fix an infinite re-rendering issue from path being set back and forth components
@@ -136,10 +140,7 @@ export default function MonkeyPage({monkey}) {
     return (
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
-            <Stats stats={stats} path={path} type={monkey.type} />
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <FilterDiff color={dividerBackgroundColor}/>
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
             <AbilitiesText variant={mobile ? "h3" : "h2"}>
                 Monkey Abilities
             </AbilitiesText>
@@ -163,13 +164,18 @@ export default function MonkeyPage({monkey}) {
                 stats={monkey.stats} setStats={setStats} setSnackPack={setSnackPack}
             />
             {!sandbox && (<FilterPagination pageCount={monkey.tiers.length} page={page} handlePage={handlePage} color={dividerBackgroundColor} />)}
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="monkey" type={monkey.type}/>
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h3" : "h2"}>
                 Tower Pros / Cons
             </Title>
             <ProsCons pros={stats.pros} cons={stats.cons} backgroundColor={dividerBackgroundColor}/>
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <Stats stats={stats} path={path} type={monkey.type} />
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <FilterDiff color={dividerBackgroundColor}/>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
             <PatchText variant={mobile ? "h3" : "h2"}>
                 Latest
             </PatchText>

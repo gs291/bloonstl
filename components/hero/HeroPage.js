@@ -56,6 +56,11 @@ const PathXPCost = styled(TowerText)`
   cursor: default;
 `;
 
+const Border = styled(FixedDivider)`
+  margin-top: 50px;
+  margin-bottom: 50px;
+`;
+
 /**
  * Individual Hero Page
  *
@@ -84,10 +89,7 @@ export default function HeroPage({ hero }) {
     return (
         <>
             <TowerImgInfo tower={hero} towerType="hero" />
-            <Stats stats={stats} path={path} type={hero.name} towerType="hero" />
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <FilterDiff color={dividerBackgroundColor}/>
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h3" : "h2"}>
                 Hero Abilities
             </Title>
@@ -108,14 +110,19 @@ export default function HeroPage({ hero }) {
                 defaultStats={hero.stats} setStats={setStats} color={dividerBackgroundColor}
                 path={path} initialPros={hero.info.pros} initialCons={hero.info.cons} setPath={sandbox && !pauseSandbox && setPath}
             />
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="hero" type={hero.name} />
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h3" : "h2"}>
                 Tower Pros / Cons
             </Title>
             <ProsCons pros={stats.pros} cons={stats.cons} backgroundColor={dividerBackgroundColor}/>
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <PatchText variant={mobile ? "h4" : "h3"}>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <Stats stats={stats} path={path} type={hero.name} towerType="hero" />
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <FilterDiff color={dividerBackgroundColor}/>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <PatchText variant={mobile ? "h3" : "h2"}>
                 Latest
             </PatchText>
             <Title variant={mobile ? "h3" : "h2"}>
