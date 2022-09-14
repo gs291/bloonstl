@@ -29,10 +29,6 @@ const ProConContainer = styled("div")`
   width: 100%;
 `;
 
-const SansSerifText = styled(Typography)`
-  font-family: sans-serif;
-`;
-
 /**
  * Home page tower section
  *
