@@ -12,7 +12,8 @@ import {CHECKBOX_PREFIX, SELECT_CONTENT_CHECKBOX, ga4SendSelectContent} from "..
 
 const Group = styled(FormGroup, globalOptions)`
   align-self: end;
-  margin-top: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   margin-right: ${props => 
           props["data-m"] 
                   ? 15 
@@ -20,7 +21,16 @@ const Group = styled(FormGroup, globalOptions)`
 `;
 
 const Label = styled(FormControlLabel)`
+  margin-left: 0;
 
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  transition: 0.3s;
+  
+  &:hover {
+    border: 1px solid ${props => props["data-c"] ? props["data-c"] : props.theme.palette.primary.main};
+  }
 `;
 
 const StyledCheckbox = styled(Checkbox, globalOptions)`
@@ -44,7 +54,7 @@ const GA4_SHOW_ALL_ABILITY_MODIFIERS_ID = "MODIFIERS";
  * Checkbox for showing/hiding ability tooltip modifiers
  *
  * @param {Object} props Component props
- * @param {string} props.tier The tower tier
+ * @param {string} props.color The color of the tower
  * @param {boolean} [props.paragon=false] Shows if the Tower contains a paragon
  */
 export default function ShowAllAbilityModifiers({color, paragon = false, ...rest}) {
@@ -66,6 +76,7 @@ export default function ShowAllAbilityModifiers({color, paragon = false, ...rest
             <Group data-m={mobile} data-w={paragon} {...rest}>
                 <Label
                     labelPlacement="start"
+                    data-c={color}
                     control={(
                         <StyledCheckbox
                             checked={showAllModifiers}
@@ -75,16 +86,7 @@ export default function ShowAllAbilityModifiers({color, paragon = false, ...rest
                     )}
                     label={(
                         <TowerText variant={mobile ? "caption" : "subtitle2"} font={true}>
-                            {showAllModifiers ? (
-                                <>
-                                    Hide all tooltip modifiers
-                                </>
-                            ) : (
-                                <>
-                                    Show all tooltip modifiers
-                                </>
-                            )}
-
+                            {`${showAllModifiers ? "Hide" : "Show"} all hover tooltip modifiers`}
                         </TowerText>
                     )}
                 />
