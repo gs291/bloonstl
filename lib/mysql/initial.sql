@@ -118,6 +118,7 @@ CREATE TABLE `TowerStats` (
     `projectile_count` INT(11) NULL DEFAULT 1,
     `attack_speed` DECIMAL(9,6) NOT NULL,
     `income` INT(11) NULL DEFAULT 0,
+    `cost` INT(11) NULL DEFAULT 0,
     `duration` INT(11) NULL DEFAULT 0,
     `note` VARCHAR(510) NULL DEFAULT '',
     `footprint` INT(11) NOT NULL,

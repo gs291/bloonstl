@@ -103,7 +103,7 @@ const Description = styled(TowerText)`
 
 const statWithPrev = {
     "damage": true, "pierce": true, "range": true, "attack_speed": true, "damage_type": true, "projectile_count": true,
-    "duration": true, "delay": true, "income": true, "cooldown": true, "slow": true, "pierce_impact": true, "max_per_round": true
+    "duration": true, "delay": true, "income": true, "cost": true, "cooldown": true, "slow": true, "pierce_impact": true, "max_per_round": true
 };
 
 const statDamage = {
@@ -119,7 +119,7 @@ const statCodeParser = (code) => {
         "camo_damage": "Camo", "ceramic_damage": "Ceramic", "crit_damage": "Crit", "boss_damage": "Boss", "pierce_impact": "P Impact",
         "lead_damage": "Lead", "moab_damage": "MOAB", "fortified_damage": "Fortified", "delay": "Delay", "max_per_round": "Max/Round",
         "fortified_lead_damage": "F Lead", "fortified_moab_damage": "F Moab", "status_damage": "Status",
-        "stun_damage": "Stun", "hotkey": "Hotkey", "footprint": "Footprint", "income": "Income", "slow": "Slow",
+        "stun_damage": "Stun", "hotkey": "Hotkey", "footprint": "Footprint", "income": "Income", "cost": "Cost", "slow": "Slow",
         "projectile_count": "Proj", "duration": "Duration", "cooldown": "Cooldown", "crit_occurance": "Crit Rate",
     }
 
