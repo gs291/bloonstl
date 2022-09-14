@@ -1,5 +1,5 @@
 import {useSelector} from "react-redux";
-import {FormGroup} from "@mui/material";
+import {CircularProgress, FormGroup} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import {useTheme} from "@mui/material/styles";
 
@@ -28,26 +28,56 @@ const TitleContainer = styled("div")`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 `;
 
-const SandboxUtils = styled("div")`
+const SandboxUtils = styled("div", globalOptions)`
   width: 100%;
   margin-top: 15px;
   
   display: flex;
-  flex-direction: row;
+  flex-direction: ${props => props["data-m"] ? "column" : "row"};
   gap: 15px;
   
   & > button {
     flex: 1
   }
+  
+  @media only screen and (min-width: 600px) and (max-width: 900px) {
+    width: 70%;
+  }
+`;
+
+const SandboxTooltip = styled(Tooltip)`
+  width: 100%;
+`;
+
+const SandboxButtonContainer = styled("div")`
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 `;
 
 const SandboxButton = styled(DefaultButton)`
-  margin-top: 20px;
+  
 `;
 
-const PauseClickingButton = styled(DefaultButton)``;
+const SandboxEnabled = styled(CircularProgress)`
+  position: absolute;
+  right: 0;
+  color: ${props => props["data-c"] ? props["data-c"] : props.theme.palette.text.primary};
+`;
+
+const PauseClickingButton = styled(DefaultButton)`
+  width: 100%;
+`;
+
+const ResetClickingButton = styled(DefaultButton)`
+  width: 100%;
+`;
 
 const HelperText = styled("div")`
   margin-bottom: 10px;
@@ -60,6 +90,7 @@ const HelperText = styled("div")`
 const CaptionText = styled(HelperText)`
   margin-top: 15px;
   margin-bottom: 15px;
+  text-align: center;
 `;
 
 
@@ -125,15 +156,18 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, color, pa
                         {sandbox ? `Click on an ability to change the path!${towerType === "monkey" ? '*' : ''}` : "Set your own path!"}
                     </TowerText>
                 </TitleContainer>
-                <SandboxButton
-                    onClick={handleSandboxChange}
-                    data-bc={color}
-                    variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
-                >
-                    <TowerText variant="subtitle2" font={true}>
-                        {sandbox ? "Disable" : "Enable"} Sandbox
-                    </TowerText>
-                </SandboxButton>
+                <SandboxButtonContainer>
+                    <SandboxButton
+                        onClick={handleSandboxChange}
+                        data-bc={color}
+                        variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
+                    >
+                        <TowerText variant="subtitle2" font={true}>
+                            {sandbox ? "Disable" : "Enable"} Sandbox
+                        </TowerText>
+                    </SandboxButton>
+                    {sandbox && (<SandboxEnabled data-c={color}/>)}
+                </SandboxButtonContainer>
 
                 {(towerType === "monkey" && sandbox) && (
                     <CaptionText>
@@ -148,35 +182,36 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, color, pa
 
                 {sandbox && (
                     <>
-                        <SandboxUtils>
-                            <PauseClickingButton
-                                onClick={handlePauseChange}
-                                data-bc={color}
-                                variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
+                        <SandboxUtils data-m={mobile}>
+                            <SandboxTooltip
+                                title={(<TowerText variant="body2" font={true} >{`${pauseSandbox ? "Unpause" : "Pause"} sandbox ability selections to view tooltips before selecting.`}</TowerText>)}
+                                forceWidth={false} ga4ID="SANDBOX_PAUSE"
                             >
-                                <Tooltip
-                                    title={(<TowerText variant="body2" font={true} >{`${pauseSandbox ? "Unpause" : "Pause"} sandbox ability selections to view tooltips before selecting.`}</TowerText>)}
-                                    forceWidth={false} ga4ID="SANDBOX_PAUSE"
+                                <PauseClickingButton
+                                    onClick={handlePauseChange}
+                                    data-bc={color}
+                                    variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
                                 >
+
                                     <TowerText variant="subtitle2" font={true}>
                                         {pauseSandbox ? "Unpause" : "Pause"} Selections
                                     </TowerText>
-                                </Tooltip>
-                            </PauseClickingButton>
-                            <DefaultButton
-                                onClick={handleResetButton}
-                                data-bc={color}
-                                variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
+                                </PauseClickingButton>
+                            </SandboxTooltip>
+                            <SandboxTooltip
+                                title={(<TowerText variant="body2" font={true} >{`Reset sandbox ability selections`}</TowerText>)}
+                                forceWidth={false} ga4ID="SANDBOX_RESET"
                             >
-                                <Tooltip
-                                    title={(<TowerText variant="body2" font={true} >{`Reset sandbox ability selections`}</TowerText>)}
-                                    forceWidth={false} ga4ID="SANDBOX_RESET"
+                                <ResetClickingButton
+                                    onClick={handleResetButton}
+                                    data-bc={color}
+                                    variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
                                 >
                                     <TowerText variant="subtitle2" font={true}>
                                         Reset Path
                                     </TowerText>
-                                </Tooltip>
-                            </DefaultButton>
+                                </ResetClickingButton>
+                            </SandboxTooltip>
                         </SandboxUtils>
                     </>
                 )}
