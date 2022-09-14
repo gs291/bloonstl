@@ -53,9 +53,8 @@ export async function getStaticProps({ params }) {
         const abilityTiers = await dataSources().abilitiesAPI.getAbilityTiersWithInfoByMonkeyName({name});
         if (abilityTiers) {
             let abilityTiersObj = { "s": [], "a": [], "b": [] };
-
             abilityTiers.forEach(ar => abilityTiersObj[ar.tier].push(ar));
-            monkey.tiers = abilityTiersObj;
+            monkey.tiers = abilityTiersObj["s"].concat(abilityTiersObj["a"], abilityTiersObj["b"]);
         }
     }
 

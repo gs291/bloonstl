@@ -82,8 +82,7 @@ export default function MonkeyPage({monkey}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
     const [ page, setPage ] = useState(1);
-    const [ tier, setTier ] = useState("s");
-    const [ path, setPath ] = useState(monkey.tiers[tier][page-1]);
+    const [ path, setPath ] = useState(monkey.tiers[page-1]);
     const [ sandbox, setSandbox ] = useState(false);
     const [ pauseSandbox, setPauseSandbox ] = useState(false);
     const [ stats, setStats ] = useState(getInitialTowerStats(monkey.stats, {pros: path.pros, cons: path.cons}));
@@ -92,10 +91,6 @@ export default function MonkeyPage({monkey}) {
     const [ openSnackbar, setOpenSnackbar ] = useState(false);
     const [ messageInfo, setMessageInfo ] = useState(undefined);
 
-    const handleTier = (_, r) => {
-        setPage(1);
-        setTier(r);
-    };
     const handlePage = (_, p) => {
         setPage(p);
     }
@@ -113,9 +108,9 @@ export default function MonkeyPage({monkey}) {
     const dividerBackgroundColor = getMonkeyColor(monkey.type, theme);
 
     useEffect(() => {
-        setPath(monkey.tiers[tier][page-1]);
+        setPath(monkey.tiers[page-1]);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [tier, page]);
+    }, [page]);
 
     useEffect(() => {
         if (sandbox) {
@@ -127,7 +122,7 @@ export default function MonkeyPage({monkey}) {
                     "cons": ""
                 });
         } else {
-            setPath(monkey.tiers[tier][page-1]);
+            setPath(monkey.tiers[page-1]);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sandbox]);
@@ -158,7 +153,7 @@ export default function MonkeyPage({monkey}) {
                 path={path} setPath={setPath} handlePathChange={sandbox && !pauseSandbox && handlePathChange}
                 stats={monkey.stats} setStats={setStats} setSnackPack={setSnackPack}
             />
-            {!sandbox && (<FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />)}
+            {!sandbox && (<FilterPagination pageCount={monkey.tiers.length} page={page} handlePage={handlePage} />)}
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="monkey" type={monkey.type}/>
             <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h4" : "h3"}>

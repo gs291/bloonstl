@@ -43,6 +43,10 @@ const SandboxUtils = styled("div", globalOptions)`
     flex: 1
   }
   
+  & > div {
+    width: 100%;
+  }
+  
   @media only screen and (min-width: 600px) and (max-width: 900px) {
     width: 70%;
   }
