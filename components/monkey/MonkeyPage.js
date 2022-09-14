@@ -164,7 +164,7 @@ export default function MonkeyPage({monkey}) {
                 stats={monkey.stats} setStats={setStats} setSnackPack={setSnackPack}
             />
             {!sandbox && (<FilterPagination pageCount={monkey.tiers.length} page={page} handlePage={handlePage} color={dividerBackgroundColor} />)}
-            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <Border width={65} backgroundColor={dividerBackgroundColor}/>
             <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="monkey" type={monkey.type}/>
             <Border width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h3" : "h2"}>
