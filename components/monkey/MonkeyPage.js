@@ -172,6 +172,9 @@ export default function MonkeyPage({monkey}) {
             </Title>
             <ProsCons pros={stats.pros} cons={stats.cons} backgroundColor={dividerBackgroundColor}/>
             <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <Title variant={mobile ? "h3" : "h2"}>
+                Tower Statistics
+            </Title>
             <Stats stats={stats} path={path} type={monkey.type} />
             <Border width={100} backgroundColor={dividerBackgroundColor}/>
             <FilterDiff color={dividerBackgroundColor}/>
