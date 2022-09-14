@@ -5,7 +5,6 @@ import {styled} from "@mui/material/styles";
 const Path = styled(Typography)`
   color: ${props => props["data-tc"] ? props["data-tc"] : props.theme.palette.text.primary};
   cursor: default;
-  ${props => !(props.theme.palette.mode === "dark") && `text-shadow: 5px 5px 20px ${props.theme.palette.text.primary}`};
 `;
 
 const PathContainer = styled("div")`
