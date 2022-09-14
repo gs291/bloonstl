@@ -20,7 +20,7 @@ const GridItem = styled(Grid, globalOptions)`
 `;
 
 /**
- * Tier list/monkey/hero grid item
+ * Monkey / Hero grid item
  *
  * @param {Object} props Component props
  * @param {string} [props.className] class to apply to the component

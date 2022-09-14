@@ -3,8 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
+import {rgbaHex} from "../../lib/utils/utils";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getTierColor, rgbaHex} from "../../lib/utils/utils";
 import {getMobile, getShowTooltipModifiers} from "../../lib/redux/selectors";
 import {TOGGLE_TOOLTIP_MODIFIERS, updateFilter} from "../../lib/redux/actions";
 import {CHECKBOX_PREFIX, SELECT_CONTENT_CHECKBOX, ga4SendSelectContent} from "../../lib/utils/ga4";
@@ -24,23 +24,16 @@ const Label = styled(FormControlLabel)`
 `;
 
 const StyledCheckbox = styled(Checkbox, globalOptions)`
-  color: ${props => props["data-t"] 
-          ? getTierColor(props["data-t"], props.theme) 
-          : props.theme.palette.primary.main
-  };
+  color: ${props => props["data-c"] ? props["data-c"] : props.theme.palette.primary.main};
 
   &:hover {
     background-color: ${props =>
-            rgbaHex(props["data-t"]
-                            ? getTierColor(props["data-t"], props.theme)
-                            : props.theme.palette.primary.main
+            rgbaHex(props["data-c"] ? props["data-c"] : props.theme.palette.primary.main
                     , props.theme.palette.mode === "dark" ? 0.075 : 0.3)};
   }
   
   &.Mui-checked {
-    color: ${props => props["data-t"] 
-            ? getTierColor(props["data-t"], props.theme) 
-            : props.theme.palette.primary.main
+    color: ${props => props["data-c"] ? props["data-c"] : props.theme.palette.primary.main
     };
   }
 `;
@@ -54,7 +47,7 @@ const GA4_SHOW_ALL_ABILITY_MODIFIERS_ID = "MODIFIERS";
  * @param {string} props.tier The tower tier
  * @param {boolean} [props.paragon=false] Shows if the Tower contains a paragon
  */
-export default function ShowAllAbilityModifiers({tier, paragon = false, ...rest}) {
+export default function ShowAllAbilityModifiers({color, paragon = false, ...rest}) {
     const dispatch = useDispatch();
 
     const mobile = useSelector(getMobile);
@@ -77,7 +70,7 @@ export default function ShowAllAbilityModifiers({tier, paragon = false, ...rest}
                         <StyledCheckbox
                             checked={showAllModifiers}
                             onChange={handleShowAllModifiers}
-                            data-t={tier}
+                            data-c={color}
                         />
                     )}
                     label={(

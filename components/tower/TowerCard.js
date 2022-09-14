@@ -74,11 +74,10 @@ const GA4_TOWER_CARD_ID = "TOWER";
  *
  * @param {Object} props Component props
  * @param {Object} props.tower Object containing the tower
- * @param {string} props.tier The tower tier
  * @param {string} props.towerType Shows if the tower is a monkey or hero
- * @param {boolean} props.ignoreFilter Shows if the card should ignore any filters
+ * @param {number} props.ignoreFilter Shows if the card should ignore any filters
  */
-export default function TowerCard({tower, towerType, tier, ignoreFilter}) {
+export default function TowerCard({tower, towerType, ignoreFilter}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
     const border = useSelector(getBorder);
@@ -88,13 +87,13 @@ export default function TowerCard({tower, towerType, tier, ignoreFilter}) {
     if (towerType === "monkey") {
         href = `/monkey/${getTowerLink(tower.name)}`;
         borderColor = getMonkeyColor(tower.type, theme);
-        backgroundColor = getMonkeyColor(tower.type, theme,  tier, true);
-        hoverBackgroundColor = getMonkeyColor(tower.type, theme, tier, true, true);
+        backgroundColor = getMonkeyColor(tower.type, theme, true);
+        hoverBackgroundColor = getMonkeyColor(tower.type, theme, true, true);
     } else if (towerType === "hero") {
         href = `/hero/${getTowerLink(tower.name)}`;
         borderColor = getHeroColor(tower.name, theme);
-        backgroundColor = getHeroColor(tower.name, theme, tier, true, false);
-        hoverBackgroundColor = getHeroColor(tower.name, theme, tier, true, true);
+        backgroundColor = getHeroColor(tower.name, theme, true, false);
+        hoverBackgroundColor = getHeroColor(tower.name, theme, true, true);
     }
 
     if (!border && ignoreFilter === 0) {

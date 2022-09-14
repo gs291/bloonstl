@@ -48,13 +48,13 @@ export default function TowerSection({className, monkey, scrollTo}) {
         <>
             <div ref={scrollTo}/>
             <CenteredText variant={mobile ? "h2" : "h1"} component="h3">
-                Compare Towers
+                Browse Towers
             </CenteredText>
             <CenteredText variant="h4" font={true}>
-                Between Monkeys and Heroes
+                From Monkeys and Heroes to Bloons
             </CenteredText>
             <CenteredText variant="h4" font={true}>
-                From a tier list ranging from S to C
+                And View Many Stats That Are Missing In-Game.
             </CenteredText>
             {mobile && (<br />)}
             <TitleContainer
@@ -68,13 +68,13 @@ export default function TowerSection({className, monkey, scrollTo}) {
                 data-m={mobile}
             >
                 <Grid item xs={6}>
-                    <TowerCard tower={monkey} towerType={"monkey"} />
+                    <TowerCard tower={monkey} towerType="monkey" />
                 </Grid>
                 <Grid item xs={6}>
                     <PathText variant={mobile ? "h5" : "h4"}>
-                        S Tier Ability Path:
+                        5★ Ability Path:
                     </PathText>
-                    <AbilityPathText tier="s" tiers={monkey} />
+                    <AbilityPathText path={monkey} towerType="monkey"/>
                 </Grid>
             </TitleContainer>
             <ProConContainer>

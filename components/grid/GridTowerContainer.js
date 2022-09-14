@@ -22,12 +22,11 @@ const TowerGrid = styled(Grid, globalOptions)`
  * @param {Object} props Component props
  * @param {Array<Object>} props.towers Array list of the towers to be applied in the grid
  * @param {string} props.title Text to be set in the title
- * @param {string} props.tier The currently selected tier
  * @param {string} props.backgroundColor Color to be applied to the grid
  * @param {string} props.titleColor Color to be applied to the title
  * @param {number} props.ignoreFilter Shows if the filters should be ignored
  */
-export default function GridTowerContainer({towers, title, tier, backgroundColor, titleColor, ignoreFilter, }) {
+export default function GridTowerContainer({towers, title, backgroundColor, titleColor, ignoreFilter, }) {
     const mobile = useSelector(getMobile);
 
     let gridSpacing = 4;
@@ -47,7 +46,7 @@ export default function GridTowerContainer({towers, title, tier, backgroundColor
                             <Grid xs={gridSpacing} item key={tower.id}>
                                 <TowerCard tower={tower}
                                            towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}
-                                           tier={tier} ignoreFilter={ignoreFilter}
+                                           ignoreFilter={ignoreFilter}
                                 />
                             </Grid>
                         ))}

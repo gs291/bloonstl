@@ -83,14 +83,14 @@ export default function TopSection({className, scrollTo}) {
                 <AboveCenter item>
                     <TextContainer>
                         <Typography variant={mobile ? "h2" : "h1"} component="h1">
-                            BLOONS TL
+                            BLOONS.GG
                         </Typography>
                         <br />
                         <SansSerifText variant="h4" component="h2">
-                            The Tier List Website
+                            The Bloons TD 6 Informational
                         </SansSerifText>
                         <SansSerifText variant="h4" component="h2">
-                            For Bloons TD 6
+                            and Builder Website
                         </SansSerifText>
                     </TextContainer>
                 </AboveCenter>

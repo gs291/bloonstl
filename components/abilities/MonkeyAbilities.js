@@ -175,7 +175,7 @@ class MonkeyAbilities extends PureComponent {
     }
 
     render() {
-        const { className, tier, mobile } = this.props;
+        const { className, color, mobile } = this.props;
         const {pathTop, pathMiddle, pathBottom, paragon} = this.getAbilities();
 
         return (
@@ -197,7 +197,7 @@ class MonkeyAbilities extends PureComponent {
                             {...paragon}
                         )}
                     </AllAbilities>
-                    <ShowAllAbilityModifiers tier={tier} paragon={paragon !== null}/>
+                    <ShowAllAbilityModifiers color={color} paragon={paragon !== null}/>
                 </AbilitiesContainer>
             </>
         );

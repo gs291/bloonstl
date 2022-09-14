@@ -14,7 +14,6 @@ import {getMobile} from "../../lib/redux/selectors";
 import HeroAbilities from "../abilities/HeroAbilities";
 import AbilityPathText from "../tower/AbilityPathText";
 import FilterDifficulty from "../filters/FilterDifficulty";
-import {globalOptions} from "../../lib/utils/emotionStyled";
 import TowerPatchUpdates from "../patch-notes/TowerPatchUpdates";
 import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
 import {getHeroColor, getInitialTowerStats} from "../../lib/utils/utils";
@@ -50,16 +49,6 @@ const Abilities = styled(HeroAbilities)`
 
 const PathXPCost = styled(TowerText)`
   margin-bottom: 20px;
-`;
-
-const HeroTier = styled("div", globalOptions)`
-  display: flex;
-  flex-direction: ${props => props["data-m"] ? "column" : "row"};
-  width: ${props => props["data-m"] ? 100 : 80}%;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
 `;
 
 /**

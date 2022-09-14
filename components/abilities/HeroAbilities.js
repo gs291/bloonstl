@@ -114,7 +114,7 @@ export default class HeroAbilities extends PureComponent {
 
 
     render() {
-        const {className, tier} = this.props;
+        const {className, color} = this.props;
 
         const { firstFiveAbilities, secondFiveAbilities, thirdFiveAbilities, fourthFiveAbilities} = this.getAbilities();
 
@@ -135,7 +135,7 @@ export default class HeroAbilities extends PureComponent {
                             { fourthFiveAbilities }
                         </GridItem>
                     </GridContainer>
-                    <ShowAllAbilityModifiers tier={tier} />
+                    <ShowAllAbilityModifiers color={color} />
                 </AbilitiesContainer>
             </>
         );

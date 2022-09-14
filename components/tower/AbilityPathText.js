@@ -2,13 +2,13 @@ import {Typography} from "@mui/material";
 import {styled} from "@mui/material/styles";
 
 
-const Tier = styled(Typography)`
+const Path = styled(Typography)`
   color: ${props => props["data-tc"] ? props["data-tc"] : props.theme.palette.text.primary};
   cursor: default;
-  ${props => !(props.theme.palette.mode === "dark") && `text-shadow: 5px 5px 10px ${props.theme.palette.text.primary}`};
+  ${props => !(props.theme.palette.mode === "dark") && `text-shadow: 5px 5px 20px ${props.theme.palette.text.primary}`};
 `;
 
-const TierContainer = styled("div")`
+const PathContainer = styled("div")`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -29,22 +29,22 @@ export default function AbilityPathText ({ className,path, towerType, textColor}
 
     return (
         <>
-            <TierContainer className={className}>
+            <PathContainer className={className}>
                 {towerType === "hero" ? (
-                    <Tier variant="h3" component="h2" data-tc={textColor}>
+                    <Path variant="h3" component="h2" data-tc={textColor}>
                         Level {path.top_path}
-                    </Tier>
+                    </Path>
                 ) : (
-                    <Tier variant="h3" component="h2" data-tc={textColor}>
+                    <Path variant="h3" component="h2" data-tc={textColor}>
                         { path.top_path }
                         &nbsp;-&nbsp;
                         { path.middle_path }
                         &nbsp;-&nbsp;
                         { path.bottom_path }
-                    </Tier>
+                    </Path>
                 )}
 
-            </TierContainer>
+            </PathContainer>
         </>
     );
 }
