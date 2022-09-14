@@ -92,6 +92,10 @@ const TitleContainer = styled("div")`
   text-align: center;
 `;
 
+const StatName = styled(TowerText)`
+  cursor: default;
+`;
+
 const Description = styled(TowerText)`
   padding-left: 5px;
   padding-right: 5px;
@@ -172,9 +176,9 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
                     <StatTab cardType={cardType} title={getTitle(cardType)} level={level} backgroundColor={titleColor} parentBackgroundColor={parentBackgroundColor}/>
                     <Card data-bc={titleColor} data-m={mobile}>
                         <TitleContainer>
-                            <TowerText variant={level === 1 ? "h5" : "h6"}>
+                            <StatName variant={level === 1 ? "h5" : "h6"}>
                                 {getStatAttributeText(key)}
-                            </TowerText>
+                            </StatName>
                             {stats[key].description !== "" && (
                                 <Description variant={level === 1 ? "subtitle2" : "caption"} font={true}>
                                     {stats[key].description}

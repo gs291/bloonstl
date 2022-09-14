@@ -28,8 +28,13 @@ const AbilitiesText = styled(TowerText)`
   text-align: center;
 `;
 
+const AbilitiesCaptionText = styled(TowerText)`
+  text-align: center;
+  margin-bottom: 40px;
+`;
+
 const PathCost = styled(TowerText)`
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   cursor: default;
 `;
 
@@ -138,6 +143,9 @@ export default function MonkeyPage({monkey}) {
             <AbilitiesText variant={mobile ? "h4" : "h3"}>
                 Monkey Abilities
             </AbilitiesText>
+            <AbilitiesCaptionText variant={mobile ? "h6" : "h5"} sx={{maxWidth: mobile ? "100%" : "55%"}} font>
+                View highly rated ability paths or set your own path and view its changes! (via Sandbox Mode)
+            </AbilitiesCaptionText>
             <AbilityPathText path={path} textColor={dividerBackgroundColor}/>
             <PathCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
                 Path Cost: $<Counter cost={stats.cost} />

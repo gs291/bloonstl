@@ -1,6 +1,7 @@
 import {styled} from "@mui/material/styles";
 import {Grid, Typography} from "@mui/material";
 
+import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
@@ -16,6 +17,10 @@ const Title = styled(Grid, globalOptions)`
   color: ${props => props.theme.palette.text.primary};
 `;
 
+const TitleText = styled(TowerText)`
+  cursor: default;
+`;
+
 /**
  * Title component for a grid
  *
@@ -29,9 +34,9 @@ export default function GridTitle({ className, children, backgroundColor}) {
     return (
         <>
             <Title className={className} data-bc={backgroundColor} item>
-                <Typography variant="h2">
+                <TitleText variant="h2">
                     { children }
-                </Typography>
+                </TitleText>
             </Title>
         </>
     );

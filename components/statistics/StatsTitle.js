@@ -26,7 +26,7 @@ const TitleWrapper = styled("div")`
 `;
 
 const Title = styled(TowerText)`
-  
+  cursor: default;
 `;
 
 /**

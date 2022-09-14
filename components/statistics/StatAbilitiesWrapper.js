@@ -11,7 +11,6 @@ const Title = styled(TowerText)`
   margin-top: 10px;
   margin-bottom: 30px;
   text-align: center;
-  cursor: default;
 `;
 
 const TitleOnTop = styled(TowerText)`
@@ -43,7 +42,7 @@ export default function StatAbilitiesWrapper({stats, towerType, type, dividerBac
                     <TitleOnTop variant={mobile ? "h4" : "h3"}>
                         Ability Path
                     </TitleOnTop>
-                    <Title variant={mobile ? "h6" : "h5"}>
+                    <Title variant={mobile ? "h6" : "h5"} font>
                         Abilities / Attacks / Buffs / Statuses
                     </Title>
                     <StatsAbilities stats={stats} towerType={towerType} type={type}/>
