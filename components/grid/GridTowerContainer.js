@@ -5,6 +5,7 @@ import {styled} from "@mui/material/styles";
 import GridTitle from "./GridTitle";
 import GridItems from "./GridItems";
 import TowerCard from "../tower/TowerCard";
+import BloonCard from "../bloons/BloonCard";
 import {rgbaHex} from "../../lib/utils/utils";
 import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
@@ -26,7 +27,7 @@ const TowerGrid = styled(Grid, globalOptions)`
  * @param {string} props.titleColor Color to be applied to the title
  * @param {number} props.ignoreFilter Shows if the filters should be ignored
  */
-export default function GridTowerContainer({towers, title, backgroundColor, titleColor, ignoreFilter, }) {
+export default function GridTowerContainer({towers, title, backgroundColor, titleColor, ignoreFilter, type="tower"}) {
     const mobile = useSelector(getMobile);
 
     let gridSpacing = 4;
@@ -42,14 +43,36 @@ export default function GridTowerContainer({towers, title, backgroundColor, titl
                 </GridTitle>
                 <GridItems backgroundColor={backgroundColor} borderColor={titleColor}>
                     <Grid container spacing={1}>
-                        {towers.map(tower => (
-                            <Grid xs={gridSpacing} item key={tower.id}>
-                                <TowerCard tower={tower}
-                                           towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}
-                                           ignoreFilter={ignoreFilter}
-                                />
-                            </Grid>
-                        ))}
+                        {type === "bloon" ? (
+                            <>
+                                {towers.bloons.map(bloon => (
+                                    <Grid xs={gridSpacing} item key={bloon.id}>
+                                        <BloonCard bloon={bloon} type="bloon" ignoreFilter={ignoreFilter} />
+                                    </Grid>
+                                ))}
+                                {towers.bosses.filter(boss => boss.type === 0).map(boss => (
+                                    <Grid xs={gridSpacing} item key={boss.id}>
+                                        <BloonCard bloon={boss} type="boss" ignoreFilter={ignoreFilter} />
+                                    </Grid>
+                                ))}
+                            </>
+                        ) : (
+                            <>
+                                {towers.map(tower => (
+                                    <Grid xs={gridSpacing} item key={tower.id}>
+                                        {type === "bloon" ? (
+                                            <BloonCard bloons={towers.bloons} bosses={towers.bosses} />
+                                        ) : (
+                                            <TowerCard tower={tower}
+                                                       towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}
+                                                       ignoreFilter={ignoreFilter}
+                                            />
+                                        )}
+                                    </Grid>
+                                ))}
+                            </>
+                        )}
+
                     </Grid>
                 </GridItems>
             </TowerGrid>

@@ -1722,9 +1722,9 @@ INSERT INTO `Boss` VALUES (NULL, 'lych', 'Lych', '20000,75000,350000,750000,3000
 INSERT INTO `Boss` VALUES (NULL, 'lych-s', 'Leech-Soul Health|Health Drain', '1280;3050;7900;14500;47000', '1;2;5;10;17', 'Drains lives every 4 seconds it exists. Sent upon reaching skull health.', NULL);
 INSERT INTO `Boss` VALUES (NULL, 'lych-e', 'Elite Lych', '30000,180000,1200000,4800000,24000000', NULL, '0.01,0.108,0.0116,0.012,0.0124', NULL);
 INSERT INTO `Boss` VALUES (NULL, 'lych-es', 'Leech-Soul Health (Elite)|Health Drain', '1600;5600;27000;100000;485000', '11;12;15;20;27', 'Drains lives every 4 seconds it exists. Sent upon reaching skull health.', NULL);
-INSERT INTO `Boss` VALUES (NULL, 'votex', 'Vortex', '20000,62800,294000,628000,2512500', NULL, '0.144,0.144,0.156,0.162,0.168', NULL);
-INSERT INTO `Boss` VALUES (NULL, 'votex-s', 'Stun Duration|Stun Range', '16s;16s;20s;25s;30s', '60;65;70;75;80', 'Stuns nearby towers', NULL);
-INSERT INTO `Boss` VALUES (NULL, 'votex-e', 'Elite Vortex', '41800,251000,1675000,6700000,33500000', NULL, '0.15,0.162,0.18,0.186,0.192', NULL);
-INSERT INTO `Boss` VALUES (NULL, 'votex-es', 'Stun Duration|Stun Range', '20s;25s;30s;36s;40s', '60;65;70;75;80', 'Stuns nearby towers', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'vortex', 'Vortex', '20000,62800,294000,628000,2512500', NULL, '0.144,0.144,0.156,0.162,0.168', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'vortex-s', 'Stun Duration|Stun Range', '16s;16s;20s;25s;30s', '60;65;70;75;80', 'Stuns nearby towers', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'vortex-e', 'Elite Vortex', '41800,251000,1675000,6700000,33500000', NULL, '0.15,0.162,0.18,0.186,0.192', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'vortex-es', 'Stun Duration|Stun Range', '20s;25s;30s;36s;40s', '60;65;70;75;80', 'Stuns nearby towers', NULL);
 
 
