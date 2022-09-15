@@ -177,10 +177,14 @@ export default function SandboxMode({sandbox, setSandbox, handleReset, color, pa
                             {sandbox ? "Disable" : "Enable"} Sandbox
                         </TowerText>
                     </SandboxButton>
-                    {sandbox && (<SandboxEnabled data-c={color}/>)}
-                    <SandboxEnabledText data-s={sandbox} variant="h6">
-                        SB
-                    </SandboxEnabledText>
+                    {sandbox && (
+                        <>
+                            <SandboxEnabled data-c={color}/>
+                            <SandboxEnabledText data-s={sandbox} variant="h6">
+                                SB
+                            </SandboxEnabledText>
+                        </>
+                    )}
                 </SandboxButtonContainer>
 
                 {(towerType === "monkey" && sandbox) && (
