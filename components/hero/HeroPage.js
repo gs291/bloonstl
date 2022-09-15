@@ -110,13 +110,13 @@ export default function HeroPage({ hero }) {
                 defaultStats={hero.stats} setStats={setStats} color={dividerBackgroundColor}
                 path={path} initialPros={hero.info.pros} initialCons={hero.info.cons} setPath={sandbox && !pauseSandbox && setPath}
             />
-            <Border width={65} backgroundColor={dividerBackgroundColor}/>
-            <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="hero" type={hero.name} />
             <Border width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h3" : "h2"}>
                 Tower Pros / Cons
             </Title>
             <ProsCons pros={stats.pros} cons={stats.cons} backgroundColor={dividerBackgroundColor}/>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="hero" type={hero.name} />
             <Border width={100} backgroundColor={dividerBackgroundColor}/>
             <Title variant={mobile ? "h3" : "h2"}>
                 Tower Statistics
