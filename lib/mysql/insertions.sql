@@ -1681,3 +1681,50 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 19, '', 'New Ite
 
 INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_geraldo, 'eg,mg,lg,supp', 'xp');
 
+
+
+-- Bloons --
+
+
+--          Bloon      --  (  id, varName,        name, rbe, hp, speed, immune, children, parent)
+INSERT INTO `Bloon` VALUES (NULL,   'red', 'Red Bloon',   1,  0,     1,     '',       '', 'blue');
+INSERT INTO `Bloon` VALUES (NULL, 'blue', 'Blue Bloon', 2, 0, 1.4, '', 'red-1', 'grn');
+INSERT INTO `Bloon` VALUES (NULL, 'grn', 'Green Bloon', 3, 0, 1.8, '', 'blue-1', 'ylw');
+INSERT INTO `Bloon` VALUES (NULL, 'ylw', 'Yellow Bloon', 4, 0, 3.2, '', 'grn-1', 'pink');
+INSERT INTO `Bloon` VALUES (NULL, 'pink', 'Pink Bloon', 5, 0, 3.5, '', 'ylw-1', 'blk,wht,purp');
+INSERT INTO `Bloon` VALUES (NULL, 'blk', 'Black Bloon', 11, 0, 1.8, 'explosion', 'pink-2', 'zbr,lead');
+INSERT INTO `Bloon` VALUES (NULL, 'wht', 'White Bloon', 11, 0, 2.0, 'freeze', 'pink-2', 'zbr');
+INSERT INTO `Bloon` VALUES (NULL, 'purp', 'Purple Bloon', 11, 0, 3.0, 'energy,fire,plasma',       'pink-2', '');
+INSERT INTO `Bloon` VALUES (NULL, 'lead', 'Lead Bloon', 23, 0, 1.0, 'sharp', 'blk-2', '');
+INSERT INTO `Bloon` VALUES (NULL, 'zbr', 'Zebra Bloon', 23, 0, 1.8, 'explosion,freeze',       'blk-1,wht-1', 'rnbw');
+INSERT INTO `Bloon` VALUES (NULL, 'rnbw', 'Rainbow Bloon', 47, 0, 1.8, '', 'zbr-2', 'cm');
+INSERT INTO `Bloon` VALUES (NULL, 'cm', 'Ceramic Bloon', 104, 10, 2.5, '', 'rnbw-2', 'moab,ddt');
+
+-- Blimps
+
+--          Bloon      --  (  id, varName,     name, rbe,  hp, speed, immune, children, parent)
+INSERT INTO `Bloon` VALUES (NULL, 'moab', 'M.O.A.B', 616, 200,   1.0,     '',   'cm-4',   'bfb');
+INSERT INTO `Bloon` VALUES (NULL, 'bfb', 'B.F.B', 3164, 700, 0.25, '', 'moab-4', 'zomg');
+INSERT INTO `Bloon` VALUES (NULL, 'zomg', 'Z.O.M.G', 16656, 4000, 0.18, '', 'bfb-4', 'bad');
+INSERT INTO `Bloon` VALUES (NULL, 'ddt', 'D.D.T', 816, 400, 2.75, 'explosion,sharp', 'camo-4-reg,cm-1', 'bad');
+INSERT INTO `Bloon` VALUES (NULL, 'bad', 'B.A.D', 55760, 20000, 0.18, '', 'zomg-2,ddt-3', '');
+
+-- Boss
+
+--          Boss      --  (  id,      varName,         name,                                 rbe,   hp,                        speed, immune)
+--          Boss - S  --  Special
+--          Boss - E  --  Elite
+INSERT INTO `Boss` VALUES (NULL, 'bloonarius', 'Bloonarius', '14000,52500,245000,525000,2100000', NULL, '0.05,0.092,0.1,0.108,0.108',  NULL);
+INSERT INTO `Boss` VALUES (NULL, 'bloonarius-s', 'Bloons Scattered|Bloons Sent on Skull', 'grn-8;ylw-15;pink-25;zbr-15;rnbw-25', 'grn-30,cm-30;ylw-60,cm-60;pink-100,moab-6;zbr-60,zomg-10;rnbw-100,bad-1', NULL, NULL);
+INSERT INTO `Boss` VALUES (NULL, 'bloonarius-e', 'Elite Bloonarius', '50000,300000,2000000,8000000,40000000', NULL, '0.092,0.092,0.1,0.108,0.108', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'bloonarius-es', 'Bloons Scattered (Elite)|Bloons Sent on Skull (Elite)', 'pink-10;rnbw-10;cm-13;cm-25-freg;moab-8', 'pink-40,cm-70;rnbw-40,bfb-16;cm-50,ddt-9,bad-1;cm-100-freg,ddt-20-f,bad-2-f;moab-30;bad-4-f', NULL, NULL);
+INSERT INTO `Boss` VALUES (NULL, 'lych', 'Lych', '20000,75000,350000,750000,3000000', NULL, '0.05,0.05,0.05,0.06,0.06', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'lych-s', 'Leech-Soul Health|Health Drain', '1280;3050;7900;14500;47000', '1;2;5;10;17', 'Drains lives every 4 seconds it exists. Sent upon reaching skull health.', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'lych-e', 'Elite Lych', '30000,180000,1200000,4800000,24000000', NULL, '0.01,0.108,0.0116,0.012,0.0124', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'lych-es', 'Leech-Soul Health (Elite)|Health Drain', '1600;5600;27000;100000;485000', '11;12;15;20;27', 'Drains lives every 4 seconds it exists. Sent upon reaching skull health.', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'votex', 'Vortex', '20000,62800,294000,628000,2512500', NULL, '0.144,0.144,0.156,0.162,0.168', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'votex-s', 'Stun Duration|Stun Range', '16s;16s;20s;25s;30s', '60;65;70;75;80', 'Stuns nearby towers', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'votex-e', 'Elite Vortex', '41800,251000,1675000,6700000,33500000', NULL, '0.15,0.162,0.18,0.186,0.192', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'votex-es', 'Stun Duration|Stun Range', '20s;25s;30s;36s;40s', '60;65;70;75;80', 'Stuns nearby towers', NULL);
+
+
