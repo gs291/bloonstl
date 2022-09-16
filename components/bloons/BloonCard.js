@@ -5,6 +5,7 @@ import {useTheme} from "@mui/material/styles";
 import {Card, CardContent, Link as MUILink, Typography} from "@mui/material";
 
 import Icon from "../tower/Icon";
+import TowerText from "../tower/TowerText";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {getTowerLink, rgbaHex} from "../../lib/utils/utils";
 import {getBorder, getMobile} from "../../lib/redux/selectors";
@@ -66,6 +67,16 @@ const TowerName = styled(Typography)`
   text-overflow: ellipsis;
 `;
 
+const CardContentStyled = styled(CardContent)`
+  position: relative;
+`;
+
+const Quantity = styled(TowerText)`
+  position: absolute;
+  bottom: 65px;
+  right: 45px;
+`;
+
 
 const GA4_TOWER_CARD_ID = "BLOON";
 
@@ -77,7 +88,7 @@ const GA4_TOWER_CARD_ID = "BLOON";
  * @param {string} props.type Shows if the bloon is a bloon or boss
  * @param {number} props.ignoreFilter Shows if the card should ignore any filters
  */
-export default function BloonCard({bloon, type, ignoreFilter}) {
+export default function BloonCard({bloon, type, ignoreFilter, quantity, ...rest}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
     const border = useSelector(getBorder);
@@ -85,7 +96,7 @@ export default function BloonCard({bloon, type, ignoreFilter}) {
     let href, borderColor, backgroundColor, hoverBackgroundColor;
 
     href = `/bloon/${getTowerLink(bloon.varName)}`;
-    borderColor = theme.palette.tower.hero.geraldo.color;
+    borderColor = theme.palette.bloon[bloon.varName].color;
     backgroundColor = theme.palette.tower.type.heroes.card;
     hoverBackgroundColor = theme.palette.tower.type.heroes.hover
 
@@ -103,14 +114,19 @@ export default function BloonCard({bloon, type, ignoreFilter}) {
     return (
         <>
             <Link href={href} passHref>
-                <MLink>
+                <MLink {...rest}>
                     <CardContainer onClick={handleClick} data-brc={borderColor} data-bc={backgroundColor} data-hbc={hoverBackgroundColor}>
-                        <CardContent>
+                        <CardContentStyled>
+                            {typeof quantity === "number" && quantity > 0 ? (
+                                <Quantity variant="h5">
+                                    x{quantity}
+                                </Quantity>
+                            ) : ""}
                             <Icon tower={{name: bloon.name, filename: `${bloon.varName}.png`}} />
                             <TowerName variant={mobile ? "body1" : "h5"}>
                                 {bloon.name}
                             </TowerName>
-                        </CardContent>
+                        </CardContentStyled>
                     </CardContainer>
                 </MLink>
             </Link>

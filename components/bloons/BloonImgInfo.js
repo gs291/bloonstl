@@ -18,14 +18,13 @@ const BloonContainer = styled(Grid)`
  * Individual bloon image and information component
  *
  * @param {Object} props Component props
- * @param {Object} props.tower Object containing the tower
- * @param {string} props.towerType Shows if the tower is a monkey or hero
+ * @param {Object} props.bloon Object containing the bloon
  */
 export default function BloonImgInfo({bloon}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
     let gridSpacing = 5;
-    const backgroundColor = theme.palette.tier.s.color;
+    const backgroundColor = theme.palette.bloon[bloon.varName].color;
 
         if (mobile) {
         gridSpacing = 12
