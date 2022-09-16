@@ -23,17 +23,25 @@ export async function getStaticPaths() {
     const bloons = await dataSources().bloonsAPI.getAllBloons();
     const paths = bloons.bloons
         .map(bloon => {
-            if ((!(typeof bloon.type === "number") || (typeof bloon.type === "number" && bloon.type === 0))) {
-                return {
-                    params: {
-                        varName: getTowerLink(bloon.varName)
-                    }
+            return {
+                params: {
+                    varName: getTowerLink(bloon.varName)
+                }
+            }
+        });
+
+    const bossPaths = bloons.bosses
+        .filter(bloon => (typeof bloon.type === "number" && bloon.type === 0))
+        .map(bloon => {
+            return {
+                params: {
+                    varName: getTowerLink(bloon.varName)
                 }
             }
         });
 
     return {
-        paths,
+        paths: paths.concat(bossPaths),
         fallback: false
     }
 }
