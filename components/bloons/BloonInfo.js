@@ -23,10 +23,10 @@ const NameText = styled(DefaultText)`
 `;
 
 /**
- * Full individual tower information component
+ * Full individual bloon information component
  *
  * @param {Object} props Component props
- * @param {Object} props.tower Object containing the tower
+ * @param {Object} props.bloon Object containing the bloon
  */
 export default function BloonInfo({bloon}) {
     const theme = useTheme();

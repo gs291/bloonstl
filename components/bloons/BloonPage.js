@@ -10,6 +10,12 @@ const Border = styled(FixedDivider)`
   margin-bottom: 50px;
 `;
 
+/**
+ * The '/bloon/[varName]' page component
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.bloon Object containing the bloon
+ */
 export default function BloonPage({bloon, type}) {
     const theme = useTheme();
 

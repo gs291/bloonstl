@@ -82,7 +82,7 @@ const Quantity = styled(TowerText)`
 const GA4_TOWER_CARD_ID = "BLOON";
 
 /**
- * Full tower card
+ * Full Bloon card
  *
  * @param {Object} props Component props
  * @param {Object} props.bloon Object containing the bloon

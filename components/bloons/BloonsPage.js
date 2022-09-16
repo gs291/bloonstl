@@ -2,6 +2,14 @@ import {Grid} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import GridTowerContainer from "../grid/GridTowerContainer";
 
+
+/**
+ * The '/bloons' page component
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.bloons Object containing the bloons/blimps
+ * @param {Object} props.bosses Object containing the blimp bosses
+ */
 export default function BloonsPage({bloons, bosses}) {
     const theme = useTheme();
 

@@ -41,6 +41,12 @@ const StyledBloonCard = styled(BloonCard)`
   width: ${props => props["data-m"] ? 100 : 50}%;
 `;
 
+/**
+ * The Bloon hierarchy showing the children and parent of the bloon
+ *
+ * @param {Object} props Component props
+ * @param {Object} props.bloon Object containing the bloon
+ */
 export default function BloonHierarchy({bloon}) {
     const mobile = useSelector(getMobile);
 

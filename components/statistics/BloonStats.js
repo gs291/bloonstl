@@ -18,15 +18,15 @@ const ItemsContainer = styled("div", globalOptions)`
 `;
 
 /**
- * The main tower stats component
+ * The main bloon stats component
  *
  * @param {Object} props Component props
- * @param {Object} props.bloon Object containing ALL the stats of the tower
+ * @param {Object} props.bloon Object containing the bloon stats
  */
 export default function BloonStats({bloon, ...rest}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const color = theme.palette.tier.s.color;
+    const color = theme.palette.bloon[bloon.varName].color;
 
     return (
         <>
