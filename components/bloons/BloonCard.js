@@ -88,6 +88,7 @@ const GA4_TOWER_CARD_ID = "BLOON";
  * @param {Object} props.bloon Object containing the bloon
  * @param {string} props.type Shows if the bloon is a bloon or boss
  * @param {number} props.ignoreFilter Shows if the card should ignore any filters
+ * @param {number} [props.quantity] If there a number to display with the card, display quantity
  */
 export default function BloonCard({bloon, type, ignoreFilter, quantity, ...rest}) {
     const theme = useTheme();
