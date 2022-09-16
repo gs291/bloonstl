@@ -47,12 +47,12 @@ export default function GridTowerContainer({towers, title, backgroundColor, titl
                             <>
                                 {towers.bloons.map(bloon => (
                                     <Grid xs={gridSpacing} item key={bloon.id}>
-                                        <BloonCard bloon={bloon} type="bloon" ignoreFilter={ignoreFilter} />
+                                        <BloonCard bloon={bloon} type="grid" ignoreFilter={ignoreFilter} />
                                     </Grid>
                                 ))}
                                 {towers.bosses.filter(boss => boss.type === 0).map(boss => (
                                     <Grid xs={gridSpacing} item key={boss.id}>
-                                        <BloonCard bloon={boss} type="boss" ignoreFilter={ignoreFilter} />
+                                        <BloonCard bloon={boss} type="grid" ignoreFilter={ignoreFilter} />
                                     </Grid>
                                 ))}
                             </>
@@ -60,14 +60,10 @@ export default function GridTowerContainer({towers, title, backgroundColor, titl
                             <>
                                 {towers.map(tower => (
                                     <Grid xs={gridSpacing} item key={tower.id}>
-                                        {type === "bloon" ? (
-                                            <BloonCard bloons={towers.bloons} bosses={towers.bosses} />
-                                        ) : (
-                                            <TowerCard tower={tower}
-                                                       towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}
-                                                       ignoreFilter={ignoreFilter}
-                                            />
-                                        )}
+                                        <TowerCard tower={tower}
+                                                   towerType={typeof tower.cost_cash === "number" ? "hero" : "monkey"}
+                                                   ignoreFilter={ignoreFilter}
+                                        />
                                     </Grid>
                                 ))}
                             </>

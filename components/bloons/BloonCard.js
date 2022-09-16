@@ -75,6 +75,7 @@ const Quantity = styled(TowerText)`
   position: absolute;
   bottom: 65px;
   right: 45px;
+  z-index: 2;
 `;
 
 
@@ -97,8 +98,8 @@ export default function BloonCard({bloon, type, ignoreFilter, quantity, ...rest}
 
     href = `/bloon/${getTowerLink(bloon.varName)}`;
     borderColor = theme.palette.bloon[bloon.varName].color;
-    backgroundColor = theme.palette.tower.type.heroes.card;
-    hoverBackgroundColor = theme.palette.tower.type.heroes.hover
+    backgroundColor = type === "grid" ? theme.palette.tower.type.heroes.card : "transparent";
+    hoverBackgroundColor = type === "grid" ? theme.palette.tower.type.heroes.hover : theme.palette.bloon.card.hover;
 
     if (!border && ignoreFilter === 0) {
         borderColor = backgroundColor;
