@@ -84,11 +84,7 @@ export default function BloonCard({bloon, type, ignoreFilter}) {
 
     let href, borderColor, backgroundColor, hoverBackgroundColor;
 
-    if (type === "bloon") {
-        href = `/bloon/${getTowerLink(bloon.varName)}`;
-    } else if (type === "boss") {
-        href = `/boss/${getTowerLink(bloon.varName)}`;
-    }
+    href = `/bloon/${getTowerLink(bloon.varName)}`;
     borderColor = theme.palette.tower.hero.geraldo.color;
     backgroundColor = theme.palette.tower.type.heroes.card;
     hoverBackgroundColor = theme.palette.tower.type.heroes.hover
