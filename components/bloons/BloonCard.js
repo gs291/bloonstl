@@ -119,11 +119,11 @@ export default function BloonCard({bloon, type, ignoreFilter, quantity, ...rest}
                 <MLink {...rest}>
                     <CardContainer onClick={handleClick} data-brc={borderColor} data-bc={backgroundColor} data-hbc={hoverBackgroundColor}>
                         <CardContentStyled>
-                            {typeof quantity === "number" && quantity > 0 ? (
+                            {typeof quantity === "number" && quantity > 0 && (
                                 <Quantity variant="h5">
                                     x{quantity}
                                 </Quantity>
-                            ) : ""}
+                            )}
                             <Icon tower={{name: bloon.name, filename: `${bloon.varName}.png`}} />
                             <TowerName variant={mobile ? "body1" : "h5"}>
                                 {bloon.name}
