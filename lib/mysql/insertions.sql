@@ -1699,6 +1699,7 @@ INSERT INTO `Bloon` VALUES (NULL, 'lead', 'Lead Bloon', 23, 0, 1.0, 'sharp', 'bl
 INSERT INTO `Bloon` VALUES (NULL, 'zbr', 'Zebra Bloon', 23, 0, 1.8, 'explosion,freeze',       'blk-1,wht-1', 'rnbw');
 INSERT INTO `Bloon` VALUES (NULL, 'rnbw', 'Rainbow Bloon', 47, 0, 1.8, '', 'zbr-2', 'cm');
 INSERT INTO `Bloon` VALUES (NULL, 'cm', 'Ceramic Bloon', 104, 10, 2.5, '', 'rnbw-2', 'moab,ddt');
+INSERT INTO `Bloon` VALUES (NULL, 'camo', 'Camo Bloon', -1, -1, -1, '', '', '');
 
 -- Blimps
 
