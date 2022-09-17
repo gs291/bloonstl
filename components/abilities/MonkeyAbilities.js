@@ -33,6 +33,9 @@ const GridContainer = styled(Grid)`
 const GridItem = styled(Grid)`
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
 `;
 
 const AllAbilities = styled("div", globalOptions)`

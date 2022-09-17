@@ -22,7 +22,7 @@ const AbilityContainer = styled("div")`
 const CardContainer = styled(Card, globalOptions)`
   border-radius: 50%;
   background-color: ${props => props.theme.palette.ability.card};
-  border: 4px solid ${props => props["data-s"] ? props["data-c"] : props.theme.palette.ability.card};
+  ${props => props["data-s"] && `border: 4px solid ${props["data-c"]};`}
   transition: 0.3s;
   box-shadow: 0 0 10px 2px ${props => props.theme.palette.ability.shadow};
   
