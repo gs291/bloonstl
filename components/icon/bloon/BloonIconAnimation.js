@@ -62,7 +62,7 @@ const BloonAnimation = props =>
       fill: currentColor;
       color: ${props["data-c"]};
 
-      animation-name: ${props["data-r"] ? "none" : props["data-moab"] ? "moab-path" : "bloon-path"};
+      animation-name: ${props["data-r"] ? "none" : props["data-moab"] ? "moab-path" : "enemy-path"};
       animation-duration: ${props["data-dur"]}s;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;

@@ -23,12 +23,12 @@ const NameText = styled(DefaultText)`
 `;
 
 /**
- * Full individual bloon information component
+ * Full individual enemy information component
  *
  * @param {Object} props Component props
- * @param {Object} props.bloon Object containing the bloon
+ * @param {Object} props.enemy Object containing the enemy
  */
-export default function BloonInfo({bloon}) {
+export default function EnemyInfo({enemy}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
 
@@ -36,7 +36,7 @@ export default function BloonInfo({bloon}) {
         <>
             <TowerTextContainer>
                 <NameText variant={mobile ? "h3" : "h2"} component="h1">
-                    {bloon.name}
+                    {enemy.name}
                 </NameText>
             </TowerTextContainer>
         </>

@@ -18,21 +18,21 @@ const ItemsContainer = styled("div", globalOptions)`
 `;
 
 /**
- * The main bloon stats component
+ * The main enemy stats component
  *
  * @param {Object} props Component props
- * @param {Object} props.bloon Object containing the bloon stats
+ * @param {Object} props.enemy Object containing the enemy stats
  */
-export default function BloonStats({bloon, tier, ...rest}) {
+export default function EnemyStats({enemy, tier, ...rest}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const color = theme.palette.bloon[bloon.varName].color;
+    const color = theme.palette.bloon[enemy.varName].color;
 
-    const type = typeof bloon.type === "number" ? "boss" : "bloon";
+    const type = typeof enemy.type === "number" ? "boss" : "bloon";
 
-    const rbe = parseInt(type === "bloon" ? bloon.rbe : (bloon.rbe !== null ? bloon.rbe[tier] : '0'));
-    const hp = parseInt(type === "bloon" ? bloon.hp : (bloon.hp !== null ? bloon.hp[tier] : '0'));
-    const speed = parseFloat(type === "bloon" ? bloon.speed : (bloon.speed !== null ? bloon.speed[tier] : '0'));
+    const rbe = parseInt(type === "bloon" ? enemy.rbe : (enemy.rbe !== null ? enemy.rbe[tier] : '0'));
+    const hp = parseInt(type === "bloon" ? enemy.hp : (enemy.hp !== null ? enemy.hp[tier] : '0'));
+    const speed = parseFloat(type === "bloon" ? enemy.speed : (enemy.speed !== null ? enemy.speed[tier] : '0'));
 
     return (
         <>

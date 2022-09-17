@@ -1,20 +1,20 @@
 import {dataSources} from "../lib/mysql/db";
 import Header from "../components/page/Header";
 import PageTitle from "../components/page/PageTitle";
-import BloonsPage from "../components/bloons/BloonsPage";
+import EnemiesPage from "../components/enemy/EnemiesPage";
 import MainContainer from "../components/page/MainContainer";
 
 
-export default function Bloons({ bloons, bosses }) {
+export default function Enemies({ bloons, bosses }) {
     bloons = JSON.parse(bloons);
     bosses = JSON.parse(bosses);
 
     return (
         <>
-            <Header title="Bloons" />
+            <Header title="Enemies" />
             <MainContainer>
-                <PageTitle title="Bloons" />
-                <BloonsPage bloons={bloons} bosses={bosses} />
+                <PageTitle title="Enemies" />
+                <EnemiesPage bloons={bloons} bosses={bosses} />
             </MainContainer>
         </>
     );

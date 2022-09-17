@@ -16,7 +16,7 @@ const GA4_BOSS_ELITE_ID = "BOSS_ELITE";
  * @param {Object} props Component props
  * @param {boolean} props.elite Show if elite is enabled or not
  * @param {function} props.handleElite Function to change the elite state
- * @param {string} props.color Color of the bloon
+ * @param {string} props.color Color of the boss
  */
 export default function BossElite({elite, handleElite, color}) {
     const theme = useTheme();

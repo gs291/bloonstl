@@ -5,7 +5,7 @@ import {styled} from "@mui/material/styles";
 import GridTitle from "./GridTitle";
 import GridItems from "./GridItems";
 import TowerCard from "../tower/TowerCard";
-import BloonCard from "../bloons/BloonCard";
+import EnemyCard from "../enemy/EnemyCard";
 import {rgbaHex} from "../../lib/utils/utils";
 import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
@@ -47,12 +47,12 @@ export default function GridTowerContainer({towers, title, backgroundColor, titl
                             <>
                                 {towers.bloons.map(bloon => (
                                     <Grid xs={gridSpacing} item key={bloon.id}>
-                                        <BloonCard bloon={bloon} type="grid" ignoreFilter={ignoreFilter} />
+                                        <EnemyCard enemy={bloon} type="grid" ignoreFilter={ignoreFilter} />
                                     </Grid>
                                 ))}
                                 {towers.bosses.filter(boss => boss.type === 0).map(boss => (
                                     <Grid xs={gridSpacing} item key={boss.id}>
-                                        <BloonCard bloon={boss} type="grid" ignoreFilter={ignoreFilter} />
+                                        <EnemyCard enemy={boss} type="grid" ignoreFilter={ignoreFilter} />
                                     </Grid>
                                 ))}
                             </>

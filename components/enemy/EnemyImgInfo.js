@@ -4,7 +4,7 @@ import {styled} from "@mui/material/styles";
 import {useTheme} from "@mui/material/styles";
 
 import Icon from "../tower/Icon";
-import BloonInfo from "./BloonInfo";
+import EnemyInfo from "./EnemyInfo";
 import {getMobile} from "../../lib/redux/selectors";
 import VerticalDivider from "../divider/VerticalDivider";
 
@@ -15,16 +15,16 @@ const BloonContainer = styled(Grid)`
 `;
 
 /**
- * Individual bloon image and information component
+ * Individual enemy image and information component
  *
  * @param {Object} props Component props
- * @param {Object} props.bloon Object containing the bloon
+ * @param {Object} props.enemy Object containing the enemy
  */
-export default function BloonImgInfo({bloon}) {
+export default function EnemyImgInfo({enemy}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
     let gridSpacing = 5;
-    const backgroundColor = theme.palette.bloon[bloon.varName].color;
+    const backgroundColor = theme.palette.bloon[enemy.varName].color;
 
         if (mobile) {
         gridSpacing = 12
@@ -40,11 +40,11 @@ export default function BloonImgInfo({bloon}) {
                 alignItems="center"
             >
                 <Grid item xs={gridSpacing}>
-                    <Icon tower={{name: bloon.name, filename: `${bloon.varName}.png`}} towerType="monkey" priority={true} />
+                    <Icon tower={{name: enemy.name, filename: `${enemy.varName}.png`}} towerType="monkey" priority={true} />
                 </Grid>
                 { !mobile && (<VerticalDivider backgroundColor={backgroundColor} />)}
                 <Grid item xs={gridSpacing}>
-                    <BloonInfo bloon={bloon}/>
+                    <EnemyInfo enemy={enemy}/>
                 </Grid>
             </BloonContainer>
         </>

@@ -15,9 +15,9 @@ import HeroAbilities from "../abilities/HeroAbilities";
 import AbilityPathText from "../tower/AbilityPathText";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import TowerPatchUpdates from "../patch-notes/TowerPatchUpdates";
+import ConsecutiveSnackbars from "../snackbar/ConsecutiveSnackbars";
 import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
 import {getHeroColor, getInitialTowerStats} from "../../lib/utils/utils";
-import ConsecutiveSnackbars from "../snackbar/ConsecutiveSnackbars";
 
 
 const FilterDiff = styled(FilterDifficulty)`
@@ -52,13 +52,17 @@ const Abilities = styled(HeroAbilities)`
 `;
 
 const PathXPCost = styled(TowerText)`
-  margin-bottom: 40px;
   cursor: default;
 `;
 
 const Border = styled(FixedDivider)`
   margin-top: 50px;
   margin-bottom: 50px;
+`;
+
+const LevelText = styled("div")`
+  ${props => props.theme.palette.mode === "light" && `text-shadow: 5px 5px 10px ${props.theme.palette.text.primary};`};
+  margin-bottom: 40px;
 `;
 
 /**
@@ -96,10 +100,12 @@ export default function HeroPage({ hero }) {
             <AbilitiesCaptionText variant={mobile ? "h6" : "h5"} sx={{maxWidth: mobile ? "100%" : "55%"}} font>
                 View highly rated ability paths or set your own path and view its changes! (via Sandbox Mode)
             </AbilitiesCaptionText>
-            <AbilityPText path={{"top_path": path + 1}} towerType="hero" textColor={dividerBackgroundColor} />
-            <PathXPCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
-                Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} gold={false}/>
-            </PathXPCost>
+            <LevelText>
+                <AbilityPText path={{"top_path": path + 1}} towerType="hero" textColor={dividerBackgroundColor} />
+                <PathXPCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
+                    Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} gold={false}/>
+                </PathXPCost>
+            </LevelText>
             <SandboxMode
                 sandbox={sandbox} setSnackPack={setSnackPack}
                 setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox}
