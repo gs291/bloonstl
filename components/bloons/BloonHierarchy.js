@@ -1,9 +1,9 @@
 import {useSelector} from "react-redux";
 import {styled} from "@mui/material/styles";
 
-import BloonCard from "./BloonCard";
+import EnemyCard from "../enemy/EnemyCard";
 import TowerText from "../tower/TowerText";
-import {getBloonName} from "../../lib/utils/utils";
+import {getEnemyName} from "../../lib/utils/utils";
 import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
@@ -37,15 +37,15 @@ const BloonCardContainer = styled("div")`
   height: 100%;
 `;
 
-const StyledBloonCard = styled(BloonCard)`
+const StyledEnemyCard = styled(EnemyCard)`
   width: ${props => props["data-m"] ? 100 : 50}%;
 `;
 
 /**
- * The Bloon hierarchy showing the children and parent of the bloon
+ * The Bloon hierarchy showing the children and parent of the enemy
  *
  * @param {Object} props Component props
- * @param {Object} props.bloon Object containing the bloon
+ * @param {Object} props.bloon Object containing the enemy
  */
 export default function BloonHierarchy({bloon}) {
     const mobile = useSelector(getMobile);
@@ -61,9 +61,9 @@ export default function BloonHierarchy({bloon}) {
                         {typeof bloon.children === "string" && bloon.children !== "" && bloon.children.split(',').map(child => {
                             const splitChild = child.split('-');
                             return (
-                                <StyledBloonCard
+                                <StyledEnemyCard
                                     key={splitChild[0]} data-m={mobile}
-                                    bloon={{varName: splitChild[0], name: getBloonName[splitChild[0]]}}
+                                    enemy={{varName: splitChild[0], name: getEnemyName[splitChild[0]]}}
                                     quantity={parseInt(splitChild[1])}
                                 />
                             );
@@ -78,9 +78,9 @@ export default function BloonHierarchy({bloon}) {
                         {typeof bloon.parent === "string" && bloon.parent !== "" && bloon.parent.split(',').map(parent => {
                             const splitParent = parent.split('-');
                             return (
-                                <StyledBloonCard
+                                <StyledEnemyCard
                                     key={splitParent[0]} data-m={mobile}
-                                    bloon={{varName: splitParent[0], name: getBloonName[splitParent[0]]}}
+                                    enemy={{varName: splitParent[0], name: getEnemyName[splitParent[0]]}}
                                     quantity={parseInt(splitParent[1])}
                                 />
                             );

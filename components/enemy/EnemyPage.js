@@ -1,13 +1,13 @@
 import {useState} from "react";
 import {styled, useTheme} from "@mui/material/styles";
 
-import BossSpecial from "./BossSpecial";
-import BloonImgInfo from "./BloonImgInfo";
+import EnemyImgInfo from "./EnemyImgInfo";
 import BossTier from "../button/BossTier";
 import BossElite from "../button/BossElite";
-import BloonHierarchy from "./BloonHierarchy";
-import BloonStats from "../statistics/BloonStats";
+import BossSpecial from "../bloons/BossSpecial";
+import EnemyStats from "../statistics/EnemyStats";
 import FixedDivider from "../divider/FixedDivider";
+import BloonHierarchy from "../bloons/BloonHierarchy";
 
 
 const Border = styled(FixedDivider)`
@@ -24,19 +24,19 @@ const BossFilters = styled("div")`
 `;
 
 /**
- * The '/bloon/[varName]' page component
+ * The '/enemy/[varName]' page component
  *
  * @param {Object} props Component props
- * @param {Object} props.bloon Object containing the bloon
+ * @param {Object} props.enemy Object containing the enemy
  */
-export default function BloonPage({bloon}) {
+export default function EnemyPage({enemy}) {
     const theme = useTheme();
     const [tier, setTier] = useState(0);
     const [elite, setElite] = useState(false);
 
-    const currBloon = elite ? bloon.elite : bloon;
+    const currEnemy = elite ? enemy.elite : enemy;
 
-    const dividerBackgroundColor = theme.palette.bloon[currBloon.varName].color;
+    const dividerBackgroundColor = theme.palette.bloon[currEnemy.varName].color;
 
     const handleTier = (e) => {
         setTier(e.target.value)
@@ -49,23 +49,23 @@ export default function BloonPage({bloon}) {
 
     return (
         <>
-            <BloonImgInfo bloon={currBloon} />
-            {typeof currBloon.type === "number" && (
+            <EnemyImgInfo enemy={currEnemy} />
+            {typeof currEnemy.type === "number" && (
                 <BossFilters>
                     <BossElite elite={elite} handleElite={handleElite} color={dividerBackgroundColor} />
                     <BossTier tier={tier} handleTier={handleTier} color={dividerBackgroundColor} />
                 </BossFilters>
             )}
             <Border width={100} backgroundColor={dividerBackgroundColor}/>
-            <BloonStats bloon={currBloon} tier={tier}/>
-            {typeof currBloon.type === "number" && (
+            <EnemyStats enemy={currEnemy} tier={tier}/>
+            {typeof currEnemy.type === "number" && (
                 <>
                     <Border width={75} backgroundColor={dividerBackgroundColor}/>
-                    <BossSpecial special={currBloon.special} tier={tier}/>
+                    <BossSpecial special={currEnemy.special} tier={tier}/>
                 </>
             )}
             <Border width={100} backgroundColor={dividerBackgroundColor}/>
-            <BloonHierarchy bloon={bloon} />
+            <BloonHierarchy bloon={currEnemy} />
         </>
     );
 }

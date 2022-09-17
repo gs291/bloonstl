@@ -22,7 +22,7 @@ const GA4_TIER_SELECT_ID = "BOSS_TIER_SELECT";
  * @param {Object} props Component props
  * @param {boolean} props.tier Show what tier it is (1-5)
  * @param {function} props.handleTier Function to change the tier state
- * @param {string} props.color Color of the bloon
+ * @param {string} props.color Color of the boss
  */
 export default function BossTier({tier, handleTier, color}) {
 

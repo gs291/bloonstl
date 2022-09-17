@@ -85,20 +85,20 @@ const GA4_TOWER_CARD_ID = "BLOON";
  * Full Bloon card
  *
  * @param {Object} props Component props
- * @param {Object} props.bloon Object containing the bloon
- * @param {string} props.type Shows if the bloon is a bloon or boss
+ * @param {Object} props.enemy Object containing the enemy
+ * @param {string} props.type Shows if the enemy is a bloon or boss
  * @param {number} props.ignoreFilter Shows if the card should ignore any filters
  * @param {number} [props.quantity] If there a number to display with the card, display quantity
  */
-export default function BloonCard({bloon, type, ignoreFilter, quantity, ...rest}) {
+export default function EnemyCard({enemy, type, ignoreFilter, quantity, ...rest}) {
     const theme = useTheme();
     const mobile = useSelector(getMobile);
     const border = useSelector(getBorder);
 
     let href, borderColor, backgroundColor, hoverBackgroundColor;
 
-    href = `/bloon/${getTowerLink(bloon.varName)}`;
-    borderColor = theme.palette.bloon[bloon.varName].color;
+    href = `/enemy/${getTowerLink(enemy.varName)}`;
+    borderColor = theme.palette.bloon[enemy.varName].color;
     backgroundColor = type === "grid" ? theme.palette.tower.type.heroes.card : "transparent";
     hoverBackgroundColor = type === "grid" ? theme.palette.tower.type.heroes.hover : theme.palette.bloon.card.hover;
 
@@ -108,7 +108,7 @@ export default function BloonCard({bloon, type, ignoreFilter, quantity, ...rest}
 
     const handleClick = (e) => ga4SendSelectContent(SELECT_CONTENT_CARD, {
         item_id: `${CARD_PREFIX}${GA4_TOWER_CARD_ID}`,
-        bloon: bloon.name,
+        bloon: enemy.name,
         bloon_type: type
     });
 
@@ -124,9 +124,9 @@ export default function BloonCard({bloon, type, ignoreFilter, quantity, ...rest}
                                     x{quantity}
                                 </Quantity>
                             )}
-                            <Icon tower={{name: bloon.name, filename: `${bloon.varName}.png`}} />
+                            <Icon tower={{name: enemy.name, filename: `${enemy.varName}.png`}} />
                             <TowerName variant={mobile ? "body1" : "h5"}>
-                                {bloon.name}
+                                {enemy.name}
                             </TowerName>
                         </CardContentStyled>
                     </CardContainer>

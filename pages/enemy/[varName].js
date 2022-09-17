@@ -1,19 +1,18 @@
 import {dataSources} from "../../lib/mysql/db";
 import Header from "../../components/page/Header";
-import BloonPage from "../../components/bloons/BloonPage";
+import EnemyPage from "../../components/enemy/EnemyPage";
 import MainContainer from "../../components/page/MainContainer";
 import {getTowerLink, parseTowerLink} from "../../lib/utils/utils";
 
 
-export default function Bloon({ bloon }) {
-    bloon = JSON.parse(bloon);
+export default function Enemy({ enemy }) {
+    enemy = JSON.parse(enemy);
 
-    console.log(bloon);
     return (
         <>
-            <Header title={bloon.name} />
+            <Header title={enemy.name} />
             <MainContainer>
-                <BloonPage bloon={bloon} type={(typeof bloon.type === "number" ? "boss" : "bloon")}/>
+                <EnemyPage enemy={enemy} type={(typeof enemy.type === "number" ? "boss" : "bloon")}/>
             </MainContainer>
         </>
     );
@@ -54,7 +53,7 @@ export async function getStaticProps({ params }) {
 
     return {
         props: {
-            bloon: JSON.stringify(bloon)
+            enemy: JSON.stringify(bloon)
         }
     }
 }
