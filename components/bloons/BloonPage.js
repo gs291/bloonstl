@@ -52,8 +52,8 @@ export default function BloonPage({bloon}) {
             <BloonImgInfo bloon={currBloon} />
             {typeof currBloon.type === "number" && (
                 <BossFilters>
-                    <BossElite elite={elite} handleElite={handleElite} />
-                    <BossTier tier={tier} handleTier={handleTier}/>
+                    <BossElite elite={elite} handleElite={handleElite} color={dividerBackgroundColor} />
+                    <BossTier tier={tier} handleTier={handleTier} color={dividerBackgroundColor} />
                 </BossFilters>
             )}
             <Border width={100} backgroundColor={dividerBackgroundColor}/>

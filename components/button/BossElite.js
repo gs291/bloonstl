@@ -16,8 +16,9 @@ const GA4_BOSS_ELITE_ID = "BOSS_ELITE";
  * @param {Object} props Component props
  * @param {boolean} props.elite Show if elite is enabled or not
  * @param {function} props.handleElite Function to change the elite state
+ * @param {string} props.color Color of the bloon
  */
-export default function BossElite({elite, handleElite}) {
+export default function BossElite({elite, handleElite, color}) {
     const theme = useTheme();
 
     const handleClick = (_) => {
@@ -29,7 +30,11 @@ export default function BossElite({elite, handleElite}) {
 
     return (
         <>
-            <EliteButton onClick={handleClick} variant={theme.palette.mode === "dark" ? "outlined" : "contained"}>
+            <EliteButton
+                onClick={handleClick}
+                variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
+                borderColor={color}
+            >
                 Switch to {elite ? "Normal" : "Elite"} Boss
             </EliteButton>
         </>
