@@ -33,7 +33,6 @@ const AbilitiesCaptionText = styled(TowerText)`
 `;
 
 const PathCost = styled(TowerText)`
-  margin-bottom: 40px;
   cursor: default;
 `;
 
@@ -58,6 +57,11 @@ const PatchText = styled(TowerText)`
 const Border = styled(FixedDivider)`
   margin-top: 50px;
   margin-bottom: 50px;
+`;
+
+const LevelText = styled("div")`
+  ${props => props.theme.palette.mode === "light" && `text-shadow: 5px 5px 10px ${props.theme.palette.text.primary};`};
+  margin-bottom: 40px;
 `;
 
 // In order to fix an infinite re-rendering issue from path being set back and forth components
@@ -147,10 +151,12 @@ export default function MonkeyPage({monkey}) {
             <AbilitiesCaptionText variant={mobile ? "h6" : "h5"} sx={{maxWidth: mobile ? "100%" : "55%"}} font>
                 View highly rated ability paths or set your own path and view its changes! (via Sandbox Mode)
             </AbilitiesCaptionText>
-            <AbilityPathText path={path} textColor={dividerBackgroundColor}/>
-            <PathCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
-                Path Cost: $<Counter cost={stats.cost} />
-            </PathCost>
+            <LevelText>
+                <AbilityPathText path={path} textColor={dividerBackgroundColor}/>
+                <PathCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
+                    Path Cost: $<Counter cost={stats.cost} />
+                </PathCost>
+            </LevelText>
             <SandboxMode
                 sandbox={sandbox} setSnackPack={setSnackPack}
                 setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox}
