@@ -10,7 +10,7 @@ import {globalOptions} from "../../lib/utils/emotionStyled";
 
 
 const ParagonContainer = styled("div", globalOptions)`
-  height: ${props => props["data-m"] ? "60px" : "220px"};
+  height: ${props => props["data-m"] ? "60px" : "250px"};
   width: ${props => props["data-m"] ? "100%" : "70px"};
   padding: 0.5em;
   
