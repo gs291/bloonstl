@@ -1,9 +1,12 @@
+import {useState} from "react";
 import {styled, useTheme} from "@mui/material/styles";
 
+import BossSpecial from "./BossSpecial";
 import BloonImgInfo from "./BloonImgInfo";
+import BloonHierarchy from "./BloonHierarchy";
 import BloonStats from "../statistics/BloonStats";
 import FixedDivider from "../divider/FixedDivider";
-import BloonHierarchy from "./BloonHierarchy";
+
 
 const Border = styled(FixedDivider)`
   margin-top: 50px;
@@ -18,6 +21,7 @@ const Border = styled(FixedDivider)`
  */
 export default function BloonPage({bloon, type}) {
     const theme = useTheme();
+    const [tier, setTier] = useState(0);
 
     const dividerBackgroundColor = theme.palette.bloon[bloon.varName].color;
 
@@ -25,9 +29,15 @@ export default function BloonPage({bloon, type}) {
         <>
             <BloonImgInfo bloon={bloon} />
             <Border width={100} backgroundColor={dividerBackgroundColor}/>
-            <BloonStats bloon={bloon} />
+            <BloonStats bloon={bloon} tier={tier}/>
             <Border width={100} backgroundColor={dividerBackgroundColor}/>
             <BloonHierarchy bloon={bloon} />
+            {typeof bloon.type === "number" && (
+                <>
+                    <Border width={100} backgroundColor={dividerBackgroundColor}/>
+                    <BossSpecial bloon={bloon} />
+                </>
+            )}
         </>
     );
 }

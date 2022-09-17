@@ -58,7 +58,7 @@ export default function BloonHierarchy({bloon}) {
                         Children
                     </HierarchyText>
                     <BloonCardContainer>
-                        {bloon.children !== "" && bloon.children.split(',').map(child => {
+                        {typeof bloon.children === "string" && bloon.children !== "" && bloon.children.split(',').map(child => {
                             const splitChild = child.split('-');
                             return (
                                 <StyledBloonCard
@@ -75,7 +75,7 @@ export default function BloonHierarchy({bloon}) {
                         Parents
                     </HierarchyText>
                     <BloonCardContainer>
-                        {bloon.parent !== "" && bloon.parent.split(',').map(parent => {
+                        {typeof bloon.parent === "string" && bloon.parent !== "" && bloon.parent.split(',').map(parent => {
                             const splitParent = parent.split('-');
                             return (
                                 <StyledBloonCard

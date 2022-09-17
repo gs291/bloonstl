@@ -47,7 +47,7 @@ const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, e
         case "Slow": return {"tooltip": <TextTooltip title="Slow" text={`Slow is a applied to all bloons: ${value * 100}%`} value={value} prevValue={prevValue} />};
         case "RBE": return {"tooltip": <TextTooltip title="Red Bloon Equivalent" text="Total damage required to completely pop the Bloon" value={value} prevValue={prevValue} />};
         case "HP": return {"tooltip": <TextTooltip title="Health" text="Total damage required to completely pop one layer of the Bloon" value={value} prevValue={prevValue} />};
-        case "Speed": return {"tooltip": <TextTooltip title="Speed" text="Bloon track speed" value={value} prevValue={prevValue} />};
+        case "Speed": return {"decimals": 2, "tooltip": <TextTooltip title="Speed" text="Bloon track speed" value={value} prevValue={prevValue} />};
         default: return {"tooltip": <TextTooltip text={`Error: ${code} : ${value}`} />};
     }
 };
