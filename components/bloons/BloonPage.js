@@ -19,7 +19,7 @@ const Border = styled(FixedDivider)`
  * @param {Object} props Component props
  * @param {Object} props.bloon Object containing the bloon
  */
-export default function BloonPage({bloon, type}) {
+export default function BloonPage({bloon}) {
     const theme = useTheme();
     const [tier, setTier] = useState(0);
 
@@ -28,16 +28,21 @@ export default function BloonPage({bloon, type}) {
     return (
         <>
             <BloonImgInfo bloon={bloon} />
-            <Border width={100} backgroundColor={dividerBackgroundColor}/>
-            <BloonStats bloon={bloon} tier={tier}/>
-            <Border width={100} backgroundColor={dividerBackgroundColor}/>
-            <BloonHierarchy bloon={bloon} />
             {typeof bloon.type === "number" && (
                 <>
-                    <Border width={100} backgroundColor={dividerBackgroundColor}/>
-                    <BossSpecial bloon={bloon} />
+                    <BossTier tier={tier} setTier={setTier}/>
                 </>
             )}
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <BloonStats bloon={bloon} tier={tier}/>
+            {typeof bloon.type === "number" && (
+                <>
+                    <Border width={75} backgroundColor={dividerBackgroundColor}/>
+                    <BossSpecial special={bloon.special} tier={tier}/>
+                </>
+            )}
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <BloonHierarchy bloon={bloon} />
         </>
     );
 }

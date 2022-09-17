@@ -1,8 +1,8 @@
 import {useSelector} from "react-redux";
 import {styled} from "@mui/material/styles";
 
+import BossSpecialItem from "./BossSpecialItem";
 import {getMobile} from "../../lib/redux/selectors";
-import {parseBossSpecial} from "../../lib/utils/utils";
 
 const BossSpecialComponent = styled("div")`
   display: flex;
@@ -11,21 +11,24 @@ const BossSpecialComponent = styled("div")`
   width: 100%;
 `;
 
+
+
 /**
  * The Bloon (boss) component for its special move
  *
  * @param {Object} props Component props
- * @param {Object} props.bloon Object containing the boss
+ * @param {Object} props.special Object containing the special move for the boss
+ * @param {Object} props.tier The boss tier level
  */
-export default function BossSpecial({special}) {
+export default function BossSpecial({special, tier}) {
     const mobile = useSelector(getMobile);
 
-    const parsedSpecial = parseBossSpecial(special);
-
+    console.log("yo", special);
     return (
         <>
             <BossSpecialComponent data-m={mobile}>
-
+                <BossSpecialItem title={special.name[0]} value={special.rbe[tier]} />
+                <BossSpecialItem title={special.name[1]} value={special.hp[tier]} />
             </BossSpecialComponent>
         </>
     );
