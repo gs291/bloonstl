@@ -32,7 +32,7 @@ export default function BossElite({elite, handleElite, color}) {
         <>
             <EliteButton
                 onClick={handleClick}
-                variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
+                variant="outlined"
                 borderColor={color}
             >
                 Switch to {elite ? "Normal" : "Elite"} Boss
