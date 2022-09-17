@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 
 
 const StyledImage  = styled(Image)`

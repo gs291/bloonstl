@@ -1,18 +1,16 @@
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 import {Grid, Typography} from "@mui/material";
 
 import TopBackground from "./TopBackground";
 import siteSizes from "../../lib/utils/siteSizes";
-import siteColors from "../../lib/utils/siteColors";
-import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getMobile} from "../../lib/redux/selectors";
 import ScrollIndicator from "../scroll-indicator/ScrollIndicator";
 
 
-const TitleContainer = styled(Grid, globalOptions)`
+const TitleContainer = styled(Grid)`
   height: calc(100vh - ${siteSizes.nav.height});
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
   text-align: center;
   
   position: relative;
@@ -69,7 +67,6 @@ const ScrollContainer = styled("div")`
  */
 export default function TopSection({className, scrollTo}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -78,7 +75,6 @@ export default function TopSection({className, scrollTo}) {
                 direction="column"
                 alignItems="center"
                 justifyContent="space-between"
-                data-dm={darkMode}
                 className={className}
             >
                 <BackgroundContainer>
@@ -87,14 +83,14 @@ export default function TopSection({className, scrollTo}) {
                 <AboveCenter item>
                     <TextContainer>
                         <Typography variant={mobile ? "h2" : "h1"} component="h1">
-                            BLOONS TL
+                            BLOONS.GG
                         </Typography>
                         <br />
                         <SansSerifText variant="h4" component="h2">
-                            The Tier List Website
+                            The Bloons TD 6 Informational
                         </SansSerifText>
                         <SansSerifText variant="h4" component="h2">
-                            For Bloons TD 6
+                            and Builder Website
                         </SansSerifText>
                     </TextContainer>
                 </AboveCenter>

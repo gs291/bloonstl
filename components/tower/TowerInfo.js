@@ -1,11 +1,10 @@
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
+import {useTheme} from "@mui/material/styles";
 
 import Counter from "./Counter";
-import TierText from "./TierText";
 import TowerText from "./TowerText";
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getMobile} from "../../lib/redux/selectors";
 import {getThousandsNumber, rgbaHex} from "../../lib/utils/utils";
 
 
@@ -22,15 +21,17 @@ const TierCostContainer = styled("div")`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top:  ${props => props["data-m"] ? 10 : 20}px;
 `;
 
-const TowerTier = styled(TierText)`
-  flex: 33%;
+const TowerCosts = styled("div")``;
+
+const DefaultText = styled(TowerText)`
+  cursor: default;
 `;
 
-const TowerCosts = styled("div")`
-  margin-left: ${props => props["data-m"] ? 0 : "20px"};
-  flex: 66%;
+const NameText = styled(DefaultText)`
+  margin-bottom: 10px;
 `;
 
 /**
@@ -40,28 +41,27 @@ const TowerCosts = styled("div")`
  * @param {Object} props.tower Object containing the tower
  */
 export default function TowerInfo({tower}) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <TowerTextContainer>
-                <TowerText variant={mobile ? "h3" : "h2"} component="h1">
+                <NameText variant={mobile ? "h3" : "h2"} component="h1">
                     {tower.name}
-                </TowerText>
-                <TowerText variant="subtitle1" textColor={rgbaHex(darkMode ? siteColors.text.dark: siteColors.text.light, 0.5)} font={true}  component="h2">
+                </NameText>
+                <TowerText variant={mobile ? "h6" : "h5"} textColor={rgbaHex(theme.palette.text.primary, 0.5)} font={true}  component="h2">
                     {tower.description}
                 </TowerText>
                 <TierCostContainer data-m={mobile}>
-                    <TowerTier tier={tower.tier} showText={true}/>
                     <TowerCosts data-m={mobile}>
-                        <TowerText variant="subtitle1" textColor={darkMode ? siteColors.tower.gold.dark : siteColors.tower.gold.light}>
+                        <DefaultText variant={mobile ? "h6" : "h5"} textColor={theme.palette.text.gold}>
                             In-game cost:&nbsp;$<Counter cost={tower.cost_gold} />
-                        </TowerText>
+                        </DefaultText>
                         { typeof tower.cost_cash === "number" && (
-                            <TowerText variant="subtitle1" textColor={darkMode ? siteColors.tower.cash.dark : siteColors.tower.cash.light}>
+                            <DefaultText variant={mobile ? "h6" : "h5"} textColor={theme.palette.text.cash}>
                                 Cash cost: {tower.cost_cash > 0 ? `\$${getThousandsNumber(tower.cost_cash)}` : "FREE"}
-                            </TowerText>
+                            </DefaultText>
                         )}
                     </TowerCosts>
                 </TierCostContainer>

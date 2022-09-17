@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 import {useDispatch, useSelector} from "react-redux";
 
 
@@ -30,6 +30,10 @@ const Row = styled("div")`
 
 const Label = styled(TowerText)`
   cursor: default;
+  text-align: center;
+`;
+
+const LabelCaption = styled(TowerText)`
   text-align: center;
 `;
 
@@ -67,12 +71,12 @@ export default function FilterDifficulty({ className, color }) {
     return (
         <>
             <DifficultyContainer className={className}>
-                <Label variant={mobile ? "h4" : "h3"}>
+                <Label variant={mobile ? "h3" : "h2"}>
                     Difficulty Prices
                 </Label>
-                <Label variant="subtitle2" font={true}>
+                <LabelCaption variant={mobile ? "h6" : "h5"} font={true}>
                     Click on a difficulty to change the in-game gold costs!
-                </Label>
+                </LabelCaption>
                 <ButtonContainer>
                     { !mobile && (
                         <Row>

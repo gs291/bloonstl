@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import {useState} from "react";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 import {ClickAwayListener, MenuItem, Popover} from "@mui/material";
 
 import NavLink from "./NavLink";
@@ -8,9 +8,8 @@ import Tooltip from "../tooltip/Tooltip";
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
 import siteSizes from "../../lib/utils/siteSizes";
-import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -34,7 +33,7 @@ const NavExpandHover = styled("span")`
 const NavExpand = styled("div", globalOptions)`
   padding: 0 2em;
   border-bottom: 5px solid transparent;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
   height: ${props => props["data-m"] ? "" : siteSizes.nav.height};
   ${props => props["data-m"] ? "width: 100%;" : ""}
   
@@ -44,17 +43,17 @@ const NavExpand = styled("div", globalOptions)`
   
   &:hover {
     cursor: pointer;
-    color: ${props => props["data-dm"] ? siteColors.text.navLink.dark : siteColors.text.navLink.light};
+    color: ${props => props.theme.palette.text.navLink};
   }
   
   &:hover>span {
-    background-color: ${props => rgbaHex(props["data-dm"] ? siteColors.expander.hover.dark : siteColors.expander.hover.light, 0.25)};
+    background-color: ${props => rgbaHex(props.theme.palette.button.expander.hover, 0.25)};
   }
 `;
 
-const ExpandMenu = styled(Popover, globalOptions)`
+const ExpandMenu = styled(Popover)`
   & .MuiPaper-root {
-    background-color: ${props => props["data-dm"] ? siteColors.expander.dark : siteColors.expander.light};
+    background-color: ${props => props.theme.palette.button.expander.primary};
   }
 `;
 
@@ -83,7 +82,6 @@ export default function NavCollapse({links, expanderRef, anchorEl, handleExpand,
     const [isHover, setIsHover] = useState(false);
 
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const handleClick = () => {
         handleExpand();
@@ -97,7 +95,6 @@ export default function NavCollapse({links, expanderRef, anchorEl, handleExpand,
                     onClick={handleClick}
                     ref={expanderRef}
                     data-m={mobile}
-                    data-dm={darkMode}
                     onMouseOver={() => setIsHover(true)}
                     onMouseLeave={() => setIsHover(false)}
                 >
@@ -122,7 +119,6 @@ export default function NavCollapse({links, expanderRef, anchorEl, handleExpand,
                 }}
                 container={expanderRef.current}
                 role={undefined}
-                data-dm={darkMode}
                 style={{
                     zIndex: 1,
                     position: "inherit",

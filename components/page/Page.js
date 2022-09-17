@@ -1,19 +1,18 @@
 import {useEffect} from "react";
-import styled from "@emotion/styled";
 import {Global, css} from "@emotion/react";
+import {styled} from "@mui/material/styles";
 import {useMediaQuery} from "@mui/material";
+import {useTheme} from "@mui/material/styles";
 import {useDispatch, useSelector} from "react-redux";
 
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
 import NavDrawer from "../navbar/NavDrawer";
 import ReturnToTop from "../button/ReturnToTop";
-import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {ga4SendPageView} from "../../lib/utils/ga4";
 import {updateMobile} from "../../lib/redux/actions";
 import ConsentToast from "../legal/consent/ConsentToast";
-import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const PageContainer = styled("div")`
@@ -22,20 +21,20 @@ const PageContainer = styled("div")`
   flex-direction: column;  
 `;
 
-const Nav = styled(Navbar, globalOptions)`
-  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+const Nav = styled(Navbar)`
+  background-color: ${props => props.theme.palette.background.default};
   box-shadow: none;
 `;
 
-const Main = styled("main", globalOptions)`
+const Main = styled("main")`
   flex: 1;
-  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+  background-color: ${props => props.theme.palette.background.default};
   padding-bottom: 30px;
 `;
 
-const Foot = styled(Footer, globalOptions)`
-  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+const Foot = styled(Footer)`
+  background-color: ${props => props.theme.palette.background.main};
+  color: ${props => props.theme.palette.text.primary};
 `;
 
 /**
@@ -45,8 +44,8 @@ const Foot = styled(Footer, globalOptions)`
  */
 export default function Page(props) {
     const dispatch = useDispatch();
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const screen = useMediaQuery("(max-width: 900px)");
     useEffect(() => {
@@ -56,27 +55,59 @@ export default function Page(props) {
 
     const globals = css`
       body {
-        background-color: ${darkMode ? siteColors.page.dark : siteColors.page.light}
+        background-color: ${theme.palette.background.default}
       }
       
       ::-webkit-scrollbar {
         width: 10px;
-        background: ${darkMode ? siteColors.scroll.dark : siteColors.scroll.light};
+        background: ${theme.palette.scrollbar.primary};
       }
     
       ::-webkit-scrollbar-track {
-        background-color: ${darkMode ? siteColors.scroll.dark : siteColors.scroll.light};
+        background-color: ${theme.palette.scrollbar.primary};
         border-radius: 20px;
       }
     
       ::-webkit-scrollbar-thumb {
-        background-color: ${darkMode ? siteColors.scroll.thumb.dark : siteColors.scroll.thumb.light};
+        background-color: ${theme.palette.scrollbar.thumb};
         border-radius: 20px;
       }
     
       ::-webkit-scrollbar-thumb:hover {
-        background-color: ${darkMode ? siteColors.scroll.hover.dark : siteColors.scroll.hover.light};
+        background-color: ${theme.palette.scrollbar.hover};
       }
+      
+      /* Make clicks pass-through */
+  #nprogress {
+    pointer-events: none;
+  }
+
+  #nprogress .bar {
+    background: ${theme.palette.primary.main};
+
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+  }
+
+  /* Fancy blur effect */
+  #nprogress .peg {
+    display: block;
+    position: absolute;
+    right: 0;
+    width: 100px;
+    height: 100%;
+    -webkit-box-shadow: 0 0 10px ${theme.palette.primary.main}, 0 0 5px ${theme.palette.primary.main};
+    box-shadow: 0 0 10px ${theme.palette.primary.main}, 0 0 5px ${theme.palette.primary.main};
+    opacity: 1.0;
+
+    -webkit-transform: rotate(3deg) translate(0px, -4px);
+    transform: rotate(3deg) translate(0px, -4px);
+  }
     `;
 
     useEffect(() => {
@@ -87,16 +118,16 @@ export default function Page(props) {
         <>
             <Global styles={globals} />
             <PageContainer>
-                <Nav data-dm={darkMode}/>
+                <Nav/>
                 { mobile && (
                     <NavDrawer />
                 )}
 
-                <Main data-m={mobile} data-dm={darkMode}>
+                <Main data-m={mobile}>
                     { props.children }
                 </Main>
 
-                <Foot data-dm={darkMode}/>
+                <Foot />
                 <ReturnToTop />
                 <ConsentToast />
             </PageContainer>

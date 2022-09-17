@@ -1,14 +1,14 @@
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
+import {useTheme} from "@mui/material/styles";
 
 import StatTab from "./StatTab";
 import StatNotes from "./StatNotes";
 import StatsTargets from "./StatsTargets";
 import TowerText from "../tower/TowerText";
 import StatItemWrapper from "./StatItemWrapper";
-import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 import {getHeroColor, getMonkeyColor, getStatAttributeText, rgbaHex} from "../../lib/utils/utils";
 
 
@@ -92,6 +92,10 @@ const TitleContainer = styled("div")`
   text-align: center;
 `;
 
+const StatName = styled(TowerText)`
+  cursor: default;
+`;
+
 const Description = styled(TowerText)`
   padding-left: 5px;
   padding-right: 5px;
@@ -99,7 +103,7 @@ const Description = styled(TowerText)`
 
 const statWithPrev = {
     "damage": true, "pierce": true, "range": true, "attack_speed": true, "damage_type": true, "projectile_count": true,
-    "duration": true, "delay": true, "income": true, "cooldown": true, "slow": true, "pierce_impact": true, "max_per_round": true
+    "duration": true, "delay": true, "income": true, "cost": true, "cooldown": true, "slow": true, "pierce_impact": true, "max_per_round": true
 };
 
 const statDamage = {
@@ -115,7 +119,7 @@ const statCodeParser = (code) => {
         "camo_damage": "Camo", "ceramic_damage": "Ceramic", "crit_damage": "Crit", "boss_damage": "Boss", "pierce_impact": "P Impact",
         "lead_damage": "Lead", "moab_damage": "MOAB", "fortified_damage": "Fortified", "delay": "Delay", "max_per_round": "Max/Round",
         "fortified_lead_damage": "F Lead", "fortified_moab_damage": "F Moab", "status_damage": "Status",
-        "stun_damage": "Stun", "hotkey": "Hotkey", "footprint": "Footprint", "income": "Income", "slow": "Slow",
+        "stun_damage": "Stun", "hotkey": "Hotkey", "footprint": "Footprint", "income": "Income", "cost": "Cost", "slow": "Slow",
         "projectile_count": "Proj", "duration": "Duration", "cooldown": "Cooldown", "crit_occurance": "Crit Rate",
     }
 
@@ -133,8 +137,8 @@ const statCodeParser = (code) => {
  * @param {string|null} props.parentBackgroundColor The color of the parent stat card
  */
 export default function StatsCard({stats, type, level = 1, towerType, cardType, parentBackgroundColor, ...rest}) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const getTitle = (key) => {
         switch (key) {
@@ -148,10 +152,10 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
     const titleColor =
         rgbaHex(type
                 ? towerType === "hero"
-                    ? getHeroColor(type)
-                    :  getMonkeyColor(type)
-                : darkMode ? siteColors.page.dark : siteColors.page.light
-            , darkMode ? 0.5 : 1);
+                    ? getHeroColor(type, theme)
+                    :  getMonkeyColor(type, theme)
+                : theme.palette.background.default
+            , theme.palette.mode === "dark" ? 0.5 : 1);
 
     const towerVar =
         towerType === "hero"
@@ -161,31 +165,27 @@ export default function StatsCard({stats, type, level = 1, towerType, cardType, 
     const gridColor =
         type
             ? towerType === "hero"
-                ? darkMode
-                    ? siteColors.hero[towerVar].grid.dark
-                    : siteColors.hero[towerVar].grid.light
-                : darkMode
-                    ? siteColors.monkeyType[towerVar].grid.dark
-                    : siteColors.monkeyType[towerVar].grid.light
-            : darkMode ? siteColors.page.dark : siteColors.page.light;
+                ? theme.palette.tower.hero[towerVar].grid
+                : theme.palette.tower.type[towerVar].grid
+            : theme.palette.background.default;
 
     return (
         <>
             {Object.keys(stats).map(key => (
                 <CardContainer key={key} data-m={mobile}>
                     <StatTab cardType={cardType} title={getTitle(cardType)} level={level} backgroundColor={titleColor} parentBackgroundColor={parentBackgroundColor}/>
-                    <Card data-bc={titleColor} data-dm={darkMode} data-m={mobile}>
+                    <Card data-bc={titleColor} data-m={mobile}>
                         <TitleContainer>
-                            <TowerText variant={level === 1 ? "h5" : "h6"}>
+                            <StatName variant={level === 1 ? "h5" : "h6"}>
                                 {getStatAttributeText(key)}
-                            </TowerText>
+                            </StatName>
                             {stats[key].description !== "" && (
                                 <Description variant={level === 1 ? "subtitle2" : "caption"} font={true}>
                                     {stats[key].description}
                                 </Description>
                             )}
                         </TitleContainer>
-                        <CardContent data-bc={gridColor} data-dm={darkMode} data-m={mobile} data-l={level} >
+                        <CardContent data-bc={gridColor} data-m={mobile} data-l={level} >
                             <Modifiers>
                                 {Object.keys(stats[key].modifiers).map(mod => {
                                     if (statWithPrev[mod]) {

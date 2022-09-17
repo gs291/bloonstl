@@ -1,14 +1,9 @@
-import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
-
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
-import {globalOptions} from "../../lib/utils/emotionStyled";
+import {styled} from "@mui/material/styles";
 
 
-export const List = styled("ol", globalOptions)`
+export const List = styled("ol")`
   counter-reset: item ${props => props.start};
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
 `;
 
 
@@ -19,12 +14,10 @@ export const List = styled("ol", globalOptions)`
  * @param {any} props.children Children supplied to the ordered list item
  */
 export default function LegalOList({children, ...rest}) {
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <List
-                data-dm={darkMode}
                 { ...rest }
             >
                 {children}

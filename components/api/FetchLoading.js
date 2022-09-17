@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 import {CircularProgress} from "@mui/material";
 
 import TowerText from "../tower/TowerText";

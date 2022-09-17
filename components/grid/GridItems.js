@@ -1,10 +1,9 @@
-import styled from "@emotion/styled";
 import {Grid} from "@mui/material";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 
-import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const GridItem = styled(Grid, globalOptions)`
@@ -15,13 +14,13 @@ const GridItem = styled(Grid, globalOptions)`
   padding: 3em ${props => props["data-m"] ? 0.25 : 2}em;
 
   background-color: ${props => props["data-bc"]};
-  color: ${props => props["data-dm"] ? siteColors.text.gridTitle.dark : siteColors.text.gridTitle.light};
+  color: ${props => props.theme.palette.text.gridTitle};
   border-bottom-left-radius: 13px;
   border-bottom-right-radius: 13px;
 `;
 
 /**
- * Tier list/monkey/hero grid item
+ * Monkey / Hero grid item
  *
  * @param {Object} props Component props
  * @param {string} [props.className] class to apply to the component
@@ -30,7 +29,6 @@ const GridItem = styled(Grid, globalOptions)`
  */
 export default function GridItems({ className, children, backgroundColor}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -38,7 +36,6 @@ export default function GridItems({ className, children, backgroundColor}) {
                 className={className}
                 data-m={mobile}
                 data-bc={backgroundColor}
-                data-dm={darkMode}
                 item
             >
                 { children }

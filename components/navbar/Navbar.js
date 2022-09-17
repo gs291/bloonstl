@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import {AppBar} from "@mui/material";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 
 import SiteLinks from "./SiteLinks";
 import siteSizes from "../../lib/utils/siteSizes";
@@ -28,7 +28,7 @@ export default function Navbar({className}) {
 
     return (
       <>
-          <Nav position="static" className={className} data-m={mobile}>
+          <Nav color="transparent" position="static" className={className} data-m={mobile}>
               <SiteLinks />
           </Nav>
       </>

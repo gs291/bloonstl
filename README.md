@@ -1,8 +1,8 @@
-# Bloons TL
+# Bloons 
 
-## Bloons Tier List
+## bloons.gg
 
-A new and intuitive way to view a tier list and statistics for Bloons Tower Defense 6.
+A new and intuitive way to view all tower statistics for Bloons Tower Defense 6.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/bbbaa464-3e21-4740-8997-5cc829ab4f20/deploy-status)](https://bloons.gg)
 

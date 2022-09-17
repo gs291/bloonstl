@@ -1,9 +1,6 @@
-import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
 import {Typography} from "@mui/material";
+import {styled} from "@mui/material/styles";
 
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {font_family_default} from "../../lib/utils/utils";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
@@ -13,7 +10,7 @@ const TowerDetail = styled(Typography, globalOptions)`
   color: ${props => 
           props["data-tc"] 
                   ? props["data-tc"] 
-                  : (props["data-dm"] ? siteColors.text.dark : siteColors.text.light)};
+                  : (props.theme.palette.text.primary)};
 `;
 
 /**
@@ -27,7 +24,6 @@ const TowerDetail = styled(Typography, globalOptions)`
  * @param {boolean} props.font Shows if the text should use a more readable font
  */
 export default function TowerText({ className, children, variant, textColor, font, ...rest }) {
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -35,7 +31,6 @@ export default function TowerText({ className, children, variant, textColor, fon
                 variant={variant}
                 data-tc={textColor}
                 data-f={font}
-                data-dm={darkMode}
                 className={className}
                 { ...rest }
             >

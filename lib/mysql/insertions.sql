@@ -14,8 +14,8 @@ SELECT id INTO @tower_dart_monkey FROM Towers WHERE monkey_id=@dart_monkey;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_dart_monkey, 'c');
 
---          Statistics      --  (  id,           tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_dart_monkey, 32, 2, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.95, DEFAULT, DEFAULT, NULL,  6, 'Q', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,           tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_dart_monkey, 32, 2, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.95, DEFAULT, DEFAULT, DEFAULT, NULL,  6, 'Q', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_dart_monkey, false, 0, 0, 'Sharp Shots', 'Can pop 1 extra Bloon per shot.', 140, 100, '+1p,cross:105:+5p', DEFAULT, DEFAULT);
@@ -74,8 +74,8 @@ SELECT id INTO @tower_boomerang_monkey FROM Towers WHERE monkey_id=@boomerang_mo
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_boomerang_monkey, 'b');
 
 
---          Statistics      --  (  id,                tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_boomerang_monkey, 43, 4, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.2, DEFAULT, DEFAULT, NULL,  7, 'W', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,                tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_boomerang_monkey, 43, 4, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.2, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'W', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_boomerang_monkey, false, 0, 0, 'Improved Rangs', 'Can pop up to 8 Bloons per throw.', 200, 100, '+4p,cross:104:attack:press:+100p', DEFAULT, DEFAULT);
@@ -133,8 +133,8 @@ SELECT id INTO @tower_bomb_shooter FROM Towers WHERE monkey_id=@bomb_shooter;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_bomb_shooter, 's');
 
---          Statistics      --  (  id,            tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,          dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_bomb_shooter, 40, 14, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.5, DEFAULT, DEFAULT, NULL,  7, 'E', 'explosion', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,            tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,          dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_bomb_shooter, 40, 14, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.5, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'E', 'explosion', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_bomb_shooter, false, 0, 0, 'Bigger Bombs', 'Shoots larger bombs, they have a larger blast area and more popping power.', 350, 200, '+6p,cross:104:attack:supercluster:+6p;attack:subcluster:+36p', DEFAULT, DEFAULT);
@@ -189,8 +189,8 @@ SELECT id INTO @tower_tack_shooter FROM Towers WHERE monkey_id=@tack_shooter;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_tack_shooter, 'a');
 
---          Statistics      --  (  id,            tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld, j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_tack_shooter, 23, 1, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8, 1.4, DEFAULT, DEFAULT, NULL,  6, 'R', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,            tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld, j,   s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_tack_shooter, 23, 1, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8, 1.4, DEFAULT, DEFAULT, DEFAULT, NULL,  6, 'R', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_tack_shooter, false, 0, 0, 'Faster Shooting', 'Shoots tacks faster.', 150, 150, '*75%s', DEFAULT, DEFAULT);
@@ -241,8 +241,8 @@ SELECT id INTO @tower_ice_monkey FROM Towers WHERE monkey_id=@ice_monkey;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_ice_monkey, 'a');
 
---          Statistics      --  (  id,          tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,     dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_ice_monkey, 20, 40, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 2.4, DEFAULT, DEFAULT, NULL,  6, 'T', 'cold', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,          tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,     dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_ice_monkey, 20, 40, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 2.4, DEFAULT, DEFAULT, DEFAULT, NULL,  6, 'T', 'cold', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_ice_monkey, false, 0, 0, 'Permafrost', 'Bloons move slowly even after thawing out.', 150, 160, 'status:permafrost:|50%slow;desc:50% slow on bloons. 25% slow on blimps (if targetable)', DEFAULT, DEFAULT);
@@ -292,8 +292,8 @@ SELECT id INTO @tower_glue_gunner FROM Towers WHERE monkey_id=@glue_gunner;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_glue_gunner, 'a');
 
---          Statistics      --  (  id,           tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,    mon,  dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_glue_gunner, 46, 1, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1, DEFAULT,  11, NULL,  6, 'Y', 'acid', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,           tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,    cost, dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_glue_gunner, 46, 1, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1, DEFAULT, DEFAULT,  11, NULL,  6, 'Y', 'acid', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_glue_gunner, false, 0, 0, 'Glue Soak', 'Glue soaks through all layers of Bloon.', 200, 150, 'status:glued:note:(1-0-0) soaks all layers', 'cc', DEFAULT);
@@ -343,8 +343,8 @@ SELECT id INTO @tower_sniper_monkey FROM Towers WHERE monkey_id=@sniper_monkey;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_sniper_monkey, 'b');
 
---          Statistics      --  (  id,             tower_id,         r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_sniper_monkey, 110000000, 1, 2, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.59, DEFAULT, DEFAULT, NULL,  6, 'Z', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,             tower_id,         r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_sniper_monkey, 110000000, 1, 2, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.59, DEFAULT, DEFAULT, DEFAULT, NULL,  6, 'Z', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_sniper_monkey, false, 0, 0, 'Full Metal Jacket', 'Shots pop through 4 layers of Bloon. Can pop Lead and Frozen Bloons.', 350, 120, '+2d,type:normal,cross:105:+1md', 'lead,frzn', DEFAULT);
@@ -394,8 +394,8 @@ SELECT id INTO @tower_monkey_sub FROM Towers WHERE monkey_id=@monkey_sub;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_monkey_sub, 's');
 
---          Statistics      --  (  id,          tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_monkey_sub, 42, 2, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.75, DEFAULT, DEFAULT, NULL,  7, 'X', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,          tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_monkey_sub, 42, 2, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.75, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'X', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_sub, false, 0, 0, 'Longer Range', 'Increases attack range.', 130, 125, '+10r', DEFAULT, DEFAULT);
@@ -450,8 +450,8 @@ SELECT id INTO @tower_monkey_buccaneer FROM Towers WHERE monkey_id=@monkey_bucca
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_monkey_buccaneer, 'a');
 
---          Statistics      --  (  id,                tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_monkey_buccaneer, 60, 4, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1, DEFAULT, DEFAULT, NULL,  8, 'C', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,                tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_monkey_buccaneer, 60, 4, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1, DEFAULT, DEFAULT, DEFAULT, NULL,  8, 'C', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_buccaneer, false, 0, 0, 'Faster Shooting', 'All weapons on board shoot faster', 350, 150, '*75%s,cross:110:attack:grape:*75%s', DEFAULT, DEFAULT);
@@ -509,8 +509,8 @@ SELECT id INTO @tower_monkey_ace FROM Towers WHERE monkey_id=@monkey_ace;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_monkey_ace, 'a');
 
---          Statistics      --  (  id,          tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld, j,    s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_monkey_ace, 22, 5, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8, 1.68, DEFAULT, DEFAULT, NULL, 20, 'V', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,          tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld, j,    s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_monkey_ace, 22, 5, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 8, 1.68, DEFAULT, DEFAULT, DEFAULT, NULL, 20, 'V', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_ace, false, 0, 0, 'Rapid Fire', 'Shoots faster than normal.', 650, 160, '*75%s,cross:110:attack:pineapple|bombing_run:*60%s,cross:130:attack:bombing_run:*60%s', DEFAULT, DEFAULT);
@@ -560,8 +560,8 @@ SELECT id INTO @tower_heli_pilot FROM Towers WHERE monkey_id=@heli_pilot;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_heli_pilot, 'a');
 
---          Statistics      --  (  id,          tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld, j,    s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_heli_pilot, 42, 3, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 2, 0.57, DEFAULT, DEFAULT, NULL, 27, 'B', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,          tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld, j,    s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_heli_pilot, 42, 3, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 2, 0.57, DEFAULT, DEFAULT, DEFAULT, NULL, 27, 'B', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_heli_pilot, false, 0, 0, 'Quad Darts', 'Shoots 4 darts per volley instead of 2.', 800, 200, '+2j,cross:104:abil:comanche_defense:+2j', DEFAULT, DEFAULT);
@@ -611,8 +611,8 @@ SELECT id INTO @tower_mortar_monkey FROM Towers WHERE monkey_id=@mortar_monkey;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_mortar_monkey, 'b');
 
---          Statistics      --  (  id,             tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,     dur, note, fp,  hk,          dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_mortar_monkey, 20, 40, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 2, DEFAULT, DEFAULT, NULL, 11, 'N', 'explosion', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,             tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,    cost,     dur, note, fp,  hk,          dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_mortar_monkey, 20, 40, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 2, DEFAULT, DEFAULT, DEFAULT, NULL, 11, 'N', 'explosion', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_mortar_monkey, false, 0, 0, 'Bigger Blast', 'Bigger shells deliver a bigger blast radius.', 500, 180, '+5p,+8r,cross:103:attack:flare:+20r,cross:104:attack:strip:+5p=+8r,cross:105:attack:wall_of_fire:+5p=+6r', DEFAULT, DEFAULT);
@@ -662,8 +662,8 @@ SELECT id INTO @tower_dartling_gunner FROM Towers WHERE monkey_id=@dartling_gunn
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_dartling_gunner, 'b');
 
---          Statistics      --  (  id,               tower_id,           r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_dartling_gunner, 110000000, 1, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.2, DEFAULT, DEFAULT, NULL,  7, 'M', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,               tower_id,         r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_dartling_gunner, 110000000, 1, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.2, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'M', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_dartling_gunner, false, 0, 0, 'Focused Firing', 'Increases accuracy of the Dartling Gun.', 300, 150, 'note:(1-0-0) spread reduced to 9.2 degrees,cross:103:note:(1-0-3) grants distance to projectiles +25%', DEFAULT, DEFAULT);
@@ -713,8 +713,8 @@ SELECT id INTO @tower_wizard_monkey FROM Towers WHERE monkey_id=@wizard_monkey;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_wizard_monkey, 's');
 
---          Statistics      --  (  id,             tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,       dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_wizard_monkey, 40, 3, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.1, DEFAULT, DEFAULT, NULL,  7, 'A', 'energy', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,             tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,       dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_wizard_monkey, 40, 3, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.1, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'A', 'energy', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_wizard_monkey, false, 0, 0, 'Guided Magic', 'Magic shots seek out the Bloons, even behind cover.', 125, 110, 'note:(1-0-0) moderate homing,note:(1-0-0) can see past obstacles,cross:110:attack:fireball:note:(1-1-0) can see past obstacles,cross:120:attack:wall_of_fire:note:(1-2-0) can be placed behind walls,cross:130:attack:flame:note:(1-3-0) can see past obstacles but will collide with them,cross:104:attack:reanimate:note:(1-0-4) zombloons travel for 250 units,cross:105:attack:reanimate_blimp_zmoab:note:(1-0-5) zmoabs travel for 300 units;attack:reanimate_blimp_zbfb:note:(1-0-5) zbfbs travel for 225 units', 'vis', DEFAULT);
@@ -764,8 +764,8 @@ SELECT id INTO @tower_super_monkey FROM Towers WHERE monkey_id=@super_monkey;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_super_monkey, 'a');
 
---          Statistics      --  (  id,             tower_id,  r, p, d,     bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_super_monkey, 50, 1, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.06, DEFAULT, DEFAULT, NULL, 11, 'S', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,             tower_id,  r, p, d,     bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_super_monkey, 50, 1, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.06, DEFAULT, DEFAULT, DEFAULT, NULL, 11, 'S', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_super_monkey, false, 0, 0, 'Laser Blasts', 'Shoots powerful blasts of a laser instead of darts.', 2500, 500, '+1p,type:energy,note:(1-0-0) shoots from eye level instead of hand level so can see over some obstacles', 'frzn', 'purp');
@@ -815,8 +815,8 @@ SELECT id INTO @tower_ninja_monkey FROM Towers WHERE monkey_id=@ninja_monkey;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_ninja_monkey, 'a');
 
---          Statistics      --  (  id,             tower_id,  r, p, d,     bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_ninja_monkey, 40, 2, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.7, DEFAULT, DEFAULT, NULL,  6, 'D', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,             tower_id,  r, p, d,     bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_ninja_monkey, 40, 2, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.7, DEFAULT, DEFAULT, DEFAULT, NULL,  6, 'D', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_ninja_monkey, false, 0, 0, 'Ninja Discipline', 'Increases attack range and attack speed.', 300, 150, '+7r,*62%s,cross:102:attack:caltrop:+7r=*62%s,cross:103:attack:flash_bomb:+7r,cross:104:attack:sticky_bomb:+11.5r=*62%s', 'atksp', DEFAULT);
@@ -874,8 +874,8 @@ SELECT id INTO @tower_alchemist FROM Towers WHERE monkey_id=@alchemist;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_alchemist, 's');
 
---          Statistics      --  (  id,         tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_alchemist, 45, 15, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 2, DEFAULT, DEFAULT, NULL,  6, 'F', 'acid', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,         tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_alchemist, 45, 15, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 2, DEFAULT, DEFAULT, DEFAULT, NULL,  6, 'F', 'acid', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_alchemist, false, 0, 0, 'Larger Potions', 'Larger potions splash in a larger area.', 250, 140, '+5p,+7r,cross:130:attack:unstable_potion:attack:unstable_splash:+7r,cross:104:attack:gold_potion:+5p', DEFAULT, DEFAULT);
@@ -930,8 +930,8 @@ SELECT id INTO @tower_druid FROM Towers WHERE monkey_id=@druid;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_druid, 'b');
 
---          Statistics      --  (  id,     tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld, j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_druid, 35, 1, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 5, 1.1, DEFAULT, DEFAULT, NULL,  7, 'G', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,     tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld, j,   s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_druid, 35, 1, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 5, 1.1, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'G', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_druid, false, 0, 0, 'Hard Thorns', 'Hard thorns can pop 2 Bloons each and pop Frozen Bloons.', 250, 150, '+1p,type:normal,cross:130:attack:vine_grab:status:snared:type:normal', 'lead,frzn', DEFAULT);
@@ -986,8 +986,8 @@ SELECT id INTO @tower_banana_farm FROM Towers WHERE monkey_id=@banana_farm;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_banana_farm, 'a');
 
---          Statistics      --  (  id,           tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld, j, s, mon, dur, note, fp,  hk,       dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_banana_farm, 40, 0, 0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 4, 0,  80,  15, NULL,  30, 'H', 'money', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,           tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld, j, s, mon,    cost, dur, note, fp,  hk,       dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_banana_farm, 40, 0, 0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 4, 0,  80, DEFAULT,  15, NULL,  30, 'H', 'money', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_banana_farm, false, 0, 0, 'Increased Production', 'Grows 2 extra Banana bunches per round.', 500, 200, '+2j,+40mon,cross:130:+230mon', DEFAULT, DEFAULT);
@@ -1042,8 +1042,8 @@ SELECT id INTO @tower_spike_factory FROM Towers WHERE monkey_id=@spike_factory;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_spike_factory, 's');
 
---          Statistics      --  (  id,             tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,    s,     mon, dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_spike_factory, 34, 5, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.75, DEFAULT,  50, NULL,  8, 'J', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,             tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,    cost, dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_spike_factory, 34, 5, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.75, DEFAULT, DEFAULT,  50, NULL,  8, 'J', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_spike_factory, false, 0, 0, 'Bigger Stacks', 'Creates larger piles of spikes per shot.', 800, 170, '+5p,cross:105:+35p', DEFAULT, DEFAULT);
@@ -1093,8 +1093,8 @@ SELECT id INTO @tower_monkey_village FROM Towers WHERE monkey_id=@monkey_village
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_monkey_village, 'b');
 
---          Statistics      --  (  id,              tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,     dur, note, fp,  hk,     dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_monkey_village, 40, 0, 0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0, DEFAULT, DEFAULT, NULL,  9, 'K', 'buff', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,              tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,    cost,     dur, note, fp,  hk,     dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_monkey_village, 40, 0, 0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0, DEFAULT, DEFAULT, DEFAULT, NULL,  9, 'K', 'buff', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_monkey_village, false, 0, 0, 'Bigger Radius', 'Increases influence radius of the village.', 400, 160, '+8r', DEFAULT, DEFAULT);
@@ -1144,8 +1144,8 @@ SELECT id INTO @tower_engineer_monkey FROM Towers WHERE monkey_id=@engineer_monk
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_engineer_monkey, 'c');
 
---          Statistics      --  (  id,               tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_engineer_monkey, 40, 3, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.7, DEFAULT, DEFAULT, NULL,  7, 'L', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,               tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_engineer_monkey, 40, 3, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.7, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'L', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 --          Top Path
 INSERT INTO `Abilities` VALUES (NULL, @tower_engineer_monkey, false, 0, 0, 'Sentry Gun', 'Creates temporary sentry guns and deploys them nearby.', 500, 160, 'attack:sentry:desc:Sentry subtower creator;|25dur;|45r;|0.95s;|1d;|2p;type:|sharp;note:unable to be buffed by alchemist;note:(1-0-0) places a tower every 10 seconds randomly on land', DEFAULT, DEFAULT);
@@ -1200,8 +1200,8 @@ SELECT id INTO @tower_quincy FROM Towers WHERE hero_id=@quincy;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_quincy, 'b');
 
---          Statistics      --  (  id,      tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,      fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_quincy, 50, 3, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.95, DEFAULT, DEFAULT, NULL,  7, 'U', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,      tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,      fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_quincy, 50, 3, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.95, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'U', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 0, '', 'Quincy\'s arrows bounce to 3 different targets.', 0, 0, 'note:(Lvl 1) Basic attack jumps to nearby targets (50 units)', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_quincy, false, 0, 1, '', 'Base attack bounces up to 4 targets.', 0, 180, '+1p', DEFAULT, DEFAULT);
@@ -1235,8 +1235,8 @@ SELECT id INTO @tower_gwendolin FROM Towers WHERE hero_id=@gwendolin;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_gwendolin, 'b');
 
---          Statistics      --  (  id,         tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,     dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_gwendolin, 38, 3, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.5, DEFAULT, DEFAULT, NULL,  7, 'U', 'fire', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,         tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,     dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_gwendolin, 38, 3, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.5, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'U', 'fire', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 0, '', 'Blasts Bloons with fire from her pyro gun.', 0, 0, '', 'lead', 'purp');
 INSERT INTO `Abilities` VALUES (NULL, @tower_gwendolin, false, 0, 1, '', 'Slightly increases popping power per shot.', 0, 180, '+1p', DEFAULT, DEFAULT);
@@ -1270,8 +1270,8 @@ SELECT id INTO @tower_striker_jones FROM Towers WHERE hero_id=@striker_jones;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_striker_jones, 'b');
 
---          Statistics      --  (  id,             tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,          dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_striker_jones, 55, 10, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.2, DEFAULT, DEFAULT, NULL,  7, 'U', 'explosion', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,             tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,          dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_striker_jones, 55, 10, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.2, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'U', 'explosion', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 0, '', 'Striker Jones shoots a powerful bazooka to explode Bloons.', 0, 0, '', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_striker_jones, false, 0, 1, '', 'Increased blast radius.', 0, 180, '+4r', DEFAULT, DEFAULT);
@@ -1305,8 +1305,8 @@ SELECT id INTO @tower_obyn_greenfoot FROM Towers WHERE hero_id=@obyn_greenfoot;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_obyn_greenfoot, 'c');
 
---          Statistics      --  (  id,              tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,     dur, note, fp,  hk,       dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_obyn_greenfoot, 43, 4, 2, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.35, DEFAULT, DEFAULT, NULL,  7, 'U', 'plasma', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,              tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,    s,     mon,    cost,     dur, note, fp,  hk,       dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_obyn_greenfoot, 43, 4, 2, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.35, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'U', 'plasma', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 0, '', 'Sends wolf spirits to attack the Bloons.', 0, 0, 'note:moderate homing', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_obyn_greenfoot, false, 0, 1, '', 'Nature\'s Wrath: All Druids in range get +1 pierce.', 0, 180, 'buff:natures_wrath:desc:Gain increased pierce;|1p;note:affects all druids in range', 'tbf', DEFAULT);
@@ -1340,8 +1340,8 @@ SELECT id INTO @tower_captain_churchill FROM Towers WHERE hero_id=@captain_churc
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_captain_churchill, 'b');
 
---          Statistics      --  (  id,                 tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,          dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_captain_churchill, 63, 15, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.7, DEFAULT, DEFAULT, NULL,  8, 'U', 'explosion', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,                 tower_id,  r,  p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,          dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_captain_churchill, 63, 15, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.7, DEFAULT, DEFAULT, DEFAULT, NULL,  8, 'U', 'explosion', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 0, '', 'Piercing bombs shot from the tank can explode up to 3 times.', 0, 0, '', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_captain_churchill, false, 0, 1, '', 'Increased popping power per shot.', 0, 308, '+3p', DEFAULT, DEFAULT);
@@ -1375,8 +1375,8 @@ SELECT id INTO @tower_benjamin FROM Towers WHERE hero_id=@benjamin;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_benjamin, 'a');
 
---          Statistics      --  (  id,        tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s, mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_benjamin, 20, 0, 0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0, 100, DEFAULT, NULL,  7, 'U', 'hacks', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,        tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s, mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_benjamin, 20, 0, 0, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0, 100, DEFAULT, DEFAULT, NULL,  7, 'U', 'hacks', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 0, '', 'Hacks in income of $100 every round.', 0, 0, '100mon', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_benjamin, false, 0, 1, '', 'Generates $150 per round instead of $100', 0, 270, '+50mon', DEFAULT, DEFAULT);
@@ -1410,8 +1410,8 @@ SELECT id INTO @tower_ezili FROM Towers WHERE hero_id=@ezili;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_ezili, 'c');
 
---          Statistics      --  (  id,     tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,       dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_ezili, 40, 5, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.2, DEFAULT, DEFAULT, NULL,  7, 'U', 'plasma', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,     tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,       dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_ezili, 40, 5, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.2, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'U', 'plasma', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 0, '', 'Ezili curses Bloons with dark voodoo power.', 0, 0, '+camo,attack:splash:desc:Deals damage on basic attack contact;|1d;|5p;|8r;type:|plasma,status:cursed:desc:Applied by basic attack;|1d;|2.5s;|2.6dur;note:if the target is already cursed its duration is refreshed', 'camo', 'purp');
 INSERT INTO `Abilities` VALUES (NULL, @tower_ezili, false, 0, 1, '', 'Increased attack range.', 0, 256, '+3r', DEFAULT, DEFAULT);
@@ -1445,8 +1445,8 @@ SELECT id INTO @tower_pat_fusty FROM Towers WHERE hero_id=@pat_fusty;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_pat_fusty, 's');
 
---          Statistics      --  (  id,         tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd, cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,       dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_pat_fusty, 24, 5, 3, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT,  2, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.1, DEFAULT, DEFAULT, NULL,  8, 'U', 'normal', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,         tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd, cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,       dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_pat_fusty, 24, 5, 3, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT,  2, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.1, DEFAULT, DEFAULT, DEFAULT, NULL,  8, 'U', 'normal', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 0, '', 'Pat slams Bloons into the ground.', 0, 0, 'attack:aoe:|2d;|2cd;|10p;|8r;type:|normal;desc:Deals damage on basic attack contact', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_pat_fusty, false, 0, 1, '', 'Increased radius of Pat\'s slam attack.', 0, 256, 'attack:aoe:+5r', DEFAULT, DEFAULT);
@@ -1480,8 +1480,8 @@ SELECT id INTO @tower_adora FROM Towers WHERE hero_id=@adora;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_adora, 'b');
 
---          Statistics      --  (  id,     tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,     dur, note, fp,  hk,       dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_adora, 45, 5, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1, DEFAULT, DEFAULT, NULL,  7, 'U', 'plasma', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,     tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,    cost,     dur, note, fp,  hk,       dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_adora, 45, 5, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'U', 'plasma', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 0, '', 'Divine Bolt seeks out and destroys Bloons.', 0, 0, '', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_adora, false, 0, 1, '', 'Increased attack range.', 0, 308, '+4r', DEFAULT, DEFAULT);
@@ -1515,8 +1515,8 @@ SELECT id INTO @tower_admiral_brickell FROM Towers WHERE hero_id=@admiral_bricke
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_admiral_brickell, 'c');
 
---          Statistics      --  (  id,                tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_admiral_brickell, 50, 1, 3, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.8, DEFAULT, DEFAULT, NULL,  7, 'U', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,                tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_admiral_brickell, 50, 1, 3, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.8, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'U', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 0, '', 'Drops powerful sea mines that seek and destroy Bloons.', 0, 0, 'attack:mine:desc:Passively places mines randomly in water;|1d;|20p;|25r;type:|explosion;|120dur;|3s', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_admiral_brickell, false, 0, 1, '', 'Increased attack speed.', 0, 256, '0.7s,attack:mine:2.8s', DEFAULT, DEFAULT);
@@ -1550,8 +1550,8 @@ SELECT id INTO @tower_etienne FROM Towers WHERE hero_id=@etienne;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_etienne, 's');
 
---          Statistics      --  (  id,       tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_etienne, 55, 2, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.7, DEFAULT, DEFAULT, NULL,  7, 'U', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,       tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_etienne, 55, 2, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.7, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'U', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 0, '', 'Flies a deadly little drone around to shoot at the Bloons.', 0, 0, 'note:drone targeting is indicated by a small light on the drone - blue = first green = last yellow = strong purple = close', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_etienne, false, 0, 1, '', 'Etienne\'s range increased.', 0, 180, '+5r', DEFAULT, DEFAULT);
@@ -1585,8 +1585,8 @@ SELECT id INTO @tower_sauda FROM Towers WHERE hero_id=@sauda;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_sauda, 's');
 
---          Statistics      --  (  id,     tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,  md,    fmd, cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_sauda, 23, 4, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT,  1, DEFAULT,  1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.4, DEFAULT, DEFAULT, NULL,  7, 'U', 'sharp', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,     tower_id,  r, p, d,      bd,     cmd,      dc,      sd,     std,  md,    fmd, cd,      fd,      ld,     fld,       j,   s,     mon,    cost,     dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_sauda, 23, 4, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT,  1, DEFAULT,  1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 0.4, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'U', 'sharp', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 0, '', 'Slashes with both swords at nearby Bloons', 0, 0, '', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_sauda, false, 0, 1, '', 'Pops more Bloons per attack.', 0, 256, '+2p', DEFAULT, DEFAULT);
@@ -1620,8 +1620,8 @@ SELECT id INTO @tower_psi FROM Towers WHERE hero_id=@psi;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_psi, 'a');
 
---          Statistics      --  (  id,   tower_id,         r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,     dur, note, fp,  hk,        dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_psi, 110000000, 0, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1, DEFAULT, DEFAULT, NULL,  7, 'U', 'psychic', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,   tower_id,         r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j, s,     mon,    cost,     dur, note, fp,  hk,        dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_psi, 110000000, 0, 1, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'U', 'psychic', DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 0, '', 'Over any range or obstacle, Psi sets up deadly vibrations that completely destroy one Bloon at a time. Can target Camo.', 0, 0, 'status:vibrating:desc:Applied by basic attack damage;|1d;|0.2s;|15dur;note:Continues until fully popped,+camo,-purple,-lead,-ceramic,-blimp', 'camo', 'purp,lead,cm,blimp');
 INSERT INTO `Abilities` VALUES (NULL, @tower_psi, false, 0, 1, '', 'Attacks slightly faster.', 0, 270, '0.85s', DEFAULT, DEFAULT);
@@ -1655,21 +1655,21 @@ SELECT id INTO @tower_geraldo FROM Towers WHERE hero_id=@geraldo;
 
 INSERT INTO `TowerTiers` VALUES (NULL, @tower_geraldo, 'b');
 
---          Statistics      --  (  id,   tower_id,      r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,     dur, note, fp,  hk,      dt,     clt,      co,     del)
-INSERT INTO `TowerStats` VALUES (NULL, @tower_geraldo, 40, 5, 2, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.1, DEFAULT, DEFAULT, NULL,  7, 'U', 'energy', DEFAULT, DEFAULT, DEFAULT);
+--          Statistics      --  (  id,   tower_id,      r, p, d,      bd,     cmd,      dc,      sd,     std,      md,     fmd,      cd,      fd,      ld,     fld,       j,   s,     mon,    cost,    dur, note, fp,  hk,      dt,     clt,      co,     del)
+INSERT INTO `TowerStats` VALUES (NULL, @tower_geraldo, 40, 5, 2, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, 1.1, DEFAULT, DEFAULT, DEFAULT, NULL,  7, 'U', 'energy', DEFAULT, DEFAULT, DEFAULT);
 
-INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 0, '', 'Available Items! Shooty Turret, Stack of Old Nails, Creepy Idol, Jar of Pickles. Geraldo also has a short range magical attack.', 0, 0, 'note:(Lvl 1) Geraldo owns a shop containing multiple items in stock at a limited supply accessed using the ability button. Can restock some items after a certain number of rounds. Geraldo begins with the following items in his store: Shooty Turret. Stack of Old Nails. Creepy Idol. Jar of Pickles.,attack:explosion:desc:Zap on contact damage;|1d;|4p;|10r;type:|energy,abil:shooty_turret:desc:Shop Item;|250mon;note:5 rounds to restock 1 maximum of 4;attack:shooty_turret:desc:A permanent hand-crafted dart shooting turret.=attack:dart:|2d@|10p@|50r@|1.5s@type:|sharp,abil:stack_of_old_nails:desc:Shop Item;|50mon;note:5 rounds to restock 2 maximum of 10;attack:old_nails:desc:Road Item=|1d=|10p=|6r=type:sharp=|$dur|+camo,abil:creepy_idol:desc:Shop Item;|100mon;note:4 rounds to restock 1 maximum of 2;attack:creepy_idol:desc:Tower=|32r=+kb=note:every 4th bloon to enter the idol\'s range is sent back 100-200 units=note:blimps increase the counter but cannot be sent back=note:4 round lifetime,abil:jar_of_pickles:desc:Shop Item;|100mon;note:4 rounds to restock 1 maixmum of 4;buff:pickled:+1d=-1.25s=note:5 round duration', '', '');
-INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 1, '', 'New Item! Rare Quincy Action Figure - increases in value the longer you possess it!', 0, 180, 'abil:rare_quincy_action_figure:desc:Shop Item;|750mon;note:1 round to restock 1 maximum of 1;attack:quincy_figure:desc:Tower=32r=note:Value increases per round since unlock=note:Can be sold for 96% of the base cost and 100% of the added value', DEFAULT, DEFAULT);
-INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 2, '', 'New Item! See Invisibility Potion - grants short term camo detection to a Monkey Tower or Hero. Geraldo\'s attack range increases.', 0, 460, '+5r,abil:see_invisibility_potion:desc:Shop Item;|200mon;note:10 rounds to restock 1. maximum of 2;buff:vision:desc:Applied by potion=+camo=note:10 round duration', DEFAULT, DEFAULT);
-INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 3, '', 'New Item! Tube of Amaz-o-Glue - can be placed on the track to slow Bloons down.', 0, 1000, 'abil:tube_of_amaz_o_glue:desc:Shop item;|100mon;note:3 rounds to restock 1. maximum of 3;attack:amaz_o_glue:desc:Placed road item=|100p=|14r=|$dur=+camo=note:Expires after 4 full rounds=status:glued:|30dur@*0.5slow', DEFAULT, DEFAULT);
-INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 4, '', 'New Item! Sharpening Stone - boosts the pierce of a Monkey Tower or Hero when doing sharp-type damage.', 0, 1860, '1s,abil:sharpening_stone:desc:Shop Item:|200mon;note:5 rounds to restock 1. maximum of 3;buff:sharpened:desc:Applied to towers with sharp type attacks=+1p', DEFAULT, DEFAULT);
-INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 5, '', 'New Item! Worn Hero\'s Cape - turns a tier 2 or lower Dart Monkey into a Super Monkey! These converted Super Monkeys can only be upgraded to Tier 3.', 0, 3280, 'abil:worn_heroes_cape:desc:Shop Item;|1500mon;note:5 round to restock 1. maximum of 2;note:transform a dart monkey (up to tier 2) into a super monkey (restricted to tier 3)', DEFAULT, DEFAULT);
-INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 6, '', 'New Item! Blade Trap - when a visible Bloon touches the trap, a Blade Maelstrom goes off. Geraldo\'s main attack increases in damage and pierce.', 0, 5180, '+1d,attack:explosion:+1d;+5p,abil:blade_trap:desc:Shop Item;|650mon;note:5 rounds to restock 1. maximum of 3;attack:blade_trap:desc:Placed road item=|6r=|$dur=attack:blades:desc:Trap on contact attack@|1d@|2j@|200p@|0.033s@type:|sharp@|3dur@+vis', DEFAULT, DEFAULT);
-INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 7, '', 'New Item! Bottle of \'Gerry\'s Fire\' - 2.8 million Bloonville units of pure hot sauce fire! Gives a Monkey, Hero, or minion a fiery attack for 10 rounds.', 0, 8320, 'abil:gerrys_fire_hot_sauce:desc:Shop Item;|500mon;note:2 rounds to restock 1. maximum of 3;attack:chilli_monster:desc:Tower orbiter=attack:flame:|1d@|1cd@|4p@|50r@|0.1s@type:|fire@+vis=status:burn:desc:Burn applied by flame@|1d@|1.5s@|3.1dur@type:|fire', DEFAULT, DEFAULT);
-INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 8, '', 'New Item! Fertilizer - targeted Banana Farms that produce visible bananas increase production and get a cash bonus over several rounds. Geraldo\'s main attack blast radius increases.', 0, 9380, 'attack:explosion:+3r,abil:fertilizer:desc:Shop Item;|300mon;note:5 rounds to restock. maximum of 2;buff:fertilised:desc:Farm buff=+0.25income=note:5 round duration', DEFAULT, DEFAULT);
-INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 9, '', 'New Item! Pet Rabbit - aww what a cute widdle bunny wabbit!', 0, 13620, 'abil:pet_rabit:desc:Shop Item;|1500mon;note:3 rounds to restock 1. maximum of 2;attack:rabbit:desc:Placed tower=note:once 4 have been placed they will merge into a wererabbit;attack:wererabbit:desc:Rabbit merged tower=attack:pounce:|10d@|30cd@|30md@|10p@|80r@|0.a4s@type:|normal@note:+1 damage for every 3000 RBE on scree. capped at +30', DEFAULT, DEFAULT);
-INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 10, '', 'New Item! Rejuv Potion - resets all Monkey Tower and Hero cooldowns, restores 50 lives. Geraldo\'s main attack pierce increases, and Jar of Pickles grants bonus damages vs. Fortified Bloons.', 0, 16380, 'attack:explosion:+10p,abil:rejuv_potion:desc:Shop Item;|2000mon;note:5 rounds to restock 1. maximum of 2;note:heals 50 lives;note:Reset all ability cooldowns,abil:jar_of_pickles:buff:pickled:+1fd', DEFAULT, DEFAULT);
-INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 11, '', 'New Item! Genie Bottle - summons a plasma-powered Genie Monkey that lasts for 3 rounds. Creepy Idol can now apply an occasional short stun to passive visible MOAB-class Bloons.', 0, 14400, 'abil:creepy_idol:attack:creepy_idol:note:(Lvl 12) every 4th blimp to enter the idol\'s range is stunned (MOAB 3s, BFB 2s, ZOMG or DDT 1s),abil:genie_bottle:desc:Shop Item;|2000mon;note:5 round to restock 1. maximum of 2;attack:genie:desc:Placed tower=|33r=attack:magic_bold:|20d@|5p@|100r@|0.2s@type:|plasma@+vis=note:Flies in a figure 8 around the center of the map=note:2 round lifetime', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 0, '', 'Available Items! Shooty Turret, Stack of Old Nails, Creepy Idol, Jar of Pickles. Geraldo also has a short range magical attack.', 0, 0, 'note:(Lvl 1) Geraldo owns a shop containing multiple items in stock at a limited supply accessed using the ability button. Can restock some items after a certain number of rounds. Geraldo begins with the following items in his store: Shooty Turret. Stack of Old Nails. Creepy Idol. Jar of Pickles.,attack:explosion:desc:Zap on contact damage;|1d;|4p;|10r;type:|energy,abil:shooty_turret:desc:Shop Item;|250cost;note:5 rounds to restock 1 maximum of 4;attack:shooty_turret:desc:A permanent hand-crafted dart shooting turret.=attack:dart:|2d@|10p@|50r@|1.5s@type:|sharp,abil:stack_of_old_nails:desc:Shop Item;|50cost;note:5 rounds to restock 2 maximum of 10;attack:old_nails:desc:Road Item=|1d=|10p=|6r=type:sharp=|$dur|+camo,abil:creepy_idol:desc:Shop Item;|100cost;note:4 rounds to restock 1 maximum of 2;attack:creepy_idol:desc:Tower=|32r=+kb=note:every 4th bloon to enter the idol\'s range is sent back 100-200 units=note:blimps increase the counter but cannot be sent back=note:4 round lifetime,abil:jar_of_pickles:desc:Shop Item;|100cost;note:4 rounds to restock 1 maixmum of 4;buff:pickled:+1d=-1.25s=note:5 round duration', '', '');
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 1, '', 'New Item! Rare Quincy Action Figure - increases in value the longer you possess it!', 0, 180, 'abil:rare_quincy_action_figure:desc:Shop Item;|750cost;note:1 round to restock 1 maximum of 1;attack:quincy_figure:desc:Tower=32r=note:Value increases per round since unlock=note:Can be sold for 96% of the base cost and 100% of the added value', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 2, '', 'New Item! See Invisibility Potion - grants short term camo detection to a Monkey Tower or Hero. Geraldo\'s attack range increases.', 0, 460, '+5r,abil:see_invisibility_potion:desc:Shop Item;|200cost;note:10 rounds to restock 1. maximum of 2;buff:vision:desc:Applied by potion=+camo=note:10 round duration', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 3, '', 'New Item! Tube of Amaz-o-Glue - can be placed on the track to slow Bloons down.', 0, 1000, 'abil:tube_of_amaz_o_glue:desc:Shop item;|100cost;note:3 rounds to restock 1. maximum of 3;attack:amaz_o_glue:desc:Placed road item=|100p=|14r=|$dur=+camo=note:Expires after 4 full rounds=status:glued:|30dur@*0.5slow', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 4, '', 'New Item! Sharpening Stone - boosts the pierce of a Monkey Tower or Hero when doing sharp-type damage.', 0, 1860, '1s,abil:sharpening_stone:desc:Shop Item;|200cost;note:5 rounds to restock 1. maximum of 3;buff:sharpened:desc:Applied to towers with sharp type attacks=+1p', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 5, '', 'New Item! Worn Hero\'s Cape - turns a tier 2 or lower Dart Monkey into a Super Monkey! These converted Super Monkeys can only be upgraded to Tier 3.', 0, 3280, 'abil:worn_heroes_cape:desc:Shop Item;|1500cost;note:5 round to restock 1. maximum of 2;note:transform a dart monkey (up to tier 2) into a super monkey (restricted to tier 3)', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 6, '', 'New Item! Blade Trap - when a visible Bloon touches the trap, a Blade Maelstrom goes off. Geraldo\'s main attack increases in damage and pierce.', 0, 5180, '+1d,attack:explosion:+1d;+5p,abil:blade_trap:desc:Shop Item;|650cost;note:5 rounds to restock 1. maximum of 3;attack:blade_trap:desc:Placed road item=|6r=|$dur=attack:blades:desc:Trap on contact attack@|1d@|2j@|200p@|0.033s@type:|sharp@|3dur@+vis', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 7, '', 'New Item! Bottle of \'Gerry\'s Fire\' - 2.8 million Bloonville units of pure hot sauce fire! Gives a Monkey, Hero, or minion a fiery attack for 10 rounds.', 0, 8320, 'abil:gerrys_fire_hot_sauce:desc:Shop Item;|500cost;note:2 rounds to restock 1. maximum of 3;attack:chilli_monster:desc:Tower orbiter=attack:flame:|1d@|1cd@|4p@|50r@|0.1s@type:|fire@+vis=status:burn:desc:Burn applied by flame@|1d@|1.5s@|3.1dur@type:|fire', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 8, '', 'New Item! Fertilizer - targeted Banana Farms that produce visible bananas increase production and get a cash bonus over several rounds. Geraldo\'s main attack blast radius increases.', 0, 9380, 'attack:explosion:+3r,abil:fertilizer:desc:Shop Item;|300cost;note:5 rounds to restock. maximum of 2;buff:fertilised:desc:Farm buff=+0.25income=note:5 round duration', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 9, '', 'New Item! Pet Rabbit - aww what a cute widdle bunny wabbit!', 0, 13620, 'abil:pet_rabit:desc:Shop Item;|1500cost;note:3 rounds to restock 1. maximum of 2;attack:rabbit:desc:Placed tower=note:once 4 have been placed they will merge into a wererabbit;attack:wererabbit:desc:Rabbit merged tower=attack:pounce:|10d@|30cd@|30md@|10p@|80r@|0.a4s@type:|normal@note:+1 damage for every 3000 RBE on scree. capped at +30', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 10, '', 'New Item! Rejuv Potion - resets all Monkey Tower and Hero cooldowns, restores 50 lives. Geraldo\'s main attack pierce increases, and Jar of Pickles grants bonus damages vs. Fortified Bloons.', 0, 16380, 'attack:explosion:+10p,abil:rejuv_potion:desc:Shop Item;|2000cost;note:5 rounds to restock 1. maximum of 2;note:heals 50 lives;note:Reset all ability cooldowns,abil:jar_of_pickles:buff:pickled:+1fd', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 11, '', 'New Item! Genie Bottle - summons a plasma-powered Genie Monkey that lasts for 3 rounds. Creepy Idol can now apply an occasional short stun to passive visible MOAB-class Bloons.', 0, 14400, 'abil:creepy_idol:attack:creepy_idol:note:(Lvl 12) every 4th blimp to enter the idol\'s range is stunned (MOAB 3s, BFB 2s, ZOMG or DDT 1s),abil:genie_bottle:desc:Shop Item;|2000cost;note:5 round to restock 1. maximum of 2;attack:genie:desc:Placed tower=|33r=attack:magic_bold:|20d@|5p@|100r@|0.2s@type:|plasma@+vis=note:Flies in a figure 8 around the center of the map=note:2 round lifetime', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 12, '', 'Shooty Turret fires faster with increased damage, and Stack of Old Nails do more damage.', 0, 16650, 'abil:stack_of_old_nails:attack:old_nails:+5d,abil:shooty_turret:attack:shooty_turret:attack:dart:7d@0.8s', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 13, '', 'See Invisibility Potion grants additional range and lasts longer.', 0, 14940, 'abil:see_invisibility_potion:buff:vision:*1.2r=note:(Lvl 13) 15 round duration', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 14, '', 'Sharpening Stone now increases damage in addition to pierce, and Blade Trap creates a more powerful effect when triggered.', 0, 16380, 'abil:blade_trap:attack:blade_trap:attack:blades:+1d@+2j@+300p@type:normal,abil:sharpening_stone:buff:sharpened:+1d', DEFAULT, DEFAULT);
@@ -1677,7 +1677,55 @@ INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 15, '', 'Stack o
 INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 16, '', 'Geraldo\'s main attack does more damage and Amaz-o-Glue now has a small effect on MOAB-class Bloons.', 0, 19260, '+1d;attack:explosion:+1d,abil:tube_of_amaz_o_glue:attack:amaz_o_glue:status:glued:+0.05slow@note:(Lvl 17) 37.5% to blimps@note:(Lvl 17) MOABs use 10p, BFBs 20p, ZOMGs 50p, and DDTs 20p', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 17, '', 'Genie gains a second close-target attack and does bonus damage to MOAB-class Bloons and Creepy Idol applies a Mystical Shroud to MOAB-class Bloons that causes big damage nearby when they are popped.', 0, 20700, 'abil:creepy_idol:attack:creepy_idol:attack:unstable_splash:desc:On expire attack@|3p@|32r=status:unstable:desc:When popped. Explosion applied by unstable splash@|50p@|40r@type:|normal@note:Damage depends on bloon type,abil:genie_bottle:attack:genie:attack:magic_bolt:+5md=2j', DEFAULT, DEFAULT);
 INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 18, '', 'Geraldo\'s main attack is faster, has a longer range, and does more damage and See Invisibility Potion gains bonus damage to Camo Bloons.', 0, 16470, '+1d;+3r;0.8s,attack:explosion:+1d;+5p;+5r,abil:see_invisibility_potion:buff:vision:+1cmd', DEFAULT, DEFAULT);
-INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 19, '', 'New Item! Paragon Power Totem - adds paragon power to the next paragon created. Geraldo\'s main attack does more damage.', 0, 17280, '+5d,attack:explosion:+5d,abil:paragon_power_totem:desc:Shop Item;|26000;note:1 round to restock 1. maximum of 2;attack:paragon_totem:desc:Placed tower=|32r=note:Contributes 2000 power to the next paragon,note:(Lvl 20) Fully restocks all items upon reaching level 20', DEFAULT, DEFAULT);
+INSERT INTO `Abilities` VALUES (NULL, @tower_geraldo, false, 0, 19, '', 'New Item! Paragon Power Totem - adds paragon power to the next paragon created. Geraldo\'s main attack does more damage.', 0, 17280, '+5d,attack:explosion:+5d,abil:paragon_power_totem:desc:Shop Item;|26000cost;note:1 round to restock 1. maximum of 2;attack:paragon_totem:desc:Placed tower=|32r=note:Contributes 2000 power to the next paragon,note:(Lvl 20) Fully restocks all items upon reaching level 20', DEFAULT, DEFAULT);
 
 INSERT INTO `TowerTiersInfo` VALUES (NULL, @tower_geraldo, 'eg,mg,lg,supp', 'xp');
+
+
+
+-- Bloons --
+
+
+--          Bloon      --  (  id, varName,        name, rbe, hp, speed, immune, children, parent)
+INSERT INTO `Bloon` VALUES (NULL,   'red', 'Red Bloon',   1,  0,     1,     '',       '', 'blue');
+INSERT INTO `Bloon` VALUES (NULL, 'blue', 'Blue Bloon', 2, 0, 1.4, '', 'red-1', 'grn');
+INSERT INTO `Bloon` VALUES (NULL, 'grn', 'Green Bloon', 3, 0, 1.8, '', 'blue-1', 'ylw');
+INSERT INTO `Bloon` VALUES (NULL, 'ylw', 'Yellow Bloon', 4, 0, 3.2, '', 'grn-1', 'pink');
+INSERT INTO `Bloon` VALUES (NULL, 'pink', 'Pink Bloon', 5, 0, 3.5, '', 'ylw-1', 'blk,wht,purp');
+INSERT INTO `Bloon` VALUES (NULL, 'blk', 'Black Bloon', 11, 0, 1.8, 'explosion', 'pink-2', 'zbr,lead');
+INSERT INTO `Bloon` VALUES (NULL, 'wht', 'White Bloon', 11, 0, 2.0, 'freeze', 'pink-2', 'zbr');
+INSERT INTO `Bloon` VALUES (NULL, 'purp', 'Purple Bloon', 11, 0, 3.0, 'energy,fire,plasma',       'pink-2', '');
+INSERT INTO `Bloon` VALUES (NULL, 'lead', 'Lead Bloon', 23, 0, 1.0, 'sharp', 'blk-2', '');
+INSERT INTO `Bloon` VALUES (NULL, 'zbr', 'Zebra Bloon', 23, 0, 1.8, 'explosion,freeze',       'blk-1,wht-1', 'rnbw');
+INSERT INTO `Bloon` VALUES (NULL, 'rnbw', 'Rainbow Bloon', 47, 0, 1.8, '', 'zbr-2', 'cm');
+INSERT INTO `Bloon` VALUES (NULL, 'cm', 'Ceramic Bloon', 104, 10, 2.5, '', 'rnbw-2', 'moab,ddt');
+INSERT INTO `Bloon` VALUES (NULL, 'camo', 'Camo Bloon', -1, -1, -1, '', '', '');
+
+-- Blimps
+
+--          Bloon      --  (  id, varName,     name, rbe,  hp, speed, immune, children, parent)
+INSERT INTO `Bloon` VALUES (NULL, 'moab', 'M.O.A.B', 616, 200,   1.0,     '',   'cm-4',   'bfb');
+INSERT INTO `Bloon` VALUES (NULL, 'bfb', 'B.F.B', 3164, 700, 0.25, '', 'moab-4', 'zomg');
+INSERT INTO `Bloon` VALUES (NULL, 'zomg', 'Z.O.M.G', 16656, 4000, 0.18, '', 'bfb-4', 'bad');
+INSERT INTO `Bloon` VALUES (NULL, 'ddt', 'D.D.T', 816, 400, 2.75, 'explosion,sharp', 'camo-4-reg,cm-1', 'bad');
+INSERT INTO `Bloon` VALUES (NULL, 'bad', 'B.A.D', 55760, 20000, 0.18, '', 'zomg-2,ddt-3', '');
+
+-- Boss
+
+--          Boss      --  (  id,      varName,         name,                                 rbe,   hp,                        speed, immune)
+--          Boss - S  --  Special
+--          Boss - E  --  Elite
+INSERT INTO `Boss` VALUES (NULL, 'bloonarius', 'Bloonarius', '14000,52500,245000,525000,2100000', NULL, '0.05,0.092,0.1,0.108,0.108',  NULL);
+INSERT INTO `Boss` VALUES (NULL, 'bloonarius-s', 'Bloons Scattered|Bloons Sent on Skull', 'grn-8;ylw-15;pink-25;zbr-15;rnbw-25', 'grn-30,cm-30;ylw-60,cm-60;pink-100,moab-6;zbr-60,zomg-10;rnbw-100,bad-1', NULL, NULL);
+INSERT INTO `Boss` VALUES (NULL, 'bloonarius-e', 'Elite Bloonarius', '50000,300000,2000000,8000000,40000000', NULL, '0.092,0.092,0.1,0.108,0.108', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'bloonarius-es', 'Bloons Scattered (Elite)|Bloons Sent on Skull (Elite)', 'pink-10;rnbw-10;cm-13;cm-25-freg;moab-8', 'pink-40,cm-70;rnbw-40,bfb-16;cm-50,ddt-9,bad-1;cm-100-freg,ddt-20-f,bad-2-f;moab-30;bad-4-f', NULL, NULL);
+INSERT INTO `Boss` VALUES (NULL, 'lych', 'Lych', '20000,75000,350000,750000,3000000', NULL, '0.05,0.05,0.05,0.06,0.06', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'lych-s', 'Leech-Soul Health|Health Drain', '1280;3050;7900;14500;47000', '1;2;5;10;17', 'Drains lives every 4 seconds it exists. Sent upon reaching skull health.', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'lych-e', 'Elite Lych', '30000,180000,1200000,4800000,24000000', NULL, '0.01,0.108,0.0116,0.012,0.0124', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'lych-es', 'Leech-Soul Health (Elite)|Health Drain', '1600;5600;27000;100000;485000', '11;12;15;20;27', 'Drains lives every 4 seconds it exists. Sent upon reaching skull health.', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'vortex', 'Vortex', '20000,62800,294000,628000,2512500', NULL, '0.144,0.144,0.156,0.162,0.168', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'vortex-s', 'Stun Duration|Stun Range', '16s;16s;20s;25s;30s', '60;65;70;75;80', 'Stuns nearby towers', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'vortex-e', 'Elite Vortex', '41800,251000,1675000,6700000,33500000', NULL, '0.15,0.162,0.18,0.186,0.192', NULL);
+INSERT INTO `Boss` VALUES (NULL, 'vortex-es', 'Stun Duration|Stun Range', '20s;25s;30s;36s;40s', '60;65;70;75;80', 'Stuns nearby towers', NULL);
+
 

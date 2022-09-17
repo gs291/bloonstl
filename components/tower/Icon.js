@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 
 import ImageFill from "../image/ImageFill";
 import {getImageUrl} from "../../lib/utils/utils";

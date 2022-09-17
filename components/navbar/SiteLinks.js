@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import {useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {styled, useTheme} from "@mui/material/styles";
 
 import NavLink from "./NavLink";
 import MenuButton from "./MenuButton";
@@ -10,7 +10,7 @@ import TowerText from "../tower/TowerText";
 import DarkMode from "../dark-mode/DarkMode";
 import siteLinks from "../../lib/utils/siteLinks";
 import {closeDrawer} from "../../lib/redux/actions";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getMobile} from "../../lib/redux/selectors";
 
 
 const NavSection = styled("div")`
@@ -32,10 +32,10 @@ const NavContainer = styled("div")`
  * Site links displayed in the navbar
  */
 export default function SiteLinks() {
+    const theme = useTheme();
     const expanderRef = useRef();
     const dispatch = useDispatch();
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -85,7 +85,7 @@ export default function SiteLinks() {
             <SmallNavSection>
                 <NavContainer>
                     {!mobile && (
-                        <Tooltip title={(<TowerText variant="h6" font={true} >{`Toggle ${darkMode ? "Light" : "Dark"} Mode`}</TowerText>)} forceWidth={false} ga4ID="DARK_MODE">
+                        <Tooltip title={(<TowerText variant="h6" font={true} >{`Toggle ${(theme.palette.mode === "dark") ? "Light" : "Dark"} Mode`}</TowerText>)} forceWidth={false} ga4ID="DARK_MODE">
                             <DarkMode />
                         </Tooltip>
                     )}

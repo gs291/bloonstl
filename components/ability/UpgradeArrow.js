@@ -1,11 +1,9 @@
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 import {DoubleArrow} from "@mui/icons-material";
 
-import {getTierColor} from "../../lib/utils/utils";
-import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 const UpgradeArrowContainer = styled("div")`
@@ -15,10 +13,7 @@ const UpgradeArrowContainer = styled("div")`
 `;
 
 const Arrow = styled(DoubleArrow, globalOptions)`
-  color: ${props => 
-          props["data-s"] 
-                  ? getTierColor(props.tier) 
-                  : props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props["data-s"] ? props["data-c"] : props.theme.palette.text.primary};
   transition: 0.3s;
   ${props => props["data-m"] ? "width: 15px;" : ""}
 `;
@@ -29,17 +24,16 @@ const Arrow = styled(DoubleArrow, globalOptions)`
  *
  * @param {Object} props Component props
  * @param {string} [props.className] class to apply to the component
- * @param {string} props.tier The currently selected tier or tower tier
+ * @param {string} props.color The color of the tower
  * @param {boolean} props.selected Shows if the ability is currently selected
  */
-export default function UpgradeArrow({ className, tier, selected }) {
+export default function UpgradeArrow({ className, color, selected }) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <UpgradeArrowContainer className={className}>
-                <Arrow data-s={selected} tier={tier} data-dm={darkMode} data-m={mobile}/>
+                <Arrow data-s={selected} data-c={color} data-m={mobile}/>
             </UpgradeArrowContainer>
         </>
     );

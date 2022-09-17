@@ -1,12 +1,12 @@
 import Link from "next/link";
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
+import {useTheme} from "@mui/material/styles";
 import {Card, CardContent, Link as MUILink, Typography} from "@mui/material";
 
 import Icon from "../tower/Icon";
-import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getBorder, getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getBorder, getMobile} from "../../lib/redux/selectors";
 import {getTowerLink, getMonkeyColor, getHeroColor, rgbaHex} from "../../lib/utils/utils";
 import {CARD_PREFIX, SELECT_CONTENT_CARD, ga4SendSelectContent} from "../../lib/utils/ga4";
 
@@ -58,8 +58,8 @@ const MLink = styled(MUILink)`
   }
 `;
 
-const TowerName = styled(Typography, globalOptions)`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+const TowerName = styled(Typography)`
+  color: ${props => props.theme.palette.text.primary};
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -74,27 +74,26 @@ const GA4_TOWER_CARD_ID = "TOWER";
  *
  * @param {Object} props Component props
  * @param {Object} props.tower Object containing the tower
- * @param {string} props.tier The tower tier
  * @param {string} props.towerType Shows if the tower is a monkey or hero
- * @param {boolean} props.ignoreFilter Shows if the card should ignore any filters
+ * @param {number} props.ignoreFilter Shows if the card should ignore any filters
  */
-export default function TowerCard({tower, towerType, tier, ignoreFilter}) {
+export default function TowerCard({tower, towerType, ignoreFilter}) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
     const border = useSelector(getBorder);
-    const darkMode = useSelector(getDarkMode);
 
     let href, borderColor, backgroundColor, hoverBackgroundColor;
 
     if (towerType === "monkey") {
         href = `/monkey/${getTowerLink(tower.name)}`;
-        borderColor = getMonkeyColor(tower.type, darkMode);
-        backgroundColor = getMonkeyColor(tower.type, darkMode,  tier, true);
-        hoverBackgroundColor = getMonkeyColor(tower.type, darkMode, tier, true, true);
+        borderColor = getMonkeyColor(tower.type, theme);
+        backgroundColor = getMonkeyColor(tower.type, theme, true);
+        hoverBackgroundColor = getMonkeyColor(tower.type, theme, true, true);
     } else if (towerType === "hero") {
         href = `/hero/${getTowerLink(tower.name)}`;
-        borderColor = getHeroColor(tower.name, darkMode);
-        backgroundColor = getHeroColor(tower.name, darkMode, tier, true, false);
-        hoverBackgroundColor = getHeroColor(tower.name, darkMode, tier, true, true);
+        borderColor = getHeroColor(tower.name, theme);
+        backgroundColor = getHeroColor(tower.name, theme, true, false);
+        hoverBackgroundColor = getHeroColor(tower.name, theme, true, true);
     }
 
     if (!border && ignoreFilter === 0) {
@@ -115,7 +114,7 @@ export default function TowerCard({tower, towerType, tier, ignoreFilter}) {
                     <CardContainer onClick={handleClick} data-brc={borderColor} data-bc={backgroundColor} data-hbc={hoverBackgroundColor}>
                         <CardContent>
                             <Icon tower={tower}/>
-                            <TowerName variant={mobile ? "body1" : "h5"} data-dm={darkMode}>
+                            <TowerName variant={mobile ? "body1" : "h5"}>
                                 {tower.name}
                             </TowerName>
                         </CardContent>

@@ -3,7 +3,6 @@ import Header from "../../components/page/Header";
 import MonkeyPage from "../../components/monkey/MonkeyPage";
 import MainContainer from "../../components/page/MainContainer";
 import {getTowerLink, parseTowerLink} from "../../lib/utils/utils";
-import FixedRightButtons from "../../components/fixed/FixedRightButtons";
 
 
 export default function Monkey({ monkey }) {
@@ -15,7 +14,6 @@ export default function Monkey({ monkey }) {
             <MainContainer>
                 <MonkeyPage monkey={monkey}/>
             </MainContainer>
-            <FixedRightButtons />
         </>
     );
 }
@@ -55,9 +53,8 @@ export async function getStaticProps({ params }) {
         const abilityTiers = await dataSources().abilitiesAPI.getAbilityTiersWithInfoByMonkeyName({name});
         if (abilityTiers) {
             let abilityTiersObj = { "s": [], "a": [], "b": [] };
-
             abilityTiers.forEach(ar => abilityTiersObj[ar.tier].push(ar));
-            monkey.tiers = abilityTiersObj;
+            monkey.tiers = abilityTiersObj["s"].concat(abilityTiersObj["a"], abilityTiersObj["b"]);
         }
     }
 

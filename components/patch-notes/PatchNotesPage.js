@@ -1,5 +1,6 @@
-import styled from "@emotion/styled";
 import {useEffect, useState} from "react";
+import {styled} from "@mui/material/styles";
+import {useTheme} from "@mui/material/styles";
 import {useDispatch, useSelector} from "react-redux";
 
 import Patch from "./Patch";
@@ -10,13 +11,12 @@ import FetchErrors from "../api/FetchErrors";
 import FetchLoading from "../api/FetchLoading";
 import {updatePage} from "../../lib/redux/actions";
 import DefaultButton from "../button/DefaultButton";
-import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {latest, latestMajor} from "../../lib/utils/patches";
 import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
+import {getMobile, getPageData} from "../../lib/redux/selectors";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
 import TableOfContents from "../table-of-contents/TableOfContents";
-import {getDarkMode, getMobile, getPageData} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -63,8 +63,8 @@ const GA4_PATCH_BUTTON_ID = "PATCH_BUTTON";
  */
 export default function PatchNotesPage({ patch }) {
     const dispatch = useDispatch();
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const reduxPageName = `patches`;
 
@@ -161,8 +161,8 @@ export default function PatchNotesPage({ patch }) {
                 <DefaultContainer data-m={mobile}>
                     <DefaultButton
                         onClick={() => handleButtonClick({target: {value: latest, type: "latest"}})}
-                        variant={darkMode ? "outlined" : "contained"}
-                        data-bc={darkMode ? siteColors.patch.button.dark : siteColors.patch.button.light}
+                        variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
+                        data-bc={theme.palette.button.patch}
                     >
                         <TowerText variant="subtitle1">
                             Most Recent Update (v {latest})
@@ -170,8 +170,8 @@ export default function PatchNotesPage({ patch }) {
                     </DefaultButton>
                     <DefaultButton
                         onClick={() => handleButtonClick({target: {value: latestMajor, type: "latestMajor"}})}
-                        variant={darkMode ? "outlined" : "contained"}
-                        data-bc={darkMode ? siteColors.patch.button.dark : siteColors.patch.button.light}
+                        variant={theme.palette.mode === "dark" ? "outlined" : "contained"}
+                        data-bc={theme.palette.button.patch}
                     >
                         <TowerText variant="subtitle1">
                             Last Major Update (v {latestMajor})

@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+import {styled} from "@mui/material/styles";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
 
@@ -8,9 +8,7 @@ import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
 import ApiItem from "../api/ApiItem";
 import TowerText from "../tower/TowerText";
 import FixedDivider from "../divider/FixedDivider";
-import siteColors from "../../lib/utils/siteColors";
-import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getMobile} from "../../lib/redux/selectors";
 import {EXPAND_PREFIX, SELECT_CONTENT_EXPAND, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -43,39 +41,38 @@ const Description = styled(TowerText)`
   text-align: center;
 `;
 
-const Link = styled('a', globalOptions)`
+const Link = styled('a')`
   font-family: monospace;
   font-size: 1.25rem;
   line-break: anywhere;
   text-decoration: underline;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  color: ${props => props.theme.palette.text.primary};
 `;
 
 const ExpanderContainer = styled("div")`
   width: 100%;
 `;
 
-const Expander = styled(Accordion, globalOptions)`
+const Expander = styled(Accordion)`
+  background-color: ${props => props.theme.palette.background.default};
   ${props => {
-      const rgb = props["data-dm"] ? '255 255 255' : '0 0 0';
+      const rgb = props.theme.palette.mode === "dark" ? '255 255 255' : '0 0 0';
       return `box-shadow: 0px 2px 10px -1px rgb(${rgb} / 20%), 0px 1px 3px 0px rgb(${rgb} / 14%), 0px 1px 3px 0px rgb(${rgb} / 12%);`;
   }}
 `;
 
-const ExpandMore = styled(ExpandMoreIcon, globalOptions)`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+const ExpandMore = styled(ExpandMoreIcon)`
+  color: ${props => props.theme.palette.text.primary};
 `;
 
-const ExpanderSummary = styled(AccordionSummary, globalOptions)`
-  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
-`;
+const ExpanderSummary = styled(AccordionSummary)``;
 
-const ExpandedDetails = styled(AccordionDetails, globalOptions)`
+const ExpandedDetails = styled(AccordionDetails)`
   flex-direction: column;
 
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
+  background-color: ${props => props.theme.palette.background.default};
 `;
 
 
@@ -91,7 +88,6 @@ const GA4_GRAPHQL_EXPAND_ID = "GRAPHQL_EXPAND";
  */
 export default function GraphQL({className, api, tag}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
     const [path, setPath] = useState("");
 
     useEffect(() => {
@@ -120,20 +116,20 @@ export default function GraphQL({className, api, tag}) {
                     <Description variant="h6" font={true}>
                         Expand below to get information on the GraphQL API endpoint located at:
                     </Description>
-                    <Link href={path} data-dm={darkMode}>
+                    <Link href={path}>
                         {path}
                     </Link>
                 </Information>
 
                 <ExpanderContainer>
-                    <Expander data-dm={darkMode}>
+                    <Expander>
                         <ExpanderSummary
-                            expandIcon={<ExpandMore data-dm={darkMode} />}
-                            onClick={handleClick} data-dm={darkMode}
+                            expandIcon={<ExpandMore />}
+                            onClick={handleClick}
                         >
                             <TowerText variant="h5">Queries and Objects</TowerText>
                         </ExpanderSummary>
-                        <ExpandedDetails data-dm={darkMode}>
+                        <ExpandedDetails>
                             <ApiItem api={api.queries} type="queries"/>
                             <FixedDivider width={100} />
                             <ApiItem api={api.objects} type="obj"/>

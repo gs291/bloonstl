@@ -1,18 +1,16 @@
-import styled from "@emotion/styled";
 import {Button} from "@mui/material";
+import {styled} from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
 import ClearIcon from "@mui/icons-material/Clear";
 import {useDispatch, useSelector} from "react-redux";
 
 import siteSizes from "../../lib/utils/siteSizes";
-import siteColors from "../../lib/utils/siteColors";
+import {getDrawer} from "../../lib/redux/selectors";
 import {toggleDrawer} from "../../lib/redux/actions";
-import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getDrawer} from "../../lib/redux/selectors";
 
 
-const Menu = styled(Button, globalOptions)`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+const Menu = styled(Button)`
+  color: ${props => props.theme.palette.text.primary};
   height: ${siteSizes.nav.height};
   width: 100px;
 `;
@@ -23,11 +21,10 @@ const Menu = styled(Button, globalOptions)`
 export default function MenuButton() {
     const dispatch = useDispatch();
     const drawer = useSelector(getDrawer);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <Menu onClick={() => dispatch(toggleDrawer())} data-dm={darkMode}>
+            <Menu onClick={() => dispatch(toggleDrawer())}>
                 { drawer && (
                     <ClearIcon fontSize="large"/>
                 )}

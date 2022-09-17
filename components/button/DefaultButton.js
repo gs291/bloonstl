@@ -1,40 +1,24 @@
-import styled from "@emotion/styled";
 import {Button} from "@mui/material";
-import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 
 import {rgbaHex} from "../../lib/utils/utils";
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
 
 const StyledButton = styled(Button, globalOptions)`
-    color: ${props => props["data-bc"]
-    ? props["data-bc"]
-    : props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-  
-  border-color: ${props => 
-          props["data-bc"] 
-                  ? props["data-bc"]
-                  : props["data-dm"] ? siteColors.button.dark : siteColors.button.light
-  };
+  color: ${props => props["data-bc"] ? props["data-bc"] : props.theme.palette.text.primary};
+  border-color: ${props => props["data-bc"] ? props["data-bc"] : props.theme.palette.button.primary};
   
   ${props => props["variant"] !== "outlined" && `background-color: ${rgbaHex(
-      props["data-bc"] 
-              ? props["data-bc"] 
-              : props["data-dm"] ? siteColors.button.dark : siteColors.button.light
-          , props["data-dm"] ? 0 : 0.75)};`}
+      props["data-bc"] ? props["data-bc"] : props.theme.palette.button.primary
+          , props.theme.palette.mode === "dark" ? 0 : 0.75)};`}
   
   &:hover {
     background-color: ${props =>
-    rgbaHex(props["data-bc"]
-            ? props["data-bc"]
-            : props["data-dm"] ? siteColors.button.dark : siteColors.button.light
-        , props["data-dm"] ? 0.1 : 0.5)};
+    rgbaHex(props["data-bc"] ? props["data-bc"] : props.theme.palette.button.primary
+        , props.theme.palette.mode === "dark" ? 0.1 : 0.5)};
     
-    border-color: ${props => props["data-bc"]
-    ? props["data-bc"]
-    : props["data-dm"] ? siteColors.button.dark : siteColors.button.light};
+    border-color: ${props => props["data-bc"] ? props["data-bc"] : props.theme.palette.button.primary};
   }
 `;
 
@@ -47,11 +31,10 @@ const StyledButton = styled(Button, globalOptions)`
  * @param {any} props.children Children supplied to the button
  */
 export default function DefaultButton({borderColor, children, ...rest}){
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <StyledButton data-bc={borderColor} data-dm={darkMode} {...rest}>
+            <StyledButton data-bc={borderColor} {...rest}>
                 {children}
             </StyledButton>
         </>

@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import {styled, useTheme} from "@mui/material/styles";
 
 import PatchItems from "./PatchItems";
 import TowerText from "../tower/TowerText";
@@ -9,12 +9,11 @@ import FetchLoading from "../api/FetchLoading";
 import useVisible from "../../lib/utils/hooks";
 import {updatePage} from "../../lib/redux/actions";
 import DefaultButton from "../button/DefaultButton";
-import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {fetchAPI, getTowerLink} from "../../lib/utils/utils";
 import PatchRefreshButton from "../button/PatchRefreshButton";
+import {getMobile, getPageData} from "../../lib/redux/selectors";
 import patchQueries from "../../lib/graphql/queries/patchQueries";
-import {getDarkMode, getMobile, getPageData} from "../../lib/redux/selectors";
 import {BUTTON_PREFIX, SELECT_CONTENT_BUTTON, ga4SendSelectContent} from "../../lib/utils/ga4";
 
 
@@ -32,11 +31,7 @@ const PatchItemsContainer = styled("div", globalOptions)`
   min-height: 75px;
   
   border-radius: 20px;
-  border: 2px solid ${props => 
-          props["data-bc"] 
-                  ? props["data-bc"]
-                  : props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light
-  };
+  border: 2px solid ${props => props["data-bc"] ? props["data-bc"] : props.theme.palette.primary.main};
 `;
 
 const PatchItemsWrapper = styled("div", globalOptions)`
@@ -70,10 +65,10 @@ const GA4_LOAD_MORE_BUTTON_ID = "PATCH_LOAD_MORE";
  *
  * @param {Object} props Component props
  * @param {string} props.name The tower name
- * @param {string} props.name The tower/ability path tier
- * @param {string} props.name The color to apply to the patch updates border[s]
+ * @param {string} props.borderColor The color to apply to the patch updates border[s]
  */
-export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
+export default function TowerPatchUpdates({name, borderColor, ...rest}){
+    const theme = useTheme();
     const elemRef = useRef();
     const isVisible = useVisible(elemRef);
 
@@ -82,7 +77,6 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
     const pageData = useSelector(state => getPageData(state, reduxPageName));
 
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     const [fetch, setFetch] = useState(false);
     const [patchData, setPatchData] = useState((Object.keys(pageData).length > 0) ? pageData :  {start: 0, items: []});
@@ -148,7 +142,7 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
     return (
         <>
             <PatchContainer data-m={mobile} ref={elemRef} {...rest}>
-                    <PatchItemsContainer data-bc={borderColor} data-m={mobile} data-dm={darkMode}>
+                    <PatchItemsContainer data-bc={borderColor} data-m={mobile}>
                         {!progress.isLoading && (
                             <PatchRefreshButton onClick={handleReset} borderColor={borderColor} />
                         )}
@@ -167,7 +161,7 @@ export default function TowerPatchUpdates({name, tier, borderColor, ...rest}){
                                     ))}
                                     <FooterContainer>
                                         {patchData.start !== -1 ? (<>{!progress.isLoading && (
-                                            <DefaultButton onClick={handleFetch} data-bc={borderColor} data-dm={darkMode} variant={darkMode ? "outlined" : "contained"}>
+                                            <DefaultButton onClick={handleFetch} data-bc={borderColor} variant={theme.palette.mode === "dark" ? "outlined" : "contained"}>
                                                 <TowerText variant={mobile ? "subtitle1" : "h6"}>
                                                     Load More
                                                 </TowerText>

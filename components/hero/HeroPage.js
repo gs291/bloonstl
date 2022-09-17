@@ -1,23 +1,23 @@
 import {useState} from "react";
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
+import {useTheme} from "@mui/material/styles";
 
 import Counter from "../tower/Counter";
 import Stats from "../statistics/Stats";
 import ProsCons from "../tower/ProsCons";
-import TierText from "../tower/TierText";
 import TowerText from "../tower/TowerText";
 import SandboxMode from "../filters/SandboxMode";
-import TierPathText from "../tower/TierPathText";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
 import HeroAbilities from "../abilities/HeroAbilities";
+import AbilityPathText from "../tower/AbilityPathText";
 import FilterDifficulty from "../filters/FilterDifficulty";
-import {globalOptions} from "../../lib/utils/emotionStyled";
 import TowerPatchUpdates from "../patch-notes/TowerPatchUpdates";
 import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
 import {getHeroColor, getInitialTowerStats} from "../../lib/utils/utils";
+import ConsecutiveSnackbars from "../snackbar/ConsecutiveSnackbars";
 
 
 const FilterDiff = styled(FilterDifficulty)`
@@ -27,20 +27,14 @@ const FilterDiff = styled(FilterDifficulty)`
 
 const Title = styled(TowerText)`
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
   cursor: default;
 `;
 
-const SmallTitle = styled(TowerText)`
-  margin-top: 10px;
+const AbilitiesCaptionText = styled(TowerText)`
   text-align: center;
-  cursor: default;
-`;
-
-const Sandbox = styled(SandboxMode)`
-  margin-top: ${props => props.sandbox ? 0 : 40}px;
-  margin-bottom: 15px;
+  margin-bottom: 40px;
 `;
 
 const PatchText = styled(TowerText)`
@@ -49,8 +43,7 @@ const PatchText = styled(TowerText)`
   cursor: default;
 `;
 
-const TierPText = styled(TierPathText)`
-  margin-top: 10px;
+const AbilityPText = styled(AbilityPathText)`
   margin-bottom: 15px;
 `;
 
@@ -59,17 +52,13 @@ const Abilities = styled(HeroAbilities)`
 `;
 
 const PathXPCost = styled(TowerText)`
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  cursor: default;
 `;
 
-const HeroTier = styled("div", globalOptions)`
-  display: flex;
-  flex-direction: ${props => props["data-m"] ? "column" : "row"};
-  width: ${props => props["data-m"] ? 100 : 80}%;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+const Border = styled(FixedDivider)`
+  margin-top: 50px;
+  margin-bottom: 50px;
 `;
 
 /**
@@ -79,13 +68,18 @@ const HeroTier = styled("div", globalOptions)`
  * @param {Object} props.hero Object containing all the hero data
  */
 export default function HeroPage({ hero }) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const dividerBackgroundColor = getHeroColor(hero.name);
+    const dividerBackgroundColor = getHeroColor(hero.name, theme);
 
     const [ path, setPath ] = useState(9);
     const [ sandbox, setSandbox ] = useState(false);
     const [ pauseSandbox, setPauseSandbox ] = useState(false);
     const [ stats, setStats ] = useState(getInitialTowerStats(hero.stats, {pros: hero.info.pros, cons: hero.info.cons}));
+
+    const [ snackPack, setSnackPack ] = useState([]);
+    const [ openSnackbar, setOpenSnackbar ] = useState(false);
+    const [ messageInfo, setMessageInfo ] = useState(undefined);
 
     const handlePathReset = () => {
         setPath(0);
@@ -95,50 +89,54 @@ export default function HeroPage({ hero }) {
     return (
         <>
             <TowerImgInfo tower={hero} towerType="hero" />
-            <Stats stats={stats} path={path} type={hero.name} towerType="hero" />
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <FilterDiff color={dividerBackgroundColor}/>
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <SmallTitle variant={mobile ? "h4" : "h3"}>
-                Ability Path Level
-            </SmallTitle>
-            <TowerText variant="subtitle2" font={true}>
-                {sandbox
-                    ? "Click on an ability to change the path!"
-                    : "View the selected hero ability level below"
-                }
-            </TowerText>
-            <HeroTier data-m={mobile}>
-                <TierText tier={hero.tier} text="Tower Tier" showText />
-                <TierPText tier={hero.tier} tiers={{"top_path": path + 1}} towerType="hero" />
-            </HeroTier>
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <Title variant={mobile ? "h4" : "h3"}>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <Title variant={mobile ? "h3" : "h2"}>
                 Hero Abilities
             </Title>
-            <PathXPCost variant={mobile ? "h6" : "h4"}>
+            <AbilitiesCaptionText variant={mobile ? "h6" : "h5"} sx={{maxWidth: mobile ? "100%" : "55%"}} font>
+                View highly rated ability paths or set your own path and view its changes! (via Sandbox Mode)
+            </AbilitiesCaptionText>
+            <AbilityPText path={{"top_path": path + 1}} towerType="hero" textColor={dividerBackgroundColor} />
+            <PathXPCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
                 Path XP Required:&nbsp;&nbsp;<Counter cost={stats.xp} gold={false}/>
             </PathXPCost>
+            <SandboxMode
+                sandbox={sandbox} setSnackPack={setSnackPack}
+                setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox}
+                color={dividerBackgroundColor} handleReset={handlePathReset} towerType="hero"
+            />
             <Abilities
                 abilities={hero.abilities} heroName={hero.name} heroFile={hero.filename}
-                defaultStats={hero.stats} setStats={setStats} tier={hero.tier}
+                defaultStats={hero.stats} setStats={setStats} color={dividerBackgroundColor}
                 path={path} initialPros={hero.info.pros} initialCons={hero.info.cons} setPath={sandbox && !pauseSandbox && setPath}
             />
-            <Sandbox sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={hero.tier} handleReset={handlePathReset} towerType="hero"/>
-            <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="hero" type={hero.name} />
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <Title variant={mobile ? "h4" : "h3"}>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <Title variant={mobile ? "h3" : "h2"}>
                 Tower Pros / Cons
             </Title>
             <ProsCons pros={stats.pros} cons={stats.cons} backgroundColor={dividerBackgroundColor}/>
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <PatchText variant={mobile ? "h4" : "h3"}>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="hero" type={hero.name} />
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <Title variant={mobile ? "h3" : "h2"}>
+                Tower Statistics
+            </Title>
+            <Stats stats={stats} path={path} type={hero.name} towerType="hero" />
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <FilterDiff color={dividerBackgroundColor}/>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <PatchText variant={mobile ? "h3" : "h2"}>
                 Latest
             </PatchText>
-            <Title variant={mobile ? "h4" : "h3"}>
+            <Title variant={mobile ? "h3" : "h2"}>
                 Patch Updates
             </Title>
             <TowerPatchUpdates name={hero.name} borderColor={dividerBackgroundColor} />
+            <ConsecutiveSnackbars
+                snackPack={snackPack} setSnackPack={setSnackPack}
+                open={openSnackbar} setOpen={setOpenSnackbar}
+                messageInfo={messageInfo} setMessageInfo={setMessageInfo}
+            />
         </>
     );
 }

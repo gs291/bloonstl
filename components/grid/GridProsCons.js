@@ -1,6 +1,6 @@
 import {Grid} from "@mui/material";
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 
 import TowerText from "../tower/TowerText";
 import ProConChip from "../tower/ProConChip";

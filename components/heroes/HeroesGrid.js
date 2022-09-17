@@ -1,8 +1,6 @@
 import {Grid} from "@mui/material";
-import {useSelector} from "react-redux";
+import {useTheme} from "@mui/material/styles";
 
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import GridTowerContainer from "../grid/GridTowerContainer";
 
 
@@ -13,7 +11,7 @@ import GridTowerContainer from "../grid/GridTowerContainer";
  * @param {Array<Object>} props.heroes Array list of all the heroes
  */
 export default function HeroesGrid({ heroes }) {
-    const darkMode = useSelector(getDarkMode);
+    const theme = useTheme();
 
     return (
         <>
@@ -22,11 +20,8 @@ export default function HeroesGrid({ heroes }) {
                     <GridTowerContainer
                         towers={heroes}
                         title="Towers"
-                        backgroundColor={darkMode
-                            ? siteColors.heroes.grid.dark
-                            : siteColors.heroes.grid.light
-                        }
-                        titleColor={siteColors.heroes.color}
+                        backgroundColor={theme.palette.tower.type.heroes.grid}
+                        titleColor={theme.palette.tower.type.heroes.color}
                         ignoreFilter={1}
                     />
                 </Grid>

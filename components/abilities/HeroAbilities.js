@@ -1,6 +1,6 @@
 import {Grid} from "@mui/material";
-import styled from "@emotion/styled";
 import {PureComponent} from "react";
+import {styled} from "@mui/material/styles";
 
 import {
     checkDuplicateProsCons,
@@ -82,7 +82,7 @@ export default class HeroAbilities extends PureComponent {
      * @return {Object} The seperated abilities.
      */
     getAbilities() {
-        const {abilities, tier, path, setPath, heroName, heroFile} = this.props;
+        const {abilities, color, path, setPath, heroName, heroFile} = this.props;
 
         let dividedAbilities = [ [], [], [], [], [] ];
 
@@ -97,7 +97,7 @@ export default class HeroAbilities extends PureComponent {
                         fileName={heroFile}
                         towerType="hero"
                         key={ability.id}
-                        tier={tier}
+                        color={color}
                         selected={path + 1 > ability.upgrade_tier}
                         onClick={onClick}
                     />
@@ -114,7 +114,7 @@ export default class HeroAbilities extends PureComponent {
 
 
     render() {
-        const {className, tier} = this.props;
+        const {className, color} = this.props;
 
         const { firstFiveAbilities, secondFiveAbilities, thirdFiveAbilities, fourthFiveAbilities} = this.getAbilities();
 
@@ -135,7 +135,7 @@ export default class HeroAbilities extends PureComponent {
                             { fourthFiveAbilities }
                         </GridItem>
                     </GridContainer>
-                    <ShowAllAbilityModifiers tier={tier} />
+                    <ShowAllAbilityModifiers color={color} />
                 </AbilitiesContainer>
             </>
         );

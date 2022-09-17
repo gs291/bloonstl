@@ -1,10 +1,10 @@
 import {Grid} from "@mui/material";
 import {useSelector} from "react-redux";
+import {useTheme} from "@mui/material/styles";
 
-import siteColors from "../../lib/utils/siteColors";
+import {getMobile} from "../../lib/redux/selectors";
 import {getMonkeyColor} from "../../lib/utils/utils";
 import GridTowerContainer from "../grid/GridTowerContainer";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
 /**
@@ -17,8 +17,8 @@ import {getDarkMode, getMobile} from "../../lib/redux/selectors";
  * @param {Array<Object>} props.support Array list of all the support monkeys
  */
 export default function MonkeysGrid({primary, military, magic, support}) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     let gridSpacing = 6;
     if (mobile) {
@@ -32,11 +32,8 @@ export default function MonkeysGrid({primary, military, magic, support}) {
                     <GridTowerContainer
                         towers={primary}
                         title="Primary"
-                        backgroundColor={darkMode
-                            ? siteColors.monkeyType.primary.grid.dark
-                            : siteColors.monkeyType.primary.grid.light
-                        }
-                        titleColor={getMonkeyColor("Primary")}
+                        backgroundColor={theme.palette.tower.type.primary.grid}
+                        titleColor={getMonkeyColor("Primary", theme)}
                         ignoreFilter={1}
                     />
                 </Grid>
@@ -44,11 +41,8 @@ export default function MonkeysGrid({primary, military, magic, support}) {
                     <GridTowerContainer
                         towers={military}
                         title="Military"
-                        backgroundColor={darkMode
-                            ? siteColors.monkeyType.military.grid.dark
-                            : siteColors.monkeyType.military.grid.light
-                        }
-                        titleColor={getMonkeyColor("Military")}
+                        backgroundColor={theme.palette.tower.type.military.grid}
+                        titleColor={getMonkeyColor("Military", theme)}
                         ignoreFilter={1}
                     />
                 </Grid>
@@ -56,11 +50,8 @@ export default function MonkeysGrid({primary, military, magic, support}) {
                     <GridTowerContainer
                         towers={magic}
                         title="Magic"
-                        backgroundColor={darkMode
-                            ? siteColors.monkeyType.magic.grid.dark
-                            : siteColors.monkeyType.magic.grid.light
-                        }
-                        titleColor={getMonkeyColor("Magic")}
+                        backgroundColor={theme.palette.tower.type.magic.grid}
+                        titleColor={getMonkeyColor("Magic", theme)}
                         ignoreFilter={1}
                     />
                 </Grid>
@@ -68,11 +59,8 @@ export default function MonkeysGrid({primary, military, magic, support}) {
                     <GridTowerContainer
                         towers={support}
                         title="Support"
-                        backgroundColor={darkMode
-                            ? siteColors.monkeyType.support.grid.dark
-                            : siteColors.monkeyType.support.grid.light
-                        }
-                        titleColor={getMonkeyColor("Support")}
+                        backgroundColor={theme.palette.tower.type.support.grid}
+                        titleColor={getMonkeyColor("Support", theme)}
                     ignoreFilter={1}
                     />
                 </Grid>

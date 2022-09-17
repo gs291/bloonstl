@@ -1,15 +1,13 @@
-import styled from "@emotion/styled";
 import {Drawer} from "@mui/material";
+import {styled} from "@mui/material/styles";
 import {useDispatch, useSelector} from "react-redux";
 
 import NavLink from "./NavLink";
 import DarkMode from "../dark-mode/DarkMode";
 import siteLinks from "../../lib/utils/siteLinks";
 import siteSizes from "../../lib/utils/siteSizes";
-import siteColors from "../../lib/utils/siteColors";
+import {getDrawer} from "../../lib/redux/selectors";
 import {toggleDrawer} from "../../lib/redux/actions";
-import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getDrawer} from "../../lib/redux/selectors";
 
 
 const TopDrawer = styled(Drawer)`
@@ -18,12 +16,12 @@ const TopDrawer = styled(Drawer)`
   }
 `;
 
-const DrawerContainer = styled("div", globalOptions)`
+const DrawerContainer = styled("div")`
   height: 100%;
   padding-top: ${siteSizes.nav.height};
   padding-bottom: 5%;
-  background-color: ${props => props["data-dm"] ? siteColors.page.dark : siteColors.page.light};
-  color: ${props => props["data-dm"] ?  siteColors.text.dark : siteColors.text.light};
+  background-color: ${props => props.theme.palette.background.default};
+  color: ${props => props.theme.palette.text.primary};
   
   display: flex;
   flex-direction: column;
@@ -46,7 +44,6 @@ const DrawerDarkMode = styled(DarkMode)`
 export default function NavDrawer() {
     const dispatch = useDispatch();
     const drawer = useSelector(getDrawer);
-    const darkMode = useSelector(getDarkMode);
 
     const closeDrawer = () => {
         dispatch(toggleDrawer());
@@ -60,7 +57,7 @@ export default function NavDrawer() {
                 anchor="top"
                 transitionDuration={350}
             >
-                <DrawerContainer data-dm={darkMode}>
+                <DrawerContainer>
                     { siteLinks.middle.links.map(mid => <DrawerLink key={mid.key} {...mid} closeDrawer={closeDrawer}/>) }
                     { siteLinks.middle.collapse.map(mid => <DrawerLink key={mid.key} {...mid} closeDrawer={closeDrawer}/>) }
                     <DrawerDarkMode />

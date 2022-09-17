@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import {useEffect, useState} from "react";
+import {styled} from "@mui/material/styles";
 
 import TowerText from "../tower/TowerText";
 

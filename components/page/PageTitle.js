@@ -1,18 +1,16 @@
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {Typography} from "@mui/material";
+import {styled} from "@mui/material/styles";
 
-import siteColors from "../../lib/utils/siteColors";
-import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
+import {getMobile} from "../../lib/redux/selectors";
 
 
-const Title = styled(Typography, globalOptions)`
+const Title = styled(Typography)`
   width: 100%;
   text-align: center;
   margin-bottom: 100px;
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
-  border-bottom: 6px solid ${props => props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light};
+  color: ${props => props.theme.palette.text.primary};
+  border-bottom: 6px solid ${props => props.theme.palette.primary.main};
   text-overflow: ellipsis;
   overflow: hidden;
 `;
@@ -25,11 +23,10 @@ const Title = styled(Typography, globalOptions)`
  */
 export default function PageTitle({title}) {
     const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <Title variant={mobile ? "h2" : "h1"} component="h1" data-dm={darkMode}>
+            <Title variant={mobile ? "h2" : "h1"} component="h1">
                 {title}
             </Title>
         </>

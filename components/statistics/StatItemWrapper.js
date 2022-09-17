@@ -40,11 +40,14 @@ const codeParser = (code, value, prevValue, initialDamage = 0, baseDamage = 0, e
         case "Footprint": return {"counter": false, "tooltip": <TextTooltip title="Map Footprint" text={`Size the tower takes up on the map: ${value}`} />};
         case "Delay": return {"lowerIsBuff": true, "tooltip": <TextTooltip title="Delay" text={`Delay until the attack occurs in seconds`} value={value} prevValue={prevValue} />, "suffix": "&nbsp;s"};
         case "Income": return {"prefix": "+&nbsp;$", "tooltip": <TextTooltip title="Income" text={`Money generated per/each round`} value={value} prevValue={prevValue} />};
+        case "Cost": return {"lowerIsBuff": true, "prefix": "$", "tooltip": <TextTooltip title="Cost" text={`Cost of this ability`} value={value} prevValue={prevValue} />};
         case "Crit Rate": return {"counter": false, "tooltip": <TextTooltip title="Critical Occurrence" text={`Critical damage occurs every ${value} shots (where '~' is referred as 'to') `} />};
         case "Cooldown": return {"lowerIsBuff": true, "tooltip": <TextTooltip title="Cooldown" text={`Cooldown timer: ${value} seconds`} value={value} prevValue={prevValue} />};
         case "P Impact": return {"tooltip": <TextTooltip title="Pierce Impact" text={`Pierce Impact: ${value}`} value={value} prevValue={prevValue}/>};
         case "Slow": return {"tooltip": <TextTooltip title="Slow" text={`Slow is a applied to all bloons: ${value * 100}%`} value={value} prevValue={prevValue} />};
-        case "Max/Round": return {"tooltip": <TextTooltip title="Max per Round" text={`Max uses per round: ${value}`} value={value} prevValue={prevValue} />};
+        case "RBE": return {"tooltip": <TextTooltip title="Red Bloon Equivalent" text="Total damage required to completely pop the Bloon" value={value} prevValue={prevValue} />};
+        case "HP": return {"tooltip": <TextTooltip title="Health" text="Total damage required to completely pop one layer of the Bloon" value={value} prevValue={prevValue} />};
+        case "Speed": return {"decimals": 2, "tooltip": <TextTooltip title="Speed" text="Bloon track speed" value={value} prevValue={prevValue} />};
         default: return {"tooltip": <TextTooltip text={`Error: ${code} : ${value}`} />};
     }
 };

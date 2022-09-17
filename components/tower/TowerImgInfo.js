@@ -1,6 +1,7 @@
 import {Grid} from "@mui/material";
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
+import {useTheme} from "@mui/material/styles";
 
 import Icon from "../tower/Icon";
 import TowerInfo from "./TowerInfo";
@@ -22,6 +23,7 @@ const TowerContainer = styled(Grid)`
  * @param {string} props.towerType Shows if the tower is a monkey or hero
  */
 export default function TowerImgInfo({tower, towerType}) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
     let backgroundColor, gridSpacing = 5;
 
@@ -30,9 +32,9 @@ export default function TowerImgInfo({tower, towerType}) {
     }
 
     if (towerType === "monkey") {
-        backgroundColor = getMonkeyColor(tower.type);
+        backgroundColor = getMonkeyColor(tower.type, theme);
     } else if (towerType === "hero") {
-        backgroundColor = getHeroColor(tower.name);
+        backgroundColor = getHeroColor(tower.name, theme);
     }
 
     return (

@@ -1,22 +1,19 @@
-import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 
 import TowerText from "../tower/TowerText";
 import {rgbaHex} from "../../lib/utils/utils";
-import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
-import {getDarkMode, getMobile} from "../../lib/redux/selectors";
 
 
-const PaddedCell = styled(TableCell, globalOptions)`
+const PaddedCell = styled(TableCell)`
   padding: 0 3px;
-  border-bottom: 1px solid ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+  border-bottom: 1px solid ${props => props.theme.palette.text.primary};
 `;
 
 const Row = styled(TableRow, globalOptions)`
-  ${props => props["data-s"] ? `background-color: ${rgbaHex(props["data-dm"] ? siteColors.stats.types.dark : siteColors.stats.types.light, 0.4)};` : ""}
+  ${props => props["data-s"] ? `background-color: ${rgbaHex(props.theme.palette.stats.types, 0.4)};` : ""}
 `;
 
 const TypeText = styled(TowerText)`
@@ -29,14 +26,14 @@ const EnabledContainer = styled("div")`
   align-items: center;
 `;
 
-const EnabledCheckbox = styled(CheckBoxIcon, globalOptions)`
-  color: ${props => props["data-dm"] ? siteColors.pros.dark : siteColors.pros.light};
+const EnabledCheckbox = styled(CheckBoxIcon)`
+  color: ${props => props.theme.palette.informational.pros};
 `;
 
-const Enabled = ({darkMode}) => (
+const Enabled = ({}) => (
     <>
         <EnabledContainer>
-            <EnabledCheckbox data-dm={darkMode}/>
+            <EnabledCheckbox/>
         </EnabledContainer>
     </>
 );
@@ -65,8 +62,6 @@ const rows = [
  * @param {string} props.type The tower damage type
  */
 export default function Types({type}) {
-    const mobile = useSelector(getMobile);
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
@@ -74,12 +69,12 @@ export default function Types({type}) {
                 <Table size="small">
                     <TableHead>
                         <TableRow>
-                            <PaddedCell data-dm={darkMode}><TowerText variant="caption">Type</TowerText></PaddedCell>
-                            <PaddedCell align="center" data-dm={darkMode}><TowerText variant="caption">Black</TowerText></PaddedCell>
-                            <PaddedCell align="center" data-dm={darkMode}><TowerText variant="caption">White</TowerText></PaddedCell>
-                            <PaddedCell align="center" data-dm={darkMode}><TowerText variant="caption">Purple</TowerText></PaddedCell>
-                            <PaddedCell align="center" data-dm={darkMode}><TowerText variant="caption">Lead</TowerText></PaddedCell>
-                            <PaddedCell align="center" data-dm={darkMode}><TowerText variant="caption">Frozen</TowerText></PaddedCell>
+                            <PaddedCell><TowerText variant="caption">Type</TowerText></PaddedCell>
+                            <PaddedCell align="center"><TowerText variant="caption">Black</TowerText></PaddedCell>
+                            <PaddedCell align="center"><TowerText variant="caption">White</TowerText></PaddedCell>
+                            <PaddedCell align="center"><TowerText variant="caption">Purple</TowerText></PaddedCell>
+                            <PaddedCell align="center"><TowerText variant="caption">Lead</TowerText></PaddedCell>
+                            <PaddedCell align="center"><TowerText variant="caption">Frozen</TowerText></PaddedCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -88,16 +83,16 @@ export default function Types({type}) {
                                 key={row.type}
                                 data-s={row.type.toLowerCase() === type}
                             >
-                                <PaddedCell component="th" scope="row" data-dm={darkMode}>
+                                <PaddedCell component="th" scope="row">
                                     <TypeText variant="caption" font={true}>
                                         {row.type}
                                     </TypeText>
                                 </PaddedCell>
-                                <PaddedCell align="center" data-dm={darkMode}>{row.black && <Enabled darkMode={darkMode} />}</PaddedCell>
-                                <PaddedCell align="center" data-dm={darkMode}>{row.white && <Enabled darkMode={darkMode} />}</PaddedCell>
-                                <PaddedCell align="center" data-dm={darkMode}>{row.purple && <Enabled darkMode={darkMode} />}</PaddedCell>
-                                <PaddedCell align="center" data-dm={darkMode}>{row.lead && <Enabled darkMode={darkMode} />}</PaddedCell>
-                                <PaddedCell align="center" data-dm={darkMode}>{row.frozen && <Enabled darkMode={darkMode} />}</PaddedCell>
+                                <PaddedCell align="center">{row.black && <Enabled />}</PaddedCell>
+                                <PaddedCell align="center">{row.white && <Enabled />}</PaddedCell>
+                                <PaddedCell align="center">{row.purple && <Enabled />}</PaddedCell>
+                                <PaddedCell align="center">{row.lead && <Enabled />}</PaddedCell>
+                                <PaddedCell align="center">{row.frozen && <Enabled />}</PaddedCell>
                             </Row>
                         ))}
                     </TableBody>

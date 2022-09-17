@@ -1,9 +1,6 @@
-import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 
 import StatsTitle from "./StatsTitle";
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
 
@@ -21,11 +18,9 @@ const Stats = styled("div", globalOptions)`
   background-color: ${props =>
           props["data-t"] 
                   ? props["data-tow"] === "hero" 
-                          ? props["data-dm"] 
-                                  ? siteColors.hero[props["data-t"].substring(0, 1).toLowerCase() + props["data-t"].substring(1).replace(/\s+/g, '')].grid.dark
-                                  : siteColors.hero[props["data-t"].substring(0, 1).toLowerCase() + props["data-t"].substring(1).replace(/\s+/g, '')].grid.light
-                          : props["data-dm"] ? siteColors.monkeyType[props["data-t"].toLowerCase()].grid.dark : siteColors.monkeyType[props["data-t"].toLowerCase()].grid.light
-                  : props["data-dm"] ? siteColors.page.dark : siteColors.page.light
+                          ? props.theme.palette.tower.hero[props["data-t"].substring(0, 1).toLowerCase() + props["data-t"].substring(1).replace(/\s+/g, '')].grid 
+                          : props.theme.palette.tower.type[props["data-t"].toLowerCase()].grid
+                  : props.theme.palette.background.default
   };
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -42,12 +37,11 @@ const Stats = styled("div", globalOptions)`
  * @param {string} props.towerType Shows if the tower is a monkey or hero
  */
 export default function StatsContainer({children, title, direction = "row", type, towerType, ...rest}) {
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <StatsTitle title={title} type={type} towerType={towerType}/>
-            <Stats {...rest} data-d={direction} data-dm={darkMode} data-t={type} data-tow={towerType}>
+            <Stats {...rest} data-d={direction} data-t={type} data-tow={towerType}>
                 {children}
             </Stats>
         </>

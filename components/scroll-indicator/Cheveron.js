@@ -1,9 +1,6 @@
-import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
+import {styled} from "@mui/material/styles";
 
 import {rgbaHex} from "../../lib/utils/utils";
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 
 
@@ -24,7 +21,7 @@ const AnimatedChevron = styled("div", globalOptions)`
     top: 0;
     height: 100%;
     width: 51%;
-    background: ${props => rgbaHex(props["data-dm"] ? siteColors.accent.dark : siteColors.accent.light, 0.75)};
+    background: ${props => rgbaHex(props.theme.palette.primary.main, 0.75)};
   }
 
   &:before {
@@ -64,11 +61,10 @@ const AnimatedChevron = styled("div", globalOptions)`
  * @param {number} props.delay Number to delay the chevron
  */
 export default function Chevron({delay}) {
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
-            <AnimatedChevron data-d={delay} data-dm={darkMode}/>
+            <AnimatedChevron data-d={delay} />
         </>
     );
 }

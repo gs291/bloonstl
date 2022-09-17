@@ -1,7 +1,7 @@
 import {Grid} from "@mui/material";
 import {connect} from "react-redux";
 import {PureComponent} from "react";
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 
 import {
     checkDuplicateProsCons,
@@ -115,7 +115,7 @@ class MonkeyAbilities extends PureComponent {
      * @return {Object} The seperated abilities.
      */
     getAbilities() {
-        const { abilities, monkeyName, monkeyFile, tier, path, setPath, handlePathChange, setSnackPack } = this.props;
+        const { abilities, monkeyName, monkeyFile, color, path, setPath, handlePathChange, setSnackPack } = this.props;
 
         let pathTop = [], pathMiddle = [], pathBottom = [], paragon = null;
 
@@ -125,7 +125,7 @@ class MonkeyAbilities extends PureComponent {
                 : () => ga4SendAbilityClick(null, ability, monkeyName, false, "monkey");
             list.push(
                 <AbilityContainer
-                    ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey"
+                    ability={ability} fileName={monkeyFile} color={color} towerType="monkey"
                     onClick={onClick} selected={selected} key={ability.id} />
             );
         }
@@ -161,7 +161,7 @@ class MonkeyAbilities extends PureComponent {
                     : () => ga4SendAbilityClick(null, ability, monkeyName, false, "monkey");
                 paragon = (
                     <Paragon
-                        ability={ability} fileName={monkeyFile} tier={tier} towerType="monkey" onClick={onClick}
+                        ability={ability} fileName={monkeyFile} color={color} towerType="monkey" onClick={onClick}
                         selected={path.top_path === 5 && path.middle_path === 5 && path.bottom_path === 5} key={ability.id} />
                 );
             }
@@ -175,7 +175,7 @@ class MonkeyAbilities extends PureComponent {
     }
 
     render() {
-        const { className, tier, mobile } = this.props;
+        const { className, color, mobile } = this.props;
         const {pathTop, pathMiddle, pathBottom, paragon} = this.getAbilities();
 
         return (
@@ -197,7 +197,7 @@ class MonkeyAbilities extends PureComponent {
                             {...paragon}
                         )}
                     </AllAbilities>
-                    <ShowAllAbilityModifiers tier={tier} paragon={paragon !== null}/>
+                    <ShowAllAbilityModifiers color={color} paragon={paragon !== null}/>
                 </AbilitiesContainer>
             </>
         );

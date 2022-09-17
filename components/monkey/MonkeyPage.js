@@ -1,6 +1,7 @@
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+import {styled} from "@mui/material/styles";
+import {useTheme} from "@mui/material/styles";
 
 import Counter from "../tower/Counter";
 import Stats from "../statistics/Stats";
@@ -10,25 +11,30 @@ import SandboxMode from "../filters/SandboxMode";
 import TowerImgInfo from "../tower/TowerImgInfo";
 import FixedDivider from "../divider/FixedDivider";
 import {getMobile} from "../../lib/redux/selectors";
+import AbilityPathText from "../tower/AbilityPathText";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import MonkeyAbilities from "../abilities/MonkeyAbilities";
 import FilterPagination from "../filters/FilterPagination";
 import TowerPatchUpdates from "../patch-notes/TowerPatchUpdates";
-import AbilityPathSelection from "../ability/AbilityPathSelection";
 import ConsecutiveSnackbars from "../snackbar/ConsecutiveSnackbars";
 import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
 import {checkIfValidPath, getInitialTowerStats, getMonkeyColor} from "../../lib/utils/utils";
 
 
 const AbilitiesText = styled(TowerText)`
-  margin-top: 10px;
   margin-bottom: 20px;
   cursor: default;
   text-align: center;
 `;
 
+const AbilitiesCaptionText = styled(TowerText)`
+  text-align: center;
+  margin-bottom: 40px;
+`;
+
 const PathCost = styled(TowerText)`
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  cursor: default;
 `;
 
 const FilterDiff = styled(FilterDifficulty)`
@@ -49,8 +55,9 @@ const PatchText = styled(TowerText)`
   cursor: default;
 `;
 
-const Sandbox = styled(SandboxMode)`
-  margin-bottom: 15px;
+const Border = styled(FixedDivider)`
+  margin-top: 50px;
+  margin-bottom: 50px;
 `;
 
 // In order to fix an infinite re-rendering issue from path being set back and forth components
@@ -82,10 +89,10 @@ const handlePathChange = (changes, {setPath, setSnackPack}) => {
  * @param {Object} props.monkey Object containing all the monkey data
  */
 export default function MonkeyPage({monkey}) {
+    const theme = useTheme();
     const mobile = useSelector(getMobile);
     const [ page, setPage ] = useState(1);
-    const [ tier, setTier ] = useState("s");
-    const [ path, setPath ] = useState(monkey.tiers[tier][page-1]);
+    const [ path, setPath ] = useState(monkey.tiers[page-1]);
     const [ sandbox, setSandbox ] = useState(false);
     const [ pauseSandbox, setPauseSandbox ] = useState(false);
     const [ stats, setStats ] = useState(getInitialTowerStats(monkey.stats, {pros: path.pros, cons: path.cons}));
@@ -94,10 +101,6 @@ export default function MonkeyPage({monkey}) {
     const [ openSnackbar, setOpenSnackbar ] = useState(false);
     const [ messageInfo, setMessageInfo ] = useState(undefined);
 
-    const handleTier = (_, r) => {
-        setPage(1);
-        setTier(r);
-    };
     const handlePage = (_, p) => {
         setPage(p);
     }
@@ -112,12 +115,12 @@ export default function MonkeyPage({monkey}) {
         });
     }
 
-    const dividerBackgroundColor = getMonkeyColor(monkey.type);
+    const dividerBackgroundColor = getMonkeyColor(monkey.type, theme);
 
     useEffect(() => {
-        setPath(monkey.tiers[tier][page-1]);
+        setPath(monkey.tiers[page-1]);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [tier, page]);
+    }, [page]);
 
     useEffect(() => {
         if (sandbox) {
@@ -129,7 +132,7 @@ export default function MonkeyPage({monkey}) {
                     "cons": ""
                 });
         } else {
-            setPath(monkey.tiers[tier][page-1]);
+            setPath(monkey.tiers[page-1]);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sandbox]);
@@ -137,38 +140,49 @@ export default function MonkeyPage({monkey}) {
     return (
         <>
             <TowerImgInfo tower={monkey} towerType="monkey"/>
-            <Stats stats={stats} path={path} type={monkey.type} />
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <FilterDiff color={dividerBackgroundColor}/>
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <AbilityPathSelection tier={sandbox ? monkey.tier : tier} tiers={path} handleTier={handleTier} sandbox={sandbox} />
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <AbilitiesText variant={mobile ? "h4" : "h3"}>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <AbilitiesText variant={mobile ? "h3" : "h2"}>
                 Monkey Abilities
             </AbilitiesText>
-            <PathCost variant={mobile ? "h6" : "h4"}>
+            <AbilitiesCaptionText variant={mobile ? "h6" : "h5"} sx={{maxWidth: mobile ? "100%" : "55%"}} font>
+                View highly rated ability paths or set your own path and view its changes! (via Sandbox Mode)
+            </AbilitiesCaptionText>
+            <AbilityPathText path={path} textColor={dividerBackgroundColor}/>
+            <PathCost variant={mobile ? "h6" : "h4"} textColor={dividerBackgroundColor}>
                 Path Cost: $<Counter cost={stats.cost} />
             </PathCost>
+            <SandboxMode
+                sandbox={sandbox} setSnackPack={setSnackPack}
+                setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox}
+                color={dividerBackgroundColor} handleReset={handlePathReset} towerType="monkey"
+            />
             <MonkeyAbilities
                 abilities={monkey.abilities}
                 monkeyName={monkey.name} monkeyFile={monkey.filename}
-                tier={sandbox ? monkey.tier : tier}
+                color={dividerBackgroundColor}
                 path={path} setPath={setPath} handlePathChange={sandbox && !pauseSandbox && handlePathChange}
                 stats={monkey.stats} setStats={setStats} setSnackPack={setSnackPack}
             />
-            {!sandbox && (<FilterPagination pageCount={monkey.tiers[tier].length} page={page} handlePage={handlePage} />)}
-            <Sandbox sandbox={sandbox} setSandbox={setSandbox} pauseSandbox={pauseSandbox} setPauseSandbox={setPauseSandbox} tier={sandbox ? monkey.tier : tier} handleReset={handlePathReset} towerType="monkey"/>
-            <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="monkey" type={monkey.type}/>
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <Title variant={mobile ? "h4" : "h3"}>
+            {!sandbox && (<FilterPagination pageCount={monkey.tiers.length} page={page} handlePage={handlePage} color={dividerBackgroundColor} />)}
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <Title variant={mobile ? "h3" : "h2"}>
                 Tower Pros / Cons
             </Title>
             <ProsCons pros={stats.pros} cons={stats.cons} backgroundColor={dividerBackgroundColor}/>
-            <FixedDivider width={100} backgroundColor={dividerBackgroundColor}/>
-            <PatchText variant={mobile ? "h4" : "h3"}>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <StatAbilitiesWrapper stats={stats} dividerBackgroundColor={dividerBackgroundColor} towerType="monkey" type={monkey.type}/>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <Title variant={mobile ? "h3" : "h2"}>
+                Tower Statistics
+            </Title>
+            <Stats stats={stats} path={path} type={monkey.type} />
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <FilterDiff color={dividerBackgroundColor}/>
+            <Border width={100} backgroundColor={dividerBackgroundColor}/>
+            <PatchText variant={mobile ? "h3" : "h2"}>
                 Latest
             </PatchText>
-            <Title variant={mobile ? "h4" : "h3"}>
+            <Title variant={mobile ? "h3" : "h2"}>
                 Patch Updates
             </Title>
             <TowerPatchUpdates name={monkey.name} borderColor={dividerBackgroundColor} />

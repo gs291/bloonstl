@@ -1,7 +1,7 @@
 import CountUp from "react-countup";
-import styled from "@emotion/styled";
 import {useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+import {styled} from "@mui/material/styles";
 
 import {goldCost} from "../../lib/utils/utils";
 import {getDifficulty} from "../../lib/redux/selectors";

@@ -1,9 +1,8 @@
 import {Chip} from "@mui/material";
-import styled from "@emotion/styled";
+import {styled} from "@mui/material/styles";
 
 import Tooltip from "../tooltip/Tooltip";
 import ChipTooltip from "../tooltip/ChipTooltip";
-import siteColors from "../../lib/utils/siteColors";
 import {globalOptions} from "../../lib/utils/emotionStyled";
 import {CHIP_PREFIX, SELECT_CONTENT_CHIP, ga4SendSelectContent, textToGA4Text} from "../../lib/utils/ga4";
 
@@ -33,9 +32,8 @@ const StyledChip = styled(Chip, globalOptions)`
   animation-timing-function: ease-in-out;
   
   width: 100px;
-  background-color: ${props => props["data-pro"]
-    ? props["data-dm"] ? siteColors.pros.dark : siteColors.pros.light
-    : props["data-dm"] ? siteColors.cons.dark : siteColors.cons.light};
+  color: #000000;
+  background-color: ${props => props["data-pro"] ? props.theme.palette.informational.pros : props.theme.palette.informational.cons};
 
   &:hover {
     cursor: pointer;

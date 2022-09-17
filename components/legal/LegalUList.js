@@ -1,13 +1,8 @@
-import styled from "@emotion/styled";
-import {useSelector} from "react-redux";
-
-import siteColors from "../../lib/utils/siteColors";
-import {getDarkMode} from "../../lib/redux/selectors";
-import {globalOptions} from "../../lib/utils/emotionStyled";
+import {styled} from "@mui/material/styles";
 
 
-export const List = styled("ul", globalOptions)`
-  color: ${props => props["data-dm"] ? siteColors.text.dark : siteColors.text.light};
+export const List = styled("ul")`
+  color: ${props => props.theme.palette.text.primary};
 `;
 
 /**
@@ -17,12 +12,10 @@ export const List = styled("ul", globalOptions)`
  * @param {any} props.children Children supplied to the unordered list item
  */
 export default function LegalUList({children, ...rest}) {
-    const darkMode = useSelector(getDarkMode);
 
     return (
         <>
             <List
-                data-dm={darkMode}
                 { ...rest }
             >
                 {children}
