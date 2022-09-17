@@ -15,9 +15,9 @@ import HeroAbilities from "../abilities/HeroAbilities";
 import AbilityPathText from "../tower/AbilityPathText";
 import FilterDifficulty from "../filters/FilterDifficulty";
 import TowerPatchUpdates from "../patch-notes/TowerPatchUpdates";
+import ConsecutiveSnackbars from "../snackbar/ConsecutiveSnackbars";
 import StatAbilitiesWrapper from "../statistics/StatAbilitiesWrapper";
 import {getHeroColor, getInitialTowerStats} from "../../lib/utils/utils";
-import ConsecutiveSnackbars from "../snackbar/ConsecutiveSnackbars";
 
 
 const FilterDiff = styled(FilterDifficulty)`
